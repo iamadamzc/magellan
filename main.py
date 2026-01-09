@@ -7,6 +7,7 @@ Supports both simulation and live trading modes.
 import os
 import argparse
 import time
+import asyncio
 import requests.exceptions
 import pandas as pd
 import numpy as np
@@ -17,6 +18,10 @@ from src.discovery import calculate_ic, check_feature_correlation, trim_warmup_p
 from src.validation import run_walk_forward_check, print_validation_scorecard, run_optimized_walk_forward_check, print_optimized_scorecard
 from src.pnl_tracker import simulate_portfolio, print_virtual_trading_statement
 from src.backtester_pro import run_rolling_backtest, print_stress_test_summary, export_stress_test_results
+
+
+# Multi-symbol basket for concurrent trading
+TICKERS = ["SPY", "AAPL", "NVDA", "MSFT"]
 
 
 def load_env_file() -> None:
@@ -30,6 +35,241 @@ def load_env_file() -> None:
                 if line and not line.startswith('#') and '=' in line:
                     key, value = line.split('=', 1)
                     os.environ[key.strip()] = value.strip()
+
+
+async def process_ticker(
+    ticker: str,
+    alpaca_client,
+    fmp_client,
+    feature_engineer,
+    trading_client,
+    opt_weights: dict,
+    bar_start: str,
+    bar_end: str,
+    news_start: str,
+    news_end: str,
+    allocation_pct: float = 0.25
+) -> dict:
+    """
+    Process a single ticker: fetch data, engineer features, generate signal, execute.
+    
+    This function encapsulates Steps 1-5 of the trading loop for one symbol,
+    and runs concurrently with other tickers via asyncio.gather().
+    
+    Args:
+        ticker: Symbol to process (e.g., 'SPY', 'AAPL')
+        alpaca_client: AlpacaDataClient instance for market data
+        fmp_client: FMPDataClient instance for fundamentals/news
+        feature_engineer: FeatureEngineer instance
+        trading_client: AlpacaTradingClient instance for execution
+        opt_weights: Optimized alpha weights dict
+        bar_start: Bar window start date (YYYY-MM-DD)
+        bar_end: Bar window end date (YYYY-MM-DD)
+        news_start: News window start date
+        news_end: News window end date
+        allocation_pct: Fraction of equity per ticker (default 0.25 = 25%)
+        
+    Returns:
+        Dict with ticker processing results
+    """
+    from src.executor import async_execute_trade
+    from src.optimizer import calculate_alpha_with_weights
+    
+    result = {
+        'ticker': ticker,
+        'success': False,
+        'signal': None,
+        'trade_result': None,
+        'error': None
+    }
+    
+    try:
+        print(f"\n[LIVE {ticker}] Step 1: Fetching 1-minute bars...")
+        bars = alpaca_client.fetch_historical_bars(
+            symbol=ticker,
+            timeframe='1Min',
+            start=bar_start,
+            end=bar_end,
+            feed='sip'
+        )
+        print(f"[{ticker}] Fetched {len(bars)} bars")
+        
+        print(f"[LIVE {ticker}] Step 2: Fetching fundamental metrics...")
+        fmp_metrics = fmp_client.fetch_fundamental_metrics(ticker)
+        
+        print(f"[LIVE {ticker}] Step 3: Fetching news...")
+        news_list = fmp_client.fetch_historical_news(ticker, news_start, news_end)
+        
+        print(f"[LIVE {ticker}] Step 4: Feature engineering...")
+        df = bars.copy()
+        df['log_return'] = feature_engineer.calculate_log_return(df)
+        df['rvol'] = feature_engineer.calculate_rvol(df, window=20)
+        df['parkinson_vol'] = feature_engineer.calculate_parkinson_vol(df)
+        df['mktCap'] = fmp_metrics['mktCap']
+        df['pe'] = fmp_metrics['pe']
+        df['avgVolume_fmp'] = fmp_metrics['avgVolume']
+        
+        feature_matrix_live = merge_news_pit(df, news_list, lookback_hours=4)
+        add_technical_indicators(feature_matrix_live)
+        generate_master_signal(feature_matrix_live)
+        feature_matrix_live = trim_warmup_period(feature_matrix_live, warmup_rows=20)
+        
+        print(f"[LIVE {ticker}] Step 5: Generating signal...")
+        cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
+        working_df = feature_matrix_live[cols_needed].copy()
+        working_df['forward_return'] = working_df['log_return'].shift(-15)
+        working_df = working_df.dropna()
+        
+        if len(working_df) < 50:
+            result['error'] = f"Insufficient data ({len(working_df)} rows)"
+            print(f"[{ticker}] WARNING: {result['error']}")
+            return result
+        
+        split_idx = int(len(working_df) * 0.70)
+        out_sample = working_df.iloc[split_idx:].copy()
+        in_sample = working_df.iloc[:split_idx].copy()
+        
+        opt_alpha = calculate_alpha_with_weights(out_sample, opt_weights)
+        in_alpha = calculate_alpha_with_weights(in_sample, opt_weights)
+        threshold = in_alpha.median()
+        
+        out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
+        latest_signal = int(out_sample['signal'].iloc[-1])
+        result['signal'] = latest_signal
+        
+        print(f"[{ticker}] Signal: {'BUY' if latest_signal == 1 else 'SELL'}")
+        
+        # Execute trade via async wrapper (runs in thread pool)
+        trade_result = await async_execute_trade(
+            trading_client, 
+            latest_signal, 
+            ticker,
+            allocation_pct=allocation_pct
+        )
+        result['trade_result'] = trade_result
+        result['success'] = True
+        
+        if trade_result['executed']:
+            print(f"[{ticker}] ✓ Order {trade_result['order_id']} | {trade_result['side'].upper()} {trade_result['qty']} @ ${trade_result['limit_price']:.2f}")
+        else:
+            print(f"[{ticker}] ✗ Rejected: {trade_result['rejection_reason']}")
+            
+    except Exception as e:
+        result['error'] = str(e)
+        print(f"[{ticker}] ERROR: {e}")
+    
+    return result
+
+
+async def live_trading_loop(
+    alpaca_client,
+    fmp_client,
+    feature_engineer,
+    opt_weights: dict
+) -> None:
+    """
+    Async live trading loop for multi-symbol basket processing.
+    
+    Uses asyncio.gather() to process all tickers concurrently.
+    PDT check runs once per minute before any ticker processing.
+    
+    Args:
+        alpaca_client: AlpacaDataClient for market data
+        fmp_client: FMPDataClient for fundamentals
+        feature_engineer: FeatureEngineer instance
+        opt_weights: Optimized alpha weights
+    """
+    from src.executor import AlpacaTradingClient
+    
+    print("\n" + "=" * 60)
+    print("[LIVE MODE] Entering async multi-symbol trading loop...")
+    print(f"[INFO] Basket: {', '.join(TICKERS)}")
+    print("=" * 60)
+    print("[INFO] Press Ctrl+C to stop the trading loop.")
+    
+    # Calculate per-ticker allocation
+    allocation_pct = 1.0 / len(TICKERS)  # 25% for 4 tickers
+    print(f"[CONFIG] Per-ticker allocation: {allocation_pct*100:.0f}%")
+    
+    try:
+        # Initialize trading client ONCE
+        trading_client = AlpacaTradingClient()
+        
+        loop_iteration = 0
+        while True:
+            loop_iteration += 1
+            
+            # Sync with next 1-minute bar
+            now = datetime.now()
+            sleep_time = 60 - now.second
+            print(f"\n[LIVE] Iteration #{loop_iteration} | Syncing with next bar... Sleeping {sleep_time}s")
+            await asyncio.sleep(sleep_time)
+            
+            # ================================================================
+            # PDT_EQUITY_THRESHOLD CHECK (ONCE per minute, BEFORE gather)
+            # ================================================================
+            pdt_ok, pdt_msg = trading_client.check_pdt_protection()
+            print(f"[LIVE] {pdt_msg}")
+            if not pdt_ok:
+                print(f"[LIVE] ⚠ PDT PROTECTION ACTIVE - Skipping this bar")
+                continue
+            
+            # Update date window to current time
+            current_time = datetime.now()
+            bar_end = current_time.strftime('%Y-%m-%d')
+            bar_start = (current_time - timedelta(days=1)).strftime('%Y-%m-%d')
+            news_end = bar_end
+            news_start = (current_time - timedelta(days=4)).strftime('%Y-%m-%d')
+            
+            print(f"\n[LIVE] === Bar Window: {bar_start} to {bar_end} ===")
+            print(f"[LIVE] Processing {len(TICKERS)} tickers concurrently...")
+            
+            # ================================================================
+            # CONCURRENT TICKER PROCESSING via asyncio.gather
+            # ================================================================
+            tasks = [
+                process_ticker(
+                    ticker=ticker,
+                    alpaca_client=alpaca_client,
+                    fmp_client=fmp_client,
+                    feature_engineer=feature_engineer,
+                    trading_client=trading_client,
+                    opt_weights=opt_weights,
+                    bar_start=bar_start,
+                    bar_end=bar_end,
+                    news_start=news_start,
+                    news_end=news_end,
+                    allocation_pct=allocation_pct
+                )
+                for ticker in TICKERS
+            ]
+            
+            # return_exceptions=True ensures one ticker failure doesn't stop others
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            # ================================================================
+            # RESULTS SUMMARY
+            # ================================================================
+            print(f"\n[LIVE] === Iteration #{loop_iteration} Summary ===")
+            successes = 0
+            failures = 0
+            for res in results:
+                if isinstance(res, Exception):
+                    failures += 1
+                    print(f"  ✗ Exception: {res}")
+                elif isinstance(res, dict):
+                    if res.get('success'):
+                        successes += 1
+                    else:
+                        failures += 1
+            print(f"[LIVE] Processed: {successes} success, {failures} failures")
+            
+    except KeyboardInterrupt:
+        print("\n\n[LIVE] Trading loop stopped by user (Ctrl+C)")
+        print("[LIVE] Exiting gracefully...")
+    except Exception as e:
+        print(f"\n[LIVE ERROR] Fatal error: {e}")
+        print("[FALLBACK] Exiting live mode...")
 
 
 def main() -> None:
@@ -206,116 +446,13 @@ def main() -> None:
             
             # MODE: Live Execution or Simulation
             if args.mode == 'live':
-                # Live Trading Loop
-                print("\n" + "=" * 60)
-                print("[LIVE MODE] Entering continuous trading loop...")
-                print("=" * 60)
-                print("[INFO] Press Ctrl+C to stop the trading loop.")
-                
-                from src.executor import AlpacaTradingClient, execute_trade
-                
-                try:
-                    # Initialize trading client ONCE
-                    trading_client = AlpacaTradingClient()
-                    
-                    loop_iteration = 0
-                    while True:
-                        loop_iteration += 1
-                        
-                        # Sync with next 1-minute bar
-                        now = datetime.now()
-                        sleep_time = 60 - now.second
-                        print(f"\n[LIVE] Iteration #{loop_iteration} | Syncing with next bar... Sleeping {sleep_time}s")
-                        time.sleep(sleep_time)
-                        
-                        # Update date window to current time
-                        current_time = datetime.now()
-                        bar_end = current_time.strftime('%Y-%m-%d')
-                        bar_start = (current_time - timedelta(days=1)).strftime('%Y-%m-%d')
-                        news_end = bar_end
-                        news_start = (current_time - timedelta(days=4)).strftime('%Y-%m-%d')
-                        
-                        print(f"\n[LIVE] === Bar Window: {bar_start} to {bar_end} ===")
-                        
-                        try:
-                            # Step 1: Fetch fresh SPY bars
-                            print(f"[LIVE STEP 1] Fetching {symbol} 1-minute bars...")
-                            bars = alpaca_client.fetch_historical_bars(
-                                symbol=symbol,
-                                timeframe='1Min',
-                                start=bar_start,
-                                end=bar_end,
-                                feed='sip'
-                            )
-                            print(f"[SUCCESS] Fetched {len(bars)} bars")
-                            
-                            # Step 2: Fetch FMP fundamental metrics
-                            print(f"[LIVE STEP 2] Fetching {symbol} fundamental metrics...")
-                            fmp_metrics = fmp_client.fetch_fundamental_metrics(symbol)
-                            
-                            # Step 3: Fetch news for PIT alignment
-                            print(f"[LIVE STEP 3] Fetching {symbol} news...")
-                            news_list = fmp_client.fetch_historical_news(symbol, news_start, news_end)
-                            
-                            # Step 4: Feature engineering
-                            print(f"[LIVE STEP 4] Running feature engineering...")
-                            df = bars.copy()
-                            df['log_return'] = feature_engineer.calculate_log_return(df)
-                            df['rvol'] = feature_engineer.calculate_rvol(df, window=20)
-                            df['parkinson_vol'] = feature_engineer.calculate_parkinson_vol(df)
-                            df['mktCap'] = fmp_metrics['mktCap']
-                            df['pe'] = fmp_metrics['pe']
-                            df['avgVolume_fmp'] = fmp_metrics['avgVolume']
-                            
-                            feature_matrix_live = merge_news_pit(df, news_list, lookback_hours=4)
-                            add_technical_indicators(feature_matrix_live)
-                            generate_master_signal(feature_matrix_live)
-                            feature_matrix_live = trim_warmup_period(feature_matrix_live, warmup_rows=20)
-                            
-                            # Step 5: Generate signal
-                            print(f"[LIVE STEP 5] Generating trading signal...")
-                            from src.optimizer import calculate_alpha_with_weights
-                            
-                            cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
-                            working_df = feature_matrix_live[cols_needed].copy()
-                            working_df['forward_return'] = working_df['log_return'].shift(-15)
-                            working_df = working_df.dropna()
-                            
-                            if len(working_df) < 50:
-                                print(f"[LIVE WARNING] Insufficient data ({len(working_df)} rows). Skipping this bar.")
-                                continue
-                            
-                            split_idx = int(len(working_df) * 0.70)
-                            out_sample = working_df.iloc[split_idx:].copy()
-                            in_sample = working_df.iloc[:split_idx].copy()
-                            
-                            opt_alpha = calculate_alpha_with_weights(out_sample, opt_result['optimal_weights'])
-                            in_alpha = calculate_alpha_with_weights(in_sample, opt_result['optimal_weights'])
-                            threshold = in_alpha.median()
-                            
-                            out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
-                            latest_signal = int(out_sample['signal'].iloc[-1])
-                            
-                            # Execute trade
-                            print(f"\n[LIVE] Latest signal: {'BUY' if latest_signal == 1 else 'SELL'}")
-                            trade_result = execute_trade(trading_client, latest_signal, symbol)
-                            
-                            if trade_result['executed']:
-                                print(f"[LIVE] ✓ Order {trade_result['order_id']} | {trade_result['side'].upper()} {trade_result['qty']} @ ${trade_result['limit_price']:.2f}")
-                            else:
-                                print(f"[LIVE] ✗ Rejected: {trade_result['rejection_reason']}")
-                                
-                        except Exception as loop_error:
-                            print(f"[LIVE ERROR] Loop iteration failed: {loop_error}")
-                            print("[LIVE] Continuing to next bar...")
-                            continue
-                            
-                except KeyboardInterrupt:
-                    print("\n\n[LIVE] Trading loop stopped by user (Ctrl+C)")
-                    print("[LIVE] Exiting gracefully...")
-                except Exception as e:
-                    print(f"\n[LIVE ERROR] Fatal error: {e}")
-                    print("[FALLBACK] Exiting live mode...")
+                # Launch async live trading loop
+                asyncio.run(live_trading_loop(
+                    alpaca_client=alpaca_client,
+                    fmp_client=fmp_client,
+                    feature_engineer=feature_engineer,
+                    opt_weights=opt_result['optimal_weights']
+                ))
             
             else:
                 # Simulation mode: Run virtual P&L tracker

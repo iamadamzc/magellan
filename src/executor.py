@@ -6,6 +6,7 @@ Uses "Marketable Limit" orders to mimic institutional execution stealth.
 
 import os
 import time
+import asyncio
 import logging
 from datetime import datetime
 from typing import Optional
@@ -244,7 +245,7 @@ class AlpacaTradingClient:
 
 
 
-def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY') -> dict:
+def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY', allocation_pct: float = 0.25) -> dict:
     """
     Execute a trade based on the alpha signal with position-aware logic.
     
@@ -349,11 +350,14 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY')
         # SELL: Use the entire current position
         qty = current_position_qty
     else:
-        # BUY: Use 100% allocation
-        qty = int(available_funds / ask_price)
+        # BUY: Use allocation_pct of total equity (supports multi-symbol basket)
+        account_equity = account_info['equity']
+        allocated_capital = account_equity * allocation_pct
+        qty = int(allocated_capital / ask_price)
         if qty <= 0:
-            result['rejection_reason'] = f"Insufficient funds for even 1 share"
+            result['rejection_reason'] = f"Insufficient funds for even 1 share (allocated ${allocated_capital:,.2f})"
             return result
+        print(f"[EXECUTOR] Allocation: {allocation_pct*100:.0f}% of ${account_equity:,.2f} = ${allocated_capital:,.2f} -> {qty} shares")
     
     result['qty'] = qty
     required_amount = qty * limit_price
@@ -457,6 +461,25 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY')
         print(f"[EXECUTOR] ✗ Order failed: {e}")
     
     return result
+
+
+async def async_execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY', allocation_pct: float = 0.25) -> dict:
+    """
+    Async wrapper for execute_trade using thread pool to avoid blocking.
+    
+    Alpaca's REST client is synchronous, so this wraps execute_trade in
+    asyncio.to_thread() to enable concurrent order processing for multi-symbol baskets.
+    
+    Args:
+        client: AlpacaTradingClient instance
+        signal: 1 for BUY, -1 for SELL
+        symbol: Stock symbol
+        allocation_pct: Fraction of equity to allocate per ticker (default 0.25 = 25%)
+        
+    Returns:
+        Dict with order details or rejection reason
+    """
+    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct)
 
 
 def main():
