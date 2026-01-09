@@ -5,9 +5,11 @@ Fetches historical market data using Alpaca Paper API with Market Plus (SIP) sub
 
 import os
 import requests.exceptions
+import pandas as pd
 from datetime import datetime, timedelta
 from src.data_handler import AlpacaDataClient, FMPDataClient
 from src.features import FeatureEngineer
+from src.discovery import calculate_ic
 
 
 def load_env_file() -> None:
@@ -102,6 +104,37 @@ def main() -> None:
         # Select and display key columns
         output_cols = ['close', 'log_return', 'rvol', 'parkinson_vol', 'sentiment', 'mktCap']
         print(feature_matrix[output_cols].tail())
+        
+        # Step 6: Alpha Discovery - IC Analysis
+        print("\n" + "=" * 60)
+        print("[SIGNAL STRENGTH REPORT] Information Coefficient Analysis")
+        print("=" * 60)
+        print(f"Feature: sentiment → Target: log_return")
+        print("-" * 60)
+        
+        horizons = [5, 15, 60]  # 5-min, 15-min, 60-min
+        
+        for horizon in horizons:
+            ic = calculate_ic(feature_matrix, 'sentiment', 'log_return', horizon=horizon)
+            if pd.isna(ic):
+                ic_str = "N/A (insufficient data)"
+            else:
+                # Interpret IC strength
+                abs_ic = abs(ic)
+                if abs_ic < 0.02:
+                    strength = "Noise"
+                elif abs_ic < 0.05:
+                    strength = "Weak"
+                elif abs_ic < 0.10:
+                    strength = "Moderate"
+                else:
+                    strength = "Strong"
+                ic_str = f"{ic:+.4f} ({strength})"
+            
+            print(f"  {horizon:>3}-min horizon IC: {ic_str}")
+        
+        print("-" * 60)
+        print("[NOTE] IC > 0.02 suggests exploitable alpha; IC > 0.05 is promising.")
         
         print("\n" + "=" * 60)
         print(f"[COMPLETE] Pipeline finished successfully")
