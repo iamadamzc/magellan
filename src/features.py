@@ -162,11 +162,12 @@ class FeatureEngineer:
         # Validation: Count remaining NaN values and warn if any exist
         nan_counts = df_merged.isna().sum()
         total_nans = nan_counts.sum()
+        print(f"[VALIDATION] Total NaNs in matrix: {total_nans}")
         if total_nans > 0:
-            print(f"[FEATURES WARNING] {total_nans} NaN values remain in feature matrix:")
+            print(f"[FEATURES WARNING] NaN breakdown:")
             for col, count in nan_counts[nan_counts > 0].items():
                 print(f"  - {col}: {count} NaN values")
         else:
-            print(f"[FEATURES] Feature matrix complete: {len(df_merged)} rows, 0 NaN values")
+            print(f"[FEATURES] Feature matrix complete: {len(df_merged)} rows")
         
         return df_merged
