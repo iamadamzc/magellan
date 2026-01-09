@@ -5,6 +5,7 @@ Uses "Marketable Limit" orders to mimic institutional execution stealth.
 """
 
 import os
+import time
 import logging
 from datetime import datetime
 from typing import Optional
@@ -116,12 +117,37 @@ class AlpacaTradingClient:
         return True, f"FUNDS OK: ${buying_power:,.2f} available"
     
     def _log_trade(self, order_id: str, symbol: str, side: str, qty: int, 
-                   limit_price: float, status: str):
-        """Log trade to live_trades.log."""
-        self.logger.info(
+                   limit_price: float, status: str,
+                   filled_avg_price: Optional[float] = None,
+                   filled_qty: Optional[int] = None,
+                   filled_at: Optional[str] = None):
+        """
+        Log trade to live_trades.log.
+        
+        Args:
+            order_id: Unique order identifier
+            symbol: Trading symbol
+            side: 'buy' or 'sell'
+            qty: Order quantity
+            limit_price: Submitted limit price
+            status: Order status (e.g., pending_new, filled, TIMEOUT_REJECTION)
+            filled_avg_price: (Optional) Actual fill price
+            filled_qty: (Optional) Actual filled quantity
+            filled_at: (Optional) Timestamp of fill
+        """
+        log_entry = (
             f"ORDER_ID={order_id} | SYMBOL={symbol} | SIDE={side} | "
             f"QTY={qty} | LIMIT_PRICE=${limit_price:.2f} | STATUS={status}"
         )
+        
+        if filled_avg_price is not None:
+            log_entry += f" | FILLED_AVG_PRICE=${filled_avg_price:.2f}"
+        if filled_qty is not None:
+            log_entry += f" | FILLED_QTY={filled_qty}"
+        if filled_at is not None:
+            log_entry += f" | FILLED_AT={filled_at}"
+            
+        self.logger.info(log_entry)
     
     def liquidate_all_positions(self) -> dict:
         """
@@ -360,8 +386,70 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY')
         print(f"[EXECUTOR] ✓ Order submitted: ID={order.id}")
         print(f"[EXECUTOR]   Status: {order.status}")
         
-        # Log to file
+        # Log initial submission
         client._log_trade(order.id, symbol, side, qty, limit_price, order.status)
+        
+        # ---------------------------------------------------------------------
+        # ACTIVE ORDER POLLING & FILL TELEMETRY
+        # ---------------------------------------------------------------------
+        print(f"[EXECUTOR] ⏳ Polling for fill (max 10s)...")
+        
+        start_time = time.time()
+        is_filled = False
+        current_status = order.status
+        
+        # Polling Loop (Max 10 seconds)
+        while (time.time() - start_time) < 10:
+            time.sleep(1)  # 1-second interval protection
+            
+            try:
+                # Fetch latest order status
+                updated_order = client.api.get_order(order.id)
+                current_status = updated_order.status
+                
+                if current_status == 'filled':
+                    is_filled = True
+                    filled_avg_price = float(updated_order.filled_avg_price) if updated_order.filled_avg_price else limit_price
+                    filled_qty = int(updated_order.filled_qty)
+                    filled_at = updated_order.filled_at
+                    
+                    print(f"[EXECUTOR] ✓ Order FILLED: {filled_qty} @ ${filled_avg_price:.2f}")
+                    
+                    # Log FILL confirmation with telemetry
+                    client._log_trade(
+                        order.id, symbol, side, qty, limit_price, 'filled',
+                        filled_avg_price=filled_avg_price,
+                        filled_qty=filled_qty,
+                        filled_at=str(filled_at)
+                    )
+                    
+                    # Update result dict
+                    result['executed'] = True
+                    result['limit_price'] = filled_avg_price  # Update to actual execution price
+                    result['status'] = 'FILLED'
+                    break
+                
+                elif current_status in ['canceled', 'expired', 'rejected']:
+                    print(f"[EXECUTOR] ✗ Order {current_status.upper()}")
+                    client._log_trade(order.id, symbol, side, qty, limit_price, current_status)
+                    result['status'] = current_status.upper()
+                    result['rejection_reason'] = f"Order {current_status}"
+                    break
+
+            except Exception as poll_err:
+                print(f"[EXECUTOR] ⚠ Polling Error: {poll_err}")
+        
+        # Timeout handling
+        if not is_filled and current_status not in ['filled', 'canceled', 'expired', 'rejected']:
+            print(f"[EXECUTOR] ⏱ Timeout (10s) - Cancelling Order...")
+            try:
+                client.api.cancel_order(order.id)
+                client._log_trade(order.id, symbol, side, qty, limit_price, 'TIMEOUT_REJECTION')
+                result['status'] = 'TIMEOUT'
+                result['rejection_reason'] = "Order TIMEOUT (10s) - Cancelled to prevent zombie fill"
+            except Exception as cancel_err:
+                print(f"[EXECUTOR] ✗ Failed to cancel: {cancel_err}")
+                result['rejection_reason'] = f"Timeout & Cancel Failed: {cancel_err}"
         
     except Exception as e:
         result['rejection_reason'] = f"Order submission failed: {e}"
