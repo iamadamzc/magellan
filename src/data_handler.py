@@ -242,6 +242,88 @@ class FMPDataClient:
             'publishedDate': datetime.utcnow()
         }
     
+    def fetch_historical_news(self, symbol: str, start_date: str, end_date: str) -> list:
+        """
+        Fetch historical news articles for Point-in-Time sentiment alignment.
+        
+        Uses FMP Stable API with 'from' and 'to' parameters to fetch date-ranged news.
+        
+        Args:
+            symbol: Stock symbol (e.g., 'SPY')
+            start_date: Start date in YYYY-MM-DD format
+            end_date: End date in YYYY-MM-DD format
+        
+        Returns:
+            List of dicts with keys: 'publishedDate' (datetime), 'sentiment' (float)
+        """
+        import requests
+        
+        url = f"{self.base_url_stable}/news/stock"
+        params = {
+            'symbols': symbol,
+            'from': start_date,
+            'to': end_date,
+            'apikey': self.api_key
+        }
+        
+        masked_url = f"{url}?symbols={symbol}&from={start_date}&to={end_date}&apikey={self.api_key[:4]}..."
+        print(f"[FMP] Fetching historical news: {masked_url}")
+        
+        try:
+            response = requests.get(url, params=params, timeout=15)
+            response.raise_for_status()
+            data = response.json()
+            
+            if not data:
+                print(f"[FMP] No news found for {symbol} from {start_date} to {end_date}")
+                return []
+            
+            print(f"[FMP] Fetched {len(data)} articles from {start_date} to {end_date}")
+            
+            # Parse articles with sentiment and timestamp
+            news_list = []
+            for article in data:
+                # Parse publishedDate to timezone-naive UTC
+                pub_date = None
+                if 'publishedDate' in article:
+                    try:
+                        pub_date = pd.to_datetime(article['publishedDate'])
+                        if pub_date.tzinfo is not None:
+                            pub_date = pub_date.tz_convert('UTC').tz_localize(None)
+                    except Exception:
+                        continue
+                
+                if pub_date is None:
+                    continue
+                
+                # Extract sentiment (handle string or numeric)
+                sent_val = 0.0
+                if 'sentiment' in article and article['sentiment'] is not None:
+                    raw_sent = article['sentiment']
+                    if isinstance(raw_sent, str):
+                        sentiment_map = {'positive': 0.5, 'neutral': 0.0, 'negative': -0.5}
+                        sent_val = sentiment_map.get(raw_sent.lower(), 0.0)
+                    else:
+                        sent_val = float(raw_sent)
+                
+                news_list.append({
+                    'publishedDate': pub_date,
+                    'sentiment': sent_val
+                })
+            
+            # Sort by publishedDate ascending for PIT lookups
+            news_list.sort(key=lambda x: x['publishedDate'])
+            print(f"[FMP] Parsed {len(news_list)} articles with valid timestamps")
+            
+            return news_list
+            
+        except requests.exceptions.HTTPError as e:
+            print(f"[FMP ERROR] HTTP error fetching historical news: {e}")
+            return []
+        except requests.exceptions.RequestException as e:
+            print(f"[FMP ERROR] Network error fetching historical news: {e}")
+            return []
+    
     def fetch_fundamental_metrics(self, symbol: str) -> dict:
         """
         Fetch fundamental metrics for a given symbol using FMP Stable API.

@@ -171,3 +171,191 @@ class FeatureEngineer:
             print(f"[FEATURES] Feature matrix complete: {len(df_merged)} rows")
         
         return df_merged
+
+
+def add_technical_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Add technical indicators for multi-factor analysis.
+    
+    Computes:
+    - RSI (14): Relative Strength Index using Wilder's smoothing
+    - Volatility (14): Rolling standard deviation of log returns
+    - Volume Z-Score (20): Standardized volume deviation
+    
+    Args:
+        df: DataFrame with 'close', 'volume', and 'log_return' columns
+    
+    Returns:
+        DataFrame with new indicator columns added (mutated in-place)
+    """
+    # RSI (14) using Wilder's smoothing (adjust=False for EWM)
+    delta = df['close'].diff()
+    gains = delta.where(delta > 0, 0.0)
+    losses = (-delta).where(delta < 0, 0.0)
+    
+    # Wilder's smoothing: span = 2*period - 1 for adjust=False equivalence
+    # OR use alpha = 1/period directly
+    avg_gain = gains.ewm(span=14, adjust=False).mean()
+    avg_loss = losses.ewm(span=14, adjust=False).mean()
+    
+    # Avoid division by zero
+    rs = avg_gain / avg_loss.replace(0, np.inf)
+    df['rsi_14'] = 100 - (100 / (1 + rs))
+    
+    # Handle edge case where avg_loss is 0 (RSI = 100)
+    df.loc[avg_loss == 0, 'rsi_14'] = 100.0
+    # Handle edge case where avg_gain is 0 (RSI = 0)
+    df.loc[avg_gain == 0, 'rsi_14'] = 0.0
+    
+    # Volatility (14): Rolling standard deviation of log returns
+    df['volatility_14'] = df['log_return'].rolling(window=14).std()
+    
+    # Volume Z-Score (20): Standardized volume
+    vol_mean = df['volume'].rolling(window=20).mean()
+    vol_std = df['volume'].rolling(window=20).std()
+    df['volume_zscore'] = (df['volume'] - vol_mean) / vol_std.replace(0, np.inf)
+    
+    # Handle division by zero (constant volume)
+    df.loc[vol_std == 0, 'volume_zscore'] = 0.0
+    
+    return df
+
+
+def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int = 4) -> pd.DataFrame:
+    """
+    Point-in-Time sentiment alignment - only uses news available at each bar timestamp.
+    
+    For each 1-minute bar, calculates sentiment from news published within the lookback
+    window *before* the bar's timestamp. If raw sentiment values are constant/zero,
+    uses news frequency as a proxy (more news = higher activity sentiment).
+    
+    Args:
+        price_df: DataFrame with datetime index (timezone-naive UTC)
+        news_list: List of dicts with 'publishedDate' and 'sentiment' keys
+        lookback_hours: Hours to look back for recent news (default: 4)
+    
+    Returns:
+        DataFrame with 'sentiment' column added
+    """
+    from datetime import timedelta
+    
+    df = price_df.copy()
+    
+    if not news_list:
+        # No news available - set neutral sentiment
+        df['sentiment'] = 0.0
+        print("[PIT] No news articles available, using neutral sentiment")
+        return df
+    
+    # Convert news_list to DataFrame for efficient lookups
+    news_df = pd.DataFrame(news_list)
+    news_df = news_df.sort_values('publishedDate').reset_index(drop=True)
+    
+    # Check if all sentiment values are constant (API data quality issue)
+    unique_sentiments = news_df['sentiment'].nunique()
+    use_frequency_proxy = unique_sentiments <= 1
+    
+    if use_frequency_proxy:
+        print("[PIT] All news sentiment values are constant - using news frequency as proxy")
+    
+    lookback_delta = timedelta(hours=lookback_hours)
+    sentiments = []
+    news_counts = []
+    
+    for bar_time in df.index:
+        # Find news published before this bar, within lookback window
+        window_start = bar_time - lookback_delta
+        
+        # Filter news: window_start <= publishedDate < bar_time (strict PIT)
+        mask = (news_df['publishedDate'] >= window_start) & (news_df['publishedDate'] < bar_time)
+        recent_news = news_df.loc[mask]
+        
+        news_count = len(recent_news)
+        news_counts.append(news_count)
+        
+        if news_count > 0:
+            avg_sent = recent_news['sentiment'].mean()
+        else:
+            avg_sent = np.nan  # Will forward-fill later
+        
+        sentiments.append(avg_sent)
+    
+    if use_frequency_proxy:
+        # Use news count as sentiment proxy: normalize to roughly -0.5 to +0.5 range
+        # Based on news count per 4-hour window (expected range 0-10)
+        news_count_series = pd.Series(news_counts, index=df.index)
+        # Z-score normalize then clip to reasonable range
+        nc_mean = news_count_series.mean()
+        nc_std = news_count_series.std()
+        if nc_std > 0:
+            df['sentiment'] = ((news_count_series - nc_mean) / nc_std).clip(-2, 2) * 0.25
+        else:
+            df['sentiment'] = 0.0
+    else:
+        df['sentiment'] = sentiments
+        # Forward-fill NaN values (bars with no recent news inherit last known sentiment)
+        df['sentiment'] = df['sentiment'].ffill()
+        # Backward-fill any remaining NaNs at the start
+        df['sentiment'] = df['sentiment'].bfill()
+        # Final fallback: if still NaN (no news at all), use 0
+        df['sentiment'] = df['sentiment'].fillna(0.0)
+    
+    # Report variance for IC validation
+    sent_std = df['sentiment'].std()
+    sent_unique = df['sentiment'].nunique()
+    print(f"[PIT] Sentiment aligned: std={sent_std:.4f}, unique_values={sent_unique}")
+    
+    return df
+
+
+def generate_master_signal(
+    df: pd.DataFrame,
+    rsi_wt: float = 0.4,
+    vol_wt: float = 0.3,
+    sent_wt: float = 0.3
+) -> pd.DataFrame:
+    """
+    Combine multiple factors into a weighted alpha_score.
+    
+    Normalizes each component to 0-1 range before combining:
+    - RSI: Already 0-100, scaled to 0-1
+    - Volume Z-Score: Min-max normalized
+    - Sentiment: Min-max normalized
+    
+    Args:
+        df: DataFrame with 'rsi_14', 'volume_zscore', 'sentiment' columns
+        rsi_wt: Weight for RSI component (default: 0.4)
+        vol_wt: Weight for volume z-score (default: 0.3)
+        sent_wt: Weight for sentiment (default: 0.3)
+    
+    Returns:
+        DataFrame with 'alpha_score' column added (mutates in-place)
+    """
+    # Normalize RSI (0-100 -> 0-1)
+    rsi_norm = df['rsi_14'] / 100.0
+    
+    # Normalize Volume Z-Score (min-max to 0-1)
+    vol_min = df['volume_zscore'].min()
+    vol_max = df['volume_zscore'].max()
+    vol_range = vol_max - vol_min
+    if vol_range > 0:
+        vol_norm = (df['volume_zscore'] - vol_min) / vol_range
+    else:
+        vol_norm = pd.Series(0.5, index=df.index)  # Constant volume
+    
+    # Normalize Sentiment (min-max to 0-1)
+    sent_min = df['sentiment'].min()
+    sent_max = df['sentiment'].max()
+    sent_range = sent_max - sent_min
+    if sent_range > 0:
+        sent_norm = (df['sentiment'] - sent_min) / sent_range
+    else:
+        sent_norm = pd.Series(0.5, index=df.index)  # Constant sentiment
+    
+    # Weighted combination
+    df['alpha_score'] = (rsi_wt * rsi_norm) + (vol_wt * vol_norm) + (sent_wt * sent_norm)
+    
+    print(f"[ALPHA] Master signal generated: mean={df['alpha_score'].mean():.4f}, std={df['alpha_score'].std():.4f}")
+    
+    return df
+
