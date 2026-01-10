@@ -8,19 +8,28 @@ import numpy as np
 from typing import Dict
 
 
-def simulate_portfolio(df: pd.DataFrame, initial_capital: float = 100000.0) -> Dict:
+def simulate_portfolio(
+    df: pd.DataFrame, 
+    initial_capital: float = 100000.0,
+    friction_bps: float = 0.0,
+    max_position_dollars: float = None
+) -> Dict:
     """
     Simulate portfolio performance using signal column to buy/sell SPY.
     
     Process:
     1. Use signal column (-1, 0, +1) to determine position direction
     2. Calculate position-adjusted returns (signal * log_return)
-    3. Track cumulative equity starting from initial_capital
-    4. Compute performance metrics: returns, drawdown, Sharpe ratio
+    3. Apply friction (transaction costs) on every executed trade
+    4. Cap position size to max_position_dollars if specified
+    5. Track cumulative equity starting from initial_capital
+    6. Compute performance metrics: returns, drawdown, Sharpe ratio
     
     Args:
         df: DataFrame with 'close', 'signal', and 'log_return' columns
         initial_capital: Starting portfolio value in dollars
+        friction_bps: Transaction cost in basis points (e.g., 1.5 for 1.5 bps)
+        max_position_dollars: Maximum dollar amount for any single position (None = no cap)
     
     Returns:
         Dict with performance metrics and equity curve
@@ -41,18 +50,47 @@ def simulate_portfolio(df: pd.DataFrame, initial_capital: float = 100000.0) -> D
             'equity_curve': pd.Series(dtype=float)
         }
     
+    # Convert friction from bps to decimal (e.g., 1.5 bps = 0.00015)
+    friction_decimal = friction_bps / 10000.0
+    
+    # Detect trade executions (signal changes)
+    working_df['signal_change'] = working_df['signal'].diff().fillna(0) != 0
+    
     # Calculate position-adjusted returns
     # When signal = 1 (long), we earn +log_return
     # When signal = -1 (short), we earn -log_return
     # When signal = 0 (neutral), we earn 0
     working_df['position_return'] = working_df['signal'] * working_df['log_return']
     
-    # Calculate cumulative returns (multiplicative)
-    working_df['equity_multiplier'] = (1 + working_df['position_return']).cumprod()
-    working_df['equity'] = initial_capital * working_df['equity_multiplier']
+    # Apply friction: subtract friction_decimal from return on every executed trade
+    # Friction applies when signal changes (new trade execution)
+    working_df['friction_cost'] = working_df['signal_change'] * friction_decimal
+    working_df['net_return'] = working_df['position_return'] - working_df['friction_cost']
     
-    # Extract equity curve
-    equity_curve = working_df['equity']
+    # Calculate equity bar-by-bar with position cap
+    equity_series = []
+    current_equity = initial_capital
+    
+    for idx, row in working_df.iterrows():
+        # Determine position size
+        if max_position_dollars is not None:
+            # Cap the position to max_position_dollars
+            position_size = min(current_equity, max_position_dollars)
+        else:
+            # Use full equity
+            position_size = current_equity
+        
+        # Calculate dollar return on this bar
+        # net_return is already in log-return space, convert to simple return
+        simple_return = np.exp(row['net_return']) - 1
+        dollar_return = position_size * simple_return
+        
+        # Update equity
+        current_equity = current_equity + dollar_return
+        equity_series.append(current_equity)
+    
+    # Create equity curve
+    equity_curve = pd.Series(equity_series, index=working_df.index)
     
     # Calculate metrics
     final_equity = equity_curve.iloc[-1]
@@ -60,10 +98,10 @@ def simulate_portfolio(df: pd.DataFrame, initial_capital: float = 100000.0) -> D
     total_return_pct = (total_return_dollars / initial_capital) * 100
     
     max_drawdown_pct = calculate_max_drawdown(equity_curve)
-    sharpe_ratio = calculate_sharpe_ratio(working_df['position_return'])
+    sharpe_ratio = calculate_sharpe_ratio(working_df['net_return'])
     
     # Count trades (signal changes)
-    num_trades = (working_df['signal'].diff() != 0).sum()
+    num_trades = working_df['signal_change'].sum()
     
     return {
         'initial_capital': initial_capital,
@@ -175,15 +213,15 @@ def generate_equity_curve_ascii(equity_curve: pd.Series, height: int = 10, width
     for i, value in enumerate(sampled):
         row = int((1 - value) * (height - 1))  # Invert y-axis
         row = max(0, min(height - 1, row))
-        grid[row][i] = '█'
+        grid[row][i] = '#'
     
     # Convert grid to string
     lines = []
-    lines.append(f"Equity: ${eq_max:,.0f} ┤" + "─" * width)
+    lines.append(f"Equity: ${eq_max:,.0f} |" + "-" * width)
     for row in grid:
-        lines.append("         │" + "".join(row))
-    lines.append(f"        ${eq_min:,.0f} ┤" + "─" * width)
-    lines.append("         └" + "─" * width)
+        lines.append("         |" + "".join(row))
+    lines.append(f"        ${eq_min:,.0f} |" + "-" * width)
+    lines.append("         +" + "-" * width)
     lines.append(f"         Start{' ' * (width - 11)}End")
     
     return "\n".join(lines)
@@ -214,10 +252,10 @@ def print_virtual_trading_statement(metrics: Dict) -> None:
     
     # Risk check
     if abs(metrics['max_drawdown_pct']) > 5.0:
-        print("⚠ [RISK WARNING] Max Drawdown exceeds 5% threshold!")
-        print("⚠ Recommendation: Tighten risk controls before live trading.")
+        print("[WARNING] [RISK WARNING] Max Drawdown exceeds 5% threshold!")
+        print("[WARNING] Recommendation: Tighten risk controls before live trading.")
     else:
-        print("✓ [RISK CHECK] Max Drawdown within acceptable range (<5%)")
+        print("[OK] [RISK CHECK] Max Drawdown within acceptable range (<5%)")
     
     print("=" * 60)
     

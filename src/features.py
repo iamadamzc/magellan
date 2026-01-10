@@ -3,13 +3,28 @@ Feature Engineering Module
 Calculates alpha factors and merges multi-source data for quantitative analysis.
 """
 
+import time
 from typing import Dict
 import pandas as pd
 import numpy as np
+from textblob import TextBlob
 
 
 class FeatureEngineer:
     """Transforms price data into feature-rich DataFrames with alpha factors."""
+    
+    def __init__(self, node_config: dict = None):
+        """
+        Initialize FeatureEngineer with optional node configuration.
+        
+        Args:
+            node_config: Ticker-specific configuration dict with keys:
+                - rsi_lookback: int (default 14)
+                - sentry_gate: float threshold (default 0.0)
+                - rsi_wt, vol_wt, sent_wt: alpha weights
+        """
+        self.node_config = node_config or {}
+        self.rsi_lookback = self.node_config.get('rsi_lookback', 14)
     
     @staticmethod
     def calculate_log_return(df: pd.DataFrame) -> pd.Series:
@@ -173,30 +188,39 @@ class FeatureEngineer:
         return df_merged
 
 
-def add_technical_indicators(df: pd.DataFrame) -> pd.DataFrame:
+def add_technical_indicators(df: pd.DataFrame, node_config: dict = None) -> pd.DataFrame:
     """
     Add technical indicators for multi-factor analysis.
     
     Computes:
-    - RSI (14): Relative Strength Index using Wilder's smoothing
+    - RSI: Relative Strength Index using Wilder's smoothing (period from node_config)
     - Volatility (14): Rolling standard deviation of log returns
     - Volume Z-Score (20): Standardized volume deviation
     
     Args:
         df: DataFrame with 'close', 'volume', and 'log_return' columns
+        node_config: Optional ticker-specific config with 'rsi_lookback' key
     
     Returns:
         DataFrame with new indicator columns added (mutated in-place)
     """
-    # RSI (14) using Wilder's smoothing (adjust=False for EWM)
-    delta = df['close'].diff()
+    # Extract RSI lookback from node_config, default to 14
+    rsi_lookback = 14
+    if node_config:
+        rsi_lookback = node_config.get('rsi_lookback', 14)
+    
+    # RSI using Wilder's smoothing (adjust=False for EWM)
+    # V1.0 PRODUCTION: Standard RSI on 'close' only
+    source_price = df['close']
+        
+    delta = source_price.diff()
     gains = delta.where(delta > 0, 0.0)
     losses = (-delta).where(delta < 0, 0.0)
     
     # Wilder's smoothing: span = 2*period - 1 for adjust=False equivalence
     # OR use alpha = 1/period directly
-    avg_gain = gains.ewm(span=14, adjust=False).mean()
-    avg_loss = losses.ewm(span=14, adjust=False).mean()
+    avg_gain = gains.ewm(span=rsi_lookback, adjust=False).mean()
+    avg_loss = losses.ewm(span=rsi_lookback, adjust=False).mean()
     
     # Avoid division by zero
     rs = avg_gain / avg_loss.replace(0, np.inf)
@@ -217,11 +241,11 @@ def add_technical_indicators(df: pd.DataFrame) -> pd.DataFrame:
     
     # Handle division by zero (constant volume)
     df.loc[vol_std == 0, 'volume_zscore'] = 0.0
-    
+
     return df
 
 
-def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int = 4) -> pd.DataFrame:
+def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int = 4, ticker: str = None) -> pd.DataFrame:
     """
     Point-in-Time sentiment alignment - only uses news available at each bar timestamp.
     
@@ -233,6 +257,7 @@ def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int 
         price_df: DataFrame with datetime index (timezone-naive UTC)
         news_list: List of dicts with 'publishedDate' and 'sentiment' keys
         lookback_hours: Hours to look back for recent news (default: 4)
+        ticker: Symbol being processed (optional, used for control tests like SPY bypass)
     
     Returns:
         DataFrame with 'sentiment' column added
@@ -249,14 +274,37 @@ def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int 
     
     # Convert news_list to DataFrame for efficient lookups
     news_df = pd.DataFrame(news_list)
+    if 'sentiment' in news_df.columns:
+        news_df['sentiment'] = news_df['sentiment'].astype(float)
     news_df = news_df.sort_values('publishedDate').reset_index(drop=True)
+    
+    # Local NLP Fallback: If API sentiment is 0.0, calculate via TextBlob
+    nlp_start = time.perf_counter()
+    nlp_engaged = False
+    
+    for idx, row in news_df.iterrows():
+        if row['sentiment'] == 0.0:
+            nlp_engaged = True
+            # Concatenate title and text/summary for full context
+            title = str(row.get('title', ''))
+            text = str(row.get('text', row.get('summary', '')))
+            full_text = f"{title} {text}".strip()
+            
+            if full_text:
+                # TextBlob polarity returns -1.0 to 1.0
+                news_df.at[idx, 'sentiment'] = TextBlob(full_text).sentiment.polarity
+    nlp_end = time.perf_counter()
+    calc_time = nlp_end - nlp_start
+    
+    if nlp_engaged:
+        print(f"[PIT] API Blackout Detected. Local NLP engaged for {len(news_df)} articles. Latency: {calc_time:.4f}s")
     
     # Check if all sentiment values are constant (API data quality issue)
     unique_sentiments = news_df['sentiment'].nunique()
     use_frequency_proxy = unique_sentiments <= 1
     
     if use_frequency_proxy:
-        print("[PIT] All news sentiment values are constant - using news frequency as proxy")
+        print("[PIT] All news sentiment values are constant after NLP - using news frequency as proxy")
     
     lookback_delta = timedelta(hours=lookback_hours)
     sentiments = []
@@ -310,9 +358,8 @@ def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int 
 
 def generate_master_signal(
     df: pd.DataFrame,
-    rsi_wt: float = 0.4,
-    vol_wt: float = 0.3,
-    sent_wt: float = 0.3
+    node_config: dict = None,
+    ticker: str = None
 ) -> pd.DataFrame:
     """
     Combine multiple factors into a weighted alpha_score.
@@ -324,13 +371,27 @@ def generate_master_signal(
     
     Args:
         df: DataFrame with 'rsi_14', 'volume_zscore', 'sentiment' columns
-        rsi_wt: Weight for RSI component (default: 0.4)
-        vol_wt: Weight for volume z-score (default: 0.3)
-        sent_wt: Weight for sentiment (default: 0.3)
+        node_config: Ticker-specific config dict with keys:
+            - rsi_wt, vol_wt, sent_wt: Alpha weights
+            - sentry_gate: Sentiment threshold (float) - KILL alpha if sentiment below this
+        ticker: Ticker symbol for telemetry logging
     
     Returns:
         DataFrame with 'alpha_score' column added (mutates in-place)
     """
+    # Default weights
+    rsi_wt = 0.4
+    vol_wt = 0.3
+    sent_wt = 0.3
+    sentry_gate = None  # No gate by default
+    
+    # Override with node_config if provided
+    if node_config:
+        rsi_wt = node_config.get('rsi_wt', rsi_wt)
+        vol_wt = node_config.get('vol_wt', vol_wt)
+        sent_wt = node_config.get('sent_wt', sent_wt)
+        sentry_gate = node_config.get('sentry_gate', None)
+    
     # Normalize RSI (0-100 -> 0-1)
     rsi_norm = df['rsi_14'] / 100.0
     
@@ -352,10 +413,66 @@ def generate_master_signal(
     else:
         sent_norm = pd.Series(0.5, index=df.index)  # Constant sentiment
     
-    # Weighted combination
+    # Calculate weighted alpha score
     df['alpha_score'] = (rsi_wt * rsi_norm) + (vol_wt * vol_norm) + (sent_wt * sent_norm)
     
+    # -------------------------------------------------------------------------
+    # SENTRY GATE: Apply sentiment threshold kill from node_config
+    # V1.0 PRODUCTION: Jitter filters and RSI tuning gates REMOVED
+    # -------------------------------------------------------------------------
+    if sentry_gate is not None:
+        mask_toxic = df['sentiment'] < sentry_gate
+        kill_count = mask_toxic.sum()
+        df.loc[mask_toxic, 'alpha_score'] = 0.0
+        print(f"[SENTRY] Gate applied: Killed {kill_count} bars where sentiment < {sentry_gate}")
+    # -------------------------------------------------------------------------
+    
+    # -------------------------------------------------------------------------
+    # HIGH-PASS GATE: Unified dynamic threshold for capital efficiency
+    # ALL TICKERS: Only fire if abs(alpha_score) > (rolling_mean + 0.5 * rolling_std)
+    # Aperture opened to 0.5 sigma for better capital utilization with larger accounts
+    # Returns: 1 (BUY), -1 (SELL), or 0 (FILTER)
+    # -------------------------------------------------------------------------
+    
+    # Unified sigma multiplier for all tickers (optimized for $100K+ accounts)
+    sigma_multiplier = 0.5
+    
+    # Calculate rolling statistics for dynamic threshold
+    alpha_mean = df['alpha_score'].mean()
+    alpha_std = df['alpha_score'].std()
+    high_pass_threshold = alpha_mean + (sigma_multiplier * alpha_std)
+    
+    # Apply High-Pass Gate with directional signals
+    fire_buy_count = 0
+    fire_sell_count = 0
+    filter_count = 0
+    
+    # Create signal column
+    df['signal'] = 0
+    
+    for idx in df.index:
+        score = df.loc[idx, 'alpha_score']
+        
+        # High-Pass Logic: Check if signal exceeds threshold
+        if score > high_pass_threshold:
+            df.loc[idx, 'signal'] = 1
+            action = "BUY"
+            fire_buy_count += 1
+        elif score < -high_pass_threshold:
+            df.loc[idx, 'signal'] = -1
+            action = "SELL"
+            fire_sell_count += 1
+        else:
+            df.loc[idx, 'signal'] = 0
+            action = "Filter"
+            filter_count += 1
+    
+    # Telemetry
+    print(f"[SIGNAL] High-Pass Check: Gate={high_pass_threshold:.4f} (Mean={alpha_mean:.4f} + {sigma_multiplier}*StdDev={alpha_std:.4f})")
+    print(f"[SIGNAL] High-Pass Results: {fire_buy_count} BUY, {fire_sell_count} SELL, {filter_count} Filter")
+    print(f"[SIGNAL] Ticker: {ticker} | Sigma Multiplier: {sigma_multiplier}")
     print(f"[ALPHA] Master signal generated: mean={df['alpha_score'].mean():.4f}, std={df['alpha_score'].std():.4f}")
+    # -------------------------------------------------------------------------
     
     return df
 

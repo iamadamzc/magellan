@@ -66,7 +66,8 @@ def run_rolling_backtest(
     days: int = 15,
     in_sample_days: int = 3,
     initial_capital: float = 100000.0,
-    end_date: datetime = None
+    end_date: datetime = None,
+    report_only: bool = False
 ) -> Dict:
     """
     Run multi-day rolling walk-forward backtest.
@@ -82,6 +83,7 @@ def run_rolling_backtest(
         in_sample_days: Days for in-sample optimization (default: 3)
         initial_capital: Starting capital in dollars (default: 100,000)
         end_date: End date for backtest (default: yesterday)
+        report_only: If True, suppress verbose window-by-window logging
     
     Returns:
         Dict with comprehensive backtest results
@@ -89,6 +91,7 @@ def run_rolling_backtest(
     print("\n" + "=" * 60)
     print(f"[STRESS TEST] Multi-Day Rolling Walk-Forward Backtest")
     print(f"[STRESS TEST] Symbol: {symbol} | Days: {days} | Window: {in_sample_days}+1")
+    print(f"[REALITY] Seed: ${initial_capital:,.0f} | Friction: 1.5bps | Cap: $50k")
     print("=" * 60)
     
     # Initialize clients
@@ -147,6 +150,23 @@ def run_rolling_backtest(
     print(f"\n[STRESS TEST] Processing {num_oos_windows} rolling windows...")
     print("-" * 60)
     
+    # Initialize Report File
+    report_path = f"stress_test_report_{symbol}.txt"
+    with open(report_path, 'w') as f:
+        f.write(f"STRESS TEST REPORT: {symbol}\n")
+        f.write("=" * 60 + "\n")
+
+    def log_msg(msg: str, verbose: bool = False):
+        """
+        Dual-stream logger:
+        - Terminal: ALWAYS print (verbose)
+        - File: Write ONLY if not (verbose and report_only)
+        """
+        print(msg)
+        if not (verbose and report_only):
+            with open(report_path, 'a') as f:
+                f.write(msg + "\n")
+
     for window_idx in range(num_oos_windows):
         # Define window dates
         is_start_idx = window_idx
@@ -159,7 +179,8 @@ def run_rolling_backtest(
         is_start = is_days[0]
         is_end = is_days[-1]
         
-        print(f"\n[Window {window_idx + 1}/{num_oos_windows}] IS: {is_start.strftime('%m/%d')}-{is_end.strftime('%m/%d')} | OOS: {oos_day.strftime('%m/%d')}")
+        if True: # Always execute block, logic handled in log_msg
+            log_msg(f"\n[Window {window_idx + 1}/{num_oos_windows}] IS: {is_start.strftime('%m/%d')}-{is_end.strftime('%m/%d')} | OOS: {oos_day.strftime('%m/%d')}", verbose=True)
         
         # Extract bars for this window
         is_start_str = is_start.strftime('%Y-%m-%d')
@@ -176,7 +197,7 @@ def run_rolling_backtest(
         oos_bars = all_bars.loc[oos_mask].copy()
         
         if len(is_bars) < 100 or len(oos_bars) < 50:
-            print(f"  [SKIP] Insufficient bars: IS={len(is_bars)}, OOS={len(oos_bars)}")
+            log_msg(f"  [SKIP] Insufficient bars: IS={len(is_bars)}, OOS={len(oos_bars)}", verbose=True)
             continue
         
         # Feature engineering for in-sample
@@ -194,7 +215,7 @@ def run_rolling_backtest(
         oos_features = trim_warmup_period(oos_features, warmup_rows=20)
         
         if len(is_features) < 50 or len(oos_features) < 30:
-            print(f"  [SKIP] Insufficient features after warmup: IS={len(is_features)}, OOS={len(oos_features)}")
+            log_msg(f"  [SKIP] Insufficient features after warmup: IS={len(is_features)}, OOS={len(oos_features)}", verbose=True)
             continue
         
         # Optimize weights on in-sample data
@@ -228,8 +249,13 @@ def run_rolling_backtest(
         else:
             oos_hit_rate = 0.5
         
-        # Simulate portfolio on OOS
-        pnl_metrics = simulate_portfolio(oos_sim, initial_capital=cumulative_equity)
+        # Simulate portfolio on OOS with friction and position cap
+        pnl_metrics = simulate_portfolio(
+            oos_sim, 
+            initial_capital=cumulative_equity,
+            friction_bps=1.5,
+            max_position_dollars=50000.0
+        )
         
         daily_pnl_dollars = pnl_metrics['total_return_dollars']
         daily_pnl_pct = pnl_metrics['total_return_pct']
@@ -254,8 +280,13 @@ def run_rolling_backtest(
         
         # Print day summary
         win_loss = "WIN" if daily_pnl_dollars > 0 else "LOSS"
-        print(f"  IS HR: {is_hit_rate*100:.1f}% | OOS HR: {oos_hit_rate*100:.1f}% | WFE: {wfe:.2f}")
-        print(f"  P&L: ${daily_pnl_dollars:+,.2f} ({daily_pnl_pct:+.2f}%) | [{win_loss}]")
+        # Window summary is considered 'verbose' in the context of a 252-day run, 
+        # but vital for debugging. User req: "suppress ... [Window X/Y] logs".
+        # We will treat the Hit Rate/PnL lines as verbose too if we want a TRULY minimal report.
+        # But let's stick to the prompt: "suppress the individual '[Window X/Y]' logs". 
+        # I'll enable the flag for these lines too.
+        log_msg(f"  IS HR: {is_hit_rate*100:.1f}% | OOS HR: {oos_hit_rate*100:.1f}% | WFE: {wfe:.2f}", verbose=True)
+        log_msg(f"  P&L: ${daily_pnl_dollars:+,.2f} ({daily_pnl_pct:+.2f}%) | [{win_loss}]", verbose=True)
     
     # Aggregate results
     if not daily_results:
@@ -297,7 +328,8 @@ def run_rolling_backtest(
         'avg_wfe': avg_wfe,
         'max_drawdown_pct': max_drawdown,
         'daily_results': daily_results,
-        'master_equity_curve': master_equity
+        'master_equity_curve': master_equity,
+        'report_file_path': report_path
     }
     
     return result
@@ -310,38 +342,46 @@ def print_stress_test_summary(result: Dict) -> None:
     Args:
         result: Dict returned from run_rolling_backtest()
     """
-    print("\n" + "=" * 60)
+    print("=" * 60)
     print("[15-DAY STRESS TEST SUMMARY]")
     print("=" * 60)
     
+    # helper for dual logging within summary
+    report_path = result.get('report_file_path')
+    def log_sum(msg):
+        print(msg)
+        if report_path:
+            with open(report_path, 'a') as f:
+                f.write(msg + "\n")
+
     if 'error' in result:
-        print(f"[ERROR] Stress test failed: {result['error']}")
+        log_sum(f"[ERROR] Stress test failed: {result['error']}")
         return
     
     # Header
-    print(f"Symbol: {result['symbol']}")
-    print(f"Days Tested: {result['total_days']}")
-    print("-" * 60)
+    log_sum(f"Symbol: {result['symbol']}")
+    log_sum(f"Days Tested: {result['total_days']}")
+    log_sum("-" * 60)
     
     # P&L Summary
     pnl_sign = '+' if result['cumulative_pnl_dollars'] >= 0 else ''
-    print(f"\n[P&L SUMMARY]")
-    print(f"  Initial Capital:     ${result['initial_capital']:,.2f}")
-    print(f"  Final Equity:        ${result['final_equity']:,.2f}")
-    print(f"  Cumulative P&L:      ${result['cumulative_pnl_dollars']:+,.2f} ({pnl_sign}{result['cumulative_pnl_pct']:.2f}%)")
-    print(f"  Max Drawdown:        {result['max_drawdown_pct']:.2f}%")
+    log_sum(f"\n[P&L SUMMARY]")
+    log_sum(f"  Initial Capital:     ${result['initial_capital']:,.2f}")
+    log_sum(f"  Final Equity:        ${result['final_equity']:,.2f}")
+    log_sum(f"  Cumulative P&L:      ${result['cumulative_pnl_dollars']:+,.2f} ({pnl_sign}{result['cumulative_pnl_pct']:.2f}%)")
+    log_sum(f"  Max Drawdown:        {result['max_drawdown_pct']:.2f}%")
     
     # Win/Loss Summary
-    print(f"\n[WIN/LOSS BREAKDOWN]")
-    print(f"  Winning Days:        {result['winning_days']}")
-    print(f"  Losing Days:         {result['losing_days']}")
-    print(f"  Win Rate:            {result['win_rate']*100:.1f}%")
+    log_sum(f"\n[WIN/LOSS BREAKDOWN]")
+    log_sum(f"  Winning Days:        {result['winning_days']}")
+    log_sum(f"  Losing Days:         {result['losing_days']}")
+    log_sum(f"  Win Rate:            {result['win_rate']*100:.1f}%")
     
     # Walk-Forward Efficiency
-    print(f"\n[WALK-FORWARD EFFICIENCY]")
-    print(f"  Avg In-Sample HR:    {result['avg_in_sample_hr']*100:.2f}%")
-    print(f"  Avg Out-Sample HR:   {result['avg_out_sample_hr']*100:.2f}%")
-    print(f"  Average WFE:         {result['avg_wfe']:.3f}")
+    log_sum(f"\n[WALK-FORWARD EFFICIENCY]")
+    log_sum(f"  Avg In-Sample HR:    {result['avg_in_sample_hr']*100:.2f}%")
+    log_sum(f"  Avg Out-Sample HR:   {result['avg_out_sample_hr']*100:.2f}%")
+    log_sum(f"  Average WFE:         {result['avg_wfe']:.3f}")
     
     # WFE Interpretation
     wfe = result['avg_wfe']
@@ -353,25 +393,25 @@ def print_stress_test_summary(result: Dict) -> None:
         wfe_status = "FAIR - Some overfitting present"
     else:
         wfe_status = "POOR - Significant overfitting detected"
-    print(f"  WFE Status:          {wfe_status}")
+    log_sum(f"  WFE Status:          {wfe_status}")
     
-    print("=" * 60)
+    log_sum("=" * 60)
     
     # Final Verdict
     if result['cumulative_pnl_dollars'] > 0 and wfe >= 0.80 and result['win_rate'] >= 0.5:
-        print("[VERDICT] ✓ STRESS TEST PASSED - Strategy shows robustness")
+        log_sum("[VERDICT] [OK] STRESS TEST PASSED - Strategy shows robustness")
     else:
-        print("[VERDICT] ✗ STRESS TEST FAILED - Review strategy parameters")
+        log_sum("[VERDICT] [FAIL] STRESS TEST FAILED - Review strategy parameters")
     
-    print("=" * 60)
+    log_sum("=" * 60)
     
     # Daily breakdown table
     if result['daily_results']:
-        print("\n[DAILY BREAKDOWN]")
-        print(f"{'Date':<12} {'IS HR':<8} {'OOS HR':<8} {'WFE':<6} {'P&L':>12}")
-        print("-" * 60)
+        log_sum("\n[DAILY BREAKDOWN]")
+        log_sum(f"{'Date':<12} {'IS HR':<8} {'OOS HR':<8} {'WFE':<6} {'P&L':>12}")
+        log_sum("-" * 60)
         for day in result['daily_results']:
-            print(f"{day['date']:<12} {day['in_sample_hit_rate']*100:>5.1f}%  {day['out_sample_hit_rate']*100:>5.1f}%  {day['wfe']:>5.2f}  ${day['daily_pnl_dollars']:>+10,.2f}")
+            log_sum(f"{day['date']:<12} {day['in_sample_hit_rate']*100:>5.1f}%  {day['out_sample_hit_rate']*100:>5.1f}%  {day['wfe']:>5.2f}  ${day['daily_pnl_dollars']:>+10,.2f}")
 
 
 def export_stress_test_results(result: Dict, filepath: str = 'stress_test_equity.csv') -> None:

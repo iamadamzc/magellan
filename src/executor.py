@@ -245,7 +245,13 @@ class AlpacaTradingClient:
 
 
 
-def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY', allocation_pct: float = 0.25) -> dict:
+def execute_trade(
+    client: AlpacaTradingClient, 
+    signal: int, 
+    symbol: str = 'SPY', 
+    allocation_pct: float = 0.25,
+    ticker_config: dict = None
+) -> dict:
     """
     Execute a trade based on the alpha signal with position-aware logic.
     
@@ -263,6 +269,8 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY',
         client: AlpacaTradingClient instance
         signal: 1 for BUY, -1 for SELL
         symbol: Stock symbol (default 'SPY')
+        allocation_pct: Fraction of equity to allocate (default 0.25 = 25%)
+        ticker_config: Optional ticker-specific config with 'position_cap_usd' key
         
     Returns:
         Dict with order details or rejection reason
@@ -353,6 +361,17 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY',
         # BUY: Use allocation_pct of total equity (supports multi-symbol basket)
         account_equity = account_info['equity']
         allocated_capital = account_equity * allocation_pct
+        
+        # V1.0 PRODUCTION: Enforce position cap per ticker (from config or default $50k)
+        if ticker_config:
+            position_cap_usd = ticker_config.get('position_cap_usd', 50000.0)
+        else:
+            position_cap_usd = 50000.0
+        
+        if allocated_capital > position_cap_usd:
+            print(f"[EXECUTOR] Position cap enforced: ${allocated_capital:,.2f} -> ${position_cap_usd:,.2f}")
+            allocated_capital = position_cap_usd
+        
         qty = int(allocated_capital / ask_price)
         if qty <= 0:
             result['rejection_reason'] = f"Insufficient funds for even 1 share (allocated ${allocated_capital:,.2f})"
@@ -463,7 +482,13 @@ def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY',
     return result
 
 
-async def async_execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY', allocation_pct: float = 0.25) -> dict:
+async def async_execute_trade(
+    client: AlpacaTradingClient, 
+    signal: int, 
+    symbol: str = 'SPY', 
+    allocation_pct: float = 0.25,
+    ticker_config: dict = None
+) -> dict:
     """
     Async wrapper for execute_trade using thread pool to avoid blocking.
     
@@ -475,11 +500,12 @@ async def async_execute_trade(client: AlpacaTradingClient, signal: int, symbol: 
         signal: 1 for BUY, -1 for SELL
         symbol: Stock symbol
         allocation_pct: Fraction of equity to allocate per ticker (default 0.25 = 25%)
+        ticker_config: Optional ticker-specific config with 'position_cap_usd' key
         
     Returns:
         Dict with order details or rejection reason
     """
-    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct)
+    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct, ticker_config)
 
 
 def main():

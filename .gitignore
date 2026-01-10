@@ -1,7 +1,10 @@
 .env
-.env.template
-venv/
 __pycache__/
+*.log
+*.csv
+*.txt
+venv/
 *.pyc
 .DS_Store
 _old_backups/
+!requirements.txt

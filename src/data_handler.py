@@ -59,7 +59,10 @@ class AlpacaDataClient:
             '1Day': TimeFrame.Day,
         }
         
-        tf = timeframe_map.get(timeframe, TimeFrame.Minute)
+        if isinstance(timeframe, TimeFrame):
+            tf = timeframe
+        else:
+            tf = timeframe_map.get(timeframe, TimeFrame.Minute)
         
         print(f"[DEBUG] Fetching {symbol} via {feed.upper()} feed...")
         
@@ -120,6 +123,93 @@ class AlpacaDataClient:
             print(f"[DATA_CLEAN] Warning: {remaining_nan} NaN values remain after forward-fill")
         
         return df_cleaned
+
+
+def force_resample_ohlcv(
+    df: pd.DataFrame, 
+    target_interval: str, 
+    ticker: str = 'UNKNOWN'
+) -> tuple:
+    """
+    Force-resample OHLCV data if bar frequency doesn't match target interval.
+    
+    This is a defensive mechanism to ensure data integrity when the Alpaca API
+    returns bars at a different frequency than requested (e.g., 1-minute bars
+    when 5-minute was requested due to SDK version or API quirks).
+    
+    Args:
+        df: DataFrame with OHLCV columns and DatetimeIndex
+        target_interval: Target interval string ('1Min', '3Min', '5Min', '15Min', '1Hour', '1Day')
+        ticker: Symbol for telemetry logging
+    
+    Returns:
+        Tuple of (resampled_df, was_resampled, actual_seconds, expected_seconds)
+    """
+    # Map interval strings to expected seconds
+    interval_seconds = {
+        '1Min': 60,
+        '3Min': 180,
+        '5Min': 300,
+        '15Min': 900,
+        '30Min': 1800,
+        '1Hour': 3600,
+        '1Day': 86400
+    }
+    
+    # Map interval strings to pandas resample rules
+    resample_rules = {
+        '1Min': '1min',
+        '3Min': '3min',
+        '5Min': '5min',
+        '15Min': '15min',
+        '30Min': '30min',
+        '1Hour': '1h',
+        '1Day': '1D'
+    }
+    
+    expected_seconds = interval_seconds.get(target_interval, 60)
+    resample_rule = resample_rules.get(target_interval, '1min')
+    
+    # Check if we have enough bars to determine actual frequency
+    if len(df) < 2:
+        return (df, False, 0, expected_seconds)
+    
+    # Calculate actual bar delta from first two bars
+    actual_seconds = (df.index[1] - df.index[0]).total_seconds()
+    
+    # Allow 1 second tolerance for floating-point rounding
+    if abs(actual_seconds - expected_seconds) <= 1:
+        # Frequency matches, no resample needed
+        return (df, False, actual_seconds, expected_seconds)
+    
+    # Frequency mismatch detected - perform resample
+    print(f"[DATA] Force-Resampled {ticker} from {int(actual_seconds)}s to {int(expected_seconds)}s")
+    
+    # Define OHLCV aggregation rules
+    agg_dict = {
+        'open': 'first',
+        'high': 'max',
+        'low': 'min',
+        'close': 'last',
+        'volume': 'sum'
+    }
+    
+    # Add optional columns if present
+    if 'trade_count' in df.columns:
+        agg_dict['trade_count'] = 'sum'
+    if 'vwap' in df.columns:
+        agg_dict['vwap'] = 'mean'
+    
+    # Filter agg_dict to only include columns present in df
+    agg_dict = {k: v for k, v in agg_dict.items() if k in df.columns}
+    
+    # Perform resample with label='left' to match Alpaca's bar labeling convention
+    resampled_df = df.resample(resample_rule, label='left', closed='left').agg(agg_dict)
+    
+    # Drop any rows with NaN (incomplete bars at edges)
+    resampled_df = resampled_df.dropna()
+    
+    return (resampled_df, True, actual_seconds, expected_seconds)
 
 
 class FMPDataClient:
@@ -308,7 +398,11 @@ class FMPDataClient:
                 
                 news_list.append({
                     'publishedDate': pub_date,
-                    'sentiment': sent_val
+                    'sentiment': sent_val,
+                    'title': article.get('title', ''),
+                    'text': article.get('text', ''),
+                    'summary': article.get('summary', ''),
+                    'url': article.get('url', '')
                 })
             
             # Sort by publishedDate ascending for PIT lookups
