@@ -1,0 +1,31 @@
+{
+    "ticker": "SPY",
+    "description": "S&P 500 ETF - Sentry 2.0 Configuration",
+    
+    "alpha_weights": {
+        "rsi_14": 0.6,
+        "volume_zscore": 0.2,
+        "sentiment": 0.0
+    },
+    
+    "sentry_gate": {
+        "enabled": true,
+        "type": "sentiment_kill",
+        "threshold": 0.0,
+        "description": "KILL if Sent < 0.0. Technicals driving."
+    },
+    
+    "ic_horizons": [5, 15, 60],
+    
+    "validation": {
+        "walk_forward_split": 0.70,
+        "horizon_bars": 15,
+        "min_hit_rate": 0.51
+    },
+    
+    "stress_test": {
+        "days": 15,
+        "in_sample_days": 3,
+        "initial_capital": 100000.0
+    }
+}
