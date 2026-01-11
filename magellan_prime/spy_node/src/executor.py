@@ -5,8 +5,6 @@ Uses "Marketable Limit" orders to mimic institutional execution stealth.
 """
 
 import os
-import time
-import asyncio
 import logging
 from datetime import datetime
 from typing import Optional
@@ -118,37 +116,12 @@ class AlpacaTradingClient:
         return True, f"FUNDS OK: ${buying_power:,.2f} available"
     
     def _log_trade(self, order_id: str, symbol: str, side: str, qty: int, 
-                   limit_price: float, status: str,
-                   filled_avg_price: Optional[float] = None,
-                   filled_qty: Optional[int] = None,
-                   filled_at: Optional[str] = None):
-        """
-        Log trade to live_trades.log.
-        
-        Args:
-            order_id: Unique order identifier
-            symbol: Trading symbol
-            side: 'buy' or 'sell'
-            qty: Order quantity
-            limit_price: Submitted limit price
-            status: Order status (e.g., pending_new, filled, TIMEOUT_REJECTION)
-            filled_avg_price: (Optional) Actual fill price
-            filled_qty: (Optional) Actual filled quantity
-            filled_at: (Optional) Timestamp of fill
-        """
-        log_entry = (
+                   limit_price: float, status: str):
+        """Log trade to live_trades.log."""
+        self.logger.info(
             f"ORDER_ID={order_id} | SYMBOL={symbol} | SIDE={side} | "
             f"QTY={qty} | LIMIT_PRICE=${limit_price:.2f} | STATUS={status}"
         )
-        
-        if filled_avg_price is not None:
-            log_entry += f" | FILLED_AVG_PRICE=${filled_avg_price:.2f}"
-        if filled_qty is not None:
-            log_entry += f" | FILLED_QTY={filled_qty}"
-        if filled_at is not None:
-            log_entry += f" | FILLED_AT={filled_at}"
-            
-        self.logger.info(log_entry)
     
     def liquidate_all_positions(self) -> dict:
         """
@@ -244,105 +217,8 @@ class AlpacaTradingClient:
         }
 
 
-def get_asymmetric_allocation(
-    iwm_returns: list = None,
-    vss_returns: list = None,
-    base_weight: float = 1.0
-) -> dict:
-    """
-    Spontaneous Symmetry Bias: Dynamic capital flow based on Rolling Sharpe ratios.
-    
-    Monitors 30-day Rolling Sharpe Ratio of IWM vs VSS and dynamically adjusts
-    trade size weights when one asset exhibits "Superfluid Conductivity".
-    
-    Logic:
-    - If IWM_Sharpe > 1.5 * VSS_Sharpe: IWM = 1.25x, VSS = 0.75x
-    - If VSS_Sharpe > 1.5 * IWM_Sharpe: VSS = 1.25x, IWM = 0.75x
-    - Otherwise: Equal weights (1.0x each)
-    
-    Args:
-        iwm_returns: List of daily returns for IWM (last 30 days)
-        vss_returns: List of daily returns for VSS (last 30 days)
-        base_weight: Base allocation weight (default 1.0)
-        
-    Returns:
-        Dict with 'IWM' and 'VSS' weight multipliers and Sharpe values
-    """
-    import numpy as np
-    
-    result = {
-        'IWM': base_weight,
-        'VSS': base_weight,
-        'iwm_sharpe': 0.0,
-        'vss_sharpe': 0.0,
-        'bias_active': False,
-        'bias_direction': 'SYMMETRIC'
-    }
-    
-    # Default to neutral if no returns provided
-    if iwm_returns is None or vss_returns is None:
-        print("[SYMMETRY] No return data - using symmetric allocation")
-        return result
-    
-    if len(iwm_returns) < 30 or len(vss_returns) < 30:
-        print(f"[SYMMETRY] Insufficient data (IWM:{len(iwm_returns)}, VSS:{len(vss_returns)}) - need 30 days")
-        return result
-    
-    # Calculate 30-day Rolling Sharpe Ratio (annualized)
-    # Sharpe = (mean_return / std_return) * sqrt(252)
-    iwm_arr = np.array(iwm_returns[-30:])
-    vss_arr = np.array(vss_returns[-30:])
-    
-    iwm_mean = np.mean(iwm_arr)
-    iwm_std = np.std(iwm_arr)
-    vss_mean = np.mean(vss_arr)
-    vss_std = np.std(vss_arr)
-    
-    # Avoid division by zero
-    if iwm_std > 0:
-        iwm_sharpe = (iwm_mean / iwm_std) * np.sqrt(252)
-    else:
-        iwm_sharpe = 0.0
-    
-    if vss_std > 0:
-        vss_sharpe = (vss_mean / vss_std) * np.sqrt(252)
-    else:
-        vss_sharpe = 0.0
-    
-    result['iwm_sharpe'] = iwm_sharpe
-    result['vss_sharpe'] = vss_sharpe
-    
-    # Symmetry Breaking Logic
-    # If IWM_Sharpe > 1.5 * VSS_Sharpe: Over-weight IWM
-    if iwm_sharpe > 0 and vss_sharpe > 0:
-        if iwm_sharpe > 1.5 * vss_sharpe:
-            result['IWM'] = base_weight * 1.25
-            result['VSS'] = base_weight * 0.75
-            result['bias_active'] = True
-            result['bias_direction'] = 'IWM_SUPERFLUID'
-            print(f"[SYMMETRY] Bias Shift: IWM {result['IWM']:.2f} | VSS {result['VSS']:.2f}")
-        elif vss_sharpe > 1.5 * iwm_sharpe:
-            result['IWM'] = base_weight * 0.75
-            result['VSS'] = base_weight * 1.25
-            result['bias_active'] = True
-            result['bias_direction'] = 'VSS_SUPERFLUID'
-            print(f"[SYMMETRY] Bias Shift: IWM {result['IWM']:.2f} | VSS {result['VSS']:.2f}")
-        else:
-            print(f"[SYMMETRY] Bias Shift: IWM {result['IWM']:.2f} | VSS {result['VSS']:.2f}")
-    else:
-        # One or both Sharpe ratios are non-positive - stay symmetric
-        print(f"[SYMMETRY] Bias Shift: IWM {result['IWM']:.2f} | VSS {result['VSS']:.2f}")
-    
-    return result
 
-
-def execute_trade(
-    client: AlpacaTradingClient, 
-    signal: int, 
-    symbol: str = 'SPY', 
-    allocation_pct: float = 0.25,
-    ticker_config: dict = None
-) -> dict:
+def execute_trade(client: AlpacaTradingClient, signal: int, symbol: str = 'SPY') -> dict:
     """
     Execute a trade based on the alpha signal with position-aware logic.
     
@@ -360,8 +236,6 @@ def execute_trade(
         client: AlpacaTradingClient instance
         signal: 1 for BUY, -1 for SELL
         symbol: Stock symbol (default 'SPY')
-        allocation_pct: Fraction of equity to allocate (default 0.25 = 25%)
-        ticker_config: Optional ticker-specific config with 'position_cap_usd' key
         
     Returns:
         Dict with order details or rejection reason
@@ -449,25 +323,11 @@ def execute_trade(
         # SELL: Use the entire current position
         qty = current_position_qty
     else:
-        # BUY: Use allocation_pct of total equity (supports multi-symbol basket)
-        account_equity = account_info['equity']
-        allocated_capital = account_equity * allocation_pct
-        
-        # V1.0 PRODUCTION: Enforce position cap per ticker (from config or default $50k)
-        if ticker_config:
-            position_cap_usd = ticker_config.get('position_cap_usd', 50000.0)
-        else:
-            position_cap_usd = 50000.0
-        
-        if allocated_capital > position_cap_usd:
-            print(f"[EXECUTOR] Position cap enforced: ${allocated_capital:,.2f} -> ${position_cap_usd:,.2f}")
-            allocated_capital = position_cap_usd
-        
-        qty = int(allocated_capital / ask_price)
+        # BUY: Use 100% allocation
+        qty = int(available_funds / ask_price)
         if qty <= 0:
-            result['rejection_reason'] = f"Insufficient funds for even 1 share (allocated ${allocated_capital:,.2f})"
+            result['rejection_reason'] = f"Insufficient funds for even 1 share"
             return result
-        print(f"[EXECUTOR] Allocation: {allocation_pct*100:.0f}% of ${account_equity:,.2f} = ${allocated_capital:,.2f} -> {qty} shares")
     
     result['qty'] = qty
     required_amount = qty * limit_price
@@ -500,70 +360,8 @@ def execute_trade(
         print(f"[EXECUTOR] ✓ Order submitted: ID={order.id}")
         print(f"[EXECUTOR]   Status: {order.status}")
         
-        # Log initial submission
+        # Log to file
         client._log_trade(order.id, symbol, side, qty, limit_price, order.status)
-        
-        # ---------------------------------------------------------------------
-        # ACTIVE ORDER POLLING & FILL TELEMETRY
-        # ---------------------------------------------------------------------
-        print(f"[EXECUTOR] ⏳ Polling for fill (max 10s)...")
-        
-        start_time = time.time()
-        is_filled = False
-        current_status = order.status
-        
-        # Polling Loop (Max 10 seconds)
-        while (time.time() - start_time) < 10:
-            time.sleep(1)  # 1-second interval protection
-            
-            try:
-                # Fetch latest order status
-                updated_order = client.api.get_order(order.id)
-                current_status = updated_order.status
-                
-                if current_status == 'filled':
-                    is_filled = True
-                    filled_avg_price = float(updated_order.filled_avg_price) if updated_order.filled_avg_price else limit_price
-                    filled_qty = int(updated_order.filled_qty)
-                    filled_at = updated_order.filled_at
-                    
-                    print(f"[EXECUTOR] ✓ Order FILLED: {filled_qty} @ ${filled_avg_price:.2f}")
-                    
-                    # Log FILL confirmation with telemetry
-                    client._log_trade(
-                        order.id, symbol, side, qty, limit_price, 'filled',
-                        filled_avg_price=filled_avg_price,
-                        filled_qty=filled_qty,
-                        filled_at=str(filled_at)
-                    )
-                    
-                    # Update result dict
-                    result['executed'] = True
-                    result['limit_price'] = filled_avg_price  # Update to actual execution price
-                    result['status'] = 'FILLED'
-                    break
-                
-                elif current_status in ['canceled', 'expired', 'rejected']:
-                    print(f"[EXECUTOR] ✗ Order {current_status.upper()}")
-                    client._log_trade(order.id, symbol, side, qty, limit_price, current_status)
-                    result['status'] = current_status.upper()
-                    result['rejection_reason'] = f"Order {current_status}"
-                    break
-
-            except Exception as poll_err:
-                print(f"[EXECUTOR] ⚠ Polling Error: {poll_err}")
-        
-        # Timeout handling
-        if not is_filled and current_status not in ['filled', 'canceled', 'expired', 'rejected']:
-            print(f"[EXECUTOR] ⏱ Timeout (10s) - Cancelling Order...")
-            try:
-                client.api.cancel_order(order.id)
-                client._log_trade(order.id, symbol, side, qty, limit_price, 'TIMEOUT_REJECTION')
-                result['status'] = 'TIMEOUT'
-                result['rejection_reason'] = "Order TIMEOUT (10s) - Cancelled to prevent zombie fill"
-            except Exception as cancel_err:
-                print(f"[EXECUTOR] ✗ Failed to cancel: {cancel_err}")
-                result['rejection_reason'] = f"Timeout & Cancel Failed: {cancel_err}"
         
     except Exception as e:
         result['rejection_reason'] = f"Order submission failed: {e}"
@@ -571,32 +369,6 @@ def execute_trade(
         print(f"[EXECUTOR] ✗ Order failed: {e}")
     
     return result
-
-
-async def async_execute_trade(
-    client: AlpacaTradingClient, 
-    signal: int, 
-    symbol: str = 'SPY', 
-    allocation_pct: float = 0.25,
-    ticker_config: dict = None
-) -> dict:
-    """
-    Async wrapper for execute_trade using thread pool to avoid blocking.
-    
-    Alpaca's REST client is synchronous, so this wraps execute_trade in
-    asyncio.to_thread() to enable concurrent order processing for multi-symbol baskets.
-    
-    Args:
-        client: AlpacaTradingClient instance
-        signal: 1 for BUY, -1 for SELL
-        symbol: Stock symbol
-        allocation_pct: Fraction of equity to allocate per ticker (default 0.25 = 25%)
-        ticker_config: Optional ticker-specific config with 'position_cap_usd' key
-        
-    Returns:
-        Dict with order details or rejection reason
-    """
-    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct, ticker_config)
 
 
 def main():

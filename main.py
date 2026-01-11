@@ -19,11 +19,12 @@ from src.features import FeatureEngineer, add_technical_indicators, merge_news_p
 from src.discovery import calculate_ic, check_feature_correlation, trim_warmup_period
 from src.validation import run_walk_forward_check, print_validation_scorecard, run_optimized_walk_forward_check, print_optimized_scorecard
 from src.pnl_tracker import simulate_portfolio, print_virtual_trading_statement
+from src.logger import LOG
 from src.backtester_pro import run_rolling_backtest, print_stress_test_summary, export_stress_test_results
 
 
 # Multi-symbol basket for concurrent trading
-TICKERS = ['SPY', 'QQQ', 'IWM']
+TICKERS = ["SPY", "QQQ", "IWM", "VTV", "VSS"]
 
 
 TF_MAP = {
@@ -63,13 +64,13 @@ def load_node_config() -> dict:
         try:
             with open(config_path, 'r') as f:
                 config = json.load(f)
-            print(f"[CONFIG] Loaded master_config.json with {len(config)} ticker profiles")
+            LOG.config(f"[CONFIG] Loaded master_config.json with {len(config)} ticker profiles")
             return config
         except json.JSONDecodeError as e:
-            print(f"[CONFIG] ERROR: Invalid JSON in master_config.json: {e}")
+            LOG.error(f"[CONFIG] ERROR: Invalid JSON in master_config.json: {e}")
             return {}
     else:
-        print(f"[CONFIG] WARNING: master_config.json not found at {config_path}")
+        LOG.warning(f"[CONFIG] WARNING: master_config.json not found at {config_path}")
         return {}
 
 
@@ -128,11 +129,11 @@ async def process_ticker(
         # Map string to Enum (default to Minute if not found)
         interval_enum = TF_MAP.get(interval_str, TimeFrame.Minute)
         
-        print(f"[NODE] Initialized {ticker} | Lookback: {rsi_lookback} | Gate: {sentry_gate}")
-        print(f"[NODE] {ticker} mapping {interval_str} to {type(interval_enum)}")
+        LOG.config(f"[NODE] Initialized {ticker} | Lookback: {rsi_lookback} | Gate: {sentry_gate}")
+        LOG.config(f"[NODE] {ticker} mapping {interval_str} to {type(interval_enum)}")
 
         # Step 1: Fetch bars from Alpaca
-        print(f"\n[STEP 1] Fetching {ticker} {interval_str} bars from Alpaca (SIP feed)...")
+        LOG.info(f"\n[STEP 1] Fetching {ticker} {interval_str} bars from Alpaca (SIP feed)...")
         bars = alpaca_client.fetch_historical_bars(
             symbol=ticker,
             timeframe=interval_enum,
@@ -140,25 +141,25 @@ async def process_ticker(
             end=bar_end,
             feed='sip'
         )
-        print(f"[{ticker}] Fetched {len(bars)} bars")
+        LOG.info(f"[{ticker}] Fetched {len(bars)} bars")
         
         # FORCE-VERIFY: Resample if fetched data doesn't match requested interval
         bars, was_resampled, actual_secs, expected_secs = force_resample_ohlcv(
             bars, interval_str, ticker=ticker
         )
         if was_resampled:
-            print(f"[{ticker}] Resampled to {len(bars)} bars at {interval_str}")
+            LOG.info(f"[{ticker}] Resampled to {len(bars)} bars at {interval_str}")
         else:
-            print(f"[VALIDATION] [OK] Frequency verified: {interval_str} ({int(actual_secs)}s delta)")
+            LOG.info(f"[VALIDATION] [OK] Frequency verified: {interval_str} ({int(actual_secs)}s delta)")
 
         
-        print(f"[LIVE {ticker}] Step 2: Fetching fundamental metrics...")
+        LOG.info(f"[LIVE {ticker}] Step 2: Fetching fundamental metrics...")
         fmp_metrics = fmp_client.fetch_fundamental_metrics(ticker)
         
-        print(f"[LIVE {ticker}] Step 3: Fetching news...")
+        LOG.info(f"[LIVE {ticker}] Step 3: Fetching news...")
         news_list = fmp_client.fetch_historical_news(ticker, news_start, news_end)
         
-        print(f"[LIVE {ticker}] Step 4: Feature engineering...")
+        LOG.info(f"[LIVE {ticker}] Step 4: Feature engineering...")
         df = bars.copy()
         df['log_return'] = feature_engineer.calculate_log_return(df)
         df['rvol'] = feature_engineer.calculate_rvol(df, window=20)
@@ -177,7 +178,7 @@ async def process_ticker(
         
         feature_matrix_live = trim_warmup_period(feature_matrix_live, warmup_rows=20)
         
-        print(f"[LIVE {ticker}] Step 5: Generating signal...")
+        LOG.info(f"[LIVE {ticker}] Step 5: Generating signal...")
         cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
         working_df = feature_matrix_live[cols_needed].copy()
         working_df['forward_return'] = working_df['log_return'].shift(-15)
@@ -185,7 +186,7 @@ async def process_ticker(
         
         if len(working_df) < 50:
             result['error'] = f"Insufficient data ({len(working_df)} rows)"
-            print(f"[{ticker}] WARNING: {result['error']}")
+            LOG.warning(f"[{ticker}] WARNING: {result['error']}")
             return result
         
         split_idx = int(len(working_df) * 0.70)
@@ -204,7 +205,7 @@ async def process_ticker(
         latest_signal = int(out_sample['signal'].iloc[-1])
         result['signal'] = latest_signal
         
-        print(f"[{ticker}] Signal: {'BUY' if latest_signal == 1 else 'SELL'}")
+        LOG.stats(f"[{ticker}] Signal: {'BUY' if latest_signal == 1 else 'SELL'}")
         
         # Execute trade via async wrapper (runs in thread pool)
         trade_result = await async_execute_trade(
@@ -218,13 +219,13 @@ async def process_ticker(
         result['success'] = True
         
         if trade_result['executed']:
-            print(f"[{ticker}] [OK] Order {trade_result['order_id']} | {trade_result['side'].upper()} {trade_result['qty']} @ ${trade_result['limit_price']:.2f}")
+            LOG.stats(f"[{ticker}] [OK] Order {trade_result['order_id']} | {trade_result['side'].upper()} {trade_result['qty']} @ ${trade_result['limit_price']:.2f}")
         else:
-            print(f"[{ticker}] [FAIL] Rejected: {trade_result['rejection_reason']}")
+            LOG.stats(f"[{ticker}] [FAIL] Rejected: {trade_result['rejection_reason']}")
             
     except Exception as e:
         result['error'] = str(e)
-        print(f"[{ticker}] ERROR: {e}")
+        LOG.error(f"[{ticker}] ERROR: {e}")
     
     return result
 
@@ -249,17 +250,17 @@ async def live_trading_loop(
     """
     from src.executor import AlpacaTradingClient
     
-    print("\n" + "=" * 60)
-    print("[LIVE] MAGELLAN V1.0 INITIALIZED. DEPLOYING LAMINAR DNA.")
-    print("=" * 60)
-    print("[LIVE MODE] Entering async multi-symbol trading loop...")
-    print(f"[INFO] Basket: {', '.join(TICKERS)}")
-    print("=" * 60)
-    print("[INFO] Press Ctrl+C to stop the trading loop.")
+    LOG.info("\n" + "=" * 60)
+    LOG.info("[LIVE] MAGELLAN V1.0 INITIALIZED. DEPLOYING LAMINAR DNA.")
+    LOG.info("=" * 60)
+    LOG.info("[LIVE MODE] Entering async multi-symbol trading loop...")
+    LOG.info(f"[INFO] Basket: {', '.join(TICKERS)}")
+    LOG.info("=" * 60)
+    LOG.info("[INFO] Press Ctrl+C to stop the trading loop.")
     
     # Calculate per-ticker allocation
     allocation_pct = 1.0 / len(TICKERS)  # 25% for 4 tickers
-    print(f"[CONFIG] Per-ticker allocation: {allocation_pct*100:.0f}%")
+    LOG.config(f"[CONFIG] Per-ticker allocation: {allocation_pct*100:.0f}%")
     
     try:
         # Initialize trading client ONCE
@@ -272,16 +273,16 @@ async def live_trading_loop(
             # Sync with next 1-minute bar
             now = datetime.now()
             sleep_time = 60 - now.second
-            print(f"\n[LIVE] Iteration #{loop_iteration} | Syncing with next bar... Sleeping {sleep_time}s")
+            LOG.info(f"\n[LIVE] Iteration #{loop_iteration} | Syncing with next bar... Sleeping {sleep_time}s")
             await asyncio.sleep(sleep_time)
             
             # ================================================================
             # PDT_EQUITY_THRESHOLD CHECK (ONCE per minute, BEFORE gather)
             # ================================================================
             pdt_ok, pdt_msg = trading_client.check_pdt_protection()
-            print(f"[LIVE] {pdt_msg}")
+            LOG.info(f"[LIVE] {pdt_msg}")
             if not pdt_ok:
-                print(f"[LIVE] [ALERT] PDT PROTECTION ACTIVE - Skipping this bar")
+                LOG.warning(f"[LIVE] [ALERT] PDT PROTECTION ACTIVE - Skipping this bar")
                 continue
             
             # Update date window to current time
@@ -326,7 +327,7 @@ async def live_trading_loop(
             for res in results:
                 if isinstance(res, Exception):
                     failures += 1
-                    print(f"  [FAIL] Exception: {res}")
+                    LOG.error(f"  [FAIL] Exception: {res}")
                 elif isinstance(res, dict):
                     if res.get('success'):
                         successes += 1
@@ -367,34 +368,55 @@ def main() -> None:
         default=False,
         help='Minimize output volume (suppress verbose per-window logs)'
     )
+    parser.add_argument(
+        '--quiet',
+        action='store_true',
+        default=False,
+        help='Research Mode: Compress logs, suppress metrics, redirect debug.'
+    )
+    parser.add_argument(
+        '--start-date',
+        type=str,
+        default=None,
+        help='Start date for temporal range (ISO-8601: YYYY-MM-DD). Overrides days_back.'
+    )
+    parser.add_argument(
+        '--end-date',
+        type=str,
+        default=None,
+        help='End date for temporal range (ISO-8601: YYYY-MM-DD). Overrides days_back.'
+    )
     args = parser.parse_args()
     
     # Load environment variables into os.environ
     load_env_file()
     
+    # Initialize Logger Config
+    LOG.set_research_mode(args.quiet)
+    
     # Print Mode Banner
     if args.mode == 'live':
-        print("\n" + "!" * 60)
-        print("!!! LIVE TRADING MODE - ALPACA PAPER ACCOUNT !!!")
-        print("!" * 60)
-        print("[WARNING] Real orders will be submitted to your Paper Trading account.")
-        print("[WARNING] This affects your paper account balance and positions.")
-        print("!" * 60 + "\n")
+        LOG.warning("\n" + "!" * 60)
+        LOG.warning("!!! LIVE TRADING MODE - ALPACA PAPER ACCOUNT !!!")
+        LOG.warning("!" * 60)
+        LOG.warning("[WARNING] Real orders will be submitted to your Paper Trading account.")
+        LOG.warning("[WARNING] This affects your paper account balance and positions.")
+        LOG.warning("!" * 60 + "\n")
     
     # Print System Readiness Report
-    print("=" * 60)
-    print("MAGELLAN SYSTEM READINESS REPORT")
-    print("=" * 60)
+    LOG.system("=" * 60)
+    LOG.system("MAGELLAN SYSTEM READINESS REPORT")
+    LOG.system("=" * 60)
     
     apca_key_id = os.getenv('APCA_API_KEY_ID')
     apca_base_url = os.getenv('APCA_API_BASE_URL')
     
-    print(f"APCA_API_KEY_ID: {'Found' if apca_key_id else 'Not Found'}")
+    LOG.system(f"APCA_API_KEY_ID: {'Found' if apca_key_id else 'Not Found'}")
     if apca_key_id:
-        print(f"  -> Key Prefix: {apca_key_id[:3]}...")
-    print(f"Target Endpoint: {apca_base_url if apca_base_url else 'Not Set'}")
-    print(f"Data Feed: SIP (Full Market)")
-    print("=" * 60)
+        LOG.system(f"  -> Key Prefix: {apca_key_id[:3]}...")
+    LOG.system(f"Target Endpoint: {apca_base_url if apca_base_url else 'Not Set'}")
+    LOG.system(f"Data Feed: SIP (Full Market)")
+    LOG.system("=" * 60)
     print()
     
     # Initialize clients
@@ -403,7 +425,7 @@ def main() -> None:
         fmp_client = FMPDataClient()
         feature_engineer = FeatureEngineer()
     except ValueError as e:
-        print(f"[ERROR] Initialization failed: {e}")
+        LOG.error(f"[ERROR] Initialization failed: {e}")
         return
     
     # =========================================================================
@@ -431,28 +453,34 @@ def main() -> None:
     # =========================================================================
     
     # Configuration
-    # Bars: 1-day window for analysis
-    bar_start_date = '2026-01-07'
-    bar_end_date = '2026-01-08'
+    # Bars: Modern Era Temporal Lock (2022-2025)
+    bar_start_date = '2022-01-01'
+    bar_end_date = '2025-12-31'
     # News: 3 days prior to bar_start for PIT lookback coverage
-    news_start_date = '2026-01-04'
-    news_end_date = '2026-01-08'
+    news_start_date = '2021-12-29' # 3 days prior to 2022-01-01
+    news_end_date = '2025-12-31'
     
     # Load node configurations from master_config.json
     node_configs = load_node_config()
     
+    # Macro Era Telemetry
+    if 'VSS' in node_configs and 'IWM' in node_configs:
+        LOG.system("[SYSTEM] Macro Era Locked: 2019-2021 | VSS(1H) | IWM(3Min)")
+    
+    LOG.ensemble("[ENSEMBLE] 5-Node Fleet Synchronized | Telemetry: High-Entropy")
+    
     # Process each ticker in the basket
     for symbol in TICKERS:
-        print(f"\n{'='*60}")
-        print(f"[SIMULATION] Processing {symbol}")
-        print(f"{'='*60}")
+        LOG.info(f"\n{'='*60}")
+        LOG.info(f"[SIMULATION] Processing {symbol}")
+        LOG.info(f"{'='*60}")
         
         # Retrieve ticker-specific config (fallback to SPY if missing)
         if symbol in node_configs:
             node_config = node_configs[symbol]
         else:
             node_config = node_configs.get('SPY', {})
-            print(f"[CONFIG] WARNING: No config for {symbol}, using SPY defaults")
+            LOG.config(f"[CONFIG] WARNING: No config for {symbol}, using SPY defaults")
         
         # NODE TELEMETRY
         rsi_lookback = node_config.get('rsi_lookback', 14)
@@ -467,7 +495,7 @@ def main() -> None:
         
         try:
             # Step 1: Fetch bars from Alpaca
-            print(f"\n[STEP 1] Fetching {symbol} {interval_str} bars from Alpaca (SIP feed)...")
+            LOG.info(f"\n[STEP 1] Fetching {symbol} {interval_str} bars from Alpaca (SIP feed)...")
             bars = alpaca_client.fetch_historical_bars(
                 symbol=symbol,
                 timeframe=target_tf,
@@ -475,30 +503,30 @@ def main() -> None:
                 end=bar_end_date,
                 feed='sip'
             )
-            print(f"[SUCCESS] Fetched {len(bars)} bars")
+            LOG.success(f"[SUCCESS] Fetched {len(bars)} bars")
             
             # FORCE-VERIFY: Resample if fetched data doesn't match requested interval
             bars, was_resampled, actual_secs, expected_secs = force_resample_ohlcv(
                 bars, interval_str, ticker=symbol
             )
             if was_resampled:
-                print(f"[{symbol}] Resampled to {len(bars)} bars at {interval_str}")
+                LOG.info(f"[{symbol}] Resampled to {len(bars)} bars at {interval_str}")
             else:
-                print(f"[VALIDATION] [OK] Frequency verified: {interval_str} ({int(actual_secs)}s delta)")
+                LOG.info(f"[VALIDATION] [OK] Frequency verified: {interval_str} ({int(actual_secs)}s delta)")
 
             
             # Step 2: Fetch FMP fundamental metrics
-            print(f"\n[STEP 2] Fetching {symbol} fundamental metrics from FMP...")
+            LOG.info(f"\n[STEP 2] Fetching {symbol} fundamental metrics from FMP...")
             fmp_metrics = fmp_client.fetch_fundamental_metrics(symbol)
-            print(f"[SUCCESS] Market Cap: ${fmp_metrics['mktCap']:,.0f}, PE: {fmp_metrics['pe']:.2f}")
+            LOG.metric(f"[SUCCESS] Market Cap: ${fmp_metrics['mktCap']:,.0f}, PE: {fmp_metrics['pe']:.2f}")
             
             # Step 3: Fetch 3-day historical news for PIT alignment
-            print(f"\n[STEP 3] Fetching {symbol} historical news from FMP (3-day window)...")
+            LOG.info(f"\n[STEP 3] Fetching {symbol} historical news from FMP (3-day window)...")
             news_list = fmp_client.fetch_historical_news(symbol, news_start_date, news_end_date)
-            print(f"[SUCCESS] Retrieved {len(news_list)} news articles for PIT alignment")
+            LOG.success(f"[SUCCESS] Retrieved {len(news_list)} news articles for PIT alignment")
             
             # Step 4: Run feature engineering
-            print(f"\n[STEP 4] Running feature engineering...")
+            LOG.info(f"\n[STEP 4] Running feature engineering...")
             
             df = bars.copy()
             df['log_return'] = feature_engineer.calculate_log_return(df)
@@ -522,19 +550,20 @@ def main() -> None:
             # Trim warmup period (20 rows) to remove NaN skew from rolling calculations
             feature_matrix = trim_warmup_period(feature_matrix, warmup_rows=20)
             
-            print(f"[SUCCESS] Feature matrix created with {len(feature_matrix)} rows (after warmup trim)")
+            LOG.success(f"[SUCCESS] Feature matrix created with {len(feature_matrix)} rows (after warmup trim)")
             
             # Step 5: Output feature matrix
-            print("\n" + "=" * 60)
-            print(f"[FEATURE_MATRIX] {symbol} - Last 5 rows:")
-            print("=" * 60)
+            LOG.info("\n" + "=" * 60)
+            LOG.info(f"[FEATURE_MATRIX] {symbol} - Last 5 rows:")
+            LOG.info("=" * 60)
             
             # Select and display key columns including alpha_score
             output_cols = ['close', 'log_return', 'rsi_14', 'volume_zscore', 'sentiment', 'alpha_score']
-            print(feature_matrix[output_cols].tail())
+            if not LOG.research_mode:
+                print(feature_matrix[output_cols].tail())
             
             # Step 6: Walk-Forward Validation with Dynamic Optimization
-            print(f"\n[STEP 6] Running Optimized Walk-Forward Validation for {symbol}...")
+            LOG.info(f"\n[STEP 6] Running Optimized Walk-Forward Validation for {symbol}...")
             
             # Define static weights for comparison
             static_weights = {'rsi_14': 0.4, 'volume_zscore': 0.3, 'sentiment': 0.3}
@@ -559,32 +588,47 @@ def main() -> None:
                 print("[REASON] Optimized Out-of-Sample Hit Rate < 51% indicates persistent model weakness.")
                 print("[ACTION] Consider alternative features or longer training window.")
             
-            # CLI OVERRIDE: Force stress test if --stress-test-days > 0
-            force_stress_test = args.stress_test_days > 0
+            # CLI OVERRIDE: Force stress test if --stress-test-days > 0 OR explicit dates provided
+            has_explicit_dates = args.start_date is not None and args.end_date is not None
+            force_stress_test = args.stress_test_days > 0 or has_explicit_dates
             validation_passed = opt_result['passed']
             
             if force_stress_test or validation_passed:
-                if force_stress_test:
-                    print(f"\n[SYSTEM] Force-Starting Stress Test for {symbol} ({args.stress_test_days} days)...")
-                    print("[OVERRIDE] Bypassing validation check (--stress-test-days specified)")
+                # Parse temporal range first to determine mode
+                temporal_start = None
+                temporal_end = None
+                if has_explicit_dates:
+                    from datetime import datetime as dt
+                    temporal_start = dt.strptime(args.start_date, '%Y-%m-%d')
+                    temporal_end = dt.strptime(args.end_date, '%Y-%m-%d')
+                    LOG.system(f"[TEMPORAL] Syncing Clock to Epoch: {args.start_date} -> {args.end_date}")
+                    # stress_days is ignored when explicit dates are used
+                    stress_days = 0  # Placeholder, actual days calculated from date range
+                elif args.stress_test_days > 0:
+                    LOG.system(f"\n[SYSTEM] Force-Starting Stress Test for {symbol} ({args.stress_test_days} days)...")
+                    LOG.system("[OVERRIDE] Bypassing validation check (--stress-test-days specified)")
                     stress_days = args.stress_test_days
                 else:
-                    print(f"\n[SYSTEM] {symbol} VALIDATION PASSED - Trading signals are ACTIVE.")
+                    LOG.system(f"\n[SYSTEM] {symbol} VALIDATION PASSED - Trading signals are ACTIVE.")
                     stress_days = 15  # Default
                 
                 # Step 6c: Rolling Walk-Forward Stress Test
-                print("\n" + "=" * 60)
-                print(f"[STEP 6c] Running {stress_days}-Day Rolling Walk-Forward Stress Test for {symbol}...")
-                print("=" * 60)
-                print("[NOTE] This is the most rigorous test before live execution.")
-                print("[NOTE] It validates the Brain's ability to adapt to shifting market regimes.")
+                LOG.system("\n" + "=" * 60)
+                if has_explicit_dates:
+                    LOG.system(f"[STEP 6c] Running Epoch Stress Test for {symbol}...")
+                else:
+                    LOG.system(f"[STEP 6c] Running {stress_days}-Day Rolling Walk-Forward Stress Test for {symbol}...")
+                LOG.system("=" * 60)
+                LOG.info("[NOTE] This is the most rigorous test before live execution.")
+                LOG.info("[NOTE] It validates the Brain's ability to adapt to shifting market regimes.")
                 
-                # Run the rolling backtest
                 stress_result = run_rolling_backtest(
                     symbol=symbol,
                     days=stress_days,
                     in_sample_days=3,
                     initial_capital=37500.0,
+                    start_date=temporal_start,
+                    end_date=temporal_end,
                     report_only=args.report_only
                 )
                 
@@ -635,7 +679,7 @@ def main() -> None:
                     out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
                     
                     # Run portfolio simulation
-                    pnl_metrics = simulate_portfolio(out_sample, initial_capital=100000)
+                    pnl_metrics = simulate_portfolio(out_sample, initial_capital=100000, friction_bps=2.5)
                     
                     # Print Virtual Trading Statement
                     print_virtual_trading_statement(pnl_metrics)
@@ -647,9 +691,9 @@ def main() -> None:
 
             
             # Step 7: Alpha Discovery - Multi-Factor IC Analysis
-            print("\n" + "=" * 60)
-            print(f"[SIGNAL STRENGTH REPORT] {symbol} - Multi-Factor IC Analysis")
-            print("=" * 60)
+            LOG.ic_matrix("\n" + "=" * 60)
+            LOG.ic_matrix(f"[SIGNAL STRENGTH REPORT] {symbol} - Multi-Factor IC Analysis")
+            LOG.ic_matrix("=" * 60)
             
             features_to_test = ['sentiment', 'rsi_14', 'volatility_14', 'volume_zscore', 'alpha_score']
             horizons = [5, 15, 60]  # 5-min, 15-min, 60-min
@@ -668,18 +712,18 @@ def main() -> None:
                 return "Strong"
             
             for feature in features_to_test:
-                print(f"\nFeature: {feature} -> Target: log_return")
-                print("-" * 40)
+                LOG.ic_matrix(f"\nFeature: {feature} -> Target: log_return")
+                LOG.ic_matrix("-" * 40)
                 for horizon in horizons:
                     ic = calculate_ic(feature_matrix, feature, 'log_return', horizon=horizon)
                     if pd.isna(ic):
                         ic_str = "N/A (insufficient data)"
                     else:
                         ic_str = f"{ic:+.4f} ({interpret_ic(ic)})"
-                    print(f"  {horizon:>3}-min horizon IC: {ic_str}")
+                    LOG.ic_matrix(f"  {horizon:>3}-min horizon IC: {ic_str}")
             
-            print("\n" + "=" * 60)
-            print("[NOTE] IC > 0.02 suggests exploitable alpha; IC > 0.05 is promising.")
+            LOG.ic_matrix("\n" + "=" * 60)
+            LOG.ic_matrix("[NOTE] IC > 0.02 suggests exploitable alpha; IC > 0.05 is promising.")
             
             # Step 8: Feature Independence Check
             print("\n" + "=" * 60)
@@ -706,23 +750,23 @@ def main() -> None:
             print("-" * 60)
             print("[NOTE] |corr| < 0.4 indicates independent signals (desirable for confluence).")
             
-            print("\n" + "=" * 60)
-            print(f"[COMPLETE] {symbol} pipeline finished successfully")
-            print("=" * 60)
+            LOG.info("\n" + "=" * 60)
+            LOG.success(f"[COMPLETE] {symbol} pipeline finished successfully")
+            LOG.info("=" * 60)
             
         except requests.exceptions.HTTPError as e:
-            print(f"\n[ERROR] {symbol} - HTTP request failed:")
+            LOG.error(f"\n[ERROR] {symbol} - HTTP request failed:")
             if hasattr(e, 'response') and e.response is not None:
-                print(f"Status Code: {e.response.status_code}")
-                print(f"Response Text: {e.response.text}")
+                LOG.error(f"Status Code: {e.response.status_code}")
+                LOG.error(f"Response Text: {e.response.text}")
             else:
-                print(str(e))
-            print(f"[WARNING] Skipping {symbol} and continuing with next ticker...")
+                LOG.error(str(e))
+            LOG.warning(f"[WARNING] Skipping {symbol} and continuing with next ticker...")
             continue
             
         except Exception as e:
-            print(f"\n[ERROR] {symbol} - Unexpected error: {type(e).__name__}: {e}")
-            print(f"[WARNING] Skipping {symbol} and continuing with next ticker...")
+            LOG.error(f"\n[ERROR] {symbol} - Unexpected error: {type(e).__name__}: {e}")
+            LOG.warning(f"[WARNING] Skipping {symbol} and continuing with next ticker...")
             continue
 
 
