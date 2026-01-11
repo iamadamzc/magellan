@@ -23,8 +23,8 @@ from src.logger import LOG
 from src.backtester_pro import run_rolling_backtest, print_stress_test_summary, export_stress_test_results
 
 
-# Multi-symbol basket for concurrent trading
-TICKERS = ["SPY", "QQQ", "IWM", "VTV", "VSS"]
+# Multi-symbol basket for concurrent trading - MAG7 LOCKDOWN
+TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA"]
 
 
 TF_MAP = {
@@ -157,7 +157,7 @@ async def process_ticker(
         fmp_metrics = fmp_client.fetch_fundamental_metrics(ticker)
         
         LOG.info(f"[LIVE {ticker}] Step 3: Fetching news...")
-        news_list = fmp_client.fetch_historical_news(ticker, news_start, news_end)
+        news_list = fmp_client.fetch_historical_news(ticker, news_start, news_end, price_df=bars)
         
         LOG.info(f"[LIVE {ticker}] Step 4: Feature engineering...")
         df = bars.copy()
@@ -522,7 +522,7 @@ def main() -> None:
             
             # Step 3: Fetch 3-day historical news for PIT alignment
             LOG.info(f"\n[STEP 3] Fetching {symbol} historical news from FMP (3-day window)...")
-            news_list = fmp_client.fetch_historical_news(symbol, news_start_date, news_end_date)
+            news_list = fmp_client.fetch_historical_news(symbol, news_start_date, news_end_date, price_df=bars)
             LOG.success(f"[SUCCESS] Retrieved {len(news_list)} news articles for PIT alignment")
             
             # Step 4: Run feature engineering

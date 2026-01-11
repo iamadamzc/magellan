@@ -875,6 +875,12 @@ def generate_master_signal(
     alpha_std = df['alpha_score'].std()
     fermi_gate = alpha_mean + (sigma_multiplier * alpha_std)
     
+    # -------------------------------------------------------------------------
+    # HYSTERESIS DEADBAND: Anti-Chatter Logic (0.02 threshold)
+    # Prevents rapid state oscillations at threshold boundaries
+    # -------------------------------------------------------------------------
+    HYSTERESIS_DEADBAND = 0.02
+    
     # Apply High-Pass Gate with directional signals
     fire_buy_count = 0
     fire_sell_count = 0
@@ -882,8 +888,12 @@ def generate_master_signal(
     phase_lock_silence = 0
     cryo_silence_count = 0
     
-    # Create signal column
+    # Create signal column and state tracking
     df['signal'] = 0
+    df['prev_state'] = 'FILTER'  # Initialize state tracking
+    
+    # Track previous state for hysteresis
+    prev_state = 'FILTER'
     
     for idx in df.index:
         score = df.loc[idx, 'alpha_score']
@@ -915,9 +925,12 @@ def generate_master_signal(
             cryo_silence_count += 1
             LOG.cryogen(f"[CRYOGEN] VSS Temp: {temp_val:.4f} | Status: {action} | Metabolism: {cryo_metabolism}%")
             LOG.info(f"[LAM] Damping Active | Metabolism: {cryo_metabolism}%")
+            prev_state = 'FILTER'
+            df.loc[idx, 'prev_state'] = prev_state
             continue
         
         # CARRIER DAMPING: Apply proportional reduction instead of hard veto
+        # WITH HYSTERESIS DEADBAND
         if is_vetoed:
             # Calculate carrier damping based on misalignment severity
             carrier_gate = 0.5
@@ -926,37 +939,108 @@ def generate_master_signal(
             carrier_scaling = 1.0 - carrier_damping_val
             carrier_metabolism = int(carrier_scaling * 100)
             
-            # Apply damped signal - direction preserved, size scaled by damping factor
-            if score > fermi_gate:
-                damped_signal = 1  # Direction preserved, size scaled externally
-                action = "DAMP-BUY"
-            elif score < -fermi_gate:
-                damped_signal = -1
-                action = "DAMP-SELL"
+            # HYSTERESIS LOGIC: Apply deadband to prevent chatter
+            # If prev_state is FILTER, need Carrier > (Gate + 0.02) to flip to BUY
+            # If prev_state is BUY, need Carrier < (Gate - 0.02) to flip to FILTER
+            if prev_state == 'FILTER':
+                # Require extra margin to enter BUY state
+                if c_score > (carrier_gate + HYSTERESIS_DEADBAND):
+                    if score > fermi_gate:
+                        damped_signal = 1
+                        action = "DAMP-BUY"
+                        prev_state = 'BUY'
+                    else:
+                        damped_signal = 0
+                        action = "DAMP-HOLD"
+                else:
+                    damped_signal = 0
+                    action = "FILTER"
+            elif prev_state == 'BUY':
+                # Require extra margin to exit BUY state
+                if c_score < (carrier_gate - HYSTERESIS_DEADBAND):
+                    damped_signal = 0
+                    action = "FILTER"
+                    prev_state = 'FILTER'
+                else:
+                    # Stay in BUY state
+                    damped_signal = 1
+                    action = "BUY"
             else:
-                damped_signal = 0
-                action = "DAMP-HOLD"
+                # Default fallback
+                if score > fermi_gate:
+                    damped_signal = 1
+                    action = "DAMP-BUY"
+                elif score < -fermi_gate:
+                    damped_signal = -1
+                    action = "DAMP-SELL"
+                else:
+                    damped_signal = 0
+                    action = "DAMP-HOLD"
             
             df.loc[idx, 'signal'] = damped_signal
             df.loc[idx, 'damping_factor'] = carrier_scaling
+            df.loc[idx, 'prev_state'] = prev_state
             phase_lock_silence += 1
-            LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Status: {action}")
+            LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Gate: {carrier_gate:.2f} | Status: {action}")
             LOG.info(f"[LAM] Damping Active | Metabolism: {carrier_metabolism}%")
             continue
         
-        # FERMI LOGIC: directional threshold applies
-        if score > fermi_gate:
-            df.loc[idx, 'signal'] = 1
-            action = "BUY"
-            fire_buy_count += 1
-        elif score < -fermi_gate:
-            df.loc[idx, 'signal'] = -1
-            action = "SELL"
-            fire_sell_count += 1
+        # FERMI LOGIC: directional threshold applies WITH HYSTERESIS
+        # If prev_state is FILTER, need score > (fermi_gate + DEADBAND) to flip to BUY
+        # If prev_state is BUY, need score < (fermi_gate - DEADBAND) to flip to FILTER
+        if prev_state == 'FILTER':
+            if score > (fermi_gate + HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = 1
+                action = "BUY"
+                prev_state = 'BUY'
+                fire_buy_count += 1
+            elif score < -(fermi_gate + HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = -1
+                action = "SELL"
+                prev_state = 'SELL'
+                fire_sell_count += 1
+            else:
+                df.loc[idx, 'signal'] = 0
+                action = "FILTER"
+                filter_count += 1
+        elif prev_state == 'BUY':
+            if score < (fermi_gate - HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = 0
+                action = "FILTER"
+                prev_state = 'FILTER'
+                filter_count += 1
+            else:
+                df.loc[idx, 'signal'] = 1
+                action = "BUY"
+                fire_buy_count += 1
+        elif prev_state == 'SELL':
+            if score > -(fermi_gate - HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = 0
+                action = "FILTER"
+                prev_state = 'FILTER'
+                filter_count += 1
+            else:
+                df.loc[idx, 'signal'] = -1
+                action = "SELL"
+                fire_sell_count += 1
         else:
-            df.loc[idx, 'signal'] = 0
-            action = "FILTER"
-            filter_count += 1
+            # Default fallback for first iteration
+            if score > (fermi_gate + HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = 1
+                action = "BUY"
+                prev_state = 'BUY'
+                fire_buy_count += 1
+            elif score < -(fermi_gate + HYSTERESIS_DEADBAND):
+                df.loc[idx, 'signal'] = -1
+                action = "SELL"
+                prev_state = 'SELL'
+                fire_sell_count += 1
+            else:
+                df.loc[idx, 'signal'] = 0
+                action = "FILTER"
+                filter_count += 1
+        
+        df.loc[idx, 'prev_state'] = prev_state
         
         # PHASE-LOCK TELEMETRY: Report per-bar decision for observability
         if ticker == 'VSS':
@@ -966,6 +1050,7 @@ def generate_master_signal(
     
     # Summary Telemetry
     LOG.stats(f"[SIGNAL] Fermi Gate: {fermi_gate:.4f} (Mean={alpha_mean:.4f} + {sigma_multiplier}*StdDev={alpha_std:.4f})")
+    LOG.stats(f"[SIGNAL] Hysteresis Deadband: {HYSTERESIS_DEADBAND} (Anti-Chatter Active)")
     LOG.stats(f"[SIGNAL] Fermi Results: {fire_buy_count} BUY, {fire_sell_count} SELL, {filter_count} FILTER")
     LOG.stats(f"[SIGNAL] Phase-Lock Vetoed: {phase_lock_silence} bars (destructive interference)")
     if cryo_active:
@@ -977,4 +1062,5 @@ def generate_master_signal(
     # -------------------------------------------------------------------------
     
     return df
+
 

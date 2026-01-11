@@ -1,35 +1,5 @@
 {
-    "SPY": {
-        "interval": "5Min",
-        "rsi_lookback": 14,
-        "sentry_gate": 0.0,
-        "rsi_wt": 0.9,
-        "vol_wt": 0.0,
-        "sent_wt": 0.1,
-        "position_cap_usd": 20000,
-        "high_pass_sigma": 0.75
-    },
-    "QQQ": {
-        "interval": "5Min",
-        "rsi_lookback": 14,
-        "sentry_gate": 0.0,
-        "rsi_wt": 0.8,
-        "vol_wt": 0.1,
-        "sent_wt": 0.1,
-        "position_cap_usd": 20000,
-        "high_pass_sigma": 0.75
-    },
-    "IWM": {
-        "interval": "5Min",
-        "rsi_lookback": 14,
-        "sentry_gate": -0.2,
-        "rsi_wt": 1.0,
-        "vol_wt": 0.0,
-        "sent_wt": 0.0,
-        "position_cap_usd": 20000,
-        "high_pass_sigma": 0.75
-    },
-    "VTV": {
+    "AAPL": {
         "interval": "5Min",
         "rsi_lookback": 14,
         "sentry_gate": 0.0,
@@ -39,7 +9,7 @@
         "position_cap_usd": 20000,
         "high_pass_sigma": 0.75
     },
-    "VSS": {
+    "MSFT": {
         "interval": "5Min",
         "rsi_lookback": 14,
         "sentry_gate": 0.0,
@@ -48,5 +18,55 @@
         "sent_wt": 0.2,
         "position_cap_usd": 20000,
         "high_pass_sigma": 0.75
+    },
+    "GOOGL": {
+        "interval": "5Min",
+        "rsi_lookback": 14,
+        "sentry_gate": 0.0,
+        "rsi_wt": 0.6,
+        "vol_wt": 0.2,
+        "sent_wt": 0.2,
+        "position_cap_usd": 20000,
+        "high_pass_sigma": 0.75
+    },
+    "AMZN": {
+        "interval": "5Min",
+        "rsi_lookback": 14,
+        "sentry_gate": 0.0,
+        "rsi_wt": 0.6,
+        "vol_wt": 0.2,
+        "sent_wt": 0.2,
+        "position_cap_usd": 20000,
+        "high_pass_sigma": 0.75
+    },
+    "NVDA": {
+        "interval": "5Min",
+        "rsi_lookback": 14,
+        "sentry_gate": 0.0,
+        "rsi_wt": 0.7,
+        "vol_wt": 0.2,
+        "sent_wt": 0.1,
+        "position_cap_usd": 20000,
+        "high_pass_sigma": 0.75
+    },
+    "META": {
+        "interval": "5Min",
+        "rsi_lookback": 14,
+        "sentry_gate": 0.0,
+        "rsi_wt": 0.6,
+        "vol_wt": 0.2,
+        "sent_wt": 0.2,
+        "position_cap_usd": 20000,
+        "high_pass_sigma": 0.75
+    },
+    "TSLA": {
+        "interval": "5Min",
+        "rsi_lookback": 14,
+        "sentry_gate": 0.0,
+        "rsi_wt": 0.5,
+        "vol_wt": 0.3,
+        "sent_wt": 0.2,
+        "position_cap_usd": 20000,
+        "high_pass_sigma": 1.0
     }
 }

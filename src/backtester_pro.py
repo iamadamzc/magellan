@@ -154,7 +154,7 @@ def run_rolling_backtest(
     
     print(f"[STRESS TEST] Fetching news from {news_start} to {news_end}...")
     try:
-        news_list = fmp_client.fetch_historical_news(symbol, news_start, news_end)
+        news_list = fmp_client.fetch_historical_news(symbol, news_start, news_end, price_df=all_bars)
     except Exception as e:
         print(f"[STRESS TEST WARNING] News fetch failed: {e}, using neutral sentiment")
         news_list = []

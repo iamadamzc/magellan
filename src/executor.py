@@ -341,7 +341,8 @@ def execute_trade(
     signal: int, 
     symbol: str = 'SPY', 
     allocation_pct: float = 0.25,
-    ticker_config: dict = None
+    ticker_config: dict = None,
+    damping_factor: float = 1.0
 ) -> dict:
     """
     Execute a trade based on the alpha signal with position-aware logic.
@@ -356,12 +357,18 @@ def execute_trade(
     - If signal == BUY and FLAT: Execute buy
     - If signal == SELL and FLAT: Do nothing (no position to sell)
     
+    Metabolic Scaling (Variable Metabolism):
+    - Final_Size = Base_Size * damping_factor
+    - damping_factor: Float 0.0-1.0 from LAM proportional damping
+    - If damping_factor missing, defaults to 1.0 (full metabolism)
+    
     Args:
         client: AlpacaTradingClient instance
         signal: 1 for BUY, -1 for SELL
         symbol: Stock symbol (default 'SPY')
         allocation_pct: Fraction of equity to allocate (default 0.25 = 25%)
         ticker_config: Optional ticker-specific config with 'position_cap_usd' key
+        damping_factor: LAM metabolism scaling factor (default 1.0 = full size)
         
     Returns:
         Dict with order details or rejection reason
@@ -451,23 +458,49 @@ def execute_trade(
     else:
         # BUY: Use allocation_pct of total equity (supports multi-symbol basket)
         account_equity = account_info['equity']
-        allocated_capital = account_equity * allocation_pct
+        base_capital = account_equity * allocation_pct
         
-        # V1.0 PRODUCTION: Enforce position cap per ticker (from config or default $50k)
+        # MAG7 FLEET: Enforce position cap per ticker (from config or defaults)
+        # Default absolute_trade_cap_usd = $2.0M for MAG7 fleet
         if ticker_config:
             position_cap_usd = ticker_config.get('position_cap_usd', 50000.0)
+            absolute_trade_cap_usd = ticker_config.get('absolute_trade_cap_usd', 2000000.0)
         else:
             position_cap_usd = 50000.0
+            absolute_trade_cap_usd = 2000000.0  # MAG7 Fleet: $2.0M hard ceiling
         
-        if allocated_capital > position_cap_usd:
-            print(f"[EXECUTOR] Position cap enforced: ${allocated_capital:,.2f} -> ${position_cap_usd:,.2f}")
-            allocated_capital = position_cap_usd
+        if base_capital > position_cap_usd:
+            print(f"[EXECUTOR] Position cap enforced: ${base_capital:,.2f} -> ${position_cap_usd:,.2f}")
+            base_capital = position_cap_usd
+        
+        # -------------------------------------------------------------------------
+        # METABOLIC SCALING: Apply Variable Metabolism from LAM Damping
+        # final_qty = (allocation / price) * damping_factor
+        # -------------------------------------------------------------------------
+        # Safety: Default to 1.0 if damping_factor is missing, None, or invalid
+        if damping_factor is None or damping_factor <= 0.0:
+            damping_factor = 1.0
+        damping_factor = min(damping_factor, 1.0)  # Cap at 1.0 (no amplification)
+        
+        # Apply metabolic scaling
+        allocated_capital = base_capital * damping_factor
+        metabolism_pct = int(damping_factor * 100)
+        
+        # CAVITATION LIMIT: Ensure Final_Size never exceeds absolute_trade_cap_usd
+        # This is the HARD CEILING applied AFTER metabolism
+        if allocated_capital > absolute_trade_cap_usd:
+            print(f"[EXECUTOR] Cavitation Limit: ${allocated_capital:,.2f} -> ${absolute_trade_cap_usd:,.2f}")
+            allocated_capital = absolute_trade_cap_usd
         
         qty = int(allocated_capital / ask_price)
         if qty <= 0:
             result['rejection_reason'] = f"Insufficient funds for even 1 share (allocated ${allocated_capital:,.2f})"
             return result
-        print(f"[EXECUTOR] Allocation: {allocation_pct*100:.0f}% of ${account_equity:,.2f} = ${allocated_capital:,.2f} -> {qty} shares")
+        
+        # EXECUTION TELEMETRY (ASCII ONLY)
+        final_size_usd = qty * ask_price
+        print(f"[EXECUTION] {symbol} | Base: ${base_capital:,.2f} | Metabolism: {metabolism_pct}% | Final: ${final_size_usd:,.2f}")
+        print(f"[EXECUTOR] Qty: {qty} shares @ ${ask_price:.2f}")
     
     result['qty'] = qty
     required_amount = qty * limit_price
@@ -578,7 +611,8 @@ async def async_execute_trade(
     signal: int, 
     symbol: str = 'SPY', 
     allocation_pct: float = 0.25,
-    ticker_config: dict = None
+    ticker_config: dict = None,
+    damping_factor: float = 1.0
 ) -> dict:
     """
     Async wrapper for execute_trade using thread pool to avoid blocking.
@@ -592,11 +626,12 @@ async def async_execute_trade(
         symbol: Stock symbol
         allocation_pct: Fraction of equity to allocate per ticker (default 0.25 = 25%)
         ticker_config: Optional ticker-specific config with 'position_cap_usd' key
+        damping_factor: LAM metabolism scaling factor (default 1.0 = full size)
         
     Returns:
         Dict with order details or rejection reason
     """
-    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct, ticker_config)
+    return await asyncio.to_thread(execute_trade, client, signal, symbol, allocation_pct, ticker_config, damping_factor)
 
 
 def main():
