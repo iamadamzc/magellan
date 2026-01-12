@@ -1,0 +1,515 @@
+STRESS TEST REPORT: AAPL
+============================================================
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 1
+  Profit-WFE: 0.11
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 0.57
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 2
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.52
+  Sharpe-WFE: 0.69
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 3
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.43
+  Sharpe-WFE: 0.25
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 4
+  Profit-WFE: 0.14
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 0.51
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 5
+  Profit-WFE: 0.20
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 1.26
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 6
+  Profit-WFE: -0.05
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 0.36
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 7
+  Profit-WFE: -0.34
+  Drawdown-WFE: 0.28
+  Sharpe-WFE: 2.35
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 8
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 9
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.58
+  Sharpe-WFE: 1.46
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 10
+  Profit-WFE: -0.26
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 1.68
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 11
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.87
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 12
+  Profit-WFE: 0.17
+  Drawdown-WFE: 0.83
+  Sharpe-WFE: 0.84
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 13
+  Profit-WFE: -0.03
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.21
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 14
+  Profit-WFE: 0.35
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 1.85
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 15
+  Profit-WFE: 0.08
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 0.75
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 16
+  Profit-WFE: 0.43
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 2.47
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 17
+  Profit-WFE: -0.06
+  Drawdown-WFE: 0.12
+  Sharpe-WFE: 0.60
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 18
+  Profit-WFE: 0.08
+  Drawdown-WFE: 3.34
+  Sharpe-WFE: 0.69
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 19
+  Profit-WFE: 0.33
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 1.76
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 20
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.46
+  Sharpe-WFE: 1.22
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 21
+  Profit-WFE: -0.41
+  Drawdown-WFE: 1.41
+  Sharpe-WFE: -1.66
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 22
+  Profit-WFE: 0.07
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 0.16
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 23
+  Profit-WFE: -0.02
+  Drawdown-WFE: 0.52
+  Sharpe-WFE: 0.88
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 24
+  Profit-WFE: 0.08
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: -1.43
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 26
+  Profit-WFE: -0.68
+  Drawdown-WFE: 0.37
+  Sharpe-WFE: 2.33
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 27
+  Profit-WFE: -0.06
+  Drawdown-WFE: 0.55
+  Sharpe-WFE: -0.39
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 28
+  Profit-WFE: 0.11
+  Drawdown-WFE: 1.19
+  Sharpe-WFE: 0.57
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 29
+  Profit-WFE: 0.05
+  Drawdown-WFE: 1.27
+  Sharpe-WFE: 0.36
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 30
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.40
+  Sharpe-WFE: 1.00
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 31
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 1.50
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 32
+  Profit-WFE: 0.17
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 1.12
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 33
+  Profit-WFE: 0.30
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 1.48
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 34
+  Profit-WFE: -0.33
+  Drawdown-WFE: 1.14
+  Sharpe-WFE: -0.99
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 35
+  Profit-WFE: 0.10
+  Drawdown-WFE: 1.51
+  Sharpe-WFE: 0.44
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 36
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: -0.33
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 37
+  Profit-WFE: 0.17
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 0.92
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 38
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.82
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 39
+  Profit-WFE: 0.21
+  Drawdown-WFE: 0.69
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 40
+  Profit-WFE: 0.64
+  Drawdown-WFE: 0.49
+  Sharpe-WFE: 2.64
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 41
+  Profit-WFE: 0.16
+  Drawdown-WFE: 1.03
+  Sharpe-WFE: 0.52
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 42
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.46
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 43
+  Profit-WFE: 0.39
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 1.88
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 44
+  Profit-WFE: 0.38
+  Drawdown-WFE: 0.26
+  Sharpe-WFE: 1.70
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 45
+  Profit-WFE: 0.25
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.15
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 46
+  Profit-WFE: -0.05
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 0.27
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 47
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.49
+  Sharpe-WFE: -1.16
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 48
+  Profit-WFE: -0.30
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 1.13
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 49
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.53
+  Sharpe-WFE: 0.65
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 50
+  Profit-WFE: 0.49
+  Drawdown-WFE: 0.29
+  Sharpe-WFE: -0.24
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 51
+  Profit-WFE: 0.37
+  Drawdown-WFE: 0.45
+  Sharpe-WFE: 1.54
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 52
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.55
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 53
+  Profit-WFE: 0.30
+  Drawdown-WFE: 0.99
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 54
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.40
+  Sharpe-WFE: 1.13
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 55
+  Profit-WFE: 0.20
+  Drawdown-WFE: 1.05
+  Sharpe-WFE: 0.40
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 56
+  Profit-WFE: -0.43
+  Drawdown-WFE: 0.43
+  Sharpe-WFE: 1.62
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 58
+  Profit-WFE: 0.68
+  Drawdown-WFE: 0.73
+  Sharpe-WFE: 1.34
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 59
+  Profit-WFE: -1.04
+  Drawdown-WFE: 0.86
+  Sharpe-WFE: 3.12
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 60
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.67
+  Sharpe-WFE: 0.97
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 61
+  Profit-WFE: -0.36
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 1.26
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 62
+  Profit-WFE: 0.46
+  Drawdown-WFE: 1.51
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 63
+  Profit-WFE: -0.49
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 2.00
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 64
+  Profit-WFE: 0.30
+  Drawdown-WFE: 0.55
+  Sharpe-WFE: -0.99
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 65
+  Profit-WFE: -0.05
+  Drawdown-WFE: 0.55
+  Sharpe-WFE: 0.03
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 66
+  Profit-WFE: 0.01
+  Drawdown-WFE: 0.91
+  Sharpe-WFE: 0.08
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 67
+  Profit-WFE: -0.52
+  Drawdown-WFE: 0.42
+  Sharpe-WFE: 1.55
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 68
+  Profit-WFE: -0.01
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: -0.07
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 69
+  Profit-WFE: 0.20
+  Drawdown-WFE: 1.96
+  Sharpe-WFE: 0.66
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 70
+  Profit-WFE: -0.55
+  Drawdown-WFE: 0.90
+  Sharpe-WFE: -2.14
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 71
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.81
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 72
+  Profit-WFE: 0.43
+  Drawdown-WFE: 1.08
+  Sharpe-WFE: 0.94
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 73
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 1.14
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 74
+  Profit-WFE: 0.26
+  Drawdown-WFE: 1.11
+  Sharpe-WFE: 0.93
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 75
+  Profit-WFE: 0.38
+  Drawdown-WFE: 0.75
+  Sharpe-WFE: 1.03
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 76
+  Profit-WFE: 0.39
+  Drawdown-WFE: 0.79
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 77
+  Profit-WFE: -46.75
+  Drawdown-WFE: 0.88
+  Sharpe-WFE: 123.82
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 79
+  Profit-WFE: 0.04
+  Drawdown-WFE: 0.67
+  Sharpe-WFE: 1.17
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 80
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.91
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 81
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.96
+  Sharpe-WFE: -0.92
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 82
+  Profit-WFE: 0.61
+  Drawdown-WFE: 0.87
+  Sharpe-WFE: 1.61
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 83
+  Profit-WFE: 0.15
+  Drawdown-WFE: 0.98
+  Sharpe-WFE: 0.45
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 84
+  Profit-WFE: 0.02
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 0.82
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 85
+  Profit-WFE: -0.24
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 0.82
+[METABOLISM] Ticker: AAPL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: AAPL | Blocks: 86
+  Profit-WFE: -0.43
+  Drawdown-WFE: 0.57
+  Sharpe-WFE: 1.24

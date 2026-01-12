@@ -1,0 +1,4 @@
+  File "A:\1\Magellan\main.py", line 560
+    symbol=symbol,
+    ^^^^^^^^^^^^^
+SyntaxError: keyword argument repeated: symbol

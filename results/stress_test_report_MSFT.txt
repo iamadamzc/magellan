@@ -1,0 +1,515 @@
+STRESS TEST REPORT: MSFT
+============================================================
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 1
+  Profit-WFE: 0.39
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: -2.52
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 2
+  Profit-WFE: 0.81
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 2.37
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 3
+  Profit-WFE: -0.05
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: 0.26
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 4
+  Profit-WFE: 0.19
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 0.94
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 5
+  Profit-WFE: 0.14
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 6
+  Profit-WFE: -0.19
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 0.59
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 7
+  Profit-WFE: 0.08
+  Drawdown-WFE: 0.11
+  Sharpe-WFE: 1.43
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 8
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: -1.71
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 9
+  Profit-WFE: 0.02
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 0.04
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 10
+  Profit-WFE: 0.17
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 1.17
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 11
+  Profit-WFE: 0.18
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 0.99
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 12
+  Profit-WFE: -0.29
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 1.32
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 13
+  Profit-WFE: 0.15
+  Drawdown-WFE: 0.38
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 14
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.66
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 15
+  Profit-WFE: 0.09
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 0.90
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 16
+  Profit-WFE: 0.12
+  Drawdown-WFE: 0.55
+  Sharpe-WFE: 0.84
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 17
+  Profit-WFE: 0.28
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 2.16
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 18
+  Profit-WFE: -0.00
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: -0.03
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 19
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.23
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 20
+  Profit-WFE: -0.72
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 4.21
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 21
+  Profit-WFE: -0.29
+  Drawdown-WFE: 0.51
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 22
+  Profit-WFE: -0.18
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 0.76
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 23
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 1.07
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 24
+  Profit-WFE: 0.09
+  Drawdown-WFE: 0.16
+  Sharpe-WFE: 1.18
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 26
+  Profit-WFE: -0.24
+  Drawdown-WFE: 0.51
+  Sharpe-WFE: -0.61
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 27
+  Profit-WFE: 0.15
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 28
+  Profit-WFE: 3.16
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: -1.74
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 29
+  Profit-WFE: 0.15
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 1.18
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 30
+  Profit-WFE: 0.25
+  Drawdown-WFE: 0.68
+  Sharpe-WFE: 0.97
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 31
+  Profit-WFE: 0.28
+  Drawdown-WFE: 0.95
+  Sharpe-WFE: 1.07
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 32
+  Profit-WFE: 0.24
+  Drawdown-WFE: 2.42
+  Sharpe-WFE: 0.76
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 33
+  Profit-WFE: -0.44
+  Drawdown-WFE: 0.37
+  Sharpe-WFE: 1.68
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 34
+  Profit-WFE: -0.79
+  Drawdown-WFE: 0.97
+  Sharpe-WFE: -0.68
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 35
+  Profit-WFE: -0.90
+  Drawdown-WFE: 0.57
+  Sharpe-WFE: 3.23
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 36
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.48
+  Sharpe-WFE: 1.28
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 37
+  Profit-WFE: 0.28
+  Drawdown-WFE: 1.09
+  Sharpe-WFE: 0.84
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 38
+  Profit-WFE: -0.18
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 0.53
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 39
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.62
+  Sharpe-WFE: 1.09
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 40
+  Profit-WFE: -0.34
+  Drawdown-WFE: 0.46
+  Sharpe-WFE: 0.92
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 41
+  Profit-WFE: 0.22
+  Drawdown-WFE: 2.20
+  Sharpe-WFE: 0.45
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 42
+  Profit-WFE: 1.14
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 4.10
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 43
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.80
+  Sharpe-WFE: 1.14
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 44
+  Profit-WFE: 0.30
+  Drawdown-WFE: 0.80
+  Sharpe-WFE: 1.03
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 45
+  Profit-WFE: -0.25
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 0.70
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 46
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.83
+  Sharpe-WFE: 0.93
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 47
+  Profit-WFE: 0.38
+  Drawdown-WFE: 0.56
+  Sharpe-WFE: 1.51
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 48
+  Profit-WFE: 0.36
+  Drawdown-WFE: 0.83
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 49
+  Profit-WFE: 0.37
+  Drawdown-WFE: 0.67
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 50
+  Profit-WFE: 0.52
+  Drawdown-WFE: 0.99
+  Sharpe-WFE: 1.13
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 51
+  Profit-WFE: 0.19
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 3.10
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 52
+  Profit-WFE: 0.21
+  Drawdown-WFE: 0.57
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 53
+  Profit-WFE: -0.35
+  Drawdown-WFE: 0.40
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 54
+  Profit-WFE: 0.20
+  Drawdown-WFE: 1.68
+  Sharpe-WFE: 0.67
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 55
+  Profit-WFE: 0.34
+  Drawdown-WFE: 1.06
+  Sharpe-WFE: 0.94
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 56
+  Profit-WFE: 1.16
+  Drawdown-WFE: 0.99
+  Sharpe-WFE: 4.04
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 58
+  Profit-WFE: 0.03
+  Drawdown-WFE: 0.69
+  Sharpe-WFE: -0.01
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 59
+  Profit-WFE: 0.33
+  Drawdown-WFE: 1.07
+  Sharpe-WFE: 0.94
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 60
+  Profit-WFE: 0.30
+  Drawdown-WFE: 1.34
+  Sharpe-WFE: 0.81
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 61
+  Profit-WFE: -0.29
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.12
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 62
+  Profit-WFE: 0.33
+  Drawdown-WFE: 0.75
+  Sharpe-WFE: 0.95
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 63
+  Profit-WFE: -0.37
+  Drawdown-WFE: 0.42
+  Sharpe-WFE: 1.19
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 64
+  Profit-WFE: -0.22
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 0.67
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 65
+  Profit-WFE: -0.35
+  Drawdown-WFE: 0.37
+  Sharpe-WFE: 1.26
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 66
+  Profit-WFE: -0.68
+  Drawdown-WFE: 0.93
+  Sharpe-WFE: 2.26
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 67
+  Profit-WFE: 0.92
+  Drawdown-WFE: 0.91
+  Sharpe-WFE: 1.95
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 68
+  Profit-WFE: -0.36
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 1.35
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 69
+  Profit-WFE: -0.09
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.32
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 70
+  Profit-WFE: -0.04
+  Drawdown-WFE: 0.62
+  Sharpe-WFE: -0.15
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 71
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.65
+  Sharpe-WFE: 0.43
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 72
+  Profit-WFE: -0.18
+  Drawdown-WFE: 0.26
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 73
+  Profit-WFE: 0.63
+  Drawdown-WFE: 0.42
+  Sharpe-WFE: 3.00
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 74
+  Profit-WFE: 0.31
+  Drawdown-WFE: 1.06
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 75
+  Profit-WFE: 1.06
+  Drawdown-WFE: 1.14
+  Sharpe-WFE: 2.51
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 76
+  Profit-WFE: 0.35
+  Drawdown-WFE: 1.47
+  Sharpe-WFE: 0.90
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 77
+  Profit-WFE: 0.31
+  Drawdown-WFE: 1.11
+  Sharpe-WFE: 0.97
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 79
+  Profit-WFE: -1.21
+  Drawdown-WFE: 0.80
+  Sharpe-WFE: 2.81
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 80
+  Profit-WFE: -0.34
+  Drawdown-WFE: 0.45
+  Sharpe-WFE: 0.92
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 81
+  Profit-WFE: 0.22
+  Drawdown-WFE: 0.91
+  Sharpe-WFE: 0.74
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 82
+  Profit-WFE: 1.74
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 6.08
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 83
+  Profit-WFE: 0.36
+  Drawdown-WFE: 0.93
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 84
+  Profit-WFE: 0.15
+  Drawdown-WFE: 0.87
+  Sharpe-WFE: 0.63
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 85
+  Profit-WFE: -0.31
+  Drawdown-WFE: 0.27
+  Sharpe-WFE: 1.24
+[METABOLISM] Ticker: MSFT | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: MSFT | Blocks: 86
+  Profit-WFE: -0.47
+  Drawdown-WFE: 0.71
+  Sharpe-WFE: 0.87

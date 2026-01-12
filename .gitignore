@@ -1,7 +1,9 @@
-*.log
-*.csv
-*.txt
+/venv/
+/.venv/
 .env
+*.log
 __pycache__/
-all-scrap/
-venv/
+*.py[cod]
+data/
+reports/archive/
+velocity_report_*.txt

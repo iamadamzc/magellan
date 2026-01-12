@@ -1,0 +1,521 @@
+STRESS TEST REPORT: TSLA
+============================================================
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 1
+  Profit-WFE: 0.13
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.21
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 2
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.28
+  Sharpe-WFE: 1.19
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 3
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 0.66
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 4
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 1.24
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 5
+  Profit-WFE: 0.19
+  Drawdown-WFE: 0.59
+  Sharpe-WFE: 1.03
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+[SQUELCH] Sentiment Static Detected | Switching to Pure Physics
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 6
+  Profit-WFE: 4.97
+  Drawdown-WFE: 0.68
+  Sharpe-WFE: 152.72
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 7
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: -0.27
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 8
+  Profit-WFE: 0.21
+  Drawdown-WFE: 0.57
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 9
+  Profit-WFE: -0.42
+  Drawdown-WFE: 0.50
+  Sharpe-WFE: 1.26
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 10
+  Profit-WFE: -0.48
+  Drawdown-WFE: 0.64
+  Sharpe-WFE: -1.36
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 11
+  Profit-WFE: -0.58
+  Drawdown-WFE: 0.64
+  Sharpe-WFE: -1.96
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 12
+  Profit-WFE: 0.57
+  Drawdown-WFE: 0.62
+  Sharpe-WFE: 1.47
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 13
+  Profit-WFE: 0.21
+  Drawdown-WFE: 0.79
+  Sharpe-WFE: 0.49
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 14
+  Profit-WFE: 0.65
+  Drawdown-WFE: 0.66
+  Sharpe-WFE: 1.73
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 15
+  Profit-WFE: -0.45
+  Drawdown-WFE: 0.51
+  Sharpe-WFE: 1.58
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 16
+  Profit-WFE: 0.57
+  Drawdown-WFE: 0.67
+  Sharpe-WFE: 1.60
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 17
+  Profit-WFE: 0.23
+  Drawdown-WFE: 1.04
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 18
+  Profit-WFE: 0.39
+  Drawdown-WFE: 1.18
+  Sharpe-WFE: 1.18
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 19
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.51
+  Sharpe-WFE: -0.32
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 20
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.40
+  Sharpe-WFE: 0.48
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 21
+  Profit-WFE: -0.25
+  Drawdown-WFE: 0.60
+  Sharpe-WFE: 0.34
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 22
+  Profit-WFE: 0.49
+  Drawdown-WFE: 1.31
+  Sharpe-WFE: 0.94
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 23
+  Profit-WFE: -4.47
+  Drawdown-WFE: 0.63
+  Sharpe-WFE: 7.85
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 24
+  Profit-WFE: 0.55
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: -3.91
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 26
+  Profit-WFE: -1.79
+  Drawdown-WFE: 0.80
+  Sharpe-WFE: -1.10
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 27
+  Profit-WFE: 0.29
+  Drawdown-WFE: 0.70
+  Sharpe-WFE: 1.15
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 28
+  Profit-WFE: 0.29
+  Drawdown-WFE: 2.51
+  Sharpe-WFE: 0.86
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 29
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.61
+  Sharpe-WFE: 0.97
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 30
+  Profit-WFE: 0.35
+  Drawdown-WFE: 1.08
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 31
+  Profit-WFE: -1.29
+  Drawdown-WFE: 0.94
+  Sharpe-WFE: 3.70
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 32
+  Profit-WFE: 0.28
+  Drawdown-WFE: 0.77
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 33
+  Profit-WFE: 0.34
+  Drawdown-WFE: 0.53
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 34
+  Profit-WFE: 10.67
+  Drawdown-WFE: 0.61
+  Sharpe-WFE: -9.76
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 35
+  Profit-WFE: 0.42
+  Drawdown-WFE: 0.70
+  Sharpe-WFE: 1.08
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 36
+  Profit-WFE: -0.20
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 0.59
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 37
+  Profit-WFE: 0.45
+  Drawdown-WFE: 1.08
+  Sharpe-WFE: 1.03
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 38
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.44
+  Sharpe-WFE: 1.11
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 39
+  Profit-WFE: 0.28
+  Drawdown-WFE: 0.76
+  Sharpe-WFE: 1.12
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 40
+  Profit-WFE: 0.39
+  Drawdown-WFE: 1.13
+  Sharpe-WFE: 1.03
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 41
+  Profit-WFE: 0.46
+  Drawdown-WFE: 1.07
+  Sharpe-WFE: 1.10
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 42
+  Profit-WFE: 0.23
+  Drawdown-WFE: 1.02
+  Sharpe-WFE: 0.79
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 43
+  Profit-WFE: -0.59
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: -0.09
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 44
+  Profit-WFE: -0.20
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: 0.11
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 45
+  Profit-WFE: 0.38
+  Drawdown-WFE: 1.53
+  Sharpe-WFE: 1.21
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 46
+  Profit-WFE: 0.34
+  Drawdown-WFE: 0.78
+  Sharpe-WFE: 1.04
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 47
+  Profit-WFE: 0.27
+  Drawdown-WFE: 0.84
+  Sharpe-WFE: 0.88
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 48
+  Profit-WFE: 0.45
+  Drawdown-WFE: 1.05
+  Sharpe-WFE: 1.09
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 49
+  Profit-WFE: 0.25
+  Drawdown-WFE: 0.48
+  Sharpe-WFE: 1.05
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 50
+  Profit-WFE: 0.34
+  Drawdown-WFE: 1.92
+  Sharpe-WFE: 0.99
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 51
+  Profit-WFE: 0.01
+  Drawdown-WFE: 0.88
+  Sharpe-WFE: 0.04
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 52
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.89
+  Sharpe-WFE: 0.91
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 53
+  Profit-WFE: 0.29
+  Drawdown-WFE: 0.77
+  Sharpe-WFE: 0.98
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 54
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.96
+  Sharpe-WFE: 1.19
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 55
+  Profit-WFE: -0.40
+  Drawdown-WFE: 1.64
+  Sharpe-WFE: -0.98
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 56
+  Profit-WFE: 0.24
+  Drawdown-WFE: 0.62
+  Sharpe-WFE: 0.81
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 58
+  Profit-WFE: -0.04
+  Drawdown-WFE: 0.89
+  Sharpe-WFE: -0.08
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 59
+  Profit-WFE: 0.30
+  Drawdown-WFE: 0.98
+  Sharpe-WFE: 0.92
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 60
+  Profit-WFE: 0.81
+  Drawdown-WFE: 0.76
+  Sharpe-WFE: 2.35
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 61
+  Profit-WFE: 0.23
+  Drawdown-WFE: 1.01
+  Sharpe-WFE: 0.69
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 62
+  Profit-WFE: 0.28
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 1.27
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 63
+  Profit-WFE: 0.34
+  Drawdown-WFE: 0.86
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 64
+  Profit-WFE: 0.29
+  Drawdown-WFE: 0.90
+  Sharpe-WFE: 0.99
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 65
+  Profit-WFE: -0.66
+  Drawdown-WFE: 0.85
+  Sharpe-WFE: 1.66
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 66
+  Profit-WFE: 0.31
+  Drawdown-WFE: 0.52
+  Sharpe-WFE: 1.07
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 67
+  Profit-WFE: -0.01
+  Drawdown-WFE: 0.37
+  Sharpe-WFE: 0.09
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 68
+  Profit-WFE: -0.61
+  Drawdown-WFE: 0.51
+  Sharpe-WFE: 2.33
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 69
+  Profit-WFE: 0.26
+  Drawdown-WFE: 0.58
+  Sharpe-WFE: 0.98
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 70
+  Profit-WFE: -0.34
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 71
+  Profit-WFE: -0.39
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 1.48
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 72
+  Profit-WFE: 0.32
+  Drawdown-WFE: 0.79
+  Sharpe-WFE: 0.98
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 73
+  Profit-WFE: 0.64
+  Drawdown-WFE: 0.71
+  Sharpe-WFE: 1.27
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 74
+  Profit-WFE: 0.39
+  Drawdown-WFE: 0.57
+  Sharpe-WFE: 1.46
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 75
+  Profit-WFE: 0.45
+  Drawdown-WFE: 1.13
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 76
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.62
+  Sharpe-WFE: -0.33
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 77
+  Profit-WFE: 0.31
+  Drawdown-WFE: 1.30
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 78
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.83
+  Sharpe-WFE: 0.84
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 79
+  Profit-WFE: -0.47
+  Drawdown-WFE: 0.45
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 80
+  Profit-WFE: 0.28
+  Drawdown-WFE: 1.01
+  Sharpe-WFE: 0.81
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 81
+  Profit-WFE: 0.34
+  Drawdown-WFE: 1.10
+  Sharpe-WFE: 1.10
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 82
+  Profit-WFE: 0.29
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: -0.46
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 83
+  Profit-WFE: 0.23
+  Drawdown-WFE: 0.52
+  Sharpe-WFE: 0.67
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 84
+  Profit-WFE: 0.16
+  Drawdown-WFE: 0.94
+  Sharpe-WFE: 0.60
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 85
+  Profit-WFE: -2.76
+  Drawdown-WFE: 0.59
+  Sharpe-WFE: 4.19
+[METABOLISM] Ticker: TSLA | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: TSLA | Blocks: 86
+  Profit-WFE: -0.00
+  Drawdown-WFE: 0.37
+  Sharpe-WFE: 0.03
