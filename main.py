@@ -20,11 +20,32 @@ from src.discovery import calculate_ic, check_feature_correlation, trim_warmup_p
 from src.validation import run_walk_forward_check, print_validation_scorecard, run_optimized_walk_forward_check, print_optimized_scorecard
 from src.pnl_tracker import simulate_portfolio, print_virtual_trading_statement
 from src.logger import LOG
-from src.backtester_pro import run_rolling_backtest, print_stress_test_summary, export_stress_test_results
+from src.backtester_pro import run_rolling_backtest, print_stress_test_summary, export_stress_test_results, LIQUIDITY_CAP_USD
 
 
-# Multi-symbol basket for concurrent trading - MAG7 LOCKDOWN
-TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA"]
+# NVDA ISOLATION: Single-ticker focus for Sanity Flight
+# Load defaults, but will be overridden by master_config.json if "tickers" key exists
+TICKERS = ["NVDA"]
+
+# NVDA ISOLATION ENFORCEMENT: Initial Universe (expanded dynamically)
+MAG7_UNIVERSE = frozenset(["NVDA", "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA"])
+
+
+def validate_mag7_ticker(ticker: str) -> bool:
+    """
+    Validate that a ticker is within the MAG7 universe.
+    
+    Args:
+        ticker: Stock symbol to validate
+        
+    Returns:
+        True if ticker is in MAG7, False otherwise
+    """
+    if ticker not in MAG7_UNIVERSE:
+        print(f"[WARNING] Ticker {ticker} is NOT in MAG7 universe. Skipping.")
+        print(f"[MAG7] Allowed tickers: {', '.join(sorted(MAG7_UNIVERSE))}")
+        return False
+    return True
 
 
 TF_MAP = {
@@ -292,8 +313,9 @@ async def live_trading_loop(
             news_end = bar_end
             news_start = (current_time - timedelta(days=4)).strftime('%Y-%m-%d')
             
-            print(f"\n[LIVE] === Bar Window: {bar_start} to {bar_end} ===")
-            print(f"[LIVE] Processing {len(TICKERS)} tickers concurrently...")
+            if not args.quiet:
+                print(f"\n[LIVE] === Bar Window: {bar_start} to {bar_end} ===")
+                print(f"[LIVE] Processing {len(TICKERS)} tickers concurrently...")
             
             # ================================================================
             # CONCURRENT TICKER PROCESSING via asyncio.gather
@@ -321,7 +343,8 @@ async def live_trading_loop(
             # ================================================================
             # RESULTS SUMMARY
             # ================================================================
-            print(f"\n[LIVE] === Iteration #{loop_iteration} Summary ===")
+            if not args.quiet:
+                print(f"\n[LIVE] === Iteration #{loop_iteration} Summary ===")
             successes = 0
             failures = 0
             for res in results:
@@ -333,7 +356,8 @@ async def live_trading_loop(
                         successes += 1
                     else:
                         failures += 1
-            print(f"[LIVE] Processed: {successes} success, {failures} failures")
+            if not args.quiet:
+                print(f"[LIVE] Processed: {successes} success, {failures} failures")
             
     except KeyboardInterrupt:
         print("\n\n[LIVE] Trading loop stopped by user (Ctrl+C)")
@@ -385,6 +409,11 @@ def main() -> None:
         type=str,
         default=None,
         help='End date for temporal range (ISO-8601: YYYY-MM-DD). Overrides days_back.'
+    )
+    parser.add_argument(
+        '--symbols',
+        type=str,
+        help='Comma-separated list of tickers to override config'
     )
     args = parser.parse_args()
     
@@ -463,14 +492,34 @@ def main() -> None:
     # Load node configurations from master_config.json
     node_configs = load_node_config()
     
+    # Update TICKERS from config if available (unless overridden by CLI)
+    if not args.symbols and 'tickers' in node_configs:
+         TICKERS = node_configs['tickers']
+         LOG.config(f"[CONFIG] Loaded ticker universe: {TICKERS}")
+    
     # Macro Era Telemetry
     if 'VSS' in node_configs and 'IWM' in node_configs:
         LOG.system("[SYSTEM] Macro Era Locked: 2019-2021 | VSS(1H) | IWM(3Min)")
     
     LOG.ensemble("[ENSEMBLE] 5-Node Fleet Synchronized | Telemetry: High-Entropy")
     
+    # CLI OVERRIDE: Ticker Selection
+    target_tickers = TICKERS
+    if args.symbols:
+        # Split string into list
+        target_tickers = [t.strip() for t in args.symbols.split(',')]
+        
+        # Expand MAG7 Universe to allow overrides
+        global MAG7_UNIVERSE
+        MAG7_UNIVERSE = frozenset(list(MAG7_UNIVERSE) + target_tickers)
+        LOG.system(f"[OVERRIDE] Target Tickers set to: {target_tickers}")
+
     # Process each ticker in the basket
-    for symbol in TICKERS:
+    for symbol in target_tickers:
+        # MAG7 LOCKDOWN ENFORCEMENT: Skip any ticker not in MAG7 universe
+        if not validate_mag7_ticker(symbol):
+            continue
+        
         LOG.info(f"\n{'='*60}")
         LOG.info(f"[SIMULATION] Processing {symbol}")
         LOG.info(f"{'='*60}")
@@ -490,8 +539,9 @@ def main() -> None:
         # Map string to Enum (default to Minute if not found)
         target_tf = TF_MAP.get(interval_str, TimeFrame.Minute)
         
-        print(f"[NODE] Initialized {symbol} | Lookback: {rsi_lookback} | Gate: {sentry_gate}")
-        print(f"[NODE] {symbol} mapping {interval_str} to {type(target_tf)}")
+        if not args.quiet:
+            print(f"[NODE] Initialized {symbol} | Lookback: {rsi_lookback} | Gate: {sentry_gate}")
+            print(f"[NODE] {symbol} mapping {interval_str} to {type(target_tf)}")
         
         try:
             # Step 1: Fetch bars from Alpaca
@@ -578,7 +628,8 @@ def main() -> None:
             )
             
             # Print optimized scorecard
-            print_optimized_scorecard(opt_result)
+            if not args.quiet:
+                print_optimized_scorecard(opt_result)
             
             # THE KILL SWITCH: If optimized validation still fails
             if not opt_result['passed']:
@@ -629,11 +680,13 @@ def main() -> None:
                     initial_capital=37500.0,
                     start_date=temporal_start,
                     end_date=temporal_end,
-                    report_only=args.report_only
+                    report_only=args.report_only,
+                    quiet=args.quiet
                 )
                 
                 # Print stress test summary
-                print_stress_test_summary(stress_result)
+                if not args.quiet:
+                    print_stress_test_summary(stress_result)
                 
                 # Export results with symbol-specific filename
                 export_stress_test_results(stress_result, f'stress_test_equity_{symbol}.csv')
@@ -679,10 +732,16 @@ def main() -> None:
                     out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
                     
                     # Run portfolio simulation
-                    pnl_metrics = simulate_portfolio(out_sample, initial_capital=100000, friction_bps=2.5)
+                    pnl_metrics = simulate_portfolio(
+                        out_sample, 
+                        initial_capital=100000, 
+                        friction_bps=2.5,
+                        max_position_dollars=LIQUIDITY_CAP_USD
+                    )
                     
                     # Print Virtual Trading Statement
-                    print_virtual_trading_statement(pnl_metrics)
+                    if not args.quiet:
+                        print_virtual_trading_statement(pnl_metrics)
                     
                     # Save equity curve to CSV with symbol-specific filename
                     equity_curve_path = f'equity_curve_{symbol}.csv'
@@ -726,9 +785,10 @@ def main() -> None:
             LOG.ic_matrix("[NOTE] IC > 0.02 suggests exploitable alpha; IC > 0.05 is promising.")
             
             # Step 8: Feature Independence Check
-            print("\n" + "=" * 60)
-            print(f"[FEATURE INDEPENDENCE] {symbol} - Cross-Correlation Analysis")
-            print("=" * 60)
+            if not args.quiet:
+                print("\n" + "=" * 60)
+                print(f"[FEATURE INDEPENDENCE] {symbol} - Cross-Correlation Analysis")
+                print("=" * 60)
             
             corr_sent_rsi = check_feature_correlation(feature_matrix, 'sentiment', 'rsi_14')
             if pd.isna(corr_sent_rsi):
@@ -744,11 +804,12 @@ def main() -> None:
                     independence = "INDEPENDENT - good signal diversity"
                 corr_str = f"{corr_sent_rsi:+.4f}"
             
-            print(f"Sentiment vs RSI Correlation: {corr_str}")
-            if independence:
-                print(f"  -> {independence}")
-            print("-" * 60)
-            print("[NOTE] |corr| < 0.4 indicates independent signals (desirable for confluence).")
+            if not args.quiet:
+                print(f"Sentiment vs RSI Correlation: {corr_str}")
+                if independence:
+                    print(f"  -> {independence}")
+                print("-" * 60)
+                print("[NOTE] |corr| < 0.4 indicates independent signals (desirable for confluence).")
             
             LOG.info("\n" + "=" * 60)
             LOG.success(f"[COMPLETE] {symbol} pipeline finished successfully")

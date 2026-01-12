@@ -12,8 +12,12 @@ import os
 from src.data_handler import AlpacaDataClient, FMPDataClient
 from src.features import FeatureEngineer, add_technical_indicators, merge_news_pit, generate_master_signal
 from src.discovery import trim_warmup_period
-from src.optimizer import optimize_alpha_weights, calculate_alpha_with_weights
+from src.optimizer import optimize_alpha_weights, calculate_alpha_with_weights, RETRAIN_INTERVAL
 from src.pnl_tracker import simulate_portfolio, calculate_max_drawdown
+
+# LIQUIDITY CAP: Maximum trade size to prevent runaway compounding
+# Regardless of Virtual Equity, no single trade can exceed this amount
+LIQUIDITY_CAP_USD = 100000.0
 
 
 def calculate_wfe(in_sample_hr: float, out_sample_hr: float) -> float:
@@ -35,6 +39,23 @@ def calculate_wfe(in_sample_hr: float, out_sample_hr: float) -> float:
     if in_sample_hr <= 0:
         return 0.0
     return out_sample_hr / in_sample_hr
+
+
+def calculate_volatility(returns: pd.Series) -> float:
+    """
+    Calculate annualized volatility from returns.
+    
+    Assumes 5-min bars: 78 bars/day * 252 trading days/year.
+    
+    Args:
+        returns: Series of period returns (log returns)
+    
+    Returns:
+        Annualized volatility as percentage
+    """
+    if len(returns) == 0 or returns.std() == 0:
+        return 0.0
+    return returns.std() * np.sqrt(252 * 78) * 100
 
 
 def get_trading_days(end_date: datetime, num_days: int) -> List[datetime]:
@@ -68,7 +89,8 @@ def run_rolling_backtest(
     initial_capital: float = 100000.0,
     end_date: datetime = None,
     start_date: datetime = None,
-    report_only: bool = False
+    report_only: bool = False,
+    quiet: bool = False
 ) -> Dict:
     """
     Run multi-day rolling walk-forward backtest.
@@ -89,11 +111,12 @@ def run_rolling_backtest(
     Returns:
         Dict with comprehensive backtest results
     """
-    print("\n" + "=" * 60)
-    print(f"[STRESS TEST] Multi-Day Rolling Walk-Forward Backtest")
-    print(f"[STRESS TEST] Symbol: {symbol} | Days: {days} | Window: {in_sample_days}+1")
-    print(f"[REALITY] Seed: ${initial_capital:,.0f} | Friction: 1.5bps | Cap: $50k")
-    print("=" * 60)
+    if not quiet:
+        print("\n" + "=" * 60)
+        print(f"[STRESS TEST] Multi-Day Rolling Walk-Forward Backtest")
+        print(f"[STRESS TEST] Symbol: {symbol} | Days: {days} | Window: {in_sample_days}+1")
+        print(f"[REALITY] Seed: ${initial_capital:,.0f} | Friction: 1.5bps | LiqCap: ${LIQUIDITY_CAP_USD/1000:.0f}k")
+        print("=" * 60)
     
     # Initialize clients
     alpaca_client = AlpacaDataClient()
@@ -103,7 +126,8 @@ def run_rolling_backtest(
     # Determine date range: explicit dates override days_back calculation
     if start_date is not None and end_date is not None:
         # Explicit temporal range provided
-        print(f"[TEMPORAL] Syncing Clock to Epoch: {start_date.strftime('%Y-%m-%d')} -> {end_date.strftime('%Y-%m-%d')}")
+        if not quiet:
+            print(f"[TEMPORAL] Syncing Clock to Epoch: {start_date.strftime('%Y-%m-%d')} -> {end_date.strftime('%Y-%m-%d')}")
         
         # Calculate trading days between start and end
         trading_days = []
@@ -126,11 +150,13 @@ def run_rolling_backtest(
         total_days_needed = days + in_sample_days
         trading_days = get_trading_days(end_date, total_days_needed)
     
-    print(f"[STRESS TEST] Date range: {trading_days[0].strftime('%Y-%m-%d')} to {trading_days[-1].strftime('%Y-%m-%d')}")
-    print(f"[STRESS TEST] Total trading days: {len(trading_days)}")
+    if not quiet:
+        print(f"[STRESS TEST] Date range: {trading_days[0].strftime('%Y-%m-%d')} to {trading_days[-1].strftime('%Y-%m-%d')}")
+        print(f"[STRESS TEST] Total trading days: {len(trading_days)}")
     
     # Fetch all historical data upfront (more efficient than per-day calls)
-    print(f"\n[STRESS TEST] Fetching {len(trading_days)} days of 1-minute bars...")
+    if not quiet:
+        print(f"\n[STRESS TEST] Fetching {len(trading_days)} days of 1-minute bars...")
     
     start_str = trading_days[0].strftime('%Y-%m-%d')
     end_str = (trading_days[-1] + timedelta(days=1)).strftime('%Y-%m-%d')
@@ -143,7 +169,8 @@ def run_rolling_backtest(
             end=end_str,
             feed='sip'
         )
-        print(f"[STRESS TEST] Fetched {len(all_bars)} total bars")
+        if not quiet:
+            print(f"[STRESS TEST] Fetched {len(all_bars)} total bars")
     except Exception as e:
         print(f"[STRESS TEST ERROR] Failed to fetch historical data: {e}")
         return {'error': str(e)}
@@ -152,7 +179,8 @@ def run_rolling_backtest(
     news_start = (trading_days[0] - timedelta(days=3)).strftime('%Y-%m-%d')
     news_end = end_str
     
-    print(f"[STRESS TEST] Fetching news from {news_start} to {news_end}...")
+    if not quiet:
+        print(f"[STRESS TEST] Fetching news from {news_start} to {news_end}...")
     try:
         news_list = fmp_client.fetch_historical_news(symbol, news_start, news_end, price_df=all_bars)
     except Exception as e:
@@ -166,8 +194,9 @@ def run_rolling_backtest(
     # Number of complete out-of-sample days we can test
     num_oos_windows = len(trading_days) - in_sample_days
     
-    print(f"\n[STRESS TEST] Processing {num_oos_windows} rolling windows...")
-    print("-" * 60)
+    if not quiet:
+        print(f"\n[STRESS TEST] Processing {num_oos_windows} rolling windows...")
+        print("-" * 60)
     
     # Initialize Report File
     report_path = f"stress_test_report_{symbol}.txt"
@@ -178,13 +207,24 @@ def run_rolling_backtest(
     def log_msg(msg: str, verbose: bool = False):
         """
         Dual-stream logger:
-        - Terminal: ALWAYS print (verbose)
+        - Terminal: Print if not quiet OR if message is critical (WFE-REPORT)
         - File: Write ONLY if not (verbose and report_only)
         """
-        print(msg)
+        if not quiet or "[WFE-REPORT]" in msg:
+            print(msg)
         if not (verbose and report_only):
             with open(report_path, 'a') as f:
                 f.write(msg + "\n")
+
+    # 20-Day Rigid Lock: Track block-level metrics
+    optimal_weights_locked = None  # Weights locked for RETRAIN_INTERVAL days
+    block_is_pnl = 0.0
+    block_oos_pnl = 0.0
+    block_is_dd = 0.0
+    block_oos_dd = 0.0
+    block_is_sharpe = 0.0
+    block_oos_sharpe = 0.0
+    block_start_date = None
 
     for window_idx in range(num_oos_windows):
         # Define window dates
@@ -237,23 +277,69 @@ def run_rolling_backtest(
             log_msg(f"  [SKIP] Insufficient features after warmup: IS={len(is_features)}, OOS={len(oos_features)}", verbose=True)
             continue
         
-        # Optimize weights on in-sample data
-        opt_result = optimize_alpha_weights(
-            is_features,
-            feature_cols=['rsi_14', 'volume_zscore', 'sentiment'],
-            target_col='log_return',
-            horizon=15,
-            metric='hit_rate'
-        )
-        optimal_weights = opt_result['optimal_weights']
-        is_hit_rate = opt_result['best_metric']
+        # 20-Day Rigid Lock: Only optimize weights at start of each block
+        if window_idx % RETRAIN_INTERVAL == 0:
+            # Reset block tracking at start of new block
+            block_start_date = oos_day.strftime('%m/%d')
+            block_is_pnl = 0.0
+            block_oos_pnl = 0.0
+            block_is_dd = 0.0
+            block_oos_dd = 0.0
+            block_is_sharpe = 0.0
+            block_oos_sharpe = 0.0
+            
+            # Optimize weights on in-sample data
+            opt_result = optimize_alpha_weights(
+                is_features,
+                feature_cols=['rsi_14', 'volume_zscore', 'sentiment'],
+                target_col='log_return',
+                horizon=15,
+                metric='hit_rate'
+            )
+            optimal_weights_locked = opt_result['optimal_weights']
+            log_msg(f"  [RIGID-LOCK] New weights locked for {RETRAIN_INTERVAL} days", verbose=True)
         
-        # Calculate alpha on out-of-sample using optimized weights
-        oos_alpha = calculate_alpha_with_weights(oos_features, optimal_weights)
+        # Use locked weights (from Day 1 of this block)
+        optimal_weights = optimal_weights_locked.copy() if optimal_weights_locked else None
         
-        # Generate signal using in-sample threshold (no look-ahead)
+        # SENTIMENT SQUELCH: If news score is 0.5 (neutral), set sentiment weight to 0.0
+        if optimal_weights and 'sentiment' in optimal_weights:
+            # Check OOS sentiment median (representative of the day)
+            if 'sentiment' in oos_features.columns:
+                sent_median = oos_features['sentiment'].median()
+                if abs(sent_median - 0.5) < 0.001:
+                     optimal_weights['sentiment'] = 0.0
+        
+        is_hit_rate = opt_result['best_metric'] if optimal_weights_locked else 0.5
+        
+        # Calculate alpha on IS and OOS using locked weights (squelched if active)
         is_alpha = calculate_alpha_with_weights(is_features, optimal_weights)
+        oos_alpha = calculate_alpha_with_weights(oos_features, optimal_weights)
         threshold = is_alpha.median()
+        
+        # Prepare IS data for simulation (to get IS metrics)
+        is_sim = is_features[['close', 'log_return']].copy()
+        is_sim['signal'] = np.where(is_alpha > threshold, 1, -1)
+        
+        # Simulate IS portfolio with Liquidity Cap
+        # Apply LIQUIDITY_CAP_USD: no single trade exceeds $100k regardless of equity
+        effective_is_cap = min(LIQUIDITY_CAP_USD, cumulative_equity * 0.5)
+        is_pnl_metrics = simulate_portfolio(
+            is_sim,
+            initial_capital=cumulative_equity,
+            friction_bps=1.5,
+            max_position_dollars=100000.0
+        )
+        
+        # Calculate IS metrics for this window
+        is_pnl_dollars = is_pnl_metrics['total_return_dollars']
+        is_dd = abs(is_pnl_metrics['max_drawdown_pct'])
+        is_sharpe = is_pnl_metrics['sharpe_ratio']
+        
+        # Accumulate block-level IS metrics
+        block_is_pnl += is_pnl_dollars
+        block_is_dd = max(block_is_dd, is_dd)
+        block_is_sharpe += is_sharpe
         
         # Prepare OOS data for simulation
         oos_sim = oos_features[['close', 'log_return']].copy()
@@ -268,17 +354,26 @@ def run_rolling_backtest(
         else:
             oos_hit_rate = 0.5
         
-        # Simulate portfolio on OOS with friction and position cap
+        # Simulate portfolio on OOS with Liquidity Cap
+        # Apply LIQUIDITY_CAP_USD: no single trade exceeds $100k regardless of equity
+        effective_oos_cap = min(LIQUIDITY_CAP_USD, cumulative_equity * 0.5)
         pnl_metrics = simulate_portfolio(
             oos_sim, 
             initial_capital=cumulative_equity,
             friction_bps=1.5,
-            max_position_dollars=50000.0
+            max_position_dollars=effective_oos_cap
         )
         
         daily_pnl_dollars = pnl_metrics['total_return_dollars']
         daily_pnl_pct = pnl_metrics['total_return_pct']
+        oos_dd = abs(pnl_metrics['max_drawdown_pct'])
+        oos_sharpe = pnl_metrics['sharpe_ratio']
         cumulative_equity = pnl_metrics['final_equity']
+        
+        # Accumulate block-level OOS metrics
+        block_oos_pnl += daily_pnl_dollars
+        block_oos_dd = max(block_oos_dd, oos_dd)
+        block_oos_sharpe += oos_sharpe
         
         # Calculate WFE
         wfe = calculate_wfe(is_hit_rate, oos_hit_rate)
@@ -293,19 +388,42 @@ def run_rolling_backtest(
             'daily_pnl_dollars': daily_pnl_dollars,
             'daily_pnl_pct': daily_pnl_pct,
             'ending_equity': cumulative_equity,
-            'equity_curve': pnl_metrics['equity_curve']
+            'equity_curve': pnl_metrics['equity_curve'],
+            'is_pnl_dollars': is_pnl_dollars,
+            'is_max_dd': is_dd,
+            'is_sharpe': is_sharpe,
+            'oos_max_dd': oos_dd,
+            'oos_sharpe': oos_sharpe
         }
         daily_results.append(day_result)
         
         # Print day summary
         win_loss = "WIN" if daily_pnl_dollars > 0 else "LOSS"
-        # Window summary is considered 'verbose' in the context of a 252-day run, 
-        # but vital for debugging. User req: "suppress ... [Window X/Y] logs".
-        # We will treat the Hit Rate/PnL lines as verbose too if we want a TRULY minimal report.
-        # But let's stick to the prompt: "suppress the individual '[Window X/Y]' logs". 
-        # I'll enable the flag for these lines too.
         log_msg(f"  IS HR: {is_hit_rate*100:.1f}% | OOS HR: {oos_hit_rate*100:.1f}% | WFE: {wfe:.2f}", verbose=True)
         log_msg(f"  P&L: ${daily_pnl_dollars:+,.2f} ({daily_pnl_pct:+.2f}%) | [{win_loss}]", verbose=True)
+        
+        # WFE-REPORT: Print at end of each 20-day block
+        if (window_idx + 1) % RETRAIN_INTERVAL == 0:
+            block_end_date = oos_day.strftime('%m/%d')
+            days_in_block = min(RETRAIN_INTERVAL, window_idx + 1)
+            
+            # FIX WFE SIGN LOGIC:
+            # If OOS_PnL < 0 and IS_PnL > 0, Profit-WFE MUST be negative
+            # Formula: Profit-WFE = OOS_PnL / abs(IS_PnL)
+            if block_is_pnl != 0:
+                profit_wfe = block_oos_pnl / abs(block_is_pnl)
+            else:
+                profit_wfe = 0.0
+            
+            dd_wfe = block_oos_dd / block_is_dd if block_is_dd != 0 else 0.0
+            avg_is_sharpe = block_is_sharpe / days_in_block
+            avg_oos_sharpe = block_oos_sharpe / days_in_block
+            sharpe_wfe = avg_oos_sharpe / avg_is_sharpe if avg_is_sharpe != 0 else 0.0
+            
+            log_msg(f"\n[WFE-REPORT] Ticker: {symbol} | Blocks: {(window_idx + 1) // RETRAIN_INTERVAL}")
+            log_msg(f"  Profit-WFE: {profit_wfe:.2f}")
+            log_msg(f"  Drawdown-WFE: {dd_wfe:.2f}")
+            log_msg(f"  Sharpe-WFE: {sharpe_wfe:.2f}")
     
     # Aggregate results
     if not daily_results:

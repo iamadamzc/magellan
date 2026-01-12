@@ -867,7 +867,7 @@ def generate_master_signal(
         
         if cryo_count > 0:
             cryo_active = True
-            LOG.cryogen(f"[CRYOGEN] VSS Cooling ACTIVE: {cryo_count} bars exceed 1.5x baseline temp")
+            # LOG.cryogen(f"[CRYOGEN] VSS Cooling ACTIVE: {cryo_count} bars exceed 1.5x baseline temp")
     # -------------------------------------------------------------------------
     
     # Calculate rolling statistics for dynamic threshold (Fermi_Gate)
@@ -876,10 +876,10 @@ def generate_master_signal(
     fermi_gate = alpha_mean + (sigma_multiplier * alpha_std)
     
     # -------------------------------------------------------------------------
-    # HYSTERESIS DEADBAND: Anti-Chatter Logic (0.02 threshold)
+    # HYSTERESIS DEADBAND: Anti-Chatter Logic (0.05 threshold)
     # Prevents rapid state oscillations at threshold boundaries
     # -------------------------------------------------------------------------
-    HYSTERESIS_DEADBAND = 0.02
+    HYSTERESIS_DEADBAND = 0.05
     
     # Apply High-Pass Gate with directional signals
     fire_buy_count = 0
@@ -923,7 +923,7 @@ def generate_master_signal(
             df.loc[idx, 'damping_factor'] = cryo_scaling
             action = "DAMP"
             cryo_silence_count += 1
-            LOG.cryogen(f"[CRYOGEN] VSS Temp: {temp_val:.4f} | Status: {action} | Metabolism: {cryo_metabolism}%")
+            # LOG.cryogen(f"[CRYOGEN] VSS Temp: {temp_val:.4f} | Status: {action} | Metabolism: {cryo_metabolism}%")
             LOG.info(f"[LAM] Damping Active | Metabolism: {cryo_metabolism}%")
             prev_state = 'FILTER'
             df.loc[idx, 'prev_state'] = prev_state
@@ -981,7 +981,7 @@ def generate_master_signal(
             df.loc[idx, 'damping_factor'] = carrier_scaling
             df.loc[idx, 'prev_state'] = prev_state
             phase_lock_silence += 1
-            LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Gate: {carrier_gate:.2f} | Status: {action}")
+            # LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Gate: {carrier_gate:.2f} | Status: {action}")
             LOG.info(f"[LAM] Damping Active | Metabolism: {carrier_metabolism}%")
             continue
         
@@ -1044,9 +1044,9 @@ def generate_master_signal(
         
         # PHASE-LOCK TELEMETRY: Report per-bar decision for observability
         if ticker == 'VSS':
-            LOG.cryogen(f"[CRYOGEN] VSS Temp: {temp_val:.4f} | Status: {action}")
+            pass # LOG.cryogen(f"[CRYOGEN] VSS Temp: {temp_val:.4f} | Status: {action}")
         else:
-            LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Status: {action}")
+            pass # LOG.phase_lock(f"[PHASE-LOCK] Ticker: {ticker} | Carrier: {c_score:.4f} | Status: {action}")
     
     # Summary Telemetry
     LOG.stats(f"[SIGNAL] Fermi Gate: {fermi_gate:.4f} (Mean={alpha_mean:.4f} + {sigma_multiplier}*StdDev={alpha_std:.4f})")

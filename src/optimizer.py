@@ -8,6 +8,9 @@ import numpy as np
 from typing import Dict, Tuple, List
 from scipy.stats import spearmanr
 
+# Retrain interval for weight optimization (trading days)
+RETRAIN_INTERVAL = 3
+
 
 def optimize_alpha_weights(
     df: pd.DataFrame,
@@ -42,7 +45,7 @@ def optimize_alpha_weights(
     working_df = working_df.dropna()
     
     if len(working_df) < 50:
-        print("[OPTIMIZER] Insufficient data for optimization")
+        # print("[OPTIMIZER] Insufficient data for optimization")
         return {
             'optimal_weights': {col: 1.0/len(feature_cols) for col in feature_cols},
             'best_metric': 0.0,
@@ -167,6 +170,7 @@ def print_optimizer_result(result: Dict, static_weights: Dict[str, float] = None
         result: Dict from optimize_alpha_weights()
         static_weights: Optional dict of static weights for comparison
     """
+    """
     print("\n" + "=" * 60)
     print("[OPTIMIZER] Weight Optimization Results")
     print("=" * 60)
@@ -202,3 +206,5 @@ def print_optimizer_result(result: Dict, static_weights: Dict[str, float] = None
             print(f"  {display:<15} {static*100:>6.0f}%    {optimal*100:>6.0f}%")
     
     print("=" * 60)
+    """
+    pass
