@@ -290,6 +290,10 @@ class FMPDataClient:
                             sent_val = sentiment_map.get(sent_val.lower(), 0.0)
                         sentiments.append(float(sent_val))
                 
+                # Check for 0.5 baseline saturation (STALE_DATA signature)
+                if sentiments and all(abs(s - 0.5) < 0.001 for s in sentiments):
+                     print("[FMP] STALE_DATA Detected (All 0.5) - Squelch candidate")
+                
                 # If no sentiment fields, use news frequency as proxy (normalized)
                 if sentiments:
                     avg_sentiment = sum(sentiments) / len(sentiments)
@@ -454,6 +458,7 @@ class FMPDataClient:
                             
                         all_news.extend(synthetic_news)
                         print(f"[FMP] Injected {len(synthetic_news)} neutral baseline articles")
+                        print(f"[FMP] Tagging as STALE_DATA (0.5) for Backtester Squelch")
                         
                     except Exception as err:
                         print(f"[FMP ERROR] Failed to generate baseline: {err}")

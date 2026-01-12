@@ -279,6 +279,9 @@ def run_rolling_backtest(
         
         # 20-Day Rigid Lock: Only optimize weights at start of each block
         if window_idx % RETRAIN_INTERVAL == 0:
+            # Telemetry for adaptive metabolism
+            log_msg(f"[METABOLISM] Ticker: {symbol} | Retraining Active (3-Day Window)")
+            
             # Reset block tracking at start of new block
             block_start_date = oos_day.strftime('%m/%d')
             block_is_pnl = 0.0
@@ -307,8 +310,9 @@ def run_rolling_backtest(
             # Check OOS sentiment median (representative of the day)
             if 'sentiment' in oos_features.columns:
                 sent_median = oos_features['sentiment'].median()
-                if abs(sent_median - 0.5) < 0.001:
+                if abs(sent_median - 0.5) < 0.000001:  # Exactly 0.5
                      optimal_weights['sentiment'] = 0.0
+                     log_msg("[SQUELCH] Sentiment Static Detected | Switching to Pure Physics")
         
         is_hit_rate = opt_result['best_metric'] if optimal_weights_locked else 0.5
         
