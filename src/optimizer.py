@@ -8,8 +8,10 @@ import numpy as np
 from typing import Dict, Tuple, List
 from scipy.stats import spearmanr
 
-# Retrain interval for weight optimization (trading days)
-RETRAIN_INTERVAL = 3
+from src.config_loader import EngineConfig
+
+# Retrain interval for weight optimization (trading days) - loaded from config
+RETRAIN_INTERVAL = EngineConfig().get('RETRAIN_INTERVAL', strict=True)
 
 
 def optimize_alpha_weights(

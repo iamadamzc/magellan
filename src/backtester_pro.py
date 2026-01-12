@@ -14,10 +14,12 @@ from src.features import FeatureEngineer, add_technical_indicators, merge_news_p
 from src.discovery import trim_warmup_period
 from src.optimizer import optimize_alpha_weights, calculate_alpha_with_weights, RETRAIN_INTERVAL
 from src.pnl_tracker import simulate_portfolio, calculate_max_drawdown
+from src.config_loader import EngineConfig
 
 # LIQUIDITY CAP: Maximum trade size to prevent runaway compounding
 # Regardless of Virtual Equity, no single trade can exceed this amount
-LIQUIDITY_CAP_USD = 100000.0
+LIQUIDITY_CAP_USD = float(EngineConfig().get('POSITION_CAP', strict=True))
+
 
 
 def calculate_wfe(in_sample_hr: float, out_sample_hr: float) -> float:
@@ -332,7 +334,7 @@ def run_rolling_backtest(
             is_sim,
             initial_capital=cumulative_equity,
             friction_bps=1.5,
-            max_position_dollars=100000.0
+            max_position_dollars=LIQUIDITY_CAP_USD
         )
         
         # Calculate IS metrics for this window
