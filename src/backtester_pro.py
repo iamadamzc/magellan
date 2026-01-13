@@ -318,9 +318,18 @@ def run_rolling_backtest(
         
         is_hit_rate = opt_result['best_metric'] if optimal_weights_locked else 0.5
         
+        # AG: TEMPORAL LEAK PATCH - Backtester Integrity
+        # CRITICAL: Alpha Score must ONLY use HISTORICAL features, never forward_return
+        # Forward_return is for VALIDATION (truth) only, not SIGNAL (decision)
+        
+        # Sanitize features before alpha calculation - drop forward_return if present
+        is_features_clean = is_features.drop(columns=['forward_return'], errors='ignore')
+        oos_features_clean = oos_features.drop(columns=['forward_return'], errors='ignore')
+        
         # Calculate alpha on IS and OOS using locked weights (squelched if active)
-        is_alpha = calculate_alpha_with_weights(is_features, optimal_weights)
-        oos_alpha = calculate_alpha_with_weights(oos_features, optimal_weights)
+        # Using cleaned features WITHOUT forward_return
+        is_alpha = calculate_alpha_with_weights(is_features_clean, optimal_weights)
+        oos_alpha = calculate_alpha_with_weights(oos_features_clean, optimal_weights)
         threshold = is_alpha.median()
         
         # Prepare IS data for simulation (to get IS metrics)

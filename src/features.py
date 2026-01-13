@@ -721,6 +721,13 @@ def generate_master_signal(
     Returns:
         DataFrame with 'alpha_score' column added (mutates in-place)
     """
+    # AG: TEMPORAL LEAK PATCH - Signal Generation Sanitization
+    # CRITICAL: Ensure forward_return is NEVER used in signal generation
+    # Drop it entirely if somehow present in the input DataFrame
+    if 'forward_return' in df.columns:
+        LOG.warning(f"[LEAK-PATCH] WARNING: forward_return found in signal input for {ticker}, dropping it!")
+        df = df.drop(columns=['forward_return'])
+    
     # Shootout telemetry for phase-locked comparison
     if ticker in ['IWM', 'VSS']:
         LOG.info("[SHOOTOUT] Normalizing Reference Frames: IWM vs VSS @ 5Min")

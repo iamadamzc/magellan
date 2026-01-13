@@ -215,16 +215,12 @@ def force_resample_ohlcv(
 class FMPDataClient:
     """Client for fetching fundamental and sentiment data from Financial Modeling Prep API."""
     
-    def __init__(self, use_legacy_fallback: bool = False) -> None:
+    def __init__(self) -> None:
         """
         Initialize the FMP Data Client.
         
         Credentials are loaded from environment variable:
         - FMP_API_KEY: Financial Modeling Prep API key
-        
-        Args:
-            use_legacy_fallback: If True, attempt legacy v3 endpoint after stable fails.
-                                 Only enable if your account has legacy access.
         """
         self.api_key = os.getenv('FMP_API_KEY')
         if not self.api_key:
@@ -232,13 +228,119 @@ class FMPDataClient:
         
         self.base_url_stable = "https://financialmodelingprep.com/stable"
         self.base_url_v3 = "https://financialmodelingprep.com/api/v3"
-        self.use_legacy_fallback = use_legacy_fallback
+    
+    def fetch_historical_bars(
+        self, 
+        symbol: str, 
+        timeframe: str, 
+        start: str, 
+        end: str
+    ) -> pd.DataFrame:
+        """
+        Fetch historical OHLCV bars from FMP v3 API using 1-minute data,
+        then resample to target timeframe with fill-forward.
+        
+        Args:
+            symbol: Stock symbol (e.g., 'SPY')
+            timeframe: Target timeframe (e.g., '1Hour') - auto-resampled from 1min
+            start: Start date in ISO format (e.g., '2026-01-08')
+            end: End date in ISO format (e.g., '2026-01-09')
+        
+        Returns:
+            DataFrame with lowercase OHLCV columns ['open', 'high', 'low', 'close', 'volume']
+            and DatetimeIndex (timezone-naive UTC)
+        """
+        import requests
+        
+        # FORCE 1-minute resolution for maximum granularity
+        url = f"{self.base_url_v3}/historical-chart/1min/{symbol}"
+        
+        params = {
+            'from': start,
+            'to': end,
+            'apikey': self.api_key
+        }
+        
+        masked_url = f"{url}?from={start}&to={end}&apikey={self.api_key[:4]}..."
+        print(f"[FMP] Fetching 1min bars: {masked_url}")
+        
+        try:
+            response = requests.get(url, params=params, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Check for empty data
+            if not data or len(data) == 0:
+                print(f"[CRITICAL] FMP Ultimate 1min stream empty for {symbol}")
+                return pd.DataFrame(columns=['open', 'high', 'low', 'close', 'volume'])
+            
+            # Convert JSON to DataFrame
+            df = pd.DataFrame(data)
+            
+            # FMP returns 'date' column in format: "YYYY-MM-DD HH:MM:SS"
+            df['timestamp'] = pd.to_datetime(df['date'])
+            df = df.set_index('timestamp')
+            
+            # Sort ascending (FMP sometimes returns reverse chronological)
+            df = df.sort_index(ascending=True)
+            
+            # Ensure timezone-naive UTC
+            if df.index.tz is not None:
+                df.index = df.index.tz_convert('UTC').tz_localize(None)
+            
+            # Normalize column names to lowercase
+            df.columns = df.columns.str.lower()
+            
+            # Select only OHLCV columns
+            ohlcv_cols = ['open', 'high', 'low', 'close', 'volume']
+            df = df[[col for col in ohlcv_cols if col in df.columns]]
+            
+            print(f"[FMP] Fetched {len(df)} 1min bars for {symbol}")
+            
+            # RESAMPLE TO 1-HOUR with standard OHLCV aggregation
+            print(f"[FMP] Resampling to 1H resolution...")
+            
+            agg_rules = {
+                'open': 'first',
+                'high': 'max',
+                'low': 'min',
+                'close': 'last',
+                'volume': 'sum'
+            }
+            
+            # Resample with label='left' (bar labeled by start time)
+            df_resampled = df.resample('1h', label='left', closed='left').agg(agg_rules)
+            
+            # IMPLEMENT FILL-FORWARD to eliminate blackout gaps
+            # Forward-fill price columns only (not volume)
+            price_cols = ['open', 'high', 'low', 'close']
+            df_resampled[price_cols] = df_resampled[price_cols].ffill()
+            
+            # Fill volume NaN with 0 (no trading = zero volume)
+            df_resampled['volume'] = df_resampled['volume'].fillna(0)
+            
+            # Drop any remaining NaN rows (start of series edge case)
+            df_resampled = df_resampled.dropna()
+            
+            print(f"[FMP] Resampled to {len(df_resampled)} 1H bars (fill-forward applied)")
+            
+            return df_resampled
+            
+        except requests.exceptions.HTTPError as e:
+            print(f"[FMP ERROR] HTTP error fetching historical bars: {e}")
+            if e.response is not None:
+                print(f"[FMP ERROR] Response: {e.response.text[:200]}")
+            return pd.DataFrame(columns=['open', 'high', 'low', 'close', 'volume'])
+        except Exception as e:
+            print(f"[FMP ERROR] Unexpected error: {e}")
+            return pd.DataFrame(columns=['open', 'high', 'low', 'close', 'volume'])
     
     def fetch_news_sentiment(self, symbol: str) -> dict:
         """
-        Fetch rolling news sentiment for a given symbol using FMP Stable API.
+        Fetch rolling news sentiment for a given symbol using FMP Stable stock-latest API.
         
-        Uses stable endpoint first. Legacy v3 fallback only if enabled in constructor.
+        HARDWIRED: https://financialmodelingprep.com/stable/news/stock-latest
+        LIMIT: 250 articles for maximum bandwidth.
         
         Args:
             symbol: Stock symbol (e.g., 'SPY')
@@ -250,86 +352,84 @@ class FMPDataClient:
         import requests
         from datetime import datetime
         
-        # Build endpoint list: stable first, then legacy v3 only if enabled
-        endpoints = [
-            ('stable', f"{self.base_url_stable}/news/stock", {'symbols': symbol, 'limit': 50, 'apikey': self.api_key}),
-        ]
-        if self.use_legacy_fallback:
-            endpoints.append(
-                ('v3-legacy', f"{self.base_url_v3}/stock_news", {'tickers': symbol, 'limit': 50, 'apikey': self.api_key})
-            )
-        
-        for api_version, url, params in endpoints:
-            # Create masked URL for debugging
-            param_key = 'symbols' if api_version == 'stable' else 'tickers'
-            masked_url = f"{url}?{param_key}={symbol}&limit=50&apikey={self.api_key[:4]}..."
+        # HARDWIRED: Stable news/stock-latest endpoint
+        url = "https://financialmodelingprep.com/stable/news/stock-latest"
+        params = {
+            'symbol': symbol,
+            'limit': 250,
+            'apikey': self.api_key
+        }
             
-            try:
-                print(f"[FMP] Attempting {api_version.upper()} news endpoint: {masked_url}")
-                response = requests.get(url, params=params, timeout=10)
-                response.raise_for_status()
-                data = response.json()
-                
-                # Check if response is empty - try next endpoint
-                if not data or len(data) == 0:
-                    print(f"[FMP] Empty response from {api_version.upper()}, trying next endpoint...")
-                    continue
-                
-                # Success - process the data
-                print(f"[FMP] Successfully fetched from {api_version.upper()}")
-                
-                # Calculate proxy sentiment from news articles
-                sentiments = []
-                for article in data:
-                    if 'sentiment' in article and article['sentiment'] is not None:
-                        # Convert sentiment string to numeric if needed
-                        sent_val = article['sentiment']
-                        if isinstance(sent_val, str):
-                            # Map common sentiment strings to values
-                            sentiment_map = {'positive': 0.5, 'neutral': 0.0, 'negative': -0.5}
-                            sent_val = sentiment_map.get(sent_val.lower(), 0.0)
-                        sentiments.append(float(sent_val))
-                
-                # Check for 0.5 baseline saturation (STALE_DATA signature)
-                if sentiments and all(abs(s - 0.5) < 0.001 for s in sentiments):
-                     print("[FMP] STALE_DATA Detected (All 0.5) - Squelch candidate")
-                
-                # If no sentiment fields, use news frequency as proxy (normalized)
-                if sentiments:
-                    avg_sentiment = sum(sentiments) / len(sentiments)
-                else:
-                    # Proxy: More news = higher engagement, normalize by expected baseline
-                    news_count = len(data)
-                    avg_sentiment = min((news_count - 10) / 40.0, 1.0) if news_count > 10 else 0.0
-                
-                # Extract most recent publishedDate
-                published_date = datetime.utcnow()
-                if data and 'publishedDate' in data[0]:
-                    try:
-                        published_date = pd.to_datetime(data[0]['publishedDate'])
-                    except:
-                        pass
-                
-                print(f"[FMP] Processed {len(data)} articles, proxy sentiment: {avg_sentiment:.4f}")
-                
+        masked_url = f"{url}?symbol={symbol}&limit=250&apikey={self.api_key[:4]}..."
+        
+        try:
+            print(f"[FMP] Attempting News Upgrade endpoint: {masked_url}")
+            response = requests.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Check if response is empty
+            if not data or len(data) == 0:
+                print(f"[FMP] Empty response from News Upgrade endpoint")
                 return {
                     'symbol': symbol,
-                    'sentiment': float(avg_sentiment),
-                    'publishedDate': published_date
+                    'sentiment': 0.0,
+                    'publishedDate': datetime.utcnow()
                 }
-                
-            except requests.exceptions.HTTPError as e:
-                if e.response.status_code == 403:
-                    print(f"[FMP] 403 Forbidden on {api_version.upper()}, trying next endpoint...")
-                    continue
-                print(f"[FMP ERROR] HTTP error on {api_version.upper()}: {e}")
-                continue
-            except requests.exceptions.RequestException as e:
-                print(f"[FMP ERROR] Network error on {api_version.upper()}: {e}")
-                continue
+            
+            # Success - process the data
+            print(f"[FMP] Successfully fetched {len(data)} articles")
+            
+            # Calculate proxy sentiment from news articles
+            sentiments = []
+            for article in data:
+                if 'sentiment' in article and article['sentiment'] is not None:
+                    # Convert sentiment string to numeric if needed
+                    sent_val = article['sentiment']
+                    if isinstance(sent_val, str):
+                        # Map common sentiment strings to values
+                        sentiment_map = {'positive': 0.5, 'neutral': 0.0, 'negative': -0.5}
+                        sent_val = sentiment_map.get(sent_val.lower(), 0.0)
+                    sentiments.append(float(sent_val))
+            
+            # Check for 0.5 baseline saturation (STALE_DATA signature)
+            if sentiments and all(abs(s - 0.5) < 0.001 for s in sentiments):
+                    print("[FMP] STALE_DATA Detected (All 0.5) - Squelch candidate")
+            
+            # If no sentiment fields, use news frequency as proxy (normalized)
+            if sentiments:
+                avg_sentiment = sum(sentiments) / len(sentiments)
+            else:
+                # Proxy: More news = higher engagement, normalize by expected baseline
+                news_count = len(data)
+                avg_sentiment = min((news_count - 10) / 40.0, 1.0) if news_count > 10 else 0.0
+            
+            # Extract most recent publishedDate
+            published_date = datetime.utcnow()
+            if data and 'publishedDate' in data[0]:
+                try:
+                    published_date = pd.to_datetime(data[0]['publishedDate'])
+                except:
+                    pass
+            
+            print(f"[FMP] Processed {len(data)} articles, proxy sentiment: {avg_sentiment:.4f}")
+            
+            return {
+                'symbol': symbol,
+                'sentiment': float(avg_sentiment),
+                'publishedDate': published_date
+            }
+            
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 403:
+                print(f"[FMP] 403 Forbidden on News Upgrade endpoint")
+            else:
+                print(f"[FMP ERROR] HTTP error: {e}")
+        except requests.exceptions.RequestException as e:
+            print(f"[FMP ERROR] Network error: {e}")
         
-        # All endpoints failed - return default
-        print(f"[FMP] All endpoints failed for {symbol}, defaulting to sentiment=0")
+        # Default return on failure
+        print(f"[FMP] News fetch failed for {symbol}, defaulting to sentiment=0")
         return {
             'symbol': symbol,
             'sentiment': 0.0,
@@ -479,7 +579,7 @@ class FMPDataClient:
         """
         Fetch fundamental metrics for a given symbol using FMP Stable API.
         
-        Uses stable endpoint first. Legacy v3 fallback only if enabled in constructor.
+        Uses stable quote endpoint.
         
         Args:
             symbol: Stock symbol (e.g., 'SPY')
@@ -490,54 +590,42 @@ class FMPDataClient:
         import requests
         from datetime import datetime
         
-        # Build endpoint list: stable first, then legacy v3 only if enabled
-        # Stable uses query param: /stable/quote?symbol=SPY
-        # Legacy v3 uses path param: /api/v3/quote/SPY
-        endpoints = [
-            ('stable', f"{self.base_url_stable}/quote", {'symbol': symbol, 'apikey': self.api_key}),
-        ]
-        if self.use_legacy_fallback:
-            endpoints.append(
-                ('v3-legacy', f"{self.base_url_v3}/quote/{symbol}", {'apikey': self.api_key})
-            )
+        # Hardwired: Stable Quote
+        url = f"{self.base_url_stable}/quote"
+        params = {'symbol': symbol, 'apikey': self.api_key}
         
-        for api_version, url, params in endpoints:
-            try:
-                print(f"[FMP] Attempting {api_version.upper()} quote endpoint for {symbol}")
-                response = requests.get(url, params=params, timeout=10)
-                response.raise_for_status()
-                data = response.json()
-                
-                # Check if response is empty - try next endpoint
-                if not data or len(data) == 0:
-                    print(f"[FMP] Empty response from {api_version.upper()}, trying next endpoint...")
-                    continue
-                
-                # Success - process the data
-                # FMP returns a list with one item for both stable and legacy
-                quote = data[0] if isinstance(data, list) else data
-                
-                return {
-                    'symbol': symbol,
-                    'mktCap': float(quote.get('marketCap', 0.0)),
-                    'pe': float(quote.get('pe', 0.0)),
-                    'avgVolume': float(quote.get('avgVolume', 0.0)),
-                    'timestamp': datetime.utcnow()
-                }
-                
-            except requests.exceptions.HTTPError as e:
-                if e.response.status_code == 403:
-                    print(f"[FMP] 403 Forbidden on {api_version.upper()}, trying next endpoint...")
-                    continue
-                print(f"[FMP ERROR] HTTP error on {api_version.upper()}: {e}")
-                continue
-            except (KeyError, IndexError, ValueError) as e:
-                print(f"[FMP ERROR] Parse error on {api_version.upper()}: {e}")
-                continue
-            except requests.exceptions.RequestException as e:
-                print(f"[FMP ERROR] Network error on {api_version.upper()}: {e}")
-                continue
-        
-        # All endpoints failed
-        print(f"[FMP ERROR] All endpoints failed for {symbol}")
-        raise ValueError(f"Failed to fetch fundamental data for {symbol} from all API versions")
+        try:
+            print(f"[FMP] Attempting Stable Quote endpoint for {symbol}")
+            response = requests.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Check if response is empty
+            if not data or len(data) == 0:
+                print(f"[FMP] Empty response from Quote endpoint")
+                raise ValueError(f"No Data for {symbol}")
+            
+            # Success - process the data
+            # FMP returns a list with one item
+            quote = data[0] if isinstance(data, list) else data
+            
+            return {
+                'symbol': symbol,
+                'mktCap': float(quote.get('marketCap', 0.0)),
+                'pe': float(quote.get('pe', 0.0)),
+                'avgVolume': float(quote.get('avgVolume', 0.0)),
+                'timestamp': datetime.utcnow()
+            }
+            
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 403:
+                print(f"[FMP] 403 Forbidden on Quote endpoint")
+            else:
+                print(f"[FMP ERROR] HTTP error: {e}")
+            raise ValueError(f"Failed to fetch fundamental data for {symbol}")
+        except (KeyError, IndexError, ValueError) as e:
+            print(f"[FMP ERROR] Parse error: {e}")
+            raise
+        except requests.exceptions.RequestException as e:
+            print(f"[FMP ERROR] Network error: {e}")
+            raise

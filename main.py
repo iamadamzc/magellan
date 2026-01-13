@@ -200,7 +200,11 @@ async def process_ticker(
         feature_matrix_live = trim_warmup_period(feature_matrix_live, warmup_rows=20)
         
         LOG.info(f"[LIVE {ticker}] Step 5: Generating signal...")
+        # AG: TEMPORAL LEAK PATCH - Feature Isolation
+        # CRITICAL: Ensure 'forward_return' is NEVER in feature set for signal generation
         cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
+        # Safety check: Explicitly exclude forward_return if somehow present
+        cols_needed = [col for col in cols_needed if col != 'forward_return']
         working_df = feature_matrix_live[cols_needed].copy()
         working_df['forward_return'] = working_df['log_return'].shift(-15)
         working_df = working_df.dropna()
@@ -368,6 +372,7 @@ async def live_trading_loop(
 
 
 def main() -> None:
+    global TICKERS, MAG7_UNIVERSE
     """Main entry point for the Magellan data pipeline."""
     
     # Parse command-line arguments
@@ -415,6 +420,12 @@ def main() -> None:
         type=str,
         help='Comma-separated list of tickers to override config'
     )
+    parser.add_argument(
+        '--data-source',
+        type=str,
+        default='FMP',
+        choices=['FMP', 'Alpaca'],
+        help='Force a specific data provider')
     args = parser.parse_args()
     
     # Load environment variables into os.environ
@@ -713,7 +724,11 @@ def main() -> None:
                     from src.optimizer import calculate_alpha_with_weights
                     
                     # Get out-of-sample split
+                    # AG: TEMPORAL LEAK PATCH - Feature Isolation  
+                    # CRITICAL: forward_return is TARGET only, never a FEATURE
                     cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
+                    # Safety check: Explicitly exclude forward_return if somehow present
+                    cols_needed = [col for col in cols_needed if col != 'forward_return']
                     working_df = feature_matrix[cols_needed].copy()
                     working_df['forward_return'] = working_df['log_return'].shift(-15)
                     working_df = working_df.dropna()
