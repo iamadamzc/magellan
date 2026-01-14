@@ -7,3 +7,14 @@ __pycache__/
 data/
 reports/archive/
 velocity_report_*.txt
+
+# Test outputs and backtest results
+equity_curve_*.csv
+stress_test_*.csv
+stress_test_*.txt
+
+# Cache directories
+.cache/
+
+# Temporary debug scripts
+inspect_*.py

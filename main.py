@@ -30,6 +30,10 @@ TICKERS = ["NVDA"]
 # NVDA ISOLATION ENFORCEMENT: Initial Universe (expanded dynamically)
 MAG7_UNIVERSE = frozenset(["NVDA", "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA"])
 
+# HOT START PROTOCOL: 252-bar warmup buffer for rolling normalization
+# This ensures the 252-bar rolling window in features.py is fully populated at T=0
+WARMUP_BUFFER = 252
+
 
 def validate_mag7_ticker(ticker: str) -> bool:
     """
@@ -106,7 +110,8 @@ async def process_ticker(
     bar_end: str,
     news_start: str,
     news_end: str,
-    allocation_pct: float = 0.25
+    allocation_pct: float = 0.25,
+    max_position_size: float = None
 ) -> dict:
     """
     Process a single ticker: fetch data, engineer features, generate signal, execute.
@@ -153,16 +158,23 @@ async def process_ticker(
         LOG.config(f"[NODE] Initialized {ticker} | Lookback: {rsi_lookback} | Gate: {sentry_gate}")
         LOG.config(f"[NODE] {ticker} mapping {interval_str} to {type(interval_enum)}")
 
+        # Apply Risk Guard if specified
+        if max_position_size is not None:
+             node_config['position_cap_usd'] = max_position_size
+             LOG.info(f"[RISK GUARD] Capping {ticker} exposure limit to ${max_position_size:,.2f}")
+
         # Step 1: Fetch bars from Alpaca
         LOG.info(f"\n[STEP 1] Fetching {ticker} {interval_str} bars from Alpaca (SIP feed)...")
+        LOG.info(f"[HOT START] Fetching {WARMUP_BUFFER}-bar trailing history for normalization warmup")
         bars = alpaca_client.fetch_historical_bars(
             symbol=ticker,
             timeframe=interval_enum,
             start=bar_start,
             end=bar_end,
-            feed='sip'
+            feed='sip',
+            lookback_buffer=WARMUP_BUFFER
         )
-        LOG.info(f"[{ticker}] Fetched {len(bars)} bars")
+        LOG.info(f"[{ticker}] Fetched {len(bars)} bars (includes {WARMUP_BUFFER} warmup)")
         
         # FORCE-VERIFY: Resample if fetched data doesn't match requested interval
         bars, was_resampled, actual_secs, expected_secs = force_resample_ohlcv(
@@ -198,6 +210,13 @@ async def process_ticker(
         generate_master_signal(feature_matrix_live, node_config=node_config, ticker=ticker)
         
         feature_matrix_live = trim_warmup_period(feature_matrix_live, warmup_rows=20)
+        
+        # HOT START: Strip warmup buffer for live trading
+        # Ensure signal generation only uses fully-warmed normalization windows
+        if len(feature_matrix_live) > WARMUP_BUFFER:
+            LOG.info(f"[HOT START] [{ticker}] Isolating {WARMUP_BUFFER} warmup bars from live trading window")
+            feature_matrix_live = feature_matrix_live.iloc[WARMUP_BUFFER:].copy()
+            LOG.success(f"[HOT START: ARMED] [{ticker}] Rolling normalization fully populated. Trading bars: {len(feature_matrix_live)}")
         
         LOG.info(f"[LIVE {ticker}] Step 5: Generating signal...")
         # AG: TEMPORAL LEAK PATCH - Feature Isolation
@@ -259,7 +278,9 @@ async def live_trading_loop(
     alpaca_client,
     fmp_client,
     feature_engineer,
-    node_configs: dict
+
+    node_configs: dict,
+    max_position_size: float = None
 ) -> None:
     """
     Async live trading loop for multi-symbol basket processing.
@@ -336,7 +357,8 @@ async def live_trading_loop(
                     bar_end=bar_end,
                     news_start=news_start,
                     news_end=news_end,
-                    allocation_pct=allocation_pct
+                    allocation_pct=allocation_pct,
+                    max_position_size=max_position_size
                 )
                 for ticker in TICKERS
             ]
@@ -426,10 +448,35 @@ def main() -> None:
         default='FMP',
         choices=['FMP', 'Alpaca'],
         help='Force a specific data provider')
+    parser.add_argument(
+        '--config',
+        type=str,
+        help='Path to JSON config file (default: src/configs/mag7_default.json)')
+    parser.add_argument(
+        '--max-position-size',
+        type=float,
+        default=None,
+        help='Maximum dollar amount allowed for a single ticker position'
+    )
     args = parser.parse_args()
     
     # Load environment variables into os.environ
     load_env_file()
+    
+    # =========================================================================
+    # CONFIG LOADING LOGIC
+    # =========================================================================
+    # Initialize EngineConfig singleton (global engine configuration)
+    from src.config_loader import EngineConfig
+    
+    if args.config:
+        # Custom config specified via CLI
+        print(f"[INFO] ENGINE: Loading custom config from {args.config}")
+        engine_config = EngineConfig(config_path=args.config)
+    else:
+        # Fall back to default config
+        print("[INFO] ENGINE: Loading default config (mag7_default.json)")
+        engine_config = EngineConfig()
     
     # Initialize Logger Config
     LOG.set_research_mode(args.quiet)
@@ -557,14 +604,16 @@ def main() -> None:
         try:
             # Step 1: Fetch bars from Alpaca
             LOG.info(f"\n[STEP 1] Fetching {symbol} {interval_str} bars from Alpaca (SIP feed)...")
+            LOG.info(f"[HOT START] Fetching {WARMUP_BUFFER}-bar trailing history for normalization warmup")
             bars = alpaca_client.fetch_historical_bars(
                 symbol=symbol,
                 timeframe=target_tf,
                 start=bar_start_date,
                 end=bar_end_date,
-                feed='sip'
+                feed='sip',
+                lookback_buffer=WARMUP_BUFFER
             )
-            LOG.success(f"[SUCCESS] Fetched {len(bars)} bars")
+            LOG.success(f"[SUCCESS] Fetched {len(bars)} bars (includes {WARMUP_BUFFER} warmup)")
             
             # FORCE-VERIFY: Resample if fetched data doesn't match requested interval
             bars, was_resampled, actual_secs, expected_secs = force_resample_ohlcv(
@@ -610,6 +659,23 @@ def main() -> None:
             
             # Trim warmup period (20 rows) to remove NaN skew from rolling calculations
             feature_matrix = trim_warmup_period(feature_matrix, warmup_rows=20)
+            
+            # HOT START: Strip warmup buffer for trading window (252 bars)
+            # The warmup buffer was already processed through feature engineering for rolling normalization
+            # Now exclude it from validation and backtesting
+            warmup_data_size = min(WARMUP_BUFFER, len(feature_matrix))
+            if len(feature_matrix) > WARMUP_BUFFER:
+                LOG.info(f"[HOT START] Isolating {WARMUP_BUFFER} warmup bars from trading window")
+                feature_matrix_warmup = feature_matrix.iloc[:WARMUP_BUFFER].copy()
+                feature_matrix = feature_matrix.iloc[WARMUP_BUFFER:].copy()
+                LOG.success(f"[HOT START: ARMED] Warmup complete. Rolling normalization fully populated.")
+                LOG.info(f"[HOT START] Trading window: {len(feature_matrix)} bars (warmup excluded from P&L)")
+                
+                # Verify first bar timestamp
+                first_bar_time = feature_matrix.index[0]
+                LOG.info(f"[HOT START] First trading bar timestamp: {first_bar_time}")
+            else:
+                LOG.warning(f"[{symbol}] Insufficient data for warmup isolation ({len(feature_matrix)} <= {WARMUP_BUFFER})")
             
             LOG.success(f"[SUCCESS] Feature matrix created with {len(feature_matrix)} rows (after warmup trim)")
             
@@ -709,8 +775,10 @@ def main() -> None:
                     asyncio.run(live_trading_loop(
                         alpaca_client=alpaca_client,
                         fmp_client=fmp_client,
+
                         feature_engineer=feature_engineer,
-                        node_configs=node_configs
+                        node_configs=node_configs,
+                        max_position_size=args.max_position_size
                     ))
                     break  # Exit loop after launching live mode
                 

@@ -615,12 +615,13 @@ def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int 
         news_df['sentiment'] = news_df['sentiment'].astype(float)
     news_df = news_df.sort_values('publishedDate').reset_index(drop=True)
     
-    # Local NLP Fallback: If API sentiment is 0.0, calculate via TextBlob
+    # Local NLP Fallback: If API sentiment is MISSING, calculate via TextBlob
     nlp_start = time.perf_counter()
     nlp_engaged = False
     
     for idx, row in news_df.iterrows():
-        if row['sentiment'] == 0.0:
+        # Only run NLP if sentiment field is truly missing
+        if 'sentiment' not in row or row['sentiment'] is None or pd.isna(row['sentiment']):
             nlp_engaged = True
             # Concatenate title and text/summary for full context
             title = str(row.get('title', ''))
@@ -630,11 +631,14 @@ def merge_news_pit(price_df: pd.DataFrame, news_list: list, lookback_hours: int 
             if full_text:
                 # TextBlob polarity returns -1.0 to 1.0
                 news_df.at[idx, 'sentiment'] = TextBlob(full_text).sentiment.polarity
+            else:
+                news_df.at[idx, 'sentiment'] = 0.0  # Fallback for empty text
+    
     nlp_end = time.perf_counter()
     calc_time = nlp_end - nlp_start
     
     if nlp_engaged:
-        LOG.warning(f"[PIT] API Blackout Detected. Local NLP engaged for {len(news_df)} articles. Latency: {calc_time:.4f}s")
+        LOG.warning(f"[PIT] API sentiment missing. Local NLP engaged for {len(news_df)} articles. Latency: {calc_time:.4f}s")
     
     # Check if all sentiment values are constant (API data quality issue)
     unique_sentiments = news_df['sentiment'].nunique()
