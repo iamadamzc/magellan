@@ -693,7 +693,7 @@ def main() -> None:
             
             # Select and display key columns including alpha_score
             output_cols = ['close', 'log_return', 'rsi_14', 'volume_zscore', 'sentiment', 'alpha_score']
-            if not LOG.research_mode:
+            if LOG.verbosity >= LOG.VERBOSE:
                 print(feature_matrix[output_cols].tail())
             
             # Step 6: Walk-Forward Validation with Dynamic Optimization
