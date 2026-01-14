@@ -361,10 +361,12 @@ def run_rolling_backtest(
         oos_sim['signal'] = np.where(oos_alpha > threshold, 1, -1)
         
         # Calculate OOS hit rate
+        # P0 SYNC: Use shifted signal to match execution timing
+        oos_sim['signal_execution'] = oos_sim['signal'].shift(1).fillna(0)
         oos_sim['forward_return'] = oos_sim['log_return'].shift(-15)
         oos_valid = oos_sim.dropna()
         if len(oos_valid) > 0:
-            correct = (oos_valid['signal'] * oos_valid['forward_return']) > 0
+            correct = (oos_valid['signal_execution'] * oos_valid['forward_return']) > 0
             oos_hit_rate = correct.mean()
         else:
             oos_hit_rate = 0.5

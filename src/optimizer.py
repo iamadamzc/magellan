@@ -54,16 +54,16 @@ def optimize_alpha_weights(
             'weights_tested': 0
         }
     
-    # Normalize features to 0-1 range for fair weighting
+    # P1 REMEDIATION: Rolling normalization (look-back only, no future data)
+    NORM_WINDOW = 252  # ~1 trading day of 1-minute bars
+    
     normalized = {}
     for col in feature_cols:
-        col_min = working_df[col].min()
-        col_max = working_df[col].max()
-        col_range = col_max - col_min
-        if col_range > 0:
-            normalized[col] = (working_df[col] - col_min) / col_range
-        else:
-            normalized[col] = pd.Series(0.5, index=working_df.index)
+        rolling_min = working_df[col].rolling(window=NORM_WINDOW, min_periods=20).min()
+        rolling_max = working_df[col].rolling(window=NORM_WINDOW, min_periods=20).max()
+        col_range = rolling_max - rolling_min
+        normalized[col] = (working_df[col] - rolling_min) / col_range.replace(0, np.inf)
+        normalized[col] = normalized[col].fillna(0.5)  # Warmup period fallback
     
     # Generate weight combinations that sum to 1.0
     weight_options = np.arange(0.0, 1.0 + weight_step, weight_step)
@@ -144,16 +144,16 @@ def calculate_alpha_with_weights(
     """
     feature_cols = list(weights.keys())
     
-    # Normalize features to 0-1 range
+    # P1 REMEDIATION: Rolling normalization (look-back only, no future data)
+    NORM_WINDOW = 252  # ~1 trading day of 1-minute bars
+    
     normalized = {}
     for col in feature_cols:
-        col_min = df[col].min()
-        col_max = df[col].max()
-        col_range = col_max - col_min
-        if col_range > 0:
-            normalized[col] = (df[col] - col_min) / col_range
-        else:
-            normalized[col] = pd.Series(0.5, index=df.index)
+        rolling_min = df[col].rolling(window=NORM_WINDOW, min_periods=20).min()
+        rolling_max = df[col].rolling(window=NORM_WINDOW, min_periods=20).max()
+        col_range = rolling_max - rolling_min
+        normalized[col] = (df[col] - rolling_min) / col_range.replace(0, np.inf)
+        normalized[col] = normalized[col].fillna(0.5)  # Warmup period fallback
     
     # Calculate weighted sum
     alpha_score = sum(

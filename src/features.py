@@ -747,26 +747,25 @@ def generate_master_signal(
         sentry_gate = node_config.get('sentry_gate', None)
         high_pass_sigma = node_config.get('high_pass_sigma', None)
     
-    # Normalize RSI (0-100 -> 0-1)
+    # Normalize RSI (0-100 -> 0-1) - no change needed, RSI is already bounded
     rsi_norm = df['rsi_14'] / 100.0
     
-    # Normalize Volume Z-Score (min-max to 0-1)
-    vol_min = df['volume_zscore'].min()
-    vol_max = df['volume_zscore'].max()
-    vol_range = vol_max - vol_min
-    if vol_range > 0:
-        vol_norm = (df['volume_zscore'] - vol_min) / vol_range
-    else:
-        vol_norm = pd.Series(0.5, index=df.index)  # Constant volume
+    # P1 REMEDIATION: Rolling normalization (look-back only, no future data)
+    NORM_WINDOW = 252  # ~1 trading day of 1-minute bars
     
-    # Normalize Sentiment (min-max to 0-1)
-    sent_min = df['sentiment'].min()
-    sent_max = df['sentiment'].max()
-    sent_range = sent_max - sent_min
-    if sent_range > 0:
-        sent_norm = (df['sentiment'] - sent_min) / sent_range
-    else:
-        sent_norm = pd.Series(0.5, index=df.index)  # Constant sentiment
+    # Normalize Volume Z-Score (rolling min-max to 0-1)
+    vol_rolling_min = df['volume_zscore'].rolling(window=NORM_WINDOW, min_periods=20).min()
+    vol_rolling_max = df['volume_zscore'].rolling(window=NORM_WINDOW, min_periods=20).max()
+    vol_range = vol_rolling_max - vol_rolling_min
+    vol_norm = (df['volume_zscore'] - vol_rolling_min) / vol_range.replace(0, np.inf)
+    vol_norm = vol_norm.fillna(0.5)  # Warmup period fallback
+    
+    # Normalize Sentiment (rolling min-max to 0-1)
+    sent_rolling_min = df['sentiment'].rolling(window=NORM_WINDOW, min_periods=20).min()
+    sent_rolling_max = df['sentiment'].rolling(window=NORM_WINDOW, min_periods=20).max()
+    sent_range = sent_rolling_max - sent_rolling_min
+    sent_norm = (df['sentiment'] - sent_rolling_min) / sent_range.replace(0, np.inf)
+    sent_norm = sent_norm.fillna(0.5)  # Warmup period fallback
     
     # Calculate weighted alpha score
     df['alpha_score'] = (rsi_wt * rsi_norm) + (vol_wt * vol_norm) + (sent_wt * sent_norm)

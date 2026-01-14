@@ -4,17 +4,17 @@ STRESS TEST REPORT: NVDA
 [Window 1/1] IS: 01/07-01/09 | OOS: 01/12
 [METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
   [RIGID-LOCK] New weights locked for 3 days
-  IS HR: 46.7% | OOS HR: 51.3% | WFE: 1.10
-  P&L: $+384.61 (+1.03%) | [WIN]
+  IS HR: 47.4% | OOS HR: 52.1% | WFE: 1.10
+  P&L: $+297.93 (+0.79%) | [WIN]
 Symbol: NVDA
 Days Tested: 1
 ------------------------------------------------------------
 
 [P&L SUMMARY]
   Initial Capital:     $37,500.00
-  Final Equity:        $37,884.61
-  Cumulative P&L:      $+384.61 (+1.03%)
-  Max Drawdown:        -0.59%
+  Final Equity:        $37,797.93
+  Cumulative P&L:      $+297.93 (+0.79%)
+  Max Drawdown:        -0.60%
 
 [WIN/LOSS BREAKDOWN]
   Winning Days:        1
@@ -22,9 +22,9 @@ Days Tested: 1
   Win Rate:            100.0%
 
 [WALK-FORWARD EFFICIENCY]
-  Avg In-Sample HR:    46.69%
-  Avg Out-Sample HR:   51.35%
-  Average WFE:         1.100
+  Avg In-Sample HR:    47.37%
+  Avg Out-Sample HR:   52.05%
+  Average WFE:         1.099
   WFE Status:          EXCELLENT - Strong generalization
 ============================================================
 [VERDICT] [OK] STRESS TEST PASSED - Strategy shows robustness
@@ -33,4 +33,4 @@ Days Tested: 1
 [DAILY BREAKDOWN]
 Date         IS HR    OOS HR   WFE             P&L
 ------------------------------------------------------------
-2026-01-12    46.7%   51.3%   1.10  $   +384.61
+2026-01-12    47.4%   52.1%   1.10  $   +297.93

@@ -53,14 +53,19 @@ def simulate_portfolio(
     # Convert friction from bps to decimal (e.g., 1.5 bps = 0.00015)
     friction_decimal = friction_bps / 10000.0
     
-    # Detect trade executions (signal changes)
-    working_df['signal_change'] = working_df['signal'].diff().fillna(0) != 0
+    # P0 REMEDIATION: Shift signal by 1 bar for realistic execution timing
+    # Signal generated at bar t can only be executed at bar t+1
+    working_df['signal_execution'] = working_df['signal'].shift(1).fillna(0)
+    
+    # Detect trade executions (signal changes) - using SHIFTED signal
+    working_df['signal_change'] = working_df['signal_execution'].diff().fillna(0) != 0
     
     # Calculate position-adjusted returns
-    # When signal = 1 (long), we earn +log_return
-    # When signal = -1 (short), we earn -log_return
-    # When signal = 0 (neutral), we earn 0
-    working_df['position_return'] = working_df['signal'] * working_df['log_return']
+    # P0 FIX: Signal[t-1] is applied to return[t] (no instantaneous fill)
+    # When signal_execution = 1 (long), we earn +log_return
+    # When signal_execution = -1 (short), we earn -log_return
+    # When signal_execution = 0 (neutral), we earn 0
+    working_df['position_return'] = working_df['signal_execution'] * working_df['log_return']
     
     # Apply friction: subtract friction_decimal from return on every executed trade
     # Friction applies when signal changes (new trade execution)
