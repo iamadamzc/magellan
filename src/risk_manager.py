@@ -12,9 +12,7 @@ Academic Foundation:
 import pandas as pd
 import numpy as np
 from typing import Optional
-from src.logger import SystemLogger
-
-LOG = SystemLogger()
+from src.logger import LOG
 
 
 class VolatilityTargeter:
