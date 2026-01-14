@@ -357,10 +357,11 @@ def execute_trade(
     - If signal == BUY and FLAT: Execute buy
     - If signal == SELL and FLAT: Do nothing (no position to sell)
     
-    Metabolic Scaling (Variable Metabolism):
+    Dynamic Position Sizing:
     - Final_Size = Base_Size * damping_factor
-    - damping_factor: Float 0.0-1.0 from LAM proportional damping
-    - If damping_factor missing, defaults to 1.0 (full metabolism)
+    - damping_factor: Float 0.0-1.0 (from volatility targeting or other risk management)
+    - If damping_factor missing, defaults to 1.0 (full size)
+    - NOTE: LAM damping deprecated, use src/risk_manager.py for volatility targeting
     
     Args:
         client: AlpacaTradingClient instance
@@ -368,7 +369,7 @@ def execute_trade(
         symbol: Stock symbol (default 'SPY')
         allocation_pct: Fraction of equity to allocate (default 0.25 = 25%)
         ticker_config: Optional ticker-specific config with 'position_cap_usd' key
-        damping_factor: LAM metabolism scaling factor (default 1.0 = full size)
+        damping_factor: Position sizing scalar (default 1.0 = full size)
         
     Returns:
         Dict with order details or rejection reason
@@ -474,15 +475,16 @@ def execute_trade(
             base_capital = position_cap_usd
         
         # -------------------------------------------------------------------------
-        # METABOLIC SCALING: Apply Variable Metabolism from LAM Damping
+        # DYNAMIC SIZING: Apply volatility targeting or damping factor
         # final_qty = (allocation / price) * damping_factor
+        # NOTE: LAM damping deprecated, use src/risk_manager.py for vol targeting
         # -------------------------------------------------------------------------
         # Safety: Default to 1.0 if damping_factor is missing, None, or invalid
         if damping_factor is None or damping_factor <= 0.0:
             damping_factor = 1.0
         damping_factor = min(damping_factor, 1.0)  # Cap at 1.0 (no amplification)
         
-        # Apply metabolic scaling
+        # Apply sizing scalar
         allocated_capital = base_capital * damping_factor
         metabolism_pct = int(damping_factor * 100)
         
