@@ -281,120 +281,30 @@ def get_damping_factor(
     node_config: dict = None
 ) -> dict:
     """
-    Proportional Damping (PID Scaling) System.
+    DEPRECATED: LAM damping replaced with volatility targeting.
     
-    Replaces binary veto logic with a 'Variable Metabolism' that scales
-    position size based on signal purity conditions.
-    
-    Damping Rules:
-    - ATR Thermal Damping: If current ATR is X% above baseline, reduce size by X%
-      (e.g., ATR 10% above baseline = 10% position reduction)
-    - Carrier-Wave Damping: If carrier alignment is below 0.5 gate, apply
-      proportional reduction (e.g., alignment 0.4 = 20% reduction)
+    This function now returns a passthrough (scaling_factor = 1.0) for
+    backwards compatibility. Position sizing is handled by volatility
+    targeting in src/risk_manager.py.
     
     Args:
-        df: DataFrame with 'high', 'low', 'close' columns and datetime index
-        ticker: Ticker symbol for telemetry
-        node_config: Optional node configuration
+        df: DataFrame (unused, kept for backwards compatibility)
+        ticker: Ticker symbol (unused)
+        node_config: Node configuration (unused)
     
     Returns:
-        Dict with keys:
-        - 'scaling_factor': Float 0.0-1.0 (1.0 = full size, 0.5 = half size)
-        - 'atr_damping': Float damping contribution from ATR
-        - 'carrier_damping': Float damping contribution from carrier alignment
-        - 'metabolism_pct': Integer percentage of metabolism (scaling_factor * 100)
+        Dict with default values (no damping applied)
     """
-    # Initialize damping components
-    atr_damping = 0.0
-    carrier_damping = 0.0
-    
-    # -------------------------------------------------------------------------
-    # ATR THERMAL DAMPING: Scale down position when volatility exceeds baseline
-    # Formula: If ATR is X% above baseline, reduce size by X%
-    # -------------------------------------------------------------------------
-    if 'high' in df.columns and 'low' in df.columns and 'close' in df.columns:
-        # Calculate True Range
-        high_low = df['high'] - df['low']
-        high_close = (df['high'] - df['close'].shift(1)).abs()
-        low_close = (df['low'] - df['close'].shift(1)).abs()
-        true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
-        
-        # Current ATR (20-period)
-        current_atr = true_range.rolling(window=20).mean()
-        
-        # Baseline ATR (200-period median for stability)
-        baseline_atr = current_atr.rolling(window=200).median()
-        
-        # Get latest values (most recent bar)
-        latest_atr = current_atr.iloc[-1] if len(current_atr) > 0 else 0.0
-        latest_baseline = baseline_atr.iloc[-1] if len(baseline_atr) > 0 else latest_atr
-        
-        # Calculate ATR excess ratio
-        if latest_baseline > 0 and pd.notna(latest_baseline):
-            atr_ratio = latest_atr / latest_baseline
-            
-            # If ATR is X% above baseline, damping = X% (capped at 50%)
-            if atr_ratio > 1.0:
-                atr_excess_pct = (atr_ratio - 1.0)  # e.g., 1.10 -> 0.10 (10%)
-                atr_damping = min(atr_excess_pct, 0.50)  # Cap at 50% damping
-    
-    # -------------------------------------------------------------------------
-    # CARRIER-WAVE DAMPING: Scale down when carrier alignment is weak
-    # Formula: If alignment < 0.5, damping = (0.5 - alignment) * 0.4
-    # Example: Alignment 0.4 -> (0.5 - 0.4) * 0.4 = 0.04 (but scaled by 2x = 20%)
-    # -------------------------------------------------------------------------
-    if 'close' in df.columns and len(df) >= 14:
-        # Calculate 60-minute Alpha (The Carrier)
-        df_60min = df['close'].resample('60Min').last().dropna()
-        if len(df_60min) >= 14:
-            rsi_60_raw = calculate_rsi(df_60min, period=14)
-            # Get latest carrier alignment (0-1 scale)
-            carrier_alignment = (rsi_60_raw.iloc[-1] / 100.0) if len(rsi_60_raw) > 0 else 0.5
-        else:
-            carrier_alignment = 0.5  # Neutral fallback
-        
-        # Gate threshold = 0.5 (neutral)
-        # If carrier below 0.5, apply proportional damping
-        carrier_gate = 0.5
-        if carrier_alignment < carrier_gate:
-            # Shortfall from gate, scaled to damping
-            # Alignment 0.4 means 0.1 shortfall, damping = 0.1 * 2.0 = 20%
-            shortfall = carrier_gate - carrier_alignment
-            carrier_damping = min(shortfall * 2.0, 0.50)  # Cap at 50% damping
-    else:
-        carrier_alignment = 0.5
-    
-    # -------------------------------------------------------------------------
-    # COMBINE DAMPING FACTORS (Additive, capped at 80% max damping)
-    # This ensures we never fully zero out, preserving minimum exposure
-    # -------------------------------------------------------------------------
-    total_damping = atr_damping + carrier_damping
-    total_damping = min(total_damping, 0.80)  # Never more than 80% reduction
-    
-    # Scaling factor = 1.0 - total_damping
-    scaling_factor = 1.0 - total_damping
-    metabolism_pct = int(scaling_factor * 100)
-    
-    # -------------------------------------------------------------------------
-    # TELEMETRY: Report damping state (ASCII ONLY)
-    # -------------------------------------------------------------------------
-    if total_damping > 0.0:
-        LOG.info(f"[LAM] Damping Active | Metabolism: {metabolism_pct}%")
-        LOG.info(f"[LAM] ATR Damping: {atr_damping*100:.1f}% | Carrier Damping: {carrier_damping*100:.1f}%")
-    else:
-        LOG.info(f"[LAM] Full Metabolism | Scaling: 100%")
-    
+    # Passthrough: No damping applied
+    # Real position sizing handled by volatility targeting
     return {
-        'scaling_factor': scaling_factor,
-        'atr_damping': atr_damping,
-        'carrier_damping': carrier_damping,
-        'metabolism_pct': metabolism_pct,
-        'carrier_alignment': carrier_alignment if 'carrier_alignment' in dir() else 0.5
+        'scaling_factor': 1.0,
+        'atr_damping': 0.0,
+        'carrier_damping': 0.0,
+        'metabolism_pct': 100,
+        'carrier_alignment': 0.5
     }
-
-
-def scale_confluence_filter(
-    df: pd.DataFrame,
+    
     ticker: str = None,
     node_config: dict = None
 ) -> pd.DataFrame:
