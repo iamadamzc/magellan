@@ -458,6 +458,12 @@ def main() -> None:
         default=None,
         help='Maximum dollar amount allowed for a single ticker position'
     )
+    parser.add_argument(
+        '--verbose',
+        action='store_true',
+        default=False,
+        help='Enable detailed process flow logging (shows step-by-step progress)'
+    )
     args = parser.parse_args()
     
     # Load environment variables into os.environ
@@ -478,8 +484,9 @@ def main() -> None:
         print("[INFO] ENGINE: Loading default config (mag7_default.json)")
         engine_config = EngineConfig()
     
-    # Initialize Logger Config
-    LOG.set_research_mode(args.quiet)
+    # Initialize Logger - New verbosity system
+    from src.logger import set_log_level
+    set_log_level(quiet=args.quiet, verbose=args.verbose)
     
     # Print Mode Banner
     if args.mode == 'live':
