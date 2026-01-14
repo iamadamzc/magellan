@@ -28,6 +28,42 @@
    - Industry standards over custom solutions
    - Clean logs and readable output
 
+4. **Model Selection for Tasks** (Antigravity Multi-Model Strategy):
+   - User works exclusively in Antigravity with access to multiple models
+   - To conserve tokens on preferred model (Gemini 2.0 Flash Thinking), user wants recommendations for task-appropriate models
+   - **Available Models**:
+     - Gemini 2.0 Flash Thinking (current, preferred for complex tasks)
+     - Gemini 3.0 Pro High
+     - Gemini 3.0 Pro Low
+     - Gemini 3 Flash
+     - Claude Sonnet 4.5 Thinking
+     - Claude Sonnet 4.5 General
+     - Claude Opus 4.5
+     - GPT OSS
+   
+   **Task-to-Model Recommendations**:
+   
+   | Task Type | Recommended Model | Why |
+   |-----------|------------------|-----|
+   | **Complex Architecture Decisions** | Gemini 2.0 Flash Thinking, Claude Opus 4.5 | Deep reasoning needed |
+   | **Code Refactoring** | Gemini 3.0 Pro High, Claude Sonnet 4.5 Thinking | Balance of speed & quality |
+   | **Bug Fixes** | Gemini 3.0 Pro Low, Claude Sonnet 4.5 General | Quick diagnosis sufficient |
+   | **Documentation Writing** | Gemini 3 Flash, GPT OSS | Fast, straightforward |
+   | **Test Writing** | Gemini 3.0 Pro Low, Claude Sonnet 4.5 General | Patterns-based, not complex |
+   | **Config File Updates** | Gemini 3 Flash, GPT OSS | Simple edits |
+   | **Data Analysis** | Gemini 3.0 Pro High, Claude Opus 4.5 | Numerical reasoning |
+   | **Git Operations** | Gemini 3 Flash, GPT OSS | Straightforward commands |
+   | **Ablation Studies** | Gemini 2.0 Flash Thinking, Claude Sonnet 4.5 Thinking | Experimental design reasoning |
+   | **Production Deployment Planning** | Gemini 2.0 Flash Thinking, Claude Opus 4.5 | High-stakes decisions |
+   
+   **Agent Behavior**: When given a task, assess complexity and recommend switching to a lighter model if appropriate. Format:
+   ```
+   💡 **Model Recommendation**: This task (e.g., "update .gitignore") is straightforward. 
+   Consider switching to Gemini 3 Flash or GPT OSS to conserve tokens on your preferred model.
+   
+   I can proceed with [current model] if you prefer, or wait for you to switch.
+   ```
+
 ---
 
 ## **System Architecture Overview**
