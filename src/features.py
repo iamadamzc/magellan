@@ -304,7 +304,10 @@ def get_damping_factor(
         'metabolism_pct': 100,
         'carrier_alignment': 0.5
     }
-    
+
+
+def add_wavelet_signals(
+    df: pd.DataFrame,
     ticker: str = None,
     node_config: dict = None
 ) -> pd.DataFrame:
