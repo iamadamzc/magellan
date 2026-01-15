@@ -111,7 +111,7 @@ class SPYOptionsBacktester:
         # Calculate RSI
         df['rsi'] = calculate_rsi(df['close'], period=self.rsi_period)
         
-        # Hysteresis logic (Schmidt Trigger)
+        # Hysteresis logic (Schmidt Trigger) - FIXED VERSION
         signals = []
         current_position = 'HOLD'  # Start in cash
         
@@ -122,12 +122,19 @@ class SPYOptionsBacktester:
                 signals.append('HOLD')
                 continue
             
-            # State transitions
+            # State transitions with TRUE hysteresis
             if rsi > self.rsi_buy_threshold:
-                current_position = 'BUY'  # Long call
+                # Strong bullish signal → Enter call
+                current_position = 'BUY'
             elif rsi < self.rsi_sell_threshold:
-                current_position = 'SELL'  # Long put
-            # else: maintain current_position (hysteresis zone)
+                # Strong bearish signal → Enter put
+                current_position = 'SELL'
+            elif self.rsi_sell_threshold <= rsi <= self.rsi_buy_threshold:
+                # Quiet zone (42-58) → Exit to cash to avoid theta decay
+                # This is the KEY fix: don't maintain position in neutral zone!
+                if current_position in ['BUY', 'SELL']:
+                    current_position = 'HOLD'
+            # else: maintain current_position if outside all zones (shouldn't happen)
             
             signals.append(current_position)
         
@@ -346,11 +353,30 @@ class SPYOptionsBacktester:
         option_type = 'call' if signal == 'BUY' else 'put'
         
         # Calculate strike based on delta target
-        # Simplified: delta 0.60 ≈ 5% ITM for calls, 5% OTM for puts
+        # Delta approximation: 
+        # - Call delta 0.50 (ATM) ≈ strike = spot
+        # - Call delta 0.60 ≈ strike = spot * 0.92 (8% ITM)
+        # - Call delta 0.70 ≈ strike = spot * 0.85 (15% ITM)
+        # - Put delta -0.60 ≈ strike = spot * 1.08 (8% ITM)
+        
         if option_type == 'call':
-            strike = current_price * 0.95  # 5% ITM
-        else:
-            strike = current_price * 1.05  # 5% ITM for put
+            # For calls: higher delta = lower strike (more ITM)
+            if self.target_delta >= 0.70:
+                strike_multiplier = 0.85  # Deep ITM
+            elif self.target_delta >= 0.60:
+                strike_multiplier = 0.92  # Moderately ITM
+            else:  # delta 0.50
+                strike_multiplier = 1.00  # ATM
+        else:  # put
+            # For puts: higher delta (in abs value) = higher strike (more ITM)
+            if abs(self.target_delta) >= 0.70:
+                strike_multiplier = 1.15  # Deep ITM
+            elif abs(self.target_delta) >= 0.60:
+                strike_multiplier = 1.08  # Moderately ITM
+            else:  # delta 0.50
+                strike_multiplier = 1.00  # ATM
+        
+        strike = current_price * strike_multiplier
         
         # Round strike to nearest $5
         strike = round(strike / 5) * 5
