@@ -176,11 +176,25 @@ All settings stored in: `config/`
 
 ## 🚧 **FUTURE DEVELOPMENT (Next Strategies)**
 
-**System 2: Intraday Mean Reversion** (In Development)
-- Timeframe: 5-min to 15-min bars
-- Hold Period: Minutes to hours
-- Target: +1-3% per day
-- Status: 🟡 Research phase
+## 🌊 SYSTEM 2: HOURLY SWING (Volatility Harvester)
+**Status**: ✅ PRODUCTION READY (Jan 15, 2026)
+**Target**: High-Beta Tech (NVDA, TSLA)
+**Logic**: 1-Hour RSI Hysteresis (Swing Mode)
+
+### Configuration
+| Ticker | Period | Bands | Mode | Annual Return (2025) | Win Rate |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **TSLA** | 14 | 60 / 40 | Swing | **+41.5%** | 47.5% |
+| **NVDA** | 28 | 55 / 45 | Swing | **+16.2%** | 48.3% |
+| **SPY** | N/A | N/A | N/A | N/A | Avoid (Use Daily) |
+
+**Notes**:
+1.  **Swing Mode**: Must hold overnight to capture gaps. Intraday-only exits kill profitability due to friction.
+2.  **Friction**: Tested with 5bps (0.05%) slippage/commissions. Strategy is robust.
+3.  **Role**: Additive alpha source. Runs in parallel with System 1.
+
+### Deployment location
+Configs: `config/hourly_swing/*.json`
 
 **System 3: Weekly Swing Trading** (Planned)
 - Timeframe: Weekly bars

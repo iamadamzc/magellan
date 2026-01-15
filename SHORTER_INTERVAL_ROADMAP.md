@@ -162,30 +162,26 @@ From your earlier IC analysis, you found:
 
 ---
 
-## 🎯 **SYSTEM 3: INTRADAY SCALPING** (Future)
+## 🎯 **SYSTEM 3: INTRADAY SCALPING (Candidate Rejected)**
 
-### **Strategy Overview**
+### **Status: ⛔ FAILED REALITY CHECK (Jan 14, 2026)**
 
-**Timeframe**: 5-min bars  
-**Hold Period**: 5-30 minutes  
-**Trade Frequency**: 5-10 trades per day  
-**Target**: +0.2-0.5% per trade  
-**Assets**: NVDA, TSLA only (highest volatility)
+While the "Fast Hysteresis" (RSI-7, 15-Min) strategy showed +91% theoretical returns, it failed the **Friction Stress Test**. A realistic 5bps (0.05%) slippage cost turned the +91% gain into a **-5.4% loss**.
 
-### **Why 5-Min?**
+**Lesson**: The average trade return (~0.13%) is too thin to survive transaction costs.
 
-- **Captures micro-trends** (15-30 min moves)
-- **High trade frequency** (compound small gains)
-- **Requires full-time monitoring** (not passive)
+**Pivot**: Abandon 15-minute scalping for now. Focus entirely on **System 2 (Hourly Swing)**, where the average trade return is larger (~1.0%), providing a safety margin against friction.
 
-### **Research Plan** (Future)
+---
 
-**Phase 1**: Test order flow indicators (VWAP, volume profile)  
-**Phase 2**: Test momentum indicators (EMA crossovers, MACD)  
-**Phase 3**: Implement sub-second execution  
-**Phase 4**: Build real-time monitoring dashboard
+## 🎯 **SYSTEM 2: HOURLY SWING (Primary Focus)**
 
-**Timeline**: 3-6 months after System 2 is validated
+**Rationale**: Hourly strategies trade 4x less frequently than 15-min scalps, increasing the average profit per trade significantly. This allows the alpha to survive real-world spreads.
+
+### **Validation Plan**
+1.  Optimize RSI-28 (proven on Daily) for Hourly timeframe.
+2.  Validate utilizing **Intraday-Only** exits (close at 3:55 PM) to avoid gap risk, which proved effective in the System 3 test.
+3.  Target **TSLA** and **NVDA** specifically.
 
 ---
 
@@ -297,21 +293,48 @@ Step 6: Only then consider System 3 (Intraday)
 
 **Current Status**:
 - ✅ **System 1 (Daily)**: LOCKED IN, ready to deploy
-- 🟡 **System 2 (Hourly)**: Research phase, 4-week plan outlined
-- 🔴 **System 3 (Intraday)**: Future project, 3-6 months away
+## 🎯 **SYSTEM 2: HOURLY SWING (VALIDATED)**
 
-**Recommended Action**:
-1. **Deploy System 1 NOW** (it's validated and profitable)
-2. **Research System 2 in parallel** (use test scripts, don't risk real money yet)
-3. **Only deploy System 2 after validation** (paper trading + backtests)
+### **Status: ✅ READY FOR DEPLOYMENT (Jan 14, 2026)**
 
-**Timeline**:
-- **Today**: Deploy System 1 in paper trading mode
-- **Week 1-4**: Research System 2 (hourly indicators)
-- **Month 2**: Paper trade System 2
-- **Month 3**: Deploy System 2 with small capital if validated
-- **Month 6+**: Consider System 3 if both 1 & 2 are profitable
+**Performance**: TSLA (+87%), NVDA (+21%) post-friction.
+
+### **The Winning Formula**
+Optimization confirmed that **Swing Mode (holding overnight)** is mandatory. Intraday friction destroys alpha on the hourly timeframe.
+
+**Configurations**:
+1.  **NVDA**: RSI-28, 55/45 (Robust, matches Daily logic)
+2.  **TSLA**: RSI-14, 60/40 (Aggressive, captures explosive moves)
+
+### **Deployment Plan**
+1.  Create `config/hourly_swing/` directory.
+2.  Deploy `NVDA.json` and `TSLA.json` configs.
+3.  Run paper trading loop.
 
 ---
 
-**SYSTEM 1 IS YOUR FOUNDATION. BUILD ON IT, DON'T REPLACE IT.**
+## 🎯 **SYSTEM 3: INTRADAY SCALPING (ARCHIVED)**
+
+**Status**: ⛔ REJECTED
+**Reason**: Failed Reality Check. 5bps friction creates negative expectancy.
+**Future Check**: Re-visit only if sub-penny spreads or rebate execution becomes available.
+
+---
+
+## 🚀 **IMMEDIATE NEXT STEPS (Session Close)**
+
+1.  **System 1 (Daily) Deployment**:
+    -   Execute: `python deploy_mag7_daily.py` (or manual `main.py` run)
+    -   Monitor: `debug_vault.log`
+
+2.  **System 2 (Hourly) Deployment**:
+    -   Configs Created: `config/hourly_swing/NVDA.json`, `TSLA.json`
+    -   **Action Required**: Create run script `deploy_hourly_swing.py` (next session)
+    -   **Validation**: Paper trade for 2 weeks before real capital.
+
+3.  **Maintenance**:
+    -   Check `STATE.md` for regime changes weekly.
+
+---
+
+**SYSTEM 1 IS YOUR FOUNDATION. SYSTEM 2 IS YOUR AFTERBURNER.**

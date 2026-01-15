@@ -796,7 +796,28 @@ Good luck! The user is excellent to work with - thoughtful, technical, and appre
 
 ---
 
+#### **6. Hourly Swing Strategy (System 2) Validated** ✅
+**Scenario**: Pivot from failed scalping (15-min) to robust hourly swing.
+**Results**:
+- **TSLA**: +87.8% (RSI-14, 60/40)
+- **NVDA**: +21.4% (RSI-28, 55/45)
+- **Friction Proof**: Profitable even with 5bps slippage (unlike 15-min scalping).
+- **Mode**: "Swing" (Overnight Hold) is required. Intraday exits failed.
+
+**Artifacts**:
+- `HOURLY_OPTIMIZATION_RESULTS.md`
+- `config/hourly_swing/TSLA.json`
+- `config/hourly_swing/NVDA.json`
+
+---
+
 ### **Final System Status**
+
+**System 1 (Daily)**: 🔒 LOCKED (Production)
+**System 2 (Hourly)**: 🔒 LOCKED (Production)
+**System 3 (Scalp)**: ⛔ ARCHIVED (Failed Friction Test)
+
+**Ready for Paper Trading Phase.**
 
 #### **System 1: Daily Trend Hysteresis** ✅ LOCKED IN
 

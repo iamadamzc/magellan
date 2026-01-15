@@ -1,0 +1,125 @@
+================================================================================
+INDEX & ETF PROFITABILITY SWEEP
+================================================================================
+Period: 2024-06-11 to 2026-01-14
+Testing: SPY, QQQ, IWM, GLD, TLT
+================================================================================
+
+================================================================================
+TESTING: SPY (S&P 500 ETF)
+================================================================================
+[DEBUG] Fetching SPY via SIP feed...
+Γ£ô Fetched 400 bars
+≡ƒôè Buy-Hold Return: +28.57%
+≡ƒôè Avg Daily Volatility: 1.10%
+
+Γ£à Found 12 profitable configurations!
+
+≡ƒÅå BEST for SPY:
+   RSI Period: 21
+   Bands: Wide (58/42) (58/42)
+   Return: +24.75%
+   Sharpe: 1.37
+   Max DD: -9.34%
+   Trades: 6
+   vs Buy-Hold: -2.77%
+
+================================================================================
+TESTING: QQQ (Nasdaq 100 ETF)
+================================================================================
+[DEBUG] Fetching QQQ via SIP feed...
+Γ£ô Fetched 400 bars
+≡ƒôè Buy-Hold Return: +32.38%
+≡ƒôè Avg Daily Volatility: 1.39%
+
+Γ£à Found 11 profitable configurations!
+
+≡ƒÅå BEST for QQQ:
+   RSI Period: 21
+   Bands: Very Wide (60/40) (60/40)
+   Return: +29.12%
+   Sharpe: 1.20
+   Max DD: -11.27%
+   Trades: 6
+   vs Buy-Hold: -1.55%
+
+================================================================================
+TESTING: IWM (Russell 2000 ETF)
+================================================================================
+[DEBUG] Fetching IWM via SIP feed...
+Γ£ô Fetched 400 bars
+≡ƒôè Buy-Hold Return: +31.18%
+≡ƒôè Avg Daily Volatility: 1.41%
+
+Γ£à Found 10 profitable configurations!
+
+≡ƒÅå BEST for IWM:
+   RSI Period: 28
+   Bands: Ultra Wide (65/35) (65/35)
+   Return: +37.71%
+   Sharpe: 1.23
+   Max DD: -10.93%
+   Trades: 2
+   vs Buy-Hold: +8.52%
+
+================================================================================
+TESTING: GLD (Gold ETF)
+================================================================================
+[DEBUG] Fetching GLD via SIP feed...
+Γ£ô Fetched 400 bars
+≡ƒôè Buy-Hold Return: +98.90%
+≡ƒôè Avg Daily Volatility: 1.16%
+
+Γ£à Found 12 profitable configurations!
+
+≡ƒÅå BEST for GLD:
+   RSI Period: 21
+   Bands: Ultra Wide (65/35) (65/35)
+   Return: +95.77%
+   Sharpe: 2.41
+   Max DD: -10.13%
+   Trades: 2
+   vs Buy-Hold: -2.60%
+
+================================================================================
+TESTING: TLT (20-Year Treasury Bond ETF)
+================================================================================
+[DEBUG] Fetching TLT via SIP feed...
+Γ£ô Fetched 400 bars
+≡ƒôè Buy-Hold Return: -3.81%
+≡ƒôè Avg Daily Volatility: 0.81%
+
+Γ¥î NO profitable configurations found for TLT
+
+   Best attempt (least negative):
+   RSI: 28, Bands: Very Wide (60/40)
+   Return: -1.08%
+
+================================================================================
+FINAL SUMMARY
+================================================================================
+
+Γ£à Profitable: 4/5 assets
+Γ¥î Unprofitable: 1/5 assets
+
+================================================================================
+RECOMMENDED CONFIGURATIONS
+================================================================================
+
+Symbol      Description  RSI Bands  Return (%)   Sharpe  Max DD (%)  Trades  vs B&H (%)
+   SPY      S&P 500 ETF   21 58/42   24.751416 1.365391   -9.339148       6   -2.771859
+   QQQ   Nasdaq 100 ETF   21 60/40   29.115671 1.202758  -11.270102       6   -1.549731
+   IWM Russell 2000 ETF   28 65/35   37.710731 1.234895  -10.925552       2    8.518702
+   GLD         Gold ETF   21 65/35   95.773084 2.410248  -10.127744       2   -2.596886
+
+================================================================================
+UNPROFITABLE ASSETS
+================================================================================
+  - TLT (20-Year Treasury Bond ETF)
+
+================================================================================
+Γ£à INDEX & ETF SWEEP COMPLETE
+================================================================================
+
+≡ƒÆ╛ Results saved to: index_etf_profitability_results.csv
+   Profitable assets: 4/5
