@@ -225,12 +225,14 @@ def add_technical_indicators(df: pd.DataFrame, node_config: dict = None) -> pd.D
     
     # Avoid division by zero
     rs = avg_gain / avg_loss.replace(0, np.inf)
-    df['rsi_14'] = 100 - (100 / (1 + rs))
+    # RSI is 0-100. Subtract 50 to center it (-50 to +50).
+    # This enables negative weights (Mean Reversion) to work correctly.
+    df['rsi_14'] = (100 - (100 / (1 + rs))) - 50.0
     
-    # Handle edge case where avg_loss is 0 (RSI = 100)
-    df.loc[avg_loss == 0, 'rsi_14'] = 100.0
-    # Handle edge case where avg_gain is 0 (RSI = 0)
-    df.loc[avg_gain == 0, 'rsi_14'] = 0.0
+    # Handle edge case where avg_loss is 0 (RSI = 100 -> +50)
+    df.loc[avg_loss == 0, 'rsi_14'] = 50.0
+    # Handle edge case where avg_gain is 0 (RSI = 0 -> -50)
+    df.loc[avg_gain == 0, 'rsi_14'] = -50.0
     
     # Volatility (14): Rolling standard deviation of log returns
     df['volatility_14'] = df['log_return'].rolling(window=14).std()

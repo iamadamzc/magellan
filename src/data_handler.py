@@ -6,7 +6,7 @@ Handles fetching and cleaning historical market data from Alpaca API.
 from typing import Optional
 import os
 import pandas as pd
-from alpaca_trade_api.rest import REST, TimeFrame
+from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
 from datetime import datetime
 
 
@@ -83,8 +83,8 @@ class AlpacaDataClient:
         # Map string timeframe to Alpaca TimeFrame enum
         timeframe_map = {
             '1Min': TimeFrame.Minute,
-            '5Min': TimeFrame(5, 'Min'),
-            '15Min': TimeFrame(15, 'Min'),
+            '5Min': TimeFrame(5, TimeFrameUnit.Minute),
+            '15Min': TimeFrame(15, TimeFrameUnit.Minute),
             '1Hour': TimeFrame.Hour,
             '1Day': TimeFrame.Day,
         }

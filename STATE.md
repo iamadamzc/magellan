@@ -615,5 +615,36 @@ Good luck! The user is excellent to work with - thoughtful, technical, and appre
 
 ---
 
+
+### **Session Summary: Strategic IC Analysis & Pivot (2026-01-14)**
+
+**Conversation ID**: `d8121cdb...` (Current Session)
+
+**Objective**: Diagnose poor alpha performance (<51% hit rate) and determine if the engine is salvageable or needs retooling.
+
+**Actions Performed**:
+1.  **Comprehensive IC Scan**: Analyzed 1-Year of 5-Min bars across MAG7, Indices (SPY), and Commodities (GLD).
+    *   **Finding**: Intraday (5-Min/15-Min) features are dominated by noise. Mean reversion signals exist but are too weak to overcome transaction costs.
+2.  **Timeframe Ablation (NVDA)**: Tested 1Min vs 5Min vs 15Min vs 1Hour.
+    *   **Finding**: 1-Hour RSI showed strong predictive power (IC -0.24), but backtests failed due to bid-ask spread friction.
+3.  **Daily Trend Pivot Test**: Ran a 365-Day Stress Test on NVDA using Daily bars (Momentum Logic).
+    *   **Finding**: Strategy failed to profit despite the bull run.
+    *   **Root Cause Diagnosis**: **Whipsaw**. Without a "Hysteresis Buffer" (Schmidt Trigger), the strategy over-traded around the signal threshold (RSI 50), accumulating fatal friction costs.
+
+**Critical Learnings**:
+1.  **Intraday is a Trap**: For this feature set (RSI/Vol), sub-hourly trading is essentially random walk arbitrage (unprofitable).
+2.  **Friction is the Killer**: 1.5bps per trade destroys simple trend-following if the signal is noisy.
+3.  **The Fix is Smoothing**: We do not need a new engine. We need to **Slow Down** (Daily Bars) and **Gate the Signal** (Hysteresis).
+
+**Strategic Roadmap (The "Retooling" Plan)**:
+*   Reference Report: [`COMPREHENSIVE_IC_REPORT.md`](file:///a:/1/Magellan/COMPREHENSIVE_IC_REPORT.md)
+*   **Next Step**: Implement **Variant F (Daily Hysteresis)**.
+    *   Timeframe: `1Day`
+    *   Logic: Buy > 55, Sell < 45 (Hold in between).
+    *   This "Quiet Zone" will prevent the churn that killed the Daily Trend backtest.
+
+---
+
 **End of State Document**
-**Last Updated**: 2026-01-14 17:09 ET by Antigravity (Conversation: d8121cdb-946b-42bf-9573-cbdda79dad62)
+**Last Updated**: 2026-01-14 19:30 ET
+**Signed**: Gemini 3 Pro (Analysis & Strategic Pivot)
