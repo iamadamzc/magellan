@@ -1,0 +1,114 @@
+================================================================================
+DAILY TREND HYSTERESIS OPTIMIZATION SUITE
+================================================================================
+Symbol:  SPY
+Period:  2024-01-14 to 2026-01-14
+Capital: $50,000.00
+Tests:   5 configurations
+================================================================================
+
+[1/3] Fetching daily bars from Alpaca...
+[DEBUG] Fetching SPY via SIP feed...
+Γ£ô Fetched 502 daily bars
+
+[2/3] Calculating RSI-14...
+Γ£ô RSI calculated (502 bars after warmup)
+
+[3/3] Running backtests for all configurations...
+================================================================================
+
+Testing: Baseline (No Hysteresis)
+  Description: Simple RSI > 50 threshold (whipsaw expected)
+  Strategy Return:     +16.57%
+  Max Drawdown:        -11.25%
+  Sharpe Ratio:        0.81
+  Trades:              77
+  Transaction Costs:   $577.50
+
+Testing: Variant F (Fixed 55/45)
+  Description: Original fixed symmetric bands
+  Strategy Return:     +26.10%
+  Max Drawdown:        -7.88%
+  Sharpe Ratio:        1.28
+  Trades:              37
+  Transaction Costs:   $277.50
+
+Testing: Asymmetric 52/48
+  Description: Tighter bands for more market participation
+  Strategy Return:     +21.33%
+  Max Drawdown:        -11.52%
+  Sharpe Ratio:        1.02
+  Trades:              57
+  Transaction Costs:   $427.50
+
+Testing: Asymmetric 55/48
+  Description: Conservative entry, faster exit
+  Strategy Return:     +24.89%
+  Max Drawdown:        -7.26%
+  Sharpe Ratio:        1.26
+  Trades:              47
+  Transaction Costs:   $352.50
+
+Testing: Adaptive ATR-Based
+  Description: Dynamic thresholds based on market volatility (ATR)
+  Strategy Return:     +26.88%
+  Max Drawdown:        -7.88%
+  Sharpe Ratio:        1.31
+  Trades:              37
+  Transaction Costs:   $277.50
+
+================================================================================
+COMPARATIVE ANALYSIS
+================================================================================
+
+           Configuration  Total Return (%)  vs Buy-Hold (%)  Max DD (%)   Sharpe  Trades  Participation (%)  TX Costs ($)
+Baseline (No Hysteresis)         16.565660       -28.794709  -11.249509 0.809056      77          73.705179         577.5
+ Variant F (Fixed 55/45)         26.097242       -19.263127   -7.883724 1.277388      37          72.908367         277.5
+        Asymmetric 52/48         21.329466       -24.030903  -11.520258 1.017193      57          72.908367         427.5
+        Asymmetric 55/48         24.889076       -20.471293   -7.258167 1.255031      47          70.119522         352.5
+      Adaptive ATR-Based         26.882814       -18.477555   -7.883724 1.309226      37          73.107570         277.5
+
+================================================================================
+WHIPSAW COST ANALYSIS
+================================================================================
+
+Baseline (No Hysteresis):
+  Trades:              77
+  Transaction Costs:   $577.50
+  Net Return:          +16.57%
+
+Variant F (Hysteresis 55/45):
+  Trades:              37
+  Transaction Costs:   $277.50
+  Net Return:          +26.10%
+
+Whipsaw Savings:
+  Trade Reduction:     40 trades (51.9% reduction)
+  Cost Savings:        $300.00
+  Return Impact:       +9.53%
+
+================================================================================
+RECOMMENDATION
+================================================================================
+
+≡ƒÅå BEST CONFIGURATION: Adaptive ATR-Based
+   Dynamic thresholds based on market volatility (ATR)
+
+   Total Return:        +26.88%
+   vs Buy-Hold:         -18.48%
+   Max Drawdown:        -7.88%
+   Sharpe Ratio:        1.31
+   Trades:              37
+   Market Participation:73.1%
+
+================================================================================
+≡ƒÆ╛ Exporting results...
+   Summary table saved to: hysteresis_optimization_results.csv
+   Equity curve saved to: equity_curve_baseline.csv
+   Equity curve saved to: equity_curve_variant_f.csv
+   Equity curve saved to: equity_curve_asymmetric_52_48.csv
+   Equity curve saved to: equity_curve_asymmetric_55_48.csv
+   Equity curve saved to: equity_curve_adaptive_atr.csv
+================================================================================
+Γ£à OPTIMIZATION SUITE COMPLETE
+================================================================================
