@@ -288,6 +288,56 @@ class SPYOptionsBacktester:
                 
                 position = None
             
+            elif position and signal in ['BUY', 'SELL']:
+                # Signal changed (e.g., BUY → SELL or SELL → BUY)
+                # Close old position first
+                if (position['type'] == 'call' and signal == 'SELL') or \
+                   (position['type'] == 'put' and signal == 'BUY'):
+                    
+                    dte = (position['expiration'] - date).days
+                    T = max(dte / 365.0, 0.001)
+                    
+                    greeks = OptionsFeatureEngineer.calculate_black_scholes_greeks(
+                        S=current_price,
+                        K=position['strike'],
+                        T=T,
+                        r=r,
+                        sigma=sigma,
+                        option_type=position['type']
+                    )
+                    
+                    exit_price = greeks['price'] * (1 - self.slippage_pct / 100)
+                    proceeds = exit_price * position['contracts'] * 100
+                    fees = self.contract_fee * position['contracts']
+                    cash += proceeds - fees
+                    
+                    # Record trade
+                    pnl = proceeds - position['cost']
+                    pnl_pct = (pnl / position['cost']) * 100
+                    
+                    trades.append({
+                        'entry_date': position['entry_date'],
+                        'exit_date': date,
+                        'type': position['type'],
+                        'strike': position['strike'],
+                        'contracts': position['contracts'],
+                        'entry_price': position['entry_price'],
+                        'exit_price': exit_price,
+                        'pnl': pnl,
+                        'pnl_pct': pnl_pct,
+                        'reason': 'SIGNAL_CHANGE'
+                    })
+                    
+                    LOG.flow(f"[{date.date()}] Signal changed, closed {position['type']}: P&L ${pnl:,.0f} ({pnl_pct:+.1f}%)")
+                    
+                    # Open new position with new signal
+                    position = self._open_position(
+                        date, current_price, signal, cash, r, sigma
+                    )
+                    
+                    if position:
+                        cash -= position['cost']
+            
             # Calculate total equity
             total_equity = cash + position_value
             
