@@ -1,0 +1,33 @@
+{
+    "symbol": "AMZN",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 21,
+    "hysteresis_upper": 55,
+    "hysteresis_lower": 45,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "Uses RSI-21. Standard bands. Higher trade frequency (19/year). Moderate volatility (2.08% daily).",
+    "backtest_performance": {
+        "return_pct": 17.07,
+        "sharpe_ratio": 0.54,
+        "max_drawdown_pct": -17.41,
+        "trades_per_year": 19,
+        "win_rate_pct": 58
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 52,
+            "lower": 48
+        },
+        "normal_volatility": {
+            "upper": 55,
+            "lower": 45
+        },
+        "high_volatility": {
+            "upper": 60,
+            "lower": 40
+        }
+    }
+}

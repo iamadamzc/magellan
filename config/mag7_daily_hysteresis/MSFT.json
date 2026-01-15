@@ -1,0 +1,33 @@
+{
+    "symbol": "MSFT",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 21,
+    "hysteresis_upper": 58,
+    "hysteresis_lower": 42,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "Uses RSI-21 (shorter than others). Low volatility (1.44% daily). Wide bands for stable trends.",
+    "backtest_performance": {
+        "return_pct": 13.94,
+        "sharpe_ratio": 0.68,
+        "max_drawdown_pct": -11.72,
+        "trades_per_year": 9,
+        "win_rate_pct": 67
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 55,
+            "lower": 45
+        },
+        "normal_volatility": {
+            "upper": 58,
+            "lower": 42
+        },
+        "high_volatility": {
+            "upper": 62,
+            "lower": 38
+        }
+    }
+}

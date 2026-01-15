@@ -1,0 +1,33 @@
+{
+    "symbol": "META",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 28,
+    "hysteresis_upper": 55,
+    "hysteresis_lower": 45,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "Standard bands. Moderate volatility (2.2% daily). Solid performer with good risk-adjusted returns.",
+    "backtest_performance": {
+        "return_pct": 13.01,
+        "sharpe_ratio": 0.46,
+        "max_drawdown_pct": -16.74,
+        "trades_per_year": 11,
+        "win_rate_pct": 64
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 52,
+            "lower": 48
+        },
+        "normal_volatility": {
+            "upper": 55,
+            "lower": 45
+        },
+        "high_volatility": {
+            "upper": 60,
+            "lower": 40
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "symbol": "NVDA",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 28,
+    "hysteresis_upper": 58,
+    "hysteresis_lower": 42,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "High-beta stock (3.16% daily vol). Wide bands essential to avoid whipsaw. Performance varies by market regime.",
+    "backtest_performance": {
+        "return_pct": 24.55,
+        "sharpe_ratio": 0.64,
+        "max_drawdown_pct": -21.19,
+        "trades_per_year": 7,
+        "win_rate_pct": 71
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 55,
+            "lower": 45
+        },
+        "normal_volatility": {
+            "upper": 58,
+            "lower": 42
+        },
+        "high_volatility": {
+            "upper": 65,
+            "lower": 35
+        }
+    }
+}

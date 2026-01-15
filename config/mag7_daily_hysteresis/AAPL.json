@@ -1,0 +1,33 @@
+{
+    "symbol": "AAPL",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 28,
+    "hysteresis_upper": 65,
+    "hysteresis_lower": 35,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "Ultra-wide bands for very selective entries. Only 3 trades/year but high win rate. Outperforms buy-hold significantly.",
+    "backtest_performance": {
+        "return_pct": 30.83,
+        "sharpe_ratio": 0.99,
+        "max_drawdown_pct": -19.26,
+        "trades_per_year": 3,
+        "win_rate_pct": 100
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 62,
+            "lower": 38
+        },
+        "normal_volatility": {
+            "upper": 65,
+            "lower": 35
+        },
+        "high_volatility": {
+            "upper": 70,
+            "lower": 30
+        }
+    }
+}
