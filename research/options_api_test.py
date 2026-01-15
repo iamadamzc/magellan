@@ -21,6 +21,15 @@ from datetime import datetime, timedelta
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    print("⚠️  WARNING: python-dotenv not installed")
+    print("   Install: pip install python-dotenv")
+    print("   Continuing anyway (will use system environment variables)...\n")
+
 try:
     from alpaca.trading.client import TradingClient
     from alpaca.trading.requests import GetOptionContractsRequest
@@ -118,7 +127,8 @@ class OptionsAPITester:
                 type='call'
             )
             
-            contracts_calls = self.trading_client.get_option_contracts(request_calls)
+            response_calls = self.trading_client.get_option_contracts(request_calls)
+            contracts_calls = list(response_calls.option_contracts) if hasattr(response_calls, 'option_contracts') else []
             
             # Fetch put options
             request_puts = GetOptionContractsRequest(
@@ -128,7 +138,8 @@ class OptionsAPITester:
                 type='put'
             )
             
-            contracts_puts = self.trading_client.get_option_contracts(request_puts)
+            response_puts = self.trading_client.get_option_contracts(request_puts)
+            contracts_puts = list(response_puts.option_contracts) if hasattr(response_puts, 'option_contracts') else []
             
             print(f"✅ Found {len(contracts_calls)} CALL contracts")
             print(f"✅ Found {len(contracts_puts)} PUT contracts")
