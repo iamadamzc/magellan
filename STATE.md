@@ -170,8 +170,20 @@ Magellan/
    - Backend details → `debug_vault.log` (never shown in terminal)
    - **Impact**: ~80% reduction in terminal noise
 
+4. ✅ **Daily Trend Hysteresis (Variant F)** (Commits: `7a30cd9` and prior)
+   - **Problem**: Daily trend strategy failed due to whipsaw (over-trading around RSI 50).
+   - **Solution**: Implemented Schmidt Trigger hysteresis (Buy > 55, Sell < 45, Hold 45-55).
+   - **Implementation**:
+     - `src/features.py`: Added stateful position tracking logic.
+     - `src/features.py`: Fixed RSI calculation to return raw 0-100 values.
+     - `src/backtester_pro.py`: Updated to bypass median thresholds when hysteresis is enabled.
+   - **Validation (SPY 2024-2026)**:
+     - **Result**: -7.88% Max Drawdown (excellent protection), but +26% Return (underperformed Buy-Hold +45%).
+     - **Verdict**: Hysteresis successfully eliminates whipsaw but fixed thresholds (55/45) are too conservative for strong bull markets.
+   - **Artifacts**: `VARIANT_F_RESULTS.md`, `BACKLOG.md`, `test_daily_hysteresis.py`.
+
 **Git State**:
-- Branch: `magellan2` (HEAD: `8e92496`)
+- Branch: `magellan2` (HEAD: `7a30cd9`)
 - All feature branches merged and deleted
 - Working directory clean
 
@@ -631,20 +643,34 @@ Good luck! The user is excellent to work with - thoughtful, technical, and appre
     *   **Finding**: Strategy failed to profit despite the bull run.
     *   **Root Cause Diagnosis**: **Whipsaw**. Without a "Hysteresis Buffer" (Schmidt Trigger), the strategy over-traded around the signal threshold (RSI 50), accumulating fatal friction costs.
 
+**Session Summary: Daily Hysteresis Implementation (2026-01-14)**
+
+**Conversation ID**: `d8121cdb-946b-42bf-9573-cbdda79dad62`
+
+**Objective**: Implement and validate the "Variant F" Daily Trend Hysteresis strategy to solve the whipsaw problem.
+
+**Actions Performed**:
+1.  **Code Implementation**:
+    *   Fixed RSI to use raw 0-100 scale (was centered -50/+50).
+    *   Implemented Schmidt Trigger logic in `src/features.py` (Buy > 55, Sell < 45).
+    *   Refactored `src/backtester_pro.py` to support stateful hysteresis signals.
+2.  **Validation Testing**:
+    *   Ran 2-Year daily backtest on SPY (2024-2026).
+    *   **Result**: Validated hypothesis. Whipsaw eliminated.
+    *   **Metrics**: Strategy Drawdown -7.88% vs Market Correction ~10%+. Trade count drastically reduced.
+    *   **Caveat**: Strategy underperformed Buy-Hold (+26% vs +45%) due to conservative thresholds in a strong bull market.
+3.  **Documentation & Planning**:
+    *   Created [`VARIANT_F_RESULTS.md`](file:///a:/1/Magellan/VARIANT_F_RESULTS.md) with detailed analysis.
+    *   Created [`BACKLOG.md`](file:///a:/1/Magellan/BACKLOG.md) for optimization tasks (Adaptive Thresholds, Split Handling).
+
 **Critical Learnings**:
-1.  **Intraday is a Trap**: For this feature set (RSI/Vol), sub-hourly trading is essentially random walk arbitrage (unprofitable).
-2.  **Friction is the Killer**: 1.5bps per trade destroys simple trend-following if the signal is noisy.
-3.  **The Fix is Smoothing**: We do not need a new engine. We need to **Slow Down** (Daily Bars) and **Gate the Signal** (Hysteresis).
+1.  **Hysteresis Works**: The Schmidt Trigger creates a highly effective "Quiet Zone" that filters out noise and prevents churn.
+2.  **Context Matters**: Fixed thresholds (55/45) work for capital preservation but damp returns in unidirectional bull markets. Adaptive thresholds are the next logical evolution.
+3.  **Data Quality**: Stock splits (NVDA 10-for-1) break simple P&L tracking. Infrastructure needs split-adjusted pricing or share-based tracking (added to Backlog).
 
-**Strategic Roadmap (The "Retooling" Plan)**:
-*   Reference Report: [`COMPREHENSIVE_IC_REPORT.md`](file:///a:/1/Magellan/COMPREHENSIVE_IC_REPORT.md)
-*   **Next Step**: Implement **Variant F (Daily Hysteresis)**.
-    *   Timeframe: `1Day`
-    *   Logic: Buy > 55, Sell < 45 (Hold in between).
-    *   This "Quiet Zone" will prevent the churn that killed the Daily Trend backtest.
-
----
+**Next Strategic Step**:
+*   Optimize the Hysteresis Thresholds (Adaptive/Asymmetric) to capture more upside while maintaining the proven drawback protection.
 
 **End of State Document**
-**Last Updated**: 2026-01-14 19:30 ET
-**Signed**: Gemini 3 Pro (Analysis & Strategic Pivot)
+**Last Updated**: 2026-01-14 22:15 ET (Variant F Validated)
+**Signed**: Antigravity (Daily Trend Hysteresis Implementation)
