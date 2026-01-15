@@ -92,7 +92,8 @@ def run_rolling_backtest(
     end_date: datetime = None,
     start_date: datetime = None,
     report_only: bool = False,
-    quiet: bool = False
+    quiet: bool = False,
+    node_config: dict = None
 ) -> Dict:
     """
     Run multi-day rolling walk-forward backtest.
@@ -264,15 +265,17 @@ def run_rolling_backtest(
         # Feature engineering for in-sample
         is_df = is_bars.copy()
         is_df['log_return'] = feature_engineer.calculate_log_return(is_df)
-        is_features = merge_news_pit(is_df, news_list, lookback_hours=4)
-        add_technical_indicators(is_features)
+        is_features = merge_news_pit(is_df, news_list, lookback_hours=4, ticker=symbol)
+        add_technical_indicators(is_features, node_config=node_config)
+        generate_master_signal(is_features, node_config=node_config, ticker=symbol)
         is_features = trim_warmup_period(is_features, warmup_rows=20)
         
         # Feature engineering for out-of-sample
         oos_df = oos_bars.copy()
         oos_df['log_return'] = feature_engineer.calculate_log_return(oos_df)
-        oos_features = merge_news_pit(oos_df, news_list, lookback_hours=4)
-        add_technical_indicators(oos_features)
+        oos_features = merge_news_pit(oos_df, news_list, lookback_hours=4, ticker=symbol)
+        add_technical_indicators(oos_features, node_config=node_config)
+        generate_master_signal(oos_features, node_config=node_config, ticker=symbol)
         oos_features = trim_warmup_period(oos_features, warmup_rows=20)
         
         if len(is_features) < 50 or len(oos_features) < 30:
