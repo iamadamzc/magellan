@@ -260,6 +260,13 @@ Create comparison table:
 - ❌ Survivorship bias (only testing winners)
 - ❌ Cherry-picked periods (avoiding bad regimes)
 - ❌ Insufficient sample size (<20 trades total)
+- ⚠️ **CRITICAL: NVDA 10-for-1 stock split on June 7, 2024**
+  - Alpaca data is NOT split-adjusted
+  - Pre-split: ~$1000/share, Post-split: ~$100/share
+  - **Impact**: Any NVDA backtest crossing June 2024 will have distorted returns
+  - **Solution**: Test 2020-2024 (pre-split) and 2024-2025 (post-split) separately
+  - **OR**: Use split-adjusted data source
+  - **Phase 3 approach**: Tested 2025 only (post-split) to avoid this issue
 
 ### **Methodology Issues**
 - ❌ Optimizing on full dataset (no train/test split)
