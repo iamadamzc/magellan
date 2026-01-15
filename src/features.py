@@ -225,14 +225,14 @@ def add_technical_indicators(df: pd.DataFrame, node_config: dict = None) -> pd.D
     
     # Avoid division by zero
     rs = avg_gain / avg_loss.replace(0, np.inf)
-    # RSI is 0-100. Subtract 50 to center it (-50 to +50).
-    # This enables negative weights (Mean Reversion) to work correctly.
-    df['rsi_14'] = (100 - (100 / (1 + rs))) - 50.0
+    # RSI 0-100 (raw, no centering)
+    # VARIANT F: Keep raw RSI for intuitive hysteresis thresholds (55/45)
+    df['rsi_14'] = 100 - (100 / (1 + rs))
     
-    # Handle edge case where avg_loss is 0 (RSI = 100 -> +50)
-    df.loc[avg_loss == 0, 'rsi_14'] = 50.0
-    # Handle edge case where avg_gain is 0 (RSI = 0 -> -50)
-    df.loc[avg_gain == 0, 'rsi_14'] = -50.0
+    # Handle edge case where avg_loss is 0 (RSI = 100)
+    df.loc[avg_loss == 0, 'rsi_14'] = 100.0
+    # Handle edge case where avg_gain is 0 (RSI = 0)
+    df.loc[avg_gain == 0, 'rsi_14'] = 0.0
     
     # Volatility (14): Rolling standard deviation of log returns
     df['volatility_14'] = df['log_return'].rolling(window=14).std()
@@ -688,6 +688,69 @@ def generate_master_signal(
     
     # Calculate weighted alpha score
     df['alpha_score'] = (rsi_wt * rsi_norm) + (vol_wt * vol_norm) + (sent_wt * sent_norm)
+    
+    # -------------------------------------------------------------------------
+    # VARIANT F: HYSTERESIS (Schmidt Trigger) for Daily Trend Following
+    # Solves whipsaw over-trading by creating a "quiet zone" (45-55 RSI)
+    # -------------------------------------------------------------------------
+    if node_config and node_config.get('enable_hysteresis', False):
+        LOG.info(f"[HYSTERESIS] Schmidt Trigger enabled for {ticker}")
+        
+        upper_threshold = node_config.get('hysteresis_upper_rsi', 55)  # Buy threshold (raw RSI)
+        lower_threshold = node_config.get('hysteresis_lower_rsi', 45)  # Sell threshold (raw RSI)
+        
+        LOG.info(f"[HYSTERESIS] Thresholds: Long Entry RSI > {upper_threshold}, Flat Exit RSI < {lower_threshold}")
+        
+        # Initialize state tracking
+        # State: 0 = FLAT, 1 = LONG, -1 = SHORT (but config may force long-only)
+        allow_shorts = node_config.get('allow_shorts', False)
+        
+        position_state = np.zeros(len(df))  # State column
+        hysteresis_signal = np.zeros(len(df))  # Signal column (0 = flat, 1 = long, -1 = short)
+        
+        current_state = 0  # Start FLAT
+        
+        # Schmidt Trigger State Machine (forward iteration, no lookahead)
+        for i, (idx, row) in enumerate(df.iterrows()):
+            rsi_value = row['rsi_14']
+            
+            # State transitions
+            if current_state == 0:  # Currently FLAT
+                if rsi_value > upper_threshold:
+                    current_state = 1  # Enter LONG
+                elif allow_shorts and rsi_value < lower_threshold:
+                    current_state = -1  # Enter SHORT (if allowed)
+                # else: stay FLAT
+            
+            elif current_state == 1:  # Currently LONG
+                if rsi_value < lower_threshold:
+                    current_state = 0  # Exit to FLAT
+                # else: hold LONG (quiet zone 45-55 does nothing)
+            
+            elif current_state == -1:  # Currently SHORT
+                if rsi_value > upper_threshold:
+                    current_state = 0  # Exit to FLAT
+                # else: hold SHORT (quiet zone 45-55 does nothing)
+            
+            # Record state
+            position_state[i] = current_state
+            hysteresis_signal[i] = current_state
+        
+        # Store in DataFrame
+        df['position_state'] = position_state
+        df['hysteresis_signal'] = hysteresis_signal
+        
+        # Telemetry
+        state_changes = pd.Series(position_state).diff().fillna(0)
+        num_transitions = (state_changes != 0).sum()
+        long_periods = (position_state == 1).sum()
+        flat_periods = (position_state == 0).sum()
+        short_periods = (position_state == -1).sum()
+        
+        LOG.info(f"[HYSTERESIS] State transitions: {num_transitions}")
+        LOG.info(f"[HYSTERESIS] Distribution - Long: {long_periods}, Flat: {flat_periods}, Short: {short_periods}")
+        LOG.success(f"[HYSTERESIS] Schmidt Trigger complete - Whipsaw filter active")
+    # -------------------------------------------------------------------------
     
     # -------------------------------------------------------------------------
     # CARRIER VETO: Phase-Lock Filter (5M vs 60M polarity alignment)

@@ -330,11 +330,21 @@ def run_rolling_backtest(
         # Using cleaned features WITHOUT forward_return
         is_alpha = calculate_alpha_with_weights(is_features_clean, optimal_weights)
         oos_alpha = calculate_alpha_with_weights(oos_features_clean, optimal_weights)
-        threshold = is_alpha.median()
+        
+        # VARIANT F: Check if hysteresis signal is available (bypasses threshold logic)
+        use_hysteresis_is = 'hysteresis_signal' in is_features.columns
+        use_hysteresis_oos = 'hysteresis_signal' in oos_features.columns
         
         # Prepare IS data for simulation (to get IS metrics)
         is_sim = is_features[['close', 'log_return']].copy()
-        is_sim['signal'] = np.where(is_alpha > threshold, 1, -1)
+        if use_hysteresis_is:
+            # Use hysteresis signal directly (stateful, no threshold needed)
+            is_sim['signal'] = is_features['hysteresis_signal']
+            log_msg("[HYSTERESIS] Using Schmidt Trigger signal for IS (bypassing threshold)", verbose=True)
+        else:
+            # Fall back to median threshold logic
+            threshold = is_alpha.median()
+            is_sim['signal'] = np.where(is_alpha > threshold, 1, -1)
         
         # Simulate IS portfolio with Liquidity Cap
         # Apply LIQUIDITY_CAP_USD: no single trade exceeds $100k regardless of equity
@@ -358,7 +368,14 @@ def run_rolling_backtest(
         
         # Prepare OOS data for simulation
         oos_sim = oos_features[['close', 'log_return']].copy()
-        oos_sim['signal'] = np.where(oos_alpha > threshold, 1, -1)
+        if use_hysteresis_oos:
+            # Use hysteresis signal directly (stateful, no threshold needed)
+            oos_sim['signal'] = oos_features['hysteresis_signal']
+            log_msg("[HYSTERESIS] Using Schmidt Trigger signal for OOS (bypassing threshold)", verbose=True)
+        else:
+            # Fall back to median threshold logic
+            threshold = is_alpha.median() if not use_hysteresis_is else 0.5  # Use fallback threshold if needed
+            oos_sim['signal'] = np.where(oos_alpha > threshold, 1, -1)
         
         # Calculate OOS hit rate
         # P0 SYNC: Use shifted signal to match execution timing
