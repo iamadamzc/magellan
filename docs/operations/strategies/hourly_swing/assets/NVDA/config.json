@@ -1,0 +1,12 @@
+{
+    "symbol": "NVDA",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "max_position_size_usd": 10000,
+    "deployment_status": "active"
+}

@@ -1,0 +1,9 @@
+{
+    "symbol": "AMD",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "secondary",
+    "notes": "Sharpe 2.52 in Baseline Validation"
+}

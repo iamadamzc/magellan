@@ -42,11 +42,31 @@ START_DATE = '2020-01-01'
 END_DATE = '2025-12-31'
 
 # 1. Fetch Data
-print("[1/4] Fetching Data (2020-2025)...")
+# 1. Fetch Data (Chunked)
+print("[1/4] Fetching Data (2020-2025) in chunks...")
 client = AlpacaDataClient()
-# Fetching daily is fast
-raw_df = client.fetch_historical_bars(SYMBOL, TimeFrame.Day, START_DATE, END_DATE, feed='sip')
-print(f"  ✓ Fetched {len(raw_df)} bars")
+years = range(2020, 2026)
+dfs = []
+
+for year in years:
+    print(f"  Fetching {year}...")
+    start = f"{year}-01-01"
+    end = f"{year}-12-31"
+    try:
+        yearly_df = client.fetch_historical_bars(SYMBOL, TimeFrame.Day, start, end, feed='sip')
+        if yearly_df is not None and not yearly_df.empty:
+            dfs.append(yearly_df)
+    except Exception as e:
+        print(f"  ⚠️ Error fetching {year}: {e}")
+
+if not dfs:
+    print("❌ Failed to fetch any data.")
+    sys.exit(1)
+
+raw_df = pd.concat(dfs)
+raw_df = raw_df[~raw_df.index.duplicated(keep='first')] # Remove overlaps if any
+raw_df.sort_index(inplace=True)
+print(f"  ✓ Total Fetched: {len(raw_df)} bars {raw_df.index[0].date()} to {raw_df.index[-1].date()}")
 
 # 2. Define Windows
 # 6m train, 3m test. Walk forward 3m.

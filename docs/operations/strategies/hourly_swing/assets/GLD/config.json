@@ -1,0 +1,12 @@
+{
+    "symbol": "GLD",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 14,
+        "rsi_upper": 60,
+        "rsi_lower": 40
+    },
+    "deployment_status": "active",
+    "notes": "Defensive Hedge"
+}

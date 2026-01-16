@@ -1,0 +1,9 @@
+{
+    "symbol": "MSFT",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "paper_trading",
+    "notes": "Sharpe 1.45 in Baseline"
+}
