@@ -1,0 +1,13 @@
+{
+    "symbol": "BTC/USD",
+    "asset_class": "crypto",
+    "strategy_name": "daily_trend_hysteresis_hourly",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 14,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "deployment_status": "rejected",
+    "rejection_reason": "Low Sharpe (0.42), failed hourly tuning, mean-reverting behavior"
+}
