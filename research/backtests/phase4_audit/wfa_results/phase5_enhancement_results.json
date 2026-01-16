@@ -1,0 +1,60 @@
+{
+  "enhanced_hysteresis": {
+    "base": {
+      "avg_sharpe": 0.5102916106204236,
+      "total_trades": 153,
+      "symbols": 3
+    },
+    "trend_only": {
+      "avg_sharpe": 0.2631375269277073,
+      "total_trades": 101,
+      "symbols": 3
+    },
+    "trend_golden": {
+      "avg_sharpe": 0.18093936196948168,
+      "total_trades": 84,
+      "symbols": 3
+    },
+    "all_filters": {
+      "avg_sharpe": 0.05870153121067181,
+      "total_trades": 76,
+      "symbols": 3
+    }
+  },
+  "event_straddles": {
+    "FOMC": {
+      "num_trades": 45,
+      "sharpe": 0.30685457909516334,
+      "win_rate": 31.1,
+      "avg_pnl": 2.28,
+      "avg_price_move": 2.177206813701537
+    },
+    "CPI": {
+      "num_trades": 29,
+      "sharpe": -3.35756716019765,
+      "win_rate": 10.3,
+      "avg_pnl": -18.39,
+      "avg_price_move": 1.554602964315208
+    },
+    "Combined": {
+      "num_trades": 74,
+      "sharpe": -0.865622903835154,
+      "win_rate": 23.0,
+      "avg_pnl": -5.82
+    }
+  },
+  "hourly_swing": {
+    "NVDA": {
+      "num_trades": 42,
+      "sharpe": 0.12509611322239578,
+      "win_rate": 38.1,
+      "avg_pnl": 0.55
+    },
+    "TSLA": {
+      "num_trades": 38,
+      "sharpe": 0.5955763364769878,
+      "win_rate": 34.2,
+      "avg_pnl": 2.4
+    }
+  }
+}

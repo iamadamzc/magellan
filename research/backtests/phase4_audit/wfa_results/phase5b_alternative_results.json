@@ -1,0 +1,88 @@
+{
+  "optimized_tsla": {
+    "RSI7_65/35": {
+      "sharpe": 0.563414144531293,
+      "trades": 41,
+      "win_rate": 46.3,
+      "avg_pnl": 4.55
+    },
+    "RSI7_60/40": {
+      "sharpe": 0.6300481263110373,
+      "trades": 50,
+      "win_rate": 44.0,
+      "avg_pnl": 4.25
+    },
+    "RSI14_60/40": {
+      "sharpe": 0.3512418817797227,
+      "trades": 28,
+      "win_rate": 39.3,
+      "avg_pnl": 5.45
+    },
+    "RSI14_65/35": {
+      "sharpe": 0.3218445978422645,
+      "trades": 20,
+      "win_rate": 45.0,
+      "avg_pnl": 6.75
+    },
+    "RSI21_55/45": {
+      "sharpe": 0.39861100683395156,
+      "trades": 26,
+      "win_rate": 38.5,
+      "avg_pnl": 6.59
+    }
+  },
+  "mean_reversion": {
+    "NVDA": {
+      "sharpe": 0.13980819669261282,
+      "trades": 44,
+      "win_rate": 79.5,
+      "avg_pnl": 0.87
+    },
+    "TSLA": {
+      "sharpe": -0.3909188481361287,
+      "trades": 33,
+      "win_rate": 51.5,
+      "avg_pnl": -2.38
+    },
+    "AMD": {
+      "sharpe": 0.5029972059784691,
+      "trades": 47,
+      "win_rate": 76.6,
+      "avg_pnl": 1.87
+    },
+    "META": {
+      "sharpe": 0.10899609562843546,
+      "trades": 44,
+      "win_rate": 70.5,
+      "avg_pnl": 0.79
+    }
+  },
+  "breakout": {
+    "NVDA": {
+      "sharpe": 0.5383079664229479,
+      "trades": 34,
+      "win_rate": 44.1,
+      "avg_pnl": 5.71
+    },
+    "TSLA": {
+      "sharpe": 0.1980709018030689,
+      "trades": 36,
+      "win_rate": 47.2,
+      "avg_pnl": 2.84
+    },
+    "AMD": {
+      "sharpe": 0.5665533978956299,
+      "trades": 36,
+      "win_rate": 52.8,
+      "avg_pnl": 3.73
+    }
+  },
+  "expanded_earnings": {
+    "AMZN": {
+      "sharpe": 1.1246968175933123,
+      "trades": 10,
+      "win_rate": 30.0,
+      "avg_pnl": 7.85
+    }
+  }
+}
