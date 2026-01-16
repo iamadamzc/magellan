@@ -558,12 +558,20 @@ def main() -> None:
     # =========================================================================
     
     # Configuration
-    # Bars: Modern Era Temporal Lock (2022-2025)
-    bar_start_date = '2022-01-01'
-    bar_end_date = '2025-12-31'
-    # News: 3 days prior to bar_start for PIT lookback coverage
-    news_start_date = '2021-12-29' # 3 days prior to 2022-01-01
-    news_end_date = '2025-12-31'
+    # Bars: Use CLI args if provided, otherwise fallback to Modern Era (2022-2025)
+    if args.start_date and args.end_date:
+        bar_start_date = args.start_date
+        bar_end_date = args.end_date
+        # News: 3 days prior for PIT lookback
+        from datetime import datetime as dt, timedelta
+        news_start_dt = dt.strptime(args.start_date, '%Y-%m-%d') - timedelta(days=3)
+        news_start_date = news_start_dt.strftime('%Y-%m-%d')
+        news_end_date = args.end_date
+    else:
+        bar_start_date = '2022-01-01'
+        bar_end_date = '2025-12-31'
+        news_start_date = '2021-12-29'  # 3 days prior to 2022-01-01
+        news_end_date = '2025-12-31'
     
     # Load node configurations from master_config.json
     node_configs = load_node_config()
