@@ -7,6 +7,29 @@
 
 ---
 
+## 🔴 HFT RESEARCH UPDATE (2026-01-16)
+
+**STATUS**: ✅ **COMPLETED - ALL HFT STRATEGIES REJECTED**
+
+**What was tested**:
+- 6 HFT strategies (Liquidity Grab, Range Scalping, Opening Range, Mean Reversion, VWAP, Momentum)
+- 7 asset classes (SPY, QQQ, IWM, NVDA, TSLA, ES, NQ)
+- Full-year validation on 4 best strategies (2024 + 2025 = 504 days)
+
+**Result**: **ALL STRATEGIES FAILED** after full-year validation
+- Q1 samples showed false positives (Sharpe 0.84 to 2.04)
+- Full-year testing revealed losses (Sharpe -0.21 to -1.91)
+- **Sample bias is severe**: Average Sharpe collapse of -2.29 points
+
+**Verdict**: **HFT NOT VIABLE** with residential latency + realistic friction
+
+**See**: `research/high_frequency/HFT_FINAL_RESEARCH_SUMMARY.md`
+
+**Recommendation**: Focus on **FOMC Event Straddles** (Sharpe 1.17, validated)
+
+---
+
+
 ## YOUR ROLE
 
 **You are a quantitative trading strategist with extensive experience in:**
@@ -92,12 +115,32 @@ Exit: Profit target OR 30-sec timeout
 
 ---
 
-#### 3. Intraday Scalping (1-5 min holds) 🆕 HIGH-FREQUENCY
-**Status**: Previously rejected (assumed too slow), now viable  
-**What to do**:
-- [ ] Backtest with 67ms fill assumptions
-- [ ] Test during market hours (fill quality validation)
-- [ ] Compare breakeven slippage at 67ms vs 500ms
+#### 3. Intraday Scalping (1-5 min holds) ✅ COMPLETED - NO-GO
+**Status**: ❌ **EXHAUSTIVELY TESTED - ALL STRATEGIES FAILED**  
+**Research completed**: 2026-01-16  
+
+**What was tested** (6 strategies, 7 asset classes, full-year validation):
+- ✅ Liquidity Grab (QQQ): Q1 Sharpe 0.84 → Full year -1.91 ❌
+- ✅ Range Scalping (ES): Q1 Sharpe 1.29 → Full year -0.21 ❌
+- ✅ Opening Range Breakout (QQQ): Q1 Sharpe 0.99 → Full year -1.64 ❌
+- ✅ Mean Reversion (NVDA): Q1 Sharpe 2.04 → Full year -0.23 ❌
+- ✅ VWAP Scalping (SPY): Sharpe -4.32 ❌
+- ✅ Momentum Scalping (SPY): Sharpe -3.64 ❌
+
+**Critical finding**: **SEVERE SAMPLE BIAS**
+- 30-day samples showed false positives (Sharpe 0.84 to 2.04)
+- Full-year testing revealed true performance (all negative)
+- Average Sharpe collapse: -2.29 points
+
+**Why ALL strategies failed**:
+- Win rates 25-60% insufficient to overcome friction
+- 1.0 bps friction × 5-7 trades/day = 12-17% annual friction
+- Avg losses often exceed avg wins
+- Market regimes change - Q1 not representative
+
+**See**: `research/high_frequency/HFT_FINAL_RESEARCH_SUMMARY.md`
+
+**Verdict**: HFT NOT VIABLE with residential latency + realistic friction
 
 **Strategy**:
 ```
