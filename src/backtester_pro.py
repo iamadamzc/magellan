@@ -294,10 +294,6 @@ def run_rolling_backtest(
         is_features = merge_news_pit(is_df, news_list, lookback_hours=4, ticker=symbol)
         add_technical_indicators(is_features, node_config=node_config)
         
-        # DEBUG: Log node_config before calling generate_master_signal
-        print(f"[BACKTEST-DEBUG] Window {window_idx}: node_config = {node_config}")
-        print(f"[BACKTEST-DEBUG] enable_hysteresis = {node_config.get('enable_hysteresis', 'MISSING') if node_config else 'NONE'}")
-        
         generate_master_signal(is_features, node_config=node_config, ticker=symbol)
         is_features = trim_warmup_period(is_features, warmup_rows=20)
         

@@ -693,12 +693,6 @@ def generate_master_signal(
     # VARIANT F: HYSTERESIS (Schmidt Trigger) for Daily Trend Following
     # Solves whipsaw over-trading by creating a "quiet zone" (45-55 RSI)
     # -------------------------------------------------------------------------
-    # DEBUG: Log node_config to diagnose activation
-    LOG.info(f"[DEBUG] generate_master_signal called for {ticker}")
-    LOG.info(f"[DEBUG] node_config type: {type(node_config)}")
-    LOG.info(f"[DEBUG] node_config content: {node_config}")
-    LOG.info(f"[DEBUG] enable_hysteresis value: {node_config.get('enable_hysteresis', 'KEY_MISSING') if node_config else 'NODE_CONFIG_IS_NONE'}")
-    
     if node_config and node_config.get('enable_hysteresis', False):
         LOG.info(f"[HYSTERESIS] Schmidt Trigger enabled for {ticker}")
         
