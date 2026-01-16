@@ -1,20 +1,65 @@
-/venv/
-/.venv/
-.env
-*.log
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-data/
-reports/archive/
-velocity_report_*.txt
+*$py.class
+*.so
 
-# Test outputs and backtest results
-equity_curve_*.csv
-stress_test_*.csv
-stress_test_*.txt
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Cache directories
-.cache/
+# PyInstaller
+*.manifest
+*.spec
 
-# Temporary debug scripts
-inspect_*.py
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific: Large result CSVs
+results/stress_test_equity_*.csv
+results/equity_curve_*.csv
+*.csv
+
+# Keep smaller result files
+!results/options/*.csv
+!research/websocket_poc/*.txt
+!research/websocket_poc/*.json
+
+# Logs
+*.log
+livetradelog.txt
+
+# Temporary files
+*.tmp
+*.bak
