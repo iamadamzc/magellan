@@ -4,25 +4,27 @@
 
 **Want to test the validated trading strategy?**
 
-👉 **[READ THIS FIRST: DAILY_TREND_HYSTERESIS_GUIDE.md](DAILY_TREND_HYSTERESIS_GUIDE.md)**
+👉 **[READ THIS FIRST: strategies/daily_trend_hysteresis/README.md](strategies/daily_trend_hysteresis/README.md)**
 
 ### Run Portfolio Backtest (2024-2025):
 ```bash
-python test_portfolio_backtest.py
+python strategies/daily_trend_hysteresis/backtest_portfolio.py
 ```
 
 **Results**: 10/11 assets profitable, +45% average return, 1.05 Sharpe
 
 ---
 
-## 📁 Key Files
+## 📁 Strategy Directory Structure
 
-- **Strategy Guide**: `DAILY_TREND_HYSTERESIS_GUIDE.md` ⭐ START HERE
-- **Configuration**: `config/nodes/master_config.json`
-- **Bug Fixes**: `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
-- **Test Scripts**: 
-  - `test_portfolio_backtest.py` (all assets)
-  - `test_daily_hysteresis_real.py` (single asset)
+```
+strategies/
+└── daily_trend_hysteresis/
+    ├── README.md              ⭐ Complete strategy guide
+    ├── backtest_portfolio.py  🧪 Test all assets
+    ├── backtest_single.py     🧪 Test single asset (GOOGL)
+    └── results.csv            📊 Validated results (2024-2025)
+```
 
 ---
 
@@ -46,6 +48,22 @@ python test_portfolio_backtest.py
 
 ---
 
+## 🔧 System Configuration
+
+- **Strategy Config**: `config/nodes/master_config.json`
+- **Core Logic**: `src/features.py` (line 693)
+- **Backtester**: `src/backtester_pro.py`
+
+---
+
+## 📚 Documentation
+
+- **Strategy Guide**: `strategies/daily_trend_hysteresis/README.md`
+- **Bug Fixes**: `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
+- **Deployment**: `docs/VALIDATED_STRATEGIES_DEPLOYMENT.md`
+
+---
+
 ## 🔧 System Status
 
 - ✅ Critical bugs fixed (2026-01-16)
@@ -55,4 +73,4 @@ python test_portfolio_backtest.py
 
 ---
 
-**For full documentation, see**: `DAILY_TREND_HYSTERESIS_GUIDE.md`
+**For full documentation, see**: `strategies/daily_trend_hysteresis/README.md`

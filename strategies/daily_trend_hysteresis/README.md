@@ -57,8 +57,8 @@ The 45-55 "dead zone" prevents rapid buy/sell cycles in choppy markets.
 ### Option 1: Quick Test (Single Asset)
 
 ```bash
-# Test GOOGL for 2024-2025
-python test_daily_hysteresis_real.py
+# From project root
+python strategies/daily_trend_hysteresis/backtest_single.py
 ```
 
 **What it does**: Backtests GOOGL with RSI-28, bands 55/45 on 2024-2025 data
@@ -70,8 +70,8 @@ python test_daily_hysteresis_real.py
 ### Option 2: Full Portfolio Test (All 10 Assets)
 
 ```bash
-# Test all validated assets
-python test_portfolio_backtest.py
+# From project root
+python strategies/daily_trend_hysteresis/backtest_portfolio.py
 ```
 
 **What it does**: Tests all 10 profitable assets (excludes NVDA)
@@ -79,13 +79,14 @@ python test_portfolio_backtest.py
 **Output**: 
 - Individual asset results
 - Portfolio summary
-- CSV file: `portfolio_backtest_results.csv`
+- CSV file: `strategies/daily_trend_hysteresis/results.csv`
 
 ---
 
 ### Option 3: Live Backtest via Main System
 
 ```bash
+# From project root
 # Single asset
 python main.py --symbols GOOGL --start-date 2024-01-01 --end-date 2025-12-31
 
@@ -137,17 +138,18 @@ All settings are in: `config/nodes/master_config.json`
 
 ## 📁 FILES & LOCATIONS
 
-### Core Strategy Code:
-- **Logic**: `src/features.py` (lines 693-758)
-- **Backtester**: `src/backtester_pro.py` (uses node_config interval)
-- **Config**: `config/nodes/master_config.json`
+### Strategy Files:
+- **This Guide**: `strategies/daily_trend_hysteresis/README.md`
+- **Portfolio Test**: `strategies/daily_trend_hysteresis/backtest_portfolio.py`
+- **Single Asset Test**: `strategies/daily_trend_hysteresis/backtest_single.py`
+- **Results**: `strategies/daily_trend_hysteresis/results.csv`
 
-### Test Scripts:
-- **Single Asset**: `test_daily_hysteresis_real.py`
-- **Portfolio**: `test_portfolio_backtest.py`
+### Core System Code:
+- **Strategy Logic**: `src/features.py` (lines 693-758)
+- **Backtester**: `src/backtester_pro.py` (uses node_config interval)
+- **Configuration**: `config/nodes/master_config.json`
 
 ### Documentation:
-- **This Guide**: `DAILY_TREND_HYSTERESIS_GUIDE.md`
 - **Bug Fixes**: `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
 - **Deployment**: `docs/VALIDATED_STRATEGIES_DEPLOYMENT.md`
 
@@ -254,10 +256,10 @@ else:
 
 ## 📞 QUICK REFERENCE
 
-**Test it**: `python test_portfolio_backtest.py`  
+**Test it**: `python strategies/daily_trend_hysteresis/backtest_portfolio.py`  
 **Config**: `config/nodes/master_config.json`  
 **Logic**: `src/features.py` line 693  
-**Results**: `portfolio_backtest_results.csv`
+**Results**: `strategies/daily_trend_hysteresis/results.csv`
 
 **Questions?** Check `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
 
