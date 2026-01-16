@@ -158,22 +158,48 @@ def run_rolling_backtest(
         print(f"[STRESS TEST] Total trading days: {len(trading_days)}")
     
     # Fetch all historical data upfront (more efficient than per-day calls)
+    # Use interval from node_config (defaults to 1Min for backward compatibility)
+    fetch_interval = node_config.get('interval', '1Min') if node_config else '1Min'
+    
     if not quiet:
-        print(f"\n[STRESS TEST] Fetching {len(trading_days)} days of 1-minute bars...")
+        print(f"\n[STRESS TEST] Fetching {len(trading_days)} days of {fetch_interval} bars...")
     
     start_str = trading_days[0].strftime('%Y-%m-%d')
     end_str = (trading_days[-1] + timedelta(days=1)).strftime('%Y-%m-%d')
     
+    # Map interval string to TimeFrame
+    from alpaca.data.timeframe import TimeFrame, TimeFrameUnit
+    tf_map = {
+        '1Min': TimeFrame.Minute,
+        '5Min': TimeFrame(5, TimeFrameUnit.Minute),
+        '15Min': TimeFrame(15, TimeFrameUnit.Minute),
+        '1Hour': TimeFrame.Hour,
+        '1Day': TimeFrame.Day
+    }
+    target_tf = tf_map.get(fetch_interval, TimeFrame.Minute)
+    
     try:
         all_bars = alpaca_client.fetch_historical_bars(
             symbol=symbol,
-            timeframe='1Min',
+            timeframe=target_tf,
             start=start_str,
             end=end_str,
             feed='sip'
         )
         if not quiet:
             print(f"[STRESS TEST] Fetched {len(all_bars)} total bars")
+        
+        # CRITICAL: Force resample to ensure we have the correct resolution
+        # Alpaca sometimes returns minute bars even when daily is requested
+        from src.data_handler import force_resample_ohlcv
+        all_bars, was_resampled, actual_secs, expected_secs = force_resample_ohlcv(
+            all_bars, fetch_interval, ticker=symbol
+        )
+        
+        if was_resampled and not quiet:
+            print(f"[STRESS TEST] Resampled from {int(actual_secs)}s to {int(expected_secs)}s bars")
+            print(f"[STRESS TEST] Final dataset: {len(all_bars)} {fetch_interval} bars")
+            
     except Exception as e:
         print(f"[STRESS TEST ERROR] Failed to fetch historical data: {e}")
         return {'error': str(e)}
