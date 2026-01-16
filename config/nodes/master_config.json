@@ -1,16 +1,21 @@
 {
     "tickers": [
-        "GOOGL",
-        "TSLA",
         "AAPL",
-        "NVDA",
+        "AMD",
+        "AMZN",
+        "COIN",
+        "ETH/USD",
+        "GLD",
+        "GOOGL",
+        "IWM",
         "META",
         "MSFT",
-        "AMZN",
-        "GLD",
-        "IWM",
+        "NFLX",
+        "NVDA",
+        "PLTR",
         "QQQ",
-        "SPY"
+        "SPY",
+        "TSLA"
     ],
     "GOOGL": {
         "interval": "1Day",
@@ -24,14 +29,16 @@
         "validated_return_2025": 108.0,
         "validated_sharpe": 2.05,
         "validated_max_dd": -13.0,
-        "trades_per_year": 8
+        "trades_per_year": 8,
+        "enable_earnings": true,
+        "use_regime_filter": true
     },
     "TSLA": {
-        "interval": "1Day",
-        "rsi_lookback": 28,
+        "interval": "1Hour",
+        "rsi_lookback": 14,
         "enable_hysteresis": true,
-        "hysteresis_upper_rsi": 58,
-        "hysteresis_lower_rsi": 42,
+        "hysteresis_upper_rsi": 60,
+        "hysteresis_lower_rsi": 40,
         "allow_shorts": false,
         "position_cap_usd": 10000,
         "strategy": "Daily Trend Hysteresis",
@@ -52,14 +59,16 @@
         "validated_return_2025": 31.0,
         "validated_sharpe": 0.99,
         "validated_max_dd": -19.0,
-        "trades_per_year": 3
+        "trades_per_year": 3,
+        "enable_earnings": true,
+        "use_regime_filter": true
     },
     "NVDA": {
-        "interval": "1Day",
+        "interval": "1Hour",
         "rsi_lookback": 28,
         "enable_hysteresis": true,
-        "hysteresis_upper_rsi": 58,
-        "hysteresis_lower_rsi": 42,
+        "hysteresis_upper_rsi": 55,
+        "hysteresis_lower_rsi": 45,
         "allow_shorts": false,
         "position_cap_usd": 10000,
         "strategy": "Daily Trend Hysteresis",
@@ -81,11 +90,13 @@
         "validated_return_2025": 13.0,
         "validated_sharpe": 0.46,
         "validated_max_dd": -17.0,
-        "trades_per_year": 11
+        "trades_per_year": 11,
+        "enable_earnings": true,
+        "use_regime_filter": true
     },
     "MSFT": {
         "interval": "1Day",
-        "rsi_lookback": 21,
+        "rsi_lookback": 28,
         "enable_hysteresis": true,
         "hysteresis_upper_rsi": 58,
         "hysteresis_lower_rsi": 42,
@@ -99,7 +110,7 @@
     },
     "AMZN": {
         "interval": "1Day",
-        "rsi_lookback": 21,
+        "rsi_lookback": 28,
         "enable_hysteresis": true,
         "hysteresis_upper_rsi": 55,
         "hysteresis_lower_rsi": 45,
@@ -112,11 +123,11 @@
         "trades_per_year": 19
     },
     "GLD": {
-        "interval": "1Day",
-        "rsi_lookback": 21,
+        "interval": "1Hour",
+        "rsi_lookback": 14,
         "enable_hysteresis": true,
-        "hysteresis_upper_rsi": 65,
-        "hysteresis_lower_rsi": 35,
+        "hysteresis_upper_rsi": 60,
+        "hysteresis_lower_rsi": 40,
         "allow_shorts": false,
         "position_cap_usd": 10000,
         "strategy": "Daily Trend Hysteresis",
@@ -129,8 +140,8 @@
         "interval": "1Day",
         "rsi_lookback": 28,
         "enable_hysteresis": true,
-        "hysteresis_upper_rsi": 65,
-        "hysteresis_lower_rsi": 35,
+        "hysteresis_upper_rsi": 55,
+        "hysteresis_lower_rsi": 45,
         "allow_shorts": false,
         "position_cap_usd": 10000,
         "strategy": "Daily Trend Hysteresis",
@@ -141,21 +152,21 @@
     },
     "QQQ": {
         "interval": "1Day",
-        "rsi_lookback": 21,
+        "rsi_lookback": 28,
         "enable_hysteresis": true,
-        "hysteresis_upper_rsi": 60,
-        "hysteresis_lower_rsi": 40,
+        "hysteresis_upper_rsi": 55,
+        "hysteresis_lower_rsi": 45,
         "allow_shorts": false,
         "position_cap_usd": 10000,
         "strategy": "Daily Trend Hysteresis",
         "validated_return_2025": 29.0,
-        "validated_sharpe": 1.20,
+        "validated_sharpe": 1.2,
         "validated_max_dd": -11.0,
         "trades_per_year": 6
     },
     "SPY": {
         "interval": "1Day",
-        "rsi_lookback": 21,
+        "rsi_lookback": 28,
         "enable_hysteresis": true,
         "hysteresis_upper_rsi": 58,
         "hysteresis_lower_rsi": 42,
@@ -166,5 +177,38 @@
         "validated_sharpe": 1.37,
         "validated_max_dd": -9.0,
         "trades_per_year": 6
+    },
+    "ETH/USD": {
+        "interval": "1Hour",
+        "rsi_lookback": 14,
+        "hysteresis_upper_rsi": 55,
+        "hysteresis_lower_rsi": 45,
+        "enable_hysteresis": true,
+        "allow_shorts": false,
+        "position_cap_usd": 10000
+    },
+    "AMD": {
+        "interval": "1Day",
+        "enable_earnings": true,
+        "use_regime_filter": true
+    },
+    "COIN": {
+        "interval": "1Day",
+        "enable_earnings": true,
+        "use_regime_filter": true
+    },
+    "NFLX": {
+        "interval": "1Day",
+        "enable_earnings": true,
+        "use_regime_filter": true
+    },
+    "PLTR": {
+        "interval": "1Hour",
+        "rsi_lookback": 21,
+        "hysteresis_upper_rsi": 60,
+        "hysteresis_lower_rsi": 40,
+        "enable_hysteresis": true,
+        "allow_shorts": false,
+        "position_cap_usd": 10000
     }
 }
