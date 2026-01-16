@@ -91,16 +91,18 @@ python main.py --mode live --max-position-size 10000
 ## Testing Status
 
 ### Current Test
-- **Command**: `python main.py --symbols GOOGL --start-date 2024-01-01 --end-date 2024-12-31 --quiet --report-only`
-- **Status**: 🔄 Running
-- **Expected**: Daily bars, hysteresis signal, ~8 trades for 2024
+- **Command**: `python main.py --symbols GOOGL --start-date 2024-01-01 --end-date 2024-03-31 --verbose`
+- **Status**: 🔄 Running (Debug Run)
+- **Verified**: Config Load confirmed (`Lookback: 28` matching validated config)
+- **Expected**: Hysteresis logs, No Fermi logs
 
 ### Next Steps
-1. ✅ Verify GOOGL backtest completes successfully
-2. ⏳ Test additional assets (TSLA, GLD, SPY)
-3. ⏳ Validate all CLI overrides work correctly
-4. ⏳ Run full portfolio backtest (all 11 assets)
-5. ⏳ Merge to `main` branch
+1. ✅ Verified Config Loaded Correctly
+2. ⏳ Confirm Hysteresis logic activation in logs
+3. ⏳ Test additional assets (TSLA, GLD, SPY)
+4. ⏳ Validate all CLI overrides work correctly
+5. ⏳ Run full portfolio backtest (all 11 assets)
+6. ⏳ Merge to `main` branch
 
 ---
 

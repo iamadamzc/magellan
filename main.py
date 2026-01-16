@@ -771,11 +771,12 @@ def main() -> None:
                     symbol=symbol,
                     days=stress_days,
                     in_sample_days=3,
-                    initial_capital=37500.0,
+                    initial_capital=node_config.get('position_cap_usd', 10000.0),
                     start_date=temporal_start,
                     end_date=temporal_end,
                     report_only=args.report_only,
-                    quiet=args.quiet
+                    quiet=args.quiet,
+                    node_config=node_config
                 )
                 
                 # Print stress test summary
