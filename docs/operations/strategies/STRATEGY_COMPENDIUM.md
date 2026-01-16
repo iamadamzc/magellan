@@ -231,3 +231,133 @@ python docs/operations/strategies/daily_trend_hysteresis/tests/crypto_validation
 This will probe all major endpoints and report which are working.
 
 ---
+
+## 7. DIRECTORY STRUCTURE & TESTING PROTOCOL
+
+**Purpose**: Maintain a standardized, self-documenting structure for every strategy so that validation, tuning, and deployment are reproducible and traceable.
+
+### A. Standard Folder Layout
+
+```
+docs/operations/strategies/<STRATEGY_NAME>/
+├── README.md                          # User-facing strategy guide
+├── backtest.py                        # Main validation script (run this first)
+├── backtest_portfolio.py              # Portfolio-level validation (optional)
+├── results.csv                        # Results from validation
+│
+├── assets/                            # ⭐ NEW: Asset-Level Configs
+│   ├── <SYMBOL1>/
+│   │   ├── config.json                # Trading parameters (REQUIRED)
+│   │   └── VALIDATION_REPORT.md       # Performance proof (optional, for primary assets)
+│   └── <SYMBOL2>/
+│       └── config.json
+│
+└── tests/                             # Testing & Validation Artifacts
+    ├── FINAL_VALIDATION_REPORT.md     # Overall strategy sign-off
+    ├── README.md                      # Test suite guide
+    │
+    ├── tuning/                        # Tuning experiments & expansions
+    │   ├── TUNING_REPORT.md           # Summary of tuning findings
+    │   ├── run_<experiment>.py        # Experimental scripts
+    │   └── <experiment>_results.csv   # Output data
+    │
+    ├── regime_analysis/               # Regime-specific testing
+    │   └── <regime>_results.csv
+    │
+    ├── slippage/                      # Slippage stress tests
+    │   └── slippage_analysis.csv
+    │
+    └── wfa*/                          # Walk-Forward Analysis folders
+        └── wfa_results.csv
+```
+
+### B. What Goes Where (And Why)
+
+#### 1. **`/assets/<SYMBOL>/config.json`** ✅ REQUIRED
+**Purpose**: Single source of truth for how to trade this asset.  
+**Contents**:
+```json
+{
+    "symbol": "NVDA",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "deployment_status": "active",
+    "max_position_size_usd": 10000
+}
+```
+
+**Why**: Enables `scripts/update_master_config.py` to auto-sync all strategy configs to the system's `master_config.json`.
+
+#### 2. **`/assets/<SYMBOL>/VALIDATION_REPORT.md`** (Optional)
+**Purpose**: Proof of performance for "flagship" assets.  
+**When to Create**: For any asset with Sharpe > 1.0 or notable historical results.  
+**Contents**: Summarized metrics (Sharpe, Return, Drawdown) and deployment recommendation.
+
+#### 3. **`/tests/FINAL_VALIDATION_REPORT.md`** ✅ REQUIRED (For Strategy Approval)
+**Purpose**: The "Go/No-Go" document for deploying the entire strategy.  
+**Contents**:
+- Overall performance summary (aggregated across all assets)
+- Robustness findings (WFA, regime analysis, slippage tests)
+- Deployment checklist
+- Risk warnings
+
+**Example**: `earnings_straddles/tests/FINAL_VALIDATION_REPORT.md`
+
+#### 4. **`/tests/tuning/TUNING_REPORT.md`**
+**Purpose**: Document parameter optimization and asset expansion results.  
+**When to Create**: After running tuning experiments (e.g., testing new assets, adjusting filters).  
+**Contents**:
+- Baseline vs Tuned performance
+- Accept/Reject decisions for each tuning attempt
+- Updated portfolio composition
+
+#### 5. **`/tests/tuning/run_<experiment>.py`**
+**Purpose**: Experimental validation scripts for one-off tests.  
+**Naming Convention**:
+- `run_amzn_atr_test.py` (Testing ATR filter on AMZN)
+- `run_new_assets_test.py` (Scanning candidate assets)
+- `run_crypto_hourly_validation.py` (Timeframe shift experiment)
+
+**Output**: Save results to `<experiment>_results.csv` in the same directory.
+
+### C. Testing Protocol (Step-by-Step)
+
+#### Phase 1: Initial Validation
+1. Run `backtest.py` on a 2-year sample (2024-2025).
+2. Generate `results.csv` with Sharpe, Return, Max DD for each asset.
+3. Create `FINAL_VALIDATION_REPORT.md` if strategy passes (Avg Sharpe > 0.5).
+
+#### Phase 2: Robustness Testing
+1. Run **Walk-Forward Analysis** (WFA) to test adaptability.
+   - Save to `/tests/wfa/wfa_results.csv`
+2. Run **Regime Analysis** (Bull/Bear/Sideways splits).
+   - Save to `/tests/regime_analysis/`
+3. Run **Slippage Stress Test** (doubling/tripling transaction costs).
+   - Save to `/tests/slippage/`
+
+#### Phase 3: Tuning & Expansion
+1. Identify weak assets (Sharpe < 0.3).
+2. Create tuning experiments in `/tests/tuning/`:
+   - Try parameter adjustments
+   - Test new candidate assets
+3. Document findings in `TUNING_REPORT.md`.
+4. Update `/assets/<SYMBOL>/config.json` with optimized parameters.
+
+#### Phase 4: Deployment
+1. Run `scripts/update_master_config.py` to sync all asset configs.
+2. Deploy to **Paper Trading** for 1-2 weeks.
+3. If Paper results match backtest (within 20%), deploy to **Live**.
+
+### D. Best Practices
+
+1. **Never Delete Old Tests**: Archive them in `/tests/archive/` if they become obsolete.
+2. **Always Version Reports**: Include date in filename or frontmatter (e.g., `TUNING_REPORT_2026-01-16.md`).
+3. **CSVs are Gold**: Save raw data from every test. They're small and enable future re-analysis.
+4. **One Experiment = One Script**: Don't create "mega-scripts" that test 10 things. Keep experiments atomic.
+
+---
