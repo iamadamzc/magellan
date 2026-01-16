@@ -58,7 +58,7 @@ The 45-55 "dead zone" prevents rapid buy/sell cycles in choppy markets.
 
 ```bash
 # From project root
-python strategies/daily_trend_hysteresis/backtest_single.py
+python docs/operations/strategies/daily_trend_hysteresis/backtest_single.py
 ```
 
 **What it does**: Backtests GOOGL with RSI-28, bands 55/45 on 2024-2025 data
@@ -71,7 +71,7 @@ python strategies/daily_trend_hysteresis/backtest_single.py
 
 ```bash
 # From project root
-python strategies/daily_trend_hysteresis/backtest_portfolio.py
+python docs/operations/strategies/daily_trend_hysteresis/backtest_portfolio.py
 ```
 
 **What it does**: Tests all 10 profitable assets (excludes NVDA)
@@ -79,7 +79,7 @@ python strategies/daily_trend_hysteresis/backtest_portfolio.py
 **Output**: 
 - Individual asset results
 - Portfolio summary
-- CSV file: `strategies/daily_trend_hysteresis/results.csv`
+- CSV file: `docs/operations/strategies/daily_trend_hysteresis/results.csv`
 
 ---
 
@@ -139,10 +139,10 @@ All settings are in: `config/nodes/master_config.json`
 ## 📁 FILES & LOCATIONS
 
 ### Strategy Files:
-- **This Guide**: `strategies/daily_trend_hysteresis/README.md`
-- **Portfolio Test**: `strategies/daily_trend_hysteresis/backtest_portfolio.py`
-- **Single Asset Test**: `strategies/daily_trend_hysteresis/backtest_single.py`
-- **Results**: `strategies/daily_trend_hysteresis/results.csv`
+- **This Guide**: `docs/operations/strategies/daily_trend_hysteresis/README.md`
+- **Portfolio Test**: `docs/operations/strategies/daily_trend_hysteresis/backtest_portfolio.py`
+- **Single Asset Test**: `docs/operations/strategies/daily_trend_hysteresis/backtest_single.py`
+- **Results**: `docs/operations/strategies/daily_trend_hysteresis/results.csv`
 
 ### Core System Code:
 - **Strategy Logic**: `src/features.py` (lines 693-758)
@@ -256,10 +256,10 @@ else:
 
 ## 📞 QUICK REFERENCE
 
-**Test it**: `python strategies/daily_trend_hysteresis/backtest_portfolio.py`  
+**Test it**: `python docs/operations/strategies/daily_trend_hysteresis/backtest_portfolio.py`  
 **Config**: `config/nodes/master_config.json`  
 **Logic**: `src/features.py` line 693  
-**Results**: `strategies/daily_trend_hysteresis/results.csv`
+**Results**: `docs/operations/strategies/daily_trend_hysteresis/results.csv`
 
 **Questions?** Check `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
 

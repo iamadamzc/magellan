@@ -4,11 +4,11 @@
 
 **Want to test the validated trading strategy?**
 
-👉 **[READ THIS FIRST: strategies/daily_trend_hysteresis/README.md](strategies/daily_trend_hysteresis/README.md)**
+👉 **[READ THIS FIRST: docs/operations/strategies/daily_trend_hysteresis/README.md](docs/operations/strategies/daily_trend_hysteresis/README.md)**
 
 ### Run Portfolio Backtest (2024-2025):
 ```bash
-python strategies/daily_trend_hysteresis/backtest_portfolio.py
+python docs/operations/strategies/daily_trend_hysteresis/backtest_portfolio.py
 ```
 
 **Results**: 10/11 assets profitable, +45% average return, 1.05 Sharpe
@@ -18,7 +18,7 @@ python strategies/daily_trend_hysteresis/backtest_portfolio.py
 ## 📁 Strategy Directory Structure
 
 ```
-strategies/
+docs/operations/strategies/
 └── daily_trend_hysteresis/
     ├── README.md              ⭐ Complete strategy guide
     ├── backtest_portfolio.py  🧪 Test all assets
@@ -58,7 +58,7 @@ strategies/
 
 ## 📚 Documentation
 
-- **Strategy Guide**: `strategies/daily_trend_hysteresis/README.md`
+- **Strategy Guide**: `docs/operations/strategies/daily_trend_hysteresis/README.md`
 - **Bug Fixes**: `docs/CRITICAL_BUG_FIXES_2026-01-16.md`
 - **Deployment**: `docs/VALIDATED_STRATEGIES_DEPLOYMENT.md`
 
@@ -73,4 +73,4 @@ strategies/
 
 ---
 
-**For full documentation, see**: `strategies/daily_trend_hysteresis/README.md`
+**For full documentation, see**: `docs/operations/strategies/daily_trend_hysteresis/README.md`
