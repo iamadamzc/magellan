@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-01-16T07:10:24.728349",
+  "total_events": 0,
+  "categories": {
+    "FOMC": {
+      "count": 0,
+      "events": []
+    },
+    "CPI": {
+      "count": 0,
+      "events": []
+    },
+    "NFP": {
+      "count": 0,
+      "events": []
+    },
+    "Unemployment": {
+      "count": 0,
+      "events": []
+    },
+    "Retail Sales": {
+      "count": 0,
+      "events": []
+    },
+    "GDP": {
+      "count": 0,
+      "events": []
+    },
+    "PCE": {
+      "count": 0,
+      "events": []
+    },
+    "PPI": {
+      "count": 0,
+      "events": []
+    }
+  }
+}
