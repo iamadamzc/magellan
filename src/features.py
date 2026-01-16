@@ -740,6 +740,9 @@ def generate_master_signal(
         df['position_state'] = position_state
         df['hysteresis_signal'] = hysteresis_signal
         
+        # MAPPING: Validated strategy writes directly to 'signal'
+        df['signal'] = hysteresis_signal
+        
         # Telemetry
         state_changes = pd.Series(position_state).diff().fillna(0)
         num_transitions = (state_changes != 0).sum()
@@ -750,6 +753,9 @@ def generate_master_signal(
         LOG.info(f"[HYSTERESIS] State transitions: {num_transitions}")
         LOG.info(f"[HYSTERESIS] Distribution - Long: {long_periods}, Flat: {flat_periods}, Short: {short_periods}")
         LOG.success(f"[HYSTERESIS] Schmidt Trigger complete - Whipsaw filter active")
+        
+        # CRITICAL: Early return to skip legacy Fermi/Carrier logic
+        return df
     # -------------------------------------------------------------------------
     
     # -------------------------------------------------------------------------

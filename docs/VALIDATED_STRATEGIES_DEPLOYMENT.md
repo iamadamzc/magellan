@@ -2,7 +2,7 @@
 
 **Date**: 2026-01-16  
 **Branch**: `feature/validated-strategies-deployment`  
-**Status**: ✅ Configuration Updated, Testing in Progress
+**Status**: ✅ Configuration Updated, ✅ Code Patched, 🔄 Testing in Progress
 
 ---
 
@@ -13,7 +13,17 @@
 - ✅ **Updated** `config/nodes/master_config.json` with validated parameters
 - ✅ **Committed** changes with full documentation
 
-### 2. **Strategy Parameters**
+### 2. **Code Patching (The "Fermi Patch")**
+- ✅ **Modified `src/features.py`**:
+  - Added early return in `generate_master_signal` when hysteresis is enabled
+  - Prevents legacy Fermi/Phase-Lock logic from running
+  - Maps `hysteresis_signal` directly to `df['signal']`
+- ✅ **Modified `main.py`**:
+  - Updated `process_ticker` to respect pre-calculated `signal` column
+  - Added logic to prioritize Validated Hysteresis signal over legacy alpha weights
+  - Ensured `signal` column is preserved during feature isolation
+
+### 3. **Strategy Parameters**
 
 **Old System** (Archived):
 - Timeframe: 5-minute bars
@@ -25,7 +35,7 @@
 - Logic: **RSI Hysteresis (Schmidt Trigger)**
 - Signal: Pure RSI with hysteresis bands (no multi-factor complexity)
 
-### 3. **Validated Assets** (11 Total)
+### 4. **Validated Assets** (11 Total)
 
 | Asset | RSI Period | Upper/Lower | Expected Return | Sharpe | Max DD |
 |-------|------------|-------------|-----------------|--------|--------|
@@ -98,14 +108,14 @@ python main.py --mode live --max-position-size 10000
 
 ```
 config/nodes/master_config.json          # Updated with validated parameters
+src/features.py                          # Patched to skip Fermi logic
+main.py                                  # Patched to respect Hysteresis signal
 docs/LEGACY_MULTI_FACTOR_ALPHA_SYSTEM.md # Archive of old system
 ```
 
 ## Key Files Unchanged (CLI preserved)
 
 ```
-main.py                                  # All CLI args still work
-src/features.py                          # Hysteresis logic already exists
 src/backtester_pro.py                    # Backtest framework intact
 CLI_GUIDE.md                             # Documentation still valid
 ```
@@ -122,6 +132,8 @@ git log --oneline feature/validated-strategies-deployment
 
 # Checkout previous version
 git checkout HEAD~1 -- config/nodes/master_config.json
+git checkout HEAD~1 -- src/features.py
+git checkout HEAD~1 -- main.py
 
 # Or switch back to main
 git checkout main

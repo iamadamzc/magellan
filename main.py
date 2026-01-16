@@ -222,6 +222,9 @@ async def process_ticker(
         # AG: TEMPORAL LEAK PATCH - Feature Isolation
         # CRITICAL: Ensure 'forward_return' is NEVER in feature set for signal generation
         cols_needed = ['rsi_14', 'volume_zscore', 'sentiment', 'log_return', 'close']
+        if 'signal' in feature_matrix_live.columns:
+            cols_needed.append('signal')
+            
         # Safety check: Explicitly exclude forward_return if somehow present
         cols_needed = [col for col in cols_needed if col != 'forward_return']
         working_df = feature_matrix_live[cols_needed].copy()
@@ -239,15 +242,22 @@ async def process_ticker(
         
         in_sample = working_df.iloc[:split_idx].copy()
         
-        # Use alpha weights from node_config for adaptive thresholding
-        alpha_weights = node_config.get('alpha_weights', {'rsi_14': 0.4, 'volume_zscore': 0.3, 'sentiment': 0.3})
-        opt_alpha = calculate_alpha_with_weights(out_sample, alpha_weights)
-        in_alpha = calculate_alpha_with_weights(in_sample, alpha_weights)
-        threshold = in_alpha.median()
-        
-        out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
-        latest_signal = int(out_sample['signal'].iloc[-1])
-        result['signal'] = latest_signal
+        # STRATEGY SELECTION: Validated Hysteresis vs Legacy Alpha
+        if 'signal' in out_sample.columns and node_config.get('enable_hysteresis', False):
+            # VALIDATED STRATEGY: Use the pre-calculated Hysteresis signal
+            latest_signal = int(out_sample['signal'].iloc[-1])
+            result['signal'] = latest_signal
+            LOG.info(f"[{ticker}] Using validated Hysteresis signal: {latest_signal}")
+        else:
+            # LEGACY STRATEGY: Use alpha weights for adaptive thresholding
+            alpha_weights = node_config.get('alpha_weights', {'rsi_14': 0.4, 'volume_zscore': 0.3, 'sentiment': 0.3})
+            opt_alpha = calculate_alpha_with_weights(out_sample, alpha_weights)
+            in_alpha = calculate_alpha_with_weights(in_sample, alpha_weights)
+            threshold = in_alpha.median()
+            
+            out_sample['signal'] = np.where(opt_alpha > threshold, 1, -1)
+            latest_signal = int(out_sample['signal'].iloc[-1])
+            result['signal'] = latest_signal
         
         LOG.stats(f"[{ticker}] Signal: {'BUY' if latest_signal == 1 else 'SELL'}")
         
