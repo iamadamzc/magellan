@@ -144,3 +144,90 @@ To keep Magellan healthy, perform this **Quarterly Maintenance Ritual**:
 *   Logic: `src/features.py`
 *   Configs: `docs/operations/strategies/*/assets/*/config.json`
 *   Validation: `docs/operations/strategies/*/tests/`
+
+---
+
+## 6. FMP API REFERENCE (CRITICAL!)
+
+**⚠️ IMPORTANT**: FMP has deprecated many legacy endpoints. Use the correct `/stable/` endpoints to avoid 403/404 errors.
+
+### A. Crypto Historical Data
+
+**CORRECT Endpoint** (1-Hour Interval):
+```
+https://financialmodelingprep.com/stable/historical-chart/1hour?symbol=BTCUSD&apikey=YOUR_KEY
+```
+
+**Response Format**: 
+```json
+[
+  {"date": "2024-01-01 00:00:00", "open": 42000, "high": 42100, "low": 41900, "close": 42050, "volume": 1234},
+  ...
+]
+```
+
+**Key Notes**:
+- ✅ Returns a **LIST** directly (NOT `{"historical": [...]}`).
+- ✅ Symbol uses **no hyphen**: `BTCUSD` (not `BTC-USD`).
+- ✅ Query parameters: `symbol`, `from` (optional), `to` (optional), `apikey`.
+
+**Other Intervals**:
+- `/stable/historical-chart/1min?symbol=BTCUSD` (1-Minute)
+- `/stable/historical-chart/1day?symbol=BTCUSD` (Daily)
+- `/stable/historical-price-eod/full?symbol=BTCUSD` (Full Daily History)
+
+### B. Earnings Calendar
+
+**CORRECT Endpoint** (Company Earnings):
+```
+https://financialmodelingprep.com/stable/earnings?symbol=AAPL&apikey=YOUR_KEY
+```
+
+**Response Format**:
+```json
+[
+  {"date": "2024-02-01", "symbol": "AAPL", "eps": 2.18, "epsEstimated": 2.10, "time": "amc", "revenue": 123.9, "revenueEstimated": 121.0},
+  ...
+]
+```
+
+**DEPRECATED** (Do NOT Use):
+- ❌ `/api/v3/historical/earning_calendar/AAPL` (Returns 403 Forbidden)
+
+### C. Stock Price Data (Equities)
+
+**Daily Bars** (SIP Feed via Alpaca Recommended):
+```python
+alpaca_client.fetch_historical_bars('NVDA', TimeFrame.Day, '2024-01-01', '2025-12-31', feed='sip')
+```
+
+**If using FMP** (NOT recommended for equities backtesting):
+```
+https://financialmodelingprep.com/api/v3/historical-price-full/NVDA?apikey=YOUR_KEY
+```
+
+### D. Common Pitfalls
+
+1. **Crypto vs Equity Endpoints**: 
+   - Crypto uses `/stable/` 
+   - Equities use `/api/v3/`
+   
+2. **Response Structure**:
+   - Crypto endpoints return `LIST` directly.
+   - Equity endpoints return `{"historical": [...]}`
+   
+3. **Rate Limits**: 
+   - Free tier: 250 requests/day
+   - Starter: 750 requests/day
+   - Use chunked fetching (90-day windows) for large date ranges.
+
+### E. Debugging Script
+
+If you encounter FMP issues, run:
+```bash
+python docs/operations/strategies/daily_trend_hysteresis/tests/crypto_validation/debug_fmp_api.py
+```
+
+This will probe all major endpoints and report which are working.
+
+---
