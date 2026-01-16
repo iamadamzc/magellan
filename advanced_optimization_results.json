@@ -1,0 +1,137 @@
+{
+  "fine_tune": [
+    {
+      "params": {
+        "vwap_thresh": 0.43,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 271.02541138527744,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.23603826428254068
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.44,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.46,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.47,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    }
+  ],
+  "filters": [
+    {
+      "config": "Baseline",
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    },
+    {
+      "config": "Time Filter (no lunch)",
+      "sharpe": 2478.8695574322846,
+      "trades": 2,
+      "win_rate": 100.0,
+      "avg_pnl": 0.34520548255164396
+    }
+  ],
+  "targets": [
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.25,
+        "hold_minutes": 12
+      },
+      "sharpe": 295.44177833197426,
+      "trades": 4,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26724103407657995
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.28,
+        "hold_minutes": 13
+      },
+      "sharpe": 279.255132331262,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.255283107089221
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.3,
+        "hold_minutes": 15
+      },
+      "sharpe": 301.8431439652076,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.26042009339059263
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.32,
+        "hold_minutes": 16
+      },
+      "sharpe": 284.0537639092229,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.2564246596006419
+    },
+    {
+      "params": {
+        "vwap_thresh": 0.45,
+        "profit_target": 0.35,
+        "hold_minutes": 18
+      },
+      "sharpe": 265.5491875940847,
+      "trades": 3,
+      "win_rate": 100.0,
+      "avg_pnl": 0.25185844955497755
+    }
+  ],
+  "best_overall": {
+    "name": "Filter Optimization",
+    "sharpe": 2478.8695574322846,
+    "config": "Time Filter (no lunch)"
+  }
+}

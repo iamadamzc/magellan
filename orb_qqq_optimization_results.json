@@ -1,0 +1,138 @@
+[
+  {
+    "config": 1,
+    "params": {
+      "range_minutes": 15,
+      "profit_target": 0.3,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 60
+    },
+    "trades": 116,
+    "trades_per_day": 4.142857142857143,
+    "win_rate": 25.862068965517242,
+    "avg_pnl": -0.0012584650628643464,
+    "avg_win": 0.2262837802226471,
+    "avg_loss": -0.08063366690664742,
+    "sharpe": -0.2569125898812818,
+    "total_return": -0.14598194729226352
+  },
+  {
+    "config": 2,
+    "params": {
+      "range_minutes": 15,
+      "profit_target": 0.35,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 60
+    },
+    "trades": 108,
+    "trades_per_day": 3.857142857142857,
+    "win_rate": 21.296296296296298,
+    "avg_pnl": -0.0005869593456909628,
+    "avg_win": 0.256144841665246,
+    "avg_loss": -0.07005556432512099,
+    "sharpe": -0.12053533711222604,
+    "total_return": -0.06339160933462354
+  },
+  {
+    "config": 3,
+    "params": {
+      "range_minutes": 15,
+      "profit_target": 0.4,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 75
+    },
+    "trades": 102,
+    "trades_per_day": 3.642857142857143,
+    "win_rate": 22.54901960784314,
+    "avg_pnl": -4.864381522477838e-05,
+    "avg_win": 0.24797944341476136,
+    "avg_loss": -0.0722593527556005,
+    "sharpe": -0.009241415195071028,
+    "total_return": -0.004961669152927395
+  },
+  {
+    "config": 4,
+    "params": {
+      "range_minutes": 15,
+      "profit_target": 0.3,
+      "stop_loss": 0.15,
+      "max_hold_minutes": 60
+    },
+    "trades": 122,
+    "trades_per_day": 4.357142857142857,
+    "win_rate": 25.40983606557377,
+    "avg_pnl": -0.0018683274533674006,
+    "avg_win": 0.2246378301210503,
+    "avg_loss": -0.07902976574794926,
+    "sharpe": -0.4038006951865195,
+    "total_return": -0.22793594931082276
+  },
+  {
+    "config": 5,
+    "params": {
+      "range_minutes": 15,
+      "profit_target": 0.35,
+      "stop_loss": 0.15,
+      "max_hold_minutes": 60
+    },
+    "trades": 111,
+    "trades_per_day": 3.9642857142857144,
+    "win_rate": 22.52252252252252,
+    "avg_pnl": -0.0008482629257226755,
+    "avg_win": 0.24539938732335678,
+    "avg_loss": -0.072431882184176,
+    "sharpe": -0.173803597011272,
+    "total_return": -0.09415718475521653
+  },
+  {
+    "config": 6,
+    "params": {
+      "range_minutes": 10,
+      "profit_target": 0.3,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 60
+    },
+    "trades": 116,
+    "trades_per_day": 4.142857142857143,
+    "win_rate": 29.310344827586203,
+    "avg_pnl": 0.0052642195803935974,
+    "avg_win": 0.23425026305568758,
+    "avg_loss": -0.08968121308009416,
+    "sharpe": 0.9863536733698572,
+    "total_return": 0.6106494713256566
+  },
+  {
+    "config": 7,
+    "params": {
+      "range_minutes": 20,
+      "profit_target": 0.3,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 60
+    },
+    "trades": 108,
+    "trades_per_day": 3.857142857142857,
+    "win_rate": 25.0,
+    "avg_pnl": 0.00010517499606216414,
+    "avg_win": 0.23038998920271403,
+    "avg_loss": -0.07665642973948845,
+    "sharpe": 0.021304060737888354,
+    "total_return": 0.011358899574714282
+  },
+  {
+    "config": 8,
+    "params": {
+      "range_minutes": 30,
+      "profit_target": 0.35,
+      "stop_loss": 0.2,
+      "max_hold_minutes": 60
+    },
+    "trades": 98,
+    "trades_per_day": 3.5,
+    "win_rate": 20.408163265306122,
+    "avg_pnl": -0.010546299831745924,
+    "avg_win": 0.23622920758278193,
+    "avg_loss": -0.07382207096367616,
+    "sharpe": -2.1084920566686076,
+    "total_return": -1.0335373835111008
+  }
+]

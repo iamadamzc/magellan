@@ -1,0 +1,112 @@
+[
+  {
+    "config": 1,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "profit_target": 0.3,
+      "stop_loss": 0.15,
+      "hold_minutes": 12,
+      "min_wick_pct": 0.1,
+      "require_volume": true,
+      "vol_multiplier": 1.5
+    },
+    "trades": 7,
+    "trades_per_day": 0.2413793103448276,
+    "win_rate": 42.857142857142854,
+    "avg_pnl": -0.05438747106294613,
+    "avg_win": 0.07708512736768215,
+    "avg_loss": -0.15299191988591734,
+    "rr_ratio": 0.5038509708562571,
+    "sharpe": -3.011265881650024,
+    "total_return": -0.3807122974406229
+  },
+  {
+    "config": 3,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "profit_target": 0.375,
+      "stop_loss": 0.15,
+      "hold_minutes": 15,
+      "min_wick_pct": 0.1,
+      "require_volume": true,
+      "vol_multiplier": 1.5
+    },
+    "trades": 5,
+    "trades_per_day": 0.1724137931034483,
+    "win_rate": 60.0,
+    "avg_pnl": -0.07451153374012487,
+    "avg_win": 0.04196461008225988,
+    "avg_loss": -0.249225749473702,
+    "rr_ratio": 0.16837991327492402,
+    "sharpe": -3.354171312787696,
+    "total_return": -0.37255766870062434
+  },
+  {
+    "config": 4,
+    "params": {
+      "lookback": 8,
+      "rejection_bars": 2,
+      "profit_target": 0.35,
+      "stop_loss": 0.14,
+      "hold_minutes": 12,
+      "min_wick_pct": 0.08,
+      "require_volume": true,
+      "vol_multiplier": 1.5
+    },
+    "trades": 13,
+    "trades_per_day": 0.4482758620689655,
+    "win_rate": 23.076923076923077,
+    "avg_pnl": -0.08976417591227324,
+    "avg_win": 0.08658390152605423,
+    "avg_loss": -0.1426685991437715,
+    "rr_ratio": 0.6068882854790001,
+    "sharpe": -7.626508564120051,
+    "total_return": -1.1669342868595522
+  },
+  {
+    "config": 7,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "profit_target": 0.35,
+      "stop_loss": 0.15,
+      "hold_minutes": 12,
+      "min_wick_pct": 0.1,
+      "require_volume": false,
+      "vol_multiplier": 0
+    },
+    "trades": 11,
+    "trades_per_day": 0.3793103448275862,
+    "win_rate": 45.45454545454545,
+    "avg_pnl": -0.049812392734380734,
+    "avg_win": 0.06269313461520874,
+    "avg_loss": -0.14356699885903865,
+    "rr_ratio": 0.43668207257549513,
+    "sharpe": -3.9487477799146835,
+    "total_return": -0.547936320078188
+  },
+  {
+    "config": 8,
+    "params": {
+      "lookback": 7,
+      "rejection_bars": 2,
+      "profit_target": 0.35,
+      "stop_loss": 0.15,
+      "hold_minutes": 10,
+      "min_wick_pct": 0.08,
+      "require_volume": true,
+      "vol_multiplier": 1.5
+    },
+    "trades": 13,
+    "trades_per_day": 0.4482758620689655,
+    "win_rate": 30.76923076923077,
+    "avg_pnl": -0.0777458333195354,
+    "avg_win": 0.07821919963749738,
+    "avg_loss": -0.1470636257448833,
+    "rr_ratio": 0.5318731891813079,
+    "sharpe": -6.234516241385545,
+    "total_return": -1.0106958331539602
+  }
+]

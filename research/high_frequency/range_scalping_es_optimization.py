@@ -1,0 +1,251 @@
+"""
+Range Scalping - ES-Specific Optimization
+
+Baseline on ES (Q1 2024):
+- Sharpe: 1.29 (PROFITABLE!)
+- Win Rate: 45.9%
+- Avg Win: 0.176%
+- Avg Loss: -0.139%
+- Trades/Day: 6.7
+
+Goal: Optimize parameters specifically for ES to push Sharpe > 2.0
+
+ES characteristics:
+- Futures (different from stocks/ETFs)
+- 23-hour trading (but we only trade NYSE hours)
+- Very liquid
+- Tight spreads
+- Mean-reverting in ranges
+
+Optimization approach:
+1. Test different BB periods (15, 20, 25)
+2. Test different BB std (1.5, 2.0, 2.5)
+3. Optimize RSI thresholds
+4. Adjust profit targets and stops
+5. Fine-tune hold times
+"""
+
+import requests
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import json
+import os
+
+load_dotenv()
+FMP_API_KEY = os.getenv('FMP_API_KEY')
+FRICTION_BPS = 1.0
+
+def fetch_1min_data(symbol, date):
+    url = "https://financialmodelingprep.com/stable/historical-chart/1min"
+    params = {'symbol': symbol, 'from': date, 'to': date, 'apikey': FMP_API_KEY}
+    try:
+        response = requests.get(url, params=params, timeout=15)
+        if response.status_code == 200:
+            return response.json()
+    except:
+        pass
+    return []
+
+def range_scalping_es(df, bb_period=20, bb_std=2.0, rsi_period=14, 
+                      profit_target=0.20, stop_loss=0.15, hold_minutes=10,
+                      rsi_oversold=30, rsi_overbought=70):
+    """Range Scalping optimized for ES"""
+    if len(df) < 30:
+        return []
+    
+    df['sma'] = df['close'].rolling(bb_period).mean()
+    df['std'] = df['close'].rolling(bb_period).std()
+    df['bb_upper'] = df['sma'] + (bb_std * df['std'])
+    df['bb_lower'] = df['sma'] - (bb_std * df['std'])
+    
+    delta = df['close'].diff()
+    gain = (delta.where(delta > 0, 0)).rolling(rsi_period).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(rsi_period).mean()
+    rs = gain / loss
+    df['rsi'] = 100 - (100 / (1 + rs))
+    
+    df['time'] = pd.to_datetime(df['date'])
+    df['hour'] = df['time'].dt.hour
+    
+    trades = []
+    position = None
+    
+    for i in range(bb_period + 5, len(df)):
+        if position:
+            hold_min = i - position['entry_idx']
+            pnl_pct = (df.loc[i, 'close'] - position['entry_price']) / position['entry_price'] * 100
+            if position['type'] == 'short':
+                pnl_pct = -pnl_pct
+            
+            exit_reason = None
+            if pnl_pct >= profit_target:
+                exit_reason = 'target'
+            elif pnl_pct <= -stop_loss:
+                exit_reason = 'stop_loss'
+            elif position['type'] == 'long' and df.loc[i, 'close'] > df.loc[i, 'bb_upper']:
+                exit_reason = 'range_break'
+            elif position['type'] == 'short' and df.loc[i, 'close'] < df.loc[i, 'bb_lower']:
+                exit_reason = 'range_break'
+            elif hold_min >= hold_minutes:
+                exit_reason = 'timeout'
+            
+            if exit_reason:
+                pnl_pct -= FRICTION_BPS / 100
+                trades.append({'pnl_pct': pnl_pct, 'win': pnl_pct > 0})
+                position = None
+        
+        if not position:
+            if 12 <= df.loc[i, 'hour'] < 14:
+                continue
+            
+            if pd.isna(df.loc[i, 'bb_lower']) or pd.isna(df.loc[i, 'rsi']):
+                continue
+            
+            if df.loc[i, 'close'] <= df.loc[i, 'bb_lower'] and df.loc[i, 'rsi'] < rsi_oversold:
+                position = {'type': 'long', 'entry_price': df.loc[i, 'close'], 'entry_idx': i}
+            elif df.loc[i, 'close'] >= df.loc[i, 'bb_upper'] and df.loc[i, 'rsi'] > rsi_overbought:
+                position = {'type': 'short', 'entry_price': df.loc[i, 'close'], 'entry_idx': i}
+    
+    return trades
+
+def generate_trading_days(start_date, end_date):
+    current = datetime.strptime(start_date, '%Y-%m-%d')
+    end = datetime.strptime(end_date, '%Y-%m-%d')
+    trading_days = []
+    while current <= end:
+        if current.weekday() < 5:
+            trading_days.append(current.strftime('%Y-%m-%d'))
+        current += timedelta(days=1)
+    return trading_days
+
+print("="*80)
+print("RANGE SCALPING - ES-SPECIFIC OPTIMIZATION")
+print("="*80)
+print("\nBaseline: Sharpe 1.29, Win Rate 45.9%")
+
+test_dates = generate_trading_days('2024-01-02', '2024-03-31')
+print(f"Testing on Q1 2024: {len(test_dates)} potential days")
+
+print("Loading ES data...")
+all_dfs = []
+for date in test_dates[:30]:
+    bars = fetch_1min_data('ES', date)
+    if len(bars) >= 50:
+        all_dfs.append(pd.DataFrame(bars).sort_values('date').reset_index(drop=True))
+
+print(f"Loaded {len(all_dfs)} days")
+
+# ES-specific parameter grid
+param_grid = [
+    # Baseline
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.20, 'stop_loss': 0.15, 'hold_minutes': 10, 'rsi_oversold': 30, 'rsi_overbought': 70},
+    
+    # Tighter BB (more signals)
+    {'bb_period': 20, 'bb_std': 1.5, 'rsi_period': 14, 'profit_target': 0.18, 'stop_loss': 0.12, 'hold_minutes': 8, 'rsi_oversold': 35, 'rsi_overbought': 65},
+    {'bb_period': 15, 'bb_std': 1.8, 'rsi_period': 10, 'profit_target': 0.20, 'stop_loss': 0.15, 'hold_minutes': 10, 'rsi_oversold': 30, 'rsi_overbought': 70},
+    
+    # Wider BB (fewer but better signals)
+    {'bb_period': 20, 'bb_std': 2.5, 'rsi_period': 14, 'profit_target': 0.25, 'stop_loss': 0.18, 'hold_minutes': 12, 'rsi_oversold': 25, 'rsi_overbought': 75},
+    {'bb_period': 25, 'bb_std': 2.5, 'rsi_period': 14, 'profit_target': 0.25, 'stop_loss': 0.18, 'hold_minutes': 15, 'rsi_oversold': 25, 'rsi_overbought': 75},
+    
+    # Larger targets (let winners run)
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.30, 'stop_loss': 0.15, 'hold_minutes': 15, 'rsi_oversold': 30, 'rsi_overbought': 70},
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.35, 'stop_loss': 0.18, 'hold_minutes': 18, 'rsi_oversold': 28, 'rsi_overbought': 72},
+    
+    # Tighter stops (preserve capital)
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.22, 'stop_loss': 0.10, 'hold_minutes': 10, 'rsi_oversold': 30, 'rsi_overbought': 70},
+    
+    # Stricter RSI (higher quality signals)
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.25, 'stop_loss': 0.15, 'hold_minutes': 12, 'rsi_oversold': 25, 'rsi_overbought': 75},
+    {'bb_period': 20, 'bb_std': 2.0, 'rsi_period': 14, 'profit_target': 0.25, 'stop_loss': 0.15, 'hold_minutes': 12, 'rsi_oversold': 20, 'rsi_overbought': 80},
+]
+
+results = []
+
+print("\nTesting ES-optimized parameters...")
+for idx, params in enumerate(param_grid, 1):
+    all_trades = []
+    
+    for df in all_dfs:
+        trades = range_scalping_es(df.copy(), **params)
+        all_trades.extend(trades)
+    
+    if all_trades and len(all_trades) >= 5:
+        pnls = [t['pnl_pct'] for t in all_trades]
+        wins = [t for t in all_trades if t['win']]
+        losses = [t for t in all_trades if not t['win']]
+        
+        avg_pnl = np.mean(pnls)
+        std_pnl = np.std(pnls)
+        sharpe = (avg_pnl / std_pnl * np.sqrt(252 * len(all_trades) / len(all_dfs))) if std_pnl > 0 else 0
+        win_rate = len(wins) / len(all_trades) * 100
+        trades_per_day = len(all_trades) / len(all_dfs)
+        
+        avg_win = np.mean([t['pnl_pct'] for t in wins]) if wins else 0
+        avg_loss = np.mean([t['pnl_pct'] for t in losses]) if losses else 0
+        
+        result = {
+            'config': idx,
+            'params': params,
+            'trades': len(all_trades),
+            'trades_per_day': trades_per_day,
+            'win_rate': win_rate,
+            'avg_pnl': avg_pnl,
+            'avg_win': avg_win,
+            'avg_loss': avg_loss,
+            'sharpe': sharpe,
+            'total_return': sum(pnls)
+        }
+        results.append(result)
+        
+        print(f"\nConfig {idx}: BB={params['bb_period']}/{params['bb_std']}, Target={params['profit_target']:.2f}%, RSI<{params['rsi_oversold']}/{params['rsi_overbought']}")
+        print(f"  Trades: {len(all_trades)} ({trades_per_day:.1f}/day) | Win%: {win_rate:.1f}% | Sharpe: {sharpe:.2f}")
+    else:
+        print(f"\nConfig {idx}: Insufficient trades ({len(all_trades) if all_trades else 0})")
+
+# Summary
+print("\n" + "="*80)
+print("ES OPTIMIZATION RESULTS")
+print("="*80)
+
+if results:
+    sorted_results = sorted(results, key=lambda x: x['sharpe'], reverse=True)
+    
+    print(f"\nTop 5 by Sharpe:")
+    print(f"{'Rank':<5s} | {'BB':>8s} | {'Target':>7s} | {'T/Day':>6s} | {'Win%':>6s} | {'Sharpe':>7s} | {'vs Base':>8s}")
+    print("-" * 75)
+    
+    baseline_sharpe = 1.29
+    for idx, r in enumerate(sorted_results[:5], 1):
+        p = r['params']
+        improvement = r['sharpe'] - baseline_sharpe
+        status = "✅" if r['sharpe'] > 2.0 else "⚠️" if r['sharpe'] > 1.0 else "❌"
+        bb_str = f"{p['bb_period']}/{p['bb_std']}"
+        print(f"{idx:<5d} | {bb_str:>8s} | {p['profit_target']:>6.2f}% | {r['trades_per_day']:>6.1f} | {r['win_rate']:>5.1f}% | {r['sharpe']:>7.2f} | {improvement:>+7.2f} {status}")
+    
+    best = sorted_results[0]
+    
+    print(f"\n{'='*80}")
+    print("BEST ES CONFIGURATION")
+    print(f"{'='*80}")
+    print(f"Sharpe: {best['sharpe']:.2f} (vs 1.29 baseline = {best['sharpe']-1.29:+.2f})")
+    print(f"Win Rate: {best['win_rate']:.1f}%")
+    print(f"Avg Win: {best['avg_win']:.3f}%")
+    print(f"Avg Loss: {best['avg_loss']:.3f}%")
+    print(f"Trades/Day: {best['trades_per_day']:.1f}")
+    print(f"Parameters: {best['params']}")
+    
+    if best['sharpe'] > 2.0:
+        print(f"\n🎯 **EXCELLENT!** Sharpe > 2.0 - test on full 2024+2025")
+    elif best['sharpe'] > 1.29:
+        print(f"\n✅ **IMPROVED!** Test on full year to validate")
+    else:
+        print(f"\n⚠️  No improvement - baseline was already optimal")
+
+# Save
+with open('range_scalping_es_optimization_results.json', 'w') as f:
+    json.dump(results, f, indent=2)
+
+print(f"\n✅ Saved to range_scalping_es_optimization_results.json")

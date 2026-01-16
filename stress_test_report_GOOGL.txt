@@ -1,0 +1,411 @@
+STRESS TEST REPORT: GOOGL
+============================================================
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 1
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 0.69
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 2
+  Profit-WFE: -0.11
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 0.39
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 3
+  Profit-WFE: -0.30
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 1.37
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 4
+  Profit-WFE: -0.06
+  Drawdown-WFE: 0.29
+  Sharpe-WFE: 0.31
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 5
+  Profit-WFE: -0.79
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 6.47
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 6
+  Profit-WFE: -0.54
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 3.34
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 7
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 1.13
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 8
+  Profit-WFE: -0.04
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 0.27
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 9
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 1.14
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 10
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 1.19
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 12
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 0.61
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 13
+  Profit-WFE: -0.26
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 1.83
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 14
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.55
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 15
+  Profit-WFE: -0.37
+  Drawdown-WFE: 0.38
+  Sharpe-WFE: 2.09
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 16
+  Profit-WFE: 0.10
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: -0.53
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 17
+  Profit-WFE: -0.46
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: -3.50
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 18
+  Profit-WFE: -0.22
+  Drawdown-WFE: 0.50
+  Sharpe-WFE: 2.49
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 19
+  Profit-WFE: -0.09
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 0.75
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 20
+  Profit-WFE: -0.42
+  Drawdown-WFE: 0.27
+  Sharpe-WFE: 3.19
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 21
+  Profit-WFE: 0.02
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 0.31
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 22
+  Profit-WFE: -31.14
+  Drawdown-WFE: 0.49
+  Sharpe-WFE: -17.64
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 23
+  Profit-WFE: 0.04
+  Drawdown-WFE: 0.16
+  Sharpe-WFE: -0.32
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 24
+  Profit-WFE: -0.81
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: -3.99
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 25
+  Profit-WFE: -0.25
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.59
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 26
+  Profit-WFE: -0.07
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 0.46
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 27
+  Profit-WFE: 0.65
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 0.44
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 28
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: -5.20
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 29
+  Profit-WFE: -0.02
+  Drawdown-WFE: 0.12
+  Sharpe-WFE: 0.07
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 30
+  Profit-WFE: -2.61
+  Drawdown-WFE: 0.54
+  Sharpe-WFE: -17.38
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 31
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 0.74
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 32
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.16
+  Sharpe-WFE: 1.15
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 33
+  Profit-WFE: -0.10
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.84
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 34
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 1.56
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 35
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 1.44
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 36
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 0.89
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 37
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 1.80
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 38
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 0.76
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 39
+  Profit-WFE: -0.14
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 0.61
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 41
+  Profit-WFE: -0.20
+  Drawdown-WFE: 0.45
+  Sharpe-WFE: 0.88
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 42
+  Profit-WFE: -0.20
+  Drawdown-WFE: 0.26
+  Sharpe-WFE: 1.09
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 43
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 1.00
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 44
+  Profit-WFE: -0.14
+  Drawdown-WFE: 0.11
+  Sharpe-WFE: 1.06
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 45
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.30
+  Sharpe-WFE: 0.53
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 46
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 1.41
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 47
+  Profit-WFE: -0.27
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 1.59
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 48
+  Profit-WFE: -0.22
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 0.80
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 49
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 0.98
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 50
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 1.02
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 51
+  Profit-WFE: -0.28
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.31
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 52
+  Profit-WFE: -0.09
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: 1.01
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 53
+  Profit-WFE: 0.03
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.98
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 54
+  Profit-WFE: -0.14
+  Drawdown-WFE: 0.26
+  Sharpe-WFE: 0.93
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 55
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 1.29
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 56
+  Profit-WFE: -0.25
+  Drawdown-WFE: 0.26
+  Sharpe-WFE: 1.50
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 57
+  Profit-WFE: -0.34
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.75
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 58
+  Profit-WFE: -0.32
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 1.88
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 59
+  Profit-WFE: -0.04
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 0.19
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 60
+  Profit-WFE: 1.33
+  Drawdown-WFE: 0.27
+  Sharpe-WFE: -7.36
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 61
+  Profit-WFE: -1.21
+  Drawdown-WFE: 0.64
+  Sharpe-WFE: -9.72
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 62
+  Profit-WFE: -0.22
+  Drawdown-WFE: 0.38
+  Sharpe-WFE: 1.17
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 63
+  Profit-WFE: -0.10
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 0.73
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 64
+  Profit-WFE: -0.27
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 2.46
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 65
+  Profit-WFE: -0.52
+  Drawdown-WFE: 0.58
+  Sharpe-WFE: 2.92
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 66
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 0.89
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 67
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.77
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 68
+  Profit-WFE: -0.00
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: -0.15
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 69
+  Profit-WFE: -0.43
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 2.97
+[METABOLISM] Ticker: GOOGL | Retraining Active (3-Day Window)
+
+[WFE-REPORT] Ticker: GOOGL | Blocks: 70
+  Profit-WFE: -0.18
+  Drawdown-WFE: 0.35
+  Sharpe-WFE: 1.09

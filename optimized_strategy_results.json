@@ -1,0 +1,26 @@
+[
+  {
+    "strategy": "High-Conviction Momentum",
+    "sharpe": 0,
+    "trades_per_day": 0.2,
+    "win_rate": 0.0,
+    "avg_pnl": -0.28604186866460757,
+    "annual_friction": 2.0664
+  },
+  {
+    "strategy": "Ultra-Strict Momentum",
+    "sharpe": 0,
+    "trades_per_day": 0.2,
+    "win_rate": 0.0,
+    "avg_pnl": -0.28604186866460757,
+    "annual_friction": 2.0664
+  },
+  {
+    "strategy": "Confluence Breakout",
+    "sharpe": -133.37935649650825,
+    "trades_per_day": 0.6,
+    "win_rate": 33.33333333333333,
+    "avg_pnl": -0.2560102684115274,
+    "annual_friction": 6.1991999999999985
+  }
+]
