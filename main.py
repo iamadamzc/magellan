@@ -30,9 +30,10 @@ TICKERS = ["NVDA"]
 # NVDA ISOLATION ENFORCEMENT: Initial Universe (expanded dynamically)
 MAG7_UNIVERSE = frozenset(["NVDA", "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA"])
 
-# HOT START PROTOCOL: 252-bar warmup buffer for rolling normalization
-# This ensures the 252-bar rolling window in features.py is fully populated at T=0
-WARMUP_BUFFER = 252
+# HOT START PROTOCOL: Warmup buffer for indicator calculation
+# Daily Trend Hysteresis needs RSI-28 warmup (~50 bars for safety)
+# Legacy multi-factor alpha needed 252 bars for rolling normalization
+WARMUP_BUFFER = 50
 
 
 def validate_mag7_ticker(ticker: str) -> bool:
