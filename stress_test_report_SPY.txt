@@ -1,0 +1,188 @@
+STRESS TEST REPORT: SPY
+============================================================
+
+[Window 1/30] IS: 11/28-12/02 | OOS: 12/03
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 46.5% | WFE: 0.97
+  P&L: $-743.09 (-1.98%) | [LOSS]
+
+[Window 2/30] IS: 12/01-12/03 | OOS: 12/04
+  IS HR: 47.8% | OOS HR: 46.5% | WFE: 0.97
+  P&L: $-721.05 (-1.96%) | [LOSS]
+
+[Window 3/30] IS: 12/02-12/04 | OOS: 12/05
+  IS HR: 47.8% | OOS HR: 46.1% | WFE: 0.97
+  P&L: $-781.32 (-2.17%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 1
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.92
+
+[Window 4/30] IS: 12/03-12/05 | OOS: 12/08
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.9% | OOS HR: 48.2% | WFE: 1.01
+  P&L: $-782.09 (-2.22%) | [LOSS]
+
+[Window 5/30] IS: 12/04-12/08 | OOS: 12/09
+  IS HR: 47.9% | OOS HR: 48.1% | WFE: 1.01
+  P&L: $-833.98 (-2.42%) | [LOSS]
+
+[Window 6/30] IS: 12/05-12/09 | OOS: 12/10
+  IS HR: 47.9% | OOS HR: 47.6% | WFE: 0.99
+  P&L: $-532.11 (-1.58%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 2
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 0.93
+
+[Window 7/30] IS: 12/08-12/10 | OOS: 12/11
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.6% | OOS HR: 45.4% | WFE: 0.93
+  P&L: $-82.37 (-0.25%) | [LOSS]
+
+[Window 8/30] IS: 12/09-12/11 | OOS: 12/12
+  IS HR: 48.6% | OOS HR: 47.9% | WFE: 0.99
+  P&L: $+165.67 (+0.50%) | [WIN]
+
+[Window 9/30] IS: 12/10-12/12 | OOS: 12/15
+  IS HR: 48.6% | OOS HR: 50.7% | WFE: 1.04
+  P&L: $+102.23 (+0.31%) | [WIN]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 3
+  Profit-WFE: 1.03
+  Drawdown-WFE: 0.46
+  Sharpe-WFE: -5.62
+
+[Window 10/30] IS: 12/11-12/15 | OOS: 12/16
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.4% | OOS HR: 47.9% | WFE: 0.97
+  P&L: $-865.07 (-2.60%) | [LOSS]
+
+[Window 11/30] IS: 12/12-12/16 | OOS: 12/17
+  IS HR: 49.4% | OOS HR: 49.5% | WFE: 1.00
+  P&L: $-866.46 (-2.67%) | [LOSS]
+
+[Window 12/30] IS: 12/15-12/17 | OOS: 12/18
+  IS HR: 49.4% | OOS HR: 46.3% | WFE: 0.94
+  P&L: $-670.65 (-2.12%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 4
+  Profit-WFE: -0.19
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 1.02
+
+[Window 13/30] IS: 12/16-12/18 | OOS: 12/19
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.4% | OOS HR: 48.3% | WFE: 1.02
+  P&L: $-490.34 (-1.59%) | [LOSS]
+
+[Window 14/30] IS: 12/17-12/19 | OOS: 12/22
+  IS HR: 47.4% | OOS HR: 47.7% | WFE: 1.01
+  P&L: $-516.12 (-1.70%) | [LOSS]
+
+[Window 15/30] IS: 12/18-12/22 | OOS: 12/23
+  IS HR: 47.4% | OOS HR: 49.2% | WFE: 1.04
+  P&L: $-499.88 (-1.67%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 5
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.11
+  Sharpe-WFE: 1.27
+
+[Window 16/30] IS: 12/19-12/23 | OOS: 12/24
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.3% | OOS HR: 41.5% | WFE: 0.84
+  P&L: $-469.92 (-1.60%) | [LOSS]
+
+[Window 17/30] IS: 12/22-12/24 | OOS: 12/25
+  [SKIP] Insufficient bars: IS=2416, OOS=0
+
+[Window 18/30] IS: 12/23-12/25 | OOS: 12/26
+  IS HR: 49.3% | OOS HR: 49.5% | WFE: 1.00
+  P&L: $-454.45 (-1.57%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 6
+  Profit-WFE: -0.19
+  Drawdown-WFE: 0.16
+  Sharpe-WFE: 1.29
+
+[Window 19/30] IS: 12/24-12/26 | OOS: 12/29
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.0% | OOS HR: 50.1% | WFE: 1.07
+  P&L: $-469.24 (-1.65%) | [LOSS]
+
+[Window 20/30] IS: 12/25-12/29 | OOS: 12/30
+  IS HR: 47.0% | OOS HR: 44.2% | WFE: 0.94
+  P&L: $-540.25 (-1.93%) | [LOSS]
+
+[Window 21/30] IS: 12/26-12/30 | OOS: 12/31
+  IS HR: 47.0% | OOS HR: 48.3% | WFE: 1.03
+  P&L: $-540.86 (-1.97%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 7
+  Profit-WFE: -0.24
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 0.93
+
+[Window 22/30] IS: 12/29-12/31 | OOS: 01/01
+  [SKIP] Insufficient bars: IS=2548, OOS=48
+
+[Window 23/30] IS: 12/30-01/01 | OOS: 01/02
+  IS HR: 47.0% | OOS HR: 48.6% | WFE: 1.03
+  P&L: $-640.40 (-2.38%) | [LOSS]
+
+[Window 24/30] IS: 12/31-01/02 | OOS: 01/05
+  IS HR: 47.0% | OOS HR: 47.0% | WFE: 1.00
+  P&L: $-333.08 (-1.27%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 8
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 0.87
+
+[Window 25/30] IS: 01/01-01/05 | OOS: 01/06
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 51.2% | OOS HR: 47.7% | WFE: 0.93
+  P&L: $+1.92 (+0.01%) | [WIN]
+
+[Window 26/30] IS: 01/02-01/06 | OOS: 01/07
+  IS HR: 51.2% | OOS HR: 47.6% | WFE: 0.93
+  P&L: $-181.32 (-0.70%) | [LOSS]
+
+[Window 27/30] IS: 01/05-01/07 | OOS: 01/08
+  IS HR: 51.2% | OOS HR: 47.9% | WFE: 0.94
+  P&L: $-246.27 (-0.96%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 9
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 0.86
+
+[Window 28/30] IS: 01/06-01/08 | OOS: 01/09
+[METABOLISM] Ticker: SPY | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.2% | OOS HR: 46.2% | WFE: 0.92
+  P&L: $-206.08 (-0.81%) | [LOSS]
+
+[Window 29/30] IS: 01/07-01/09 | OOS: 01/12
+  IS HR: 50.2% | OOS HR: 48.3% | WFE: 0.96
+  P&L: $-333.67 (-1.32%) | [LOSS]
+
+[Window 30/30] IS: 01/08-01/12 | OOS: 01/13
+  IS HR: 50.2% | OOS HR: 45.2% | WFE: 0.90
+  P&L: $-199.41 (-0.80%) | [LOSS]
+
+[WFE-REPORT] Ticker: SPY | Blocks: 10
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.16
+  Sharpe-WFE: 0.87

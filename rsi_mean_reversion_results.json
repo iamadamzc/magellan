@@ -1,0 +1,479 @@
+{
+  "strategy": "RSI Mean Reversion",
+  "symbol": "SPY",
+  "test_dates": [
+    "2024-03-15",
+    "2024-05-20",
+    "2024-07-10",
+    "2024-09-18",
+    "2024-11-15"
+  ],
+  "scenarios": {
+    "67ms": {
+      "scenario": "67ms (actual latency)",
+      "trades": 75,
+      "win_rate": 33.33333333333333,
+      "avg_pnl": -0.004811181571325904,
+      "std_pnl": 0.12237995778170645,
+      "sharpe": -5.511743770753221,
+      "best_trade": 0.6544165409530489,
+      "worst_trade": -0.23754894851341873,
+      "total_return": -0.36083861784944243
+    },
+    "500ms": {
+      "scenario": "500ms (legacy assumption)",
+      "trades": 75,
+      "win_rate": 22.666666666666664,
+      "avg_pnl": -0.044811181571325895,
+      "std_pnl": 0.12237995778170645,
+      "sharpe": -51.33619407711943,
+      "best_trade": 0.6144165409530489,
+      "worst_trade": -0.2775489485134187,
+      "total_return": -3.3608386178494425
+    }
+  },
+  "trades_67ms": [
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:20:00",
+      "entry_price": 510.48,
+      "exit_time": "2024-03-15 10:35:00",
+      "exit_price": 510.49,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.021958940604919076,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:37:00",
+      "entry_price": 510.82,
+      "exit_time": "2024-03-15 10:49:00",
+      "exit_price": 511.59,
+      "hold_minutes": 12.0,
+      "pnl_pct": -0.17073802905132568,
+      "exit_reason": "stop_loss",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:49:00",
+      "entry_price": 511.59,
+      "exit_time": "2024-03-15 11:04:00",
+      "exit_price": 511.04,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.08750796536287939,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 11:08:00",
+      "entry_price": 510.49,
+      "exit_time": "2024-03-15 11:23:00",
+      "exit_price": 510.3,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.05721914239260274,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 11:43:00",
+      "entry_price": 509.89,
+      "exit_time": "2024-03-15 11:58:00",
+      "exit_price": 509.6,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.0768750122575386,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 12:13:00",
+      "entry_price": 509.16,
+      "exit_time": "2024-03-15 12:28:00",
+      "exit_price": 509.14,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.023928038337661765,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 12:32:00",
+      "entry_price": 509.64,
+      "exit_time": "2024-03-15 12:47:00",
+      "exit_price": 509.22,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.06241111372732892,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 12:51:00",
+      "entry_price": 508.55,
+      "exit_time": "2024-03-15 13:06:00",
+      "exit_price": 508.94,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.05668862452069342,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 13:09:00",
+      "entry_price": 509.09,
+      "exit_time": "2024-03-15 13:24:00",
+      "exit_price": 509.67,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.13392877487282032,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 13:59:00",
+      "entry_price": 509.91,
+      "exit_time": "2024-03-15 14:14:00",
+      "exit_price": 509.41,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.07805651977800004,
+      "exit_reason": "rsi_signal",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 14:14:00",
+      "entry_price": 509.41,
+      "exit_time": "2024-03-15 14:29:00",
+      "exit_price": 509.54,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.005519718890480252,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 14:39:00",
+      "entry_price": 510.05,
+      "exit_time": "2024-03-15 14:54:00",
+      "exit_price": 510.21,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.051369473581015235,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 15:18:00",
+      "entry_price": 509.87,
+      "exit_time": "2024-03-15 15:33:00",
+      "exit_price": 509.88,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.018038715751075587,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 15:41:00",
+      "entry_price": 509.65,
+      "exit_time": "2024-03-15 15:56:00",
+      "exit_price": 509.39,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.07101540272736014,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 09:50:00",
+      "entry_price": 530.78,
+      "exit_time": "2024-05-20 10:05:00",
+      "exit_price": 530.82,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.027536078978122255,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 10:16:00",
+      "entry_price": 531.2,
+      "exit_time": "2024-05-20 10:31:00",
+      "exit_price": 531.25,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.02941265060240108,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 10:53:00",
+      "entry_price": 531.36,
+      "exit_time": "2024-05-20 11:08:00",
+      "exit_price": 531.11,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.02704908160192713,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 11:29:00",
+      "entry_price": 531.39,
+      "exit_time": "2024-05-20 11:43:00",
+      "exit_price": 531.09,
+      "hold_minutes": 14.0,
+      "pnl_pct": 0.03645571049510801,
+      "exit_reason": "rsi_signal",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-05-20 11:43:00",
+      "entry_price": 531.09,
+      "exit_time": "2024-05-20 11:58:00",
+      "exit_price": 531.0,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.03694628029148202,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-05-20 12:16:00",
+      "entry_price": 530.82,
+      "exit_time": "2024-05-20 12:31:00",
+      "exit_price": 530.78,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.027535511096054656,
+      "exit_reason": "time_stop",
+      "win": "False"
+    }
+  ],
+  "trades_500ms": [
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:20:00",
+      "entry_price": 510.48,
+      "exit_time": "2024-03-15 10:35:00",
+      "exit_price": 510.49,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.06195894060491908,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:37:00",
+      "entry_price": 510.82,
+      "exit_time": "2024-03-15 10:49:00",
+      "exit_price": 511.59,
+      "hold_minutes": 12.0,
+      "pnl_pct": -0.21073802905132566,
+      "exit_reason": "stop_loss",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 10:49:00",
+      "entry_price": 511.59,
+      "exit_time": "2024-03-15 11:04:00",
+      "exit_price": 511.04,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.04750796536287938,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 11:08:00",
+      "entry_price": 510.49,
+      "exit_time": "2024-03-15 11:23:00",
+      "exit_price": 510.3,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.09721914239260274,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 11:43:00",
+      "entry_price": 509.89,
+      "exit_time": "2024-03-15 11:58:00",
+      "exit_price": 509.6,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.1168750122575386,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 12:13:00",
+      "entry_price": 509.16,
+      "exit_time": "2024-03-15 12:28:00",
+      "exit_price": 509.14,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.06392803833766177,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 12:32:00",
+      "entry_price": 509.64,
+      "exit_time": "2024-03-15 12:47:00",
+      "exit_price": 509.22,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.022411113727328916,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 12:51:00",
+      "entry_price": 508.55,
+      "exit_time": "2024-03-15 13:06:00",
+      "exit_price": 508.94,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.016688624520693418,
+      "exit_reason": "time_stop",
+      "win": "True"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 13:09:00",
+      "entry_price": 509.09,
+      "exit_time": "2024-03-15 13:24:00",
+      "exit_price": 509.67,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.17392877487282032,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 13:59:00",
+      "entry_price": 509.91,
+      "exit_time": "2024-03-15 14:14:00",
+      "exit_price": 509.41,
+      "hold_minutes": 15.0,
+      "pnl_pct": 0.038056519778000036,
+      "exit_reason": "rsi_signal",
+      "win": "True"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 14:14:00",
+      "entry_price": 509.41,
+      "exit_time": "2024-03-15 14:29:00",
+      "exit_price": 509.54,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.03448028110951974,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-03-15 14:39:00",
+      "entry_price": 510.05,
+      "exit_time": "2024-03-15 14:54:00",
+      "exit_price": 510.21,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.09136947358101523,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 15:18:00",
+      "entry_price": 509.87,
+      "exit_time": "2024-03-15 15:33:00",
+      "exit_price": 509.88,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.05803871575107558,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-03-15 15:41:00",
+      "entry_price": 509.65,
+      "exit_time": "2024-03-15 15:56:00",
+      "exit_price": 509.39,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.11101540272736013,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 09:50:00",
+      "entry_price": 530.78,
+      "exit_time": "2024-05-20 10:05:00",
+      "exit_price": 530.82,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.06753607897812225,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 10:16:00",
+      "entry_price": 531.2,
+      "exit_time": "2024-05-20 10:31:00",
+      "exit_price": 531.25,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.06941265060240107,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 10:53:00",
+      "entry_price": 531.36,
+      "exit_time": "2024-05-20 11:08:00",
+      "exit_price": 531.11,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.012950918398072865,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "short",
+      "entry_time": "2024-05-20 11:29:00",
+      "entry_price": 531.39,
+      "exit_time": "2024-05-20 11:43:00",
+      "exit_price": 531.09,
+      "hold_minutes": 14.0,
+      "pnl_pct": -0.0035442895048919815,
+      "exit_reason": "rsi_signal",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-05-20 11:43:00",
+      "entry_price": 531.09,
+      "exit_time": "2024-05-20 11:58:00",
+      "exit_price": 531.0,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.07694628029148201,
+      "exit_reason": "time_stop",
+      "win": "False"
+    },
+    {
+      "type": "long",
+      "entry_time": "2024-05-20 12:16:00",
+      "entry_price": 530.82,
+      "exit_time": "2024-05-20 12:31:00",
+      "exit_price": 530.78,
+      "hold_minutes": 15.0,
+      "pnl_pct": -0.06753551109605466,
+      "exit_reason": "time_stop",
+      "win": "False"
+    }
+  ]
+}
