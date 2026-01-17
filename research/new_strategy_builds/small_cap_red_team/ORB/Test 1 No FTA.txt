@@ -1,0 +1,278 @@
+Test 1: No FTA
+Simplest fix
+
+Will show us what "natural" exit distribution looks like
+
+Hypothesis: Win rate returns to ~55%, P&L improves
+
+Test 2: Relaxed FTA (10min/0.5R)
+Compromise position
+
+Still cuts extreme zombies
+
+Hypothesis: 30-40% FTA rate (vs current 62%)
+
+Test 3: FTA as Tightening Trigger
+Most sophisticated
+
+Keeps trades alive but reduces risk
+
+Hypothesis: Maintains high win rate while reducing loss size
+
+Additional Analysis Needed
+Check what happens to FTA-exited trades:
+
+python
+# Post-exit analysis:
+for trade in fta_exited_trades:
+    check_price_after_exit(24_hours)  # Did it recover?
+    max_adverse_excursion_after_exit()
+    max_favorable_excursion_after_exit()
+Key Questions:
+
+Of the 221 FTA exits, how many would have hit 0.5R within 10 minutes?
+
+How many would have hit the 0.4 ATR stop?
+
+What's the distribution of post-FTA price action?
+
+Parameter Optimization Grid
+If keeping FTA, test this grid:
+
+text
+Time: [None, 5, 8, 10, 12, 15]
+Profit Threshold: [0.2, 0.3, 0.4, 0.5, 0.6]
+Action: [full_exit, 50%_exit, tighten_stop]
+Risk/Reward Analysis
+Current V6 Math:
+
+39.2% win rate
+
+Needs 2.55:1 R:R to break even
+
+Not happening because FTA cuts winners early
+
+Without FTA (Estimated):
+
+50-55% win rate
+
+Needs 1.8-2.0:1 R:R
+
+More achievable with your scaling plan
+
+Implementation Priority
+Phase 1: Remove FTA (Test ASAP)
+Run backtest with FTA completely disabled. This gives us the baseline.
+
+Phase 2: If FTA removal helps but creates new problems:
+Add back FTA but only for trades showing no momentum
+
+Or implement dynamic FTA based on volatility
+
+Phase 3: Fine-tune
+python
+# Dynamic FTA based on ATR
+def calculate_dynamic_fta(atr, price):
+    volatility_ratio = atr / price
+    if volatility_ratio > 0.02:  # High volatility
+        return {'time': 8, 'threshold': 0.4}
+    else:  # Low volatility
+        return {'time': 12, 'threshold': 0.3}
+Why FTA Might Still Be Useful
+Despite the current issue, FTA could help with:
+
+Capital efficiency - Free up capital for better opportunities
+
+Emotional control - Remove "hope" from trading
+
+Statistical edge - If properly calibrated
+
+Expected Outcomes
+Without FTA:
+Trades: ~350-400 (similar to V6)
+
+Win rate: 50-55%
+
+FTA exits: 0%
+
+Target P&L: -0.05% to +0.05% per trade
+
+With Relaxed FTA:
+Trades: ~350
+
+Win rate: 45-50%
+
+FTA exits: 30-40%
+
+Target P&L: -0.08% to +0.02% per trade
+
+Action Plan
+Today: Run V7 (No FTA) backtest
+Tomorrow: Run V7b (Relaxed FTA: 10min/0.5R)
+Day 3: Analyze both, choose direction
+
+Critical Metric to Watch:
+
+FTA Exit Rate: Should be 20-40%, not 62%
+
+Win Rate: Target 48-52%
+
+Average Win Size: Must increase from current
+
+Long-term Vision
+The ideal exit stack should be:
+
+Scaling: 25% at 0.25R, 25% at 0.5R, 25% at 1.0R, trail 25%
+
+Trailing Stop: Dynamic based on volatility
+
+Time-based filter: Only for extreme cases (e.g., 30min with no progress)
+
+VWAP filter: Soft stop if trade goes against you early
+
+
+
+Test 1: No FTA (The Baseline)
+Verdict: MANDATORY / GREEN LIGHT.
+
+Why: You currently have no "Control Group." The data from V5 and V6 is corrupted by the aggressive exit logic. You cannot optimize the FTA until you know the "natural drift" of your signals. If the strategy naturally has a 55% win rate but an Average Hold Time of 45 minutes, you need to know that before you try to force it into a 5-minute box.
+
+Expectation: Be prepared for Avg P&L to potentially stay negative initially, as you will now be holding losers to the full stop. This is necessary data.
+
+Test 2: Relaxed FTA (10min / 0.5R)
+Verdict: FLAWED LOGIC / YELLOW LIGHT.
+
+The Risk: You are increasing the time (good) but raising the profit hurdle (bad).
+
+Analysis: If 62% of trades couldn't hit 0.3R in 5 minutes, asking them to hit 0.5R in 10 minutes is actually harder. RIOT and MARA often grind sideways for 15 minutes before the move.
+
+Optimization: Change the logic to "Zombie Defense" rather than "Performance Demand."
+
+Instead of: "Exit if not up +0.5R" (Demanding a Winner).
+
+Try: "Exit if down < 0.0R (Entry Price)" (Cutting a Loser).
+
+Why: If the trade is green (+0.1R) at 10 minutes, keep it. Support is holding. Don't kill a trade that isn't bleeding.
+
+Test 3: FTA as Tightening Trigger
+Verdict: GENIUS / BEST LONG TERM.
+
+Why: This converts a "Kill Switch" into a "Risk Reduction Switch."
+
+The Logic: If Time > 10m and PnL < 0.3R → Move Stop to Break Even.
+
+Result: You give the trade a "Free Roll." If it wakes up, you win. If it drops, you scratch. This protects your Win Rate significantly better than a hard exit.
+
+The "Golden Step": Post-Exit Analysis Script
+You asked for the code to analyze the "Ghost Trades" (what happened after you exited). Do not guess—run this Pandas script on your V6 log data immediately.
+
+Python
+
+import pandas as pd
+import numpy as np
+
+def analyze_fta_opportunity_cost(trade_log, price_data, target_r=1.5, stop_loss_atr=0.75):
+    """
+    Analyzes trades exited via FTA to see what WOULD have happened next.
+    """
+    results = []
+    
+    # Filter for trades exited by FTA
+    fta_trades = trade_log[trade_log['exit_reason'] == 'FTA']
+    
+    for index, trade in fta_trades.iterrows():
+        exit_time = trade['exit_time']
+        ticker = trade['ticker']
+        direction = trade['direction'] # 1 for Long, -1 for Short
+        entry_price = trade['entry_price']
+        atr = trade['atr_at_entry']
+        
+        # Get price data for the next 60 minutes after exit
+        # Assumes price_data is a dict of DataFrames keyed by ticker
+        future_prices = price_data[ticker].loc[exit_time:].head(60) 
+        
+        if future_prices.empty:
+            continue
+            
+        # Define Theoretical Levels
+        stop_price = entry_price - (stop_loss_atr * atr * direction)
+        target_price = entry_price + (target_r * atr * direction)
+        
+        hit_stop = False
+        hit_target = False
+        
+        # Simulate the trade path
+        for t, row in future_prices.iterrows():
+            if direction == 1: # LONG
+                if row['low'] <= stop_price:
+                    hit_stop = True
+                    break
+                if row['high'] >= target_price:
+                    hit_target = True
+                    break
+            elif direction == -1: # SHORT
+                if row['high'] >= stop_price:
+                    hit_stop = True
+                    break
+                if row['low'] <= target_price:
+                    hit_target = True
+                    break
+        
+        outcome = "NO_RESULT"
+        if hit_target: outcome = "MISSED_WIN"  # FTA killed a winner
+        if hit_stop: outcome = "SAVED_LOSS"    # FTA saved us money
+        
+        results.append({
+            'trade_id': trade['id'],
+            'outcome': outcome
+        })
+
+    df_res = pd.DataFrame(results)
+    
+    # The Critical Ratio
+    print("FTA Efficacy Report:")
+    print(df_res['outcome'].value_counts(normalize=True))
+    return df_res
+Decision Matrix:
+
+If MISSED_WIN > 20%: Your FTA is burning alpha. Kill it.
+
+If SAVED_LOSS > MISSED_WIN: Your FTA is valid. Keep it (or refine to Test 3).
+
+CRITICAL WARNING: The "Scaling" Trap
+I must flag a major error in your Long-term Vision:
+
+User Vision: "Scaling: 25% at 0.25R, 25% at 0.5R..."
+
+⛔ STOP. DO NOT DO THIS.
+
+The Math of 0.25R Scaling on RIOT/AMC:
+
+Price: $10.00
+
+ATR: $0.20
+
+0.25R Target: $0.05 profit.
+
+The Costs: Spread ($0.01) + Slippage ($0.01) + Commission = ~$0.025 cost.
+
+The Reality: You are proposing to exit 25% of your position for 2.5 cents of net profit.
+
+You are paying full risk (spread/slippage) to exit a trade that hasn't moved yet.
+
+Rule: Never scale out before 0.5R (absolute minimum) or 1.0R (ideal). The first scale must capture enough profit to cover the risk of the remaining shares.
+
+Revised Vision (The "Barbell" Stack):
+
+@ 0.5R: Move Stop to Breakeven. (Zero Risk).
+
+@ 1.3R - 1.5R: Scale 50%. (Bank the Win).
+
+Runner: Trail VWAP. (Catch the Trend).
+
+Immediate Next Steps
+Run Test 1 (No FTA) to get the baseline.
+
+Run the Python Script on the V6 data to see if the FTA killed winners or losers.
+
+Use those two results to decide between Test 2 (Relaxed) or Test 3 (Tighten).
