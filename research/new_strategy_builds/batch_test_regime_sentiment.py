@@ -28,18 +28,29 @@ FUTURES = ['SIUSD', 'GCUSD', 'CLUSD', 'ESUSD', 'NQUSD']
 
 PERIODS = [
     ('Primary', '2024-01-01', '2025-12-31'),
-    ('Secondary', '2022-01-01', '2023-12-31')
+    ('Secondary', '2022-01-01', '2023-12-31'),
+    ('Tertiary', '2020-01-01', '2021-12-31')
 ]
 
 def main():
     all_results = []
     
     print("="*80)
-    print("REGIME SENTIMENT FILTER - BATCH TEST")
+    print("REGIME SENTIMENT FILTER - BATCH TEST (WFA)")
     print("="*80)
     print(f"Testing {len(EQUITIES)} equities + {len(FUTURES)} futures")
-    print(f"Across 2 periods (2022-2023 bear, 2024-2025 bull)")
+    print(f"Across {len(PERIODS)} periods (2020-2025)")
     print("="*80)
+    
+    # Pre-fetch SPY data once for all tests (avoid redundant API calls)
+    print("\nPre-fetching SPY regime data...")
+    for period_name, start, end in PERIODS:
+        try:
+            cache.get_or_fetch_equity('SPY', '1day', start, end)
+            print(f"✓ SPY {period_name}")
+        except Exception as e:
+            print(f"✗ SPY {period_name}: {e}")
+    print()
     
     # Test equities
     for symbol in EQUITIES:
