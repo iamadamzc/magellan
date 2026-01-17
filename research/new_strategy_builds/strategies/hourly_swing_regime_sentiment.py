@@ -61,7 +61,7 @@ def merge_news_sentiment(df, news_data):
         relevant_news = news_df[(news_df.index >= lookback_start) & (news_df.index < timestamp)]
         
         if len(relevant_news) > 0:
-            avg_sentiment = relevant_news['sentimentScore'].mean()
+            avg_sentiment = relevant_news['sentiment'].mean()  # Changed from 'sentimentScore'
         else:
             avg_sentiment = 0.0
         
