@@ -97,11 +97,17 @@ def run_backtest(symbol, period_name, start, end, friction_bps=1.5):
     # Generate signals
     df['signal'] = 0
     
-    # Entry: RSI > 60 AND SPY > 200 MA AND sentiment > 0
-    entry_condition = (df['rsi_28'] > 60) & (df['spy_regime'] == 1) & (df['sentiment'] > 0)
+    # Entry conditions (relaxed):
+    # Option 1: Bull regime with moderate momentum
+    bull_entry = (df['rsi_28'] > 55) & (df['spy_regime'] == 1) & (df['sentiment'] > -0.2)
     
-    # Exit: RSI < 40 OR SPY < 200 MA
-    exit_condition = (df['rsi_28'] < 40) | (df['spy_regime'] == 0)
+    # Option 2: Strong momentum even in bear regime (breakout)
+    strong_entry = (df['rsi_28'] > 65) & (df['sentiment'] > 0)
+    
+    entry_condition = bull_entry | strong_entry
+    
+    # Exit: Weak momentum OR bad sentiment
+    exit_condition = (df['rsi_28'] < 45) | (df['sentiment'] < -0.3)
     
     # State machine
     position = 0
