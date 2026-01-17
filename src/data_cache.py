@@ -122,8 +122,9 @@ class DataCache:
             url = "https://financialmodelingprep.com/stable/historical-chart/1hour"
             params = {'symbol': symbol, 'from': start, 'to': end, 'apikey': api_key}
         elif timeframe == '1day':
-            url = f"https://financialmodelingprep.com/stable/historical-price-eod/full/{symbol}"
-            params = {'from': start, 'to': end, 'apikey': api_key}
+            # Use stable EOD full endpoint
+            url = "https://financialmodelingprep.com/stable/historical-price-eod/full"
+            params = {'symbol': symbol, 'from': start, 'to': end, 'apikey': api_key}
         else:
             raise ValueError(f"Unsupported timeframe: {timeframe}")
         
