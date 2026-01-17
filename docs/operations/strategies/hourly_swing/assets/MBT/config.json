@@ -1,0 +1,41 @@
+{
+    "symbol": "MBT",
+    "full_name": "Micro Bitcoin Futures",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 65,
+        "rsi_lower": 35,
+        "notes": "Wider bands (65/35) due to extreme volatility"
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 5.00,
+        "tick_value": 0.25,
+        "multiplier": 0.10,
+        "margin_requirement_approx": 1000,
+        "trading_hours": "6:00 PM ET Sun - 5:00 PM ET Fri (nearly 24hrs)"
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "total_return_pct": null,
+        "sharpe_ratio": null,
+        "max_drawdown_pct": null,
+        "trade_count": null,
+        "win_rate_pct": null,
+        "avg_hold_hours": null
+    },
+    "deployment_status": "pending_validation",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 5,
+        "stop_loss_pct": 15,
+        "notes": "Extreme volatility asset. Tight risk controls required. Consider 70/30 bands if over-trading."
+    },
+    "data_source": {
+        "provider": "polygon_io",
+        "symbol_format": "MBT",
+        "notes": "Check contract month codes (e.g., MBTF6 for June). Use continuous if available."
+    }
+}

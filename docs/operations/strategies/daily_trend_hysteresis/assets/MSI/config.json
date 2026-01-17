@@ -1,0 +1,40 @@
+{
+    "symbol": "MSI",
+    "full_name": "Micro Silver",
+    "proxy_tested": "SIUSD (Silver spot via FMP)",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "proxy_symbol": "SIUSD",
+        "total_return_pct": 108.42,
+        "sharpe_ratio": 1.29,
+        "max_drawdown_pct": -25.17,
+        "trade_count": 10,
+        "win_rate_pct": 50.0,
+        "avg_hold_days": 54.2,
+        "buy_hold_return_pct": 194.76
+    },
+    "deployment_status": "approved",
+    "deployment_date": "2026-01-17",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 10,
+        "stop_loss_pct": null,
+        "notes": "Silver futures - High volatility precious metal. Explosive returns (+108%) but larger drawdown risk."
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 0.005,
+        "tick_value_usd": 1.25,
+        "margin_requirement_approx_usd": 1400,
+        "trading_hours": "Nearly 24 hours (6:00 PM ET Sun - 5:00 PM ET Fri)",
+        "multiplier": 2500
+    },
+    "notes": "Tested using SIUSD spot silver as proxy. Outstanding returns (+108%) with excellent Sharpe (1.29). Higher volatility than gold but well-controlled in trend system."
+}

@@ -176,7 +176,48 @@ https://financialmodelingprep.com/stable/historical-chart/1hour?symbol=BTCUSD&ap
 - `/stable/historical-chart/1day?symbol=BTCUSD` (Daily)
 - `/stable/historical-price-eod/full?symbol=BTCUSD` (Full Daily History)
 
-### B. Earnings Calendar
+### B. Commodities & Futures Data
+
+**CORRECT Endpoint** (Hourly Commodities):
+```
+https://financialmodelingprep.com/stable/historical-chart/1hour?symbol=GCUSD&apikey=YOUR_KEY
+```
+
+**Key Symbols** (FMP Format):
+- **GCUSD** - Gold (matches MGC futures)
+- **SIUSD** - Silver (matches MSI futures)
+- **CLUSD** - Crude Oil (matches MCL futures)
+- **NGUSD** - Natural Gas (matches MNG futures)
+- **HGUSD** - Copper (matches MCP futures)
+- **BTCUSD** - Bitcoin (matches MBT futures)
+- **ETHUSD** - Ethereum
+- **EURUSD** - EUR/USD (matches M6E futures)
+- **GBPUSD** - GBP/USD (matches M6B futures)
+- **AUDUSD** - AUD/USD (matches M6A futures)
+
+**Response Format**: Same as crypto (LIST directly)
+```json
+[
+  {"date": "2024-01-01 00:00:00", "open": 2050.5, "high": 2055.0, "low": 2048.0, "close": 2052.5, "volume": 123456},
+  ...
+]
+```
+
+**Available Intervals**:
+- `/stable/historical-chart/1min?symbol=GCUSD` (1-Minute)
+- `/stable/historical-chart/5min?symbol=GCUSD` (5-Minute)
+- `/stable/historical-chart/1hour?symbol=GCUSD` (Hourly)
+- `/stable/historical-chart/1day?symbol=GCUSD` (Daily)
+- `/stable/historical-price-eod/full?symbol=GCUSD` (Full Daily History)
+
+**Key Notes**:
+- ✅ Commodities use `/stable/` endpoints (same as crypto)
+- ✅ Symbol format: **USD denomination** (GCUSD, not GC or MGC)
+- ✅ Data represents **spot prices**, correlates closely with futures
+- ⚠️ **Not actual futures contracts** (no expiry, no rollover) - use as proxy
+- ⚠️ For **index futures** (MES, MNQ, MYM, M2K), use corresponding ETF or index data (SPY, QQQ, DIA, IWM)
+
+### C. Earnings Calendar
 
 **CORRECT Endpoint** (Company Earnings):
 ```
