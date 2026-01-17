@@ -21,6 +21,7 @@ load_dotenv()
 
 # Import the strategy backtest function
 from strategies.regime_sentiment_filter import run_backtest
+from src.data_cache import cache
 
 # Define test universe
 EQUITIES = ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'META', 'AMZN', 'TSLA', 'NFLX', 'AMD', 'COIN', 'PLTR']
@@ -160,15 +161,24 @@ def main():
     print("SUMMARY BY PERIOD")
     print("="*80)
     
-    for period_name in ['Primary', 'Secondary']:
+    for period_name in ['Primary', 'Secondary', 'Tertiary']:
         period_results = results_df[results_df['period'] == period_name]
         
+        if len(period_results) == 0:
+            continue
+            
         avg_return = period_results['strategy_return'].mean()
         avg_sharpe = period_results['sharpe'].mean()
         positive_count = (period_results['strategy_return'] > 0).sum()
         total_count = len(period_results)
         
-        print(f"\n{period_name} (2024-2025 bull)" if period_name == 'Primary' else f"\n{period_name} (2022-2023 bear)")
+        period_label = {
+            'Primary': '2024-2025 (bull)',
+            'Secondary': '2022-2023 (bear)',
+            'Tertiary': '2020-2021 (V-shape recovery)'
+        }.get(period_name, period_name)
+        
+        print(f"\n{period_name} ({period_label})")
         print(f"  Avg Return: {avg_return:+.2f}%")
         print(f"  Avg Sharpe: {avg_sharpe:.2f}")
         print(f"  Positive: {positive_count}/{total_count} ({positive_count/total_count*100:.1f}%)")
