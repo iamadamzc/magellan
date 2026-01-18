@@ -1,0 +1,17 @@
+Equity Indices (CME):
+Micro E-mini S&P 500 (/MES)
+Micro E-mini Nasdaq 100 (/MNQ)
+Micro E-mini Dow (/MYM)
+Micro E-mini Russell 2000 (/M2K)
+Commodities (CME):
+Micro Crude Oil (/MCL)
+Micro Gold (/MGC)
+Micro Silver (/MSI)
+Micro Natural Gas (/MNG)
+Micro Copper (/MCP)
+Currencies (FX) (CME):
+Micro EUR/USD (/M6E)
+Micro GBP/USD (/M6B)
+Micro AUD/USD (/M6A)
+Crypto (CME):
+Micro Bitcoin (MBT, MBTF6) 
