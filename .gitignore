@@ -63,3 +63,4 @@ livetradelog.txt
 # Temporary files
 *.tmp
 *.bak
+data/cache/

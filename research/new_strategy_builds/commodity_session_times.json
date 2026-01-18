@@ -1,0 +1,52 @@
+{
+  "ES": {
+    "hour": 13,
+    "minute": 30,
+    "typical_open": "13:30"
+  },
+  "CL": {
+    "hour": 13,
+    "minute": 28,
+    "typical_open": "13:28"
+  },
+  "NG": {
+    "hour": 13,
+    "minute": 29,
+    "typical_open": "13:29"
+  },
+  "HG": {
+    "hour": 13,
+    "minute": 30,
+    "typical_open": "13:30"
+  },
+  "PL": {
+    "hour": 0,
+    "minute": 10,
+    "typical_open": "00:10"
+  },
+  "ZS": {
+    "hour": 0,
+    "minute": 16,
+    "typical_open": "00:16"
+  },
+  "KC": {
+    "hour": 8,
+    "minute": 1,
+    "typical_open": "08:01"
+  },
+  "SB": {
+    "hour": 13,
+    "minute": 30,
+    "typical_open": "13:30"
+  },
+  "CC": {
+    "hour": 13,
+    "minute": 30,
+    "typical_open": "13:30"
+  },
+  "HE": {
+    "hour": 8,
+    "minute": 7,
+    "typical_open": "08:07"
+  }
+}
