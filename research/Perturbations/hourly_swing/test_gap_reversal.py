@@ -78,6 +78,9 @@ def simulate_gap_fade(df, fade_pct):
             df_adjusted.loc[df_adjusted.index[i], 'low'] -= gap_change
             df_adjusted.loc[df_adjusted.index[i], 'close'] -= gap_change
     
+    # Keep gap_return column for analysis (shows actual gap after fading)
+    df_adjusted['gap_return'] = df_adjusted['gap_pct'] * (1 - fade_pct)
+    
     return df_adjusted
 
 def run_backtest(symbol, config, gap_fade_pct):
@@ -142,9 +145,15 @@ def run_backtest(symbol, config, gap_fade_pct):
         else:
             sharpe = 0
         
-        # Calculate gap contribution
-        df['gap_return'] = (df['open'] - df['prev_close']) / df['prev_close']
-        gap_contribution = (df[df['signal'].shift(1) == 1]['gap_return']).sum()
+        # Calculate gap contribution (only if we did gap simulation)
+        if gap_fade_pct == 0:
+            # Calculate fresh for baseline
+            df['prev_close_calc'] = df['close'].shift(1)
+            df['gap_return_calc'] = (df['open'] - df['prev_close_calc']) / df['prev_close_calc']
+            gap_contribution = (df[df['signal'].shift(1) == 1]['gap_return_calc']).fillna(0).sum()
+        else:
+            # Use the gap_return from gap simulation
+            gap_contribution = (df[df['signal'].shift(1) == 1]['gap_return']).fillna(0).sum()
         
         return {
             'return_pct': total_return * 100,
@@ -228,8 +237,15 @@ def main():
         print(f"\n{scenario_name}:")
         print(f"  Profitable: {profitable_count}/{len(scenario_results)} assets")
         print(f"  Avg Return: {scenario_results['return_pct'].mean():+.2f}%")
-        print(f"  TSLA: {scenario_results[scenario_results['Asset']=='TSLA']['return_pct'].iloc[0]:+.2f}%")
-        print(f"  NVDA: {scenario_results[scenario_results['Asset']=='NVDA']['return_pct'].iloc[0]:+.2f}%")
+        
+        # Safely access individual asset results
+        tsla_results = scenario_results[scenario_results['Asset']=='TSLA']
+        nvda_results = scenario_results[scenario_results['Asset']=='NVDA']
+        
+        if len(tsla_results) > 0:
+            print(f"  TSLA: {tsla_results['return_pct'].iloc[0]:+.2f}%")
+        if len(nvda_results) > 0:
+            print(f"  NVDA: {nvda_results['return_pct'].iloc[0]:+.2f}%")
     
     # Pass/Fail determination
     print("\n" + "="*80)

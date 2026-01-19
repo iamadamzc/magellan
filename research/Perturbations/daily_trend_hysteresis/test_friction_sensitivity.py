@@ -45,6 +45,10 @@ VALIDATION_START = "2024-06-01"
 VALIDATION_END = "2026-01-18"
 FRICTION_LEVELS = [2, 5, 10, 15, 20]  # bps
 
+# NVDA had 10-for-1 stock split on June 10, 2024
+# Use post-split data to avoid split-induced price discontinuity
+NVDA_POST_SPLIT_START = "2024-06-10"
+
 def calculate_rsi(prices, period=21):
     """Calculate RSI indicator"""
     delta = prices.diff()
@@ -60,8 +64,11 @@ def calculate_rsi(prices, period=21):
 def run_backtest(symbol, config, friction_bps):
     """Run backtest with specified friction"""
     try:
+        # NVDA special handling: Use post-split data
+        start_date = NVDA_POST_SPLIT_START if symbol == "NVDA" else VALIDATION_START
+        
         # Fetch daily data
-        df = cache.get_or_fetch_equity(symbol, '1day', VALIDATION_START, VALIDATION_END)
+        df = cache.get_or_fetch_equity(symbol, '1day', start_date, VALIDATION_END)
         
         if len(df) < 200:
             return None
