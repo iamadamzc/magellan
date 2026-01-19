@@ -124,8 +124,9 @@ class StatisticalValidator:
             return 1.0
         
         # One-tailed: test if win rate > 50%
-        p_value = stats.binom_test(n_wins, n_total, p=CRITERIA['win_rate_null'], alternative='greater')
-        return p_value
+        # Use binomtest (new API) instead of deprecated binom_test
+        result = stats.binomtest(n_wins, n_total, p=CRITERIA['win_rate_null'], alternative='greater')
+        return result.pvalue
     
     def validate_symbol(self, symbol):
         """Run statistical validation for a symbol."""
@@ -318,7 +319,7 @@ class StatisticalValidator:
 """
         
         report_path = output_dir / 'STATISTICAL_VALIDATION_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
         
