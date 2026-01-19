@@ -1,0 +1,14 @@
+Name                                                                         Stmts   Miss  Cover
+------------------------------------------------------------------------------------------------
+research\Perturbations\bear_trap\test_bear_trap_4year.py                        58     53     9%
+research\Perturbations\bear_trap\test_slippage_tolerance.py                     98     12    88%
+research\Perturbations\daily_trend_hysteresis\test_friction_sensitivity.py     129     14    89%
+research\Perturbations\earnings_straddles\test_regime_normalization.py         104      8    92%
+research\Perturbations\fomc_straddles\test_bid_ask_spread.py                    89      7    92%
+research\Perturbations\hourly_swing\test_gap_reversal.py                       153     15    90%
+src\__init__.py                                                                  0      0   100%
+src\data_cache.py                                                              123     90    27%
+src\data_handler.py                                                            269    251     7%
+src\logger.py                                                                  111     67    40%
+------------------------------------------------------------------------------------------------
+TOTAL                                                                         1134    517    54%

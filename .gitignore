@@ -60,6 +60,11 @@ results/equity_curve_*.csv
 *.log
 livetradelog.txt
 
+# Coverage analysis (temporary)
+.coverage
+.coverage.*
+htmlcov/
+
 # Temporary files
 *.tmp
 *.bak
