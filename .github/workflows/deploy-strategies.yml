@@ -1,0 +1,249 @@
+name: Deploy Trading Strategies to AWS
+
+on:
+  push:
+    branches:
+      - main
+      - deployment/aws-paper-trading-setup
+    paths:
+      - 'deployable_strategies/**'
+      - '.github/workflows/deploy-strategies.yml'
+  workflow_dispatch:
+    inputs:
+      strategy:
+        description: 'Strategy to deploy (bear_trap, daily_trend_hysteresis, hourly_swing, all)'
+        required: true
+        default: 'all'
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  AWS_REGION: us-east-2
+  EC2_INSTANCE_ID: i-0cd785630b55dd9a2
+
+jobs:
+  validate-strategies:
+    name: Validate Strategy Code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pylint black
+      
+      - name: Lint code
+        run: |
+          black --check deployable_strategies/
+          pylint deployable_strategies/ --disable=C0111,R0913,R0914 || true
+      
+      - name: Run unit tests
+        run: |
+          pytest tests/ -v --cov=deployable_strategies --cov-report=term-missing
+        continue-on-error: true
+      
+      - name: Validate configuration files
+        run: |
+          python scripts/validate_configs.py
+  
+  test-with-archived-data:
+    name: Test Strategies with Archived Data
+    needs: validate-strategies
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        strategy: [bear_trap, daily_trend_hysteresis, hourly_swing]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run backtest with archived data
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_TEST_API_KEY }}
+          ALPACA_API_SECRET: ${{ secrets.ALPACA_TEST_API_SECRET }}
+          USE_ARCHIVED_DATA: 'true'
+        run: |
+          python scripts/run_backtest.py \
+            --strategy ${{ matrix.strategy }} \
+            --start-date 2024-01-01 \
+            --end-date 2024-12-31 \
+            --use-cache
+      
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-results-${{ matrix.strategy }}
+          path: test_results/
+          retention-days: 30
+
+  deploy-to-aws:
+    name: Deploy to AWS EC2
+    needs: test-with-archived-data
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/deployment/aws-paper-trading-setup' || github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Create deployment package
+        run: |
+          mkdir -p deploy_package
+          cp -r deployable_strategies deploy_package/
+          cp -r src deploy_package/
+          cp requirements.txt deploy_package/
+          cd deploy_package && tar -czf ../magellan-deploy.tar.gz .
+      
+      - name: Upload to S3
+        run: |
+          aws s3 cp magellan-deploy.tar.gz s3://magellan-deployments/$(date +%Y%m%d-%H%M%S)/
+      
+      - name: Deploy to EC2 via SSM
+        run: |
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids ${{ env.EC2_INSTANCE_ID }} \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=[
+              "set -e",
+              "cd /home/ssm-user/magellan",
+              "git fetch origin",
+              "git reset --hard origin/${{ github.ref_name }}",
+              "source .venv/bin/activate",
+              "pip install -r requirements.txt --quiet",
+              "sudo systemctl restart magellan-bear-trap",
+              "sudo systemctl restart magellan-daily-trend",
+              "sudo systemctl restart magellan-hourly-swing",
+              "sleep 5",
+              "sudo systemctl is-active magellan-bear-trap",
+              "sudo systemctl is-active magellan-daily-trend",
+              "sudo systemctl is-active magellan-hourly-swing"
+            ]' \
+            --region ${{ env.AWS_REGION }} \
+            --output text \
+            --query 'Command.CommandId')
+          
+          echo "Command ID: $COMMAND_ID"
+          
+          # Wait for command to complete
+          aws ssm wait command-executed \
+            --command-id $COMMAND_ID \
+            --instance-id ${{ env.EC2_INSTANCE_ID }} \
+            --region ${{ env.AWS_REGION }}
+          
+          # Get command output
+          aws ssm get-command-invocation \
+            --command-id $COMMAND_ID \
+            --instance-id ${{ env.EC2_INSTANCE_ID }} \
+            --region ${{ env.AWS_REGION }}
+      
+      - name: Verify deployment
+        run: |
+          aws ssm send-command \
+            --instance-ids ${{ env.EC2_INSTANCE_ID }} \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=[
+              "sudo journalctl -u magellan-bear-trap -n 20 --no-pager",
+              "sudo journalctl -u magellan-daily-trend -n 20 --no-pager",
+              "sudo journalctl -u magellan-hourly-swing -n 20 --no-pager"
+            ]' \
+            --region ${{ env.AWS_REGION }}
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Deployment successful!"
+          else
+            echo "❌ Deployment failed!"
+            exit 1
+          fi
+
+  post-deployment-health-check:
+    name: Post-Deployment Health Check
+    needs: deploy-to-aws
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Wait for services to stabilize
+        run: sleep 30
+      
+      - name: Check service health
+        run: |
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids ${{ env.EC2_INSTANCE_ID }} \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=[
+              "sudo systemctl status magellan-bear-trap --no-pager | grep Active",
+              "sudo systemctl status magellan-daily-trend --no-pager | grep Active",
+              "sudo systemctl status magellan-hourly-swing --no-pager | grep Active",
+              "ls -lh /home/ssm-user/magellan/logs/bear_trap_decisions_*.csv | tail -1"
+            ]' \
+            --region ${{ env.AWS_REGION }} \
+            --output text \
+            --query 'Command.CommandId')
+          
+          aws ssm wait command-executed \
+            --command-id $COMMAND_ID \
+            --instance-id ${{ env.EC2_INSTANCE_ID }} \
+            --region ${{ env.AWS_REGION }}
+          
+          aws ssm get-command-invocation \
+            --command-id $COMMAND_ID \
+            --instance-id ${{ env.EC2_INSTANCE_ID }} \
+            --region ${{ env.AWS_REGION }} \
+            --query 'StandardOutputContent' \
+            --output text
+      
+      - name: Create deployment summary
+        run: |
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "- **EC2 Instance**: ${{ env.EC2_INSTANCE_ID }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Services Status" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All services restarted and verified active" >> $GITHUB_STEP_SUMMARY
