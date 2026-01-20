@@ -11,11 +11,11 @@ from pathlib import Path
 from datetime import datetime
 import importlib.util
 
-project_root = Path(__file__).resolve().parent.parent.parent.parent
+project_root = Path(__file__).resolve().parent.parent.parent  # a:\1\Magellan
 sys.path.insert(0, str(project_root))
 
-# Test directories
-TEST_BASE = project_root / 'research' / 'testing'
+# Test directories - script is in research/testing/
+TEST_BASE = Path(__file__).resolve().parent  # a:\1\Magellan\research\testing
 BACKTEST_DIR = TEST_BASE / 'backtests' / 'bear_trap' / '01-19-2026'
 PERTURBATION_DIR = TEST_BASE / 'perturbations' / 'bear_trap' / '01-19-2026'
 WFA_DIR = TEST_BASE / 'wfa' / 'bear_trap' / '01-19-2026'
@@ -191,7 +191,7 @@ The validation suite identified significant concerns:
 """
     
     report_path = output_dir / 'BEAR_TRAP_VALIDATION_SUITE_01-19-2026.md'
-    with open(report_path, 'w') as f:
+    with open(report_path, 'w', encoding='utf-8') as f:
         f.write(report)
     print(f"\n📝 Master report saved to: {report_path}")
     

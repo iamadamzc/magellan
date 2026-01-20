@@ -355,7 +355,7 @@ class KFoldSymbolValidator:
         df_loocv.to_csv(csv_path, index=False)
         
         report_path = output_dir / 'CROSS_VALIDATION_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
 

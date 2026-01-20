@@ -412,7 +412,7 @@ class MLStabilityValidator:
 """
         
         report_path = output_dir / 'ML_STABILITY_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
 

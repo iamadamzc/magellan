@@ -109,9 +109,13 @@ class RegimeStressValidator:
         # Calculate metrics
         positive_regimes = sum(1 for pnl in regime_pnls.values() if pnl > 0)
         best_gain = max(regime_pnls.values()) if regime_pnls else 0
-        worst_loss = min(regime_pnls.values()) if regime_pnls else 0
         
-        loss_vs_gain_ratio = abs(worst_loss) / best_gain if best_gain > 0 else 0
+        # Only count actual losses (negative PnLs)
+        losses = [pnl for pnl in regime_pnls.values() if pnl < 0]
+        worst_loss = min(losses) if losses else 0
+        
+        # Loss/gain ratio only matters if there are actual losses
+        loss_vs_gain_ratio = abs(worst_loss) / best_gain if (best_gain > 0 and worst_loss < 0) else 0
         
         # Pass/Fail
         regime_pass = positive_regimes >= CRITERIA['profitable_regimes_min']
@@ -261,7 +265,7 @@ class RegimeStressValidator:
 """
         
         report_path = output_dir / 'REGIME_STRESS_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
         

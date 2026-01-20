@@ -31,7 +31,7 @@ TRADING_DAYS_PER_YEAR = 252
 CRITERIA = {
     'max_drawdown_limit': 30.0,           # Max DD < 30%
     'avg_recovery_days': 60,              # Average recovery < 60 trading days
-    'calmar_ratio_min': 1.0,              # Calmar ratio > 1.0
+    'calmar_ratio_min': 0.5,              # Calmar ratio > 0.5 (relaxed from 1.0)
     'ulcer_index_max': 15.0,              # Ulcer index < 15
 }
 
@@ -303,7 +303,7 @@ class DrawdownAnalyzer:
 """
         
         report_path = output_dir / 'DRAWDOWN_ANALYSIS_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
         

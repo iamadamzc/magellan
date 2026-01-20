@@ -267,7 +267,7 @@ class MonteCarloValidator:
 """
         
         report_path = output_dir / 'MONTE_CARLO_REPORT.md'
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         print(f"📝 Report saved to: {report_path}")
         
