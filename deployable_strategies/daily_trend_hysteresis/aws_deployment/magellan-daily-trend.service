@@ -12,7 +12,7 @@ WorkingDirectory=/home/ec2-user/magellan
 # Environment
 Environment="PYTHONUNBUFFERED=1"
 Environment="STRATEGY=daily_trend"
-Environment="ACCOUNT_ID=REPLACE_WITH_ACCOUNT_ID"
+Environment="ACCOUNT_ID=PA3A2699UCJM"
 Environment="CONFIG_PATH=/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json"
 
 # Execution

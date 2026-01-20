@@ -1,6 +1,6 @@
 {
     "account_info": {
-        "account_id": "PENDING_CREATION",
+        "account_id": "PA3A2699UCJM",
         "account_name": "magellan-daily-trend",
         "initial_capital": 100000,
         "margin_multiplier": 4,
@@ -132,8 +132,8 @@
         "alert_on_loss_dollars": 5000
     },
     "ssm_parameters": {
-        "api_key_path": "/magellan/alpaca/ACCOUNT_ID/API_KEY",
-        "api_secret_path": "/magellan/alpaca/ACCOUNT_ID/API_SECRET",
+        "api_key_path": "/magellan/alpaca/PA3A2699UCJM/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3A2699UCJM/API_SECRET",
         "base_url": "https://paper-api.alpaca.markets"
     }
 }

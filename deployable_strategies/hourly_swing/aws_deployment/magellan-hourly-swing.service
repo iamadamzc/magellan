@@ -12,7 +12,7 @@ WorkingDirectory=/home/ec2-user/magellan
 # Environment
 Environment="PYTHONUNBUFFERED=1"
 Environment="STRATEGY=hourly_swing"
-Environment="ACCOUNT_ID=REPLACE_WITH_ACCOUNT_ID"
+Environment="ACCOUNT_ID=PA3ASNTJV624"
 Environment="CONFIG_PATH=/home/ec2-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json"
 
 # Execution
