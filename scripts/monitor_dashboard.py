@@ -15,7 +15,7 @@ from rich.live import Live
 from rich.panel import Panel
 from rich.layout import Layout
 
-sys.path.insert(0, '/home/ec2-user/magellan')
+sys.path.insert(0, '/home/ssm-user/magellan')
 
 console = Console()
 
@@ -23,19 +23,19 @@ STRATEGIES = [
     {
         'name': 'Bear Trap',
         'account': 'PA3DDLQCBJSE',
-        'config': '/home/ec2-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json',
+        'config': '/home/ssm-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json',
         'service': 'magellan-bear-trap'
     },
     {
         'name': 'Daily Trend',
-        'account': 'REPLACE_WITH_ACCOUNT_ID',
-        'config': '/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json',
+        'account': 'PA3A2699UCJM',
+        'config': '/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json',
         'service': 'magellan-daily-trend'
     },
     {
         'name': 'Hourly Swing',
-        'account': 'REPLACE_WITH_ACCOUNT_ID',
-        'config': '/home/ec2-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json',
+        'account': 'PA3ASNTJV624',
+        'config': '/home/ssm-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json',
         'service': 'magellan-hourly-swing'
     }
 ]
