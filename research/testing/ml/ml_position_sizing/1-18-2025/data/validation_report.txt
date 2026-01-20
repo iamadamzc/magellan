@@ -1,0 +1,22 @@
+STRUCTURAL LABELING VALIDATION REPORT
+================================================================================
+
+Total trades: 1655
+
+ADD_ALLOWED:
+  Count: 3
+  Avg R-multiple: +0.09
+  Win rate: 66.7%
+
+ADD_NEUTRAL:
+  Count: 622
+  Avg R-multiple: +0.55
+  Win rate: 51.9%
+
+NO_ADD:
+  Count: 1030
+  Avg R-multiple: +0.81
+  Win rate: 52.0%
+
+
+Quality Score: -0.72 R
