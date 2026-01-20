@@ -12,11 +12,10 @@ import time
 from datetime import datetime, time as dt_time
 import signal
 
-sys.path.insert(0, '/home/ec2-user/magellan')
+sys.path.insert(0, '/home/ssm-user/magellan')
 
-from src.data_cache.cache import get_cached_data
+from src.data_cache import cache
 from src.features import calculate_rsi
-from src.backtester_pro import BacktesterPro
 import boto3
 
 shutdown_flag = False
@@ -27,7 +26,7 @@ def signal_handler(signum, frame):
     shutdown_flag = True
 
 def load_config():
-    config_path = os.getenv('CONFIG_PATH', '/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json')
+    config_path = os.getenv('CONFIG_PATH', '/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json')
     with open(config_path, 'r') as f:
         return json.load(f)
 
@@ -99,29 +98,32 @@ class DailyTrendExecutor:
         logger = logging.getLogger('magellan.daily_trend')
         logger.info("Generating daily signals...")
         
-        params = self.config['strategy_parameters']
+        from datetime import timedelta
         
         for symbol in self.symbols:
             try:
+                # Get symbol-specific parameters
+                symbol_params = self.config['symbol_parameters'].get(symbol, {})
+                rsi_period = symbol_params.get('rsi_period', 28)
+                upper_band = symbol_params.get('hysteresis_upper', 55)
+                lower_band = symbol_params.get('hysteresis_lower', 45)
+                
                 # Fetch daily data
-                data = get_cached_data(
-                    symbol=symbol,
-                    start_date=(datetime.now() - timedelta(days=150)).strftime('%Y-%m-%d'),
-                    end_date=datetime.now().strftime('%Y-%m-%d'),
-                    interval='1Day'
-                )
+                start_date = (datetime.now() - timedelta(days=150)).strftime('%Y-%m-%d')
+                end_date = datetime.now().strftime('%Y-%m-%d')
+                data = cache.get_or_fetch_equity(symbol, '1day', start_date, end_date)
                 
                 # Calculate RSI
-                rsi = calculate_rsi(data['close'], period=params['rsi_period'])
+                rsi = calculate_rsi(data['close'], period=rsi_period)
                 current_rsi = rsi.iloc[-1]
                 
-                # Determine signal
-                if current_rsi > params['hysteresis_upper']:
+                # Determine signal based on hysteresis
+                if current_rsi > upper_band:
                     self.signals[symbol] = 'BUY'
-                    logger.info(f"{symbol}: RSI={current_rsi:.2f} > {params['hysteresis_upper']} → BUY")
-                elif current_rsi < params['hysteresis_lower']:
+                    logger.info(f"{symbol}: RSI={current_rsi:.2f} > {upper_band} → BUY")
+                elif current_rsi < lower_band:
                     self.signals[symbol] = 'SELL'
-                    logger.info(f"{symbol}: RSI={current_rsi:.2f} < {params['hysteresis_lower']} → SELL")
+                    logger.info(f"{symbol}: RSI={current_rsi:.2f} < {lower_band} → SELL")
                 else:
                     self.signals[symbol] = 'HOLD'
                     logger.info(f"{symbol}: RSI={current_rsi:.2f} → HOLD")
@@ -130,7 +132,7 @@ class DailyTrendExecutor:
                 logger.error(f"Error generating signal for {symbol}: {e}")
         
         # Save signals to file for execution tomorrow
-        signal_file = '/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/signals.json'
+        signal_file = '/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/signals.json'
         with open(signal_file, 'w') as f:
             json.dump({
                 'date': datetime.now().strftime('%Y-%m-%d'),
@@ -145,7 +147,7 @@ class DailyTrendExecutor:
         logger.info("Executing signals...")
         
         # Load signals from file
-        signal_file = '/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/signals.json'
+        signal_file = '/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/signals.json'
         try:
             with open(signal_file, 'r') as f:
                 signal_data = json.load(f)

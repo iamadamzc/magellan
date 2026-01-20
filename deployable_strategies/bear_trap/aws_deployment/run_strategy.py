@@ -15,10 +15,9 @@ from pathlib import Path
 import signal
 
 # Add project root to path
-sys.path.insert(0, '/home/ec2-user/magellan')
+sys.path.insert(0, '/home/ssm-user/magellan')
 
 # Import Magellan modules
-from src.data_cache.cache import get_cached_data
 from deployable_strategies.bear_trap.bear_trap_strategy import BearTrapStrategy
 import boto3
 
@@ -33,7 +32,7 @@ def signal_handler(signum, frame):
 
 def load_config():
     """Load strategy configuration"""
-    config_path = os.getenv('CONFIG_PATH', '/home/ec2-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json')
+    config_path = os.getenv('CONFIG_PATH', '/home/ssm-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json')
     with open(config_path, 'r') as f:
         return json.load(f)
 

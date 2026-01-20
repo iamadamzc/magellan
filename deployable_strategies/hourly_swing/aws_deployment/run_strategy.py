@@ -12,9 +12,9 @@ import time
 from datetime import datetime, time as dt_time, timedelta
 import signal
 
-sys.path.insert(0, '/home/ec2-user/magellan')
+sys.path.insert(0, '/home/ssm-user/magellan')
 
-from src.data_cache.cache import get_cached_data
+from src.data_cache import cache
 from src.features import calculate_rsi
 import boto3
 
@@ -26,7 +26,7 @@ def signal_handler(signum, frame):
     shutdown_flag = True
 
 def load_config():
-    config_path = os.getenv('CONFIG_PATH', '/home/ec2-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json')
+    config_path = os.getenv('CONFIG_PATH', '/home/ssm-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json')
     with open(config_path, 'r') as f:
         return json.load(f)
 
@@ -88,12 +88,9 @@ class HourlySwingExecutor:
                 symbol_params = self.params[symbol]
                 
                 # Fetch hourly data (need 84 bars for RSI warmup)
-                data = get_cached_data(
-                    symbol=symbol,
-                    start_date=(datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d'),
-                    end_date=datetime.now().strftime('%Y-%m-%d'),
-                    interval='1Hour'
-                )
+                start_date = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
+                end_date = datetime.now().strftime('%Y-%m-%d')
+                data = cache.get_or_fetch_equity(symbol, '1hour', start_date, end_date)
                 
                 # Calculate RSI
                 rsi = calculate_rsi(data['close'], period=symbol_params['rsi_period'])
