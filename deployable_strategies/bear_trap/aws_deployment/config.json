@@ -14,11 +14,27 @@
         "expected_trades_per_month": 77
     },
     "symbols": [
-        "MULN",
         "ONDS",
+        "ACB",
         "AMC",
+        "WKHS",
+        "MULN",
+        "GOEV",
+        "BTCS",
+        "SENS",
+        "DNUT",
+        "CVNA",
+        "PLUG",
+        "KOSS",
+        "TLRY",
+        "DVLT",
+        "NVAX",
+        "NTLA",
+        "MARA",
+        "RIOT",
+        "OCGN",
         "NKLA",
-        "WKHS"
+        "GME"
     ],
     "data_requirements": {
         "timeframe": "1Min",

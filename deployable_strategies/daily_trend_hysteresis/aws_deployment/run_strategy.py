@@ -14,9 +14,13 @@ import signal
 
 sys.path.insert(0, '/home/ssm-user/magellan')
 
-from src.data_cache import cache
+# Direct Alpaca API imports - NO CACHE for production
+from alpaca.data.historical import StockHistoricalDataClient
+from alpaca.data.requests import StockBarsRequest
+from alpaca.data.timeframe import TimeFrame
 from src.features import calculate_rsi
 import boto3
+import pandas as pd
 
 shutdown_flag = False
 
@@ -93,6 +97,9 @@ class DailyTrendExecutor:
         self.signals = {}
         self.positions = {}
         
+        # Initialize Alpaca data client for live market data
+        self.data_client = StockHistoricalDataClient(api_key, api_secret)
+        
     def generate_signals(self):
         """Generate entry/exit signals based on RSI"""
         logger = logging.getLogger('magellan.daily_trend')
@@ -108,10 +115,35 @@ class DailyTrendExecutor:
                 upper_band = symbol_params.get('hysteresis_upper', 55)
                 lower_band = symbol_params.get('hysteresis_lower', 45)
                 
-                # Fetch daily data
-                start_date = (datetime.now() - timedelta(days=150)).strftime('%Y-%m-%d')
-                end_date = datetime.now().strftime('%Y-%m-%d')
-                data = cache.get_or_fetch_equity(symbol, '1day', start_date, end_date)
+                # Fetch daily data via direct API call - NO CACHE
+                start_date = datetime.now() - timedelta(days=150)
+                end_date = datetime.now()
+                
+                request = StockBarsRequest(
+                    symbol_or_symbols=symbol,
+                    timeframe=TimeFrame.Day,
+                    start=start_date,
+                    end=end_date,
+                    feed="sip"  # Market Data Plus (paid plan)
+                )
+                
+                bars = self.data_client.get_stock_bars(request)
+                
+                # Convert BarSet to DataFrame (correct BarSet.data access)
+                if bars and bars.data and symbol in bars.data:
+                    bar_list = bars.data[symbol]
+                    data = pd.DataFrame([{
+                        'timestamp': bar.timestamp,
+                        'open': bar.open,
+                        'high': bar.high,
+                        'low': bar.low,
+                        'close': bar.close,
+                        'volume': bar.volume
+                    } for bar in bar_list])
+                    data.set_index('timestamp', inplace=True)
+                else:
+                    logger.warning(f"No data for {symbol}")
+                    continue
                 
                 # Calculate RSI
                 rsi = calculate_rsi(data['close'], period=rsi_period)

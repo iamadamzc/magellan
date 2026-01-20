@@ -67,12 +67,13 @@ class BearTrapStrategy:
                 request = StockBarsRequest(
                     symbol_or_symbols=symbol,
                     timeframe=TimeFrame.Minute,
-                    start=datetime.now() - timedelta(hours=2)
+                    start=datetime.now() - timedelta(minutes=45),
+                    feed="sip"  # Market Data Plus (paid plan) feed
                 )
                 bars = self.data_client.get_stock_bars(request)
                 
-                if bars and symbol in bars:
-                    self._evaluate_symbol(symbol, bars[symbol])
+                if bars and bars.data and symbol in bars.data:
+                    self._evaluate_symbol(symbol, bars.data[symbol])
                 else:
                     self.logger.warning(f"No data for {symbol}")
                     
