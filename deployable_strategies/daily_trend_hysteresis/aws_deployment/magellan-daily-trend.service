@@ -1,0 +1,41 @@
+[Unit]
+Description=Magellan Daily Trend Strategy
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/magellan
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="STRATEGY=daily_trend"
+Environment="ACCOUNT_ID=REPLACE_WITH_ACCOUNT_ID"
+Environment="CONFIG_PATH=/home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json"
+
+# Execution
+ExecStart=/home/ec2-user/magellan/.venv/bin/python /home/ec2-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/run_strategy.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=magellan-daily-trend
+
+# Resource limits
+MemoryLimit=2G
+CPUQuota=100%
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

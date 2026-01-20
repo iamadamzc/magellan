@@ -1,0 +1,48 @@
+{
+    "symbol": "GOOGL",
+    "strategy": "hourly_swing",
+    "version": "rvol_enhanced_v1",
+    "validated_date": "2026-01-19",
+    "status": "validated_ready_to_deploy",
+    "signal_generation": {
+        "indicator": "RSI",
+        "rsi_period": 14,
+        "upper_band": 60,
+        "lower_band": 40,
+        "position_type": "long_only"
+    },
+    "rvol_filter": {
+        "enabled": true,
+        "min_rvol": 1.5,
+        "lookback_bars": 20,
+        "apply_to": "entries_only",
+        "description": "Only enter when relative volume >= 1.5x average"
+    },
+    "timeframe": "1hour",
+    "exit_rules": {
+        "rsi_exit": true,
+        "stop_loss": null,
+        "take_profit": null,
+        "time_stop_bars": null
+    },
+    "validation_results": {
+        "test_period": "2022-01-01 to 2025-01-18",
+        "baseline_sharpe": -0.50,
+        "enhanced_sharpe": 0.45,
+        "sharpe_improvement_pct": 189,
+        "baseline_trades": 595,
+        "enhanced_trades": 483,
+        "trade_reduction_pct": 19
+    },
+    "deployment_notes": [
+        "CRITICAL: This config is GOOGL-specific",
+        "Do NOT apply RVOL filter to other symbols without testing",
+        "AMD, AAPL, TSLA, META all perform WORSE with RVOL filter",
+        "This enhancement transforms losing strategy into profitable one"
+    ],
+    "maintenance": {
+        "review_date": "2026-02-19",
+        "review_criteria": "Compare live Sharpe to expected 0.45",
+        "revert_if": "Live Sharpe < 0.20 after 30 days"
+    }
+}
