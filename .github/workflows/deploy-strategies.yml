@@ -6,7 +6,7 @@ on:
       - main
       - deployment/aws-paper-trading-setup
     paths:
-      - 'deployable_strategies/**'
+      - 'prod/**'
       - '.github/workflows/deploy-strategies.yml'
   workflow_dispatch:
     inputs:
@@ -49,12 +49,14 @@ jobs:
       
       - name: Lint code
         run: |
-          black --check deployable_strategies/
-          pylint deployable_strategies/ --disable=C0111,R0913,R0914 || true
+          black --check prod/
+          pylint prod/ --disable=C0111,R0913,R0914 || true
       
       - name: Run unit tests
+        env:
+          USE_ARCHIVED_DATA: 'true'
         run: |
-          pytest tests/ -v --cov=deployable_strategies --cov-report=term-missing
+          pytest prod/*/tests/ -v --cov=prod --cov-report=term-missing
         continue-on-error: true
       
       - name: Validate configuration files
@@ -69,7 +71,7 @@ jobs:
     
     strategy:
       matrix:
-        strategy: [bear_trap, daily_trend_hysteresis, hourly_swing]
+        strategy: [bear_trap, daily_trend, hourly_swing]
     
     steps:
       - name: Checkout code
@@ -86,17 +88,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
-      - name: Run backtest with archived data
+      - name: Test strategy with cached data
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_TEST_API_KEY }}
           ALPACA_API_SECRET: ${{ secrets.ALPACA_TEST_API_SECRET }}
           USE_ARCHIVED_DATA: 'true'
+          ENVIRONMENT: 'testing'
         run: |
-          python scripts/run_backtest.py \
-            --strategy ${{ matrix.strategy }} \
-            --start-date 2024-01-01 \
-            --end-date 2024-12-31 \
-            --use-cache
+          cd prod/${{ matrix.strategy }}
+          python -m pytest tests/ -v
       
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -126,7 +126,7 @@ jobs:
       - name: Create deployment package
         run: |
           mkdir -p deploy_package
-          cp -r deployable_strategies deploy_package/
+          cp -r prod deploy_package/
           cp -r src deploy_package/
           cp requirements.txt deploy_package/
           cd deploy_package && tar -czf ../magellan-deploy.tar.gz .
