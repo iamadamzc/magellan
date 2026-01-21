@@ -95,11 +95,11 @@ def main():
         # Run the strategy's main function
         # The strategy module has its own main() that we'll call
         logger.info("Starting strategy execution...")
-        
+
         # Set environment variables for the strategy to use
         os.environ["ALPACA_API_KEY"] = api_key
         os.environ["ALPACA_API_SECRET"] = api_secret
-        
+
         # Call the strategy's main function
         return strategy.main()
 
