@@ -1,10 +1,10 @@
 """
-Bear Trap ML Scanner - Simplified Data Collection for Testing
+Bear Trap ML Scanner - Data Collection via Alpaca API
 
-Instead of scanning the entire market, start with the validated Bear Trap symbols
-to build and test the feature extraction pipeline.
+Collects historical intraday bar data using Alpaca Market Data Plus
+to identify all -15%+ selloff events for Bear Trap candidates.
 
-Author: Magellan Research Team  
+Author: Magellan Research Team
 Date: January 21, 2026
 """
 
@@ -13,8 +13,7 @@ import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 import pandas as pd
-import requests
-from typing import List, Dict, Optional
+from typing import List, Dict
 import logging
 import time
 
@@ -25,6 +24,10 @@ sys.path.insert(0, str(project_root))
 from dotenv import load_dotenv
 load_dotenv()
 
+from alpaca.data.historical import StockHistoricalDataClient
+from alpaca.data.requests import StockBarsRequest
+from alpaca.data.timeframe import TimeFrame
+
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
@@ -33,7 +36,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# Use validated Bear Trap symbols as starting point
+# Validated Bear Trap symbols
 VALIDATED_SYMBOLS = [
     'MULN', 'ONDS', 'AMC', 'NKLA', 'WKHS',  # Tier 1
     'ACB', 'SENS', 'BTCS', 'GOEV',           # Extended
@@ -41,77 +44,87 @@ VALIDATED_SYMBOLS = [
 ]
 
 
-class SimplifiedDataCollector:
-    """Collect intraday data for validated symbols"""
+class AlpacaSelloffCollector:
+    """Collect selloff data using Alpaca historical API"""
     
-    def __init__(self, fmp_api_key: str):
-        self.fmp_key = fmp_api_key
-        self.fmp_base = "https://financialmodelingprep.com/api/v3"
+    def __init__(self, api_key: str, api_secret: str):
+        self.client = StockHistoricalDataClient(api_key, api_secret)
         self.data_dir = Path(__file__).parent.parent / "data" / "raw"
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
-    def get_intraday_bars(self, symbol: str, date: str) -> Optional[pd.DataFrame]:
+    def get_daily_bars(self, symbol: str, date: datetime) -> pd.DataFrame:
         """
         Fetch 5-minute bars for a symbol on a specific date
         
         Args:
             symbol: Stock ticker
-            date: Date in YYYY-MM-DD format
+            date: datetime object for the trading day
             
         Returns:
-            DataFrame with OHLCV data or None
+            DataFrame with OHLCV data
         """
-        url = f"{self.fmp_base}/historical-chart/5min/{symbol}"
-        params = {
-            'from': date,
-            'to': date,
-            'apikey': self.fmp_key
-        }
+        # Set time range for the trading day (9:30 AM - 4:00 PM ET)
+        start = date.replace(hour=9, minute=30, second=0, microsecond=0)
+        end = date.replace(hour=16, minute=0, second=0, microsecond=0)
+        
+        request = StockBarsRequest(
+            symbol_or_symbols=symbol,
+            timeframe=TimeFrame.Minute,  # Use 1-min for precision
+            start=start,
+            end=end,
+            feed='sip'  # Market Data Plus feed
+        )
         
         try:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
-            data = response.json()
+            bars = self.client.get_stock_bars(request)
             
-            if not data or not isinstance(data, list):
-                return None
+            if not bars or symbol not in bars.data:
+                return pd.DataFrame()
+            
+            # Convert to DataFrame
+            data = []
+            for bar in bars.data[symbol]:
+                data.append({
+                    'timestamp': bar.timestamp,
+                    'open': bar.open,
+                    'high': bar.high,
+                    'low': bar.low,
+                    'close': bar.close,
+                    'volume': bar.volume,
+                })
             
             df = pd.DataFrame(data)
-            if 'date' in df.columns:
-                df['timestamp'] = pd.to_datetime(df['date'])
-                df = df.sort_values('timestamp')
-                return df
-            return None
+            if not df.empty:
+                df = df.sort_values('timestamp').reset_index(drop=True)
+            
+            return df
             
         except Exception as e:
-            logger.debug(f"Error fetching {symbol} on {date}: {e}")
-            return None
+            logger.debug(f"Error fetching {symbol} on {date.date()}: {e}")
+            return pd.DataFrame()
     
-    def identify_selloffs_in_day(self, symbol: str, date: str) -> List[Dict]:
+    def identify_selloffs_in_day(self, symbol: str, date: datetime) -> List[Dict]:
         """
         Find all -15%+ selloff events in a trading day
         
         Args:
             symbol: Stock ticker
-            date: Date string YYYY-MM-DD
+            date: datetime object
             
         Returns:
             List of selloff event dictionaries
         """
-        df = self.get_intraday_bars(symbol, date)
+        df = self.get_daily_bars(symbol, date)
         
-        if df is None or len(df) == 0:
+        if df.empty:
             return []
         
         events = []
         
-        # Get session open
-        if 'open' not in df.columns:
-            return []
-            
+        # Get session open (first bar)
         session_open = df.iloc[0]['open']
         
-        # Calculate drop from session open for each bar
+        # Calculate drop from session open
         df['drop_from_open_pct'] = ((df['low'] - session_open) / session_open) * 100
         
         # Find bars with -15%+ drops
@@ -120,23 +133,23 @@ class SimplifiedDataCollector:
         for idx, row in selloff_bars.iterrows():
             event = {
                 'symbol': symbol,
-                'date': date,
+                'date': date.strftime('%Y-%m-%d'),
                 'timestamp': row['timestamp'].strftime('%Y-%m-%d %H:%M:%S'),
-                'session_open': session_open,
-                'low': row['low'],
-                'close': row['close'],
-                'high': row['high'],
-                'volume': row['volume'],
-                'drop_pct': row['drop_from_open_pct'],
+                'session_open': float(session_open),
+                'low': float(row['low']),
+                'close': float(row['close']),
+                'high': float(row['high']),
+                'volume': int(row['volume']),
+                'drop_pct': float(row['drop_from_open_pct']),
             }
             events.append(event)
         
         return events
     
-    def collect_symbols_over_period(self, symbols: List[str], 
-                                    start_date: str, end_date: str) -> pd.DataFrame:
+    def collect_date_range(self, symbols: List[str], 
+                          start_date: str, end_date: str) -> pd.DataFrame:
         """
-        Collect selloff events for specific symbols over a date range
+        Collect selloff events for symbols over a date range
         
         Args:
             symbols: List of tickers
@@ -148,105 +161,139 @@ class SimplifiedDataCollector:
         """
         logger.info(f"Collecting data for {len(symbols)} symbols")
         logger.info(f"Period: {start_date} to {end_date}")
+        logger.info(f"Using Alpaca Market Data Plus (1-min bars)")
         
         all_events = []
         
-        # Generate business day range
+        # Generate business day range (market trading days)
         dates = pd.date_range(start_date, end_date, freq='B')
         
         total_iterations = len(symbols) * len(dates)
         current = 0
         
         for symbol in symbols:
-            logger.info(f"\nProcessing {symbol}...")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"Processing {symbol}")
+            logger.info(f"{'='*60}")
             symbol_events = 0
             
             for date in dates:
                 current += 1
-                date_str = date.strftime('%Y-%m-%d')
                 
-                # Progress indicator
+                # Progress indicator every 10 iterations
                 if current % 10 == 0:
-                    logger.info(f"  Progress: {current}/{total_iterations} ({100*current/total_iterations:.1f}%)")
+                    pct = 100 * current / total_iterations
+                    logger.info(f"  Progress: {current}/{total_iterations} ({pct:.1f}%)")
                 
-                events = self.identify_selloffs_in_day(symbol, date_str)
+                events = self.identify_selloffs_in_day(symbol, date)
                 
                 if events:
                     symbol_events += len(events)
                     all_events.extend(events)
-                    logger.info(f"  {date_str}: Found {len(events)} selloff(s)")
+                    logger.info(f"  {date.strftime('%Y-%m-%d')}: Found {len(events)} selloff(s) ⚡")
                 
-                # Rate limiting (FMP allows high throughput but be respectful)
-                time.sleep(0.02)  # 50 requests/second
+                # Small delay to be respectful to API
+                time.sleep(0.1)
             
-            logger.info(f"✓ {symbol}: Total {symbol_events} selloffs")
+            logger.info(f"✓ {symbol}: Total {symbol_events} selloff events")
         
         # Convert to DataFrame
         if all_events:
             df = pd.DataFrame(all_events)
             logger.info(f"\n{'='*80}")
-            logger.info(f"Collection complete: {len(df)} total selloff events")
+            logger.info(f"✅ Collection complete: {len(df)} total selloff events")
             logger.info(f"{'='*80}")
             return df
         else:
-            logger.warning("No selloffs found in period")
+            logger.warning(f"\n{'='*80}")
+            logger.warning("⚠️  No selloffs found in period")
+            logger.warning(f"{'='*80}")
             return pd.DataFrame()
     
     def save_dataset(self, df: pd.DataFrame, filename: str):
-        """Save to CSV"""
+        """Save dataset to CSV"""
         if df.empty:
             logger.warning("Empty dataset, not saving")
             return
-            
+        
         filepath = self.data_dir / filename
         df.to_csv(filepath, index=False)
-        logger.info(f"💾 Saved to {filepath}")
-        logger.info(f"   Size: {len(df)} rows, {df.memory_usage(deep=True).sum() / 1024:.1f} KB")
+        
+        size_kb = df.memory_usage(deep=True).sum() / 1024
+        logger.info(f"\n💾 Dataset saved:")
+        logger.info(f"   File: {filepath}")
+        logger.info(f"   Rows: {len(df):,}")
+        logger.info(f"   Size: {size_kb:.1f} KB")
 
 
 def main():
-    """Test collection with validated symbols"""
+    """Collect test dataset using Alpaca API"""
     
-    fmp_key = os.getenv('FMP_API_KEY')
+    # Get API credentials
+    api_key = os.getenv('APCA_API_KEY_ID')
+    api_secret = os.getenv('APCA_API_SECRET_KEY')
     
-    if not fmp_key:
-        logger.error("Missing FMP_API_KEY in .env")
+    if not all([api_key, api_secret]):
+        logger.error("Missing Alpaca API keys! Set APCA_API_KEY_ID and APCA_API_SECRET_KEY in .env")
         return
     
-    collector = SimplifiedDataCollector(fmp_key)
+    # Initialize collector
+    collector = AlpacaSelloffCollector(api_key, api_secret)
     
-    print("="*80)
-    print("BEAR TRAP ML SCANNER - TEST DATA COLLECTION")
-    print("Mode: Validated Symbols Only")
-    print("="*80)
+    print("\n" + "="*80)
+    print("BEAR TRAP ML SCANNER - DATA COLLECTION")
+    print("Data Source: Alpaca Market Data Plus")
+    print("Resolution: 1-minute bars")
+    print("="*80 + "\n")
     
-    # Test with 3 months of recent data
-    df = collector.collect_symbols_over_period(
+    # Collect Q4 2024 data  
+    df = collector.collect_date_range(
         symbols=VALIDATED_SYMBOLS,
         start_date='2024-10-01',
         end_date='2024-12-31'
     )
     
     if not df.empty:
-        # Save
-        collector.save_dataset(df, 'selloffs_validated_q4_2024.csv')
+        # Save dataset
+        collector.save_dataset(df, 'selloffs_alpaca_q4_2024.csv')
         
-        # Summary
+        # Print summary statistics
         print("\n" + "="*80)
         print("DATASET SUMMARY")
         print("="*80)
-        print(f"Total events: {len(df)}")
+        print(f"Total selloff events: {len(df):,}")
         print(f"Unique symbols: {df['symbol'].nunique()}")
+        print(f"Unique dates: {df['date'].nunique()}")
         print(f"Date range: {df['date'].min()} to {df['date'].max()}")
-        print(f"\nDrop % statistics:")
+        
+        print(f"\n📊 Drop % Distribution:")
         print(df['drop_pct'].describe())
-        print(f"\nTop 10 biggest drops:")
+        
+        print(f"\n🔥 Top 10 Biggest Drops:")
         top10 = df.nsmallest(10, 'drop_pct')[['symbol', 'date', 'timestamp', 'drop_pct', 'low']]
         print(top10.to_string(index=False))
         
-        print(f"\nEvents by symbol:")
-        symbol_counts = df['symbol'].value_counts()
-        print(symbol_counts.to_string())
+        print(f"\n📈 Events by Symbol:")
+        symbol_counts = df['symbol'].value_counts().sort_index()
+        for symbol, count in symbol_counts.items():
+            pct = 100 * count / len(df)
+            print(f"  {symbol:6} {count:4} events ({pct:5.1f}%)")
+        
+        print("\n" + "="*80)
+        print("✅ Data collection successful!")
+        print("="*80 + "\n")
+    else:
+        print("\n" + "="*80)
+        print("⚠️  RESULT: No -15% selloffs found in Q4 2024")
+        print("="*80)
+        print("\nPossible reasons:")
+        print("1. Q4 2024 was a strong bull market (low volatility)")
+        print("2. These specific symbols didn't experience extreme selloffs")
+        print("\nRecommendations:")
+        print("- Try earlier periods: 2022 (bear market), 2023 (choppy)")
+        print("- Lower threshold temporarily to -10% for testing")
+        print("- Expand symbol universe")
+        print("="*80 + "\n")
 
 
 if __name__ == '__main__':
