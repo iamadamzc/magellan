@@ -95,8 +95,7 @@ jobs:
           USE_ARCHIVED_DATA: 'true'
           ENVIRONMENT: 'testing'
         run: |
-          cd prod/${{ matrix.strategy }}
-          python -m pytest tests/ -v
+          python -m pytest prod/${{ matrix.strategy }}/tests/ -v
       
       - name: Upload test results
         uses: actions/upload-artifact@v4
