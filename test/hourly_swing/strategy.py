@@ -99,8 +99,16 @@ class HourlySwingExecutor:
         self.positions = {}
         self.logger = logging.getLogger("magellan.hourly_swing")
 
-        # Initialize Alpaca data client for live market data
-        self.data_client = StockHistoricalDataClient(api_key, api_secret)
+        # Initialize Alpaca data client - use cache if USE_ARCHIVED_DATA is true
+        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        if use_cache:
+            sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+            from src.data_cache import DataCache
+            self.data_client = DataCache(api_key, api_secret)
+            logging.info("📦 Using DataCache for historical data")
+        else:
+            self.data_client = StockHistoricalDataClient(api_key, api_secret)
+            logging.info("🔴 Using live Alpaca API for historical data")
 
         # Initialize Alpaca trading client for order execution
         self.trading_client = TradingClient(api_key, api_secret, paper=True)

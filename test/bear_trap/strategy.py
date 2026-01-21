@@ -3,6 +3,7 @@ Bear Trap Strategy - Production Implementation with Comprehensive Logging
 Intraday reversal strategy for small-cap stocks
 """
 
+import os
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
@@ -52,7 +53,16 @@ class BearTrapStrategy:
 
         # Alpaca clients
         self.trading_client = TradingClient(api_key, api_secret, paper=True)
-        self.data_client = StockHistoricalDataClient(api_key, api_secret)
+        
+        # Use DataCache if USE_ARCHIVED_DATA is true, otherwise live API
+        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        if use_cache:
+            from src.data_cache import DataCache
+            self.data_client = DataCache(api_key, api_secret)
+            self.logger.info("📦 Using DataCache for historical data (USE_ARCHIVED_DATA=true)")
+        else:
+            self.data_client = StockHistoricalDataClient(api_key, api_secret)
+            self.logger.info("🔴 Using live Alpaca API for historical data")
 
         self.symbols = symbols
         self.config = config
