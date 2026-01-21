@@ -51,13 +51,19 @@ EARNINGS_2025 = {
 # Get all tickers from assets directory
 assets_dir = Path(__file__).parent / "assets"
 all_tickers = [d.name for d in assets_dir.iterdir() if d.is_dir()]
-print(f"Found {len(all_tickers)} tickers in assets directory: {', '.join(sorted(all_tickers))}\n")
+print(
+    f"Found {len(all_tickers)} tickers in assets directory: {', '.join(sorted(all_tickers))}\n"
+)
 
 # Filter to only tickers with 2025 earnings data
 tickers_to_test = [t for t in all_tickers if t in EARNINGS_2025]
-print(f"Testing {len(tickers_to_test)} tickers with 2025 earnings dates: {', '.join(sorted(tickers_to_test))}\n")
+print(
+    f"Testing {len(tickers_to_test)} tickers with 2025 earnings dates: {', '.join(sorted(tickers_to_test))}\n"
+)
 
-total_events = sum(len(dates) for ticker, dates in EARNINGS_2025.items() if ticker in tickers_to_test)
+total_events = sum(
+    len(dates) for ticker, dates in EARNINGS_2025.items() if ticker in tickers_to_test
+)
 print(f"Total earnings events to simulate: {total_events}\n")
 
 # Fetch price data
@@ -68,7 +74,9 @@ price_data = {}
 for ticker in sorted(tickers_to_test):
     print(f"  Fetching {ticker}...", end="")
     try:
-        df = alpaca.fetch_historical_bars(ticker, "1Day", "2025-01-01", "2025-12-31", feed="sip")
+        df = alpaca.fetch_historical_bars(
+            ticker, "1Day", "2025-01-01", "2025-12-31", feed="sip"
+        )
         price_data[ticker] = df
         print(f" ✓ {len(df)} daily bars")
     except Exception as e:
@@ -216,7 +224,9 @@ for ticker in sorted(tickers_to_test):
         # Sharpe
         trade_returns = ticker_df["pnl_pct"] / 100
         sharpe = (
-            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades))) if trade_returns.std() > 0 else 0
+            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades)))
+            if trade_returns.std() > 0
+            else 0
         )
 
         results_by_ticker[ticker] = {
@@ -254,7 +264,11 @@ avg_pnl = trades_df["pnl"].mean()
 
 # Sharpe ratio
 trade_returns = trades_df["pnl_pct"] / 100
-sharpe = (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades))) if trade_returns.std() > 0 else 0
+sharpe = (
+    (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades)))
+    if trade_returns.std() > 0
+    else 0
+)
 
 # Print results by ticker
 print("\n" + "=" * 90)
@@ -283,9 +297,15 @@ print(f"\n📊 Performance:")
 print(f"  Total Events:     {len(all_trades)}")
 print(f"  Starting Capital: ${INITIAL_CAPITAL:,.0f} per event")
 print(f"  Capital Deployed: ${total_capital_deployed:,.0f}")
-print(f"  Win Rate:         {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)")
-print(f"  Best Trade:       ${trades_df['pnl'].max():+,.0f} ({trades_df['pnl_pct'].max():+.1f}%)")
-print(f"  Worst Trade:      ${trades_df['pnl'].min():+,.0f} ({trades_df['pnl_pct'].min():+.1f}%)")
+print(
+    f"  Win Rate:         {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)"
+)
+print(
+    f"  Best Trade:       ${trades_df['pnl'].max():+,.0f} ({trades_df['pnl_pct'].max():+.1f}%)"
+)
+print(
+    f"  Worst Trade:      ${trades_df['pnl'].min():+,.0f} ({trades_df['pnl_pct'].min():+.1f}%)"
+)
 
 print(f"\n💰 PROFIT & LOSS:")
 print(f"  Total P&L:        ${total_pnl:+,.0f}")
@@ -313,7 +333,9 @@ print("=" * 90)
 
 if len(results_by_ticker) > 0:
     # Rank by total P&L
-    ranked = sorted(results_by_ticker.items(), key=lambda x: x[1]["total_pnl"], reverse=True)
+    ranked = sorted(
+        results_by_ticker.items(), key=lambda x: x[1]["total_pnl"], reverse=True
+    )
 
     print("\n🟢 Top Performers (Deploy First):")
     for ticker, r in ranked[:3]:

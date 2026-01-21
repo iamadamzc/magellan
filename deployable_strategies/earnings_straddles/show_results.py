@@ -16,7 +16,9 @@ print("Starting Capital: $100,000 per event\n")
 summary = pd.read_csv(results_dir / "earnings_2025_all_assets_summary.csv", index_col=0)
 print("\nRESULTS BY TICKER:")
 print("=" * 100)
-print(f"{'Ticker':<8} {'Trades':>8} {'Win%':>8} {'Avg P&L':>15} {'Total P&L':>16} {'Sharpe':>10} {'Status':>10}")
+print(
+    f"{'Ticker':<8} {'Trades':>8} {'Win%':>8} {'Avg P&L':>15} {'Total P&L':>16} {'Sharpe':>10} {'Status':>10}"
+)
 print("-" * 100)
 
 for ticker in summary.index:
@@ -44,13 +46,17 @@ print("TOP 3 PERFORMERS:")
 print("=" * 100)
 top3 = summary.nlargest(3, "total_pnl")
 for i, (ticker, row) in enumerate(top3.iterrows(), 1):
-    print(f"{i}. {ticker}: ${row['total_pnl']:,.0f} ({row['trades']:.0f} trades, {row['win_rate']:.1f}% win rate)")
+    print(
+        f"{i}. {ticker}: ${row['total_pnl']:,.0f} ({row['trades']:.0f} trades, {row['win_rate']:.1f}% win rate)"
+    )
 
 print("\n" + "=" * 100)
 print("BOTTOM 3 PERFORMERS:")
 print("=" * 100)
 bottom3 = summary.nsmallest(3, "total_pnl")
 for i, (ticker, row) in enumerate(bottom3.iterrows(), 1):
-    print(f"{i}. {ticker}: ${row['total_pnl']:,.0f} ({row['trades']:.0f} trades, {row['win_rate']:.1f}% win rate)")
+    print(
+        f"{i}. {ticker}: ${row['total_pnl']:,.0f} ({row['trades']:.0f} trades, {row['win_rate']:.1f}% win rate)"
+    )
 
 print("\n" + "=" * 100)

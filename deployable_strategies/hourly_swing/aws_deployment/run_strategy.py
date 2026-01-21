@@ -38,7 +38,8 @@ def signal_handler(signum, frame):
 
 def load_config():
     config_path = os.getenv(
-        "CONFIG_PATH", "/home/ssm-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json"
+        "CONFIG_PATH",
+        "/home/ssm-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json",
     )
     with open(config_path, "r") as f:
         return json.load(f)
@@ -49,8 +50,12 @@ def get_alpaca_credentials(account_id):
     api_key_path = f"/magellan/alpaca/{account_id}/API_KEY"
     api_secret_path = f"/magellan/alpaca/{account_id}/API_SECRET"
 
-    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"]["Value"]
-    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)["Parameter"]["Value"]
+    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"][
+        "Value"
+    ]
+    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)[
+        "Parameter"
+    ]["Value"]
 
     return api_key, api_secret
 
@@ -155,20 +160,30 @@ class HourlySwingExecutor:
                 current_position = self.positions.get(symbol, "flat")
 
                 # Hysteresis logic
-                if current_position == "flat" and current_rsi > symbol_params["hysteresis_upper"]:
+                if (
+                    current_position == "flat"
+                    and current_rsi > symbol_params["hysteresis_upper"]
+                ):
                     self.logger.info(
                         f"{symbol}: RSI={current_rsi:.2f} > {symbol_params['hysteresis_upper']} → ENTER LONG"
                     )
                     self._enter_long(symbol)
                     self.positions[symbol] = "long"
 
-                elif current_position == "long" and current_rsi < symbol_params["hysteresis_lower"]:
-                    self.logger.info(f"{symbol}: RSI={current_rsi:.2f} < {symbol_params['hysteresis_lower']} → EXIT")
+                elif (
+                    current_position == "long"
+                    and current_rsi < symbol_params["hysteresis_lower"]
+                ):
+                    self.logger.info(
+                        f"{symbol}: RSI={current_rsi:.2f} < {symbol_params['hysteresis_lower']} → EXIT"
+                    )
                     self._exit_position(symbol)
                     self.positions[symbol] = "flat"
 
                 else:
-                    self.logger.debug(f"{symbol}: RSI={current_rsi:.2f} → HOLD ({current_position})")
+                    self.logger.debug(
+                        f"{symbol}: RSI={current_rsi:.2f} → HOLD ({current_position})"
+                    )
 
             except Exception as e:
                 self.logger.error(f"Error processing {symbol}: {e}", exc_info=True)
@@ -179,7 +194,9 @@ class HourlySwingExecutor:
             # Check if already have position (prevent double-entry)
             try:
                 position = self.trading_client.get_open_position(symbol)
-                self.logger.warning(f"Already have position in {symbol}, skipping entry")
+                self.logger.warning(
+                    f"Already have position in {symbol}, skipping entry"
+                )
                 return
             except Exception:
                 pass  # No position exists, proceed with order
@@ -205,17 +222,24 @@ class HourlySwingExecutor:
 
             # Place market order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=qty, side=OrderSide.BUY, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=qty,
+                side=OrderSide.BUY,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
-            self.logger.info(f"✅ LONG entry for {symbol}: {qty} shares @ ${current_price:.2f} (Order ID: {order.id})")
+            self.logger.info(
+                f"✅ LONG entry for {symbol}: {qty} shares @ ${current_price:.2f} (Order ID: {order.id})"
+            )
 
             # Log trade to CSV
             self._log_trade(symbol, "ENTRY", qty, current_price, order.id)
 
         except Exception as e:
-            self.logger.error(f"❌ Error entering LONG for {symbol}: {e}", exc_info=True)
+            self.logger.error(
+                f"❌ Error entering LONG for {symbol}: {e}", exc_info=True
+            )
 
     def _exit_position(self, symbol):
         """Close position via Alpaca API"""
@@ -235,7 +259,10 @@ class HourlySwingExecutor:
 
             # Place market sell order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=qty, side=OrderSide.SELL, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=qty,
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
@@ -247,7 +274,9 @@ class HourlySwingExecutor:
             self._log_trade(symbol, "EXIT", qty, current_price, order.id)
 
         except Exception as e:
-            self.logger.error(f"❌ Error exiting position for {symbol}: {e}", exc_info=True)
+            self.logger.error(
+                f"❌ Error exiting position for {symbol}: {e}", exc_info=True
+            )
 
     def _log_trade(self, symbol, action, qty, price, order_id):
         """Log trade to CSV file"""
@@ -262,10 +291,19 @@ class HourlySwingExecutor:
         with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             if not file_exists:
-                writer.writerow(["timestamp", "symbol", "action", "qty", "price", "order_id"])
+                writer.writerow(
+                    ["timestamp", "symbol", "action", "qty", "price", "order_id"]
+                )
 
             writer.writerow(
-                [datetime.now().strftime("%Y-%m-%d %H:%M:%S"), symbol, action, qty, f"{price:.2f}", order_id]
+                [
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    symbol,
+                    action,
+                    qty,
+                    f"{price:.2f}",
+                    order_id,
+                ]
             )
 
     def manage_positions(self):

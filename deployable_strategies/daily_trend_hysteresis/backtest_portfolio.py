@@ -32,7 +32,19 @@ with open("config/nodes/master_config.json", "r") as f:
     config = json.load(f)
 
 # Assets to test
-ASSETS = ["GOOGL", "TSLA", "AAPL", "NVDA", "META", "MSFT", "AMZN", "GLD", "IWM", "QQQ", "SPY"]
+ASSETS = [
+    "GOOGL",
+    "TSLA",
+    "AAPL",
+    "NVDA",
+    "META",
+    "MSFT",
+    "AMZN",
+    "GLD",
+    "IWM",
+    "QQQ",
+    "SPY",
+]
 
 INITIAL_CAPITAL = 10000
 TRANSACTION_COST_BPS = 1.5
@@ -63,7 +75,11 @@ for symbol in ASSETS:
     try:
         print(f"Fetching daily bars...")
         raw_df = client.fetch_historical_bars(
-            symbol=symbol, timeframe=TimeFrame.Day, start=START_DATE, end=END_DATE, feed="sip"
+            symbol=symbol,
+            timeframe=TimeFrame.Day,
+            start=START_DATE,
+            end=END_DATE,
+            feed="sip",
         )
 
         # Force resample if needed
@@ -71,7 +87,15 @@ for symbol in ASSETS:
             print(f"⚠️  Got {len(raw_df)} bars, resampling to daily...")
             df = (
                 raw_df.resample("1D")
-                .agg({"open": "first", "high": "max", "low": "min", "close": "last", "volume": "sum"})
+                .agg(
+                    {
+                        "open": "first",
+                        "high": "max",
+                        "low": "min",
+                        "close": "last",
+                        "volume": "sum",
+                    }
+                )
                 .dropna()
             )
         else:
@@ -189,7 +213,9 @@ for symbol in ASSETS:
 
     if len(equity_curve) > 1:
         returns = equity_series.pct_change().dropna()
-        sharpe = (returns.mean() / returns.std()) * np.sqrt(252) if returns.std() > 0 else 0
+        sharpe = (
+            (returns.mean() / returns.std()) * np.sqrt(252) if returns.std() > 0 else 0
+        )
     else:
         sharpe = 0
 
@@ -229,7 +255,9 @@ print(f"{'='*80}")
 summary_df = pd.DataFrame(results).T
 summary_df = summary_df.sort_values("total_return", ascending=False)
 
-print(f"\n{'Symbol':<8} | {'Return':>8} | {'Sharpe':>6} | {'Max DD':>7} | {'Trades':>6} | {'Status'}")
+print(
+    f"\n{'Symbol':<8} | {'Return':>8} | {'Sharpe':>6} | {'Max DD':>7} | {'Trades':>6} | {'Status'}"
+)
 print("-" * 70)
 
 for symbol, row in summary_df.iterrows():

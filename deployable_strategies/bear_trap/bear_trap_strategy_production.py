@@ -39,7 +39,14 @@ class BearTrapStrategy:
     - Stop loss: Session low - (0.45 * ATR)
     """
 
-    def __init__(self, api_key: str, api_secret: str, base_url: str, symbols: List[str], config: Dict):
+    def __init__(
+        self,
+        api_key: str,
+        api_secret: str,
+        base_url: str,
+        symbols: List[str],
+        config: Dict,
+    ):
         self.logger = logging.getLogger("magellan.bear_trap")
         self.trade_logger = TradeLogger(strategy_name="bear_trap")
 
@@ -107,7 +114,9 @@ class BearTrapStrategy:
         df["session_low"] = df["low"].cummin()
         df["session_high"] = df["high"].cummax()
         df["session_open"] = df["open"].iloc[0]
-        df["day_change_pct"] = ((df["close"] - df["session_open"]) / df["session_open"]) * 100
+        df["day_change_pct"] = (
+            (df["close"] - df["session_open"]) / df["session_open"]
+        ) * 100
 
         # ATR calculation
         df["h_l"] = df["high"] - df["low"]
@@ -215,7 +224,10 @@ class BearTrapStrategy:
         try:
             # Place market order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=shares, side=OrderSide.BUY, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=shares,
+                side=OrderSide.BUY,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
@@ -262,7 +274,9 @@ class BearTrapStrategy:
             )
 
             self.daily_trades += 1
-            self.logger.info(f"✓ ENTRY {symbol}: {shares} shares @ ${current['close']:.2f}")
+            self.logger.info(
+                f"✓ ENTRY {symbol}: {shares} shares @ ${current['close']:.2f}"
+            )
 
         except Exception as e:
             self.logger.error(f"Error entering {symbol}: {e}", exc_info=True)
@@ -308,7 +322,10 @@ class BearTrapStrategy:
 
             # Place market sell order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=pos["shares"], side=OrderSide.SELL, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=pos["shares"],
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
@@ -332,11 +349,16 @@ class BearTrapStrategy:
                 pnl_dollars=pnl_dollars,
                 pnl_percent=pnl_percent,
                 hold_time_minutes=hold_time,
-                market_conditions={"exit_price": exit_price, "highest_reached": pos["highest_price"]},
+                market_conditions={
+                    "exit_price": exit_price,
+                    "highest_reached": pos["highest_price"],
+                },
             )
 
             self.daily_pnl += pnl_dollars
-            self.logger.info(f"✓ EXIT {symbol}: {reason} | P&L: ${pnl_dollars:+.2f} ({pnl_percent:+.1f}%)")
+            self.logger.info(
+                f"✓ EXIT {symbol}: {reason} | P&L: ${pnl_dollars:+.2f} ({pnl_percent:+.1f}%)"
+            )
 
             # Remove position
             del self.positions[symbol]
@@ -351,7 +373,10 @@ class BearTrapStrategy:
             self.trade_logger.log_risk_gate_failure(
                 symbol=symbol,
                 gate_name="MAX_DAILY_LOSS",
-                gate_details={"current_loss": self.daily_pnl, "max_allowed": -self.daily_loss_limit},
+                gate_details={
+                    "current_loss": self.daily_pnl,
+                    "max_allowed": -self.daily_loss_limit,
+                },
             )
             return False
 
@@ -360,7 +385,10 @@ class BearTrapStrategy:
             self.trade_logger.log_risk_gate_failure(
                 symbol=symbol,
                 gate_name="MAX_TRADES_PER_DAY",
-                gate_details={"current_trades": self.daily_trades, "max_allowed": self.max_trades_per_day},
+                gate_details={
+                    "current_trades": self.daily_trades,
+                    "max_allowed": self.max_trades_per_day,
+                },
             )
             return False
 
@@ -396,7 +424,9 @@ class BearTrapStrategy:
     def generate_end_of_day_report(self):
         """Generate EOD summary"""
         summary = self.trade_logger.create_daily_summary()
-        self.logger.info(f"EOD Summary: {summary['total_trades']} trades, P&L: ${summary['total_pnl']:.2f}")
+        self.logger.info(
+            f"EOD Summary: {summary['total_trades']} trades, P&L: ${summary['total_pnl']:.2f}"
+        )
 
         # Reset daily counters
         self.daily_pnl = 0

@@ -23,7 +23,9 @@ def run_orb_v23_all_day(symbol, start, end):
     """V23: Same as V22 but trades ALL DAY (no entry window restriction)"""
 
     # Load session times
-    session_file = Path("a:/1/Magellan/research/new_strategy_builds/commodity_session_times.json")
+    session_file = Path(
+        "a:/1/Magellan/research/new_strategy_builds/commodity_session_times.json"
+    )
     with open(session_file) as f:
         session_times = json.load(f)
 
@@ -33,7 +35,9 @@ def run_orb_v23_all_day(symbol, start, end):
         session_hour = session_times[symbol]["hour"]
         session_min = session_times[symbol]["minute"]
 
-    print(f"\nTesting {symbol} - V23 ALL DAY ({session_hour}:{session_min:02d}) [{start} to {end}]")
+    print(
+        f"\nTesting {symbol} - V23 ALL DAY ({session_hour}:{session_min:02d}) [{start} to {end}]"
+    )
 
     params = {
         "OR_MINUTES": 10,
@@ -58,7 +62,9 @@ def run_orb_v23_all_day(symbol, start, end):
     df["date"] = df.index.date
     df["hour"] = df.index.hour
     df["minute"] = df.index.minute
-    df["minutes_since_session"] = (df["hour"] - params["SESSION_HOUR"]) * 60 + (df["minute"] - params["SESSION_MIN"])
+    df["minutes_since_session"] = (df["hour"] - params["SESSION_HOUR"]) * 60 + (
+        df["minute"] - params["SESSION_MIN"]
+    )
     df = df[df["minutes_since_session"] >= 0].copy()
 
     if len(df) == 0:
@@ -93,7 +99,9 @@ def run_orb_v23_all_day(symbol, start, end):
             df.loc[date_mask, "or_high"] = or_data["high"].max()
             df.loc[date_mask, "or_low"] = or_data["low"].min()
 
-    df["breakout"] = (df["close"] > df["or_high"]) & (df["volume_spike"] >= params["VOL_MULT"])
+    df["breakout"] = (df["close"] > df["or_high"]) & (
+        df["volume_spike"] >= params["VOL_MULT"]
+    )
     df["above_vwap"] = df["close"] > df["vwap"]
 
     trades = []
@@ -126,9 +134,15 @@ def run_orb_v23_all_day(symbol, start, end):
                 breakout_seen = True
 
             if breakout_seen:
-                pullback_zone_low = current_or_high - (params["PULLBACK_ATR"] * current_atr)
-                pullback_zone_high = current_or_high + (params["PULLBACK_ATR"] * current_atr)
-                in_pullback_zone = (current_low <= pullback_zone_high) and (current_high >= pullback_zone_low)
+                pullback_zone_low = current_or_high - (
+                    params["PULLBACK_ATR"] * current_atr
+                )
+                pullback_zone_high = current_or_high + (
+                    params["PULLBACK_ATR"] * current_atr
+                )
+                in_pullback_zone = (current_low <= pullback_zone_high) and (
+                    current_high >= pullback_zone_low
+                )
 
                 if (
                     in_pullback_zone
@@ -165,8 +179,16 @@ def run_orb_v23_all_day(symbol, start, end):
                 moved_to_be = True
 
             if current_r >= params["PROFIT_TARGET_R"]:
-                pnl_pct = (risk * params["PROFIT_TARGET_R"]) / entry_price * 100 * position
-                trades.append({"pnl_pct": pnl_pct, "r": params["PROFIT_TARGET_R"], "type": "target"})
+                pnl_pct = (
+                    (risk * params["PROFIT_TARGET_R"]) / entry_price * 100 * position
+                )
+                trades.append(
+                    {
+                        "pnl_pct": pnl_pct,
+                        "r": params["PROFIT_TARGET_R"],
+                        "type": "target",
+                    }
+                )
                 position = None
                 breakout_seen = False  # Reset for next trade
                 continue
@@ -179,7 +201,9 @@ def run_orb_v23_all_day(symbol, start, end):
             eod_hour = (params["SESSION_HOUR"] + 8) % 24
             if df.iloc[i]["hour"] >= eod_hour and df.iloc[i]["minute"] >= 55:
                 if position > 0:
-                    pnl_pct = (current_price - entry_price) / entry_price * 100 * position
+                    pnl_pct = (
+                        (current_price - entry_price) / entry_price * 100 * position
+                    )
                     trades.append({"pnl_pct": pnl_pct, "r": current_r, "type": "eod"})
                     position = None
                     breakout_seen = False  # Reset
@@ -194,8 +218,16 @@ def run_orb_v23_all_day(symbol, start, end):
     total_trades = len(trades_df)
     win_rate = (trades_df["pnl_net"] > 0).sum() / total_trades * 100
     total_pnl = trades_df["pnl_net"].sum()
-    avg_winner = trades_df[trades_df["pnl_net"] > 0]["pnl_net"].mean() if (trades_df["pnl_net"] > 0).any() else 0
-    avg_loser = trades_df[trades_df["pnl_net"] < 0]["pnl_net"].mean() if (trades_df["pnl_net"] < 0).any() else 0
+    avg_winner = (
+        trades_df[trades_df["pnl_net"] > 0]["pnl_net"].mean()
+        if (trades_df["pnl_net"] > 0).any()
+        else 0
+    )
+    avg_loser = (
+        trades_df[trades_df["pnl_net"] < 0]["pnl_net"].mean()
+        if (trades_df["pnl_net"] < 0).any()
+        else 0
+    )
 
     print(f"✓ {total_trades} trades | {win_rate:.1f}% win | {total_pnl:+.2f}% total")
     print(f"  Avg Winner: {avg_winner:+.2f}% | Avg Loser: {avg_loser:+.2f}%")

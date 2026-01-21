@@ -16,7 +16,9 @@ print("\nUsing existing NVDA WFA data (2020-2025)")
 print("Testing if strategy works during PROVEN momentum period (2023-2024)\n")
 
 # Load existing WFA results
-wfa_file = Path("docs/operations/strategies/daily_trend_hysteresis/tests/wfa/daily_trend_wfa_results.csv")
+wfa_file = Path(
+    "docs/operations/strategies/daily_trend_hysteresis/tests/wfa/daily_trend_wfa_results.csv"
+)
 
 if not wfa_file.exists():
     print(f"❌ WFA file not found: {wfa_file}")

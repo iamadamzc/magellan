@@ -28,7 +28,10 @@ print("Timeframe: 1-Hour bars")
 print("=" * 80)
 
 # Strategy config
-ASSETS = {"TSLA": {"rsi_period": 14, "upper": 60, "lower": 40}, "NVDA": {"rsi_period": 28, "upper": 55, "lower": 45}}
+ASSETS = {
+    "TSLA": {"rsi_period": 14, "upper": 60, "lower": 40},
+    "NVDA": {"rsi_period": 28, "upper": 55, "lower": 45},
+}
 
 INITIAL_CAPITAL = 10000
 TRANSACTION_COST_BPS = 5.0  # 0.05% (higher for hourly)
@@ -53,7 +56,11 @@ for symbol, config in ASSETS.items():
     try:
         print(f"Fetching hourly bars...")
         raw_df = client.fetch_historical_bars(
-            symbol=symbol, timeframe=TimeFrame.Hour, start=START_DATE, end=END_DATE, feed="sip"
+            symbol=symbol,
+            timeframe=TimeFrame.Hour,
+            start=START_DATE,
+            end=END_DATE,
+            feed="sip",
         )
 
         # Force resample if needed (same bug as daily)
@@ -61,7 +68,15 @@ for symbol, config in ASSETS.items():
             print(f"⚠️  Got {len(raw_df)} bars, resampling to hourly...")
             df = (
                 raw_df.resample("1H")
-                .agg({"open": "first", "high": "max", "low": "min", "close": "last", "volume": "sum"})
+                .agg(
+                    {
+                        "open": "first",
+                        "high": "max",
+                        "low": "min",
+                        "close": "last",
+                        "volume": "sum",
+                    }
+                )
                 .dropna()
             )
         else:
@@ -180,7 +195,11 @@ for symbol, config in ASSETS.items():
     if len(equity_curve) > 1:
         returns = equity_series.pct_change().dropna()
         # Annualize for hourly (assume 6.5 trading hours/day, 252 days)
-        sharpe = (returns.mean() / returns.std()) * np.sqrt(252 * 6.5) if returns.std() > 0 else 0
+        sharpe = (
+            (returns.mean() / returns.std()) * np.sqrt(252 * 6.5)
+            if returns.std() > 0
+            else 0
+        )
     else:
         sharpe = 0
 
@@ -221,7 +240,9 @@ print(f"{'='*80}")
 
 for symbol, res in results.items():
     status = "✅" if res["total_return"] > 0 else "❌"
-    print(f"\n{symbol}: {res['total_return']:+.1f}% (Sharpe {res['sharpe']:.2f}) {status}")
+    print(
+        f"\n{symbol}: {res['total_return']:+.1f}% (Sharpe {res['sharpe']:.2f}) {status}"
+    )
     print(f"  Claimed: TSLA +41.5%, NVDA +16.2% (2025 only)")
     print(f"  Tested: 2024-2025 (2 full years)")
 

@@ -170,7 +170,9 @@ for year in range(2020, 2026):
         # Sharpe
         trade_returns = trades_df["pnl_pct"] / 100
         sharpe = (
-            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(year_trades))) if trade_returns.std() > 0 else 0
+            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(year_trades)))
+            if trade_returns.std() > 0
+            else 0
         )
 
         results_by_year[year] = {
@@ -206,7 +208,11 @@ all_trades_df = pd.DataFrame(all_trades)
 overall_return = all_trades_df["pnl"].sum() / INITIAL_CAPITAL * 100
 overall_win_rate = (all_trades_df["pnl"] > 0).mean() * 100
 overall_sharpe = (
-    (all_trades_df["pnl_pct"].mean() / all_trades_df["pnl_pct"].std() * np.sqrt(len(all_trades)))
+    (
+        all_trades_df["pnl_pct"].mean()
+        / all_trades_df["pnl_pct"].std()
+        * np.sqrt(len(all_trades))
+    )
     if all_trades_df["pnl_pct"].std() > 0
     else 0
 )
@@ -235,13 +241,17 @@ print(f"  Win Rate Std Dev: {np.std(year_win_rates):.2f}%")
 # Comparison to Phase 2
 print(f"\n🎯 Comparison to Phase 2 (2024-2025 only):")
 print(f"  Phase 2: 87.5% win rate, ~110%/year return")
-print(f"  WFA (2020-2025): {overall_win_rate:.1f}% win rate, {overall_return/6:.1f}%/year return")
+print(
+    f"  WFA (2020-2025): {overall_win_rate:.1f}% win rate, {overall_return/6:.1f}%/year return"
+)
 
 # Save results
 output_dir = Path("research/backtests/options/phase3_walk_forward/wfa_results")
 all_trades_df.to_csv(output_dir / "earnings_straddles_wfa.csv", index=False)
 
-year_summary = pd.DataFrame([{"year": year, **metrics} for year, metrics in results_by_year.items()])
+year_summary = pd.DataFrame(
+    [{"year": year, **metrics} for year, metrics in results_by_year.items()]
+)
 year_summary.to_csv(output_dir / "earnings_straddles_by_year.csv", index=False)
 
 print(f"\n📁 Results saved to: {output_dir}/")

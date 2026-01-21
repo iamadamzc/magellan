@@ -93,7 +93,9 @@ for symbol in MOMENTUM_STOCKS:
     print(f"\nTesting {symbol}...")
 
     try:
-        data = client.fetch_historical_bars(symbol, TimeFrame.Day, START, END, feed="sip")
+        data = client.fetch_historical_bars(
+            symbol, TimeFrame.Day, START, END, feed="sip"
+        )
         print(f"  ✓ Fetched {len(data)} bars")
 
         sharpe, ret, max_dd = backtest(symbol, data)
@@ -111,7 +113,9 @@ for symbol in MOMENTUM_STOCKS:
         )
 
         status = "✅" if sharpe > 0.5 else ("⚠️" if sharpe > 0 else "❌")
-        print(f"  {status} Sharpe: {sharpe:.2f}, Return: {ret:+.1f}%, B&H: {bh_ret:+.1f}%, Alpha: {ret-bh_ret:+.1f}%")
+        print(
+            f"  {status} Sharpe: {sharpe:.2f}, Return: {ret:+.1f}%, B&H: {bh_ret:+.1f}%, Alpha: {ret-bh_ret:+.1f}%"
+        )
 
     except Exception as e:
         print(f"  ❌ Error: {e}")

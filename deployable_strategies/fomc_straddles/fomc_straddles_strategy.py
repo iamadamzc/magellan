@@ -66,7 +66,9 @@ alpaca = AlpacaDataClient()
 
 # Fetch 1-minute bars for entire 2024
 # We need intraday data to simulate entry/exit at specific times
-price_df = alpaca.fetch_historical_bars("SPY", "1Min", "2024-01-01", "2024-12-31", feed="sip")
+price_df = alpaca.fetch_historical_bars(
+    "SPY", "1Min", "2024-01-01", "2024-12-31", feed="sip"
+)
 print(f"✓ Fetched {len(price_df)} 1-minute bars\n")
 
 # Simulate FOMC event straddles
@@ -120,7 +122,9 @@ for event in FOMC_EVENTS_2024:
 
     # P&L calculation
     # If SPY moves 0.5%, and straddle costs 2%, profit = (0.5/2)*100 - 0.01 - 0.05 = 24.94%
-    profit_pct = (spy_move_pct / straddle_cost_pct * 100) - theta_decay_pct - slippage_pct
+    profit_pct = (
+        (spy_move_pct / straddle_cost_pct * 100) - theta_decay_pct - slippage_pct
+    )
 
     # Calculate dollar P&L (assuming $10k position)
     dollar_pnl = INITIAL_CAPITAL * (profit_pct / 100)
@@ -157,7 +161,11 @@ avg_pnl_pct = trades_df["pnl_pct"].mean()
 
 # Sharpe ratio (annualized)
 trade_returns = trades_df["pnl_pct"] / 100
-sharpe = (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades))) if trade_returns.std() > 0 else 0
+sharpe = (
+    (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades)))
+    if trade_returns.std() > 0
+    else 0
+)
 
 # Print results
 print("\n" + "=" * 80)
@@ -166,7 +174,9 @@ print("=" * 80)
 
 print(f"\n📊 Performance:")
 print(f"  Total Trades: {len(all_trades)}")
-print(f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)")
+print(
+    f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)"
+)
 print(f"  Average P&L: {avg_pnl_pct:+.2f}% per event")
 print(f"  Best Trade: {trades_df['pnl_pct'].max():+.2f}%")
 print(f"  Worst Trade: {trades_df['pnl_pct'].min():+.2f}%")

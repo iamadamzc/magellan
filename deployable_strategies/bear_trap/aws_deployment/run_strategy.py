@@ -35,7 +35,8 @@ def signal_handler(signum, frame):
 def load_config():
     """Load strategy configuration"""
     config_path = os.getenv(
-        "CONFIG_PATH", "/home/ssm-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json"
+        "CONFIG_PATH",
+        "/home/ssm-user/magellan/deployable_strategies/bear_trap/aws_deployment/config.json",
     )
     with open(config_path, "r") as f:
         return json.load(f)
@@ -48,8 +49,12 @@ def get_alpaca_credentials(account_id):
     api_key_path = f"/magellan/alpaca/{account_id}/API_KEY"
     api_secret_path = f"/magellan/alpaca/{account_id}/API_SECRET"
 
-    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"]["Value"]
-    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)["Parameter"]["Value"]
+    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"][
+        "Value"
+    ]
+    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)[
+        "Parameter"
+    ]["Value"]
 
     return api_key, api_secret
 

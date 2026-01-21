@@ -66,7 +66,12 @@ def fetch_crypto_data_hourly_chunked(symbol, start_year=2020, end_year=2025):
         rec_from = current_date.strftime("%Y-%m-%d")
         rec_to = next_date.strftime("%Y-%m-%d")
 
-        params = {"symbol": symbol, "apikey": FMP_API_KEY, "from": rec_from, "to": rec_to}
+        params = {
+            "symbol": symbol,
+            "apikey": FMP_API_KEY,
+            "from": rec_from,
+            "to": rec_to,
+        }
 
         # print(f"  Fetching {symbol} {rec_from} to {rec_to}...")
         try:
@@ -163,7 +168,9 @@ for symbol in CRYPTO_SYMBOLS:
             print(f"  ❌ No data for {symbol}")
             continue
 
-        print(f"  ✓ Fetched {len(data)} hourly bars ({data.index.min()} to {data.index.max()})")
+        print(
+            f"  ✓ Fetched {len(data)} hourly bars ({data.index.min()} to {data.index.max()})"
+        )
 
         sharpe, ret, max_dd = backtest_crypto_hourly(symbol, data)
         bh_ret = (data.iloc[-1]["close"] / data.iloc[0]["close"] - 1) * 100

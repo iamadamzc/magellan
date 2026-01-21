@@ -77,12 +77,20 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
     df["volume_ratio"] = df["volume"] / df["avg_volume_20"].replace(0, np.inf)
 
     # Calculate session metrics (NO LOOKAHEAD - use cumulative)
-    df["session_low"] = df.groupby("date")["low"].cummin()  # Running minimum (only knows past)
-    df["session_high"] = df.groupby("date")["high"].cummax()  # Running maximum (only knows past)
-    df["session_open"] = df.groupby("date")["open"].transform("first")  # First is OK (known at start)
+    df["session_low"] = df.groupby("date")[
+        "low"
+    ].cummin()  # Running minimum (only knows past)
+    df["session_high"] = df.groupby("date")[
+        "high"
+    ].cummax()  # Running maximum (only knows past)
+    df["session_open"] = df.groupby("date")["open"].transform(
+        "first"
+    )  # First is OK (known at start)
 
     # Day change from open
-    df["day_change_pct"] = ((df["close"] - df["session_open"]) / df["session_open"]) * 100
+    df["day_change_pct"] = (
+        (df["close"] - df["session_open"]) / df["session_open"]
+    ) * 100
 
     # Candle metrics
     df["candle_range"] = df["high"] - df["low"]
@@ -150,7 +158,9 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
             if is_reclaim:
                 # Calculate position size
                 support_level = session_low
-                stop_distance = support_level - (params["STOP_ATR_MULTIPLIER"] * current_atr)
+                stop_distance = support_level - (
+                    params["STOP_ATR_MULTIPLIER"] * current_atr
+                )
                 risk_per_share = current_price - stop_distance
 
                 if risk_per_share <= 0:
@@ -185,7 +195,14 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
                 pnl_dollars = (stop_loss - entry_price) * position_size * position
                 pnl_pct = (pnl_dollars / capital) * 100
 
-                trades.append({"pnl_pct": pnl_pct, "pnl_dollars": pnl_dollars, "type": "stop", "exit_price": stop_loss})
+                trades.append(
+                    {
+                        "pnl_pct": pnl_pct,
+                        "pnl_dollars": pnl_dollars,
+                        "type": "stop",
+                        "exit_price": stop_loss,
+                    }
+                )
 
                 capital += pnl_dollars
                 daily_pnl[current_date] += pnl_dollars
@@ -202,20 +219,32 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
                 pnl_pct = (pnl_dollars / capital) * 100
 
                 trades.append(
-                    {"pnl_pct": pnl_pct, "pnl_dollars": pnl_dollars, "type": "tp1_mid", "exit_price": mid_range}
+                    {
+                        "pnl_pct": pnl_pct,
+                        "pnl_dollars": pnl_dollars,
+                        "type": "tp1_mid",
+                        "exit_price": mid_range,
+                    }
                 )
 
                 capital += pnl_dollars
                 position -= scale_pct
 
             # Scale TP2: 30% at HOD
-            if current_high >= session_high and position >= (params["SCALE_TP2_PCT"] / 100):
+            if current_high >= session_high and position >= (
+                params["SCALE_TP2_PCT"] / 100
+            ):
                 scale_pct = params["SCALE_TP2_PCT"] / 100
                 pnl_dollars = (session_high - entry_price) * position_size * scale_pct
                 pnl_pct = (pnl_dollars / capital) * 100
 
                 trades.append(
-                    {"pnl_pct": pnl_pct, "pnl_dollars": pnl_dollars, "type": "tp2_hod", "exit_price": session_high}
+                    {
+                        "pnl_pct": pnl_pct,
+                        "pnl_dollars": pnl_dollars,
+                        "type": "tp2_hod",
+                        "exit_price": session_high,
+                    }
                 )
 
                 capital += pnl_dollars
@@ -225,12 +254,19 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
                 stop_loss = support_level
 
             # Time stop: 30 minutes
-            if (current_time - entry_time).total_seconds() / 60 >= params["MAX_HOLD_MINUTES"]:
+            if (current_time - entry_time).total_seconds() / 60 >= params[
+                "MAX_HOLD_MINUTES"
+            ]:
                 pnl_dollars = (current_price - entry_price) * position_size * position
                 pnl_pct = (pnl_dollars / capital) * 100
 
                 trades.append(
-                    {"pnl_pct": pnl_pct, "pnl_dollars": pnl_dollars, "type": "time_stop", "exit_price": current_price}
+                    {
+                        "pnl_pct": pnl_pct,
+                        "pnl_dollars": pnl_dollars,
+                        "type": "time_stop",
+                        "exit_price": current_price,
+                    }
                 )
 
                 capital += pnl_dollars
@@ -246,7 +282,12 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
                 pnl_pct = (pnl_dollars / capital) * 100
 
                 trades.append(
-                    {"pnl_pct": pnl_pct, "pnl_dollars": pnl_dollars, "type": "eod", "exit_price": current_price}
+                    {
+                        "pnl_pct": pnl_pct,
+                        "pnl_dollars": pnl_dollars,
+                        "type": "eod",
+                        "exit_price": current_price,
+                    }
                 )
 
                 capital += pnl_dollars
@@ -266,7 +307,9 @@ def run_bear_trap(symbol, start, end, initial_capital=100000):
     total_pnl_pct = trades_df["pnl_pct"].sum()
     total_pnl_dollars = trades_df["pnl_dollars"].sum()
 
-    print(f"✓ {total_trades} trades | {win_rate:.1f}% win | {total_pnl_pct:+.2f}% | ${total_pnl_dollars:+,.0f}")
+    print(
+        f"✓ {total_trades} trades | {win_rate:.1f}% win | {total_pnl_pct:+.2f}% | ${total_pnl_dollars:+,.0f}"
+    )
 
     return {
         "symbol": symbol,

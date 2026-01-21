@@ -65,7 +65,9 @@ alpaca = AlpacaDataClient()
 price_data = {}
 for ticker in ["SPY", "QQQ", "IWM"]:
     print(f"  Fetching {ticker}...", end="")
-    df = alpaca.fetch_historical_bars(ticker, "1Min", "2024-01-01", "2024-12-31", feed="sip")
+    df = alpaca.fetch_historical_bars(
+        ticker, "1Min", "2024-01-01", "2024-12-31", feed="sip"
+    )
     price_data[ticker] = df
     print(f" ✓ {len(df)} 1-minute bars")
 
@@ -124,7 +126,9 @@ for ticker in ["SPY", "QQQ", "IWM"]:
         slippage_pct = 0.05  # Bid-ask spread on options
 
         # P&L calculation
-        profit_pct = (move_pct / straddle_cost_pct * 100) - theta_decay_pct - slippage_pct
+        profit_pct = (
+            (move_pct / straddle_cost_pct * 100) - theta_decay_pct - slippage_pct
+        )
 
         # Calculate dollar P&L (assuming $10k position)
         dollar_pnl = INITIAL_CAPITAL * (profit_pct / 100)
@@ -157,7 +161,9 @@ for ticker in ["SPY", "QQQ", "IWM"]:
         # Sharpe
         trade_returns = ticker_df["pnl_pct"] / 100
         sharpe = (
-            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades))) if trade_returns.std() > 0 else 0
+            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades)))
+            if trade_returns.std() > 0
+            else 0
         )
 
         results_by_ticker[ticker] = {
@@ -183,14 +189,20 @@ avg_pnl_pct = trades_df["pnl_pct"].mean()
 
 # Sharpe ratio
 trade_returns = trades_df["pnl_pct"] / 100
-sharpe = (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades))) if trade_returns.std() > 0 else 0
+sharpe = (
+    (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades)))
+    if trade_returns.std() > 0
+    else 0
+)
 
 # Print results by ticker
 print("\n" + "=" * 80)
 print("RESULTS BY TICKER")
 print("=" * 80)
 
-print(f"\n{'Ticker':<8} | {'Trades':>6} | {'Win%':>5} | {'Avg P&L':>8} | {'Sharpe':>6} | {'Status':>8}")
+print(
+    f"\n{'Ticker':<8} | {'Trades':>6} | {'Win%':>5} | {'Avg P&L':>8} | {'Sharpe':>6} | {'Status':>8}"
+)
 print("-" * 80)
 
 for ticker in ["SPY", "QQQ", "IWM"]:
@@ -208,7 +220,9 @@ print("=" * 80)
 
 print(f"\n📊 Performance:")
 print(f"  Total Trades: {len(all_trades)}")
-print(f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)")
+print(
+    f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)"
+)
 print(f"  Average P&L: {avg_pnl_pct:+.2f}% per event")
 print(f"  Best Trade: {trades_df['pnl_pct'].max():+.2f}%")
 print(f"  Worst Trade: {trades_df['pnl_pct'].min():+.2f}%")
@@ -242,7 +256,9 @@ print(f"\nActual Performance (Multi-Asset 2024):")
 for ticker in ["SPY", "QQQ", "IWM"]:
     if ticker in results_by_ticker:
         r = results_by_ticker[ticker]
-        print(f"  {ticker}: Sharpe {r['sharpe']:.2f}, Win Rate {r['win_rate']:.1f}%, Avg P&L {r['avg_pnl_pct']:+.2f}%")
+        print(
+            f"  {ticker}: Sharpe {r['sharpe']:.2f}, Win Rate {r['win_rate']:.1f}%, Avg P&L {r['avg_pnl_pct']:+.2f}%"
+        )
 print(f"  Portfolio: Sharpe {sharpe:.2f}, Win Rate {win_rate:.1f}%")
 
 print("\n" + "=" * 80)

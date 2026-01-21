@@ -112,7 +112,9 @@ alpaca = AlpacaDataClient()
 price_data = {}
 for ticker in EARNINGS_2024.keys():
     print(f"  Fetching {ticker}...", end="")
-    df = alpaca.fetch_historical_bars(ticker, "1Day", "2024-01-01", "2024-12-31", feed="sip")
+    df = alpaca.fetch_historical_bars(
+        ticker, "1Day", "2024-01-01", "2024-12-31", feed="sip"
+    )
     price_data[ticker] = df
     print(f" ✓ {len(df)} daily bars")
 
@@ -244,7 +246,9 @@ for ticker, earnings_dates in EARNINGS_2024.items():
         # Sharpe
         trade_returns = ticker_df["pnl_pct"] / 100
         sharpe = (
-            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades))) if trade_returns.std() > 0 else 0
+            (trade_returns.mean() / trade_returns.std() * np.sqrt(len(ticker_trades)))
+            if trade_returns.std() > 0
+            else 0
         )
 
         results_by_ticker[ticker] = {
@@ -270,7 +274,11 @@ avg_pnl_pct = trades_df["pnl_pct"].mean()
 
 # Sharpe ratio
 trade_returns = trades_df["pnl_pct"] / 100
-sharpe = (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades))) if trade_returns.std() > 0 else 0
+sharpe = (
+    (trade_returns.mean() / trade_returns.std() * np.sqrt(len(all_trades)))
+    if trade_returns.std() > 0
+    else 0
+)
 
 # Print results by ticker
 print("\n" + "=" * 80)
@@ -309,7 +317,9 @@ print("=" * 80)
 
 print(f"\n📊 Performance:")
 print(f"  Total Trades: {len(all_trades)}")
-print(f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)")
+print(
+    f"  Win Rate: {win_rate:.1f}% ({int(win_rate/100 * len(all_trades))}/{len(all_trades)} wins)"
+)
 print(f"  Average P&L: {avg_pnl_pct:+.2f}% per event")
 print(f"  Best Trade: {trades_df['pnl_pct'].max():+.2f}%")
 print(f"  Worst Trade: {trades_df['pnl_pct'].min():+.2f}%")

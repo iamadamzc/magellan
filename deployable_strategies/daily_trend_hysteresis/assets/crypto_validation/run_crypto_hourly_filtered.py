@@ -230,4 +230,6 @@ for sym in ["BTCUSD", "ETHUSD"]:
 
 # Save
 if final_results:
-    pd.DataFrame(final_results).to_csv(Path(__file__).parent / "crypto_filtered_results.csv", index=False)
+    pd.DataFrame(final_results).to_csv(
+        Path(__file__).parent / "crypto_filtered_results.csv", index=False
+    )

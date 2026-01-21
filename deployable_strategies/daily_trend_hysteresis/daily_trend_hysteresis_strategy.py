@@ -51,7 +51,15 @@ if len(raw_df) > 1000:  # Likely minute data
     print(f"⚠️  Detected high-frequency data, resampling to daily...")
     df = (
         raw_df.resample("1D")
-        .agg({"open": "first", "high": "max", "low": "min", "close": "last", "volume": "sum"})
+        .agg(
+            {
+                "open": "first",
+                "high": "max",
+                "low": "min",
+                "close": "last",
+                "volume": "sum",
+            }
+        )
         .dropna()
     )
     print(f"✓ Resampled to {len(df)} daily bars")

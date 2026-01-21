@@ -38,7 +38,8 @@ def signal_handler(signum, frame):
 
 def load_config():
     config_path = os.getenv(
-        "CONFIG_PATH", "/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json"
+        "CONFIG_PATH",
+        "/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/config.json",
     )
     with open(config_path, "r") as f:
         return json.load(f)
@@ -49,8 +50,12 @@ def get_alpaca_credentials(account_id):
     api_key_path = f"/magellan/alpaca/{account_id}/API_KEY"
     api_secret_path = f"/magellan/alpaca/{account_id}/API_SECRET"
 
-    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"]["Value"]
-    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)["Parameter"]["Value"]
+    api_key = ssm.get_parameter(Name=api_key_path, WithDecryption=True)["Parameter"][
+        "Value"
+    ]
+    api_secret = ssm.get_parameter(Name=api_secret_path, WithDecryption=True)[
+        "Parameter"
+    ]["Value"]
 
     return api_key, api_secret
 
@@ -81,7 +86,10 @@ def is_signal_time():
     current_time = now.time()
 
     # Window: 16:05:00 - 16:05:59
-    return target_time.hour == current_time.hour and target_time.minute == current_time.minute
+    return (
+        target_time.hour == current_time.hour
+        and target_time.minute == current_time.minute
+    )
 
 
 def is_execution_time():
@@ -98,7 +106,10 @@ def is_execution_time():
     current_time = now.time()
 
     # Window: 09:30:00 - 09:31:00
-    return target_time.hour == current_time.hour and target_time.minute == current_time.minute
+    return (
+        target_time.hour == current_time.hour
+        and target_time.minute == current_time.minute
+    )
 
 
 class DailyTrendExecutor:
@@ -179,7 +190,9 @@ class DailyTrendExecutor:
                     logger.info(f"{symbol}: RSI={current_rsi:.2f} > {upper_band} → BUY")
                 elif current_rsi < lower_band:
                     self.signals[symbol] = "SELL"
-                    logger.info(f"{symbol}: RSI={current_rsi:.2f} < {lower_band} → SELL")
+                    logger.info(
+                        f"{symbol}: RSI={current_rsi:.2f} < {lower_band} → SELL"
+                    )
                 else:
                     self.signals[symbol] = "HOLD"
                     logger.info(f"{symbol}: RSI={current_rsi:.2f} → HOLD")
@@ -190,7 +203,11 @@ class DailyTrendExecutor:
         # Save signals to file for execution tomorrow
         signal_file = "/home/ssm-user/magellan/deployable_strategies/daily_trend_hysteresis/aws_deployment/signals.json"
         with open(signal_file, "w") as f:
-            json.dump({"date": datetime.now().strftime("%Y-%m-%d"), "signals": self.signals}, f, indent=2)
+            json.dump(
+                {"date": datetime.now().strftime("%Y-%m-%d"), "signals": self.signals},
+                f,
+                indent=2,
+            )
 
         logger.info(f"Signals saved to {signal_file}")
 
@@ -257,11 +274,16 @@ class DailyTrendExecutor:
 
             # Place market order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=qty, side=OrderSide.BUY, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=qty,
+                side=OrderSide.BUY,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
-            logger.info(f"✅ BUY order placed for {symbol}: {qty} shares @ ${current_price:.2f} (Order ID: {order.id})")
+            logger.info(
+                f"✅ BUY order placed for {symbol}: {qty} shares @ ${current_price:.2f} (Order ID: {order.id})"
+            )
 
             # Log trade to CSV
             self._log_trade(symbol, "BUY", qty, current_price, order.id)
@@ -289,7 +311,10 @@ class DailyTrendExecutor:
 
             # Place market sell order
             order_request = MarketOrderRequest(
-                symbol=symbol, qty=qty, side=OrderSide.SELL, time_in_force=TimeInForce.DAY
+                symbol=symbol,
+                qty=qty,
+                side=OrderSide.SELL,
+                time_in_force=TimeInForce.DAY,
             )
 
             order = self.trading_client.submit_order(order_request)
@@ -301,7 +326,9 @@ class DailyTrendExecutor:
             self._log_trade(symbol, "SELL", qty, current_price, order.id)
 
         except Exception as e:
-            logger.error(f"❌ Error placing SELL order for {symbol}: {e}", exc_info=True)
+            logger.error(
+                f"❌ Error placing SELL order for {symbol}: {e}", exc_info=True
+            )
 
     def _log_trade(self, symbol, action, qty, price, order_id):
         """Log trade to CSV file"""
@@ -316,10 +343,19 @@ class DailyTrendExecutor:
         with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             if not file_exists:
-                writer.writerow(["timestamp", "symbol", "action", "qty", "price", "order_id"])
+                writer.writerow(
+                    ["timestamp", "symbol", "action", "qty", "price", "order_id"]
+                )
 
             writer.writerow(
-                [datetime.now().strftime("%Y-%m-%d %H:%M:%S"), symbol, action, qty, f"{price:.2f}", order_id]
+                [
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    symbol,
+                    action,
+                    qty,
+                    f"{price:.2f}",
+                    order_id,
+                ]
             )
 
 
@@ -357,7 +393,9 @@ def main():
     )
 
     logger.info("✓ Executor initialized")
-    logger.info("Waiting for signal generation time (16:05 ET) or execution time (09:30 ET)...")
+    logger.info(
+        "Waiting for signal generation time (16:05 ET) or execution time (09:30 ET)..."
+    )
 
     signal_generated_today = False
     execution_done_today = False
