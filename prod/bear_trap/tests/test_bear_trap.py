@@ -6,13 +6,13 @@ import pytest
 import sys
 from pathlib import Path
 
-# Add project root to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 def test_strategy_imports():
     """Test that strategy can be imported"""
-    from prod.bear_trap.strategy import BearTrapStrategy
+    from strategy import BearTrapStrategy
 
     assert BearTrapStrategy is not None
 
