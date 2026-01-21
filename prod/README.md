@@ -1,118 +1,126 @@
-# 🚀 PROD - Production Strategies
+# 🚀 PROD - Production-Ready Strategies
 
-This folder contains production-ready strategies that are deployed and trading live on EC2.
+This folder contains **production-ready copies** of validated strategies that are deployed to AWS EC2.
 
 ## Purpose
 
-- **Source of truth** for all production code
-- Live trading strategies
-- Production deployments
-- Strategy maintenance and updates
+- **Deployment source** - CI/CD deploys from this folder to AWS
+- **Production mirror** - Exact copies of what's running on EC2
+- **Read-only** - Never edit directly, always copy from test/
 
 ## Rules
 
-- ✅ **Only validated strategies**
-- ✅ Comprehensive tests required
-- ✅ Full documentation required
-- ✅ Environment-aware execution
-- ✅ Deployment artifacts included
+- ❌ **Do NOT edit directly** - All work happens in test/
+- ✅ **Copy from test/** - Only way to update prod/
+- ✅ **Deploy to AWS** - CI/CD deploys this folder
+- ✅ **Production use** - Uses live Alpaca API on EC2
 
-## Environment Behavior
+## Deployment Workflow
 
-### Local Testing (Safe)
 ```bash
-export USE_ARCHIVED_DATA=true
-cd prod/bear_trap
-python runner.py
-# Uses cached data - safe for testing
-```
+# 1. Work in test/
+cd test/bear_trap
+vim strategy.py
+pytest tests/ -v
 
-### CI/CD Testing (Automated)
-```yaml
-env:
-  USE_ARCHIVED_DATA: 'true'
-# Always uses cached data in CI/CD
-```
+# 2. Copy to prod/
+Copy-Item test/bear_trap prod/bear_trap -Recurse -Force
 
-### Production (EC2)
-```bash
-# No USE_ARCHIVED_DATA variable set
-python runner.py
-# Uses live Alpaca API - real trading
-```
+# 3. Deploy to AWS
+git add prod/bear_trap
+git commit -m "Deploy Bear Trap v1.2"
+git push origin deployment/aws-paper-trading-setup
 
-## Strategy Structure
-
-```
-prod/
-├── strategy_name/
-│   ├── strategy.py          # Core strategy logic
-│   ├── runner.py            # Universal runner (env-aware)
-│   ├── config.json          # Production configuration
-│   │
-│   ├── tests/               # Unit & integration tests
-│   │   ├── test_strategy.py
-│   │   └── test_integration.py
-│   │
-│   ├── deployment/          # Deployment artifacts
-│   │   ├── systemd/
-│   │   │   └── magellan-strategy-name.service
-│   │   └── README.md        # Deployment guide
-│   │
-│   └── docs/                # Complete documentation
-│       ├── README.md        # Overview
-│       ├── parameters.md    # Parameter guide
-│       ├── validation.md    # Validation results
-│       └── performance.md   # Performance tracking
+# 4. CI/CD automatically:
+#    - Tests with cached data
+#    - Deploys to EC2
+#    - Restarts services
+#    - Verifies health
 ```
 
 ## Current Strategies
 
 ### 1. Bear Trap
-- **Status**: ✅ Live
+- **Status**: ✅ Live on EC2
 - **Account**: PA3DDLQCBJSE
 - **Symbols**: MULN, ONDS, AMC, NKLA, WKHS
-- **Description**: Momentum scalping on -15% crashes
+- **Service**: magellan-bear-trap
 
 ### 2. Daily Trend
-- **Status**: ✅ Live
+- **Status**: ✅ Live on EC2
 - **Account**: PA3A2699UCJM
 - **Symbols**: MAG7 + Index ETFs
-- **Description**: RSI hysteresis trend following
+- **Service**: magellan-daily-trend
 
 ### 3. Hourly Swing
-- **Status**: ✅ Live
+- **Status**: ✅ Live on EC2
 - **Account**: PA3ASNTJV624
 - **Symbols**: TSLA, NVDA
-- **Description**: Hourly RSI swing trading
+- **Service**: magellan-hourly-swing
 
-## Deployment Workflow
+## Structure
 
 ```
-1. Edit code in prod/strategy_name/
-2. Test locally: USE_ARCHIVED_DATA=true python runner.py
-3. Run tests: pytest tests/
-4. Commit: git add prod/strategy_name
-5. Push: git push origin main
-6. CI/CD automatically:
-   - Tests with cached data
-   - Deploys to EC2
-   - Restarts services
-   - Verifies health
+prod/
+├── bear_trap/           # Production copy (deployed to AWS)
+│   ├── strategy.py
+│   ├── runner.py        # Uses live API on EC2
+│   ├── config.json
+│   ├── tests/
+│   ├── deployment/
+│   │   └── systemd/
+│   └── docs/
+│
+├── daily_trend/         # Production copy
+└── hourly_swing/        # Production copy
 ```
 
-## Rollback Procedure
+## Environment Behavior
 
+### **Local** (if you run prod/ code locally):
 ```bash
-# If issues arise:
-git log --oneline -5
-git revert <bad-commit>
-git push origin main
-# CI/CD redeploys previous version
+# Still uses cache if env var set
+export USE_ARCHIVED_DATA=true
+cd prod/bear_trap
+python runner.py  # Safe - uses cache
+```
+
+### **EC2 Production**:
+```bash
+# No USE_ARCHIVED_DATA variable
+python runner.py  # Uses live Alpaca API
 ```
 
 ## Monitoring
 
-- **Logs**: `/home/ssm-user/magellan/logs/`
-- **Services**: `sudo systemctl status magellan-*`
-- **Health**: Check Alpaca dashboard for orders
+```bash
+# Check EC2 service status
+sudo systemctl status magellan-bear-trap
+sudo systemctl status magellan-daily-trend
+sudo systemctl status magellan-hourly-swing
+
+# View logs
+sudo journalctl -u magellan-bear-trap -f
+
+# Check trades
+tail -f /home/ssm-user/magellan/logs/bear_trap_trades_*.csv
+```
+
+## Rollback
+
+If deployment fails:
+```bash
+# Revert local changes
+git revert <commit-hash>
+git push
+
+# Or manually on EC2
+ssh to EC2
+git checkout <previous-commit>
+sudo systemctl restart magellan-*
+```
+
+---
+
+**Key Principle**: This folder is the **source of truth** for what's deployed to AWS.  
+**All development** happens in `test/`, then gets **copied here** when ready.

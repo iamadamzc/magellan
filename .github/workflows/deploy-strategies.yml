@@ -6,6 +6,7 @@ on:
       - main
       - deployment/aws-paper-trading-setup
     paths:
+      - 'test/**'
       - 'prod/**'
       - '.github/workflows/deploy-strategies.yml'
       - 'requirements.txt'
@@ -50,14 +51,14 @@ jobs:
       
       - name: Lint code
         run: |
-          black --check prod/
-          pylint prod/ --disable=C0111,R0913,R0914 || true
+          black --check test/ prod/
+          pylint test/ prod/ --disable=C0111,R0913,R0914 || true
       
       - name: Run unit tests
         env:
           USE_ARCHIVED_DATA: 'true'
         run: |
-          pytest prod/*/tests/ -v --cov=prod --cov-report=term-missing
+          pytest test/*/tests/ -v --cov=test --cov-report=term-missing
         continue-on-error: true
       
       - name: Validate configuration files
@@ -97,7 +98,7 @@ jobs:
           USE_ARCHIVED_DATA: 'true'
           ENVIRONMENT: 'testing'
         run: |
-          python -m pytest prod/${{ matrix.strategy }}/tests/ -v
+          python -m pytest test/${{ matrix.strategy }}/tests/ -v
       
       - name: Upload test results
         uses: actions/upload-artifact@v4
