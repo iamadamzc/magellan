@@ -1,0 +1,10 @@
+{
+    "symbol": "NFLX",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true,
+        "indicator": "SPY_MA200",
+        "condition": "price > ma"
+    },
+    "deployment_status": "active"
+}
