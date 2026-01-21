@@ -12,12 +12,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.executor import AlpacaTradingClient
 
+
 def reconcile():
     """Fetch and display account reconciliation data."""
     load_dotenv()
-    
+
     # Check credentials
-    if not os.getenv('APCA_API_KEY_ID') or not os.getenv('APCA_API_SECRET_KEY'):
+    if not os.getenv("APCA_API_KEY_ID") or not os.getenv("APCA_API_SECRET_KEY"):
         print("[ERROR] Missing credentials. Please check .env file.")
         return
 
@@ -28,9 +29,9 @@ def reconcile():
         print(f"[ERROR] Connection failed: {e}")
         return
 
-    print("\n" + "═"*60)
+    print("\n" + "═" * 60)
     print(" 🔍 POSITION RECONCILIATION REPORT")
-    print("═"*60)
+    print("═" * 60)
 
     # 1. Account Snapshot
     try:
@@ -49,34 +50,35 @@ def reconcile():
     print(f"\n[INVENTORY CHECK]")
     try:
         positions = client.api.list_positions()
-        
+
         if not positions:
             print(">> NO OPEN POSITIONS (FLAT)")
         else:
             # Header
             print(f"{'SYMBOL':<8} | {'QTY':<8} | {'AVG PRICE':<12} | {'MKT VALUE':<12} | {'UNREAL P&L':<12}")
-            print("─"*62)
-            
+            print("─" * 62)
+
             for pos in positions:
                 symbol = pos.symbol
                 qty = pos.qty
                 avg_entry = float(pos.avg_entry_price)
                 mkt_val = float(pos.market_value)
                 unreal_pl = float(pos.unrealized_pl)
-                
+
                 # Format P&L with color indicators if supported (using simple signs here)
                 pl_str = f"${unreal_pl:,.2f}"
                 if unreal_pl > 0:
                     pl_str = f"+{pl_str}"
-                
+
                 print(f"{symbol:<8} | {qty:<8} | ${avg_entry:<11,.2f} | ${mkt_val:<11,.2f} | {pl_str:<12}")
-                
-            print("─"*62)
-            
+
+            print("─" * 62)
+
     except Exception as e:
         print(f"[ERROR] Failed to fetch positions: {e}")
 
-    print("\n" + "═"*60 + "\n")
+    print("\n" + "═" * 60 + "\n")
+
 
 if __name__ == "__main__":
     reconcile()
