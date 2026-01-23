@@ -1,4 +1,4 @@
-alpaca-trade-api
+alpaca-py
 pandas
 numpy
 scipy
@@ -7,3 +7,5 @@ python-dotenv
 requests
 rich
 textblob
+pytz
+boto3

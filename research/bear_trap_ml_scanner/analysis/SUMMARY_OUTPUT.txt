@@ -1,0 +1,46 @@
+================================================================================
+DEEP DIVE - KEY NUMBERS SUMMARY
+================================================================================
+
+1. 200 SMA POSITIONING:
+   Above 200 SMA: 3,199 events (39.1%)
+   Below 200 SMA: 4,973 events (60.9%)
+   Above 200 avg drop: -11.01%
+   Below 200 avg drop: -11.25%
+
+   Golden Cross active: 3,142 (38.4%)
+   STRONG UPTREND (above200 + golden): 2,462 (30.1%)
+
+2. SERIAL SELLERS & CLUSTERING:
+   Within 5 days of last: 3,343 (37.1%)
+
+3. MARKET-WIDE vs ISOLATED:
+   Days with 20+ selloffs: 58
+   Days with 1-3 selloffs: 371
+
+4. TIMING:
+   opening     :    50 (0.6%)
+   morning     :   312 (3.5%)
+   midday      :  3514 (39.0%)
+   afternoon   :  2998 (33.3%)
+   power_hour  :  2125 (23.6%)
+
+5. 52-WEEK RANGE POSITION:
+   Near 52w high (within 20%): 958 (10.6%)
+   Near 52w low (within 20%): 2,555 (28.4%)
+
+6. STRATEGY OPPORTUNITY COUNTS:
+   Uptrend Pullback (above200+golden+near52wh): 980
+   Capitulation (below200+nearlow+powerhour): 1,014
+   Market-wide recovery (15+selloffs+SPYdown): 767
+   Isolated selloff (<3 selloffs+SPYup): 418
+
+7. CORRELATIONS WITH SEVERITY (drop_pct):
+   distance_from_200sma      r = +0.021
+   pct_from_52w_high         r = +0.041
+   spy_change_day            r = -0.032
+   minutes_since_open        r = +0.169
+
+================================================================================
+SUMMARY COMPLETE
+================================================================================

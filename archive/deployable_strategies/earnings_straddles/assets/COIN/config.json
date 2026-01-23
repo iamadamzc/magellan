@@ -1,0 +1,22 @@
+{
+    "symbol": "COIN",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true,
+        "indicator": "SPY_MA200",
+        "condition": "price > ma"
+    },
+    "entry_rules": {
+        "timing": "T-2 Market Close",
+        "structure": "Straddle (ATM Call + ATM Put)",
+        "expiry": "Front Week (5-10 DTE)"
+    },
+    "exit_rules": {
+        "timing": "T+1 Market Open"
+    },
+    "risk_management": {
+        "max_risk_per_trade_usd": 5000,
+        "notes": "Crypto volatility correlation. High Beta."
+    },
+    "deployment_status": "active"
+}

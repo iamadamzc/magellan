@@ -18,30 +18,30 @@ from typing import Optional
 class SystemLogger:
     """
     Optimized logging with clear hierarchy and minimal noise.
-    
+
     Philosophy:
     - Terminal should stay dark unless something important happens
     - Backend details belong in files, not terminal
     - Users care about: trades, errors, progress
     - Developers need: debug logs in files
     """
-    
+
     # Verbosity levels
-    QUIET = 0    # Only critical (errors, warnings, trades)
-    NORMAL = 1   # + Major events (initialization, completion)
+    QUIET = 0  # Only critical (errors, warnings, trades)
+    NORMAL = 1  # + Major events (initialization, completion)
     VERBOSE = 2  # + Process flow (what's happening step-by-step)
-    
+
     def __init__(self, verbosity: int = NORMAL):
         self.verbosity = verbosity
         self.debug_file_path = os.path.join(os.getcwd(), "debug_vault.log")
-        
+
         # Initialize/Clear debug file
-        with open(self.debug_file_path, 'w') as f:
+        with open(self.debug_file_path, "w") as f:
             f.write(f"=== Magellan Debug Log - {datetime.now().isoformat()} ===\n\n")
-        
+
         # Track state changes for edge-triggered logging
         self.last_status = {}
-    
+
     def set_verbosity(self, level: int):
         """Set verbosity level (0=quiet, 1=normal, 2=verbose)."""
         self.verbosity = level
@@ -49,19 +49,19 @@ class SystemLogger:
             self.event("[LOG] Quiet mode enabled (critical events only)")
         elif level == self.VERBOSE:
             self.event("[LOG] Verbose mode enabled (detailed flow)")
-    
+
     def _clean_ascii(self, text: str) -> str:
         """Ensure ASCII-only output."""
-        return text.encode('ascii', 'ignore').decode('ascii')
-    
+        return text.encode("ascii", "ignore").decode("ascii")
+
     def _timestamp(self) -> str:
         """Generate timestamp for debug logs."""
         return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+
     # =========================================================================
     # TERMINAL OUTPUT (based on verbosity level)
     # =========================================================================
-    
+
     def critical(self, message: str):
         """
         ALWAYS shown: Errors, warnings, trade execution.
@@ -69,7 +69,7 @@ class SystemLogger:
         """
         print(self._clean_ascii(message))
         self._write_debug(f"[CRITICAL] {message}")
-    
+
     def event(self, message: str):
         """
         Major milestones: Initialization, ticker completion, reports.
@@ -78,7 +78,7 @@ class SystemLogger:
         if self.verbosity >= self.NORMAL:
             print(self._clean_ascii(message))
         self._write_debug(f"[EVENT] {message}")
-    
+
     def flow(self, message: str):
         """
         Process flow: Step-by-step progress updates.
@@ -87,58 +87,58 @@ class SystemLogger:
         if self.verbosity >= self.VERBOSE:
             print(self._clean_ascii(message))
         self._write_debug(f"[FLOW] {message}")
-    
+
     def debug(self, message: str):
         """
         Backend details: API calls, data transformations, internals.
         NEVER shown in terminal, always written to debug_vault.log
         """
         self._write_debug(f"[DEBUG] {message}")
-    
+
     # =========================================================================
     # BACKWARDS COMPATIBILITY ALIASES (for gradual migration)
     # =========================================================================
-    
+
     def info(self, message: str):
         """Alias: Maps to flow() for backwards compat."""
         self.flow(message)
-    
+
     def warning(self, message: str):
         """Alias: Maps to critical()."""
         self.critical(f"⚠️  {message}")
-    
+
     def error(self, message: str):
         """Alias: Maps to critical()."""
         self.critical(f"❌ {message}")
-    
+
     def success(self, message: str):
         """Alias: Maps to event()."""
         self.event(f"✓ {message}")
-    
+
     def system(self, message: str):
         """Alias: Maps to event()."""
         self.event(message)
-    
+
     def stats(self, message: str):
         """Alias: Maps to critical() (trade stats are important)."""
         self.critical(message)
-    
+
     def config(self, message: str):
         """Alias: Maps to debug() (config details are backend noise)."""
         self.debug(message)
-    
+
     def metric(self, message: str):
         """Alias: Maps to debug()."""
         self.debug(message)
-    
+
     def ic_matrix(self, message: str):
         """Alias: Maps to debug()."""
         self.debug(message)
-    
+
     def ensemble(self, message: str):
         """Alias: Maps to event()."""
         self.event(message)
-    
+
     def phase_lock(self, message: str):
         """
         Edge-triggered logging for signal state changes.
@@ -146,16 +146,16 @@ class SystemLogger:
         """
         try:
             # Parse ticker and status
-            parts = message.split('|')
+            parts = message.split("|")
             ticker_part = [p for p in parts if "Ticker:" in p]
             status_part = [p for p in parts if "Status:" in p]
-            
+
             if ticker_part and status_part:
-                ticker = ticker_part[0].split(':')[1].strip()
-                status = status_part[0].split(':')[1].strip()
-                
+                ticker = ticker_part[0].split(":")[1].strip()
+                status = status_part[0].split(":")[1].strip()
+
                 last_state = self.last_status.get(ticker)
-                
+
                 # Only log if status changed
                 if status != last_state:
                     self.last_status[ticker] = status
@@ -173,18 +173,18 @@ class SystemLogger:
             # Safety: Log BUY/SELL signals
             if "Status: BUY" in message or "Status: SELL" in message:
                 self.critical(message)
-    
+
     def cryogen(self, message: str):
         """Edge-triggered logging for VSS (cryogen) signals."""
         try:
-            ticker = 'VSS'
-            parts = message.split('|')
+            ticker = "VSS"
+            parts = message.split("|")
             status_part = [p for p in parts if "Status:" in p]
-            
+
             if status_part:
-                status = status_part[0].split(':')[1].strip()
+                status = status_part[0].split(":")[1].strip()
                 last_state = self.last_status.get(ticker)
-                
+
                 if status != last_state:
                     self.last_status[ticker] = status
                     self.critical(message)
@@ -199,15 +199,15 @@ class SystemLogger:
             self.debug(f"[CRYOGEN] Parse error: {e}")
             if "Status: BUY" in message or "Status: SELL" in message:
                 self.critical(message)
-    
+
     def symmetry(self, message: str):
         """Alias: Maps to event()."""
         self.event(message)
-    
+
     # =========================================================================
     # INTERNAL HELPERS
     # =========================================================================
-    
+
     def _write_debug(self, message: str):
         """Write to debug log file."""
         try:
@@ -220,11 +220,12 @@ class SystemLogger:
 # Global instance (backwards compatible)
 LOG = SystemLogger()
 
+
 # Convenience function for setting verbosity from CLI
 def set_log_level(quiet: bool = False, verbose: bool = False):
     """
     Set global log level based on CLI flags.
-    
+
     Args:
         quiet: If True, show only critical events
         verbose: If True, show detailed flow

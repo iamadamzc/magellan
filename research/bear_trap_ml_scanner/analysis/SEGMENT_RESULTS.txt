@@ -1,0 +1,101 @@
+================================================================================
+SEGMENT ANALYSIS - FINDING THE STRONGEST EDGE
+================================================================================
+
+Total events: 8,999
+Overall 60-min reversal rate: 42.4%
+Overall EOD reversal rate: 66.0%
+
+================================================================================
+SEGMENT 1: UPTREND PULLBACK
+Definition: Above 200 SMA + Golden Cross Active
+================================================================================
+
+Events: 2,462 (27.4%)
+60-min reversal: 44.1%
+EOD reversal: 67.8%
+Avg recovery (60min): 6.45%
+
+  Uptrend + Near 52w High: 980 events
+  60-min reversal: 46.4%
+  EOD reversal: 66.9%
+
+================================================================================
+SEGMENT 2: FALLING KNIFE (High Risk)
+Definition: Below 200 SMA + Near 52w Low
+================================================================================
+
+Events: 4,276 (47.5%)
+60-min reversal: 40.7%
+EOD reversal: 65.4%
+Max additional drop (avg): -3.48%
+
+================================================================================
+SEGMENT 3: CLUSTERED SELLOFFS (Momentum Continuation)
+Definition: Previous selloff within 5 days
+================================================================================
+
+Clustered: 3,343 events
+60-min reversal: 47.3%
+EOD reversal: 64.7%
+
+Isolated: 5,656 events
+60-min reversal: 39.5%
+EOD reversal: 66.8%
+
+================================================================================
+SEGMENT 4: MARKET CONTEXT
+================================================================================
+
+SPY Up (>0.5%): 3,041 events
+  60-min reversal: 46.6%
+
+SPY Down (<-0.5%): 2,479 events
+  60-min reversal: 39.3%
+
+SPY Flat: 3,479 events
+  60-min reversal: 40.8%
+
+================================================================================
+SEGMENT 5: TIME OF DAY
+================================================================================
+
+OPENING: 50 events
+  60-min reversal: 71.4%
+  EOD reversal: 34.0%
+
+MORNING: 312 events
+  60-min reversal: 65.9%
+  EOD reversal: 60.9%
+
+MIDDAY: 3,514 events
+  60-min reversal: 59.8%
+  EOD reversal: 63.1%
+
+AFTERNOON: 2,998 events
+  60-min reversal: 38.0%
+  EOD reversal: 67.3%
+
+POWER_HOUR: 2,125 events
+  60-min reversal: 15.4%
+  EOD reversal: 70.7%
+
+================================================================================
+THE GOLDEN FILTER: Combining Best Conditions
+================================================================================
+
+GOLDEN: Uptrend + Not Near Lows + Midday/Afternoon
+Events: 1,975
+60-min reversal: 52.8%
+EOD reversal: 65.3%
+Avg recovery (60min): 7.43%
+
+ULTRA: Uptrend + Golden + Near Highs + Good Timing
+Events: 1,310
+60-min reversal: 43.5%
+EOD reversal: 67.2%
+Avg recovery (60min): 6.13%
+
+================================================================================
+ANALYSIS COMPLETE
+================================================================================

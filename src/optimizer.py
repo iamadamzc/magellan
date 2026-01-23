@@ -11,22 +11,22 @@ from scipy.stats import spearmanr
 from src.config_loader import EngineConfig
 
 # Retrain interval for weight optimization (trading days) - loaded from config
-RETRAIN_INTERVAL = EngineConfig().get('RETRAIN_INTERVAL', strict=True)
+RETRAIN_INTERVAL = EngineConfig().get("RETRAIN_INTERVAL", strict=True)
 
 
 def optimize_alpha_weights(
     df: pd.DataFrame,
     feature_cols: List[str] = None,
-    target_col: str = 'log_return',
+    target_col: str = "log_return",
     horizon: int = 15,
-    metric: str = 'hit_rate',
-    weight_step: float = 0.1
+    metric: str = "hit_rate",
+    weight_step: float = 0.1,
 ) -> Dict:
     """
     Find optimal weights for alpha factors using grid search.
-    
+
     Searches weight combinations that sum to 1.0 and maximizes the target metric.
-    
+
     Args:
         df: DataFrame with feature and target columns
         feature_cols: List of feature column names (default: ['rsi_14', 'volume_zscore', 'sentiment'])
@@ -34,29 +34,29 @@ def optimize_alpha_weights(
         horizon: Forward return horizon in bars
         metric: Optimization target - 'hit_rate' or 'ic' (Information Coefficient)
         weight_step: Step size for grid search (default: 0.1 = 10% increments)
-    
+
     Returns:
         Dict with optimal weights and performance metrics
     """
     if feature_cols is None:
-        feature_cols = ['rsi_14', 'volume_zscore', 'sentiment']
-    
+        feature_cols = ["rsi_14", "volume_zscore", "sentiment"]
+
     # Create working copy with forward returns
     working_df = df[feature_cols + [target_col]].copy()
-    working_df['forward_return'] = working_df[target_col].shift(-horizon)
+    working_df["forward_return"] = working_df[target_col].shift(-horizon)
     working_df = working_df.dropna()
-    
+
     if len(working_df) < 50:
         # print("[OPTIMIZER] Insufficient data for optimization")
         return {
-            'optimal_weights': {col: 1.0/len(feature_cols) for col in feature_cols},
-            'best_metric': 0.0,
-            'weights_tested': 0
+            "optimal_weights": {col: 1.0 / len(feature_cols) for col in feature_cols},
+            "best_metric": 0.0,
+            "weights_tested": 0,
         }
-    
+
     # P1 REMEDIATION: Rolling normalization (look-back only, no future data)
     NORM_WINDOW = 252  # ~1 trading day of 1-minute bars
-    
+
     normalized = {}
     for col in feature_cols:
         rolling_min = working_df[col].rolling(window=NORM_WINDOW, min_periods=20).min()
@@ -64,11 +64,11 @@ def optimize_alpha_weights(
         col_range = rolling_max - rolling_min
         normalized[col] = (working_df[col] - rolling_min) / col_range.replace(0, np.inf)
         normalized[col] = normalized[col].fillna(0.5)  # Warmup period fallback
-    
+
     # Generate weight combinations that sum to 1.0
     weight_options = np.arange(0.0, 1.0 + weight_step, weight_step)
     weight_combos = []
-    
+
     for w1 in weight_options:
         for w2 in weight_options:
             w3 = 1.0 - w1 - w2
@@ -76,77 +76,65 @@ def optimize_alpha_weights(
                 # Round to avoid floating point issues
                 w3 = round(w3, 2)
                 weight_combos.append((round(w1, 2), round(w2, 2), w3))
-    
+
     # Remove duplicates
     weight_combos = list(set(weight_combos))
-    
+
     best_metric = -999
     best_weights = None
     results_log = []
-    
+
     for weights in weight_combos:
         # Calculate weighted alpha score
-        alpha_score = sum(
-            weights[i] * normalized[feature_cols[i]] 
-            for i in range(len(feature_cols))
-        )
-        
+        alpha_score = sum(weights[i] * normalized[feature_cols[i]] for i in range(len(feature_cols)))
+
         # Calculate metric
-        if metric == 'hit_rate':
+        if metric == "hit_rate":
             # Signal direction based on median
             median_alpha = alpha_score.median()
             signal = np.where(alpha_score > median_alpha, 1, -1)
-            correct = (signal * working_df['forward_return'].values) > 0
+            correct = (signal * working_df["forward_return"].values) > 0
             score = correct.mean()
         else:  # 'ic'
             # Spearman correlation
-            score, _ = spearmanr(alpha_score, working_df['forward_return'])
+            score, _ = spearmanr(alpha_score, working_df["forward_return"])
             if pd.isna(score):
                 score = 0.0
-        
-        results_log.append({
-            'weights': weights,
-            'score': score
-        })
-        
+
+        results_log.append({"weights": weights, "score": score})
+
         if score > best_metric:
             best_metric = score
             best_weights = weights
-    
+
     # Build result
-    optimal_weights = {
-        feature_cols[i]: best_weights[i] 
-        for i in range(len(feature_cols))
-    }
-    
+    optimal_weights = {feature_cols[i]: best_weights[i] for i in range(len(feature_cols))}
+
     return {
-        'optimal_weights': optimal_weights,
-        'best_metric': best_metric,
-        'metric_type': metric,
-        'weights_tested': len(weight_combos),
-        'feature_cols': feature_cols
+        "optimal_weights": optimal_weights,
+        "best_metric": best_metric,
+        "metric_type": metric,
+        "weights_tested": len(weight_combos),
+        "feature_cols": feature_cols,
     }
 
 
-def calculate_alpha_with_weights(
-    df: pd.DataFrame,
-    weights: Dict[str, float]
-) -> pd.Series:
+def calculate_alpha_with_weights(df: pd.DataFrame, weights: Dict[str, float]) -> pd.Series:
     """
     Calculate alpha score using specified weights.
-    
+
     Args:
         df: DataFrame with feature columns
         weights: Dict mapping feature names to weights
-    
+
     Returns:
         Series with weighted alpha scores
     """
     feature_cols = list(weights.keys())
-    
+
     # P1 REMEDIATION: Rolling normalization (look-back only, no future data)
     NORM_WINDOW = 252  # ~1 trading day of 1-minute bars
-    
+
     normalized = {}
     for col in feature_cols:
         rolling_min = df[col].rolling(window=NORM_WINDOW, min_periods=20).min()
@@ -154,20 +142,17 @@ def calculate_alpha_with_weights(
         col_range = rolling_max - rolling_min
         normalized[col] = (df[col] - rolling_min) / col_range.replace(0, np.inf)
         normalized[col] = normalized[col].fillna(0.5)  # Warmup period fallback
-    
+
     # Calculate weighted sum
-    alpha_score = sum(
-        weights[col] * normalized[col] 
-        for col in feature_cols
-    )
-    
+    alpha_score = sum(weights[col] * normalized[col] for col in feature_cols)
+
     return alpha_score
 
 
 def print_optimizer_result(result: Dict, static_weights: Dict[str, float] = None) -> None:
     """
     Print optimizer results with comparison to static weights.
-    
+
     Args:
         result: Dict from optimize_alpha_weights()
         static_weights: Optional dict of static weights for comparison

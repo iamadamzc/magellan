@@ -1,0 +1,31 @@
+==========================================================================================
+EARNINGS STRADDLES - ALL ASSETS BACKTEST 2025
+==========================================================================================
+Testing all 11 configured tickers with $100,000 starting capital per event
+Strategy: 3-day hold ATM straddle (T-2 to T+1)
+
+Found 11 tickers in assets directory: AAPL, AMD, AMZN, COIN, GOOGL, META, MSFT, NFLX, NVDA, PLTR, TSLA
+
+Testing 11 tickers with 2025 earnings dates: AAPL, AMD, AMZN, COIN, GOOGL, META, MSFT, NFLX, NVDA, PLTR, TSLA
+
+Total earnings events to simulate: 44
+
+[1/3] Fetching price data...
+  Fetching AAPL...[DEBUG] Fetching AAPL via SIP feed...
+Traceback (most recent call last):
+  File "A:\1\Magellan\deployable_strategies\earnings_straddles\backtest_all_assets_2025.py", line 72, in <module>
+    print(f" \u2713 {len(df)} daily bars")
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 1: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "A:\1\Magellan\deployable_strategies\earnings_straddles\backtest_all_assets_2025.py", line 74, in <module>
+    print(f" \u274c Error: {e}")
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 1: character maps to <undefined>

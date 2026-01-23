@@ -1,0 +1,83 @@
+{
+    "account_info": {
+        "account_id": "PA3ASNTJV624",
+        "account_name": "magellan-hourly-swing",
+        "initial_capital": 100000,
+        "margin_multiplier": 4,
+        "buying_power": 400000
+    },
+    "strategy": {
+        "name": "Hourly Swing",
+        "version": "1.0-rsf",
+        "type": "hourly_momentum",
+        "frequency": "medium",
+        "expected_trades_per_month": 25
+    },
+    "symbols": [
+        "TSLA",
+        "NVDA"
+    ],
+    "data_requirements": {
+        "timeframe": "1Hour",
+        "premarket": false,
+        "after_hours": false,
+        "warmup_bars": 84
+    },
+    "trading_hours": {
+        "market_open": "09:30:00",
+        "market_close": "16:00:00",
+        "signal_check_interval_minutes": 60,
+        "allow_overnight_holds": true,
+        "timezone": "America/New_York",
+        "trading_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI"
+        ]
+    },
+    "strategy_parameters": {
+        "TSLA": {
+            "rsi_period": 14,
+            "hysteresis_upper": 60,
+            "hysteresis_lower": 40
+        },
+        "NVDA": {
+            "rsi_period": 28,
+            "hysteresis_upper": 55,
+            "hysteresis_lower": 45
+        }
+    },
+    "risk_management": {
+        "max_position_per_asset_dollars": 50000,
+        "max_daily_loss_pct": 0.10,
+        "max_daily_loss_dollars": 10000,
+        "max_open_positions": 2,
+        "emergency_stop_conditions": {
+            "consecutive_losing_days": 3,
+            "win_rate_below": 0.30,
+            "rolling_window_days": 14,
+            "drawdown_threshold_pct": 0.25
+        }
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "extended_hours": false,
+        "friction_bps": 5.0,
+        "avg_hold_time_hours": 50
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "cloudwatch_log_group": "/magellan/hourly-swing",
+        "health_check_interval_seconds": 300,
+        "report_interval_seconds": 3600,
+        "alert_on_loss_dollars": 5000
+    },
+    "ssm_parameters": {
+        "api_key_path": "/magellan/alpaca/PA3ASNTJV624/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3ASNTJV624/API_SECRET",
+        "base_url": "https://paper-api.alpaca.markets"
+    }
+}
