@@ -338,52 +338,21 @@ if st.session_state.last_results is not None:
         if st.session_state.last_news is not None and not st.session_state.last_news.empty:
             news_df = st.session_state.last_news
             
-            # Build news table HTML
-            import html as html_module
-            news_html = """
-            <style>
-                .news-table { width: 100%; border-collapse: collapse; }
-                .news-table th { text-align: left; padding: 12px; border-bottom: 2px solid #00D4AA; color: #00D4AA; font-weight: 600; }
-                .news-table td { padding: 12px; border-bottom: 1px solid #333; vertical-align: top; }
-                .news-table a { color: #00D4AA; text-decoration: none; }
-                .news-table a:hover { text-decoration: underline; }
-                .verdict-dilution { color: #F87171; font-weight: bold; }
-                .verdict-catalyst { color: #4ADE80; font-weight: bold; }
-                .verdict-fluff { color: #9CA3AF; }
-                .verdict-neutral { color: #FAFAFA; }
-            </style>
-            <table class="news-table">
-                <thead>
-                    <tr>
-                        <th style="width: 10%;">Ticker</th>
-                        <th style="width: 20%;">Verdict</th>
-                        <th style="width: 70%;">Headline</th>
-                    </tr>
-                </thead>
-                <tbody>
-            """
-            
-            for _, row in news_df.iterrows():
-                verdict = row['Verdict']
-                headline = html_module.escape(str(row['Headline']))
-                url = html_module.escape(str(row['URL']))
-                ticker = html_module.escape(str(row['Ticker']))
-                
-                css_class = "verdict-neutral"
-                if "💀" in verdict: css_class = "verdict-dilution"
-                elif "🔥" in verdict: css_class = "verdict-catalyst"
-                elif "☁️" in verdict: css_class = "verdict-fluff"
-                
-                news_html += f"""
-                <tr>
-                    <td><strong>{ticker}</strong></td>
-                    <td class="{css_class}">{verdict}</td>
-                    <td><a href="{url}" target="_blank">{headline}</a></td>
-                </tr>
-                """
-            
-            news_html += "</tbody></table>"
-            st.markdown(news_html, unsafe_allow_html=True)
+            # Display as Streamlit dataframe (cleaner and more reliable)
+            st.dataframe(
+                news_df[['Ticker', 'Verdict', 'Headline']],
+                column_config={
+                    "Ticker": st.column_config.TextColumn("Ticker", width="small"),
+                    "Verdict": st.column_config.TextColumn("Verdict", width="medium"),
+                    "Headline": st.column_config.LinkColumn(
+                        "Headline",
+                        display_text=".*",  # Show full headline text
+                        help="Click to open news article"
+                    ),
+                },
+                use_container_width=True,
+                hide_index=True
+            )
 
 
 else:

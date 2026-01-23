@@ -283,37 +283,36 @@ class AlpacaScanner:
         return None
 
     def enrich_float(self, df):
-        """Enriches with Float data using FMP API (Batch Request)."""
+        """Enriches with Float data using FMP API enterprise-values endpoint."""
         if df.empty:
             return df
             
         tickers = df['Ticker'].tolist()
-        logger.info(f"Enriching float for {len(tickers)} symbols via FMP...")
+        logger.info(f"Enriching float for {len(tickers)} symbols via FMP enterprise-values...")
         
         float_map = {}
         
         try:
-            # Batch Request using stable endpoint
-            tickers_str = ",".join(tickers)
-            if not FMP_API_KEY:
-                logger.error("FMP_API_KEY not found in environment!")
-            else:
-                url = f"{FMP_STABLE_URL}/quote?symbol={tickers_str}&apikey={FMP_API_KEY}"
-                response = requests.get(url, timeout=5)
+            # Use enterprise-values endpoint which has numberOfShares
+            for ticker in tickers:
+                if not FMP_API_KEY:
+                    logger.error("FMP_API_KEY not found in environment!")
+                    break
+                    
+                url = f"{FMP_STABLE_URL}/enterprise-values?symbol={ticker}&limit=1&apikey={FMP_API_KEY}"
+                response = requests.get(url, timeout=3)
                 
                 if response.status_code == 200:
                     data = response.json()
-                    for item in data:
-                        sym = item.get('symbol')
-                        # Calculate shares from market cap / price
-                        market_cap = item.get('marketCap')
-                        price = item.get('price')
-                        if market_cap and price and price > 0:
-                            shares = market_cap / price
-                            float_map[sym] = float(shares)
-                            logger.debug(f"{sym}: Float = {shares/1_000_000:.2f}M (from marketCap={market_cap}, price={price})")
+                    if data and len(data) > 0:
+                        shares = data[0].get('numberOfShares')
+                        if shares and shares > 0:
+                            float_map[ticker] = float(shares)
+                            logger.debug(f"{ticker}: Float = {shares/1_000_000:.2f}M shares")
+                        else:
+                            logger.debug(f"{ticker}: No numberOfShares in response")
                 else:
-                    logger.error(f"FMP API Error: {response.status_code} - {response.text}")
+                    logger.debug(f"{ticker}: API returned {response.status_code}")
                     
         except Exception as e:
             logger.error(f"Error fetching float from FMP: {e}")
