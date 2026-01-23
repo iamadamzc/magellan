@@ -1,0 +1,104 @@
+{
+    "catalog_version": "1.0",
+    "last_updated": "2026-01-22T16:35:00Z",
+    "description": "Central registry of all market event datasets, raw data caches, and ML artifacts",
+    "datasets": {
+        "selloff-smallcap-10pct-5yr-v1": {
+            "id": "selloff-smallcap-10pct-5yr-v1",
+            "name": "Small-Cap Intraday Selloffs (-10%, 5-Year)",
+            "version": "1.0",
+            "created": "2026-01-22",
+            "status": "active",
+            "category": "intraday_selloffs",
+            "location": "market_events/intraday_selloffs/v1_smallcap_10pct_5yr/",
+            "description": "First-cross intraday selloff events (≥10% drop from open) across 250 small/mid-cap stocks, 2020-2024",
+            "metrics": {
+                "total_events": 8999,
+                "symbols": 250,
+                "date_range": [
+                    "2020-01-01",
+                    "2024-12-31"
+                ],
+                "features": 20
+            },
+            "splits": {
+                "dataset_a": {
+                    "events": 5517,
+                    "symbols": 125,
+                    "purpose": "validated_volatile_symbols"
+                },
+                "dataset_b": {
+                    "events": 3482,
+                    "symbols": 125,
+                    "purpose": "random_sample_validation"
+                }
+            },
+            "files": {
+                "manifest": "MANIFEST.json",
+                "dataset_a": "dataset_a_validated_symbols.csv",
+                "dataset_b": "dataset_b_random_symbols.csv",
+                "combined": "combined_with_features.csv"
+            }
+        },
+        "selloff-pilot-15pct-3yr-v0": {
+            "id": "selloff-pilot-15pct-3yr-v0",
+            "name": "Pilot Intraday Selloffs (-15%, 3-Year)",
+            "version": "0.1",
+            "created": "2026-01-21",
+            "status": "archived",
+            "category": "intraday_selloffs",
+            "location": "market_events/intraday_selloffs/v0_pilot_15pct_3yr/",
+            "description": "Initial prototype dataset with -15% threshold",
+            "metrics": {
+                "total_events": 495,
+                "symbols": 57,
+                "date_range": [
+                    "2022-01-01",
+                    "2024-12-31"
+                ],
+                "features": 20
+            }
+        }
+    },
+    "categories": {
+        "intraday_selloffs": {
+            "description": "Intraday price drops from session open",
+            "event_types": [
+                "first_cross",
+                "sustained_selloff"
+            ]
+        },
+        "gap_events": {
+            "description": "Overnight gap movements",
+            "event_types": [
+                "gap_up",
+                "gap_down",
+                "gap_fill"
+            ]
+        },
+        "earnings_moves": {
+            "description": "Price reactions to earnings releases",
+            "event_types": [
+                "beat",
+                "miss",
+                "inline"
+            ]
+        },
+        "reversal_patterns": {
+            "description": "Technical reversal formations",
+            "event_types": [
+                "v_bottom",
+                "double_bottom",
+                "failed_breakdown"
+            ]
+        }
+    },
+    "naming_convention": {
+        "format": "{event_type}-{universe}-{threshold}-{timespan}-v{version}",
+        "examples": [
+            "selloff-smallcap-10pct-5yr-v1",
+            "gap-largecap-5pct-3yr-v1",
+            "earnings-tech-1day-5yr-v2"
+        ]
+    }
+}
