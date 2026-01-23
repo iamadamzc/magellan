@@ -336,19 +336,16 @@ if st.session_state.last_results is not None:
         st.caption("News drives momentum - All candidates have recent news (24h filter)")
         
         if st.session_state.last_news is not None and not st.session_state.last_news.empty:
-            news_df = st.session_state.last_news
+            news_df = st.session_state.last_news.copy()
             
-            # Display as Streamlit dataframe (cleaner and more reliable)
+            # Display as Streamlit dataframe
             st.dataframe(
-                news_df[['Ticker', 'Verdict', 'Headline']],
+                news_df[['Ticker', 'Verdict', 'Headline', 'URL']],
                 column_config={
                     "Ticker": st.column_config.TextColumn("Ticker", width="small"),
                     "Verdict": st.column_config.TextColumn("Verdict", width="medium"),
-                    "Headline": st.column_config.LinkColumn(
-                        "Headline",
-                        display_text=".*",  # Show full headline text
-                        help="Click to open news article"
-                    ),
+                    "Headline": st.column_config.TextColumn("Headline", width="large"),
+                    "URL": st.column_config.LinkColumn("Link", width="small"),
                 },
                 use_container_width=True,
                 hide_index=True
