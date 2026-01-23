@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#00FF00"      # Bright Neon Green for buttons/sliders (Money color)
+backgroundColor = "#0E1117"   # Very dark grey/black (Standard Trading Dark Mode)
+secondaryBackgroundColor = "#262730" # Slightly lighter grey for Sidebar
+textColor = "#FAFAFA"         # Almost white for high readability
+font = "sans serif"
