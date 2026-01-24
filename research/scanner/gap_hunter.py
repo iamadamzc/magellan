@@ -47,7 +47,7 @@ class AlpacaScanner:
         self.MIN_DOLLAR_VOLUME = 2_000_000
         self.MIN_RVOL = 2.0
         self.MAX_FLOAT = 80_000_000
-        self.MIN_DAY_CHANGE_PCT = 0.02 # 2%
+        self.MIN_DAY_CHANGE_PCT = 0.01 # 1% (lowered from 2% to find more candidates)
         
         # Candidate tracking
         self.candidates = {}  # {symbol: {'data': row_dict, 'first_seen': datetime}}
@@ -94,10 +94,10 @@ class AlpacaScanner:
                     
                     # Hard Filter: Price & Dollar Volume
                     if self.MIN_PRICE <= price <= self.MAX_PRICE and dollar_vol >= self.MIN_DOLLAR_VOLUME:
-                        # Calculate % change from TODAY'S OPEN
+                        # Calculate % change from PREVIOUS CLOSE (to catch gaps)
                         daily_bar = snapshot.daily_bar
-                        open_price = daily_bar.open if daily_bar and daily_bar.open else price
-                        change_pct = (price - open_price) / open_price if open_price > 0 else 0
+                        prev_close = snapshot.previous_daily_bar.close if snapshot.previous_daily_bar else price
+                        change_pct = (price - prev_close) / prev_close if prev_close > 0 else 0
                         
                         if change_pct >= self.MIN_DAY_CHANGE_PCT:
                             candidates.append({
@@ -105,7 +105,7 @@ class AlpacaScanner:
                                 'Price': price,
                                 'Volume': vol,
                                 'DollarVol': dollar_vol,
-                                'Gap%': change_pct * 100, # Store as percentage
+                                'Gap%': change_pct * 100, # Store as percentage from prev close
                                 'Snapshot': snapshot
                             })
             except Exception as e:
