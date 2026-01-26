@@ -1,0 +1,19 @@
+======================================================================
+Traceback (most recent call last):
+VARIANT F: DAILY TREND HYSTERESIS BACKTEST
+======================================================================
+Symbol: SPY
+Period: 2024-01-14 to 2026-01-14
+Capital: $50,000.00
+Strategy: Schmidt Trigger (Hysteresis)
+Thresholds: Long Entry RSI > 55, Exit RSI < 45
+======================================================================
+
+[1/4] Fetching daily bars from Alpaca...
+[DEBUG] Fetching SPY via SIP feed...
+  File "A:\1\Magellan\test_daily_hysteresis.py", line 69, in <module>
+    print(f"\u2713 Fetched {len(bars)} daily bars")
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>

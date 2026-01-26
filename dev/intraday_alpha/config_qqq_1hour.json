@@ -1,0 +1,44 @@
+{
+    "strategy_name": "Intraday Alpha (1-Hour Momentum)",
+    "version": "1.8",
+    "deployment_date": "2026-01-24",
+    "status": "testing",
+    "symbols": [
+        "QQQ"
+    ],
+    "strategy_parameters": {
+        "QQQ": {
+            "interval": "1Hour",
+            "rsi_lookback": 14,
+            "sentry_gate": 0.0,
+            "rsi_wt": 1.0,
+            "vol_wt": 0.0,
+            "sent_wt": 0.0,
+            "position_cap_usd": 50000,
+            "strategy_type": "momentum",
+            "buy_threshold": 0.2,
+            "sell_threshold": 0.0,
+            "use_trend_filter": false
+        }
+    },
+    "account_info": {
+        "account_id": "PAPER_TRADING",
+        "initial_capital": 100000,
+        "paper_trading": true
+    },
+    "risk_management": {
+        "max_position_size_pct": 0.25,
+        "position_cap_enforcement": true,
+        "pdt_protection": true,
+        "min_equity_threshold": 25000
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "check_interval_seconds": 60
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "log_directory": "/home/ssm-user/magellan/logs"
+    }
+}

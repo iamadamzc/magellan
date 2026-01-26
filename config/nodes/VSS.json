@@ -1,0 +1,31 @@
+{
+    "ticker": "VSS",
+    "description": "Vanguard FTSE All-World ex-US Small-Cap ETF - Wavelet Multi-Resolution",
+    "timeframe": "5Min",
+    "alpha_weights": {
+        "rsi_14": 0.6,
+        "volume_zscore": 0.2,
+        "sentiment": 0.2
+    },
+    "sentry_gate": {
+        "enabled": true,
+        "type": "high_pass",
+        "threshold": 1.25,
+        "description": "Widened gate for international small-cap noise (60-min IC aligned)"
+    },
+    "ic_horizons": [
+        5,
+        15,
+        60
+    ],
+    "validation": {
+        "walk_forward_split": 0.70,
+        "horizon_bars": 15,
+        "min_hit_rate": 0.51
+    },
+    "stress_test": {
+        "days": 15,
+        "in_sample_days": 3,
+        "initial_capital": 50000.0
+    }
+}

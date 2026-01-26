@@ -1,0 +1,20 @@
+=========================================================
+ ADVANCED TUNING: FILTERS & OPTIMIZATION (2025 Data)
+=========================================================
+[DEBUG] Fetching TSLA via SIP feed...
+[DEBUG] Fetching NVDA via SIP feed...
+
+--- TSLA TUNING ---
+Config                         | Return   | Win Rate | Trades
+------------------------------------------------------------
+Baseline (RSI-14, 60/40)       |    41.5% |    47.5% |     98
+With ADX>20 (Trend Strength)   |     0.0% |     0.0% |      0
+With ADX>25 (Strong Trend)     |     0.0% |     0.0% |      0
+With SMA-50 (Trend Direction)  |    13.4% |    45.9% |     85
+
+--- NVDA TUNING ---
+Config                         | Return   | Win Rate | Trades
+------------------------------------------------------------
+Baseline (RSI-28, 55/45)       |    16.2% |    48.3% |     75
+With ADX>20 (Trend Strength)   |     0.0% |     0.0% |      0
+With SMA-200 (Major Trend)     |   -10.6% |    48.4% |     59

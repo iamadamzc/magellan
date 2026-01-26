@@ -1,0 +1,33 @@
+================================================================================
+4-YEAR COMPARATIVE BACKTEST: ORIGINAL vs NO-SENTIMENT
+Period: 2022-01-01 to 2026-01-24 (Daily Bars)
+================================================================================
+
+================================================================================
+SYMBOL: SPY
+================================================================================
+
+[SPY] Loading cached daily bars...
+  Loaded: SPY_1day_20220101_20231231.parquet (510 bars)
+  Loaded: SPY_1day_20240101_20251231.parquet (542 bars)
+  Loaded: SPY_1day_20240101_20251231.parquet (542 bars)
+  Loaded: SPY_1day_20240601_20260118.parquet (441 bars)
+[SPY] Total bars loaded: 1066
+[SPY] Date range: 2022-01-03 00:00:00 to 2026-01-17 00:00:00
+[SPY] Calculating features...
+[SPY] Bars after warmup: 1046
+
+[SPY] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[SPY] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[SPY] RESULTS COMPARISON
+------------------------------------------------------------
+Metric                                ORIGINAL    NO-SENTIMENT
+------------------------------------------------------------
+Initial Capital                $    100,000.00 $    100,000.00
+Final Equity                   $     23,257.07 $     22,573.54
+Total Return                           -76.74%         -77.43%
+Avg Hit Rate                             46.7%           46.9%
+Winning Periods                              9              10
+Total Periods                               49              49
+------------------------------------------------------------

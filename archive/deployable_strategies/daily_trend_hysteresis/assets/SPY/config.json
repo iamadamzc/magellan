@@ -1,0 +1,11 @@
+{
+    "symbol": "SPY",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 58,
+        "rsi_lower": 42
+    },
+    "deployment_status": "active"
+}

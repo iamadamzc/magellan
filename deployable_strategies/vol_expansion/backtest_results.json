@@ -1,0 +1,12 @@
+{
+  "FULL": {
+    "SPY": {
+      "symbol": "SPY",
+      "total_trades": 18327,
+      "hit_rate": 0.42592895727614993,
+      "expectancy": -0.002009602141030631,
+      "avg_win": 1.100048586278246,
+      "avg_loss": -0.8196758143642865,
+      "total_pnl": -101.94184058796685,
+      "regime_breakdown": {
+        

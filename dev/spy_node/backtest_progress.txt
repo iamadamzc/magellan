@@ -1,0 +1,45 @@
+=== BACKTEST STARTED: 2026-01-25 08:46:34.010114 ===
+Period: 2024-07-01 to 2024-12-31
+Parameters: RSI=10, Vol=10, Weights=0.7/0.3, Horizon=20
+============================================================
+08:46:34 - Starting parallel backtest across 3 symbols...
+08:46:34 - SPY: Starting backtest
+08:46:34 - QQQ: Starting backtest
+08:46:34 - IWM: Starting backtest
+08:46:35 - IWM: Loaded 94,810 bars (2024-07-01 to 2024-12-31)
+08:46:35 - IWM: Features calculated, 94,800 bars after warmup
+08:46:35 - SPY: Loaded 100,089 bars (2024-07-01 to 2024-12-31)
+08:46:35 - QQQ: Loaded 106,924 bars (2024-07-01 to 2024-12-31)
+08:46:35 - IWM: 136 trading days
+08:46:35 - SPY: Features calculated, 100,079 bars after warmup
+08:46:35 - QQQ: Features calculated, 106,914 bars after warmup
+08:46:35 - SPY: 136 trading days
+08:46:35 - QQQ: 136 trading days
+08:46:35 - IWM: Day 0/133, 695 trades so far
+08:46:35 - SPY: Day 0/133, 678 trades so far
+08:46:35 - QQQ: Day 0/133, 749 trades so far
+08:46:36 - SPY: Day 20/133, 16187 trades so far
+08:46:36 - IWM: Day 20/133, 16554 trades so far
+08:46:36 - QQQ: Day 20/133, 17492 trades so far
+08:46:37 - IWM: Day 40/133, 30819 trades so far
+08:46:37 - SPY: Day 40/133, 31739 trades so far
+08:46:37 - QQQ: Day 40/133, 34059 trades so far
+08:46:38 - IWM: Day 60/133, 44881 trades so far
+08:46:38 - SPY: Day 60/133, 47104 trades so far
+08:46:39 - QQQ: Day 60/133, 50537 trades so far
+08:46:39 - IWM: Day 80/133, 58649 trades so far
+08:46:40 - SPY: Day 80/133, 62319 trades so far
+08:46:40 - QQQ: Day 80/133, 66732 trades so far
+08:46:41 - IWM: Day 100/133, 72046 trades so far
+08:46:41 - SPY: Day 100/133, 76482 trades so far
+08:46:41 - QQQ: Day 100/133, 81535 trades so far
+08:46:42 - IWM: Day 120/133, 83200 trades so far
+08:46:42 - SPY: Day 120/133, 87843 trades so far
+08:46:42 - IWM: Complete - 90127 total trades
+08:46:42 - QQQ: Day 120/133, 94010 trades so far
+08:46:43 - IWM: Received 90127 trades from worker
+08:46:43 - SPY: Complete - 95245 total trades
+08:46:43 - SPY: Received 95245 trades from worker
+08:46:43 - QQQ: Complete - 101981 total trades
+08:46:43 - QQQ: Received 101981 trades from worker
+08:46:45 - === COMPLETE: 287353 total trades saved to all_trades.csv ===

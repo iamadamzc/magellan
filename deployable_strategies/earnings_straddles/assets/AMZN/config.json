@@ -1,0 +1,9 @@
+{
+    "symbol": "AMZN",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "paper_trading",
+    "notes": "Sharpe 1.12 in Baseline"
+}

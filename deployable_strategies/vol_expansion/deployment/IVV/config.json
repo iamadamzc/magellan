@@ -1,0 +1,40 @@
+{
+    "symbol": "IVV",
+    "strategy": "Workhorse",
+    "status": "DEPLOYMENT_READY",
+    "priority": 1,
+    "parameters": {
+        "cluster_id": 0,
+        "trend_filter": false,
+        "target_atr": 3.0,
+        "stop_atr": 1.0,
+        "time_stop_bars": 16,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 75.62,
+        "trades": 237,
+        "win_rate": 0.38,
+        "expectancy_r": 0.253,
+        "starting_capital": 25000,
+        "ending_capital": 43905,
+        "max_drawdown_estimated": "~15%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 0 signal fires",
+        "exit_target": "Close price + (3.0 × ATR20)",
+        "exit_stop": "Close price - (1.0 × ATR20)",
+        "exit_time": "Close position after 16 bars (4 hours) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "notes": [
+        "IVV tracks S&P 500 (same as SPY but different liquidity profile)",
+        "Cluster 0 is optimal - NOT Cluster 7 like SPY",
+        "16-bar time stop outperformed 8-bar baseline by +30%",
+        "3:1 R:R outperformed 2:1 baseline",
+        "NO trend filter - improves performance"
+    ]
+}

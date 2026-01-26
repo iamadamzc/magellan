@@ -1,0 +1,147 @@
+======================================================================
+15-MINUTE 'DIP BUYER' SWING STRATEGY VALIDATION
+======================================================================
+
+Loaded strategy thresholds from research
+
+Loading SPY data...
+  1-min bars: 837,967
+  15-min bars: 26,460
+
+Total 15-min bars: 26,460
+Date range: 2022-01-03 09:30:00 to 2026-01-23 15:45:00
+
+------------------------------------------------------------
+Running: CONFIG A: RAW BASELINE
+------------------------------------------------------------
+  Signals: 234 (0.9% of bars)
+
+============================================================
+RESULTS: CONFIG A: RAW BASELINE
+============================================================
+
+--- PERFORMANCE ---
+Total Trades:     234
+Win Rate:         33.8%
+Avg Win:          1.847R
+Avg Loss:         -1.018R
+NET EXPECTANCY:   -0.051R
+
+--- P&L ---
+Total P&L:        $-6.35
+Avg P&L/Trade:    $-0.03
+Max Drawdown:     $-23.25
+
+--- FREQUENCY ---
+Signal Frequency: 0.9%
+Trades/Day:       0.2
+Trades/Week:      1
+
+--- RISK ---
+Max Consec Loss:  11
+
+--- EXIT BREAKDOWN ---
+  TARGET  :    67 | Win Rate: 100.0%
+  STOP    :   153 | Win Rate: 0.0%
+  TIME    :    14 | Win Rate: 85.7%
+
+------------------------------------------------------------
+Running: CONFIG B: TREND FILTER (Close > SMA50)
+------------------------------------------------------------
+  Signals: 103 (0.4% of bars)
+
+============================================================
+RESULTS: CONFIG B: TREND FILTER (Close > SMA50)
+============================================================
+
+--- PERFORMANCE ---
+Total Trades:     103
+Win Rate:         41.7%
+Avg Win:          1.829R
+Avg Loss:         -1.029R
+NET EXPECTANCY:   0.164R
+
+--- P&L ---
+Total P&L:        $9.41
+Avg P&L/Trade:    $0.09
+Max Drawdown:     $-10.44
+
+--- FREQUENCY ---
+Signal Frequency: 0.4%
+Trades/Day:       0.1
+Trades/Week:      1
+
+--- RISK ---
+Max Consec Loss:  7
+
+--- EXIT BREAKDOWN ---
+  TARGET  :    36 | Win Rate: 100.0%
+  STOP    :    60 | Win Rate: 0.0%
+  TIME    :     7 | Win Rate: 100.0%
+
+------------------------------------------------------------
+Running: CONFIG C: ELITE FILTER (Tight Thresholds)
+------------------------------------------------------------
+  Signals: 20 (0.1% of bars)
+
+============================================================
+RESULTS: CONFIG C: ELITE FILTER (Tight Thresholds)
+============================================================
+
+--- PERFORMANCE ---
+Total Trades:     20
+Win Rate:         25.0%
+Avg Win:          1.972R
+Avg Loss:         -1.027R
+NET EXPECTANCY:   -0.277R
+
+--- P&L ---
+Total P&L:        $-6.54
+Avg P&L/Trade:    $-0.33
+Max Drawdown:     $-10.07
+
+--- FREQUENCY ---
+Signal Frequency: 0.1%
+Trades/Day:       0.0
+Trades/Week:      0
+
+--- RISK ---
+Max Consec Loss:  10
+
+--- EXIT BREAKDOWN ---
+  TARGET  :     5 | Win Rate: 100.0%
+  STOP    :    15 | Win Rate: 0.0%
+  TIME    :     0 | Win Rate: 0.0%
+
+======================================================================
+FINAL COMPARISON
+======================================================================
+
+Config                              Trades     Win%     Expect.    Trades/Wk 
+---------------------------------------------------------------------------
+RAW BASELINE                        234        33.8%    -0.051R     1
+TREND FILTER (Close > SMA50)        103        41.7%    0.164R     1
+ELITE FILTER (Tight Thresholds      20         25.0%    -0.277R     0
+---------------------------------------------------------------------------
+
+*** RECOMMENDED: CONFIG B: TREND FILTER (Close > SMA50) ***
+    Win Rate: 41.7%
+    Expectancy: 0.164R
+    Trades/Week: 1
+    Max Consecutive Losses: 7
+
+======================================================================
+DEPLOYMENT GUIDANCE
+======================================================================
+
+Based on the analysis:
+
+1. CONFIG A (Raw) shows if the base strategy works after slippage
+2. CONFIG B (Trend Filter) reduces churn by only trading in uptrends  
+3. CONFIG C (Elite) takes only the highest-conviction signals
+
+NEXT STEPS:
+- If all configs are profitable, start with CONFIG B (balance of frequency + edge)
+- Paper trade for 2 weeks to verify execution
+- Scale position size based on max consecutive losses
+

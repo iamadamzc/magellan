@@ -1,0 +1,9 @@
+{
+    "symbol": "AAPL",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "secondary",
+    "notes": "Sharpe 2.90 in Baseline Validation (Lower in recent check)"
+}

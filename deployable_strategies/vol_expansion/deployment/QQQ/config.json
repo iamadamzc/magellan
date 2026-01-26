@@ -1,0 +1,40 @@
+{
+    "symbol": "QQQ",
+    "strategy": "Workhorse",
+    "status": "DEPLOYMENT_READY",
+    "priority": 2,
+    "parameters": {
+        "cluster_id": 4,
+        "trend_filter": false,
+        "target_atr": 3.0,
+        "stop_atr": 1.0,
+        "time_stop_bars": 8,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 33.46,
+        "trades": 391,
+        "win_rate": 0.391,
+        "expectancy_r": 0.084,
+        "starting_capital": 25000,
+        "ending_capital": 33365,
+        "max_drawdown_estimated": "~12%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 4 signal fires",
+        "exit_target": "Close price + (3.0 × ATR20)",
+        "exit_stop": "Close price - (1.0 × ATR20)",
+        "exit_time": "Close position after 8 bars (2 hours) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "notes": [
+        "QQQ tracks Nasdaq 100 (tech-heavy)",
+        "Cluster 4 is optimal - provides tech sector exposure",
+        "8-bar time stop is optimal",
+        "3:1 R:R outperformed 2:1 baseline significantly",
+        "NO trend filter - hurts performance on QQQ"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "strategy_name": "Gold Trend-Following",
+    "version": "1.0",
+    "asset": "GCUSD (Gold Spot) / MGC (Micro Gold Futures)",
+    "parameters": {
+        "rsi_period": 35,
+        "entry_band": 48,
+        "exit_band": 40,
+        "leverage": 6
+    },
+    "account": {
+        "initial_capital": 20000,
+        "contract": "MGC",
+        "contract_size": "10 oz",
+        "margin_per_contract": "~$1,500"
+    },
+    "backtest_results": {
+        "period": "2024-01-01 to 2025-01-24",
+        "total_trades": 2,
+        "win_rate": 100,
+        "total_pnl": 56000,
+        "total_return_pct": 280,
+        "sharpe_ratio": 2.39,
+        "max_drawdown_pct": -27
+    },
+    "risk_management": {
+        "max_leverage": 6,
+        "transaction_cost_bps": 5,
+        "position_type": "long_only"
+    },
+    "notes": [
+        "Position trading strategy - holds for weeks/months",
+        "2-3 trades per year, not daily trading",
+        "Optimized for bull markets",
+        "PDT rules don't apply (futures exempt)"
+    ]
+}

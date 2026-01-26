@@ -1,0 +1,139 @@
+{
+    "account_info": {
+        "account_id": "PA3A2699UCJM",
+        "account_name": "magellan-daily-trend",
+        "initial_capital": 100000,
+        "margin_multiplier": 4,
+        "buying_power": 400000
+    },
+    "strategy": {
+        "name": "Daily Trend Hysteresis",
+        "version": "1.0-rsf",
+        "type": "daily_trend_following",
+        "frequency": "low",
+        "expected_trades_per_month": 7
+    },
+    "symbols": [
+        "GOOGL",
+        "GLD",
+        "META",
+        "AAPL",
+        "QQQ",
+        "SPY",
+        "MSFT",
+        "TSLA",
+        "AMZN",
+        "IWM"
+    ],
+    "symbol_parameters": {
+        "GOOGL": {
+            "rsi_period": 28,
+            "hysteresis_upper": 55,
+            "hysteresis_lower": 45,
+            "allocation": 10000
+        },
+        "GLD": {
+            "rsi_period": 21,
+            "hysteresis_upper": 65,
+            "hysteresis_lower": 35,
+            "allocation": 10000
+        },
+        "META": {
+            "rsi_period": 28,
+            "hysteresis_upper": 55,
+            "hysteresis_lower": 45,
+            "allocation": 10000
+        },
+        "AAPL": {
+            "rsi_period": 28,
+            "hysteresis_upper": 65,
+            "hysteresis_lower": 35,
+            "allocation": 10000
+        },
+        "QQQ": {
+            "rsi_period": 21,
+            "hysteresis_upper": 60,
+            "hysteresis_lower": 40,
+            "allocation": 10000
+        },
+        "SPY": {
+            "rsi_period": 21,
+            "hysteresis_upper": 58,
+            "hysteresis_lower": 42,
+            "allocation": 10000
+        },
+        "MSFT": {
+            "rsi_period": 21,
+            "hysteresis_upper": 58,
+            "hysteresis_lower": 42,
+            "allocation": 10000
+        },
+        "TSLA": {
+            "rsi_period": 28,
+            "hysteresis_upper": 58,
+            "hysteresis_lower": 42,
+            "allocation": 10000
+        },
+        "AMZN": {
+            "rsi_period": 21,
+            "hysteresis_upper": 55,
+            "hysteresis_lower": 45,
+            "allocation": 10000
+        },
+        "IWM": {
+            "rsi_period": 28,
+            "hysteresis_upper": 65,
+            "hysteresis_lower": 35,
+            "allocation": 10000
+        }
+    },
+    "data_requirements": {
+        "timeframe": "1Day",
+        "premarket": false,
+        "after_hours": false,
+        "warmup_bars": 84
+    },
+    "trading_hours": {
+        "signal_calculation_time": "16:05:00",
+        "execution_time": "09:30:00",
+        "timezone": "America/New_York",
+        "trading_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI"
+        ]
+    },
+    "risk_management": {
+        "max_position_per_asset_dollars": 10000,
+        "max_daily_loss_pct": 0.10,
+        "max_daily_loss_dollars": 10000,
+        "max_open_positions": 10,
+        "emergency_stop_conditions": {
+            "consecutive_losing_days": 3,
+            "win_rate_below": 0.35,
+            "rolling_window_days": 30,
+            "drawdown_threshold_pct": 0.20
+        }
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "extended_hours": false,
+        "execution_delay_seconds": 60,
+        "friction_bps": 1.5
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "cloudwatch_log_group": "/magellan/daily-trend",
+        "health_check_interval_seconds": 3600,
+        "report_interval_seconds": 86400,
+        "alert_on_loss_dollars": 5000
+    },
+    "ssm_parameters": {
+        "api_key_path": "/magellan/alpaca/PA3A2699UCJM/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3A2699UCJM/API_SECRET",
+        "base_url": "https://paper-api.alpaca.markets"
+    }
+}

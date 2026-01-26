@@ -1,0 +1,1003 @@
+STRESS TEST REPORT: NVDA
+============================================================
+
+[Window 1/520] IS: 01/15-01/17 | OOS: 01/18
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.0% | OOS HR: 45.3% | WFE: 0.93
+  P&L: $-901.39 (-1.80%) | [LOSS]
+
+[Window 2/520] IS: 01/16-01/18 | OOS: 01/19
+  IS HR: 49.0% | OOS HR: 49.1% | WFE: 1.00
+  P&L: $-964.95 (-1.97%) | [LOSS]
+
+[Window 3/520] IS: 01/17-01/19 | OOS: 01/22
+  IS HR: 49.0% | OOS HR: 47.5% | WFE: 0.97
+  P&L: $-1,068.34 (-2.22%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 1
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 0.80
+
+[Window 4/520] IS: 01/18-01/22 | OOS: 01/23
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.7% | OOS HR: 45.5% | WFE: 0.94
+  P&L: $-591.41 (-1.26%) | [LOSS]
+
+[Window 5/520] IS: 01/19-01/23 | OOS: 01/24
+  IS HR: 48.7% | OOS HR: 48.9% | WFE: 1.00
+  P&L: $-341.46 (-0.73%) | [LOSS]
+
+[Window 6/520] IS: 01/22-01/24 | OOS: 01/25
+  IS HR: 48.7% | OOS HR: 46.7% | WFE: 0.96
+  P&L: $-1,434.73 (-3.11%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 2
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 0.91
+
+[Window 7/520] IS: 01/23-01/25 | OOS: 01/26
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.5% | OOS HR: 49.3% | WFE: 1.02
+  P&L: $-2,559.91 (-5.73%) | [LOSS]
+
+[Window 8/520] IS: 01/24-01/26 | OOS: 01/29
+  IS HR: 48.5% | OOS HR: 49.9% | WFE: 1.03
+  P&L: $-984.35 (-2.34%) | [LOSS]
+
+[Window 9/520] IS: 01/25-01/29 | OOS: 01/30
+  IS HR: 48.5% | OOS HR: 50.0% | WFE: 1.03
+  P&L: $-301.34 (-0.73%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 3
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.28
+  Sharpe-WFE: 0.98
+
+[Window 10/520] IS: 01/26-01/30 | OOS: 01/31
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.8% | OOS HR: 46.7% | WFE: 0.92
+  P&L: $-687.42 (-1.68%) | [LOSS]
+
+[Window 11/520] IS: 01/29-01/31 | OOS: 02/01
+  IS HR: 50.8% | OOS HR: 48.4% | WFE: 0.95
+  P&L: $-774.03 (-1.93%) | [LOSS]
+
+[Window 12/520] IS: 01/30-02/01 | OOS: 02/02
+  IS HR: 50.8% | OOS HR: 49.6% | WFE: 0.98
+  P&L: $-84.03 (-0.21%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 4
+  Profit-WFE: -0.12
+  Drawdown-WFE: 0.17
+  Sharpe-WFE: 0.81
+
+[Window 13/520] IS: 01/31-02/02 | OOS: 02/05
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.5% | OOS HR: 46.3% | WFE: 0.95
+  P&L: $-75.65 (-0.19%) | [LOSS]
+
+[Window 14/520] IS: 02/01-02/05 | OOS: 02/06
+  IS HR: 48.5% | OOS HR: 50.2% | WFE: 1.03
+  P&L: $+285.17 (+0.73%) | [WIN]
+
+[Window 15/520] IS: 02/02-02/06 | OOS: 02/07
+  IS HR: 48.5% | OOS HR: 46.9% | WFE: 0.97
+  P&L: $-807.50 (-2.04%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 5
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 0.71
+
+[Window 16/520] IS: 02/05-02/07 | OOS: 02/08
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.0% | OOS HR: 49.5% | WFE: 1.01
+  P&L: $+22.87 (+0.06%) | [WIN]
+
+[Window 17/520] IS: 02/06-02/08 | OOS: 02/09
+  IS HR: 49.0% | OOS HR: 48.8% | WFE: 1.00
+  P&L: $-641.96 (-1.66%) | [LOSS]
+
+[Window 18/520] IS: 02/07-02/09 | OOS: 02/12
+  IS HR: 49.0% | OOS HR: 48.1% | WFE: 0.98
+  P&L: $-1,072.59 (-2.82%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 6
+  Profit-WFE: -0.35
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 2.57
+
+[Window 19/520] IS: 02/08-02/12 | OOS: 02/13
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.3% | OOS HR: 50.9% | WFE: 1.03
+  P&L: $+446.33 (+1.21%) | [WIN]
+
+[Window 20/520] IS: 02/09-02/13 | OOS: 02/14
+  IS HR: 49.3% | OOS HR: 49.3% | WFE: 1.00
+  P&L: $-216.23 (-0.58%) | [LOSS]
+
+[Window 21/520] IS: 02/12-02/14 | OOS: 02/15
+  IS HR: 49.3% | OOS HR: 47.1% | WFE: 0.95
+  P&L: $-1,019.13 (-2.74%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 7
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 0.84
+
+[Window 22/520] IS: 02/13-02/15 | OOS: 02/16
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.1% | OOS HR: 47.5% | WFE: 0.95
+  P&L: $-369.96 (-1.02%) | [LOSS]
+
+[Window 23/520] IS: 02/14-02/16 | OOS: 02/19
+  [SKIP] Insufficient bars: IS=2605, OOS=0
+
+[Window 24/520] IS: 02/15-02/19 | OOS: 02/20
+  IS HR: 50.1% | OOS HR: 52.5% | WFE: 1.05
+  P&L: $-2,127.10 (-5.93%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 8
+  Profit-WFE: -0.52
+  Drawdown-WFE: 0.65
+  Sharpe-WFE: 1.41
+
+[Window 25/520] IS: 02/16-02/20 | OOS: 02/21
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.2% | OOS HR: 50.6% | WFE: 1.03
+  P&L: $+543.71 (+1.61%) | [WIN]
+
+[Window 26/520] IS: 02/19-02/21 | OOS: 02/22
+  IS HR: 49.2% | OOS HR: 51.6% | WFE: 1.05
+  P&L: $-295.36 (-0.86%) | [LOSS]
+
+[Window 27/520] IS: 02/20-02/22 | OOS: 02/23
+  IS HR: 49.2% | OOS HR: 50.8% | WFE: 1.03
+  P&L: $+29.96 (+0.09%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 9
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 0.01
+
+[Window 28/520] IS: 02/21-02/23 | OOS: 02/26
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.5% | OOS HR: 48.4% | WFE: 0.96
+  P&L: $-446.98 (-1.31%) | [LOSS]
+
+[Window 29/520] IS: 02/22-02/26 | OOS: 02/27
+  IS HR: 50.5% | OOS HR: 49.1% | WFE: 0.97
+  P&L: $-662.93 (-1.98%) | [LOSS]
+
+[Window 30/520] IS: 02/23-02/27 | OOS: 02/28
+  IS HR: 50.5% | OOS HR: 51.1% | WFE: 1.01
+  P&L: $-309.15 (-0.94%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 10
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: 1.47
+
+[Window 31/520] IS: 02/26-02/28 | OOS: 02/29
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.3% | OOS HR: 48.8% | WFE: 0.97
+  P&L: $-927.82 (-2.85%) | [LOSS]
+
+[Window 32/520] IS: 02/27-02/29 | OOS: 03/01
+  IS HR: 50.3% | OOS HR: 50.3% | WFE: 1.00
+  P&L: $-505.81 (-1.60%) | [LOSS]
+
+[Window 33/520] IS: 02/28-03/01 | OOS: 03/04
+  IS HR: 50.3% | OOS HR: 46.9% | WFE: 0.93
+  P&L: $-688.60 (-2.21%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 11
+  Profit-WFE: -0.18
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 1.05
+
+[Window 34/520] IS: 02/29-03/04 | OOS: 03/05
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.6% | OOS HR: 48.3% | WFE: 0.97
+  P&L: $-176.47 (-0.58%) | [LOSS]
+
+[Window 35/520] IS: 03/01-03/05 | OOS: 03/06
+  IS HR: 49.6% | OOS HR: 49.0% | WFE: 0.99
+  P&L: $-862.35 (-2.85%) | [LOSS]
+
+[Window 36/520] IS: 03/04-03/06 | OOS: 03/07
+  IS HR: 49.6% | OOS HR: 48.1% | WFE: 0.97
+  P&L: $-414.37 (-1.41%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 12
+  Profit-WFE: -0.13
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.66
+
+[Window 37/520] IS: 03/05-03/07 | OOS: 03/08
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.6% | OOS HR: 50.9% | WFE: 1.05
+  P&L: $-601.97 (-2.07%) | [LOSS]
+
+[Window 38/520] IS: 03/06-03/08 | OOS: 03/11
+  IS HR: 48.6% | OOS HR: 49.9% | WFE: 1.03
+  P&L: $-883.26 (-3.11%) | [LOSS]
+
+[Window 39/520] IS: 03/07-03/11 | OOS: 03/12
+  IS HR: 48.6% | OOS HR: 51.2% | WFE: 1.05
+  P&L: $-812.10 (-2.95%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 13
+  Profit-WFE: -0.30
+  Drawdown-WFE: 0.32
+  Sharpe-WFE: 1.73
+
+[Window 40/520] IS: 03/08-03/12 | OOS: 03/13
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 51.4% | OOS HR: 49.0% | WFE: 0.95
+  P&L: $-1,290.43 (-4.83%) | [LOSS]
+
+[Window 41/520] IS: 03/11-03/13 | OOS: 03/14
+  IS HR: 51.4% | OOS HR: 50.4% | WFE: 0.98
+  P&L: $-1,114.93 (-4.38%) | [LOSS]
+
+[Window 42/520] IS: 03/12-03/14 | OOS: 03/15
+  IS HR: 51.4% | OOS HR: 48.9% | WFE: 0.95
+  P&L: $-1,163.83 (-4.79%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 14
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.47
+
+[Window 43/520] IS: 03/13-03/15 | OOS: 03/18
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.5% | OOS HR: 51.1% | WFE: 1.03
+  P&L: $-305.26 (-1.32%) | [LOSS]
+
+[Window 44/520] IS: 03/14-03/18 | OOS: 03/19
+  IS HR: 49.5% | OOS HR: 48.7% | WFE: 0.98
+  P&L: $+73.98 (+0.32%) | [WIN]
+
+[Window 45/520] IS: 03/15-03/19 | OOS: 03/20
+  IS HR: 49.5% | OOS HR: 51.2% | WFE: 1.03
+  P&L: $-570.84 (-2.49%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 15
+  Profit-WFE: -0.09
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: 0.64
+
+[Window 46/520] IS: 03/18-03/20 | OOS: 03/21
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.9% | OOS HR: 49.5% | WFE: 0.99
+  P&L: $-469.16 (-2.10%) | [LOSS]
+
+[Window 47/520] IS: 03/19-03/21 | OOS: 03/22
+  IS HR: 49.9% | OOS HR: 48.0% | WFE: 0.96
+  P&L: $-344.92 (-1.58%) | [LOSS]
+
+[Window 48/520] IS: 03/20-03/22 | OOS: 03/25
+  IS HR: 49.9% | OOS HR: 48.4% | WFE: 0.97
+  P&L: $-718.00 (-3.33%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 16
+  Profit-WFE: -0.32
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 2.21
+
+[Window 49/520] IS: 03/21-03/25 | OOS: 03/26
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.9% | OOS HR: 50.1% | WFE: 1.05
+  P&L: $-220.33 (-1.06%) | [LOSS]
+
+[Window 50/520] IS: 03/22-03/26 | OOS: 03/27
+  IS HR: 47.9% | OOS HR: 45.7% | WFE: 0.95
+  P&L: $-305.49 (-1.48%) | [LOSS]
+
+[Window 51/520] IS: 03/25-03/27 | OOS: 03/28
+  IS HR: 47.9% | OOS HR: 50.3% | WFE: 1.05
+  P&L: $-608.03 (-3.00%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 17
+  Profit-WFE: -0.47
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 3.20
+
+[Window 52/520] IS: 03/26-03/28 | OOS: 03/29
+  [SKIP] Insufficient bars: IS=2477, OOS=0
+
+[Window 53/520] IS: 03/27-03/29 | OOS: 04/01
+  IS HR: 47.9% | OOS HR: 46.6% | WFE: 0.97
+  P&L: $-394.53 (-2.00%) | [LOSS]
+
+[Window 54/520] IS: 03/28-04/01 | OOS: 04/02
+  IS HR: 47.9% | OOS HR: 49.7% | WFE: 1.04
+  P&L: $-340.08 (-1.76%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 18
+  Profit-WFE: -0.37
+  Drawdown-WFE: 0.29
+  Sharpe-WFE: 1.89
+
+[Window 55/520] IS: 03/29-04/02 | OOS: 04/03
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.4% | OOS HR: 50.1% | WFE: 1.01
+  P&L: $-164.36 (-0.87%) | [LOSS]
+
+[Window 56/520] IS: 04/01-04/03 | OOS: 04/04
+  IS HR: 49.4% | OOS HR: 48.8% | WFE: 0.99
+  P&L: $+418.43 (+2.23%) | [WIN]
+
+[Window 57/520] IS: 04/02-04/04 | OOS: 04/05
+  IS HR: 49.4% | OOS HR: 46.1% | WFE: 0.93
+  P&L: $-180.08 (-0.94%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 19
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.45
+  Sharpe-WFE: 0.23
+
+[Window 58/520] IS: 04/03-04/05 | OOS: 04/08
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.8% | OOS HR: 48.3% | WFE: 0.97
+  P&L: $-332.03 (-1.75%) | [LOSS]
+
+[Window 59/520] IS: 04/04-04/08 | OOS: 04/09
+  IS HR: 49.8% | OOS HR: 50.1% | WFE: 1.01
+  P&L: $+187.19 (+1.00%) | [WIN]
+
+[Window 60/520] IS: 04/05-04/09 | OOS: 04/10
+  IS HR: 49.8% | OOS HR: 47.0% | WFE: 0.94
+  P&L: $+62.52 (+0.33%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 20
+  Profit-WFE: -0.02
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 0.20
+
+[Window 61/520] IS: 04/08-04/10 | OOS: 04/11
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.3% | OOS HR: 50.8% | WFE: 1.03
+  P&L: $-311.03 (-1.64%) | [LOSS]
+
+[Window 62/520] IS: 04/09-04/11 | OOS: 04/12
+  IS HR: 49.3% | OOS HR: 49.7% | WFE: 1.01
+  P&L: $-285.38 (-1.53%) | [LOSS]
+
+[Window 63/520] IS: 04/10-04/12 | OOS: 04/15
+  IS HR: 49.3% | OOS HR: 51.4% | WFE: 1.04
+  P&L: $-270.45 (-1.47%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 21
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 1.11
+
+[Window 64/520] IS: 04/11-04/15 | OOS: 04/16
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.8% | OOS HR: 51.3% | WFE: 1.01
+  P&L: $-300.94 (-1.67%) | [LOSS]
+
+[Window 65/520] IS: 04/12-04/16 | OOS: 04/17
+  IS HR: 50.8% | OOS HR: 51.5% | WFE: 1.01
+  P&L: $-745.36 (-4.19%) | [LOSS]
+
+[Window 66/520] IS: 04/15-04/17 | OOS: 04/18
+  IS HR: 50.8% | OOS HR: 52.0% | WFE: 1.02
+  P&L: $-702.99 (-4.13%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 22
+  Profit-WFE: -0.38
+  Drawdown-WFE: 0.29
+  Sharpe-WFE: 1.92
+
+[Window 67/520] IS: 04/16-04/18 | OOS: 04/19
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.1% | OOS HR: 47.6% | WFE: 0.95
+  P&L: $+64.55 (+0.40%) | [WIN]
+
+[Window 68/520] IS: 04/17-04/19 | OOS: 04/22
+  IS HR: 50.1% | OOS HR: 50.7% | WFE: 1.01
+  P&L: $-438.76 (-2.68%) | [LOSS]
+
+[Window 69/520] IS: 04/18-04/22 | OOS: 04/23
+  IS HR: 50.1% | OOS HR: 49.8% | WFE: 0.99
+  P&L: $-516.41 (-3.24%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 23
+  Profit-WFE: -0.19
+  Drawdown-WFE: 0.29
+  Sharpe-WFE: 1.19
+
+[Window 70/520] IS: 04/19-04/23 | OOS: 04/24
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.5% | OOS HR: 48.3% | WFE: 0.96
+  P&L: $-441.97 (-2.86%) | [LOSS]
+
+[Window 71/520] IS: 04/22-04/24 | OOS: 04/25
+  IS HR: 50.5% | OOS HR: 46.8% | WFE: 0.93
+  P&L: $+462.70 (+3.09%) | [WIN]
+
+[Window 72/520] IS: 04/23-04/25 | OOS: 04/26
+  IS HR: 50.5% | OOS HR: 47.8% | WFE: 0.95
+  P&L: $-692.45 (-4.48%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 24
+  Profit-WFE: -0.11
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 0.83
+
+[Window 73/520] IS: 04/24-04/26 | OOS: 04/29
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.4% | OOS HR: 47.0% | WFE: 0.95
+  P&L: $-335.80 (-2.28%) | [LOSS]
+
+[Window 74/520] IS: 04/25-04/29 | OOS: 04/30
+  IS HR: 49.4% | OOS HR: 48.2% | WFE: 0.98
+  P&L: $-705.25 (-4.89%) | [LOSS]
+
+[Window 75/520] IS: 04/26-04/30 | OOS: 05/01
+  IS HR: 49.4% | OOS HR: 48.4% | WFE: 0.98
+  P&L: $+182.46 (+1.33%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 25
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.27
+  Sharpe-WFE: 1.05
+
+[Window 76/520] IS: 04/29-05/01 | OOS: 05/02
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.4% | OOS HR: 48.1% | WFE: 0.97
+  P&L: $-131.08 (-0.94%) | [LOSS]
+
+[Window 77/520] IS: 04/30-05/02 | OOS: 05/03
+  IS HR: 49.4% | OOS HR: 46.7% | WFE: 0.95
+  P&L: $-360.52 (-2.62%) | [LOSS]
+
+[Window 78/520] IS: 05/01-05/03 | OOS: 05/06
+  IS HR: 49.4% | OOS HR: 48.5% | WFE: 0.98
+  P&L: $-342.72 (-2.56%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 26
+  Profit-WFE: -0.21
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 1.88
+
+[Window 79/520] IS: 05/02-05/06 | OOS: 05/07
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.3% | OOS HR: 48.8% | WFE: 0.99
+  P&L: $-51.17 (-0.39%) | [LOSS]
+
+[Window 80/520] IS: 05/03-05/07 | OOS: 05/08
+  IS HR: 49.3% | OOS HR: 48.5% | WFE: 0.98
+  P&L: $-326.20 (-2.51%) | [LOSS]
+
+[Window 81/520] IS: 05/06-05/08 | OOS: 05/09
+  IS HR: 49.3% | OOS HR: 48.7% | WFE: 0.99
+  P&L: $-159.18 (-1.25%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 27
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.28
+  Sharpe-WFE: 1.22
+
+[Window 82/520] IS: 05/07-05/09 | OOS: 05/10
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.9% | OOS HR: 49.0% | WFE: 1.00
+  P&L: $-198.19 (-1.58%) | [LOSS]
+
+[Window 83/520] IS: 05/08-05/10 | OOS: 05/13
+  IS HR: 48.9% | OOS HR: 50.8% | WFE: 1.04
+  P&L: $-430.10 (-3.49%) | [LOSS]
+
+[Window 84/520] IS: 05/09-05/13 | OOS: 05/14
+  IS HR: 48.9% | OOS HR: 49.4% | WFE: 1.01
+  P&L: $-330.13 (-2.77%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 28
+  Profit-WFE: -0.20
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 1.25
+
+[Window 85/520] IS: 05/10-05/14 | OOS: 05/15
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.7% | OOS HR: 46.5% | WFE: 0.96
+  P&L: $-293.10 (-2.53%) | [LOSS]
+
+[Window 86/520] IS: 05/13-05/15 | OOS: 05/16
+  IS HR: 48.7% | OOS HR: 50.7% | WFE: 1.04
+  P&L: $-369.39 (-3.28%) | [LOSS]
+
+[Window 87/520] IS: 05/14-05/16 | OOS: 05/17
+  IS HR: 48.7% | OOS HR: 49.9% | WFE: 1.02
+  P&L: $+82.23 (+0.75%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 29
+  Profit-WFE: -0.11
+  Drawdown-WFE: 0.20
+  Sharpe-WFE: 0.56
+
+[Window 88/520] IS: 05/15-05/17 | OOS: 05/20
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.2% | OOS HR: 47.8% | WFE: 0.97
+  P&L: $-285.51 (-2.60%) | [LOSS]
+
+[Window 89/520] IS: 05/16-05/20 | OOS: 05/21
+  IS HR: 49.2% | OOS HR: 48.4% | WFE: 0.98
+  P&L: $-12.78 (-0.12%) | [LOSS]
+
+[Window 90/520] IS: 05/17-05/21 | OOS: 05/22
+  IS HR: 49.2% | OOS HR: 51.8% | WFE: 1.05
+  P&L: $-395.60 (-3.70%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 30
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 0.86
+
+[Window 91/520] IS: 05/20-05/22 | OOS: 05/23
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.8% | OOS HR: 47.0% | WFE: 0.93
+  P&L: $+39.04 (+0.38%) | [WIN]
+
+[Window 92/520] IS: 05/21-05/23 | OOS: 05/24
+  IS HR: 50.8% | OOS HR: 49.4% | WFE: 0.97
+  P&L: $-127.87 (-1.24%) | [LOSS]
+
+[Window 93/520] IS: 05/22-05/24 | OOS: 05/27
+  [SKIP] Insufficient bars: IS=2682, OOS=0
+
+[Window 94/520] IS: 05/23-05/27 | OOS: 05/28
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.0% | OOS HR: 44.3% | WFE: 0.89
+  P&L: $-2.15 (-0.02%) | [LOSS]
+
+[Window 95/520] IS: 05/24-05/28 | OOS: 05/29
+  IS HR: 50.0% | OOS HR: 50.9% | WFE: 1.02
+  P&L: $-284.65 (-2.79%) | [LOSS]
+
+[Window 96/520] IS: 05/27-05/29 | OOS: 05/30
+  IS HR: 50.0% | OOS HR: 50.4% | WFE: 1.01
+  P&L: $-154.47 (-1.56%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 32
+  Profit-WFE: -0.45
+  Drawdown-WFE: 0.49
+  Sharpe-WFE: 1.79
+
+[Window 97/520] IS: 05/28-05/30 | OOS: 05/31
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.1% | OOS HR: 50.9% | WFE: 1.04
+  P&L: $-8.43 (-0.09%) | [LOSS]
+
+[Window 98/520] IS: 05/29-05/31 | OOS: 06/03
+  IS HR: 49.1% | OOS HR: 51.1% | WFE: 1.04
+  P&L: $-319.71 (-3.28%) | [LOSS]
+
+[Window 99/520] IS: 05/30-06/03 | OOS: 06/04
+  IS HR: 49.1% | OOS HR: 46.3% | WFE: 0.94
+  P&L: $-230.08 (-2.44%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 33
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.29
+
+[Window 100/520] IS: 05/31-06/04 | OOS: 06/05
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.3% | OOS HR: 47.5% | WFE: 0.96
+  P&L: $-152.51 (-1.66%) | [LOSS]
+
+[Window 101/520] IS: 06/03-06/05 | OOS: 06/06
+  IS HR: 49.3% | OOS HR: 50.6% | WFE: 1.03
+  P&L: $-73.54 (-0.81%) | [LOSS]
+
+[Window 102/520] IS: 06/04-06/06 | OOS: 06/07
+  IS HR: 49.3% | OOS HR: 50.8% | WFE: 1.03
+  P&L: $-221.92 (-2.47%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 34
+  Profit-WFE: -0.22
+  Drawdown-WFE: 0.31
+  Sharpe-WFE: 1.24
+
+[Window 103/520] IS: 06/05-06/07 | OOS: 06/10
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.5% | OOS HR: 46.6% | WFE: 0.92
+  P&L: $+48.36 (+0.55%) | [WIN]
+
+[Window 104/520] IS: 06/06-06/10 | OOS: 06/11
+  IS HR: 50.5% | OOS HR: 46.2% | WFE: 0.92
+  P&L: $-455.67 (-5.17%) | [LOSS]
+
+[Window 105/520] IS: 06/07-06/11 | OOS: 06/12
+  IS HR: 50.5% | OOS HR: 47.1% | WFE: 0.93
+  P&L: $+22.61 (+0.27%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 35
+  Profit-WFE: -0.02
+  Drawdown-WFE: 0.06
+  Sharpe-WFE: 1.16
+
+[Window 106/520] IS: 06/10-06/12 | OOS: 06/13
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 45.7% | WFE: 0.96
+  P&L: $-60.05 (-0.72%) | [LOSS]
+
+[Window 107/520] IS: 06/11-06/13 | OOS: 06/14
+  IS HR: 47.8% | OOS HR: 48.0% | WFE: 1.00
+  P&L: $-72.41 (-0.87%) | [LOSS]
+
+[Window 108/520] IS: 06/12-06/14 | OOS: 06/17
+  IS HR: 47.8% | OOS HR: 43.4% | WFE: 0.91
+  P&L: $-173.40 (-2.10%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 36
+  Profit-WFE: -0.23
+  Drawdown-WFE: 0.22
+  Sharpe-WFE: 1.30
+
+[Window 109/520] IS: 06/13-06/17 | OOS: 06/18
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.2% | OOS HR: 47.9% | WFE: 1.02
+  P&L: $-176.05 (-2.18%) | [LOSS]
+
+[Window 110/520] IS: 06/14-06/18 | OOS: 06/19
+  [SKIP] Insufficient bars: IS=2878, OOS=0
+
+[Window 111/520] IS: 06/17-06/19 | OOS: 06/20
+  IS HR: 47.2% | OOS HR: 48.8% | WFE: 1.03
+  P&L: $-45.34 (-0.57%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 37
+  Profit-WFE: -0.09
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: 0.48
+
+[Window 112/520] IS: 06/18-06/20 | OOS: 06/21
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.5% | OOS HR: 49.6% | WFE: 1.02
+  P&L: $-89.87 (-1.15%) | [LOSS]
+
+[Window 113/520] IS: 06/19-06/21 | OOS: 06/24
+  IS HR: 48.5% | OOS HR: 49.1% | WFE: 1.01
+  P&L: $-255.03 (-3.29%) | [LOSS]
+
+[Window 114/520] IS: 06/20-06/24 | OOS: 06/25
+  IS HR: 48.5% | OOS HR: 49.4% | WFE: 1.02
+  P&L: $-558.11 (-7.44%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 38
+  Profit-WFE: -0.61
+  Drawdown-WFE: 0.84
+  Sharpe-WFE: 2.14
+
+[Window 115/520] IS: 06/21-06/25 | OOS: 06/26
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.5% | OOS HR: 47.4% | WFE: 0.94
+  P&L: $-47.21 (-0.68%) | [LOSS]
+
+[Window 116/520] IS: 06/24-06/26 | OOS: 06/27
+  IS HR: 50.5% | OOS HR: 49.1% | WFE: 0.97
+  P&L: $-194.43 (-2.82%) | [LOSS]
+
+[Window 117/520] IS: 06/25-06/27 | OOS: 06/28
+  IS HR: 50.5% | OOS HR: 45.8% | WFE: 0.91
+  P&L: $-91.25 (-1.36%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 39
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 0.93
+
+[Window 118/520] IS: 06/26-06/28 | OOS: 07/01
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.0% | OOS HR: 46.4% | WFE: 0.97
+  P&L: $-336.71 (-5.09%) | [LOSS]
+
+[Window 119/520] IS: 06/27-07/01 | OOS: 07/02
+  IS HR: 48.0% | OOS HR: 46.1% | WFE: 0.96
+  P&L: $-162.78 (-2.59%) | [LOSS]
+
+[Window 120/520] IS: 06/28-07/02 | OOS: 07/03
+  IS HR: 48.0% | OOS HR: 45.7% | WFE: 0.95
+  P&L: $-54.86 (-0.90%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 40
+  Profit-WFE: -0.27
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 1.49
+
+[Window 121/520] IS: 07/01-07/03 | OOS: 07/04
+  [SKIP] Insufficient bars: IS=2693, OOS=0
+
+[Window 122/520] IS: 07/02-07/04 | OOS: 07/05
+  IS HR: 48.0% | OOS HR: 42.5% | WFE: 0.89
+  P&L: $-149.82 (-2.47%) | [LOSS]
+
+[Window 123/520] IS: 07/03-07/05 | OOS: 07/08
+  IS HR: 48.0% | OOS HR: 48.0% | WFE: 1.00
+  P&L: $-52.03 (-0.88%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 41
+  Profit-WFE: -0.29
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 1.37
+
+[Window 124/520] IS: 07/04-07/08 | OOS: 07/09
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.0% | OOS HR: 46.0% | WFE: 0.96
+  P&L: $-68.84 (-1.18%) | [LOSS]
+
+[Window 125/520] IS: 07/05-07/09 | OOS: 07/10
+  IS HR: 48.0% | OOS HR: 49.9% | WFE: 1.04
+  P&L: $-265.16 (-4.58%) | [LOSS]
+
+[Window 126/520] IS: 07/08-07/10 | OOS: 07/11
+  IS HR: 48.0% | OOS HR: 47.9% | WFE: 1.00
+  P&L: $+162.26 (+2.94%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 42
+  Profit-WFE: -0.08
+  Drawdown-WFE: 0.33
+  Sharpe-WFE: 0.59
+
+[Window 127/520] IS: 07/09-07/11 | OOS: 07/12
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.6% | OOS HR: 46.6% | WFE: 0.96
+  P&L: $+98.71 (+1.74%) | [WIN]
+
+[Window 128/520] IS: 07/10-07/12 | OOS: 07/15
+  IS HR: 48.6% | OOS HR: 45.4% | WFE: 0.93
+  P&L: $-273.46 (-4.73%) | [LOSS]
+
+[Window 129/520] IS: 07/11-07/15 | OOS: 07/16
+  IS HR: 48.6% | OOS HR: 43.9% | WFE: 0.90
+  P&L: $-260.68 (-4.73%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 43
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.24
+  Sharpe-WFE: 1.05
+
+[Window 130/520] IS: 07/12-07/16 | OOS: 07/17
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.3% | OOS HR: 44.4% | WFE: 0.92
+  P&L: $-171.43 (-3.27%) | [LOSS]
+
+[Window 131/520] IS: 07/15-07/17 | OOS: 07/18
+  IS HR: 48.3% | OOS HR: 50.1% | WFE: 1.04
+  P&L: $+10.50 (+0.21%) | [WIN]
+
+[Window 132/520] IS: 07/16-07/18 | OOS: 07/19
+  IS HR: 48.3% | OOS HR: 49.0% | WFE: 1.01
+  P&L: $-33.29 (-0.65%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 44
+  Profit-WFE: -0.10
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 0.50
+
+[Window 133/520] IS: 07/17-07/19 | OOS: 07/22
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 43.5% | WFE: 0.91
+  P&L: $-71.64 (-1.42%) | [LOSS]
+
+[Window 134/520] IS: 07/18-07/22 | OOS: 07/23
+  IS HR: 47.8% | OOS HR: 47.5% | WFE: 0.99
+  P&L: $+26.90 (+0.54%) | [WIN]
+
+[Window 135/520] IS: 07/19-07/23 | OOS: 07/24
+  IS HR: 47.8% | OOS HR: 48.3% | WFE: 1.01
+  P&L: $+112.95 (+2.25%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 45
+  Profit-WFE: 0.70
+  Drawdown-WFE: 0.36
+  Sharpe-WFE: 6.24
+
+[Window 136/520] IS: 07/22-07/24 | OOS: 07/25
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 45.5% | WFE: 0.95
+  P&L: $-15.89 (-0.31%) | [LOSS]
+
+[Window 137/520] IS: 07/23-07/25 | OOS: 07/26
+  IS HR: 47.8% | OOS HR: 46.9% | WFE: 0.98
+  P&L: $-302.36 (-5.92%) | [LOSS]
+
+[Window 138/520] IS: 07/24-07/26 | OOS: 07/29
+  IS HR: 47.8% | OOS HR: 46.9% | WFE: 0.98
+  P&L: $-118.99 (-2.48%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 46
+  Profit-WFE: -0.29
+  Drawdown-WFE: 0.48
+  Sharpe-WFE: 1.64
+
+[Window 139/520] IS: 07/25-07/29 | OOS: 07/30
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.8% | OOS HR: 51.3% | WFE: 1.05
+  P&L: $+43.38 (+0.93%) | [WIN]
+
+[Window 140/520] IS: 07/26-07/30 | OOS: 07/31
+  IS HR: 48.8% | OOS HR: 48.2% | WFE: 0.99
+  P&L: $-108.82 (-2.30%) | [LOSS]
+
+[Window 141/520] IS: 07/29-07/31 | OOS: 08/01
+  IS HR: 48.8% | OOS HR: 48.9% | WFE: 1.00
+  P&L: $+154.57 (+3.35%) | [WIN]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 47
+  Profit-WFE: 0.05
+  Drawdown-WFE: 0.13
+  Sharpe-WFE: -0.13
+
+[Window 142/520] IS: 07/30-08/01 | OOS: 08/02
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.9% | OOS HR: 49.8% | WFE: 1.02
+  P&L: $-189.64 (-3.97%) | [LOSS]
+
+[Window 143/520] IS: 07/31-08/02 | OOS: 08/05
+  IS HR: 48.9% | OOS HR: 49.2% | WFE: 1.01
+  P&L: $-118.76 (-2.59%) | [LOSS]
+
+[Window 144/520] IS: 08/01-08/05 | OOS: 08/06
+  IS HR: 48.9% | OOS HR: 48.0% | WFE: 0.98
+  P&L: $-22.23 (-0.50%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 48
+  Profit-WFE: -0.56
+  Drawdown-WFE: 0.41
+  Sharpe-WFE: 2.82
+
+[Window 145/520] IS: 08/02-08/06 | OOS: 08/07
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.5% | OOS HR: 49.9% | WFE: 0.99
+  P&L: $+1.44 (+0.03%) | [WIN]
+
+[Window 146/520] IS: 08/05-08/07 | OOS: 08/08
+  IS HR: 50.5% | OOS HR: 47.0% | WFE: 0.93
+  P&L: $+43.54 (+0.98%) | [WIN]
+
+[Window 147/520] IS: 08/06-08/08 | OOS: 08/09
+  IS HR: 50.5% | OOS HR: 45.9% | WFE: 0.91
+  P&L: $-185.57 (-4.13%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 49
+  Profit-WFE: -2.71
+  Drawdown-WFE: 0.39
+  Sharpe-WFE: 24.69
+
+[Window 148/520] IS: 08/07-08/09 | OOS: 08/12
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.2% | OOS HR: 43.4% | WFE: 0.90
+  P&L: $+33.60 (+0.78%) | [WIN]
+
+[Window 149/520] IS: 08/08-08/12 | OOS: 08/13
+  IS HR: 48.2% | OOS HR: 48.2% | WFE: 1.00
+  P&L: $-103.44 (-2.38%) | [LOSS]
+
+[Window 150/520] IS: 08/09-08/13 | OOS: 08/14
+  IS HR: 48.2% | OOS HR: 46.8% | WFE: 0.97
+  P&L: $-132.68 (-3.13%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 50
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 1.17
+
+[Window 151/520] IS: 08/12-08/14 | OOS: 08/15
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.4% | OOS HR: 46.7% | WFE: 0.99
+  P&L: $-4.20 (-0.10%) | [LOSS]
+
+[Window 152/520] IS: 08/13-08/15 | OOS: 08/16
+  IS HR: 47.4% | OOS HR: 47.9% | WFE: 1.01
+  P&L: $-44.97 (-1.10%) | [LOSS]
+
+[Window 153/520] IS: 08/14-08/16 | OOS: 08/19
+  IS HR: 47.4% | OOS HR: 49.9% | WFE: 1.05
+  P&L: $-60.01 (-1.48%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 51
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.25
+  Sharpe-WFE: 1.27
+
+[Window 154/520] IS: 08/15-08/19 | OOS: 08/20
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.1% | OOS HR: 48.3% | WFE: 0.98
+  P&L: $-92.97 (-2.33%) | [LOSS]
+
+[Window 155/520] IS: 08/16-08/20 | OOS: 08/21
+  IS HR: 49.1% | OOS HR: 48.5% | WFE: 0.99
+  P&L: $-93.09 (-2.39%) | [LOSS]
+
+[Window 156/520] IS: 08/19-08/21 | OOS: 08/22
+  IS HR: 49.1% | OOS HR: 46.0% | WFE: 0.94
+  P&L: $-138.72 (-3.64%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 52
+  Profit-WFE: -0.47
+  Drawdown-WFE: 0.34
+  Sharpe-WFE: 2.53
+
+[Window 157/520] IS: 08/20-08/22 | OOS: 08/23
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.7% | OOS HR: 42.5% | WFE: 0.87
+  P&L: $-72.23 (-1.97%) | [LOSS]
+
+[Window 158/520] IS: 08/21-08/23 | OOS: 08/26
+  IS HR: 48.7% | OOS HR: 47.8% | WFE: 0.98
+  P&L: $-9.58 (-0.27%) | [LOSS]
+
+[Window 159/520] IS: 08/22-08/26 | OOS: 08/27
+  IS HR: 48.7% | OOS HR: 48.1% | WFE: 0.99
+  P&L: $-58.83 (-1.64%) | [LOSS]
+
+[WFE-REPORT] Ticker: NVDA | Blocks: 53
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.23
+  Sharpe-WFE: 0.98
+
+[Window 160/520] IS: 08/23-08/27 | OOS: 08/28
+[METABOLISM] Ticker: NVDA | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.0% | OOS HR: 49.7% | WFE: 1.06
+  P&L: $-202.08 (-5.73%) | [LOSS]
+
+[Window 161/520] IS: 08/26-08/28 | OOS: 08/29

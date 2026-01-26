@@ -1,0 +1,212 @@
+[
+  {
+    "config": 1,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.2,
+      "stop_loss": 0.15,
+      "hold_minutes": 10,
+      "rsi_oversold": 30,
+      "rsi_overbought": 70
+    },
+    "trades": 194,
+    "trades_per_day": 6.689655172413793,
+    "win_rate": 45.876288659793815,
+    "avg_pnl": 0.005638796517593953,
+    "avg_win": 0.1763447650147995,
+    "avg_loss": -0.13905483392289456,
+    "sharpe": 1.289915880189674,
+    "total_return": 1.093926524413229
+  },
+  {
+    "config": 2,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 1.5,
+      "rsi_period": 14,
+      "profit_target": 0.18,
+      "stop_loss": 0.12,
+      "hold_minutes": 8,
+      "rsi_oversold": 35,
+      "rsi_overbought": 65
+    },
+    "trades": 518,
+    "trades_per_day": 17.862068965517242,
+    "win_rate": 44.20849420849421,
+    "avg_pnl": -0.013885262455638463,
+    "avg_win": 0.14528292591969202,
+    "avg_loss": -0.1400081522063329,
+    "sharpe": -5.778239178359509,
+    "total_return": -7.192565952020728
+  },
+  {
+    "config": 3,
+    "params": {
+      "bb_period": 15,
+      "bb_std": 1.8,
+      "rsi_period": 10,
+      "profit_target": 0.2,
+      "stop_loss": 0.15,
+      "hold_minutes": 10,
+      "rsi_oversold": 30,
+      "rsi_overbought": 70
+    },
+    "trades": 345,
+    "trades_per_day": 11.89655172413793,
+    "win_rate": 42.608695652173914,
+    "avg_pnl": -0.011545369006938063,
+    "avg_win": 0.1667785778244959,
+    "avg_loss": -0.1439373901393663,
+    "sharpe": -3.568545033023506,
+    "total_return": -3.983152307393631
+  },
+  {
+    "config": 4,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.5,
+      "rsi_period": 14,
+      "profit_target": 0.25,
+      "stop_loss": 0.18,
+      "hold_minutes": 12,
+      "rsi_oversold": 25,
+      "rsi_overbought": 75
+    },
+    "trades": 30,
+    "trades_per_day": 1.0344827586206897,
+    "win_rate": 46.666666666666664,
+    "avg_pnl": -0.015577501503071557,
+    "avg_win": 0.18423672855237078,
+    "avg_loss": -0.1904149528015836,
+    "sharpe": -1.1328551519799,
+    "total_return": -0.46732504509214673
+  },
+  {
+    "config": 5,
+    "params": {
+      "bb_period": 25,
+      "bb_std": 2.5,
+      "rsi_period": 14,
+      "profit_target": 0.25,
+      "stop_loss": 0.18,
+      "hold_minutes": 15,
+      "rsi_oversold": 25,
+      "rsi_overbought": 75
+    },
+    "trades": 51,
+    "trades_per_day": 1.7586206896551724,
+    "win_rate": 52.94117647058824,
+    "avg_pnl": 0.004940187405273867,
+    "avg_win": 0.19213973201383147,
+    "avg_loss": -0.2056593002793534,
+    "sharpe": 0.4636359376663207,
+    "total_return": 0.2519495576689673
+  },
+  {
+    "config": 6,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.3,
+      "stop_loss": 0.15,
+      "hold_minutes": 15,
+      "rsi_oversold": 30,
+      "rsi_overbought": 70
+    },
+    "trades": 190,
+    "trades_per_day": 6.551724137931035,
+    "win_rate": 45.78947368421053,
+    "avg_pnl": -0.0006524378679648665,
+    "avg_win": 0.2018673360950362,
+    "avg_loss": -0.17171282946778138,
+    "sharpe": -0.12396675193228913,
+    "total_return": -0.12396319491332512
+  },
+  {
+    "config": 7,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.35,
+      "stop_loss": 0.18,
+      "hold_minutes": 18,
+      "rsi_oversold": 28,
+      "rsi_overbought": 72
+    },
+    "trades": 149,
+    "trades_per_day": 5.137931034482759,
+    "win_rate": 42.95302013422819,
+    "avg_pnl": -0.010026901707930792,
+    "avg_win": 0.23538146311833621,
+    "avg_loss": -0.19480496463594363,
+    "sharpe": -1.4777990964075165,
+    "total_return": -1.4940083544816867
+  },
+  {
+    "config": 8,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.22,
+      "stop_loss": 0.1,
+      "hold_minutes": 10,
+      "rsi_oversold": 30,
+      "rsi_overbought": 70
+    },
+    "trades": 218,
+    "trades_per_day": 7.517241379310345,
+    "win_rate": 40.825688073394495,
+    "avg_pnl": -0.0003885801704294292,
+    "avg_win": 0.18809874151334033,
+    "avg_loss": -0.13043022071194502,
+    "sharpe": -0.09653815341652709,
+    "total_return": -0.08471047715361177
+  },
+  {
+    "config": 9,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.25,
+      "stop_loss": 0.15,
+      "hold_minutes": 12,
+      "rsi_oversold": 25,
+      "rsi_overbought": 75
+    },
+    "trades": 126,
+    "trades_per_day": 4.344827586206897,
+    "win_rate": 46.03174603174603,
+    "avg_pnl": 0.0038454764870563076,
+    "avg_win": 0.1983549839869932,
+    "avg_loss": -0.1620596916746546,
+    "sharpe": 0.6197757278560798,
+    "total_return": 0.48453003736909456
+  },
+  {
+    "config": 10,
+    "params": {
+      "bb_period": 20,
+      "bb_std": 2.0,
+      "rsi_period": 14,
+      "profit_target": 0.25,
+      "stop_loss": 0.15,
+      "hold_minutes": 12,
+      "rsi_oversold": 20,
+      "rsi_overbought": 80
+    },
+    "trades": 63,
+    "trades_per_day": 2.1724137931034484,
+    "win_rate": 42.857142857142854,
+    "avg_pnl": -0.0035803591553703155,
+    "avg_win": 0.19167648278109015,
+    "avg_loss": -0.15002299060771573,
+    "sharpe": -0.41901335838670073,
+    "total_return": -0.22556262678833
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "strategy": "VWAP_0.45_0.3_15",
+    "params": {
+      "vwap_thresh": 0.45,
+      "profit_target": 0.3,
+      "hold_minutes": 15
+    },
+    "sharpe": 301.8431439652076,
+    "trades_per_day": 0.6,
+    "win_rate": 100.0,
+    "avg_pnl": 0.26042009339059263,
+    "trades": 3
+  },
+  {
+    "strategy": "VWAP_0.45_0.25_12",
+    "params": {
+      "vwap_thresh": 0.45,
+      "profit_target": 0.25,
+      "hold_minutes": 12
+    },
+    "sharpe": 295.44177833197426,
+    "trades_per_day": 0.8,
+    "win_rate": 100.0,
+    "avg_pnl": 0.26724103407657995,
+    "trades": 4
+  },
+  {
+    "strategy": "VWAP_0.4_0.25_12",
+    "params": {
+      "vwap_thresh": 0.4,
+      "profit_target": 0.25,
+      "hold_minutes": 12
+    },
+    "sharpe": 101.3209122861794,
+    "trades_per_day": 1.6,
+    "win_rate": 75.0,
+    "avg_pnl": 0.10954249770081952,
+    "trades": 8
+  },
+  {
+    "strategy": "VWAP_0.4_0.2_10",
+    "params": {
+      "vwap_thresh": 0.4,
+      "profit_target": 0.2,
+      "hold_minutes": 10
+    },
+    "sharpe": 88.65759166968806,
+    "trades_per_day": 1.6,
+    "win_rate": 75.0,
+    "avg_pnl": 0.10299976708213841,
+    "trades": 8
+  },
+  {
+    "strategy": "VWAP_0.35_0.25_10",
+    "params": {
+      "vwap_thresh": 0.35,
+      "profit_target": 0.25,
+      "hold_minutes": 10
+    },
+    "sharpe": 50.45035315423307,
+    "trades_per_day": 3.8,
+    "win_rate": 47.368421052631575,
+    "avg_pnl": 0.05216698340127186,
+    "trades": 19
+  },
+  {
+    "strategy": "VWAP_0.35_0.2_8",
+    "params": {
+      "vwap_thresh": 0.35,
+      "profit_target": 0.2,
+      "hold_minutes": 8
+    },
+    "sharpe": 50.05756400086171,
+    "trades_per_day": 4.2,
+    "win_rate": 42.857142857142854,
+    "avg_pnl": 0.04587537531207163,
+    "trades": 21
+  },
+  {
+    "strategy": "Mom_0.12_0.15_5",
+    "params": {
+      "mom_thresh": 0.12,
+      "profit_target": 0.15,
+      "hold_minutes": 5
+    },
+    "sharpe": -260.2277652972407,
+    "trades_per_day": 0.6,
+    "win_rate": 0.0,
+    "avg_pnl": -0.19344754818074406,
+    "trades": 3
+  }
+]

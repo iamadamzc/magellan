@@ -1,0 +1,40 @@
+{
+    "symbol": "MGC",
+    "full_name": "Micro Gold",
+    "proxy_tested": "GCUSD (Gold spot via FMP)",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "proxy_symbol": "GCUSD",
+        "total_return_pct": 47.00,
+        "sharpe_ratio": 1.35,
+        "max_drawdown_pct": -11.45,
+        "trade_count": 10,
+        "win_rate_pct": 50.0,
+        "avg_hold_days": 57.7,
+        "buy_hold_return_pct": 109.37
+    },
+    "deployment_status": "approved",
+    "deployment_date": "2026-01-17",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 10,
+        "stop_loss_pct": null,
+        "notes": "Gold futures - Safe haven asset with excellent trend characteristics. Top performer in commodity class."
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 0.10,
+        "tick_value_usd": 1.00,
+        "margin_requirement_approx_usd": 800,
+        "trading_hours": "Nearly 24 hours (6:00 PM ET Sun - 5:00 PM ET Fri)",
+        "multiplier": 10
+    },
+    "notes": "Tested using GCUSD spot gold as proxy. Excellent Sharpe (1.35) with controlled drawdown. Best commodity performer."
+}

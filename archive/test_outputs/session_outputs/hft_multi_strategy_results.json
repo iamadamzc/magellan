@@ -1,0 +1,20 @@
+[
+  {
+    "strategy": "VWAP Reversion",
+    "sharpe": 0,
+    "trades": 1,
+    "win_rate": 100.0
+  },
+  {
+    "strategy": "Opening Range Breakout",
+    "sharpe": -49.39698959672061,
+    "trades": 33,
+    "win_rate": 39.39393939393939
+  },
+  {
+    "strategy": "Momentum Scalping",
+    "sharpe": -11.363221558056138,
+    "trades": 29,
+    "win_rate": 48.275862068965516
+  }
+]

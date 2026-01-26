@@ -1,0 +1,20 @@
+{
+  "avg_oos_sharpe": 0.35129291194549633,
+  "avg_oos_return": 232.19716362336035,
+  "avg_oos_win_rate": 74.5,
+  "baseline_sharpe": 2.26,
+  "baseline_params": {
+    "rsi_oversold": 30,
+    "rsi_overbought": 70,
+    "profit_target_pct": 60,
+    "time_exit_dte": 21,
+    "stop_loss_pct": -150
+  },
+  "most_common_params": {
+    "rsi_oversold": 30,
+    "rsi_overbought": 75,
+    "profit_target_pct": 70,
+    "time_exit_dte": 14,
+    "stop_loss_pct": -100
+  }
+}

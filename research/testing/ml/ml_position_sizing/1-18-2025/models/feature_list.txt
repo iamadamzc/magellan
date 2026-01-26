@@ -1,0 +1,3 @@
+time_score
+momentum_score
+vol_score

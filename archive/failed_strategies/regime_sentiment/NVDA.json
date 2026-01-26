@@ -1,0 +1,24 @@
+{
+    "strategy_name": "regime_sentiment_filter",
+    "version": "1.0.0",
+    "timeframe": "1day",
+    "parameters": {
+        "rsi_period": 28,
+        "entry_regime_bull": {
+            "rsi_threshold": 55,
+            "spy_ma_period": 200,
+            "sentiment_threshold": -0.2
+        },
+        "entry_breakout_strong": {
+            "rsi_threshold": 65,
+            "sentiment_threshold": 0.0
+        },
+        "exit_conditions": {
+            "rsi_threshold": 45,
+            "sentiment_threshold": -0.3
+        }
+    },
+    "symbol": "NVDA",
+    "position_limit": 0.1,
+    "notes": "Tier 1 - Strong Momentum (Sharpe 1.19 in Bear)"
+}

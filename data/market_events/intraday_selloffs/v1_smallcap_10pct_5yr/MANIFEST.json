@@ -1,0 +1,147 @@
+{
+    "id": "selloff-smallcap-10pct-5yr-v1",
+    "name": "Small-Cap Intraday Selloffs (-10%, 5-Year)",
+    "version": "1.0",
+    "created": "2026-01-22T16:00:00Z",
+    "category": "intraday_selloffs",
+    "description": "First-cross intraday selloff events (≥10% drop from open) across 250 small/mid-cap stocks, 2020-2024. Deduplicated to one event per symbol per trading day.",
+    "source": {
+        "provider": "Alpaca Market Data Plus",
+        "feed": "SIP",
+        "timeframe": "1-minute bars",
+        "api_version": "2.0",
+        "collection_date": "2026-01-22"
+    },
+    "event_definition": {
+        "trigger": "First 1-minute bar where low crosses -10% from session open",
+        "deduplication": "first_cross_per_symbol_per_day",
+        "threshold_pct": -10.0,
+        "session_open_time": "09:30 ET"
+    },
+    "scope": {
+        "total_symbols": 250,
+        "symbol_categories": [
+            "meme_stocks",
+            "ev_tech_spacs",
+            "crypto_related",
+            "biotech_smallcap",
+            "cannabis",
+            "fintech",
+            "gaming_entertainment",
+            "tech_software",
+            "consumer_retail"
+        ],
+        "date_range": {
+            "start": "2020-01-01",
+            "end": "2024-12-31"
+        },
+        "trading_days": 1260,
+        "market_conditions": "Includes bull (2020-2021), bear (2022), choppy (2023-2024) regimes"
+    },
+    "splits": {
+        "dataset_a": {
+            "events": 5517,
+            "symbols": 125,
+            "description": "Validated volatile symbols with known selloff history (e.g., MULN, RIOT, AMC)",
+            "purpose": "Training set - symbols with proven volatility patterns",
+            "file": "dataset_a_validated_symbols.csv"
+        },
+        "dataset_b": {
+            "events": 3482,
+            "symbols": 125,
+            "description": "Random sample of volatile stocks not in Dataset A",
+            "purpose": "Out-of-sample validation - test generalization to unseen symbols",
+            "file": "dataset_b_random_symbols.csv"
+        }
+    },
+    "features": {
+        "count": 20,
+        "extraction_status": "in_progress",
+        "categories": {
+            "price_context": {
+                "description": "Historical price positioning",
+                "features": [
+                    "pct_from_52w_high",
+                    "pct_from_52w_low",
+                    "price_range_position",
+                    "distance_from_20sma",
+                    "distance_from_50sma",
+                    "distance_from_200sma",
+                    "above_200sma",
+                    "golden_cross"
+                ]
+            },
+            "market_regime": {
+                "description": "Broader market context",
+                "features": [
+                    "spy_change_day"
+                ]
+            },
+            "time_features": {
+                "description": "Intraday timing characteristics",
+                "features": [
+                    "hour",
+                    "minute",
+                    "minutes_since_open",
+                    "time_bucket"
+                ]
+            },
+            "event_metrics": {
+                "description": "Core selloff event data",
+                "features": [
+                    "drop_pct",
+                    "session_open",
+                    "low",
+                    "close",
+                    "high",
+                    "volume"
+                ]
+            }
+        },
+        "file": "combined_with_features.csv"
+    },
+    "quality": {
+        "total_events": 8999,
+        "deduplication_verified": true,
+        "no_future_leakage": true,
+        "feature_completeness_target": 0.95,
+        "validated": true,
+        "validation_date": "2026-01-22"
+    },
+    "lineage": {
+        "raw_bars_scanned": 122850000,
+        "symbols_scanned": 250,
+        "days_scanned": 1260,
+        "bars_per_day": 390,
+        "events_identified": 8999,
+        "deduplication_ratio": 0.073
+    },
+    "files": {
+        "manifest": "MANIFEST.json",
+        "dataset_a": "dataset_a_validated_symbols.csv",
+        "dataset_b": "dataset_b_random_symbols.csv",
+        "combined_raw": "combined_raw.csv",
+        "combined_features": "combined_with_features.csv"
+    },
+    "usage": {
+        "recommended_for": [
+            "Reversal prediction (bounce vs continuation)",
+            "Entry timing optimization",
+            "Risk classification",
+            "Volatility modeling",
+            "Pattern recognition",
+            "Market microstructure analysis"
+        ],
+        "not_recommended_for": [
+            "Long-term trend prediction",
+            "Fundamental analysis",
+            "Large-cap stocks"
+        ]
+    },
+    "version_history": {
+        "v1.0": {
+            "date": "2026-01-22",
+            "changes": "Initial production release with 8,999 events"
+        }
+    }
+}

@@ -1,0 +1,280 @@
+{
+  "GLD": {
+    "test_2024": {
+      "trades": 199,
+      "return_pct": -26.025380299993383,
+      "win_rate": 0.24120603015075376,
+      "max_drawdown": -32.28345243999674
+    },
+    "walk_forward": {
+      "validation_2024": {
+        "trades": 199,
+        "win_rate": 0.24120603015075376,
+        "expectancy": -0.138829318832701,
+        "return_pct": -26.025380299993383,
+        "final_balance": 18493.654925001654
+      },
+      "oos_2025": {
+        "trades": 346,
+        "win_rate": 0.2947976878612717,
+        "expectancy": 0.021234217321032384,
+        "return_pct": 2.5699676600127175,
+        "final_balance": 25642.491915003182
+      }
+    },
+    "parameter_stability": [
+      {
+        "param": "cluster_3",
+        "return": 60.11381131620976
+      },
+      {
+        "param": "cluster_4",
+        "return": 118.47281259581135
+      },
+      {
+        "param": "cluster_5",
+        "return": 2.9228239800016986
+      },
+      {
+        "param": "target_2.5",
+        "return": 73.92304233901028
+      },
+      {
+        "param": "target_3.0",
+        "return": 118.47281259581135
+      },
+      {
+        "param": "target_3.5",
+        "return": 131.6814401724116
+      }
+    ]
+  },
+  "IVV": {
+    "test_2024": {
+      "trades": 96,
+      "return_pct": 15.55378072000202,
+      "win_rate": 0.3229166666666667,
+      "max_drawdown": -10.277375041416315
+    },
+    "walk_forward": {
+      "validation_2024": {
+        "trades": 96,
+        "win_rate": 0.3229166666666667,
+        "expectancy": 0.16638848713198975,
+        "return_pct": 15.55378072000202,
+        "final_balance": 28888.445180000504
+      },
+      "oos_2025": {
+        "trades": 232,
+        "win_rate": 0.3793103448275862,
+        "expectancy": 0.2538318558997462,
+        "return_pct": 73.87567750000738,
+        "final_balance": 43468.919375001846
+      }
+    },
+    "parameter_stability": [
+      {
+        "param": "cluster_7",
+        "return": 58.45791214000309
+      },
+      {
+        "param": "cluster_0",
+        "return": 75.62032952000841
+      },
+      {
+        "param": "cluster_1",
+        "return": 25.128525760003882
+      },
+      {
+        "param": "target_2.5",
+        "return": 52.44773976000672
+      },
+      {
+        "param": "target_3.0",
+        "return": 75.62032952000841
+      },
+      {
+        "param": "target_3.5",
+        "return": 86.18059374000715
+      }
+    ]
+  },
+  "IWM": {
+    "test_2024": {
+      "trades": 457,
+      "return_pct": -47.698378619974754,
+      "win_rate": 0.19474835886214442,
+      "max_drawdown": -51.0943484115525
+    },
+    "walk_forward": {
+      "validation_2024": {
+        "trades": 457,
+        "win_rate": 0.19474835886214442,
+        "expectancy": -0.12278096808304115,
+        "return_pct": -47.698378619974754,
+        "final_balance": 13075.405345006311
+      },
+      "oos_2025": {
+        "trades": 442,
+        "win_rate": 0.20588235294117646,
+        "expectancy": -0.08819934096415484,
+        "return_pct": -37.785408759967495,
+        "final_balance": 15553.647810008126
+      }
+    },
+    "parameter_stability": [
+      {
+        "param": "cluster_0",
+        "return": -64.1225525799818
+      },
+      {
+        "param": "cluster_1",
+        "return": 65.7718499400378
+      },
+      {
+        "param": "cluster_2",
+        "return": -1.3647835099764305
+      },
+      {
+        "param": "target_1.5",
+        "return": 6.714892920030646
+      },
+      {
+        "param": "target_2.0",
+        "return": 65.7718499400378
+      },
+      {
+        "param": "target_2.5",
+        "return": 81.29501089003652
+      }
+    ]
+  },
+  "SPY": {
+    "test_2024": {
+      "trades": 73,
+      "return_pct": -12.354241724798342,
+      "win_rate": 0.3561643835616438,
+      "max_drawdown": -14.670811401823169
+    },
+    "walk_forward": {
+      "validation_2024": {
+        "trades": 73,
+        "win_rate": 0.3561643835616438,
+        "expectancy": -0.17601068118402996,
+        "return_pct": -12.354241724798342,
+        "final_balance": 21911.439568800415
+      },
+      "oos_2025": {
+        "trades": 79,
+        "win_rate": 0.3670886075949367,
+        "expectancy": -0.1674472800851546,
+        "return_pct": -12.779666379999078,
+        "final_balance": 21805.08340500023
+      }
+    },
+    "parameter_stability": [
+      {
+        "param": "cluster_5",
+        "return": -27.40403009999418
+      },
+      {
+        "param": "cluster_6",
+        "return": 39.39669388001133
+      },
+      {
+        "param": "cluster_7",
+        "return": 2.8557426200002567
+      },
+      {
+        "param": "target_2.5",
+        "return": 19.73713518000988
+      },
+      {
+        "param": "target_3.0",
+        "return": 39.39669388001133
+      },
+      {
+        "param": "target_3.5",
+        "return": 48.11497622001133
+      }
+    ]
+  },
+  "QQQ": {
+    "test_2024": {
+      "trades": 332,
+      "return_pct": -33.555927759992834,
+      "win_rate": 0.2680722891566265,
+      "max_drawdown": -45.61953839099164
+    },
+    "walk_forward": {
+      "validation_2024": {
+        "trades": 332,
+        "win_rate": 0.2680722891566265,
+        "expectancy": -0.1116019351976549,
+        "return_pct": -33.555927759992834,
+        "final_balance": 16611.018060001792
+      },
+      "oos_2025": {
+        "trades": 323,
+        "win_rate": 0.3065015479876161,
+        "expectancy": -0.005360752568401481,
+        "return_pct": -5.624401159993431,
+        "final_balance": 23593.899710001642
+      }
+    },
+    "parameter_stability": [
+      {
+        "param": "cluster_3",
+        "return": -10.607153899999366
+      },
+      {
+        "param": "cluster_4",
+        "return": 33.46110414000763
+      },
+      {
+        "param": "cluster_5",
+        "return": 30.597917640006212
+      },
+      {
+        "param": "target_2.5",
+        "return": 15.988924560006756
+      },
+      {
+        "param": "target_3.0",
+        "return": 33.46110414000763
+      },
+      {
+        "param": "target_3.5",
+        "return": 26.440950780006965
+      }
+    ]
+  },
+  "VOO": {
+    "parameter_stability": [
+      {
+        "param": "cluster_3",
+        "return": 0
+      },
+      {
+        "param": "cluster_4",
+        "return": 28.19963727000021
+      },
+      {
+        "param": "cluster_5",
+        "return": 1.018374950000256
+      },
+      {
+        "param": "target_1.5",
+        "return": 19.60350323000084
+      },
+      {
+        "param": "target_2.0",
+        "return": 28.19963727000021
+      },
+      {
+        "param": "target_2.5",
+        "return": 32.80483353000021
+      }
+    ]
+  }
+}

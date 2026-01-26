@@ -1,0 +1,16 @@
+=== FULL BACKTEST STARTED: 2026-01-25 08:59:54.925693 ===
+Period: 2024-01-01 to 2025-12-31
+Symbols: SPY, QQQ, IWM
+Combinations per symbol: 225
+============================================================
+
+08:59:54 - Starting parallel backtest across 3 symbols...
+08:59:55 - SPY: Starting backtest
+08:59:55 - QQQ: Starting backtest
+08:59:55 - IWM: Starting backtest
+08:59:55 - IWM: Loaded 375,934 bars (2024-01-01 to 2025-12-31)
+08:59:55 - IWM: Testing 225 parameter combinations
+08:59:55 - SPY: Loaded 408,578 bars (2024-01-01 to 2025-12-31)
+08:59:55 - SPY: Testing 225 parameter combinations
+08:59:55 - QQQ: Loaded 431,982 bars (2024-01-01 to 2025-12-31)
+08:59:55 - QQQ: Testing 225 parameter combinations

@@ -1,0 +1,9 @@
+Alpaca REST API Latency Test
+Timestamp: 2026-01-16 06:06:00.354613
+Requests: 100
+Mean: 74ms
+Median: 67ms
+Min: 63ms
+Max: 380ms
+P90: 81ms
+P99: 379ms

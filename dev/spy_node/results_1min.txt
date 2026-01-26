@@ -1,0 +1,106 @@
+================================================================================
+4-YEAR COMPARATIVE BACKTEST: ORIGINAL vs NO-SENTIMENT
+Timeframe: 1-Minute Bars | Horizon: 15-min forward return
+Period: 2022-01-01 to 2026-01-24
+================================================================================
+
+================================================================================
+SYMBOL: SPY
+================================================================================
+
+[SPY] Loading cached 1-minute bars...
+  Loaded: SPY_1min_20220101_20260124.parquet (837,967 bars)
+[SPY] Date range: 2022-01-03 09:00:00 to 2026-01-24 00:59:00
+[SPY] Calculating features...
+[SPY] Bars after warmup: 837,947
+
+[SPY] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[SPY] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[SPY] RESULTS COMPARISON
+----------------------------------------------------------------------
+Metric                                   ORIGINAL       NO-SENTIMENT
+----------------------------------------------------------------------
+Initial Capital                $       100,000.00 $       100,000.00
+Final Equity                   $        94,940.85 $        83,535.79
+Total Return                               -5.06%            -16.46%
+Avg Hit Rate                                47.3%              47.3%
+Winning Days                                  506                508
+Total Days                                   1021               1021
+----------------------------------------------------------------------
+[!!] ORIGINAL outperforms by 11.41%
+
+================================================================================
+SYMBOL: QQQ
+================================================================================
+
+[QQQ] Loading cached 1-minute bars...
+  Loaded: QQQ_1min_20220101_20260124.parquet (869,668 bars)
+[QQQ] Date range: 2022-01-03 09:00:00 to 2026-01-24 00:59:00
+[QQQ] Calculating features...
+[QQQ] Bars after warmup: 869,648
+
+[QQQ] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[QQQ] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[QQQ] RESULTS COMPARISON
+----------------------------------------------------------------------
+Metric                                   ORIGINAL       NO-SENTIMENT
+----------------------------------------------------------------------
+Initial Capital                $       100,000.00 $       100,000.00
+Final Equity                   $        71,286.96 $        77,776.10
+Total Return                              -28.71%            -22.22%
+Avg Hit Rate                                47.6%              47.6%
+Winning Days                                  491                474
+Total Days                                   1019               1019
+----------------------------------------------------------------------
+[OK] NO-SENTIMENT outperforms by 6.49%
+
+================================================================================
+SYMBOL: IWM
+================================================================================
+
+[IWM] Loading cached 1-minute bars...
+  Loaded: IWM_1min_20220101_20260124.parquet (755,102 bars)
+[IWM] Date range: 2022-01-03 09:00:00 to 2026-01-24 00:59:00
+[IWM] Calculating features...
+[IWM] Bars after warmup: 755,082
+
+[IWM] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[IWM] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[IWM] RESULTS COMPARISON
+----------------------------------------------------------------------
+Metric                                   ORIGINAL       NO-SENTIMENT
+----------------------------------------------------------------------
+Initial Capital                $       100,000.00 $       100,000.00
+Final Equity                   $        46,080.33 $        49,444.41
+Total Return                              -53.92%            -50.56%
+Avg Hit Rate                                46.7%              46.7%
+Winning Days                                  473                464
+Total Days                                   1015               1015
+----------------------------------------------------------------------
+[OK] NO-SENTIMENT outperforms by 3.36%
+
+================================================================================
+FINAL SUMMARY: 4-YEAR BACKTEST RESULTS (1-MINUTE BARS)
+================================================================================
+
+Symbol        ORIGINAL Return     NO-SENT Return          Winner
+----------------------------------------------------------------------
+SPY                    -5.06%            -16.46%        ORIGINAL
+QQQ                   -28.71%            -22.22%    NO-SENTIMENT
+IWM                   -53.92%            -50.56%    NO-SENTIMENT
+================================================================================
+
+OVERALL: ORIGINAL wins 1/3 | NO-SENTIMENT wins 2/3
+
+[OK] RECOMMENDATION: Remove fake sentiment factor
+
+--------------------------------------------------------------------------------
+DETAILED STATISTICS
+--------------------------------------------------------------------------------
+SPY: Original HR=47.3%, No-Sent HR=47.3%
+QQQ: Original HR=47.6%, No-Sent HR=47.6%
+IWM: Original HR=46.7%, No-Sent HR=46.7%
+================================================================================

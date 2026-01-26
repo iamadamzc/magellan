@@ -1,0 +1,2251 @@
+📦 Using Magellan DataCache infrastructure
+📰 Loading sentiment data...
+📂 Loading cached sentiment for QQQ
+   QQQ: 1471 days (51 non-zero)
+
+================================================================================
+🚀 PHASE 1.1: BASELINE BACKTEST (2024-2025)
+================================================================================
+Period: 2022-01-01 → 2026-01-10
+Symbols: QQQ
+Initial Capital: $25,000.00
+Slippage: 5 bps per trade
+================================================================================
+
+📥 Fetching data for QQQ (5Min)...
+✅ Fetched 191767 bars for QQQ
+
+📊 Processing 190491 bars across 1 symbols...
+================================================================================
+
+  📈 LONG QQQ: 15 shares @ $399.59 (cost: $5,993.85)
+  📉 EXIT QQQ: 15 shares @ $398.88 | PnL: $-10.64 (-0.18%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 15 shares @ $400.77 (cost: $6,011.55)
+  📉 EXIT QQQ: 15 shares @ $401.73 | PnL: $+14.38 (+0.24%) | Hold: 0 days 21:45:00
+  📈 LONG QQQ: 15 shares @ $396.03 (cost: $5,940.42)
+  📉 EXIT QQQ: 15 shares @ $395.37 | PnL: $-9.84 (-0.17%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 16 shares @ $382.57 (cost: $6,121.14)
+  📉 EXIT QQQ: 16 shares @ $382.70 | PnL: $+2.04 (+0.03%) | Hold: 0 days 18:40:00
+  📈 LONG QQQ: 16 shares @ $374.59 (cost: $5,993.40)
+  📉 EXIT QQQ: 16 shares @ $385.08 | PnL: $+167.84 (+2.80%) | Hold: 1 days 14:50:00
+  📈 LONG QQQ: 16 shares @ $389.13 (cost: $6,226.15)
+  📉 EXIT QQQ: 16 shares @ $385.51 | PnL: $-58.04 (-0.93%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 16 shares @ $388.06 (cost: $6,209.02)
+  📉 EXIT QQQ: 16 shares @ $386.05 | PnL: $-32.27 (-0.52%) | Hold: 0 days 04:45:00
+  📈 LONG QQQ: 16 shares @ $378.08 (cost: $6,049.26)
+  📉 EXIT QQQ: 16 shares @ $373.68 | PnL: $-70.33 (-1.16%) | Hold: 3 days 18:30:00
+  📈 LONG QQQ: 16 shares @ $374.79 (cost: $5,996.60)
+  📉 EXIT QQQ: 16 shares @ $370.47 | PnL: $-69.00 (-1.15%) | Hold: 0 days 10:45:00
+  📈 LONG QQQ: 16 shares @ $373.20 (cost: $5,971.14)
+  📉 EXIT QQQ: 16 shares @ $369.93 | PnL: $-52.19 (-0.87%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 16 shares @ $367.84 (cost: $5,885.50)
+  📉 EXIT QQQ: 16 shares @ $366.20 | PnL: $-26.35 (-0.45%) | Hold: 0 days 11:00:00
+  📈 LONG QQQ: 17 shares @ $359.73 (cost: $6,115.41)
+  📉 EXIT QQQ: 17 shares @ $350.82 | PnL: $-151.39 (-2.48%) | Hold: 0 days 08:10:00
+  📈 LONG QQQ: 17 shares @ $353.69 (cost: $6,012.67)
+  📉 EXIT QQQ: 17 shares @ $349.23 | PnL: $-75.84 (-1.26%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 18 shares @ $341.41 (cost: $6,145.39)
+  📉 EXIT QQQ: 18 shares @ $347.11 | PnL: $+102.52 (+1.67%) | Hold: 0 days 14:45:00
+  📈 LONG QQQ: 17 shares @ $346.60 (cost: $5,892.25)
+  📉 EXIT QQQ: 17 shares @ $342.84 | PnL: $-64.00 (-1.09%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 17 shares @ $343.57 (cost: $5,840.72)
+  📉 EXIT QQQ: 17 shares @ $344.20 | PnL: $+10.64 (+0.18%) | Hold: 1 days 09:50:00
+  📈 LONG QQQ: 17 shares @ $349.12 (cost: $5,935.12)
+  📉 EXIT QQQ: 17 shares @ $344.99 | PnL: $-70.33 (-1.18%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 17 shares @ $345.45 (cost: $5,872.69)
+  📉 EXIT QQQ: 17 shares @ $337.93 | PnL: $-127.87 (-2.18%) | Hold: 0 days 14:45:00
+  📈 LONG QQQ: 17 shares @ $348.84 (cost: $5,930.35)
+  📉 EXIT QQQ: 17 shares @ $344.03 | PnL: $-81.88 (-1.38%) | Hold: 0 days 02:15:00
+  📈 LONG QQQ: 17 shares @ $350.24 (cost: $5,954.00)
+  📉 EXIT QQQ: 17 shares @ $360.73 | PnL: $+178.41 (+3.00%) | Hold: 3 days 17:55:00
+  📈 LONG QQQ: 16 shares @ $364.20 (cost: $5,827.23)
+  📉 EXIT QQQ: 16 shares @ $370.19 | PnL: $+95.88 (+1.65%) | Hold: 0 days 17:35:00
+  📈 LONG QQQ: 17 shares @ $361.26 (cost: $6,141.43)
+  📉 EXIT QQQ: 17 shares @ $357.91 | PnL: $-56.94 (-0.93%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 17 shares @ $359.94 (cost: $6,118.98)
+  📉 EXIT QQQ: 17 shares @ $355.25 | PnL: $-79.69 (-1.30%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 17 shares @ $356.43 (cost: $6,059.28)
+  📉 EXIT QQQ: 17 shares @ $356.97 | PnL: $+9.24 (+0.15%) | Hold: 0 days 08:20:00
+  📈 LONG QQQ: 17 shares @ $358.74 (cost: $6,098.57)
+  📉 EXIT QQQ: 17 shares @ $355.67 | PnL: $-52.14 (-0.85%) | Hold: 0 days 04:40:00
+  📈 LONG QQQ: 17 shares @ $358.57 (cost: $6,095.68)
+  📉 EXIT QQQ: 17 shares @ $354.99 | PnL: $-60.81 (-1.00%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 17 shares @ $354.92 (cost: $6,033.60)
+  📉 EXIT QQQ: 17 shares @ $366.57 | PnL: $+198.04 (+3.28%) | Hold: 1 days 08:55:00
+  📈 LONG QQQ: 16 shares @ $366.48 (cost: $5,863.73)
+  📉 EXIT QQQ: 16 shares @ $362.37 | PnL: $-65.83 (-1.12%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 16 shares @ $363.76 (cost: $5,820.19)
+  📉 EXIT QQQ: 16 shares @ $356.68 | PnL: $-113.28 (-1.95%) | Hold: 0 days 09:35:00
+  📈 LONG QQQ: 17 shares @ $357.49 (cost: $6,077.31)
+  📉 EXIT QQQ: 17 shares @ $350.30 | PnL: $-122.21 (-2.01%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 17 shares @ $346.37 (cost: $5,888.34)
+  📉 EXIT QQQ: 17 shares @ $345.35 | PnL: $-17.44 (-0.30%) | Hold: 0 days 06:10:00
+  📈 LONG QQQ: 17 shares @ $348.75 (cost: $5,928.81)
+  📉 EXIT QQQ: 17 shares @ $352.93 | PnL: $+71.06 (+1.20%) | Hold: 0 days 14:40:00
+  📈 LONG QQQ: 17 shares @ $355.86 (cost: $6,049.58)
+  📉 EXIT QQQ: 17 shares @ $354.78 | PnL: $-18.28 (-0.30%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 17 shares @ $356.77 (cost: $6,065.06)
+  📉 EXIT QQQ: 17 shares @ $353.50 | PnL: $-55.51 (-0.92%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 17 shares @ $353.35 (cost: $6,006.89)
+  📉 EXIT QQQ: 17 shares @ $354.97 | PnL: $+27.64 (+0.46%) | Hold: 0 days 05:00:00
+  📈 LONG QQQ: 17 shares @ $354.48 (cost: $6,026.11)
+  📉 EXIT QQQ: 17 shares @ $352.38 | PnL: $-35.59 (-0.59%) | Hold: 0 days 01:50:00
+  📈 LONG QQQ: 17 shares @ $345.93 (cost: $5,880.86)
+  📉 EXIT QQQ: 17 shares @ $344.98 | PnL: $-16.24 (-0.28%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 17 shares @ $347.69 (cost: $5,910.79)
+  📉 EXIT QQQ: 17 shares @ $345.22 | PnL: $-42.10 (-0.71%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 17 shares @ $343.64 (cost: $5,841.91)
+  📉 EXIT QQQ: 17 shares @ $340.79 | PnL: $-48.49 (-0.83%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 17 shares @ $340.15 (cost: $5,782.55)
+  📉 EXIT QQQ: 17 shares @ $338.39 | PnL: $-29.91 (-0.52%) | Hold: 1 days 04:30:00
+  📈 LONG QQQ: 18 shares @ $329.55 (cost: $5,931.98)
+  📉 EXIT QQQ: 18 shares @ $322.54 | PnL: $-126.29 (-2.13%) | Hold: 0 days 09:10:00
+  📈 LONG QQQ: 18 shares @ $320.31 (cost: $5,765.58)
+  📉 EXIT QQQ: 18 shares @ $338.13 | PnL: $+320.77 (+5.56%) | Hold: 0 days 09:30:00
+  📈 LONG QQQ: 17 shares @ $339.73 (cost: $5,775.41)
+  📉 EXIT QQQ: 17 shares @ $335.74 | PnL: $-67.79 (-1.17%) | Hold: 0 days 08:40:00
+  📈 LONG QQQ: 17 shares @ $339.18 (cost: $5,766.05)
+  📉 EXIT QQQ: 17 shares @ $342.23 | PnL: $+51.84 (+0.90%) | Hold: 2 days 21:25:00
+  📈 LONG QQQ: 17 shares @ $343.16 (cost: $5,833.75)
+  📉 EXIT QQQ: 17 shares @ $343.59 | PnL: $+7.25 (+0.12%) | Hold: 0 days 05:25:00
+  📈 LONG QQQ: 17 shares @ $347.31 (cost: $5,904.33)
+  📉 EXIT QQQ: 17 shares @ $345.28 | PnL: $-34.62 (-0.59%) | Hold: 0 days 12:15:00
+  📈 LONG QQQ: 17 shares @ $345.73 (cost: $5,877.46)
+  📉 EXIT QQQ: 17 shares @ $342.00 | PnL: $-63.48 (-1.08%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 17 shares @ $344.15 (cost: $5,850.58)
+  📉 EXIT QQQ: 17 shares @ $346.08 | PnL: $+32.72 (+0.56%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 17 shares @ $346.72 (cost: $5,894.30)
+  📉 EXIT QQQ: 17 shares @ $344.73 | PnL: $-33.93 (-0.58%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 17 shares @ $340.23 (cost: $5,783.91)
+  📉 EXIT QQQ: 17 shares @ $335.63 | PnL: $-78.16 (-1.35%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 18 shares @ $334.18 (cost: $6,015.19)
+  📉 EXIT QQQ: 18 shares @ $331.71 | PnL: $-44.33 (-0.74%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 18 shares @ $325.55 (cost: $5,859.95)
+  📉 EXIT QQQ: 18 shares @ $323.34 | PnL: $-39.86 (-0.68%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 18 shares @ $330.21 (cost: $5,943.69)
+  📉 EXIT QQQ: 18 shares @ $324.74 | PnL: $-98.41 (-1.66%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 18 shares @ $323.15 (cost: $5,816.73)
+  📉 EXIT QQQ: 18 shares @ $333.97 | PnL: $+194.79 (+3.35%) | Hold: 1 days 09:30:00
+  📈 LONG QQQ: 18 shares @ $331.21 (cost: $5,961.70)
+  📉 EXIT QQQ: 18 shares @ $332.21 | PnL: $+18.15 (+0.30%) | Hold: 1 days 01:05:00
+  📈 LONG QQQ: 18 shares @ $326.45 (cost: $5,876.16)
+  📉 EXIT QQQ: 18 shares @ $322.56 | PnL: $-70.10 (-1.19%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 18 shares @ $319.04 (cost: $5,742.71)
+  📉 EXIT QQQ: 18 shares @ $332.21 | PnL: $+237.14 (+4.13%) | Hold: 1 days 02:15:00
+  📈 LONG QQQ: 18 shares @ $334.93 (cost: $6,028.79)
+  📉 EXIT QQQ: 18 shares @ $334.35 | PnL: $-10.44 (-0.17%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 17 shares @ $339.26 (cost: $5,767.41)
+  📉 EXIT QQQ: 17 shares @ $340.15 | PnL: $+15.14 (+0.26%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 17 shares @ $341.02 (cost: $5,797.35)
+  📉 EXIT QQQ: 17 shares @ $339.36 | PnL: $-28.22 (-0.49%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 17 shares @ $341.17 (cost: $5,799.90)
+  📉 EXIT QQQ: 17 shares @ $349.68 | PnL: $+144.58 (+2.49%) | Hold: 3 days 18:10:00
+  📈 LONG QQQ: 17 shares @ $351.11 (cost: $5,968.79)
+  📉 EXIT QQQ: 17 shares @ $346.56 | PnL: $-77.33 (-1.30%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 17 shares @ $351.45 (cost: $5,974.58)
+  📉 EXIT QQQ: 17 shares @ $346.03 | PnL: $-92.12 (-1.54%) | Hold: 0 days 01:50:00
+  📈 LONG QQQ: 17 shares @ $351.71 (cost: $5,979.00)
+  📉 EXIT QQQ: 17 shares @ $350.00 | PnL: $-28.91 (-0.48%) | Hold: 0 days 03:55:00
+  📈 LONG QQQ: 17 shares @ $352.71 (cost: $5,996.01)
+  📉 EXIT QQQ: 17 shares @ $356.39 | PnL: $+62.65 (+1.04%) | Hold: 0 days 08:30:00
+  📈 LONG QQQ: 17 shares @ $354.63 (cost: $6,028.66)
+  📉 EXIT QQQ: 17 shares @ $353.56 | PnL: $-18.09 (-0.30%) | Hold: 0 days 22:25:00
+  📈 LONG QQQ: 17 shares @ $354.51 (cost: $6,026.62)
+  📉 EXIT QQQ: 17 shares @ $359.68 | PnL: $+87.94 (+1.46%) | Hold: 1 days 02:10:00
+  📈 LONG QQQ: 17 shares @ $358.93 (cost: $6,101.80)
+  📉 EXIT QQQ: 17 shares @ $357.63 | PnL: $-22.07 (-0.36%) | Hold: 2 days 14:00:00
+  📈 LONG QQQ: 16 shares @ $359.93 (cost: $5,758.88)
+  📉 EXIT QQQ: 16 shares @ $370.14 | PnL: $+163.44 (+2.84%) | Hold: 1 days 11:00:00
+  📈 LONG QQQ: 16 shares @ $369.15 (cost: $5,906.47)
+  📉 EXIT QQQ: 16 shares @ $366.54 | PnL: $-41.89 (-0.71%) | Hold: 0 days 05:30:00
+  📈 LONG QQQ: 16 shares @ $369.03 (cost: $5,904.55)
+  📉 EXIT QQQ: 16 shares @ $367.36 | PnL: $-26.85 (-0.45%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 16 shares @ $366.67 (cost: $5,866.77)
+  📉 EXIT QQQ: 16 shares @ $362.32 | PnL: $-69.67 (-1.19%) | Hold: 0 days 17:55:00
+  📈 LONG QQQ: 16 shares @ $361.33 (cost: $5,781.29)
+  📉 EXIT QQQ: 16 shares @ $368.82 | PnL: $+119.76 (+2.07%) | Hold: 3 days 14:55:00
+  📈 LONG QQQ: 17 shares @ $354.20 (cost: $6,021.35)
+  📉 EXIT QQQ: 17 shares @ $352.40 | PnL: $-30.49 (-0.51%) | Hold: 0 days 05:55:00
+  📈 LONG QQQ: 17 shares @ $355.05 (cost: $6,035.81)
+  📉 EXIT QQQ: 17 shares @ $352.54 | PnL: $-42.56 (-0.71%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 17 shares @ $353.39 (cost: $6,007.57)
+  📉 EXIT QQQ: 17 shares @ $354.70 | PnL: $+22.37 (+0.37%) | Hold: 0 days 19:30:00
+  📈 LONG QQQ: 17 shares @ $346.30 (cost: $5,887.15)
+  📉 EXIT QQQ: 17 shares @ $340.74 | PnL: $-94.58 (-1.61%) | Hold: 0 days 09:35:00
+  📈 LONG QQQ: 17 shares @ $342.51 (cost: $5,822.69)
+  📉 EXIT QQQ: 17 shares @ $343.34 | PnL: $+14.06 (+0.24%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 17 shares @ $340.51 (cost: $5,788.67)
+  📉 EXIT QQQ: 17 shares @ $341.38 | PnL: $+14.77 (+0.26%) | Hold: 0 days 10:45:00
+  📈 LONG QQQ: 17 shares @ $342.67 (cost: $5,825.41)
+  📉 EXIT QQQ: 17 shares @ $340.22 | PnL: $-41.67 (-0.72%) | Hold: 0 days 01:00:00
+  📈 LONG QQQ: 17 shares @ $342.40 (cost: $5,820.82)
+  📉 EXIT QQQ: 17 shares @ $342.21 | PnL: $-3.27 (-0.06%) | Hold: 1 days 00:20:00
+  📈 LONG QQQ: 17 shares @ $341.87 (cost: $5,811.80)
+  📉 EXIT QQQ: 17 shares @ $339.59 | PnL: $-38.77 (-0.67%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 18 shares @ $337.36 (cost: $6,072.45)
+  📉 EXIT QQQ: 18 shares @ $337.55 | PnL: $+3.47 (+0.06%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 17 shares @ $339.59 (cost: $5,773.03)
+  📉 EXIT QQQ: 17 shares @ $337.27 | PnL: $-39.41 (-0.68%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 17 shares @ $341.47 (cost: $5,805.00)
+  📉 EXIT QQQ: 17 shares @ $337.57 | PnL: $-66.29 (-1.14%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 17 shares @ $339.70 (cost: $5,774.90)
+  📉 EXIT QQQ: 17 shares @ $342.49 | PnL: $+47.41 (+0.82%) | Hold: 0 days 08:00:00
+  📈 LONG QQQ: 17 shares @ $344.11 (cost: $5,849.90)
+  📉 EXIT QQQ: 17 shares @ $343.69 | PnL: $-7.21 (-0.12%) | Hold: 0 days 05:15:00
+  📈 LONG QQQ: 17 shares @ $345.23 (cost: $5,868.95)
+  📉 EXIT QQQ: 17 shares @ $343.09 | PnL: $-36.45 (-0.62%) | Hold: 0 days 06:50:00
+  📈 LONG QQQ: 18 shares @ $334.41 (cost: $6,019.33)
+  📉 EXIT QQQ: 18 shares @ $329.08 | PnL: $-95.97 (-1.59%) | Hold: 0 days 04:40:00
+  📈 LONG QQQ: 18 shares @ $327.08 (cost: $5,887.50)
+  📉 EXIT QQQ: 18 shares @ $328.17 | PnL: $+19.48 (+0.33%) | Hold: 0 days 17:30:00
+  📈 LONG QQQ: 19 shares @ $316.37 (cost: $6,010.99)
+  📉 EXIT QQQ: 19 shares @ $317.32 | PnL: $+18.11 (+0.30%) | Hold: 0 days 13:20:00
+  📈 LONG QQQ: 18 shares @ $320.04 (cost: $5,760.72)
+  📉 EXIT QQQ: 18 shares @ $323.60 | PnL: $+64.05 (+1.11%) | Hold: 1 days 06:35:00
+  📈 LONG QQQ: 18 shares @ $325.91 (cost: $5,866.43)
+  📉 EXIT QQQ: 18 shares @ $319.61 | PnL: $-113.45 (-1.93%) | Hold: 0 days 08:05:00
+  📈 LONG QQQ: 19 shares @ $315.32 (cost: $5,991.03)
+  📉 EXIT QQQ: 19 shares @ $312.79 | PnL: $-47.96 (-0.80%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 19 shares @ $313.71 (cost: $5,960.43)
+  📉 EXIT QQQ: 19 shares @ $316.86 | PnL: $+59.94 (+1.01%) | Hold: 0 days 21:30:00
+  📈 LONG QQQ: 18 shares @ $318.60 (cost: $5,734.79)
+  📉 EXIT QQQ: 18 shares @ $316.91 | PnL: $-30.38 (-0.53%) | Hold: 0 days 01:35:00
+  📈 LONG QQQ: 18 shares @ $320.17 (cost: $5,763.06)
+  📉 EXIT QQQ: 18 shares @ $317.43 | PnL: $-49.27 (-0.85%) | Hold: 0 days 01:05:00
+  📈 LONG QQQ: 18 shares @ $320.55 (cost: $5,769.90)
+  📉 EXIT QQQ: 18 shares @ $316.51 | PnL: $-72.69 (-1.26%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 18 shares @ $318.30 (cost: $5,729.38)
+  📉 EXIT QQQ: 18 shares @ $327.14 | PnL: $+159.07 (+2.78%) | Hold: 0 days 15:40:00
+  📈 LONG QQQ: 19 shares @ $314.17 (cost: $5,969.17)
+  📉 EXIT QQQ: 19 shares @ $305.70 | PnL: $-160.93 (-2.70%) | Hold: 0 days 17:40:00
+  📈 LONG QQQ: 19 shares @ $305.03 (cost: $5,795.62)
+  📉 EXIT QQQ: 19 shares @ $299.71 | PnL: $-101.13 (-1.74%) | Hold: 1 days 01:10:00
+  📈 LONG QQQ: 19 shares @ $302.96 (cost: $5,756.27)
+  📉 EXIT QQQ: 19 shares @ $300.87 | PnL: $-39.75 (-0.69%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 19 shares @ $301.20 (cost: $5,722.81)
+  📉 EXIT QQQ: 19 shares @ $296.90 | PnL: $-81.68 (-1.43%) | Hold: 0 days 13:40:00
+  📈 LONG QQQ: 19 shares @ $302.32 (cost: $5,744.10)
+  📉 EXIT QQQ: 19 shares @ $294.07 | PnL: $-156.72 (-2.73%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 20 shares @ $292.27 (cost: $5,845.32)
+  📉 EXIT QQQ: 20 shares @ $286.80 | PnL: $-109.34 (-1.87%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 20 shares @ $288.23 (cost: $5,764.68)
+  📉 EXIT QQQ: 20 shares @ $295.37 | PnL: $+142.77 (+2.48%) | Hold: 0 days 18:10:00
+  📈 LONG QQQ: 19 shares @ $298.59 (cost: $5,673.20)
+  📉 EXIT QQQ: 19 shares @ $298.57 | PnL: $-0.35 (-0.01%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 19 shares @ $301.52 (cost: $5,728.89)
+  📉 EXIT QQQ: 19 shares @ $299.66 | PnL: $-35.35 (-0.62%) | Hold: 2 days 12:35:00
+  📈 LONG QQQ: 19 shares @ $301.69 (cost: $5,732.12)
+  📉 EXIT QQQ: 19 shares @ $298.68 | PnL: $-57.19 (-1.00%) | Hold: 0 days 07:10:00
+  📈 LONG QQQ: 19 shares @ $298.96 (cost: $5,680.23)
+  📉 EXIT QQQ: 19 shares @ $301.22 | PnL: $+42.94 (+0.76%) | Hold: 0 days 16:15:00
+  📈 LONG QQQ: 19 shares @ $304.96 (cost: $5,794.29)
+  📉 EXIT QQQ: 19 shares @ $302.66 | PnL: $-43.77 (-0.76%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 20 shares @ $288.36 (cost: $5,767.28)
+  📉 EXIT QQQ: 20 shares @ $287.82 | PnL: $-10.96 (-0.19%) | Hold: 1 days 03:30:00
+  📈 LONG QQQ: 20 shares @ $285.61 (cost: $5,712.25)
+  📉 EXIT QQQ: 20 shares @ $291.10 | PnL: $+109.83 (+1.92%) | Hold: 3 days 01:45:00
+  📈 LONG QQQ: 20 shares @ $289.18 (cost: $5,783.69)
+  📉 EXIT QQQ: 20 shares @ $286.19 | PnL: $-59.95 (-1.04%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 20 shares @ $285.72 (cost: $5,714.46)
+  📉 EXIT QQQ: 20 shares @ $286.88 | PnL: $+23.07 (+0.40%) | Hold: 0 days 16:20:00
+  📈 LONG QQQ: 20 shares @ $288.33 (cost: $5,766.58)
+  📉 EXIT QQQ: 20 shares @ $288.81 | PnL: $+9.53 (+0.17%) | Hold: 0 days 06:50:00
+  📈 LONG QQQ: 20 shares @ $291.51 (cost: $5,830.11)
+  📉 EXIT QQQ: 20 shares @ $308.68 | PnL: $+343.40 (+5.89%) | Hold: 5 days 01:20:00
+  📈 LONG QQQ: 19 shares @ $310.06 (cost: $5,891.23)
+  📉 EXIT QQQ: 19 shares @ $307.87 | PnL: $-41.78 (-0.71%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 19 shares @ $309.37 (cost: $5,878.12)
+  📉 EXIT QQQ: 19 shares @ $306.98 | PnL: $-45.57 (-0.78%) | Hold: 0 days 09:20:00
+  📈 LONG QQQ: 19 shares @ $309.47 (cost: $5,880.02)
+  📉 EXIT QQQ: 19 shares @ $307.07 | PnL: $-45.76 (-0.78%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 19 shares @ $308.24 (cost: $5,856.64)
+  📉 EXIT QQQ: 19 shares @ $305.58 | PnL: $-50.67 (-0.87%) | Hold: 0 days 01:55:00
+  📈 LONG QQQ: 19 shares @ $307.35 (cost: $5,839.72)
+  📉 EXIT QQQ: 19 shares @ $305.18 | PnL: $-41.35 (-0.71%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 19 shares @ $309.14 (cost: $5,873.75)
+  📉 EXIT QQQ: 19 shares @ $312.57 | PnL: $+65.15 (+1.11%) | Hold: 0 days 16:50:00
+  📈 LONG QQQ: 19 shares @ $310.42 (cost: $5,897.89)
+  📉 EXIT QQQ: 19 shares @ $307.02 | PnL: $-64.58 (-1.09%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 19 shares @ $308.05 (cost: $5,853.03)
+  📉 EXIT QQQ: 19 shares @ $308.03 | PnL: $-0.53 (-0.01%) | Hold: 2 days 22:10:00
+  📈 LONG QQQ: 19 shares @ $309.30 (cost: $5,876.79)
+  📉 EXIT QQQ: 19 shares @ $306.29 | PnL: $-57.34 (-0.98%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 19 shares @ $307.67 (cost: $5,845.80)
+  📉 EXIT QQQ: 19 shares @ $305.80 | PnL: $-35.66 (-0.61%) | Hold: 0 days 08:15:00
+  📈 LONG QQQ: 19 shares @ $304.67 (cost: $5,788.77)
+  📉 EXIT QQQ: 19 shares @ $308.61 | PnL: $+74.73 (+1.29%) | Hold: 0 days 18:35:00
+  📈 LONG QQQ: 19 shares @ $309.67 (cost: $5,883.82)
+  📉 EXIT QQQ: 19 shares @ $307.43 | PnL: $-42.72 (-0.73%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 19 shares @ $308.03 (cost: $5,852.64)
+  📉 EXIT QQQ: 19 shares @ $307.31 | PnL: $-13.83 (-0.24%) | Hold: 0 days 13:05:00
+  📈 LONG QQQ: 19 shares @ $300.66 (cost: $5,712.54)
+  📉 EXIT QQQ: 19 shares @ $295.30 | PnL: $-101.80 (-1.78%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 20 shares @ $290.64 (cost: $5,812.70)
+  📉 EXIT QQQ: 20 shares @ $281.18 | PnL: $-189.12 (-3.25%) | Hold: 2 days 14:15:00
+  📈 LONG QQQ: 20 shares @ $281.17 (cost: $5,623.41)
+  📉 EXIT QQQ: 20 shares @ $276.33 | PnL: $-96.77 (-1.72%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 20 shares @ $278.87 (cost: $5,577.39)
+  📉 EXIT QQQ: 20 shares @ $273.58 | PnL: $-105.72 (-1.90%) | Hold: 0 days 11:05:00
+  📈 LONG QQQ: 20 shares @ $276.74 (cost: $5,534.77)
+  📉 EXIT QQQ: 20 shares @ $276.78 | PnL: $+0.86 (+0.02%) | Hold: 1 days 10:00:00
+  📈 LONG QQQ: 20 shares @ $276.35 (cost: $5,526.96)
+  📉 EXIT QQQ: 20 shares @ $272.47 | PnL: $-77.49 (-1.40%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 21 shares @ $274.36 (cost: $5,761.50)
+  📉 EXIT QQQ: 21 shares @ $272.86 | PnL: $-31.37 (-0.54%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 20 shares @ $275.38 (cost: $5,507.55)
+  📉 EXIT QQQ: 20 shares @ $278.00 | PnL: $+52.47 (+0.95%) | Hold: 3 days 22:00:00
+  📈 LONG QQQ: 20 shares @ $281.23 (cost: $5,624.61)
+  📉 EXIT QQQ: 20 shares @ $281.76 | PnL: $+10.57 (+0.19%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 20 shares @ $277.24 (cost: $5,544.77)
+  📉 EXIT QQQ: 20 shares @ $280.93 | PnL: $+73.82 (+1.33%) | Hold: 0 days 08:15:00
+  📈 LONG QQQ: 20 shares @ $282.18 (cost: $5,643.62)
+  📉 EXIT QQQ: 20 shares @ $281.98 | PnL: $-4.04 (-0.07%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 20 shares @ $283.65 (cost: $5,673.04)
+  📉 EXIT QQQ: 20 shares @ $295.32 | PnL: $+233.41 (+4.11%) | Hold: 3 days 18:00:00
+  📈 LONG QQQ: 19 shares @ $293.67 (cost: $5,579.67)
+  📉 EXIT QQQ: 19 shares @ $292.48 | PnL: $-22.48 (-0.40%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 19 shares @ $295.41 (cost: $5,612.74)
+  📉 EXIT QQQ: 19 shares @ $290.98 | PnL: $-84.04 (-1.50%) | Hold: 0 days 01:00:00
+  📈 LONG QQQ: 20 shares @ $283.20 (cost: $5,664.03)
+  📉 EXIT QQQ: 20 shares @ $280.34 | PnL: $-57.24 (-1.01%) | Hold: 0 days 20:25:00
+  📈 LONG QQQ: 20 shares @ $280.72 (cost: $5,614.41)
+  📉 EXIT QQQ: 20 shares @ $278.94 | PnL: $-35.60 (-0.63%) | Hold: 0 days 09:30:00
+  📈 LONG QQQ: 20 shares @ $278.12 (cost: $5,562.38)
+  📉 EXIT QQQ: 20 shares @ $280.86 | PnL: $+54.81 (+0.99%) | Hold: 4 days 00:35:00
+  📈 LONG QQQ: 20 shares @ $280.92 (cost: $5,618.31)
+  📉 EXIT QQQ: 20 shares @ $286.16 | PnL: $+104.83 (+1.87%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 20 shares @ $287.34 (cost: $5,746.87)
+  📉 EXIT QQQ: 20 shares @ $293.41 | PnL: $+121.39 (+2.11%) | Hold: 1 days 19:45:00
+  📈 LONG QQQ: 19 shares @ $294.46 (cost: $5,594.69)
+  📉 EXIT QQQ: 19 shares @ $290.59 | PnL: $-73.39 (-1.31%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 19 shares @ $295.51 (cost: $5,614.65)
+  📉 EXIT QQQ: 19 shares @ $292.78 | PnL: $-51.76 (-0.92%) | Hold: 2 days 17:25:00
+  📈 LONG QQQ: 20 shares @ $288.70 (cost: $5,774.09)
+  📉 EXIT QQQ: 20 shares @ $285.72 | PnL: $-59.75 (-1.03%) | Hold: 0 days 07:40:00
+  📈 LONG QQQ: 20 shares @ $287.77 (cost: $5,755.48)
+  📉 EXIT QQQ: 20 shares @ $279.61 | PnL: $-163.27 (-2.84%) | Hold: 0 days 00:30:00
+  📈 LONG QQQ: 20 shares @ $287.54 (cost: $5,750.87)
+  📉 EXIT QQQ: 20 shares @ $284.64 | PnL: $-58.12 (-1.01%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 20 shares @ $284.19 (cost: $5,683.74)
+  📉 EXIT QQQ: 20 shares @ $294.14 | PnL: $+199.12 (+3.50%) | Hold: 3 days 20:40:00
+  📈 LONG QQQ: 20 shares @ $290.00 (cost: $5,800.10)
+  📉 EXIT QQQ: 20 shares @ $297.86 | PnL: $+157.12 (+2.71%) | Hold: 1 days 12:10:00
+  📈 LONG QQQ: 19 shares @ $299.41 (cost: $5,688.78)
+  📉 EXIT QQQ: 19 shares @ $302.05 | PnL: $+50.15 (+0.88%) | Hold: 0 days 07:05:00
+  📈 LONG QQQ: 19 shares @ $303.27 (cost: $5,762.16)
+  📉 EXIT QQQ: 19 shares @ $302.32 | PnL: $-18.10 (-0.31%) | Hold: 1 days 05:45:00
+  📈 LONG QQQ: 19 shares @ $303.06 (cost: $5,758.17)
+  📉 EXIT QQQ: 19 shares @ $301.77 | PnL: $-24.56 (-0.43%) | Hold: 0 days 05:00:00
+  📈 LONG QQQ: 19 shares @ $300.80 (cost: $5,715.21)
+  📉 EXIT QQQ: 19 shares @ $298.97 | PnL: $-34.77 (-0.61%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 19 shares @ $299.50 (cost: $5,690.49)
+  📉 EXIT QQQ: 19 shares @ $298.53 | PnL: $-18.41 (-0.32%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 19 shares @ $299.04 (cost: $5,681.75)
+  📉 EXIT QQQ: 19 shares @ $298.69 | PnL: $-6.63 (-0.12%) | Hold: 0 days 12:00:00
+  📈 LONG QQQ: 19 shares @ $299.08 (cost: $5,682.51)
+  📉 EXIT QQQ: 19 shares @ $304.25 | PnL: $+98.20 (+1.73%) | Hold: 0 days 19:10:00
+  📈 LONG QQQ: 19 shares @ $305.41 (cost: $5,802.84)
+  📉 EXIT QQQ: 19 shares @ $311.39 | PnL: $+113.65 (+1.96%) | Hold: 1 days 02:05:00
+  📈 LONG QQQ: 18 shares @ $313.66 (cost: $5,645.82)
+  📉 EXIT QQQ: 18 shares @ $314.61 | PnL: $+17.21 (+0.30%) | Hold: 2 days 18:00:00
+  📈 LONG QQQ: 18 shares @ $315.19 (cost: $5,673.38)
+  📉 EXIT QQQ: 18 shares @ $313.76 | PnL: $-25.64 (-0.45%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 18 shares @ $316.06 (cost: $5,689.04)
+  📉 EXIT QQQ: 18 shares @ $315.78 | PnL: $-5.06 (-0.09%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 18 shares @ $312.87 (cost: $5,631.59)
+  📉 EXIT QQQ: 18 shares @ $314.16 | PnL: $+23.34 (+0.41%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 18 shares @ $315.98 (cost: $5,687.60)
+  📉 EXIT QQQ: 18 shares @ $321.93 | PnL: $+107.12 (+1.88%) | Hold: 0 days 12:50:00
+  📈 LONG QQQ: 18 shares @ $322.93 (cost: $5,812.76)
+  📉 EXIT QQQ: 18 shares @ $323.94 | PnL: $+18.12 (+0.31%) | Hold: 1 days 00:25:00
+  📈 LONG QQQ: 18 shares @ $324.66 (cost: $5,843.92)
+  📉 EXIT QQQ: 18 shares @ $321.04 | PnL: $-65.21 (-1.12%) | Hold: 0 days 00:35:00
+  📈 LONG QQQ: 18 shares @ $323.49 (cost: $5,822.85)
+  📉 EXIT QQQ: 18 shares @ $319.07 | PnL: $-79.58 (-1.37%) | Hold: 0 days 01:05:00
+  📈 LONG QQQ: 18 shares @ $321.91 (cost: $5,794.40)
+  📉 EXIT QQQ: 18 shares @ $321.14 | PnL: $-13.89 (-0.24%) | Hold: 2 days 19:50:00
+  📈 LONG QQQ: 18 shares @ $321.39 (cost: $5,785.03)
+  📉 EXIT QQQ: 18 shares @ $320.52 | PnL: $-15.68 (-0.27%) | Hold: 0 days 11:10:00
+  📈 LONG QQQ: 18 shares @ $318.40 (cost: $5,731.18)
+  📉 EXIT QQQ: 18 shares @ $325.96 | PnL: $+136.04 (+2.37%) | Hold: 1 days 06:45:00
+  📈 LONG QQQ: 18 shares @ $325.82 (cost: $5,864.81)
+  📉 EXIT QQQ: 18 shares @ $328.95 | PnL: $+56.21 (+0.96%) | Hold: 3 days 00:00:00
+  📈 LONG QQQ: 18 shares @ $329.89 (cost: $5,938.11)
+  📉 EXIT QQQ: 18 shares @ $332.53 | PnL: $+47.50 (+0.80%) | Hold: 0 days 11:05:00
+  📈 LONG QQQ: 17 shares @ $333.21 (cost: $5,664.51)
+  📉 EXIT QQQ: 17 shares @ $330.85 | PnL: $-39.98 (-0.71%) | Hold: 0 days 13:55:00
+  📈 LONG QQQ: 17 shares @ $333.00 (cost: $5,661.08)
+  📉 EXIT QQQ: 17 shares @ $330.82 | PnL: $-37.06 (-0.65%) | Hold: 0 days 02:55:00
+  📈 LONG QQQ: 17 shares @ $330.12 (cost: $5,612.12)
+  📉 EXIT QQQ: 17 shares @ $327.74 | PnL: $-40.61 (-0.72%) | Hold: 0 days 04:45:00
+  📈 LONG QQQ: 18 shares @ $328.89 (cost: $5,920.10)
+  📉 EXIT QQQ: 18 shares @ $328.04 | PnL: $-15.45 (-0.26%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 18 shares @ $315.29 (cost: $5,675.18)
+  📉 EXIT QQQ: 18 shares @ $314.73 | PnL: $-9.99 (-0.18%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 18 shares @ $314.46 (cost: $5,660.23)
+  📉 EXIT QQQ: 18 shares @ $314.06 | PnL: $-7.10 (-0.13%) | Hold: 0 days 14:20:00
+  📈 LONG QQQ: 18 shares @ $316.28 (cost: $5,693.10)
+  📉 EXIT QQQ: 18 shares @ $316.61 | PnL: $+5.91 (+0.10%) | Hold: 0 days 18:20:00
+  📈 LONG QQQ: 18 shares @ $317.79 (cost: $5,720.20)
+  📉 EXIT QQQ: 18 shares @ $316.47 | PnL: $-23.71 (-0.41%) | Hold: 0 days 01:35:00
+  📈 LONG QQQ: 18 shares @ $319.16 (cost: $5,744.87)
+  📉 EXIT QQQ: 18 shares @ $317.09 | PnL: $-37.23 (-0.65%) | Hold: 0 days 01:00:00
+  📈 LONG QQQ: 18 shares @ $318.77 (cost: $5,737.85)
+  📉 EXIT QQQ: 18 shares @ $318.84 | PnL: $+1.28 (+0.02%) | Hold: 0 days 14:30:00
+  📈 LONG QQQ: 18 shares @ $319.09 (cost: $5,743.61)
+  📉 EXIT QQQ: 18 shares @ $312.20 | PnL: $-123.94 (-2.16%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 19 shares @ $304.75 (cost: $5,790.29)
+  📉 EXIT QQQ: 19 shares @ $304.10 | PnL: $-12.43 (-0.21%) | Hold: 0 days 07:35:00
+  📈 LONG QQQ: 19 shares @ $305.33 (cost: $5,801.32)
+  📉 EXIT QQQ: 19 shares @ $305.91 | PnL: $+10.91 (+0.19%) | Hold: 0 days 12:50:00
+  📈 LONG QQQ: 19 shares @ $301.48 (cost: $5,728.04)
+  📉 EXIT QQQ: 19 shares @ $299.85 | PnL: $-30.89 (-0.54%) | Hold: 0 days 22:35:00
+  📈 LONG QQQ: 19 shares @ $300.62 (cost: $5,711.69)
+  📉 EXIT QQQ: 19 shares @ $299.18 | PnL: $-27.26 (-0.48%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 19 shares @ $297.22 (cost: $5,647.15)
+  📉 EXIT QQQ: 19 shares @ $298.57 | PnL: $+25.69 (+0.45%) | Hold: 0 days 23:30:00
+  📈 LONG QQQ: 19 shares @ $302.03 (cost: $5,738.59)
+  📉 EXIT QQQ: 19 shares @ $299.46 | PnL: $-48.84 (-0.85%) | Hold: 0 days 03:55:00
+  📈 LONG QQQ: 19 shares @ $296.88 (cost: $5,640.69)
+  📉 EXIT QQQ: 19 shares @ $296.10 | PnL: $-14.75 (-0.26%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 19 shares @ $294.21 (cost: $5,589.93)
+  📉 EXIT QQQ: 19 shares @ $298.44 | PnL: $+80.44 (+1.44%) | Hold: 1 days 00:05:00
+  📈 LONG QQQ: 19 shares @ $299.55 (cost: $5,691.44)
+  📉 EXIT QQQ: 19 shares @ $296.74 | PnL: $-53.35 (-0.94%) | Hold: 0 days 05:20:00
+  📈 LONG QQQ: 19 shares @ $301.05 (cost: $5,719.96)
+  📉 EXIT QQQ: 19 shares @ $308.33 | PnL: $+138.23 (+2.42%) | Hold: 3 days 14:05:00
+  📈 LONG QQQ: 19 shares @ $309.10 (cost: $5,872.99)
+  📉 EXIT QQQ: 19 shares @ $308.31 | PnL: $-15.18 (-0.26%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 18 shares @ $311.39 (cost: $5,604.94)
+  📉 EXIT QQQ: 18 shares @ $303.09 | PnL: $-149.26 (-2.66%) | Hold: 0 days 16:25:00
+  📈 LONG QQQ: 19 shares @ $294.32 (cost: $5,592.02)
+  📉 EXIT QQQ: 19 shares @ $295.96 | PnL: $+31.25 (+0.56%) | Hold: 1 days 09:35:00
+  📈 LONG QQQ: 19 shares @ $294.28 (cost: $5,591.26)
+  📉 EXIT QQQ: 19 shares @ $289.86 | PnL: $-83.83 (-1.50%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 20 shares @ $288.49 (cost: $5,769.88)
+  📉 EXIT QQQ: 20 shares @ $286.70 | PnL: $-35.95 (-0.62%) | Hold: 2 days 21:20:00
+  📈 LONG QQQ: 20 shares @ $287.25 (cost: $5,745.07)
+  📉 EXIT QQQ: 20 shares @ $289.95 | PnL: $+54.03 (+0.94%) | Hold: 0 days 19:15:00
+  📈 LONG QQQ: 20 shares @ $290.78 (cost: $5,815.51)
+  📉 EXIT QQQ: 20 shares @ $288.23 | PnL: $-50.99 (-0.88%) | Hold: 0 days 01:15:00
+  📈 LONG QQQ: 20 shares @ $289.62 (cost: $5,792.49)
+  📉 EXIT QQQ: 20 shares @ $287.09 | PnL: $-50.73 (-0.88%) | Hold: 0 days 22:25:00
+  📈 LONG QQQ: 20 shares @ $284.29 (cost: $5,685.84)
+  📉 EXIT QQQ: 20 shares @ $280.67 | PnL: $-72.45 (-1.27%) | Hold: 0 days 05:50:00
+  📈 LONG QQQ: 20 shares @ $281.48 (cost: $5,629.61)
+  📉 EXIT QQQ: 20 shares @ $278.80 | PnL: $-53.60 (-0.95%) | Hold: 0 days 13:00:00
+  📈 LONG QQQ: 20 shares @ $278.11 (cost: $5,562.18)
+  📉 EXIT QQQ: 20 shares @ $273.11 | PnL: $-99.91 (-1.80%) | Hold: 0 days 05:15:00
+  📈 LONG QQQ: 20 shares @ $275.21 (cost: $5,504.15)
+  📉 EXIT QQQ: 20 shares @ $274.90 | PnL: $-6.10 (-0.11%) | Hold: 2 days 12:20:00
+  📈 LONG QQQ: 20 shares @ $275.90 (cost: $5,517.96)
+  📉 EXIT QQQ: 20 shares @ $274.08 | PnL: $-36.30 (-0.66%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 20 shares @ $274.54 (cost: $5,490.74)
+  📉 EXIT QQQ: 20 shares @ $273.16 | PnL: $-27.48 (-0.50%) | Hold: 0 days 17:05:00
+  📈 LONG QQQ: 20 shares @ $275.30 (cost: $5,505.95)
+  📉 EXIT QQQ: 20 shares @ $271.61 | PnL: $-73.67 (-1.34%) | Hold: 0 days 13:20:00
+  📈 LONG QQQ: 20 shares @ $273.22 (cost: $5,464.33)
+  📉 EXIT QQQ: 20 shares @ $279.20 | PnL: $+119.68 (+2.19%) | Hold: 0 days 12:40:00
+  📈 LONG QQQ: 21 shares @ $272.18 (cost: $5,715.70)
+  📉 EXIT QQQ: 21 shares @ $272.05 | PnL: $-2.56 (-0.04%) | Hold: 0 days 20:15:00
+  📈 LONG QQQ: 21 shares @ $267.46 (cost: $5,616.74)
+  📉 EXIT QQQ: 21 shares @ $273.63 | PnL: $+129.56 (+2.31%) | Hold: 0 days 11:35:00
+  📈 LONG QQQ: 21 shares @ $274.88 (cost: $5,772.42)
+  📉 EXIT QQQ: 21 shares @ $279.26 | PnL: $+92.06 (+1.59%) | Hold: 0 days 17:50:00
+  📈 LONG QQQ: 20 shares @ $282.39 (cost: $5,647.82)
+  📉 EXIT QQQ: 20 shares @ $281.77 | PnL: $-12.44 (-0.22%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 20 shares @ $279.54 (cost: $5,590.79)
+  📉 EXIT QQQ: 20 shares @ $281.56 | PnL: $+40.39 (+0.72%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 20 shares @ $282.31 (cost: $5,646.22)
+  📉 EXIT QQQ: 20 shares @ $280.86 | PnL: $-29.03 (-0.51%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 20 shares @ $280.64 (cost: $5,612.80)
+  📉 EXIT QQQ: 20 shares @ $279.32 | PnL: $-26.40 (-0.47%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 20 shares @ $279.29 (cost: $5,585.79)
+  📉 EXIT QQQ: 20 shares @ $274.75 | PnL: $-90.74 (-1.62%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 21 shares @ $268.62 (cost: $5,641.11)
+  📉 EXIT QQQ: 21 shares @ $266.36 | PnL: $-47.62 (-0.84%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 21 shares @ $268.25 (cost: $5,633.34)
+  📉 EXIT QQQ: 21 shares @ $266.17 | PnL: $-43.83 (-0.78%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 21 shares @ $267.23 (cost: $5,611.90)
+  📉 EXIT QQQ: 21 shares @ $265.08 | PnL: $-45.28 (-0.81%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 21 shares @ $264.80 (cost: $5,560.85)
+  📉 EXIT QQQ: 21 shares @ $263.59 | PnL: $-25.39 (-0.46%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 21 shares @ $266.39 (cost: $5,594.26)
+  📉 EXIT QQQ: 21 shares @ $262.13 | PnL: $-89.55 (-1.60%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 21 shares @ $264.85 (cost: $5,561.90)
+  📉 EXIT QQQ: 21 shares @ $262.52 | PnL: $-49.01 (-0.88%) | Hold: 1 days 00:05:00
+  📈 LONG QQQ: 21 shares @ $263.84 (cost: $5,540.68)
+  📉 EXIT QQQ: 21 shares @ $255.90 | PnL: $-166.74 (-3.01%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 21 shares @ $258.31 (cost: $5,424.49)
+  📉 EXIT QQQ: 21 shares @ $266.97 | PnL: $+181.80 (+3.35%) | Hold: 0 days 18:35:00
+  📈 LONG QQQ: 21 shares @ $268.16 (cost: $5,631.44)
+  📉 EXIT QQQ: 21 shares @ $264.74 | PnL: $-71.96 (-1.28%) | Hold: 0 days 04:05:00
+  📈 LONG QQQ: 21 shares @ $263.94 (cost: $5,542.78)
+  📉 EXIT QQQ: 21 shares @ $272.63 | PnL: $+182.54 (+3.29%) | Hold: 1 days 06:35:00
+  📈 LONG QQQ: 20 shares @ $273.39 (cost: $5,467.73)
+  📉 EXIT QQQ: 20 shares @ $272.12 | PnL: $-25.26 (-0.46%) | Hold: 0 days 12:00:00
+  📈 LONG QQQ: 21 shares @ $271.12 (cost: $5,693.43)
+  📉 EXIT QQQ: 21 shares @ $269.08 | PnL: $-42.84 (-0.75%) | Hold: 0 days 09:20:00
+  📈 LONG QQQ: 21 shares @ $270.19 (cost: $5,673.89)
+  📉 EXIT QQQ: 21 shares @ $270.89 | PnL: $+14.90 (+0.26%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 21 shares @ $269.26 (cost: $5,654.56)
+  📉 EXIT QQQ: 21 shares @ $274.28 | PnL: $+105.38 (+1.86%) | Hold: 2 days 19:00:00
+  📈 LONG QQQ: 20 shares @ $275.51 (cost: $5,510.15)
+  📉 EXIT QQQ: 20 shares @ $277.91 | PnL: $+48.07 (+0.87%) | Hold: 0 days 23:10:00
+  📈 LONG QQQ: 20 shares @ $278.80 (cost: $5,575.99)
+  📉 EXIT QQQ: 20 shares @ $280.08 | PnL: $+25.61 (+0.46%) | Hold: 0 days 08:50:00
+  📈 LONG QQQ: 20 shares @ $280.49 (cost: $5,609.80)
+  📉 EXIT QQQ: 20 shares @ $280.24 | PnL: $-5.01 (-0.09%) | Hold: 0 days 08:50:00
+  📈 LONG QQQ: 20 shares @ $278.62 (cost: $5,572.38)
+  📉 EXIT QQQ: 20 shares @ $277.22 | PnL: $-27.96 (-0.50%) | Hold: 0 days 10:10:00
+  📈 LONG QQQ: 20 shares @ $276.75 (cost: $5,534.97)
+  📉 EXIT QQQ: 20 shares @ $268.21 | PnL: $-170.85 (-3.09%) | Hold: 0 days 07:30:00
+  📈 LONG QQQ: 21 shares @ $270.57 (cost: $5,681.87)
+  📉 EXIT QQQ: 21 shares @ $279.22 | PnL: $+181.76 (+3.20%) | Hold: 2 days 20:35:00
+  📈 LONG QQQ: 20 shares @ $278.41 (cost: $5,568.18)
+  📉 EXIT QQQ: 20 shares @ $279.32 | PnL: $+18.22 (+0.33%) | Hold: 0 days 21:55:00
+  📈 LONG QQQ: 20 shares @ $275.95 (cost: $5,518.96)
+  📉 EXIT QQQ: 20 shares @ $275.36 | PnL: $-11.71 (-0.21%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 21 shares @ $273.32 (cost: $5,739.65)
+  📉 EXIT QQQ: 21 shares @ $267.59 | PnL: $-120.34 (-2.10%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 21 shares @ $266.40 (cost: $5,594.47)
+  📉 EXIT QQQ: 21 shares @ $263.71 | PnL: $-56.60 (-1.01%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 21 shares @ $261.83 (cost: $5,498.45)
+  📉 EXIT QQQ: 21 shares @ $262.69 | PnL: $+18.01 (+0.33%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 21 shares @ $264.08 (cost: $5,545.72)
+  📉 EXIT QQQ: 21 shares @ $259.96 | PnL: $-86.56 (-1.56%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 21 shares @ $262.01 (cost: $5,502.12)
+  📉 EXIT QQQ: 21 shares @ $269.62 | PnL: $+159.90 (+2.91%) | Hold: 3 days 23:45:00
+  📈 LONG QQQ: 21 shares @ $270.62 (cost: $5,682.92)
+  📉 EXIT QQQ: 21 shares @ $268.38 | PnL: $-47.03 (-0.83%) | Hold: 0 days 13:15:00
+  📈 LONG QQQ: 21 shares @ $269.95 (cost: $5,669.05)
+  📉 EXIT QQQ: 21 shares @ $268.57 | PnL: $-29.17 (-0.51%) | Hold: 0 days 01:10:00
+  📈 LONG QQQ: 21 shares @ $264.14 (cost: $5,546.98)
+  📉 EXIT QQQ: 21 shares @ $282.37 | PnL: $+382.76 (+6.90%) | Hold: 1 days 13:55:00
+  📈 LONG QQQ: 20 shares @ $286.73 (cost: $5,734.67)
+  📉 EXIT QQQ: 20 shares @ $286.01 | PnL: $-14.53 (-0.25%) | Hold: 2 days 15:00:00
+  📈 LONG QQQ: 20 shares @ $286.80 (cost: $5,736.07)
+  📉 EXIT QQQ: 20 shares @ $285.60 | PnL: $-24.12 (-0.42%) | Hold: 0 days 08:35:00
+  📈 LONG QQQ: 20 shares @ $288.25 (cost: $5,765.08)
+  📉 EXIT QQQ: 20 shares @ $288.82 | PnL: $+11.23 (+0.19%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 20 shares @ $290.55 (cost: $5,810.90)
+  📉 EXIT QQQ: 20 shares @ $289.16 | PnL: $-27.80 (-0.48%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 20 shares @ $287.08 (cost: $5,741.67)
+  📉 EXIT QQQ: 20 shares @ $285.30 | PnL: $-35.72 (-0.62%) | Hold: 0 days 15:50:00
+  📈 LONG QQQ: 20 shares @ $282.32 (cost: $5,646.42)
+  📉 EXIT QQQ: 20 shares @ $282.88 | PnL: $+11.15 (+0.20%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 20 shares @ $287.37 (cost: $5,747.47)
+  📉 EXIT QQQ: 20 shares @ $283.60 | PnL: $-75.51 (-1.31%) | Hold: 0 days 05:15:00
+  📈 LONG QQQ: 20 shares @ $284.43 (cost: $5,688.64)
+  📉 EXIT QQQ: 20 shares @ $282.86 | PnL: $-31.47 (-0.55%) | Hold: 2 days 12:55:00
+  📈 LONG QQQ: 20 shares @ $283.25 (cost: $5,665.03)
+  📉 EXIT QQQ: 20 shares @ $281.13 | PnL: $-42.44 (-0.75%) | Hold: 0 days 19:55:00
+  📈 LONG QQQ: 20 shares @ $282.92 (cost: $5,658.43)
+  📉 EXIT QQQ: 20 shares @ $280.57 | PnL: $-47.03 (-0.83%) | Hold: 0 days 01:35:00
+  📈 LONG QQQ: 20 shares @ $284.51 (cost: $5,690.14)
+  📉 EXIT QQQ: 20 shares @ $286.71 | PnL: $+43.99 (+0.77%) | Hold: 0 days 22:45:00
+  📈 LONG QQQ: 19 shares @ $288.65 (cost: $5,484.43)
+  📉 EXIT QQQ: 19 shares @ $288.39 | PnL: $-5.10 (-0.09%) | Hold: 1 days 14:50:00
+  📈 LONG QQQ: 20 shares @ $285.15 (cost: $5,703.05)
+  📉 EXIT QQQ: 20 shares @ $282.49 | PnL: $-53.28 (-0.93%) | Hold: 0 days 06:55:00
+  📈 LONG QQQ: 20 shares @ $284.38 (cost: $5,687.64)
+  📉 EXIT QQQ: 20 shares @ $281.96 | PnL: $-48.42 (-0.85%) | Hold: 0 days 05:40:00
+  📈 LONG QQQ: 20 shares @ $280.73 (cost: $5,614.61)
+  📉 EXIT QQQ: 20 shares @ $292.40 | PnL: $+233.47 (+4.16%) | Hold: 1 days 08:25:00
+  📈 LONG QQQ: 19 shares @ $293.64 (cost: $5,579.10)
+  📉 EXIT QQQ: 19 shares @ $291.21 | PnL: $-46.03 (-0.82%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 19 shares @ $293.31 (cost: $5,572.83)
+  📉 EXIT QQQ: 19 shares @ $287.59 | PnL: $-108.69 (-1.95%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 19 shares @ $292.17 (cost: $5,551.15)
+  📉 EXIT QQQ: 19 shares @ $291.47 | PnL: $-13.14 (-0.24%) | Hold: 2 days 13:15:00
+  📈 LONG QQQ: 19 shares @ $292.20 (cost: $5,551.72)
+  📉 EXIT QQQ: 19 shares @ $288.50 | PnL: $-70.31 (-1.27%) | Hold: 0 days 05:00:00
+  📈 LONG QQQ: 19 shares @ $288.18 (cost: $5,475.50)
+  📉 EXIT QQQ: 19 shares @ $287.41 | PnL: $-14.78 (-0.27%) | Hold: 0 days 11:00:00
+  📈 LONG QQQ: 19 shares @ $288.54 (cost: $5,482.34)
+  📉 EXIT QQQ: 19 shares @ $287.77 | PnL: $-14.78 (-0.27%) | Hold: 0 days 01:10:00
+  📈 LONG QQQ: 20 shares @ $282.26 (cost: $5,645.22)
+  📉 EXIT QQQ: 20 shares @ $281.43 | PnL: $-16.64 (-0.29%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 20 shares @ $280.24 (cost: $5,604.80)
+  📉 EXIT QQQ: 20 shares @ $279.82 | PnL: $-8.40 (-0.15%) | Hold: 0 days 10:50:00
+  📈 LONG QQQ: 20 shares @ $281.27 (cost: $5,625.41)
+  📉 EXIT QQQ: 20 shares @ $280.72 | PnL: $-11.02 (-0.20%) | Hold: 0 days 05:30:00
+  📈 LONG QQQ: 20 shares @ $283.80 (cost: $5,676.04)
+  📉 EXIT QQQ: 20 shares @ $282.17 | PnL: $-32.66 (-0.58%) | Hold: 0 days 22:25:00
+  📈 LONG QQQ: 20 shares @ $282.77 (cost: $5,655.43)
+  📉 EXIT QQQ: 20 shares @ $291.77 | PnL: $+180.05 (+3.18%) | Hold: 1 days 05:50:00
+  📈 LONG QQQ: 19 shares @ $289.55 (cost: $5,501.54)
+  📉 EXIT QQQ: 19 shares @ $288.29 | PnL: $-24.11 (-0.44%) | Hold: 0 days 13:55:00
+  📈 LONG QQQ: 19 shares @ $289.27 (cost: $5,496.22)
+  📉 EXIT QQQ: 19 shares @ $287.05 | PnL: $-42.34 (-0.77%) | Hold: 0 days 06:55:00
+  📈 LONG QQQ: 20 shares @ $274.95 (cost: $5,498.95)
+  📉 EXIT QQQ: 20 shares @ $273.67 | PnL: $-25.49 (-0.46%) | Hold: 3 days 02:10:00
+  📈 LONG QQQ: 21 shares @ $270.47 (cost: $5,679.77)
+  📉 EXIT QQQ: 21 shares @ $268.81 | PnL: $-34.85 (-0.61%) | Hold: 0 days 09:40:00
+  📈 LONG QQQ: 21 shares @ $271.00 (cost: $5,690.90)
+  📉 EXIT QQQ: 21 shares @ $272.81 | PnL: $+38.18 (+0.67%) | Hold: 1 days 19:50:00
+  📈 LONG QQQ: 21 shares @ $265.38 (cost: $5,572.95)
+  📉 EXIT QQQ: 21 shares @ $266.58 | PnL: $+25.16 (+0.45%) | Hold: 0 days 12:50:00
+  📈 LONG QQQ: 21 shares @ $267.73 (cost: $5,622.41)
+  📉 EXIT QQQ: 21 shares @ $267.76 | PnL: $+0.47 (+0.01%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 21 shares @ $269.04 (cost: $5,649.93)
+  📉 EXIT QQQ: 21 shares @ $267.80 | PnL: $-26.22 (-0.46%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 21 shares @ $264.08 (cost: $5,545.72)
+  📉 EXIT QQQ: 21 shares @ $264.85 | PnL: $+16.18 (+0.29%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 21 shares @ $264.89 (cost: $5,562.68)
+  📉 EXIT QQQ: 21 shares @ $261.41 | PnL: $-73.09 (-1.31%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 21 shares @ $262.66 (cost: $5,515.89)
+  📉 EXIT QQQ: 21 shares @ $266.05 | PnL: $+71.10 (+1.29%) | Hold: 1 days 06:15:00
+  📈 LONG QQQ: 21 shares @ $264.70 (cost: $5,558.75)
+  📉 EXIT QQQ: 21 shares @ $267.26 | PnL: $+53.63 (+0.96%) | Hold: 3 days 15:30:00
+  📈 LONG QQQ: 21 shares @ $264.49 (cost: $5,554.34)
+  📉 EXIT QQQ: 21 shares @ $264.55 | PnL: $+1.17 (+0.02%) | Hold: 1 days 13:15:00
+  📈 LONG QQQ: 21 shares @ $266.71 (cost: $5,600.98)
+  📉 EXIT QQQ: 21 shares @ $264.06 | PnL: $-55.76 (-1.00%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 21 shares @ $262.25 (cost: $5,507.27)
+  📉 EXIT QQQ: 21 shares @ $273.03 | PnL: $+226.43 (+4.11%) | Hold: 3 days 05:25:00
+  📈 LONG QQQ: 21 shares @ $270.25 (cost: $5,675.15)
+  📉 EXIT QQQ: 21 shares @ $272.46 | PnL: $+46.59 (+0.82%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 21 shares @ $273.35 (cost: $5,740.28)
+  📉 EXIT QQQ: 21 shares @ $277.30 | PnL: $+83.05 (+1.45%) | Hold: 1 days 13:20:00
+  📈 LONG QQQ: 21 shares @ $276.99 (cost: $5,816.76)
+  📉 EXIT QQQ: 21 shares @ $280.02 | PnL: $+63.66 (+1.09%) | Hold: 3 days 18:30:00
+  📈 LONG QQQ: 20 shares @ $280.64 (cost: $5,612.80)
+  📉 EXIT QQQ: 20 shares @ $280.78 | PnL: $+2.79 (+0.05%) | Hold: 0 days 10:35:00
+  📈 LONG QQQ: 20 shares @ $281.80 (cost: $5,636.02)
+  📉 EXIT QQQ: 20 shares @ $281.08 | PnL: $-14.43 (-0.26%) | Hold: 0 days 06:50:00
+  📈 LONG QQQ: 21 shares @ $276.98 (cost: $5,816.55)
+  📉 EXIT QQQ: 21 shares @ $276.11 | PnL: $-18.20 (-0.31%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 21 shares @ $277.19 (cost: $5,820.96)
+  📉 EXIT QQQ: 21 shares @ $282.31 | PnL: $+107.53 (+1.85%) | Hold: 2 days 21:35:00
+  📈 LONG QQQ: 20 shares @ $283.39 (cost: $5,667.83)
+  📉 EXIT QQQ: 20 shares @ $288.18 | PnL: $+95.68 (+1.69%) | Hold: 0 days 06:55:00
+  📈 LONG QQQ: 20 shares @ $288.83 (cost: $5,776.69)
+  📉 EXIT QQQ: 20 shares @ $286.69 | PnL: $-42.96 (-0.74%) | Hold: 0 days 08:40:00
+  📈 LONG QQQ: 20 shares @ $285.22 (cost: $5,704.45)
+  📉 EXIT QQQ: 20 shares @ $291.27 | PnL: $+121.04 (+2.12%) | Hold: 1 days 16:10:00
+  📈 LONG QQQ: 20 shares @ $292.64 (cost: $5,852.72)
+  📉 EXIT QQQ: 20 shares @ $295.97 | PnL: $+66.71 (+1.14%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 20 shares @ $291.00 (cost: $5,819.91)
+  📉 EXIT QQQ: 20 shares @ $288.93 | PnL: $-41.40 (-0.71%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 20 shares @ $290.62 (cost: $5,812.30)
+  📉 EXIT QQQ: 20 shares @ $293.15 | PnL: $+50.76 (+0.87%) | Hold: 0 days 10:05:00
+  📈 LONG QQQ: 20 shares @ $294.16 (cost: $5,883.14)
+  📉 EXIT QQQ: 20 shares @ $309.24 | PnL: $+301.67 (+5.13%) | Hold: 1 days 10:45:00
+  📈 LONG QQQ: 19 shares @ $311.62 (cost: $5,920.70)
+  📉 EXIT QQQ: 19 shares @ $305.74 | PnL: $-111.69 (-1.89%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 19 shares @ $307.57 (cost: $5,843.90)
+  📉 EXIT QQQ: 19 shares @ $305.28 | PnL: $-43.63 (-0.75%) | Hold: 0 days 02:15:00
+  📈 LONG QQQ: 19 shares @ $309.23 (cost: $5,875.46)
+  📉 EXIT QQQ: 19 shares @ $307.55 | PnL: $-32.08 (-0.55%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 19 shares @ $304.10 (cost: $5,777.96)
+  📉 EXIT QQQ: 19 shares @ $302.79 | PnL: $-24.97 (-0.43%) | Hold: 0 days 07:35:00
+  📈 LONG QQQ: 19 shares @ $304.02 (cost: $5,776.42)
+  📉 EXIT QQQ: 19 shares @ $305.38 | PnL: $+25.75 (+0.45%) | Hold: 1 days 17:00:00
+  📈 LONG QQQ: 19 shares @ $305.08 (cost: $5,796.57)
+  📉 EXIT QQQ: 19 shares @ $302.81 | PnL: $-43.20 (-0.75%) | Hold: 0 days 19:35:00
+  📈 LONG QQQ: 19 shares @ $299.60 (cost: $5,692.39)
+  📉 EXIT QQQ: 19 shares @ $297.52 | PnL: $-39.49 (-0.69%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 19 shares @ $300.08 (cost: $5,701.52)
+  📉 EXIT QQQ: 19 shares @ $300.67 | PnL: $+11.20 (+0.20%) | Hold: 2 days 19:40:00
+  📈 LONG QQQ: 19 shares @ $302.38 (cost: $5,745.24)
+  📉 EXIT QQQ: 19 shares @ $304.06 | PnL: $+31.86 (+0.55%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 19 shares @ $304.80 (cost: $5,791.24)
+  📉 EXIT QQQ: 19 shares @ $306.13 | PnL: $+25.16 (+0.43%) | Hold: 0 days 14:15:00
+  📈 LONG QQQ: 19 shares @ $306.48 (cost: $5,823.18)
+  📉 EXIT QQQ: 19 shares @ $309.14 | PnL: $+50.39 (+0.87%) | Hold: 0 days 21:45:00
+  📈 LONG QQQ: 19 shares @ $307.04 (cost: $5,833.83)
+  📉 EXIT QQQ: 19 shares @ $305.10 | PnL: $-36.98 (-0.63%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 19 shares @ $297.95 (cost: $5,661.03)
+  📉 EXIT QQQ: 19 shares @ $295.64 | PnL: $-43.83 (-0.77%) | Hold: 0 days 01:55:00
+  📈 LONG QQQ: 20 shares @ $295.17 (cost: $5,903.35)
+  📉 EXIT QQQ: 20 shares @ $293.55 | PnL: $-32.29 (-0.55%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 20 shares @ $295.86 (cost: $5,917.16)
+  📉 EXIT QQQ: 20 shares @ $294.57 | PnL: $-25.70 (-0.43%) | Hold: 0 days 17:55:00
+  📈 LONG QQQ: 20 shares @ $294.76 (cost: $5,895.15)
+  📉 EXIT QQQ: 20 shares @ $295.92 | PnL: $+23.29 (+0.40%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 20 shares @ $291.82 (cost: $5,836.32)
+  📉 EXIT QQQ: 20 shares @ $293.47 | PnL: $+33.15 (+0.57%) | Hold: 3 days 13:05:00
+  📈 LONG QQQ: 20 shares @ $294.27 (cost: $5,885.34)
+  📉 EXIT QQQ: 20 shares @ $293.06 | PnL: $-24.07 (-0.41%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 20 shares @ $295.57 (cost: $5,911.35)
+  📉 EXIT QQQ: 20 shares @ $294.42 | PnL: $-22.90 (-0.39%) | Hold: 0 days 02:20:00
+  📈 LONG QQQ: 20 shares @ $295.05 (cost: $5,900.95)
+  📉 EXIT QQQ: 20 shares @ $293.67 | PnL: $-27.49 (-0.47%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 20 shares @ $289.81 (cost: $5,796.30)
+  📉 EXIT QQQ: 20 shares @ $292.81 | PnL: $+59.97 (+1.03%) | Hold: 0 days 12:30:00
+  📈 LONG QQQ: 20 shares @ $294.30 (cost: $5,885.94)
+  📉 EXIT QQQ: 20 shares @ $301.66 | PnL: $+147.24 (+2.50%) | Hold: 3 days 08:45:00
+  📈 LONG QQQ: 19 shares @ $301.52 (cost: $5,728.89)
+  📉 EXIT QQQ: 19 shares @ $297.03 | PnL: $-85.30 (-1.49%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 20 shares @ $297.50 (cost: $5,949.97)
+  📉 EXIT QQQ: 20 shares @ $297.47 | PnL: $-0.55 (-0.01%) | Hold: 0 days 13:05:00
+  📈 LONG QQQ: 20 shares @ $296.65 (cost: $5,932.96)
+  📉 EXIT QQQ: 20 shares @ $296.54 | PnL: $-2.13 (-0.04%) | Hold: 0 days 06:35:00
+  📈 LONG QQQ: 20 shares @ $292.53 (cost: $5,850.52)
+  📉 EXIT QQQ: 20 shares @ $289.46 | PnL: $-61.42 (-1.05%) | Hold: 0 days 05:10:00
+  📈 LONG QQQ: 20 shares @ $293.00 (cost: $5,859.93)
+  📉 EXIT QQQ: 20 shares @ $287.04 | PnL: $-119.20 (-2.03%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 20 shares @ $292.77 (cost: $5,855.33)
+  📉 EXIT QQQ: 20 shares @ $295.83 | PnL: $+61.31 (+1.05%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 19 shares @ $297.23 (cost: $5,647.34)
+  📉 EXIT QQQ: 19 shares @ $295.44 | PnL: $-33.94 (-0.60%) | Hold: 0 days 13:40:00
+  📈 LONG QQQ: 20 shares @ $295.12 (cost: $5,902.35)
+  📉 EXIT QQQ: 20 shares @ $303.52 | PnL: $+168.01 (+2.85%) | Hold: 4 days 18:30:00
+  📈 LONG QQQ: 19 shares @ $305.65 (cost: $5,807.40)
+  📉 EXIT QQQ: 19 shares @ $309.01 | PnL: $+63.70 (+1.10%) | Hold: 1 days 19:10:00
+  📈 LONG QQQ: 19 shares @ $309.93 (cost: $5,888.76)
+  📉 EXIT QQQ: 19 shares @ $305.64 | PnL: $-81.66 (-1.39%) | Hold: 0 days 09:10:00
+  📈 LONG QQQ: 19 shares @ $309.40 (cost: $5,878.69)
+  📉 EXIT QQQ: 19 shares @ $310.69 | PnL: $+24.51 (+0.42%) | Hold: 0 days 10:05:00
+  📈 LONG QQQ: 19 shares @ $309.98 (cost: $5,889.71)
+  📉 EXIT QQQ: 19 shares @ $308.39 | PnL: $-30.38 (-0.52%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 19 shares @ $310.83 (cost: $5,905.68)
+  📉 EXIT QQQ: 19 shares @ $310.89 | PnL: $+1.31 (+0.02%) | Hold: 2 days 12:40:00
+  📈 LONG QQQ: 19 shares @ $311.95 (cost: $5,926.97)
+  📉 EXIT QQQ: 19 shares @ $309.38 | PnL: $-48.84 (-0.82%) | Hold: 0 days 04:50:00
+  📈 LONG QQQ: 19 shares @ $310.14 (cost: $5,892.75)
+  📉 EXIT QQQ: 19 shares @ $308.67 | PnL: $-28.11 (-0.48%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 19 shares @ $309.26 (cost: $5,876.03)
+  📉 EXIT QQQ: 19 shares @ $307.71 | PnL: $-29.61 (-0.50%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 19 shares @ $308.67 (cost: $5,864.81)
+  📉 EXIT QQQ: 19 shares @ $306.14 | PnL: $-48.22 (-0.82%) | Hold: 0 days 01:50:00
+  📈 LONG QQQ: 19 shares @ $306.41 (cost: $5,821.85)
+  📉 EXIT QQQ: 19 shares @ $314.21 | PnL: $+148.19 (+2.55%) | Hold: 1 days 22:35:00
+  📈 LONG QQQ: 18 shares @ $315.52 (cost: $5,679.32)
+  📉 EXIT QQQ: 18 shares @ $315.33 | PnL: $-3.34 (-0.06%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 18 shares @ $316.14 (cost: $5,690.48)
+  📉 EXIT QQQ: 18 shares @ $318.84 | PnL: $+48.65 (+0.85%) | Hold: 3 days 08:15:00
+  📈 LONG QQQ: 18 shares @ $319.18 (cost: $5,745.23)
+  📉 EXIT QQQ: 18 shares @ $317.54 | PnL: $-29.49 (-0.51%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 18 shares @ $318.85 (cost: $5,739.29)
+  📉 EXIT QQQ: 18 shares @ $320.90 | PnL: $+36.90 (+0.64%) | Hold: 0 days 18:10:00
+  📈 LONG QQQ: 18 shares @ $319.76 (cost: $5,755.68)
+  📉 EXIT QQQ: 18 shares @ $318.42 | PnL: $-24.10 (-0.42%) | Hold: 0 days 08:25:00
+  📈 LONG QQQ: 18 shares @ $318.95 (cost: $5,741.09)
+  📉 EXIT QQQ: 18 shares @ $317.27 | PnL: $-30.21 (-0.53%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 18 shares @ $315.69 (cost: $5,682.38)
+  📉 EXIT QQQ: 18 shares @ $315.24 | PnL: $-8.02 (-0.14%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 18 shares @ $315.61 (cost: $5,680.94)
+  📉 EXIT QQQ: 18 shares @ $313.96 | PnL: $-29.61 (-0.52%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 18 shares @ $314.75 (cost: $5,665.45)
+  📉 EXIT QQQ: 18 shares @ $316.41 | PnL: $+29.96 (+0.53%) | Hold: 3 days 21:10:00
+  📈 LONG QQQ: 18 shares @ $316.66 (cost: $5,699.85)
+  📉 EXIT QQQ: 18 shares @ $318.05 | PnL: $+25.07 (+0.44%) | Hold: 0 days 18:10:00
+  📈 LONG QQQ: 18 shares @ $316.27 (cost: $5,692.82)
+  📉 EXIT QQQ: 18 shares @ $315.84 | PnL: $-7.67 (-0.13%) | Hold: 0 days 08:35:00
+  📈 LONG QQQ: 18 shares @ $316.22 (cost: $5,691.92)
+  📉 EXIT QQQ: 18 shares @ $314.05 | PnL: $-38.97 (-0.68%) | Hold: 0 days 08:25:00
+  📈 LONG QQQ: 18 shares @ $313.98 (cost: $5,651.58)
+  📉 EXIT QQQ: 18 shares @ $318.54 | PnL: $+82.15 (+1.45%) | Hold: 0 days 12:40:00
+  📈 LONG QQQ: 18 shares @ $319.47 (cost: $5,750.45)
+  📉 EXIT QQQ: 18 shares @ $315.66 | PnL: $-68.54 (-1.19%) | Hold: 0 days 03:05:00
+  📈 LONG QQQ: 18 shares @ $318.09 (cost: $5,725.60)
+  📉 EXIT QQQ: 18 shares @ $319.20 | PnL: $+20.00 (+0.35%) | Hold: 2 days 13:35:00
+  📈 LONG QQQ: 18 shares @ $319.12 (cost: $5,744.15)
+  📉 EXIT QQQ: 18 shares @ $316.07 | PnL: $-54.86 (-0.96%) | Hold: 0 days 05:15:00
+  📈 LONG QQQ: 18 shares @ $317.87 (cost: $5,721.64)
+  📉 EXIT QQQ: 18 shares @ $318.43 | PnL: $+10.11 (+0.18%) | Hold: 0 days 19:40:00
+  📈 LONG QQQ: 18 shares @ $317.19 (cost: $5,709.39)
+  📉 EXIT QQQ: 18 shares @ $318.31 | PnL: $+20.20 (+0.35%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 18 shares @ $316.11 (cost: $5,689.94)
+  📉 EXIT QQQ: 18 shares @ $317.28 | PnL: $+21.12 (+0.37%) | Hold: 0 days 07:20:00
+  📈 LONG QQQ: 18 shares @ $316.40 (cost: $5,695.17)
+  📉 EXIT QQQ: 18 shares @ $315.93 | PnL: $-8.39 (-0.15%) | Hold: 0 days 05:55:00
+  📈 LONG QQQ: 18 shares @ $316.42 (cost: $5,695.53)
+  📉 EXIT QQQ: 18 shares @ $314.54 | PnL: $-33.76 (-0.59%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 18 shares @ $315.78 (cost: $5,684.00)
+  📉 EXIT QQQ: 18 shares @ $314.34 | PnL: $-25.83 (-0.45%) | Hold: 0 days 14:10:00
+  📈 LONG QQQ: 18 shares @ $314.98 (cost: $5,669.59)
+  📉 EXIT QQQ: 18 shares @ $313.10 | PnL: $-33.82 (-0.60%) | Hold: 0 days 03:05:00
+  📈 LONG QQQ: 18 shares @ $312.70 (cost: $5,628.53)
+  📉 EXIT QQQ: 18 shares @ $311.92 | PnL: $-13.90 (-0.25%) | Hold: 0 days 15:05:00
+  📈 LONG QQQ: 18 shares @ $314.97 (cost: $5,669.41)
+  📉 EXIT QQQ: 18 shares @ $312.46 | PnL: $-45.07 (-0.79%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 18 shares @ $313.59 (cost: $5,644.56)
+  📉 EXIT QQQ: 18 shares @ $319.61 | PnL: $+108.42 (+1.92%) | Hold: 1 days 01:35:00
+  📈 LONG QQQ: 18 shares @ $321.54 (cost: $5,787.64)
+  📉 EXIT QQQ: 18 shares @ $321.89 | PnL: $+6.31 (+0.11%) | Hold: 3 days 04:20:00
+  📈 LONG QQQ: 18 shares @ $322.66 (cost: $5,807.90)
+  📉 EXIT QQQ: 18 shares @ $320.38 | PnL: $-41.07 (-0.71%) | Hold: 0 days 06:10:00
+  📈 LONG QQQ: 18 shares @ $319.67 (cost: $5,754.06)
+  📉 EXIT QQQ: 18 shares @ $318.66 | PnL: $-18.16 (-0.32%) | Hold: 0 days 03:55:00
+  📈 LONG QQQ: 18 shares @ $319.74 (cost: $5,755.32)
+  📉 EXIT QQQ: 18 shares @ $317.71 | PnL: $-36.52 (-0.63%) | Hold: 0 days 11:35:00
+  📈 LONG QQQ: 18 shares @ $318.39 (cost: $5,731.00)
+  📉 EXIT QQQ: 18 shares @ $315.54 | PnL: $-51.25 (-0.89%) | Hold: 0 days 06:25:00
+  📈 LONG QQQ: 18 shares @ $317.84 (cost: $5,721.10)
+  📉 EXIT QQQ: 18 shares @ $322.38 | PnL: $+81.72 (+1.43%) | Hold: 1 days 03:50:00
+  📈 LONG QQQ: 18 shares @ $323.62 (cost: $5,825.19)
+  📉 EXIT QQQ: 18 shares @ $322.52 | PnL: $-19.86 (-0.34%) | Hold: 0 days 14:35:00
+  📈 LONG QQQ: 18 shares @ $322.81 (cost: $5,810.60)
+  📉 EXIT QQQ: 18 shares @ $320.43 | PnL: $-42.87 (-0.74%) | Hold: 0 days 18:05:00
+  📈 LONG QQQ: 18 shares @ $321.69 (cost: $5,790.43)
+  📉 EXIT QQQ: 18 shares @ $322.00 | PnL: $+5.55 (+0.10%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 18 shares @ $324.56 (cost: $5,842.12)
+  📉 EXIT QQQ: 18 shares @ $325.10 | PnL: $+9.63 (+0.16%) | Hold: 0 days 16:35:00
+  📈 LONG QQQ: 18 shares @ $326.79 (cost: $5,882.28)
+  📉 EXIT QQQ: 18 shares @ $326.31 | PnL: $-8.76 (-0.15%) | Hold: 0 days 17:40:00
+  📈 LONG QQQ: 18 shares @ $324.67 (cost: $5,844.10)
+  📉 EXIT QQQ: 18 shares @ $326.44 | PnL: $+31.76 (+0.54%) | Hold: 3 days 02:40:00
+  📈 LONG QQQ: 18 shares @ $327.34 (cost: $5,892.18)
+  📉 EXIT QQQ: 18 shares @ $325.93 | PnL: $-25.50 (-0.43%) | Hold: 0 days 04:45:00
+  📈 LONG QQQ: 18 shares @ $326.91 (cost: $5,884.44)
+  📉 EXIT QQQ: 18 shares @ $327.27 | PnL: $+6.35 (+0.11%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 17 shares @ $329.88 (cost: $5,608.04)
+  📉 EXIT QQQ: 17 shares @ $337.52 | PnL: $+129.82 (+2.31%) | Hold: 1 days 15:25:00
+  📈 LONG QQQ: 17 shares @ $336.35 (cost: $5,717.92)
+  📉 EXIT QQQ: 17 shares @ $337.08 | PnL: $+12.47 (+0.22%) | Hold: 3 days 12:25:00
+  📈 LONG QQQ: 17 shares @ $333.19 (cost: $5,664.17)
+  📉 EXIT QQQ: 17 shares @ $332.83 | PnL: $-6.00 (-0.11%) | Hold: 0 days 00:05:00
+  📈 LONG QQQ: 17 shares @ $332.40 (cost: $5,650.73)
+  📉 EXIT QQQ: 17 shares @ $337.63 | PnL: $+88.99 (+1.57%) | Hold: 0 days 18:20:00
+  📈 LONG QQQ: 17 shares @ $339.48 (cost: $5,771.24)
+  📉 EXIT QQQ: 17 shares @ $339.15 | PnL: $-5.68 (-0.10%) | Hold: 0 days 06:05:00
+  📈 LONG QQQ: 17 shares @ $340.75 (cost: $5,792.75)
+  📉 EXIT QQQ: 17 shares @ $340.13 | PnL: $-10.55 (-0.18%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 17 shares @ $342.48 (cost: $5,822.18)
+  📉 EXIT QQQ: 17 shares @ $348.38 | PnL: $+100.21 (+1.72%) | Hold: 4 days 04:20:00
+  📈 LONG QQQ: 17 shares @ $350.61 (cost: $5,960.29)
+  📉 EXIT QQQ: 17 shares @ $348.93 | PnL: $-28.56 (-0.48%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 17 shares @ $349.71 (cost: $5,945.15)
+  📉 EXIT QQQ: 17 shares @ $352.72 | PnL: $+51.15 (+0.86%) | Hold: 1 days 23:15:00
+  📈 LONG QQQ: 16 shares @ $355.59 (cost: $5,689.40)
+  📉 EXIT QQQ: 16 shares @ $354.07 | PnL: $-24.24 (-0.43%) | Hold: 0 days 04:40:00
+  📈 LONG QQQ: 16 shares @ $354.48 (cost: $5,671.63)
+  📉 EXIT QQQ: 16 shares @ $355.42 | PnL: $+15.04 (+0.27%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 16 shares @ $355.24 (cost: $5,683.80)
+  📉 EXIT QQQ: 16 shares @ $353.33 | PnL: $-30.47 (-0.54%) | Hold: 0 days 05:30:00
+  📈 LONG QQQ: 16 shares @ $355.39 (cost: $5,686.20)
+  📉 EXIT QQQ: 16 shares @ $354.59 | PnL: $-12.72 (-0.22%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 16 shares @ $355.01 (cost: $5,680.12)
+  📉 EXIT QQQ: 16 shares @ $353.26 | PnL: $-27.91 (-0.49%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 17 shares @ $348.17 (cost: $5,918.96)
+  📉 EXIT QQQ: 17 shares @ $348.27 | PnL: $+1.56 (+0.03%) | Hold: 0 days 00:05:00
+  📈 LONG QQQ: 17 shares @ $349.49 (cost: $5,941.41)
+  📉 EXIT QQQ: 17 shares @ $351.30 | PnL: $+30.76 (+0.52%) | Hold: 0 days 07:55:00
+  📈 LONG QQQ: 16 shares @ $353.41 (cost: $5,654.51)
+  📉 EXIT QQQ: 16 shares @ $352.60 | PnL: $-12.85 (-0.23%) | Hold: 0 days 12:25:00
+  📈 LONG QQQ: 16 shares @ $353.80 (cost: $5,660.75)
+  📉 EXIT QQQ: 16 shares @ $354.37 | PnL: $+9.21 (+0.16%) | Hold: 0 days 11:05:00
+  📈 LONG QQQ: 16 shares @ $356.29 (cost: $5,700.61)
+  📉 EXIT QQQ: 16 shares @ $361.45 | PnL: $+82.58 (+1.45%) | Hold: 1 days 10:25:00
+  📈 LONG QQQ: 16 shares @ $363.37 (cost: $5,813.95)
+  📉 EXIT QQQ: 16 shares @ $363.32 | PnL: $-0.85 (-0.01%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 16 shares @ $364.49 (cost: $5,831.87)
+  📉 EXIT QQQ: 16 shares @ $363.30 | PnL: $-19.10 (-0.33%) | Hold: 0 days 04:50:00
+  📈 LONG QQQ: 16 shares @ $365.35 (cost: $5,845.64)
+  📉 EXIT QQQ: 16 shares @ $364.11 | PnL: $-19.92 (-0.34%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 16 shares @ $366.06 (cost: $5,857.01)
+  📉 EXIT QQQ: 16 shares @ $367.89 | PnL: $+29.17 (+0.50%) | Hold: 1 days 05:25:00
+  📈 LONG QQQ: 16 shares @ $366.29 (cost: $5,860.69)
+  📉 EXIT QQQ: 16 shares @ $365.42 | PnL: $-14.01 (-0.24%) | Hold: 1 days 01:25:00
+  📈 LONG QQQ: 16 shares @ $364.24 (cost: $5,827.79)
+  📉 EXIT QQQ: 16 shares @ $360.87 | PnL: $-53.88 (-0.92%) | Hold: 0 days 13:45:00
+  📈 LONG QQQ: 16 shares @ $361.46 (cost: $5,783.37)
+  📉 EXIT QQQ: 16 shares @ $364.38 | PnL: $+46.67 (+0.81%) | Hold: 0 days 19:30:00
+  📈 LONG QQQ: 16 shares @ $363.75 (cost: $5,820.03)
+  📉 EXIT QQQ: 16 shares @ $362.36 | PnL: $-22.29 (-0.38%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 16 shares @ $362.54 (cost: $5,800.66)
+  📉 EXIT QQQ: 16 shares @ $360.77 | PnL: $-28.35 (-0.49%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 16 shares @ $359.26 (cost: $5,748.15)
+  📉 EXIT QQQ: 16 shares @ $362.56 | PnL: $+52.79 (+0.92%) | Hold: 0 days 14:10:00
+  📈 LONG QQQ: 16 shares @ $363.38 (cost: $5,814.11)
+  📉 EXIT QQQ: 16 shares @ $365.00 | PnL: $+25.85 (+0.44%) | Hold: 0 days 21:00:00
+  📈 LONG QQQ: 16 shares @ $366.09 (cost: $5,857.49)
+  📉 EXIT QQQ: 16 shares @ $364.61 | PnL: $-23.77 (-0.41%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 16 shares @ $364.19 (cost: $5,827.07)
+  📉 EXIT QQQ: 16 shares @ $370.09 | PnL: $+94.45 (+1.62%) | Hold: 3 days 14:00:00
+  📈 LONG QQQ: 16 shares @ $370.82 (cost: $5,933.05)
+  📉 EXIT QQQ: 16 shares @ $369.08 | PnL: $-27.84 (-0.47%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 16 shares @ $370.26 (cost: $5,924.08)
+  📉 EXIT QQQ: 16 shares @ $368.88 | PnL: $-22.07 (-0.37%) | Hold: 1 days 15:15:00
+  📈 LONG QQQ: 16 shares @ $368.75 (cost: $5,900.07)
+  📉 EXIT QQQ: 16 shares @ $369.97 | PnL: $+19.53 (+0.33%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 16 shares @ $370.53 (cost: $5,928.40)
+  📉 EXIT QQQ: 16 shares @ $368.55 | PnL: $-31.67 (-0.53%) | Hold: 0 days 08:35:00
+  📈 LONG QQQ: 16 shares @ $367.10 (cost: $5,873.66)
+  📉 EXIT QQQ: 16 shares @ $366.10 | PnL: $-16.11 (-0.27%) | Hold: 0 days 14:40:00
+  📈 LONG QQQ: 16 shares @ $368.87 (cost: $5,901.99)
+  📉 EXIT QQQ: 16 shares @ $368.78 | PnL: $-1.58 (-0.03%) | Hold: 0 days 06:10:00
+  📈 LONG QQQ: 16 shares @ $365.77 (cost: $5,852.36)
+  📉 EXIT QQQ: 16 shares @ $366.11 | PnL: $+5.34 (+0.09%) | Hold: 0 days 11:00:00
+  📈 LONG QQQ: 16 shares @ $367.48 (cost: $5,879.74)
+  📉 EXIT QQQ: 16 shares @ $365.44 | PnL: $-32.74 (-0.56%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 16 shares @ $367.58 (cost: $5,881.34)
+  📉 EXIT QQQ: 16 shares @ $378.87 | PnL: $+180.59 (+3.07%) | Hold: 2 days 17:55:00
+  📈 LONG QQQ: 15 shares @ $381.44 (cost: $5,721.61)
+  📉 EXIT QQQ: 15 shares @ $378.61 | PnL: $-42.45 (-0.74%) | Hold: 2 days 20:15:00
+  📈 LONG QQQ: 15 shares @ $379.85 (cost: $5,697.75)
+  📉 EXIT QQQ: 15 shares @ $380.48 | PnL: $+9.45 (+0.17%) | Hold: 1 days 00:35:00
+  📈 LONG QQQ: 15 shares @ $383.62 (cost: $5,754.33)
+  📉 EXIT QQQ: 15 shares @ $385.16 | PnL: $+23.03 (+0.40%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 15 shares @ $386.44 (cost: $5,796.65)
+  📉 EXIT QQQ: 15 shares @ $384.69 | PnL: $-26.33 (-0.45%) | Hold: 0 days 12:55:00
+  📈 LONG QQQ: 15 shares @ $383.32 (cost: $5,749.82)
+  📉 EXIT QQQ: 15 shares @ $379.20 | PnL: $-61.82 (-1.08%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 15 shares @ $378.12 (cost: $5,671.78)
+  📉 EXIT QQQ: 15 shares @ $375.64 | PnL: $-37.23 (-0.66%) | Hold: 0 days 11:10:00
+  📈 LONG QQQ: 15 shares @ $376.77 (cost: $5,651.52)
+  📉 EXIT QQQ: 15 shares @ $378.11 | PnL: $+20.14 (+0.36%) | Hold: 1 days 14:05:00
+  📈 LONG QQQ: 15 shares @ $379.01 (cost: $5,685.14)
+  📉 EXIT QQQ: 15 shares @ $380.27 | PnL: $+18.91 (+0.33%) | Hold: 0 days 22:50:00
+  📈 LONG QQQ: 15 shares @ $379.42 (cost: $5,691.29)
+  📉 EXIT QQQ: 15 shares @ $381.65 | PnL: $+33.44 (+0.59%) | Hold: 0 days 09:40:00
+  📈 LONG QQQ: 15 shares @ $383.90 (cost: $5,758.53)
+  📉 EXIT QQQ: 15 shares @ $382.74 | PnL: $-17.45 (-0.30%) | Hold: 0 days 20:50:00
+  📈 LONG QQQ: 15 shares @ $383.05 (cost: $5,745.77)
+  📉 EXIT QQQ: 15 shares @ $381.77 | PnL: $-19.24 (-0.33%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 15 shares @ $379.79 (cost: $5,696.85)
+  📉 EXIT QQQ: 15 shares @ $376.13 | PnL: $-54.87 (-0.96%) | Hold: 0 days 03:35:00
+  📈 LONG QQQ: 15 shares @ $375.29 (cost: $5,629.31)
+  📉 EXIT QQQ: 15 shares @ $372.00 | PnL: $-49.25 (-0.87%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 16 shares @ $373.18 (cost: $5,970.82)
+  📉 EXIT QQQ: 16 shares @ $373.22 | PnL: $+0.75 (+0.01%) | Hold: 0 days 09:35:00
+  📈 LONG QQQ: 15 shares @ $375.29 (cost: $5,629.31)
+  📉 EXIT QQQ: 15 shares @ $375.06 | PnL: $-3.38 (-0.06%) | Hold: 0 days 11:45:00
+  📈 LONG QQQ: 15 shares @ $377.42 (cost: $5,661.28)
+  📉 EXIT QQQ: 15 shares @ $374.74 | PnL: $-40.18 (-0.71%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 15 shares @ $374.39 (cost: $5,615.81)
+  📉 EXIT QQQ: 15 shares @ $374.91 | PnL: $+7.88 (+0.14%) | Hold: 0 days 14:20:00
+  📈 LONG QQQ: 16 shares @ $371.31 (cost: $5,940.89)
+  📉 EXIT QQQ: 16 shares @ $370.51 | PnL: $-12.65 (-0.21%) | Hold: 0 days 19:20:00
+  📈 LONG QQQ: 16 shares @ $370.61 (cost: $5,929.68)
+  📉 EXIT QQQ: 16 shares @ $367.98 | PnL: $-41.99 (-0.71%) | Hold: 0 days 01:30:00
+  📈 LONG QQQ: 16 shares @ $369.10 (cost: $5,905.67)
+  📉 EXIT QQQ: 16 shares @ $370.09 | PnL: $+15.85 (+0.27%) | Hold: 0 days 15:35:00
+  📈 LONG QQQ: 16 shares @ $369.49 (cost: $5,911.91)
+  📉 EXIT QQQ: 16 shares @ $368.18 | PnL: $-21.10 (-0.36%) | Hold: 0 days 10:05:00
+  📈 LONG QQQ: 16 shares @ $367.51 (cost: $5,880.22)
+  📉 EXIT QQQ: 16 shares @ $365.92 | PnL: $-25.55 (-0.43%) | Hold: 2 days 21:55:00
+  📈 LONG QQQ: 16 shares @ $367.25 (cost: $5,876.06)
+  📉 EXIT QQQ: 16 shares @ $368.55 | PnL: $+20.67 (+0.35%) | Hold: 0 days 18:00:00
+  📈 LONG QQQ: 16 shares @ $369.52 (cost: $5,912.39)
+  📉 EXIT QQQ: 16 shares @ $366.11 | PnL: $-54.69 (-0.92%) | Hold: 0 days 06:10:00
+  📈 LONG QQQ: 16 shares @ $367.61 (cost: $5,881.82)
+  📉 EXIT QQQ: 16 shares @ $366.85 | PnL: $-12.28 (-0.21%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 16 shares @ $363.30 (cost: $5,812.82)
+  📉 EXIT QQQ: 16 shares @ $362.66 | PnL: $-10.29 (-0.18%) | Hold: 0 days 05:40:00
+  📈 LONG QQQ: 16 shares @ $358.55 (cost: $5,736.79)
+  📉 EXIT QQQ: 16 shares @ $359.25 | PnL: $+11.22 (+0.20%) | Hold: 2 days 18:30:00
+  📈 LONG QQQ: 16 shares @ $361.37 (cost: $5,781.93)
+  📉 EXIT QQQ: 16 shares @ $363.12 | PnL: $+27.96 (+0.48%) | Hold: 0 days 08:30:00
+  📈 LONG QQQ: 16 shares @ $365.77 (cost: $5,852.36)
+  📉 EXIT QQQ: 16 shares @ $365.20 | PnL: $-9.21 (-0.16%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 16 shares @ $363.93 (cost: $5,822.91)
+  📉 EXIT QQQ: 16 shares @ $365.43 | PnL: $+23.93 (+0.41%) | Hold: 0 days 09:35:00
+  📈 LONG QQQ: 16 shares @ $366.06 (cost: $5,857.01)
+  📉 EXIT QQQ: 16 shares @ $364.61 | PnL: $-23.29 (-0.40%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 16 shares @ $365.93 (cost: $5,854.93)
+  📉 EXIT QQQ: 16 shares @ $372.61 | PnL: $+106.89 (+1.83%) | Hold: 0 days 22:35:00
+  📈 LONG QQQ: 16 shares @ $361.18 (cost: $5,778.89)
+  📉 EXIT QQQ: 16 shares @ $358.57 | PnL: $-41.76 (-0.72%) | Hold: 0 days 16:50:00
+  📈 LONG QQQ: 16 shares @ $363.73 (cost: $5,819.71)
+  📉 EXIT QQQ: 16 shares @ $363.50 | PnL: $-3.74 (-0.06%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 16 shares @ $365.18 (cost: $5,842.92)
+  📉 EXIT QQQ: 16 shares @ $366.51 | PnL: $+21.19 (+0.36%) | Hold: 1 days 00:10:00
+  📈 LONG QQQ: 16 shares @ $367.11 (cost: $5,873.82)
+  📉 EXIT QQQ: 16 shares @ $374.08 | PnL: $+111.51 (+1.90%) | Hold: 0 days 18:35:00
+  📈 LONG QQQ: 15 shares @ $375.12 (cost: $5,626.76)
+  📉 EXIT QQQ: 15 shares @ $376.38 | PnL: $+18.96 (+0.34%) | Hold: 0 days 21:05:00
+  📈 LONG QQQ: 15 shares @ $377.68 (cost: $5,665.18)
+  📉 EXIT QQQ: 15 shares @ $376.55 | PnL: $-16.91 (-0.30%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 15 shares @ $378.11 (cost: $5,671.63)
+  📉 EXIT QQQ: 15 shares @ $377.71 | PnL: $-5.97 (-0.11%) | Hold: 0 days 08:00:00
+  📈 LONG QQQ: 15 shares @ $378.59 (cost: $5,678.84)
+  📉 EXIT QQQ: 15 shares @ $375.95 | PnL: $-39.56 (-0.70%) | Hold: 0 days 07:55:00
+  📈 LONG QQQ: 15 shares @ $377.71 (cost: $5,665.63)
+  📉 EXIT QQQ: 15 shares @ $375.88 | PnL: $-27.40 (-0.48%) | Hold: 3 days 12:35:00
+  📈 LONG QQQ: 15 shares @ $379.09 (cost: $5,686.34)
+  📉 EXIT QQQ: 15 shares @ $377.62 | PnL: $-22.03 (-0.39%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 15 shares @ $377.57 (cost: $5,663.53)
+  📉 EXIT QQQ: 15 shares @ $372.75 | PnL: $-72.23 (-1.28%) | Hold: 0 days 05:20:00
+  📈 LONG QQQ: 15 shares @ $373.05 (cost: $5,595.70)
+  📉 EXIT QQQ: 15 shares @ $376.47 | PnL: $+51.38 (+0.92%) | Hold: 3 days 13:10:00
+  📈 LONG QQQ: 15 shares @ $375.87 (cost: $5,638.02)
+  📉 EXIT QQQ: 15 shares @ $373.74 | PnL: $-31.87 (-0.57%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 15 shares @ $375.50 (cost: $5,632.46)
+  📉 EXIT QQQ: 15 shares @ $372.77 | PnL: $-40.86 (-0.73%) | Hold: 0 days 01:30:00
+  📈 LONG QQQ: 15 shares @ $373.30 (cost: $5,599.45)
+  📉 EXIT QQQ: 15 shares @ $373.97 | PnL: $+10.15 (+0.18%) | Hold: 2 days 01:50:00
+  📈 LONG QQQ: 16 shares @ $371.09 (cost: $5,937.37)
+  📉 EXIT QQQ: 16 shares @ $369.05 | PnL: $-32.64 (-0.55%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 16 shares @ $370.79 (cost: $5,932.56)
+  📉 EXIT QQQ: 16 shares @ $370.02 | PnL: $-12.17 (-0.21%) | Hold: 0 days 05:20:00
+  📈 LONG QQQ: 15 shares @ $371.29 (cost: $5,569.28)
+  📉 EXIT QQQ: 15 shares @ $369.29 | PnL: $-30.00 (-0.54%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 16 shares @ $368.71 (cost: $5,899.43)
+  📉 EXIT QQQ: 16 shares @ $366.29 | PnL: $-38.84 (-0.66%) | Hold: 1 days 02:10:00
+  📈 LONG QQQ: 16 shares @ $361.11 (cost: $5,777.77)
+  📉 EXIT QQQ: 16 shares @ $359.27 | PnL: $-29.44 (-0.51%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 16 shares @ $359.15 (cost: $5,746.39)
+  📉 EXIT QQQ: 16 shares @ $359.74 | PnL: $+9.45 (+0.16%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 16 shares @ $360.17 (cost: $5,762.72)
+  📉 EXIT QQQ: 16 shares @ $357.99 | PnL: $-34.87 (-0.61%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 16 shares @ $359.49 (cost: $5,751.83)
+  📉 EXIT QQQ: 16 shares @ $356.82 | PnL: $-42.69 (-0.74%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 16 shares @ $357.91 (cost: $5,726.55)
+  📉 EXIT QQQ: 16 shares @ $357.61 | PnL: $-4.82 (-0.08%) | Hold: 0 days 05:10:00
+  📈 LONG QQQ: 16 shares @ $354.87 (cost: $5,677.88)
+  📉 EXIT QQQ: 16 shares @ $352.62 | PnL: $-35.90 (-0.63%) | Hold: 0 days 17:00:00
+  📈 LONG QQQ: 16 shares @ $354.32 (cost: $5,669.15)
+  📉 EXIT QQQ: 16 shares @ $355.02 | PnL: $+11.21 (+0.20%) | Hold: 0 days 03:55:00
+  📈 LONG QQQ: 16 shares @ $355.35 (cost: $5,685.56)
+  📉 EXIT QQQ: 16 shares @ $354.67 | PnL: $-10.80 (-0.19%) | Hold: 0 days 00:15:00
+  📈 LONG QQQ: 16 shares @ $355.37 (cost: $5,685.88)
+  📉 EXIT QQQ: 16 shares @ $360.05 | PnL: $+74.92 (+1.32%) | Hold: 0 days 19:25:00
+  📈 LONG QQQ: 16 shares @ $360.58 (cost: $5,769.28)
+  📉 EXIT QQQ: 16 shares @ $357.59 | PnL: $-47.83 (-0.83%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 16 shares @ $361.34 (cost: $5,781.45)
+  📉 EXIT QQQ: 16 shares @ $359.38 | PnL: $-31.37 (-0.54%) | Hold: 1 days 03:15:00
+  📈 LONG QQQ: 16 shares @ $360.98 (cost: $5,775.67)
+  📉 EXIT QQQ: 16 shares @ $354.06 | PnL: $-110.74 (-1.92%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 16 shares @ $354.88 (cost: $5,678.04)
+  📉 EXIT QQQ: 16 shares @ $358.44 | PnL: $+57.01 (+1.00%) | Hold: 0 days 22:35:00
+  📈 LONG QQQ: 16 shares @ $359.98 (cost: $5,759.68)
+  📉 EXIT QQQ: 16 shares @ $354.79 | PnL: $-83.00 (-1.44%) | Hold: 1 days 01:55:00
+  📈 LONG QQQ: 16 shares @ $359.16 (cost: $5,746.55)
+  📉 EXIT QQQ: 16 shares @ $361.67 | PnL: $+40.15 (+0.70%) | Hold: 2 days 17:30:00
+  📈 LONG QQQ: 16 shares @ $363.77 (cost: $5,820.35)
+  📉 EXIT QQQ: 16 shares @ $368.45 | PnL: $+74.93 (+1.29%) | Hold: 1 days 00:50:00
+  📈 LONG QQQ: 15 shares @ $369.19 (cost: $5,537.92)
+  📉 EXIT QQQ: 15 shares @ $371.09 | PnL: $+28.50 (+0.51%) | Hold: 1 days 13:20:00
+  📈 LONG QQQ: 15 shares @ $372.67 (cost: $5,589.99)
+  📉 EXIT QQQ: 15 shares @ $369.97 | PnL: $-40.37 (-0.72%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 15 shares @ $369.88 (cost: $5,548.27)
+  📉 EXIT QQQ: 15 shares @ $366.91 | PnL: $-44.68 (-0.81%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 16 shares @ $365.66 (cost: $5,850.60)
+  📉 EXIT QQQ: 16 shares @ $365.99 | PnL: $+5.19 (+0.09%) | Hold: 1 days 04:30:00
+  📈 LONG QQQ: 15 shares @ $369.76 (cost: $5,546.47)
+  📉 EXIT QQQ: 15 shares @ $367.21 | PnL: $-38.38 (-0.69%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 15 shares @ $366.39 (cost: $5,495.90)
+  📉 EXIT QQQ: 15 shares @ $363.42 | PnL: $-44.62 (-0.81%) | Hold: 0 days 08:50:00
+  📈 LONG QQQ: 16 shares @ $363.88 (cost: $5,822.11)
+  📉 EXIT QQQ: 16 shares @ $359.99 | PnL: $-62.27 (-1.07%) | Hold: 0 days 08:50:00
+  📈 LONG QQQ: 16 shares @ $359.68 (cost: $5,754.88)
+  📉 EXIT QQQ: 16 shares @ $356.10 | PnL: $-57.25 (-0.99%) | Hold: 0 days 06:20:00
+  📈 LONG QQQ: 16 shares @ $354.86 (cost: $5,677.72)
+  📉 EXIT QQQ: 16 shares @ $352.87 | PnL: $-31.74 (-0.56%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 16 shares @ $353.72 (cost: $5,659.47)
+  📉 EXIT QQQ: 16 shares @ $351.16 | PnL: $-40.84 (-0.72%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 16 shares @ $355.31 (cost: $5,684.92)
+  📉 EXIT QQQ: 16 shares @ $356.36 | PnL: $+16.87 (+0.30%) | Hold: 1 days 02:10:00
+  📈 LONG QQQ: 16 shares @ $358.70 (cost: $5,739.19)
+  📉 EXIT QQQ: 16 shares @ $358.23 | PnL: $-7.50 (-0.13%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 16 shares @ $348.56 (cost: $5,577.03)
+  📉 EXIT QQQ: 16 shares @ $343.03 | PnL: $-88.57 (-1.59%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 16 shares @ $345.61 (cost: $5,529.80)
+  📉 EXIT QQQ: 16 shares @ $343.08 | PnL: $-40.55 (-0.73%) | Hold: 0 days 02:55:00
+  📈 LONG QQQ: 16 shares @ $345.62 (cost: $5,529.96)
+  📉 EXIT QQQ: 16 shares @ $345.17 | PnL: $-7.29 (-0.13%) | Hold: 0 days 19:15:00
+  📈 LONG QQQ: 16 shares @ $348.20 (cost: $5,571.26)
+  📉 EXIT QQQ: 16 shares @ $346.95 | PnL: $-20.12 (-0.36%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 16 shares @ $350.04 (cost: $5,600.72)
+  📉 EXIT QQQ: 16 shares @ $347.43 | PnL: $-41.90 (-0.75%) | Hold: 0 days 12:40:00
+  📈 LONG QQQ: 16 shares @ $350.33 (cost: $5,605.20)
+  📉 EXIT QQQ: 16 shares @ $349.79 | PnL: $-8.64 (-0.15%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 16 shares @ $351.67 (cost: $5,626.65)
+  📉 EXIT QQQ: 16 shares @ $362.10 | PnL: $+166.93 (+2.97%) | Hold: 1 days 08:00:00
+  📈 LONG QQQ: 15 shares @ $362.81 (cost: $5,442.17)
+  📉 EXIT QQQ: 15 shares @ $367.13 | PnL: $+64.82 (+1.19%) | Hold: 3 days 06:35:00
+  📈 LONG QQQ: 15 shares @ $369.24 (cost: $5,538.67)
+  📉 EXIT QQQ: 15 shares @ $368.44 | PnL: $-12.13 (-0.22%) | Hold: 0 days 02:15:00
+  📈 LONG QQQ: 15 shares @ $369.23 (cost: $5,538.52)
+  📉 EXIT QQQ: 15 shares @ $371.96 | PnL: $+40.94 (+0.74%) | Hold: 0 days 21:05:00
+  📈 LONG QQQ: 15 shares @ $372.78 (cost: $5,591.64)
+  📉 EXIT QQQ: 15 shares @ $372.03 | PnL: $-11.14 (-0.20%) | Hold: 0 days 11:30:00
+  📈 LONG QQQ: 15 shares @ $372.95 (cost: $5,594.20)
+  📉 EXIT QQQ: 15 shares @ $369.54 | PnL: $-51.17 (-0.91%) | Hold: 0 days 13:55:00
+  📈 LONG QQQ: 15 shares @ $370.13 (cost: $5,552.02)
+  📉 EXIT QQQ: 15 shares @ $377.75 | PnL: $+114.24 (+2.06%) | Hold: 0 days 13:00:00
+  📈 LONG QQQ: 15 shares @ $378.79 (cost: $5,681.84)
+  📉 EXIT QQQ: 15 shares @ $377.67 | PnL: $-16.77 (-0.30%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 15 shares @ $383.34 (cost: $5,750.12)
+  📉 EXIT QQQ: 15 shares @ $385.66 | PnL: $+34.73 (+0.60%) | Hold: 0 days 10:40:00
+  📈 LONG QQQ: 15 shares @ $387.34 (cost: $5,810.15)
+  📉 EXIT QQQ: 15 shares @ $384.45 | PnL: $-43.44 (-0.75%) | Hold: 0 days 09:10:00
+  📈 LONG QQQ: 15 shares @ $385.35 (cost: $5,780.29)
+  📉 EXIT QQQ: 15 shares @ $385.47 | PnL: $+1.72 (+0.03%) | Hold: 0 days 23:05:00
+  📈 LONG QQQ: 15 shares @ $386.73 (cost: $5,801.00)
+  📉 EXIT QQQ: 15 shares @ $384.48 | PnL: $-33.83 (-0.58%) | Hold: 0 days 05:30:00
+  📈 LONG QQQ: 15 shares @ $386.08 (cost: $5,791.24)
+  📉 EXIT QQQ: 15 shares @ $385.97 | PnL: $-1.74 (-0.03%) | Hold: 2 days 19:35:00
+  📈 LONG QQQ: 14 shares @ $388.04 (cost: $5,432.61)
+  📉 EXIT QQQ: 14 shares @ $390.50 | PnL: $+34.45 (+0.63%) | Hold: 0 days 18:35:00
+  📈 LONG QQQ: 15 shares @ $388.06 (cost: $5,820.96)
+  📉 EXIT QQQ: 15 shares @ $387.39 | PnL: $-10.17 (-0.17%) | Hold: 0 days 05:10:00
+  📈 LONG QQQ: 14 shares @ $388.56 (cost: $5,439.90)
+  📉 EXIT QQQ: 14 shares @ $389.66 | PnL: $+15.27 (+0.28%) | Hold: 0 days 14:00:00
+  📈 LONG QQQ: 14 shares @ $390.60 (cost: $5,468.33)
+  📉 EXIT QQQ: 14 shares @ $389.56 | PnL: $-14.56 (-0.27%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 14 shares @ $389.90 (cost: $5,458.67)
+  📉 EXIT QQQ: 14 shares @ $389.74 | PnL: $-2.38 (-0.04%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 14 shares @ $389.29 (cost: $5,450.12)
+  📉 EXIT QQQ: 14 shares @ $387.72 | PnL: $-22.10 (-0.41%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 14 shares @ $389.81 (cost: $5,457.41)
+  📉 EXIT QQQ: 14 shares @ $388.57 | PnL: $-17.49 (-0.32%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 14 shares @ $389.75 (cost: $5,456.57)
+  📉 EXIT QQQ: 14 shares @ $391.56 | PnL: $+25.33 (+0.46%) | Hold: 0 days 19:30:00
+  📈 LONG QQQ: 14 shares @ $390.87 (cost: $5,472.11)
+  📉 EXIT QQQ: 14 shares @ $388.63 | PnL: $-31.36 (-0.57%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 14 shares @ $387.62 (cost: $5,426.73)
+  📉 EXIT QQQ: 14 shares @ $388.30 | PnL: $+9.41 (+0.17%) | Hold: 0 days 15:55:00
+  📈 LONG QQQ: 14 shares @ $388.64 (cost: $5,440.95)
+  📉 EXIT QQQ: 14 shares @ $388.60 | PnL: $-0.61 (-0.01%) | Hold: 2 days 16:50:00
+  📈 LONG QQQ: 15 shares @ $385.33 (cost: $5,779.88)
+  📉 EXIT QQQ: 15 shares @ $385.49 | PnL: $+2.42 (+0.04%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 15 shares @ $385.71 (cost: $5,785.69)
+  📉 EXIT QQQ: 15 shares @ $386.49 | PnL: $+11.61 (+0.20%) | Hold: 1 days 02:00:00
+  📈 LONG QQQ: 15 shares @ $386.59 (cost: $5,798.79)
+  📉 EXIT QQQ: 15 shares @ $389.76 | PnL: $+47.53 (+0.82%) | Hold: 0 days 08:30:00
+  📈 LONG QQQ: 14 shares @ $390.29 (cost: $5,463.99)
+  📉 EXIT QQQ: 14 shares @ $391.40 | PnL: $+15.67 (+0.29%) | Hold: 2 days 19:20:00
+  📈 LONG QQQ: 14 shares @ $393.27 (cost: $5,505.73)
+  📉 EXIT QQQ: 14 shares @ $398.79 | PnL: $+77.34 (+1.40%) | Hold: 2 days 03:25:00
+  📈 LONG QQQ: 14 shares @ $401.75 (cost: $5,624.51)
+  📉 EXIT QQQ: 14 shares @ $401.50 | PnL: $-3.52 (-0.06%) | Hold: 0 days 23:20:00
+  📈 LONG QQQ: 14 shares @ $403.63 (cost: $5,650.84)
+  📉 EXIT QQQ: 14 shares @ $404.31 | PnL: $+9.53 (+0.17%) | Hold: 0 days 18:25:00
+  📈 LONG QQQ: 14 shares @ $405.13 (cost: $5,671.85)
+  📉 EXIT QQQ: 14 shares @ $404.74 | PnL: $-5.53 (-0.10%) | Hold: 2 days 12:10:00
+  📈 LONG QQQ: 14 shares @ $405.45 (cost: $5,676.34)
+  📉 EXIT QQQ: 14 shares @ $406.43 | PnL: $+13.64 (+0.24%) | Hold: 0 days 06:35:00
+  📈 LONG QQQ: 14 shares @ $407.33 (cost: $5,702.67)
+  📉 EXIT QQQ: 14 shares @ $407.82 | PnL: $+6.75 (+0.12%) | Hold: 1 days 00:00:00
+  📈 LONG QQQ: 14 shares @ $409.17 (cost: $5,728.44)
+  📉 EXIT QQQ: 14 shares @ $407.31 | PnL: $-26.16 (-0.46%) | Hold: 0 days 05:00:00
+  📈 LONG QQQ: 14 shares @ $406.18 (cost: $5,686.56)
+  📉 EXIT QQQ: 14 shares @ $405.98 | PnL: $-2.89 (-0.05%) | Hold: 0 days 06:05:00
+  📈 LONG QQQ: 14 shares @ $407.65 (cost: $5,707.15)
+  📉 EXIT QQQ: 14 shares @ $406.65 | PnL: $-14.10 (-0.25%) | Hold: 0 days 12:35:00
+  📈 LONG QQQ: 14 shares @ $407.57 (cost: $5,706.03)
+  📉 EXIT QQQ: 14 shares @ $408.08 | PnL: $+7.03 (+0.12%) | Hold: 0 days 08:15:00
+  📈 LONG QQQ: 14 shares @ $409.73 (cost: $5,736.29)
+  📉 EXIT QQQ: 14 shares @ $410.68 | PnL: $+13.30 (+0.23%) | Hold: 0 days 15:25:00
+  📈 LONG QQQ: 14 shares @ $411.34 (cost: $5,758.70)
+  📉 EXIT QQQ: 14 shares @ $409.03 | PnL: $-32.34 (-0.56%) | Hold: 2 days 02:40:00
+  📈 LONG QQQ: 14 shares @ $409.65 (cost: $5,735.17)
+  📉 EXIT QQQ: 14 shares @ $408.85 | PnL: $-11.33 (-0.20%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 14 shares @ $409.54 (cost: $5,733.63)
+  📉 EXIT QQQ: 14 shares @ $407.35 | PnL: $-30.78 (-0.54%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 14 shares @ $403.02 (cost: $5,642.30)
+  📉 EXIT QQQ: 14 shares @ $401.12 | PnL: $-26.63 (-0.47%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 14 shares @ $400.75 (cost: $5,610.50)
+  📉 EXIT QQQ: 14 shares @ $397.75 | PnL: $-41.99 (-0.75%) | Hold: 0 days 22:35:00
+  📈 LONG QQQ: 14 shares @ $399.52 (cost: $5,593.28)
+  📉 EXIT QQQ: 14 shares @ $395.92 | PnL: $-50.37 (-0.90%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 14 shares @ $396.93 (cost: $5,557.00)
+  📉 EXIT QQQ: 14 shares @ $395.13 | PnL: $-25.14 (-0.45%) | Hold: 0 days 09:50:00
+  📈 LONG QQQ: 14 shares @ $395.67 (cost: $5,539.35)
+  📉 EXIT QQQ: 14 shares @ $395.47 | PnL: $-2.74 (-0.05%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 14 shares @ $396.93 (cost: $5,557.00)
+  📉 EXIT QQQ: 14 shares @ $403.26 | PnL: $+88.62 (+1.59%) | Hold: 0 days 21:20:00
+  📈 LONG QQQ: 14 shares @ $404.78 (cost: $5,666.95)
+  📉 EXIT QQQ: 14 shares @ $406.08 | PnL: $+18.12 (+0.32%) | Hold: 0 days 19:30:00
+  📈 LONG QQQ: 14 shares @ $406.86 (cost: $5,696.09)
+  📉 EXIT QQQ: 14 shares @ $407.74 | PnL: $+12.22 (+0.21%) | Hold: 0 days 23:20:00
+  📈 LONG QQQ: 14 shares @ $410.71 (cost: $5,749.87)
+  📉 EXIT QQQ: 14 shares @ $408.90 | PnL: $-25.34 (-0.44%) | Hold: 0 days 08:30:00
+  📈 LONG QQQ: 14 shares @ $409.65 (cost: $5,735.17)
+  📉 EXIT QQQ: 14 shares @ $406.69 | PnL: $-41.55 (-0.72%) | Hold: 3 days 19:25:00
+  📈 LONG QQQ: 14 shares @ $407.65 (cost: $5,707.15)
+  📉 EXIT QQQ: 14 shares @ $409.20 | PnL: $+21.58 (+0.38%) | Hold: 0 days 12:55:00
+  📈 LONG QQQ: 14 shares @ $408.16 (cost: $5,714.30)
+  📉 EXIT QQQ: 14 shares @ $406.07 | PnL: $-29.36 (-0.51%) | Hold: 0 days 01:15:00
+  📈 LONG QQQ: 14 shares @ $406.18 (cost: $5,686.49)
+  📉 EXIT QQQ: 14 shares @ $406.45 | PnL: $+3.76 (+0.07%) | Hold: 0 days 03:35:00
+  📈 LONG QQQ: 14 shares @ $408.57 (cost: $5,720.04)
+  📉 EXIT QQQ: 14 shares @ $409.32 | PnL: $+10.37 (+0.18%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 14 shares @ $412.17 (cost: $5,770.32)
+  📉 EXIT QQQ: 14 shares @ $423.16 | PnL: $+153.89 (+2.67%) | Hold: 3 days 18:35:00
+  📈 LONG QQQ: 13 shares @ $424.06 (cost: $5,512.81)
+  📉 EXIT QQQ: 13 shares @ $426.04 | PnL: $+25.67 (+0.47%) | Hold: 2 days 04:45:00
+  📈 LONG QQQ: 13 shares @ $426.21 (cost: $5,540.77)
+  📉 EXIT QQQ: 13 shares @ $425.86 | PnL: $-4.53 (-0.08%) | Hold: 0 days 09:20:00
+  📈 LONG QQQ: 13 shares @ $425.11 (cost: $5,526.46)
+  📉 EXIT QQQ: 13 shares @ $422.89 | PnL: $-28.91 (-0.52%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 13 shares @ $425.50 (cost: $5,531.53)
+  📉 EXIT QQQ: 13 shares @ $427.78 | PnL: $+29.55 (+0.53%) | Hold: 1 days 00:15:00
+  📈 LONG QQQ: 13 shares @ $420.97 (cost: $5,472.61)
+  📉 EXIT QQQ: 13 shares @ $424.23 | PnL: $+42.35 (+0.77%) | Hold: 2 days 01:15:00
+  📈 LONG QQQ: 13 shares @ $428.93 (cost: $5,576.15)
+  📉 EXIT QQQ: 13 shares @ $428.20 | PnL: $-9.61 (-0.17%) | Hold: 0 days 04:50:00
+  📈 LONG QQQ: 13 shares @ $429.04 (cost: $5,577.58)
+  📉 EXIT QQQ: 13 shares @ $426.48 | PnL: $-33.38 (-0.60%) | Hold: 0 days 06:15:00
+  📈 LONG QQQ: 13 shares @ $428.43 (cost: $5,569.64)
+  📉 EXIT QQQ: 13 shares @ $427.85 | PnL: $-7.65 (-0.14%) | Hold: 0 days 18:15:00
+  📈 LONG QQQ: 13 shares @ $429.30 (cost: $5,580.96)
+  📉 EXIT QQQ: 13 shares @ $426.66 | PnL: $-34.42 (-0.62%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 13 shares @ $428.12 (cost: $5,565.61)
+  📉 EXIT QQQ: 13 shares @ $431.84 | PnL: $+48.36 (+0.87%) | Hold: 0 days 13:45:00
+  📈 LONG QQQ: 13 shares @ $432.55 (cost: $5,623.10)
+  📉 EXIT QQQ: 13 shares @ $431.20 | PnL: $-17.44 (-0.31%) | Hold: 0 days 02:20:00
+  📈 LONG QQQ: 13 shares @ $431.72 (cost: $5,612.30)
+  📉 EXIT QQQ: 13 shares @ $436.14 | PnL: $+57.54 (+1.03%) | Hold: 4 days 05:35:00
+  📈 LONG QQQ: 13 shares @ $432.68 (cost: $5,624.79)
+  📉 EXIT QQQ: 13 shares @ $427.19 | PnL: $-71.37 (-1.27%) | Hold: 0 days 01:05:00
+  📈 LONG QQQ: 13 shares @ $431.17 (cost: $5,605.15)
+  📉 EXIT QQQ: 13 shares @ $426.32 | PnL: $-63.03 (-1.12%) | Hold: 0 days 03:35:00
+  📈 LONG QQQ: 13 shares @ $428.82 (cost: $5,574.72)
+  📉 EXIT QQQ: 13 shares @ $431.75 | PnL: $+38.08 (+0.68%) | Hold: 1 days 18:00:00
+  📈 LONG QQQ: 13 shares @ $434.74 (cost: $5,651.62)
+  📉 EXIT QQQ: 13 shares @ $436.64 | PnL: $+24.72 (+0.44%) | Hold: 0 days 14:35:00
+  📈 LONG QQQ: 13 shares @ $436.86 (cost: $5,679.16)
+  📉 EXIT QQQ: 13 shares @ $436.48 | PnL: $-4.90 (-0.09%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 13 shares @ $434.43 (cost: $5,647.55)
+  📉 EXIT QQQ: 13 shares @ $431.17 | PnL: $-42.29 (-0.75%) | Hold: 0 days 00:45:00
+  📈 LONG QQQ: 13 shares @ $429.00 (cost: $5,577.06)
+  📉 EXIT QQQ: 13 shares @ $425.93 | PnL: $-40.01 (-0.72%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 13 shares @ $424.74 (cost: $5,521.58)
+  📉 EXIT QQQ: 13 shares @ $434.27 | PnL: $+123.96 (+2.25%) | Hold: 0 days 17:45:00
+  📈 LONG QQQ: 13 shares @ $434.84 (cost: $5,652.89)
+  📉 EXIT QQQ: 13 shares @ $437.11 | PnL: $+29.56 (+0.52%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 13 shares @ $439.25 (cost: $5,710.23)
+  📉 EXIT QQQ: 13 shares @ $436.06 | PnL: $-41.43 (-0.73%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 13 shares @ $436.91 (cost: $5,679.81)
+  📉 EXIT QQQ: 13 shares @ $436.02 | PnL: $-11.52 (-0.20%) | Hold: 0 days 11:30:00
+  📈 LONG QQQ: 13 shares @ $437.35 (cost: $5,685.53)
+  📉 EXIT QQQ: 13 shares @ $436.34 | PnL: $-13.15 (-0.23%) | Hold: 0 days 05:40:00
+  📈 LONG QQQ: 13 shares @ $437.58 (cost: $5,688.52)
+  📉 EXIT QQQ: 13 shares @ $435.95 | PnL: $-21.15 (-0.37%) | Hold: 0 days 13:45:00
+  📈 LONG QQQ: 13 shares @ $435.97 (cost: $5,667.58)
+  📉 EXIT QQQ: 13 shares @ $434.63 | PnL: $-17.41 (-0.31%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 13 shares @ $435.07 (cost: $5,655.88)
+  📉 EXIT QQQ: 13 shares @ $438.62 | PnL: $+46.19 (+0.82%) | Hold: 0 days 23:05:00
+  📈 LONG QQQ: 13 shares @ $440.68 (cost: $5,728.84)
+  📉 EXIT QQQ: 13 shares @ $438.22 | PnL: $-31.97 (-0.56%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 13 shares @ $440.89 (cost: $5,731.57)
+  📉 EXIT QQQ: 13 shares @ $444.91 | PnL: $+52.22 (+0.91%) | Hold: 0 days 07:55:00
+  📈 LONG QQQ: 13 shares @ $446.59 (cost: $5,805.71)
+  📉 EXIT QQQ: 13 shares @ $445.15 | PnL: $-18.80 (-0.32%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 13 shares @ $446.02 (cost: $5,798.30)
+  📉 EXIT QQQ: 13 shares @ $443.29 | PnL: $-35.55 (-0.61%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 13 shares @ $442.27 (cost: $5,749.52)
+  📉 EXIT QQQ: 13 shares @ $436.50 | PnL: $-75.00 (-1.30%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 13 shares @ $436.52 (cost: $5,674.74)
+  📉 EXIT QQQ: 13 shares @ $437.21 | PnL: $+9.01 (+0.16%) | Hold: 0 days 18:05:00
+  📈 LONG QQQ: 13 shares @ $441.86 (cost: $5,744.19)
+  📉 EXIT QQQ: 13 shares @ $438.22 | PnL: $-47.32 (-0.82%) | Hold: 0 days 06:50:00
+  📈 LONG QQQ: 13 shares @ $439.78 (cost: $5,717.14)
+  📉 EXIT QQQ: 13 shares @ $440.54 | PnL: $+9.88 (+0.17%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 13 shares @ $443.34 (cost: $5,763.44)
+  📉 EXIT QQQ: 13 shares @ $442.79 | PnL: $-7.19 (-0.12%) | Hold: 0 days 06:45:00
+  📈 LONG QQQ: 13 shares @ $446.02 (cost: $5,798.30)
+  📉 EXIT QQQ: 13 shares @ $444.78 | PnL: $-16.19 (-0.28%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 12 shares @ $446.81 (cost: $5,361.76)
+  📉 EXIT QQQ: 12 shares @ $440.07 | PnL: $-80.92 (-1.51%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 13 shares @ $442.19 (cost: $5,748.48)
+  📉 EXIT QQQ: 13 shares @ $438.67 | PnL: $-45.77 (-0.80%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 13 shares @ $439.29 (cost: $5,710.76)
+  📉 EXIT QQQ: 13 shares @ $436.17 | PnL: $-40.53 (-0.71%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 13 shares @ $438.88 (cost: $5,705.43)
+  📉 EXIT QQQ: 13 shares @ $442.12 | PnL: $+42.11 (+0.74%) | Hold: 1 days 14:25:00
+  📈 LONG QQQ: 13 shares @ $441.55 (cost: $5,740.16)
+  📉 EXIT QQQ: 13 shares @ $438.02 | PnL: $-45.89 (-0.80%) | Hold: 0 days 20:45:00
+  📈 LONG QQQ: 13 shares @ $440.47 (cost: $5,726.11)
+  📉 EXIT QQQ: 13 shares @ $436.91 | PnL: $-46.26 (-0.81%) | Hold: 0 days 01:10:00
+  📈 LONG QQQ: 13 shares @ $439.19 (cost: $5,709.46)
+  📉 EXIT QQQ: 13 shares @ $438.56 | PnL: $-8.18 (-0.14%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 13 shares @ $436.18 (cost: $5,670.31)
+  📉 EXIT QQQ: 13 shares @ $437.84 | PnL: $+21.62 (+0.38%) | Hold: 0 days 09:00:00
+  📈 LONG QQQ: 13 shares @ $437.92 (cost: $5,692.95)
+  📉 EXIT QQQ: 13 shares @ $434.92 | PnL: $-38.95 (-0.68%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 13 shares @ $437.01 (cost: $5,681.11)
+  📉 EXIT QQQ: 13 shares @ $437.81 | PnL: $+10.43 (+0.18%) | Hold: 0 days 16:25:00
+  📈 LONG QQQ: 13 shares @ $438.90 (cost: $5,705.69)
+  📉 EXIT QQQ: 13 shares @ $446.52 | PnL: $+99.02 (+1.74%) | Hold: 1 days 07:55:00
+  📈 LONG QQQ: 12 shares @ $447.13 (cost: $5,365.60)
+  📉 EXIT QQQ: 12 shares @ $445.58 | PnL: $-18.68 (-0.35%) | Hold: 0 days 05:25:00
+  📈 LONG QQQ: 12 shares @ $446.52 (cost: $5,358.28)
+  📉 EXIT QQQ: 12 shares @ $444.01 | PnL: $-30.18 (-0.56%) | Hold: 0 days 11:40:00
+  📈 LONG QQQ: 12 shares @ $444.40 (cost: $5,332.83)
+  📉 EXIT QQQ: 12 shares @ $442.44 | PnL: $-23.56 (-0.44%) | Hold: 0 days 14:35:00
+  📈 LONG QQQ: 12 shares @ $444.80 (cost: $5,337.63)
+  📉 EXIT QQQ: 12 shares @ $444.26 | PnL: $-6.53 (-0.12%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 12 shares @ $444.87 (cost: $5,338.47)
+  📉 EXIT QQQ: 12 shares @ $443.82 | PnL: $-12.65 (-0.24%) | Hold: 0 days 01:30:00
+  📈 LONG QQQ: 12 shares @ $444.89 (cost: $5,338.71)
+  📉 EXIT QQQ: 12 shares @ $445.63 | PnL: $+8.82 (+0.17%) | Hold: 4 days 00:45:00
+  📈 LONG QQQ: 12 shares @ $447.31 (cost: $5,367.76)
+  📉 EXIT QQQ: 12 shares @ $443.67 | PnL: $-43.75 (-0.81%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 13 shares @ $440.44 (cost: $5,725.72)
+  📉 EXIT QQQ: 13 shares @ $440.73 | PnL: $+3.76 (+0.07%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 13 shares @ $440.57 (cost: $5,727.41)
+  📉 EXIT QQQ: 13 shares @ $441.25 | PnL: $+8.83 (+0.15%) | Hold: 0 days 07:40:00
+  📈 LONG QQQ: 12 shares @ $443.07 (cost: $5,316.86)
+  📉 EXIT QQQ: 12 shares @ $445.10 | PnL: $+24.31 (+0.46%) | Hold: 0 days 18:35:00
+  📈 LONG QQQ: 13 shares @ $436.85 (cost: $5,679.03)
+  📉 EXIT QQQ: 13 shares @ $440.05 | PnL: $+41.62 (+0.73%) | Hold: 3 days 05:35:00
+  📈 LONG QQQ: 13 shares @ $441.52 (cost: $5,739.77)
+  📉 EXIT QQQ: 13 shares @ $439.68 | PnL: $-23.93 (-0.42%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 13 shares @ $441.93 (cost: $5,745.10)
+  📉 EXIT QQQ: 13 shares @ $437.84 | PnL: $-53.17 (-0.93%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 12 shares @ $441.77 (cost: $5,301.25)
+  📉 EXIT QQQ: 12 shares @ $441.89 | PnL: $+1.42 (+0.03%) | Hold: 0 days 14:30:00
+  📈 LONG QQQ: 12 shares @ $443.42 (cost: $5,321.06)
+  📉 EXIT QQQ: 12 shares @ $435.40 | PnL: $-96.23 (-1.81%) | Hold: 0 days 00:25:00
+  📈 LONG QQQ: 13 shares @ $439.04 (cost: $5,707.51)
+  📉 EXIT QQQ: 13 shares @ $445.07 | PnL: $+78.36 (+1.37%) | Hold: 0 days 13:10:00
+  📈 LONG QQQ: 12 shares @ $445.85 (cost: $5,350.23)
+  📉 EXIT QQQ: 12 shares @ $444.75 | PnL: $-13.26 (-0.25%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 12 shares @ $444.02 (cost: $5,328.26)
+  📉 EXIT QQQ: 12 shares @ $438.98 | PnL: $-60.50 (-1.14%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 12 shares @ $440.73 (cost: $5,288.76)
+  📉 EXIT QQQ: 12 shares @ $440.70 | PnL: $-0.37 (-0.01%) | Hold: 0 days 04:05:00
+  📈 LONG QQQ: 13 shares @ $431.23 (cost: $5,605.93)
+  📉 EXIT QQQ: 13 shares @ $431.14 | PnL: $-1.06 (-0.02%) | Hold: 0 days 20:55:00
+  📈 LONG QQQ: 13 shares @ $433.34 (cost: $5,633.38)
+  📉 EXIT QQQ: 13 shares @ $430.44 | PnL: $-37.59 (-0.67%) | Hold: 0 days 00:50:00
+  📈 LONG QQQ: 13 shares @ $428.45 (cost: $5,569.90)
+  📉 EXIT QQQ: 13 shares @ $424.36 | PnL: $-53.25 (-0.96%) | Hold: 0 days 18:55:00
+  📈 LONG QQQ: 13 shares @ $422.12 (cost: $5,487.57)
+  📉 EXIT QQQ: 13 shares @ $419.15 | PnL: $-38.62 (-0.70%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 13 shares @ $416.24 (cost: $5,411.09)
+  📉 EXIT QQQ: 13 shares @ $414.98 | PnL: $-16.32 (-0.30%) | Hold: 0 days 06:25:00
+  📈 LONG QQQ: 13 shares @ $418.85 (cost: $5,445.04)
+  📉 EXIT QQQ: 13 shares @ $418.26 | PnL: $-7.65 (-0.14%) | Hold: 0 days 04:55:00
+  📈 LONG QQQ: 13 shares @ $419.80 (cost: $5,457.40)
+  📉 EXIT QQQ: 13 shares @ $419.45 | PnL: $-4.55 (-0.08%) | Hold: 0 days 04:15:00
+  📈 LONG QQQ: 13 shares @ $422.44 (cost: $5,491.73)
+  📉 EXIT QQQ: 13 shares @ $426.18 | PnL: $+48.56 (+0.88%) | Hold: 1 days 01:20:00
+  📈 LONG QQQ: 13 shares @ $427.36 (cost: $5,555.73)
+  📉 EXIT QQQ: 13 shares @ $423.19 | PnL: $-54.28 (-0.98%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 13 shares @ $422.89 (cost: $5,497.59)
+  📉 EXIT QQQ: 13 shares @ $428.25 | PnL: $+69.61 (+1.27%) | Hold: 0 days 16:00:00
+  📈 LONG QQQ: 13 shares @ $431.08 (cost: $5,603.98)
+  📉 EXIT QQQ: 13 shares @ $431.15 | PnL: $+0.96 (+0.02%) | Hold: 0 days 04:25:00
+  📈 LONG QQQ: 13 shares @ $433.03 (cost: $5,629.34)
+  📉 EXIT QQQ: 13 shares @ $431.47 | PnL: $-20.18 (-0.36%) | Hold: 0 days 10:30:00
+  📈 LONG QQQ: 13 shares @ $433.31 (cost: $5,632.99)
+  📉 EXIT QQQ: 13 shares @ $432.17 | PnL: $-14.73 (-0.26%) | Hold: 0 days 12:15:00
+  📈 LONG QQQ: 13 shares @ $423.38 (cost: $5,503.96)
+  📉 EXIT QQQ: 13 shares @ $421.70 | PnL: $-21.87 (-0.40%) | Hold: 0 days 01:35:00
+  📈 LONG QQQ: 13 shares @ $423.03 (cost: $5,499.41)
+  📉 EXIT QQQ: 13 shares @ $421.82 | PnL: $-15.76 (-0.29%) | Hold: 0 days 20:05:00
+  📈 LONG QQQ: 13 shares @ $426.07 (cost: $5,538.95)
+  📉 EXIT QQQ: 13 shares @ $439.14 | PnL: $+169.88 (+3.07%) | Hold: 4 days 14:45:00
+  📈 LONG QQQ: 12 shares @ $440.54 (cost: $5,286.48)
+  📉 EXIT QQQ: 12 shares @ $440.29 | PnL: $-2.95 (-0.06%) | Hold: 0 days 04:50:00
+  📈 LONG QQQ: 13 shares @ $439.65 (cost: $5,715.45)
+  📉 EXIT QQQ: 13 shares @ $439.32 | PnL: $-4.29 (-0.08%) | Hold: 0 days 06:25:00
+  📈 LONG QQQ: 12 shares @ $439.95 (cost: $5,279.41)
+  📉 EXIT QQQ: 12 shares @ $438.91 | PnL: $-12.49 (-0.24%) | Hold: 0 days 09:35:00
+  📈 LONG QQQ: 12 shares @ $439.71 (cost: $5,276.52)
+  📉 EXIT QQQ: 12 shares @ $439.03 | PnL: $-8.15 (-0.15%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 12 shares @ $441.67 (cost: $5,300.05)
+  📉 EXIT QQQ: 12 shares @ $442.44 | PnL: $+9.22 (+0.17%) | Hold: 3 days 15:05:00
+  📈 LONG QQQ: 12 shares @ $443.30 (cost: $5,319.62)
+  📉 EXIT QQQ: 12 shares @ $441.98 | PnL: $-15.87 (-0.30%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 12 shares @ $444.74 (cost: $5,336.91)
+  📉 EXIT QQQ: 12 shares @ $445.63 | PnL: $+10.62 (+0.20%) | Hold: 0 days 17:35:00
+  📈 LONG QQQ: 12 shares @ $448.26 (cost: $5,379.17)
+  📉 EXIT QQQ: 12 shares @ $451.89 | PnL: $+43.56 (+0.81%) | Hold: 1 days 07:10:00
+  📈 LONG QQQ: 12 shares @ $452.45 (cost: $5,429.35)
+  📉 EXIT QQQ: 12 shares @ $452.15 | PnL: $-3.51 (-0.06%) | Hold: 0 days 03:05:00
+  📈 LONG QQQ: 12 shares @ $452.83 (cost: $5,433.92)
+  📉 EXIT QQQ: 12 shares @ $453.90 | PnL: $+12.92 (+0.24%) | Hold: 1 days 04:20:00
+  📈 LONG QQQ: 12 shares @ $455.29 (cost: $5,463.45)
+  📉 EXIT QQQ: 12 shares @ $455.57 | PnL: $+3.42 (+0.06%) | Hold: 0 days 14:45:00
+  📈 LONG QQQ: 12 shares @ $456.26 (cost: $5,475.10)
+  📉 EXIT QQQ: 12 shares @ $454.70 | PnL: $-18.67 (-0.34%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 12 shares @ $457.84 (cost: $5,494.07)
+  📉 EXIT QQQ: 12 shares @ $459.41 | PnL: $+18.86 (+0.34%) | Hold: 0 days 13:45:00
+  📈 LONG QQQ: 12 shares @ $454.21 (cost: $5,450.48)
+  📉 EXIT QQQ: 12 shares @ $459.09 | PnL: $+58.60 (+1.08%) | Hold: 4 days 11:00:00
+  📈 LONG QQQ: 12 shares @ $460.15 (cost: $5,521.80)
+  📉 EXIT QQQ: 12 shares @ $456.97 | PnL: $-38.14 (-0.69%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 12 shares @ $457.27 (cost: $5,487.22)
+  📉 EXIT QQQ: 12 shares @ $455.50 | PnL: $-21.20 (-0.39%) | Hold: 0 days 06:35:00
+  📈 LONG QQQ: 12 shares @ $455.44 (cost: $5,465.25)
+  📉 EXIT QQQ: 12 shares @ $454.88 | PnL: $-6.66 (-0.12%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 12 shares @ $450.28 (cost: $5,403.30)
+  📉 EXIT QQQ: 12 shares @ $447.13 | PnL: $-37.78 (-0.70%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 12 shares @ $445.97 (cost: $5,351.68)
+  📉 EXIT QQQ: 12 shares @ $451.08 | PnL: $+61.34 (+1.15%) | Hold: 2 days 21:30:00
+  📈 LONG QQQ: 12 shares @ $453.24 (cost: $5,438.84)
+  📉 EXIT QQQ: 12 shares @ $451.92 | PnL: $-15.75 (-0.29%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 12 shares @ $452.90 (cost: $5,434.76)
+  📉 EXIT QQQ: 12 shares @ $461.82 | PnL: $+107.07 (+1.97%) | Hold: 2 days 23:20:00
+  📈 LONG QQQ: 12 shares @ $464.85 (cost: $5,578.23)
+  📉 EXIT QQQ: 12 shares @ $462.07 | PnL: $-33.34 (-0.60%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 12 shares @ $462.98 (cost: $5,555.78)
+  📉 EXIT QQQ: 12 shares @ $461.64 | PnL: $-16.11 (-0.29%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 12 shares @ $464.18 (cost: $5,570.18)
+  📉 EXIT QQQ: 12 shares @ $463.45 | PnL: $-8.75 (-0.16%) | Hold: 0 days 02:20:00
+  📈 LONG QQQ: 12 shares @ $463.80 (cost: $5,565.62)
+  📉 EXIT QQQ: 12 shares @ $476.42 | PnL: $+151.44 (+2.72%) | Hold: 1 days 21:40:00
+  📈 LONG QQQ: 12 shares @ $478.01 (cost: $5,736.11)
+  📉 EXIT QQQ: 12 shares @ $475.97 | PnL: $-24.44 (-0.43%) | Hold: 0 days 02:15:00
+  📈 LONG QQQ: 12 shares @ $477.50 (cost: $5,729.98)
+  📉 EXIT QQQ: 12 shares @ $477.15 | PnL: $-4.17 (-0.07%) | Hold: 0 days 09:30:00
+  📈 LONG QQQ: 12 shares @ $477.32 (cost: $5,727.82)
+  📉 EXIT QQQ: 12 shares @ $484.22 | PnL: $+82.79 (+1.45%) | Hold: 3 days 06:35:00
+  📈 LONG QQQ: 11 shares @ $485.73 (cost: $5,343.06)
+  📉 EXIT QQQ: 11 shares @ $483.60 | PnL: $-23.48 (-0.44%) | Hold: 0 days 16:55:00
+  📈 LONG QQQ: 11 shares @ $485.38 (cost: $5,339.21)
+  📉 EXIT QQQ: 11 shares @ $487.23 | PnL: $+20.28 (+0.38%) | Hold: 1 days 19:15:00
+  📈 LONG QQQ: 12 shares @ $475.40 (cost: $5,704.77)
+  📉 EXIT QQQ: 12 shares @ $476.86 | PnL: $+17.57 (+0.31%) | Hold: 0 days 08:30:00
+  📈 LONG QQQ: 12 shares @ $479.13 (cost: $5,749.55)
+  📉 EXIT QQQ: 12 shares @ $480.21 | PnL: $+12.96 (+0.23%) | Hold: 0 days 15:55:00
+  📈 LONG QQQ: 12 shares @ $479.83 (cost: $5,757.96)
+  📉 EXIT QQQ: 12 shares @ $477.93 | PnL: $-22.79 (-0.40%) | Hold: 0 days 09:40:00
+  📈 LONG QQQ: 12 shares @ $479.30 (cost: $5,751.59)
+  📉 EXIT QQQ: 12 shares @ $479.73 | PnL: $+5.17 (+0.09%) | Hold: 0 days 07:30:00
+  📈 LONG QQQ: 12 shares @ $481.60 (cost: $5,779.15)
+  📉 EXIT QQQ: 12 shares @ $482.42 | PnL: $+9.86 (+0.17%) | Hold: 0 days 20:10:00
+  📈 LONG QQQ: 11 shares @ $486.54 (cost: $5,351.97)
+  📉 EXIT QQQ: 11 shares @ $481.39 | PnL: $-56.68 (-1.06%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 12 shares @ $480.23 (cost: $5,762.76)
+  📉 EXIT QQQ: 12 shares @ $479.72 | PnL: $-6.12 (-0.11%) | Hold: 0 days 23:55:00
+  📈 LONG QQQ: 12 shares @ $480.40 (cost: $5,764.80)
+  📉 EXIT QQQ: 12 shares @ $485.81 | PnL: $+64.88 (+1.13%) | Hold: 0 days 23:35:00
+  📈 LONG QQQ: 11 shares @ $487.35 (cost: $5,360.89)
+  📉 EXIT QQQ: 11 shares @ $495.43 | PnL: $+88.86 (+1.66%) | Hold: 2 days 07:25:00
+  📈 LONG QQQ: 11 shares @ $496.15 (cost: $5,457.63)
+  📉 EXIT QQQ: 11 shares @ $497.37 | PnL: $+13.46 (+0.25%) | Hold: 3 days 05:45:00
+  📈 LONG QQQ: 11 shares @ $494.46 (cost: $5,439.03)
+  📉 EXIT QQQ: 11 shares @ $494.92 | PnL: $+5.12 (+0.09%) | Hold: 0 days 05:55:00
+  📈 LONG QQQ: 11 shares @ $497.25 (cost: $5,469.73)
+  📉 EXIT QQQ: 11 shares @ $495.09 | PnL: $-23.72 (-0.43%) | Hold: 1 days 00:05:00
+  📈 LONG QQQ: 11 shares @ $497.38 (cost: $5,471.16)
+  📉 EXIT QQQ: 11 shares @ $493.83 | PnL: $-39.00 (-0.71%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 12 shares @ $483.33 (cost: $5,799.98)
+  📉 EXIT QQQ: 12 shares @ $482.55 | PnL: $-9.40 (-0.16%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 11 shares @ $484.25 (cost: $5,326.70)
+  📉 EXIT QQQ: 11 shares @ $477.50 | PnL: $-74.19 (-1.39%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 12 shares @ $479.05 (cost: $5,748.59)
+  📉 EXIT QQQ: 12 shares @ $477.87 | PnL: $-14.14 (-0.25%) | Hold: 0 days 12:15:00
+  📈 LONG QQQ: 12 shares @ $480.97 (cost: $5,771.64)
+  📉 EXIT QQQ: 12 shares @ $481.13 | PnL: $+1.91 (+0.03%) | Hold: 3 days 12:25:00
+  📈 LONG QQQ: 11 shares @ $482.17 (cost: $5,303.88)
+  📉 EXIT QQQ: 11 shares @ $479.76 | PnL: $-26.52 (-0.50%) | Hold: 0 days 10:50:00
+  📈 LONG QQQ: 12 shares @ $465.47 (cost: $5,585.67)
+  📉 EXIT QQQ: 12 shares @ $460.62 | PnL: $-58.24 (-1.04%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 12 shares @ $462.41 (cost: $5,548.93)
+  📉 EXIT QQQ: 12 shares @ $456.68 | PnL: $-68.75 (-1.24%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 12 shares @ $467.00 (cost: $5,604.04)
+  📉 EXIT QQQ: 12 shares @ $457.54 | PnL: $-113.55 (-2.03%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 12 shares @ $459.13 (cost: $5,509.55)
+  📉 EXIT QQQ: 12 shares @ $461.82 | PnL: $+32.27 (+0.59%) | Hold: 0 days 21:00:00
+  📈 LONG QQQ: 12 shares @ $465.62 (cost: $5,587.47)
+  📉 EXIT QQQ: 12 shares @ $462.54 | PnL: $-37.01 (-0.66%) | Hold: 0 days 07:15:00
+  📈 LONG QQQ: 12 shares @ $464.75 (cost: $5,577.03)
+  📉 EXIT QQQ: 12 shares @ $463.99 | PnL: $-9.17 (-0.16%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 12 shares @ $458.86 (cost: $5,506.31)
+  📉 EXIT QQQ: 12 shares @ $471.57 | PnL: $+152.58 (+2.77%) | Hold: 1 days 10:05:00
+  📈 LONG QQQ: 12 shares @ $474.18 (cost: $5,690.12)
+  📉 EXIT QQQ: 12 shares @ $471.52 | PnL: $-31.83 (-0.56%) | Hold: 0 days 02:05:00
+  📈 LONG QQQ: 12 shares @ $474.52 (cost: $5,694.21)
+  📉 EXIT QQQ: 12 shares @ $470.02 | PnL: $-53.91 (-0.95%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 13 shares @ $430.17 (cost: $5,592.27)
+  📉 EXIT QQQ: 13 shares @ $436.76 | PnL: $+85.62 (+1.53%) | Hold: 0 days 20:00:00
+  📈 LONG QQQ: 13 shares @ $440.51 (cost: $5,726.63)
+  📉 EXIT QQQ: 13 shares @ $442.53 | PnL: $+26.24 (+0.46%) | Hold: 0 days 07:40:00
+  📈 LONG QQQ: 12 shares @ $443.48 (cost: $5,321.78)
+  📉 EXIT QQQ: 12 shares @ $440.38 | PnL: $-37.22 (-0.70%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 13 shares @ $439.78 (cost: $5,717.14)
+  📉 EXIT QQQ: 13 shares @ $447.74 | PnL: $+103.43 (+1.81%) | Hold: 0 days 23:10:00
+  📈 LONG QQQ: 12 shares @ $446.99 (cost: $5,363.92)
+  📉 EXIT QQQ: 12 shares @ $452.02 | PnL: $+60.37 (+1.13%) | Hold: 3 days 20:50:00
+  📈 LONG QQQ: 12 shares @ $454.55 (cost: $5,454.57)
+  📉 EXIT QQQ: 12 shares @ $462.58 | PnL: $+96.38 (+1.77%) | Hold: 1 days 11:40:00
+  📈 LONG QQQ: 12 shares @ $464.68 (cost: $5,576.19)
+  📉 EXIT QQQ: 12 shares @ $474.71 | PnL: $+120.36 (+2.16%) | Hold: 1 days 02:10:00
+  📈 LONG QQQ: 12 shares @ $474.59 (cost: $5,695.05)
+  📉 EXIT QQQ: 12 shares @ $474.36 | PnL: $-2.69 (-0.05%) | Hold: 0 days 08:20:00
+  📈 LONG QQQ: 12 shares @ $475.30 (cost: $5,703.57)
+  📉 EXIT QQQ: 12 shares @ $480.21 | PnL: $+58.95 (+1.03%) | Hold: 1 days 03:00:00
+  📈 LONG QQQ: 12 shares @ $483.04 (cost: $5,796.50)
+  📉 EXIT QQQ: 12 shares @ $479.65 | PnL: $-40.70 (-0.70%) | Hold: 0 days 00:50:00
+  📈 LONG QQQ: 12 shares @ $481.43 (cost: $5,777.11)
+  📉 EXIT QQQ: 12 shares @ $479.75 | PnL: $-20.11 (-0.35%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 12 shares @ $481.60 (cost: $5,779.21)
+  📉 EXIT QQQ: 12 shares @ $482.67 | PnL: $+12.81 (+0.22%) | Hold: 0 days 21:10:00
+  📈 LONG QQQ: 12 shares @ $483.92 (cost: $5,807.06)
+  📉 EXIT QQQ: 12 shares @ $482.73 | PnL: $-14.32 (-0.25%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 12 shares @ $477.87 (cost: $5,734.43)
+  📉 EXIT QQQ: 12 shares @ $478.62 | PnL: $+9.02 (+0.16%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 12 shares @ $481.88 (cost: $5,782.57)
+  📉 EXIT QQQ: 12 shares @ $477.29 | PnL: $-55.08 (-0.95%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 12 shares @ $479.10 (cost: $5,749.19)
+  📉 EXIT QQQ: 12 shares @ $475.77 | PnL: $-39.93 (-0.69%) | Hold: 2 days 20:30:00
+  📈 LONG QQQ: 12 shares @ $475.05 (cost: $5,700.57)
+  📉 EXIT QQQ: 12 shares @ $475.10 | PnL: $+0.66 (+0.01%) | Hold: 0 days 11:00:00
+  📈 LONG QQQ: 12 shares @ $476.52 (cost: $5,718.22)
+  📉 EXIT QQQ: 12 shares @ $474.98 | PnL: $-18.43 (-0.32%) | Hold: 0 days 07:50:00
+  📈 LONG QQQ: 12 shares @ $476.71 (cost: $5,720.50)
+  📉 EXIT QQQ: 12 shares @ $475.76 | PnL: $-11.35 (-0.20%) | Hold: 0 days 04:05:00
+  📈 LONG QQQ: 12 shares @ $472.38 (cost: $5,668.51)
+  📉 EXIT QQQ: 12 shares @ $466.92 | PnL: $-65.52 (-1.16%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 12 shares @ $470.40 (cost: $5,644.74)
+  📉 EXIT QQQ: 12 shares @ $470.33 | PnL: $-0.72 (-0.01%) | Hold: 0 days 10:35:00
+  📈 LONG QQQ: 12 shares @ $474.05 (cost: $5,688.56)
+  📉 EXIT QQQ: 12 shares @ $474.22 | PnL: $+2.11 (+0.04%) | Hold: 4 days 00:45:00
+  📈 LONG QQQ: 12 shares @ $461.47 (cost: $5,537.61)
+  📉 EXIT QQQ: 12 shares @ $459.75 | PnL: $-20.61 (-0.37%) | Hold: 0 days 05:10:00
+  📈 LONG QQQ: 12 shares @ $461.86 (cost: $5,542.33)
+  📉 EXIT QQQ: 12 shares @ $458.72 | PnL: $-37.68 (-0.68%) | Hold: 0 days 01:55:00
+  📈 LONG QQQ: 12 shares @ $461.80 (cost: $5,541.61)
+  📉 EXIT QQQ: 12 shares @ $456.26 | PnL: $-66.47 (-1.20%) | Hold: 0 days 14:15:00
+  📈 LONG QQQ: 12 shares @ $457.04 (cost: $5,484.46)
+  📉 EXIT QQQ: 12 shares @ $452.55 | PnL: $-53.82 (-0.98%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 12 shares @ $452.66 (cost: $5,431.87)
+  📉 EXIT QQQ: 12 shares @ $451.67 | PnL: $-11.79 (-0.22%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 12 shares @ $454.04 (cost: $5,448.44)
+  📉 EXIT QQQ: 12 shares @ $451.14 | PnL: $-34.71 (-0.64%) | Hold: 0 days 01:10:00
+  📈 LONG QQQ: 12 shares @ $455.24 (cost: $5,462.85)
+  📉 EXIT QQQ: 12 shares @ $453.80 | PnL: $-17.21 (-0.32%) | Hold: 0 days 15:15:00
+  📈 LONG QQQ: 12 shares @ $456.14 (cost: $5,473.67)
+  📉 EXIT QQQ: 12 shares @ $452.74 | PnL: $-40.74 (-0.74%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 12 shares @ $456.23 (cost: $5,474.74)
+  📉 EXIT QQQ: 12 shares @ $457.46 | PnL: $+14.80 (+0.27%) | Hold: 0 days 14:40:00
+  📈 LONG QQQ: 12 shares @ $458.40 (cost: $5,500.79)
+  📉 EXIT QQQ: 12 shares @ $454.13 | PnL: $-51.20 (-0.93%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 12 shares @ $457.62 (cost: $5,491.42)
+  📉 EXIT QQQ: 12 shares @ $473.83 | PnL: $+194.57 (+3.54%) | Hold: 4 days 18:50:00
+  📈 LONG QQQ: 12 shares @ $473.02 (cost: $5,676.20)
+  📉 EXIT QQQ: 12 shares @ $473.51 | PnL: $+5.96 (+0.11%) | Hold: 0 days 22:45:00
+  📈 LONG QQQ: 12 shares @ $474.22 (cost: $5,690.60)
+  📉 EXIT QQQ: 12 shares @ $471.55 | PnL: $-31.95 (-0.56%) | Hold: 0 days 08:10:00
+  📈 LONG QQQ: 12 shares @ $474.29 (cost: $5,691.44)
+  📉 EXIT QQQ: 12 shares @ $482.56 | PnL: $+99.26 (+1.74%) | Hold: 1 days 04:45:00
+  📈 LONG QQQ: 11 shares @ $482.87 (cost: $5,311.58)
+  📉 EXIT QQQ: 11 shares @ $479.56 | PnL: $-36.48 (-0.69%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 11 shares @ $483.04 (cost: $5,313.46)
+  📉 EXIT QQQ: 11 shares @ $482.25 | PnL: $-8.72 (-0.16%) | Hold: 3 days 02:40:00
+  📈 LONG QQQ: 11 shares @ $482.89 (cost: $5,311.80)
+  📉 EXIT QQQ: 11 shares @ $482.37 | PnL: $-5.75 (-0.11%) | Hold: 0 days 11:25:00
+  📈 LONG QQQ: 11 shares @ $484.72 (cost: $5,331.94)
+  📉 EXIT QQQ: 11 shares @ $481.31 | PnL: $-37.54 (-0.70%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 11 shares @ $484.52 (cost: $5,329.74)
+  📉 EXIT QQQ: 11 shares @ $483.58 | PnL: $-10.39 (-0.19%) | Hold: 0 days 16:30:00
+  📈 LONG QQQ: 11 shares @ $486.07 (cost: $5,346.80)
+  📉 EXIT QQQ: 11 shares @ $491.01 | PnL: $+54.36 (+1.02%) | Hold: 1 days 00:15:00
+  📈 LONG QQQ: 11 shares @ $489.27 (cost: $5,382.02)
+  📉 EXIT QQQ: 11 shares @ $487.80 | PnL: $-16.26 (-0.30%) | Hold: 0 days 13:50:00
+  📈 LONG QQQ: 11 shares @ $489.86 (cost: $5,388.51)
+  📉 EXIT QQQ: 11 shares @ $485.66 | PnL: $-46.23 (-0.86%) | Hold: 0 days 10:55:00
+  📈 LONG QQQ: 11 shares @ $486.55 (cost: $5,352.08)
+  📉 EXIT QQQ: 11 shares @ $483.53 | PnL: $-33.28 (-0.62%) | Hold: 0 days 10:20:00
+  📈 LONG QQQ: 11 shares @ $488.29 (cost: $5,371.23)
+  📉 EXIT QQQ: 11 shares @ $487.76 | PnL: $-5.92 (-0.11%) | Hold: 0 days 15:45:00
+  📈 LONG QQQ: 11 shares @ $482.77 (cost: $5,310.48)
+  📉 EXIT QQQ: 11 shares @ $479.57 | PnL: $-35.25 (-0.66%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 11 shares @ $480.93 (cost: $5,290.23)
+  📉 EXIT QQQ: 11 shares @ $479.17 | PnL: $-19.36 (-0.37%) | Hold: 0 days 21:10:00
+  📈 LONG QQQ: 11 shares @ $480.92 (cost: $5,290.12)
+  📉 EXIT QQQ: 11 shares @ $485.66 | PnL: $+52.10 (+0.98%) | Hold: 3 days 21:00:00
+  📈 LONG QQQ: 11 shares @ $485.36 (cost: $5,338.99)
+  📉 EXIT QQQ: 11 shares @ $481.80 | PnL: $-39.20 (-0.73%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 11 shares @ $483.30 (cost: $5,316.32)
+  📉 EXIT QQQ: 11 shares @ $488.55 | PnL: $+57.68 (+1.09%) | Hold: 0 days 13:30:00
+  📈 LONG QQQ: 11 shares @ $489.23 (cost: $5,381.58)
+  📉 EXIT QQQ: 11 shares @ $491.93 | PnL: $+29.69 (+0.55%) | Hold: 0 days 22:00:00
+  📈 LONG QQQ: 11 shares @ $493.34 (cost: $5,426.70)
+  📉 EXIT QQQ: 11 shares @ $490.40 | PnL: $-32.25 (-0.59%) | Hold: 0 days 00:35:00
+  📈 LONG QQQ: 11 shares @ $493.24 (cost: $5,425.60)
+  📉 EXIT QQQ: 11 shares @ $491.57 | PnL: $-18.29 (-0.34%) | Hold: 0 days 16:20:00
+  📈 LONG QQQ: 11 shares @ $492.31 (cost: $5,415.37)
+  📉 EXIT QQQ: 11 shares @ $492.45 | PnL: $+1.62 (+0.03%) | Hold: 0 days 08:00:00
+  📈 LONG QQQ: 11 shares @ $493.98 (cost: $5,433.75)
+  📉 EXIT QQQ: 11 shares @ $496.23 | PnL: $+24.80 (+0.46%) | Hold: 1 days 00:15:00
+  📈 LONG QQQ: 11 shares @ $498.39 (cost: $5,482.28)
+  📉 EXIT QQQ: 11 shares @ $492.96 | PnL: $-59.68 (-1.09%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 11 shares @ $491.34 (cost: $5,404.69)
+  📉 EXIT QQQ: 11 shares @ $490.96 | PnL: $-4.08 (-0.08%) | Hold: 0 days 13:40:00
+  📈 LONG QQQ: 11 shares @ $490.81 (cost: $5,398.86)
+  📉 EXIT QQQ: 11 shares @ $490.26 | PnL: $-5.95 (-0.11%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 11 shares @ $493.75 (cost: $5,431.21)
+  📉 EXIT QQQ: 11 shares @ $491.89 | PnL: $-20.38 (-0.38%) | Hold: 0 days 10:20:00
+  📈 LONG QQQ: 11 shares @ $492.61 (cost: $5,418.70)
+  📉 EXIT QQQ: 11 shares @ $493.59 | PnL: $+10.82 (+0.20%) | Hold: 3 days 09:10:00
+  📈 LONG QQQ: 11 shares @ $492.49 (cost: $5,417.35)
+  📉 EXIT QQQ: 11 shares @ $492.08 | PnL: $-4.43 (-0.08%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 11 shares @ $495.85 (cost: $5,454.33)
+  📉 EXIT QQQ: 11 shares @ $493.96 | PnL: $-20.73 (-0.38%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 11 shares @ $494.21 (cost: $5,436.28)
+  📉 EXIT QQQ: 11 shares @ $495.10 | PnL: $+9.85 (+0.18%) | Hold: 0 days 08:20:00
+  📈 LONG QQQ: 11 shares @ $495.75 (cost: $5,453.23)
+  📉 EXIT QQQ: 11 shares @ $494.62 | PnL: $-12.38 (-0.23%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 11 shares @ $489.34 (cost: $5,382.79)
+  📉 EXIT QQQ: 11 shares @ $491.33 | PnL: $+21.89 (+0.41%) | Hold: 0 days 17:30:00
+  📈 LONG QQQ: 11 shares @ $492.74 (cost: $5,420.10)
+  📉 EXIT QQQ: 11 shares @ $496.15 | PnL: $+37.57 (+0.69%) | Hold: 0 days 21:55:00
+  📈 LONG QQQ: 11 shares @ $498.35 (cost: $5,481.84)
+  📉 EXIT QQQ: 11 shares @ $496.50 | PnL: $-20.32 (-0.37%) | Hold: 0 days 05:50:00
+  📈 LONG QQQ: 11 shares @ $496.74 (cost: $5,464.12)
+  📉 EXIT QQQ: 11 shares @ $500.54 | PnL: $+41.81 (+0.77%) | Hold: 0 days 21:45:00
+  📈 LONG QQQ: 11 shares @ $492.43 (cost: $5,416.69)
+  📉 EXIT QQQ: 11 shares @ $489.83 | PnL: $-28.50 (-0.53%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 11 shares @ $484.83 (cost: $5,333.16)
+  📉 EXIT QQQ: 11 shares @ $487.42 | PnL: $+28.42 (+0.53%) | Hold: 3 days 13:35:00
+  📈 LONG QQQ: 11 shares @ $486.78 (cost: $5,354.62)
+  📉 EXIT QQQ: 11 shares @ $487.14 | PnL: $+3.88 (+0.07%) | Hold: 0 days 13:35:00
+  📈 LONG QQQ: 11 shares @ $489.80 (cost: $5,387.85)
+  📉 EXIT QQQ: 11 shares @ $498.38 | PnL: $+94.33 (+1.75%) | Hold: 0 days 21:20:00
+  📈 LONG QQQ: 11 shares @ $502.25 (cost: $5,524.76)
+  📉 EXIT QQQ: 11 shares @ $504.62 | PnL: $+26.03 (+0.47%) | Hold: 0 days 10:05:00
+  📈 LONG QQQ: 11 shares @ $507.19 (cost: $5,579.13)
+  📉 EXIT QQQ: 11 shares @ $511.81 | PnL: $+50.83 (+0.91%) | Hold: 1 days 01:30:00
+  📈 LONG QQQ: 11 shares @ $513.19 (cost: $5,645.05)
+  📉 EXIT QQQ: 11 shares @ $513.30 | PnL: $+1.28 (+0.02%) | Hold: 3 days 01:35:00
+  📈 LONG QQQ: 11 shares @ $514.12 (cost: $5,655.29)
+  📉 EXIT QQQ: 11 shares @ $512.40 | PnL: $-18.85 (-0.33%) | Hold: 0 days 13:05:00
+  📈 LONG QQQ: 11 shares @ $514.12 (cost: $5,655.29)
+  📉 EXIT QQQ: 11 shares @ $509.95 | PnL: $-45.78 (-0.81%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 11 shares @ $514.02 (cost: $5,654.19)
+  📉 EXIT QQQ: 11 shares @ $506.83 | PnL: $-79.09 (-1.40%) | Hold: 1 days 09:40:00
+  📈 LONG QQQ: 11 shares @ $499.54 (cost: $5,494.94)
+  📉 EXIT QQQ: 11 shares @ $496.77 | PnL: $-30.45 (-0.55%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 11 shares @ $501.59 (cost: $5,517.50)
+  📉 EXIT QQQ: 11 shares @ $499.33 | PnL: $-24.87 (-0.45%) | Hold: 0 days 07:45:00
+  📈 LONG QQQ: 11 shares @ $500.64 (cost: $5,507.04)
+  📉 EXIT QQQ: 11 shares @ $497.50 | PnL: $-34.53 (-0.63%) | Hold: 0 days 09:10:00
+  📈 LONG QQQ: 11 shares @ $499.99 (cost: $5,499.89)
+  📉 EXIT QQQ: 11 shares @ $497.41 | PnL: $-28.37 (-0.52%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 11 shares @ $498.62 (cost: $5,484.81)
+  📉 EXIT QQQ: 11 shares @ $503.61 | PnL: $+54.88 (+1.00%) | Hold: 0 days 19:45:00
+  📈 LONG QQQ: 11 shares @ $502.68 (cost: $5,529.49)
+  📉 EXIT QQQ: 11 shares @ $499.74 | PnL: $-32.35 (-0.59%) | Hold: 0 days 12:50:00
+  📈 LONG QQQ: 11 shares @ $502.58 (cost: $5,528.39)
+  📉 EXIT QQQ: 11 shares @ $501.69 | PnL: $-9.81 (-0.18%) | Hold: 0 days 03:35:00
+  📈 LONG QQQ: 11 shares @ $504.25 (cost: $5,546.77)
+  📉 EXIT QQQ: 11 shares @ $504.93 | PnL: $+7.43 (+0.13%) | Hold: 3 days 05:20:00
+  📈 LONG QQQ: 11 shares @ $507.27 (cost: $5,580.01)
+  📉 EXIT QQQ: 11 shares @ $504.64 | PnL: $-29.00 (-0.52%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 11 shares @ $508.36 (cost: $5,592.00)
+  📉 EXIT QQQ: 11 shares @ $507.76 | PnL: $-6.69 (-0.12%) | Hold: 0 days 21:15:00
+  📈 LONG QQQ: 11 shares @ $504.85 (cost: $5,553.38)
+  📉 EXIT QQQ: 11 shares @ $506.10 | PnL: $+13.69 (+0.25%) | Hold: 1 days 18:30:00
+  📈 LONG QQQ: 11 shares @ $509.30 (cost: $5,602.35)
+  📉 EXIT QQQ: 11 shares @ $508.75 | PnL: $-6.15 (-0.11%) | Hold: 2 days 18:20:00
+  📈 LONG QQQ: 11 shares @ $510.09 (cost: $5,611.04)
+  📉 EXIT QQQ: 11 shares @ $520.81 | PnL: $+117.87 (+2.10%) | Hold: 3 days 11:00:00
+  📈 LONG QQQ: 11 shares @ $522.32 (cost: $5,745.53)
+  📉 EXIT QQQ: 11 shares @ $523.16 | PnL: $+9.21 (+0.16%) | Hold: 3 days 06:30:00
+  📈 LONG QQQ: 10 shares @ $523.95 (cost: $5,239.52)
+  📉 EXIT QQQ: 10 shares @ $521.55 | PnL: $-24.03 (-0.46%) | Hold: 0 days 01:10:00
+  📈 LONG QQQ: 10 shares @ $523.46 (cost: $5,234.62)
+  📉 EXIT QQQ: 10 shares @ $522.49 | PnL: $-9.73 (-0.19%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 11 shares @ $521.86 (cost: $5,740.47)
+  📉 EXIT QQQ: 11 shares @ $529.07 | PnL: $+79.25 (+1.38%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 10 shares @ $529.23 (cost: $5,292.33)
+  📉 EXIT QQQ: 10 shares @ $527.52 | PnL: $-17.17 (-0.32%) | Hold: 0 days 17:20:00
+  📈 LONG QQQ: 10 shares @ $530.96 (cost: $5,309.55)
+  📉 EXIT QQQ: 10 shares @ $537.55 | PnL: $+65.96 (+1.24%) | Hold: 3 days 03:35:00
+  📈 LONG QQQ: 10 shares @ $536.19 (cost: $5,361.88)
+  📉 EXIT QQQ: 10 shares @ $535.71 | PnL: $-4.76 (-0.09%) | Hold: 0 days 04:40:00
+  📈 LONG QQQ: 11 shares @ $518.94 (cost: $5,708.33)
+  📉 EXIT QQQ: 11 shares @ $512.91 | PnL: $-66.29 (-1.16%) | Hold: 0 days 15:05:00
+  📈 LONG QQQ: 11 shares @ $509.40 (cost: $5,603.45)
+  📉 EXIT QQQ: 11 shares @ $519.82 | PnL: $+114.57 (+2.04%) | Hold: 0 days 07:00:00
+  📈 LONG QQQ: 11 shares @ $520.16 (cost: $5,721.76)
+  📉 EXIT QQQ: 11 shares @ $517.94 | PnL: $-24.41 (-0.43%) | Hold: 2 days 14:40:00
+  📈 LONG QQQ: 11 shares @ $519.71 (cost: $5,716.81)
+  📉 EXIT QQQ: 11 shares @ $521.42 | PnL: $+18.80 (+0.33%) | Hold: 0 days 05:30:00
+  📈 LONG QQQ: 11 shares @ $524.08 (cost: $5,764.90)
+  📉 EXIT QQQ: 11 shares @ $523.53 | PnL: $-6.09 (-0.11%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 11 shares @ $524.92 (cost: $5,774.15)
+  📉 EXIT QQQ: 11 shares @ $528.40 | PnL: $+38.21 (+0.66%) | Hold: 1 days 19:15:00
+  📈 LONG QQQ: 10 shares @ $528.68 (cost: $5,286.84)
+  📉 EXIT QQQ: 10 shares @ $529.04 | PnL: $+3.51 (+0.07%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 10 shares @ $528.85 (cost: $5,288.54)
+  📉 EXIT QQQ: 10 shares @ $522.99 | PnL: $-58.66 (-1.11%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 11 shares @ $522.04 (cost: $5,742.45)
+  📉 EXIT QQQ: 11 shares @ $520.76 | PnL: $-14.10 (-0.25%) | Hold: 2 days 14:10:00
+  📈 LONG QQQ: 11 shares @ $518.58 (cost: $5,704.37)
+  📉 EXIT QQQ: 11 shares @ $514.83 | PnL: $-41.22 (-0.72%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 11 shares @ $515.51 (cost: $5,670.58)
+  📉 EXIT QQQ: 11 shares @ $509.99 | PnL: $-60.64 (-1.07%) | Hold: 2 days 14:30:00
+  📈 LONG QQQ: 11 shares @ $511.16 (cost: $5,622.71)
+  📉 EXIT QQQ: 11 shares @ $525.07 | PnL: $+153.03 (+2.72%) | Hold: 3 days 17:30:00
+  📈 LONG QQQ: 11 shares @ $525.78 (cost: $5,783.61)
+  📉 EXIT QQQ: 11 shares @ $517.19 | PnL: $-94.51 (-1.63%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 11 shares @ $515.51 (cost: $5,670.58)
+  📉 EXIT QQQ: 11 shares @ $513.09 | PnL: $-26.56 (-0.47%) | Hold: 0 days 06:05:00
+  📈 LONG QQQ: 11 shares @ $514.81 (cost: $5,662.88)
+  📉 EXIT QQQ: 11 shares @ $509.74 | PnL: $-55.79 (-0.99%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 11 shares @ $509.79 (cost: $5,607.74)
+  📉 EXIT QQQ: 11 shares @ $500.06 | PnL: $-107.08 (-1.91%) | Hold: 2 days 14:40:00
+  📈 LONG QQQ: 11 shares @ $506.45 (cost: $5,570.98)
+  📉 EXIT QQQ: 11 shares @ $508.03 | PnL: $+17.30 (+0.31%) | Hold: 0 days 14:35:00
+  📈 LONG QQQ: 11 shares @ $509.14 (cost: $5,600.59)
+  📉 EXIT QQQ: 11 shares @ $502.04 | PnL: $-78.16 (-1.40%) | Hold: 0 days 06:30:00
+  📈 LONG QQQ: 11 shares @ $506.59 (cost: $5,572.54)
+  📉 EXIT QQQ: 11 shares @ $515.78 | PnL: $+101.07 (+1.81%) | Hold: 1 days 00:05:00
+  📈 LONG QQQ: 11 shares @ $517.62 (cost: $5,693.81)
+  📉 EXIT QQQ: 11 shares @ $517.42 | PnL: $-2.17 (-0.04%) | Hold: 0 days 12:45:00
+  📈 LONG QQQ: 11 shares @ $515.57 (cost: $5,671.24)
+  📉 EXIT QQQ: 11 shares @ $522.85 | PnL: $+80.09 (+1.41%) | Hold: 4 days 05:40:00
+  📈 LONG QQQ: 10 shares @ $525.50 (cost: $5,255.03)
+  📉 EXIT QQQ: 10 shares @ $530.73 | PnL: $+52.32 (+1.00%) | Hold: 1 days 03:35:00
+  📈 LONG QQQ: 10 shares @ $529.85 (cost: $5,298.55)
+  📉 EXIT QQQ: 10 shares @ $531.41 | PnL: $+15.59 (+0.29%) | Hold: 0 days 08:25:00
+  📈 LONG QQQ: 10 shares @ $532.63 (cost: $5,326.26)
+  📉 EXIT QQQ: 10 shares @ $529.99 | PnL: $-26.31 (-0.49%) | Hold: 0 days 08:45:00
+  📈 LONG QQQ: 11 shares @ $511.96 (cost: $5,631.51)
+  📉 EXIT QQQ: 11 shares @ $514.82 | PnL: $+31.53 (+0.56%) | Hold: 0 days 22:55:00
+  📈 LONG QQQ: 11 shares @ $519.48 (cost: $5,714.28)
+  📉 EXIT QQQ: 11 shares @ $520.84 | PnL: $+14.96 (+0.26%) | Hold: 0 days 06:45:00
+  📈 LONG QQQ: 11 shares @ $524.07 (cost: $5,764.79)
+  📉 EXIT QQQ: 11 shares @ $521.97 | PnL: $-23.13 (-0.40%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 10 shares @ $524.65 (cost: $5,246.52)
+  📉 EXIT QQQ: 10 shares @ $521.93 | PnL: $-27.23 (-0.52%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 10 shares @ $525.42 (cost: $5,254.23)
+  📉 EXIT QQQ: 10 shares @ $525.99 | PnL: $+5.64 (+0.11%) | Hold: 1 days 03:40:00
+  📈 LONG QQQ: 11 shares @ $514.87 (cost: $5,663.54)
+  📉 EXIT QQQ: 11 shares @ $517.54 | PnL: $+29.41 (+0.52%) | Hold: 0 days 18:25:00
+  📈 LONG QQQ: 11 shares @ $519.71 (cost: $5,716.81)
+  📉 EXIT QQQ: 11 shares @ $521.64 | PnL: $+21.22 (+0.37%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 11 shares @ $521.94 (cost: $5,741.35)
+  📉 EXIT QQQ: 11 shares @ $526.45 | PnL: $+49.65 (+0.86%) | Hold: 1 days 05:05:00
+  📈 LONG QQQ: 10 shares @ $529.70 (cost: $5,297.05)
+  📉 EXIT QQQ: 10 shares @ $522.88 | PnL: $-68.26 (-1.29%) | Hold: 0 days 22:40:00
+  📈 LONG QQQ: 10 shares @ $526.02 (cost: $5,260.23)
+  📉 EXIT QQQ: 10 shares @ $527.98 | PnL: $+19.53 (+0.37%) | Hold: 0 days 14:00:00
+  📈 LONG QQQ: 10 shares @ $528.01 (cost: $5,280.14)
+  📉 EXIT QQQ: 10 shares @ $526.37 | PnL: $-16.47 (-0.31%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 10 shares @ $528.99 (cost: $5,289.94)
+  📉 EXIT QQQ: 10 shares @ $526.75 | PnL: $-22.48 (-0.42%) | Hold: 0 days 14:35:00
+  📈 LONG QQQ: 10 shares @ $528.63 (cost: $5,286.34)
+  📉 EXIT QQQ: 10 shares @ $521.74 | PnL: $-68.95 (-1.30%) | Hold: 0 days 01:15:00
+  📈 LONG QQQ: 10 shares @ $528.03 (cost: $5,280.34)
+  📉 EXIT QQQ: 10 shares @ $527.77 | PnL: $-2.68 (-0.05%) | Hold: 0 days 16:00:00
+  📈 LONG QQQ: 10 shares @ $530.39 (cost: $5,303.85)
+  📉 EXIT QQQ: 10 shares @ $535.11 | PnL: $+47.27 (+0.89%) | Hold: 0 days 21:45:00
+  📈 LONG QQQ: 10 shares @ $536.38 (cost: $5,363.78)
+  📉 EXIT QQQ: 10 shares @ $538.63 | PnL: $+22.52 (+0.42%) | Hold: 4 days 00:50:00
+  📈 LONG QQQ: 10 shares @ $539.43 (cost: $5,394.30)
+  📉 EXIT QQQ: 10 shares @ $539.25 | PnL: $-1.79 (-0.03%) | Hold: 0 days 13:10:00
+  📈 LONG QQQ: 10 shares @ $539.84 (cost: $5,398.40)
+  📉 EXIT QQQ: 10 shares @ $538.07 | PnL: $-17.69 (-0.33%) | Hold: 0 days 01:35:00
+  📈 LONG QQQ: 10 shares @ $540.67 (cost: $5,406.70)
+  📉 EXIT QQQ: 10 shares @ $538.50 | PnL: $-21.70 (-0.40%) | Hold: 0 days 02:55:00
+  📈 LONG QQQ: 10 shares @ $536.43 (cost: $5,364.28)
+  📉 EXIT QQQ: 10 shares @ $536.51 | PnL: $+0.84 (+0.02%) | Hold: 0 days 19:20:00
+  📈 LONG QQQ: 10 shares @ $529.16 (cost: $5,291.64)
+  📉 EXIT QQQ: 10 shares @ $526.59 | PnL: $-25.78 (-0.49%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 11 shares @ $518.81 (cost: $5,706.90)
+  📉 EXIT QQQ: 11 shares @ $515.74 | PnL: $-33.74 (-0.59%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 11 shares @ $516.24 (cost: $5,678.62)
+  📉 EXIT QQQ: 11 shares @ $515.60 | PnL: $-7.00 (-0.12%) | Hold: 0 days 20:10:00
+  📈 LONG QQQ: 11 shares @ $518.08 (cost: $5,698.87)
+  📉 EXIT QQQ: 11 shares @ $515.10 | PnL: $-32.74 (-0.57%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 11 shares @ $515.00 (cost: $5,664.97)
+  📉 EXIT QQQ: 11 shares @ $513.23 | PnL: $-19.41 (-0.34%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 11 shares @ $517.50 (cost: $5,692.48)
+  📉 EXIT QQQ: 11 shares @ $511.37 | PnL: $-67.37 (-1.18%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 11 shares @ $504.43 (cost: $5,548.75)
+  📉 EXIT QQQ: 11 shares @ $506.67 | PnL: $+24.58 (+0.44%) | Hold: 2 days 18:55:00
+  📈 LONG QQQ: 11 shares @ $499.15 (cost: $5,490.64)
+  📉 EXIT QQQ: 11 shares @ $493.25 | PnL: $-64.86 (-1.18%) | Hold: 0 days 12:55:00
+  📈 LONG QQQ: 11 shares @ $495.06 (cost: $5,445.63)
+  📉 EXIT QQQ: 11 shares @ $497.79 | PnL: $+30.07 (+0.55%) | Hold: 0 days 07:05:00
+  📈 LONG QQQ: 11 shares @ $498.32 (cost: $5,481.51)
+  📉 EXIT QQQ: 11 shares @ $497.30 | PnL: $-11.20 (-0.20%) | Hold: 0 days 15:25:00
+  📈 LONG QQQ: 11 shares @ $497.38 (cost: $5,471.16)
+  📉 EXIT QQQ: 11 shares @ $491.08 | PnL: $-69.23 (-1.27%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 11 shares @ $489.94 (cost: $5,389.39)
+  📉 EXIT QQQ: 11 shares @ $481.30 | PnL: $-95.10 (-1.76%) | Hold: 0 days 01:55:00
+  📈 LONG QQQ: 11 shares @ $485.24 (cost: $5,337.67)
+  📉 EXIT QQQ: 11 shares @ $487.23 | PnL: $+21.82 (+0.41%) | Hold: 2 days 14:10:00
+  📈 LONG QQQ: 11 shares @ $474.70 (cost: $5,221.67)
+  📉 EXIT QQQ: 11 shares @ $475.96 | PnL: $+13.91 (+0.27%) | Hold: 1 days 12:50:00
+  📈 LONG QQQ: 11 shares @ $477.58 (cost: $5,253.37)
+  📉 EXIT QQQ: 11 shares @ $473.29 | PnL: $-47.14 (-0.90%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 11 shares @ $477.14 (cost: $5,248.52)
+  📉 EXIT QQQ: 11 shares @ $474.56 | PnL: $-28.33 (-0.54%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 12 shares @ $470.92 (cost: $5,650.98)
+  📉 EXIT QQQ: 12 shares @ $477.04 | PnL: $+73.51 (+1.30%) | Hold: 3 days 09:55:00
+  📈 LONG QQQ: 11 shares @ $479.00 (cost: $5,268.99)
+  📉 EXIT QQQ: 11 shares @ $482.05 | PnL: $+33.54 (+0.64%) | Hold: 0 days 09:30:00
+  📈 LONG QQQ: 11 shares @ $476.40 (cost: $5,240.38)
+  📉 EXIT QQQ: 11 shares @ $481.41 | PnL: $+55.12 (+1.05%) | Hold: 0 days 23:30:00
+  📈 LONG QQQ: 11 shares @ $480.71 (cost: $5,287.81)
+  📉 EXIT QQQ: 11 shares @ $478.49 | PnL: $-24.42 (-0.46%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 11 shares @ $478.77 (cost: $5,266.46)
+  📉 EXIT QQQ: 11 shares @ $489.77 | PnL: $+121.06 (+2.30%) | Hold: 3 days 05:50:00
+  📈 LONG QQQ: 11 shares @ $490.62 (cost: $5,396.77)
+  📉 EXIT QQQ: 11 shares @ $492.72 | PnL: $+23.19 (+0.43%) | Hold: 0 days 21:40:00
+  📈 LONG QQQ: 11 shares @ $493.75 (cost: $5,431.21)
+  📉 EXIT QQQ: 11 shares @ $489.38 | PnL: $-48.09 (-0.89%) | Hold: 0 days 02:20:00
+  📈 LONG QQQ: 11 shares @ $484.62 (cost: $5,330.84)
+  📉 EXIT QQQ: 11 shares @ $482.66 | PnL: $-21.60 (-0.41%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 11 shares @ $481.28 (cost: $5,294.09)
+  📉 EXIT QQQ: 11 shares @ $472.99 | PnL: $-91.16 (-1.72%) | Hold: 0 days 03:50:00
+  📈 LONG QQQ: 12 shares @ $469.08 (cost: $5,629.01)
+  📉 EXIT QQQ: 12 shares @ $467.27 | PnL: $-21.82 (-0.39%) | Hold: 0 days 02:00:00
+  📈 LONG QQQ: 12 shares @ $468.22 (cost: $5,618.69)
+  📉 EXIT QQQ: 12 shares @ $467.53 | PnL: $-8.37 (-0.15%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 11 shares @ $473.07 (cost: $5,203.73)
+  📉 EXIT QQQ: 11 shares @ $470.30 | PnL: $-30.38 (-0.58%) | Hold: 0 days 12:15:00
+  📈 LONG QQQ: 12 shares @ $471.20 (cost: $5,654.35)
+  📉 EXIT QQQ: 12 shares @ $474.48 | PnL: $+39.45 (+0.70%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 11 shares @ $481.62 (cost: $5,297.83)
+  📉 EXIT QQQ: 11 shares @ $462.94 | PnL: $-205.51 (-3.88%) | Hold: 0 days 00:30:00
+  📈 LONG QQQ: 12 shares @ $461.88 (cost: $5,542.57)
+  📉 EXIT QQQ: 12 shares @ $455.22 | PnL: $-79.90 (-1.44%) | Hold: 0 days 04:10:00
+  📈 LONG QQQ: 12 shares @ $459.95 (cost: $5,519.40)
+  📉 EXIT QQQ: 12 shares @ $452.88 | PnL: $-84.80 (-1.54%) | Hold: 0 days 01:25:00
+  📈 LONG QQQ: 13 shares @ $412.85 (cost: $5,367.00)
+  📉 EXIT QQQ: 13 shares @ $408.12 | PnL: $-61.50 (-1.15%) | Hold: 0 days 03:20:00
+  📈 LONG QQQ: 12 shares @ $434.24 (cost: $5,210.84)
+  📉 EXIT QQQ: 12 shares @ $434.93 | PnL: $+8.34 (+0.16%) | Hold: 1 days 01:15:00
+  📈 LONG QQQ: 13 shares @ $417.60 (cost: $5,428.78)
+  📉 EXIT QQQ: 13 shares @ $457.00 | PnL: $+512.23 (+9.44%) | Hold: 1 days 00:00:00
+  📈 LONG QQQ: 12 shares @ $444.26 (cost: $5,331.14)
+  📉 EXIT QQQ: 12 shares @ $453.52 | PnL: $+111.13 (+2.08%) | Hold: 1 days 04:05:00
+  📈 LONG QQQ: 12 shares @ $462.64 (cost: $5,551.69)
+  📉 EXIT QQQ: 12 shares @ $455.82 | PnL: $-81.83 (-1.47%) | Hold: 0 days 12:10:00
+  📈 LONG QQQ: 12 shares @ $458.93 (cost: $5,507.15)
+  📉 EXIT QQQ: 12 shares @ $456.30 | PnL: $-31.53 (-0.57%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 12 shares @ $459.51 (cost: $5,514.07)
+  📉 EXIT QQQ: 12 shares @ $455.57 | PnL: $-47.20 (-0.86%) | Hold: 0 days 08:05:00
+  📈 LONG QQQ: 12 shares @ $453.79 (cost: $5,445.44)
+  📉 EXIT QQQ: 12 shares @ $449.31 | PnL: $-53.78 (-0.99%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 12 shares @ $444.46 (cost: $5,333.55)
+  📉 EXIT QQQ: 12 shares @ $446.52 | PnL: $+24.65 (+0.46%) | Hold: 0 days 15:20:00
+  📈 LONG QQQ: 12 shares @ $448.36 (cost: $5,380.37)
+  📉 EXIT QQQ: 12 shares @ $443.26 | PnL: $-61.27 (-1.14%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 12 shares @ $445.38 (cost: $5,344.59)
+  📉 EXIT QQQ: 12 shares @ $439.29 | PnL: $-73.11 (-1.37%) | Hold: 3 days 08:30:00
+  📈 LONG QQQ: 12 shares @ $440.14 (cost: $5,281.67)
+  📉 EXIT QQQ: 12 shares @ $434.01 | PnL: $-73.51 (-1.39%) | Hold: 0 days 03:05:00
+  📈 LONG QQQ: 13 shares @ $429.98 (cost: $5,589.80)
+  📉 EXIT QQQ: 13 shares @ $432.03 | PnL: $+26.64 (+0.48%) | Hold: 0 days 02:55:00
+  📈 LONG QQQ: 12 shares @ $434.94 (cost: $5,219.25)
+  📉 EXIT QQQ: 12 shares @ $441.22 | PnL: $+75.38 (+1.44%) | Hold: 0 days 17:35:00
+  📈 LONG QQQ: 12 shares @ $450.86 (cost: $5,410.26)
+  📉 EXIT QQQ: 12 shares @ $457.20 | PnL: $+76.15 (+1.41%) | Hold: 0 days 18:05:00
+  📈 LONG QQQ: 12 shares @ $452.66 (cost: $5,431.87)
+  📉 EXIT QQQ: 12 shares @ $466.40 | PnL: $+164.89 (+3.04%) | Hold: 1 days 00:20:00
+  📈 LONG QQQ: 12 shares @ $468.08 (cost: $5,617.01)
+  📉 EXIT QQQ: 12 shares @ $472.30 | PnL: $+50.57 (+0.90%) | Hold: 0 days 08:35:00
+  📈 LONG QQQ: 12 shares @ $473.24 (cost: $5,678.84)
+  📉 EXIT QQQ: 12 shares @ $470.68 | PnL: $-30.62 (-0.54%) | Hold: 2 days 08:20:00
+  📈 LONG QQQ: 12 shares @ $472.69 (cost: $5,672.23)
+  📉 EXIT QQQ: 12 shares @ $467.74 | PnL: $-59.40 (-1.05%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 12 shares @ $469.82 (cost: $5,637.90)
+  📉 EXIT QQQ: 12 shares @ $472.92 | PnL: $+37.18 (+0.66%) | Hold: 1 days 04:45:00
+  📈 LONG QQQ: 12 shares @ $474.29 (cost: $5,691.44)
+  📉 EXIT QQQ: 12 shares @ $473.01 | PnL: $-15.28 (-0.27%) | Hold: 0 days 02:20:00
+  📈 LONG QQQ: 12 shares @ $469.73 (cost: $5,636.82)
+  📉 EXIT QQQ: 12 shares @ $478.54 | PnL: $+105.67 (+1.87%) | Hold: 1 days 04:45:00
+  📈 LONG QQQ: 11 shares @ $482.57 (cost: $5,308.28)
+  📉 EXIT QQQ: 11 shares @ $485.66 | PnL: $+33.94 (+0.64%) | Hold: 3 days 00:00:00
+  📈 LONG QQQ: 11 shares @ $485.17 (cost: $5,336.90)
+  📉 EXIT QQQ: 11 shares @ $485.73 | PnL: $+6.10 (+0.11%) | Hold: 0 days 06:20:00
+  📈 LONG QQQ: 11 shares @ $481.80 (cost: $5,299.81)
+  📉 EXIT QQQ: 11 shares @ $480.34 | PnL: $-16.09 (-0.30%) | Hold: 0 days 09:50:00
+  📈 LONG QQQ: 11 shares @ $486.68 (cost: $5,353.52)
+  📉 EXIT QQQ: 11 shares @ $480.17 | PnL: $-71.65 (-1.34%) | Hold: 0 days 17:00:00
+  📈 LONG QQQ: 11 shares @ $482.61 (cost: $5,308.72)
+  📉 EXIT QQQ: 11 shares @ $489.11 | PnL: $+71.44 (+1.35%) | Hold: 0 days 16:00:00
+  📈 LONG QQQ: 11 shares @ $489.50 (cost: $5,384.55)
+  📉 EXIT QQQ: 11 shares @ $488.47 | PnL: $-11.43 (-0.21%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 11 shares @ $489.69 (cost: $5,386.64)
+  📉 EXIT QQQ: 11 shares @ $487.20 | PnL: $-27.48 (-0.51%) | Hold: 0 days 06:35:00
+  📈 LONG QQQ: 11 shares @ $504.78 (cost: $5,552.60)
+  📉 EXIT QQQ: 11 shares @ $506.71 | PnL: $+21.17 (+0.38%) | Hold: 0 days 04:00:00
+  📈 LONG QQQ: 11 shares @ $506.22 (cost: $5,568.44)
+  📉 EXIT QQQ: 11 shares @ $507.12 | PnL: $+9.84 (+0.18%) | Hold: 0 days 05:25:00
+  📈 LONG QQQ: 11 shares @ $507.45 (cost: $5,581.99)
+  📉 EXIT QQQ: 11 shares @ $515.03 | PnL: $+83.37 (+1.49%) | Hold: 0 days 08:50:00
+  📈 LONG QQQ: 11 shares @ $516.30 (cost: $5,679.28)
+  📉 EXIT QQQ: 11 shares @ $517.91 | PnL: $+17.74 (+0.31%) | Hold: 0 days 21:55:00
+  📈 LONG QQQ: 11 shares @ $516.04 (cost: $5,676.42)
+  📉 EXIT QQQ: 11 shares @ $518.27 | PnL: $+24.56 (+0.43%) | Hold: 0 days 07:10:00
+  📈 LONG QQQ: 11 shares @ $519.33 (cost: $5,712.62)
+  📉 EXIT QQQ: 11 shares @ $518.19 | PnL: $-12.53 (-0.22%) | Hold: 0 days 15:00:00
+  📈 LONG QQQ: 11 shares @ $521.11 (cost: $5,732.21)
+  📉 EXIT QQQ: 11 shares @ $518.47 | PnL: $-29.04 (-0.51%) | Hold: 0 days 01:55:00
+  📈 LONG QQQ: 11 shares @ $514.48 (cost: $5,659.25)
+  📉 EXIT QQQ: 11 shares @ $519.87 | PnL: $+59.32 (+1.05%) | Hold: 0 days 21:30:00
+  📈 LONG QQQ: 11 shares @ $521.06 (cost: $5,731.66)
+  📉 EXIT QQQ: 11 shares @ $519.60 | PnL: $-16.06 (-0.28%) | Hold: 0 days 01:40:00
+  📈 LONG QQQ: 11 shares @ $519.95 (cost: $5,719.45)
+  📉 EXIT QQQ: 11 shares @ $517.72 | PnL: $-24.52 (-0.43%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 11 shares @ $517.92 (cost: $5,697.11)
+  📉 EXIT QQQ: 11 shares @ $515.80 | PnL: $-23.29 (-0.41%) | Hold: 0 days 05:55:00
+  📈 LONG QQQ: 11 shares @ $514.69 (cost: $5,661.56)
+  📉 EXIT QQQ: 11 shares @ $511.60 | PnL: $-33.91 (-0.60%) | Hold: 0 days 03:55:00
+  📈 LONG QQQ: 11 shares @ $514.76 (cost: $5,662.33)
+  📉 EXIT QQQ: 11 shares @ $514.13 | PnL: $-6.87 (-0.12%) | Hold: 0 days 06:55:00
+  📈 LONG QQQ: 11 shares @ $515.39 (cost: $5,669.26)
+  📉 EXIT QQQ: 11 shares @ $506.34 | PnL: $-99.56 (-1.76%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 11 shares @ $511.43 (cost: $5,625.68)
+  📉 EXIT QQQ: 11 shares @ $508.34 | PnL: $-33.99 (-0.60%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 11 shares @ $518.29 (cost: $5,701.18)
+  📉 EXIT QQQ: 11 shares @ $520.10 | PnL: $+19.92 (+0.35%) | Hold: 1 days 00:05:00
+  📈 LONG QQQ: 10 shares @ $521.09 (cost: $5,210.90)
+  📉 EXIT QQQ: 10 shares @ $518.69 | PnL: $-24.00 (-0.46%) | Hold: 0 days 09:40:00
+  📈 LONG QQQ: 10 shares @ $523.74 (cost: $5,237.42)
+  📉 EXIT QQQ: 10 shares @ $525.25 | PnL: $+15.06 (+0.29%) | Hold: 0 days 13:20:00
+  📈 LONG QQQ: 10 shares @ $520.36 (cost: $5,203.60)
+  📉 EXIT QQQ: 10 shares @ $517.52 | PnL: $-28.39 (-0.55%) | Hold: 0 days 01:00:00
+  📈 LONG QQQ: 11 shares @ $518.52 (cost: $5,703.71)
+  📉 EXIT QQQ: 11 shares @ $516.03 | PnL: $-27.36 (-0.48%) | Hold: 2 days 13:00:00
+  📈 LONG QQQ: 11 shares @ $517.26 (cost: $5,689.84)
+  📉 EXIT QQQ: 11 shares @ $523.11 | PnL: $+64.34 (+1.13%) | Hold: 0 days 10:50:00
+  📈 LONG QQQ: 10 shares @ $522.42 (cost: $5,224.21)
+  📉 EXIT QQQ: 10 shares @ $526.21 | PnL: $+37.86 (+0.72%) | Hold: 0 days 07:15:00
+  📈 LONG QQQ: 10 shares @ $527.85 (cost: $5,278.54)
+  📉 EXIT QQQ: 10 shares @ $526.65 | PnL: $-12.07 (-0.23%) | Hold: 0 days 13:50:00
+  📈 LONG QQQ: 10 shares @ $529.59 (cost: $5,295.95)
+  📉 EXIT QQQ: 10 shares @ $528.25 | PnL: $-13.49 (-0.25%) | Hold: 0 days 07:30:00
+  📈 LONG QQQ: 10 shares @ $530.69 (cost: $5,306.85)
+  📉 EXIT QQQ: 10 shares @ $527.76 | PnL: $-29.29 (-0.55%) | Hold: 0 days 08:40:00
+  📈 LONG QQQ: 10 shares @ $524.24 (cost: $5,242.41)
+  📉 EXIT QQQ: 10 shares @ $530.15 | PnL: $+59.14 (+1.13%) | Hold: 3 days 21:05:00
+  📈 LONG QQQ: 10 shares @ $534.10 (cost: $5,340.97)
+  📉 EXIT QQQ: 10 shares @ $532.40 | PnL: $-16.93 (-0.32%) | Hold: 0 days 16:25:00
+  📈 LONG QQQ: 10 shares @ $534.11 (cost: $5,341.07)
+  📉 EXIT QQQ: 10 shares @ $533.54 | PnL: $-5.64 (-0.11%) | Hold: 0 days 04:15:00
+  📈 LONG QQQ: 10 shares @ $531.58 (cost: $5,315.76)
+  📉 EXIT QQQ: 10 shares @ $532.38 | PnL: $+8.08 (+0.15%) | Hold: 0 days 09:25:00
+  📈 LONG QQQ: 10 shares @ $528.13 (cost: $5,281.34)
+  📉 EXIT QQQ: 10 shares @ $527.24 | PnL: $-8.98 (-0.17%) | Hold: 0 days 07:20:00
+  📈 LONG QQQ: 10 shares @ $530.24 (cost: $5,302.45)
+  📉 EXIT QQQ: 10 shares @ $533.53 | PnL: $+32.88 (+0.62%) | Hold: 0 days 14:05:00
+  📈 LONG QQQ: 10 shares @ $532.06 (cost: $5,320.56)
+  📉 EXIT QQQ: 10 shares @ $530.66 | PnL: $-13.91 (-0.26%) | Hold: 0 days 05:25:00
+  📈 LONG QQQ: 10 shares @ $531.26 (cost: $5,312.55)
+  📉 EXIT QQQ: 10 shares @ $528.95 | PnL: $-23.10 (-0.43%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 10 shares @ $530.81 (cost: $5,308.05)
+  📉 EXIT QQQ: 10 shares @ $529.38 | PnL: $-14.30 (-0.27%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 10 shares @ $530.62 (cost: $5,306.15)
+  📉 EXIT QQQ: 10 shares @ $528.67 | PnL: $-19.50 (-0.37%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 10 shares @ $528.24 (cost: $5,282.44)
+  📉 EXIT QQQ: 10 shares @ $526.30 | PnL: $-19.47 (-0.37%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 10 shares @ $527.31 (cost: $5,273.12)
+  📉 EXIT QQQ: 10 shares @ $524.72 | PnL: $-25.95 (-0.49%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 10 shares @ $531.16 (cost: $5,311.55)
+  📉 EXIT QQQ: 10 shares @ $539.21 | PnL: $+80.55 (+1.52%) | Hold: 1 days 04:35:00
+  📈 LONG QQQ: 10 shares @ $540.43 (cost: $5,404.30)
+  📉 EXIT QQQ: 10 shares @ $540.78 | PnL: $+3.49 (+0.06%) | Hold: 0 days 13:55:00
+  📈 LONG QQQ: 10 shares @ $543.56 (cost: $5,435.62)
+  📉 EXIT QQQ: 10 shares @ $547.15 | PnL: $+35.85 (+0.66%) | Hold: 1 days 05:10:00
+  📈 LONG QQQ: 10 shares @ $549.54 (cost: $5,495.45)
+  📉 EXIT QQQ: 10 shares @ $546.59 | PnL: $-29.58 (-0.54%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 10 shares @ $548.47 (cost: $5,484.74)
+  📉 EXIT QQQ: 10 shares @ $550.85 | PnL: $+23.80 (+0.43%) | Hold: 2 days 16:55:00
+  📈 LONG QQQ: 10 shares @ $553.02 (cost: $5,530.16)
+  📉 EXIT QQQ: 10 shares @ $550.87 | PnL: $-21.42 (-0.39%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 10 shares @ $550.83 (cost: $5,508.25)
+  📉 EXIT QQQ: 10 shares @ $548.79 | PnL: $-20.40 (-0.37%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 10 shares @ $548.27 (cost: $5,482.74)
+  📉 EXIT QQQ: 10 shares @ $546.68 | PnL: $-15.97 (-0.29%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 10 shares @ $547.39 (cost: $5,473.94)
+  📉 EXIT QQQ: 10 shares @ $550.30 | PnL: $+29.11 (+0.53%) | Hold: 0 days 08:40:00
+  📈 LONG QQQ: 10 shares @ $552.46 (cost: $5,524.56)
+  📉 EXIT QQQ: 10 shares @ $555.73 | PnL: $+32.76 (+0.59%) | Hold: 0 days 09:05:00
+  📈 LONG QQQ: 10 shares @ $554.35 (cost: $5,543.47)
+  📉 EXIT QQQ: 10 shares @ $553.22 | PnL: $-11.24 (-0.20%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 10 shares @ $551.87 (cost: $5,518.66)
+  📉 EXIT QQQ: 10 shares @ $552.14 | PnL: $+2.78 (+0.05%) | Hold: 1 days 08:50:00
+  📈 LONG QQQ: 10 shares @ $553.46 (cost: $5,534.57)
+  📉 EXIT QQQ: 10 shares @ $553.46 | PnL: $+0.07 (+0.00%) | Hold: 0 days 05:35:00
+  📈 LONG QQQ: 10 shares @ $556.00 (cost: $5,559.98)
+  📉 EXIT QQQ: 10 shares @ $555.31 | PnL: $-6.86 (-0.12%) | Hold: 0 days 13:05:00
+  📈 LONG QQQ: 10 shares @ $557.07 (cost: $5,570.68)
+  📉 EXIT QQQ: 10 shares @ $553.15 | PnL: $-39.15 (-0.70%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 10 shares @ $556.26 (cost: $5,562.58)
+  📉 EXIT QQQ: 10 shares @ $555.00 | PnL: $-12.56 (-0.23%) | Hold: 0 days 02:10:00
+  📈 LONG QQQ: 10 shares @ $556.11 (cost: $5,561.08)
+  📉 EXIT QQQ: 10 shares @ $552.38 | PnL: $-37.24 (-0.67%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 10 shares @ $553.34 (cost: $5,533.37)
+  📉 EXIT QQQ: 10 shares @ $553.42 | PnL: $+0.87 (+0.02%) | Hold: 0 days 08:45:00
+  📈 LONG QQQ: 10 shares @ $554.11 (cost: $5,541.07)
+  📉 EXIT QQQ: 10 shares @ $555.27 | PnL: $+11.65 (+0.21%) | Hold: 0 days 08:55:00
+  📈 LONG QQQ: 10 shares @ $559.53 (cost: $5,595.30)
+  📉 EXIT QQQ: 10 shares @ $558.72 | PnL: $-8.09 (-0.14%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 10 shares @ $560.54 (cost: $5,605.40)
+  📉 EXIT QQQ: 10 shares @ $555.76 | PnL: $-47.78 (-0.85%) | Hold: 0 days 06:45:00
+  📈 LONG QQQ: 10 shares @ $557.54 (cost: $5,575.39)
+  📉 EXIT QQQ: 10 shares @ $556.44 | PnL: $-10.97 (-0.20%) | Hold: 0 days 09:45:00
+  📈 LONG QQQ: 10 shares @ $558.52 (cost: $5,585.19)
+  📉 EXIT QQQ: 10 shares @ $560.47 | PnL: $+19.51 (+0.35%) | Hold: 1 days 06:25:00
+  📈 LONG QQQ: 10 shares @ $563.55 (cost: $5,635.52)
+  📉 EXIT QQQ: 10 shares @ $561.37 | PnL: $-21.82 (-0.39%) | Hold: 0 days 04:50:00
+  📈 LONG QQQ: 10 shares @ $564.08 (cost: $5,640.82)
+  📉 EXIT QQQ: 10 shares @ $564.68 | PnL: $+5.98 (+0.11%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 10 shares @ $563.86 (cost: $5,638.62)
+  📉 EXIT QQQ: 10 shares @ $558.77 | PnL: $-50.91 (-0.90%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 10 shares @ $561.97 (cost: $5,619.72)
+  📉 EXIT QQQ: 10 shares @ $560.45 | PnL: $-15.22 (-0.27%) | Hold: 0 days 02:40:00
+  📈 LONG QQQ: 10 shares @ $561.91 (cost: $5,619.11)
+  📉 EXIT QQQ: 10 shares @ $564.87 | PnL: $+29.57 (+0.53%) | Hold: 1 days 08:55:00
+  📈 LONG QQQ: 10 shares @ $565.92 (cost: $5,659.23)
+  📉 EXIT QQQ: 10 shares @ $564.61 | PnL: $-13.15 (-0.23%) | Hold: 0 days 20:40:00
+  📈 LONG QQQ: 10 shares @ $565.92 (cost: $5,659.23)
+  📉 EXIT QQQ: 10 shares @ $567.95 | PnL: $+20.23 (+0.36%) | Hold: 3 days 00:00:00
+  📈 LONG QQQ: 10 shares @ $568.48 (cost: $5,684.84)
+  📉 EXIT QQQ: 10 shares @ $568.83 | PnL: $+3.41 (+0.06%) | Hold: 0 days 19:00:00
+  📈 LONG QQQ: 10 shares @ $568.04 (cost: $5,680.44)
+  📉 EXIT QQQ: 10 shares @ $565.41 | PnL: $-26.37 (-0.46%) | Hold: 0 days 19:50:00
+  📈 LONG QQQ: 9 shares @ $572.91 (cost: $5,156.16)
+  📉 EXIT QQQ: 9 shares @ $572.09 | PnL: $-7.31 (-0.14%) | Hold: 0 days 17:25:00
+  📈 LONG QQQ: 10 shares @ $560.07 (cost: $5,600.70)
+  📉 EXIT QQQ: 10 shares @ $553.57 | PnL: $-64.97 (-1.16%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 10 shares @ $557.50 (cost: $5,574.99)
+  📉 EXIT QQQ: 10 shares @ $553.29 | PnL: $-42.05 (-0.75%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 10 shares @ $557.93 (cost: $5,579.29)
+  📉 EXIT QQQ: 10 shares @ $564.40 | PnL: $+64.69 (+1.16%) | Hold: 0 days 14:30:00
+  📈 LONG QQQ: 10 shares @ $566.09 (cost: $5,660.93)
+  📉 EXIT QQQ: 10 shares @ $560.06 | PnL: $-60.33 (-1.07%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 10 shares @ $562.94 (cost: $5,629.41)
+  📉 EXIT QQQ: 10 shares @ $560.44 | PnL: $-25.02 (-0.44%) | Hold: 0 days 00:40:00
+  📈 LONG QQQ: 10 shares @ $562.53 (cost: $5,625.31)
+  📉 EXIT QQQ: 10 shares @ $564.94 | PnL: $+24.11 (+0.43%) | Hold: 0 days 13:25:00
+  📈 LONG QQQ: 9 shares @ $570.45 (cost: $5,134.01)
+  📉 EXIT QQQ: 9 shares @ $569.89 | PnL: $-4.95 (-0.10%) | Hold: 0 days 07:10:00
+  📈 LONG QQQ: 9 shares @ $569.54 (cost: $5,125.90)
+  📉 EXIT QQQ: 9 shares @ $569.91 | PnL: $+3.33 (+0.07%) | Hold: 0 days 16:20:00
+  📈 LONG QQQ: 9 shares @ $572.19 (cost: $5,149.67)
+  📉 EXIT QQQ: 9 shares @ $573.82 | PnL: $+14.73 (+0.29%) | Hold: 2 days 18:25:00
+  📈 LONG QQQ: 9 shares @ $575.58 (cost: $5,180.20)
+  📉 EXIT QQQ: 9 shares @ $573.98 | PnL: $-14.40 (-0.28%) | Hold: 0 days 07:25:00
+  📈 LONG QQQ: 9 shares @ $573.69 (cost: $5,163.18)
+  📉 EXIT QQQ: 9 shares @ $579.23 | PnL: $+49.89 (+0.97%) | Hold: 1 days 07:05:00
+  📈 LONG QQQ: 9 shares @ $580.70 (cost: $5,226.30)
+  📉 EXIT QQQ: 9 shares @ $577.20 | PnL: $-31.49 (-0.60%) | Hold: 0 days 13:40:00
+  📈 LONG QQQ: 9 shares @ $580.11 (cost: $5,220.99)
+  📉 EXIT QQQ: 9 shares @ $578.73 | PnL: $-12.41 (-0.24%) | Hold: 0 days 01:50:00
+  📈 LONG QQQ: 9 shares @ $581.04 (cost: $5,229.36)
+  📉 EXIT QQQ: 9 shares @ $576.52 | PnL: $-40.67 (-0.78%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 9 shares @ $577.21 (cost: $5,194.88)
+  📉 EXIT QQQ: 9 shares @ $575.76 | PnL: $-13.02 (-0.25%) | Hold: 0 days 00:45:00
+  📈 LONG QQQ: 9 shares @ $577.62 (cost: $5,198.61)
+  📉 EXIT QQQ: 9 shares @ $575.89 | PnL: $-15.59 (-0.30%) | Hold: 0 days 18:40:00
+  📈 LONG QQQ: 9 shares @ $566.03 (cost: $5,094.30)
+  📉 EXIT QQQ: 9 shares @ $563.70 | PnL: $-21.01 (-0.41%) | Hold: 0 days 16:55:00
+  📈 LONG QQQ: 9 shares @ $564.27 (cost: $5,078.45)
+  📉 EXIT QQQ: 9 shares @ $570.82 | PnL: $+58.97 (+1.16%) | Hold: 3 days 12:50:00
+  📈 LONG QQQ: 9 shares @ $571.92 (cost: $5,147.24)
+  📉 EXIT QQQ: 9 shares @ $570.40 | PnL: $-13.60 (-0.26%) | Hold: 0 days 05:55:00
+  📈 LONG QQQ: 9 shares @ $570.45 (cost: $5,134.01)
+  📉 EXIT QQQ: 9 shares @ $570.32 | PnL: $-1.08 (-0.02%) | Hold: 0 days 04:20:00
+  📈 LONG QQQ: 9 shares @ $571.98 (cost: $5,147.83)
+  📉 EXIT QQQ: 9 shares @ $572.45 | PnL: $+4.26 (+0.08%) | Hold: 0 days 12:35:00
+  📈 LONG QQQ: 9 shares @ $574.54 (cost: $5,170.83)
+  📉 EXIT QQQ: 9 shares @ $572.60 | PnL: $-17.40 (-0.34%) | Hold: 0 days 01:00:00
+  📈 LONG QQQ: 9 shares @ $574.30 (cost: $5,168.67)
+  📉 EXIT QQQ: 9 shares @ $572.63 | PnL: $-14.97 (-0.29%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 9 shares @ $573.83 (cost: $5,164.44)
+  📉 EXIT QQQ: 9 shares @ $576.44 | PnL: $+23.53 (+0.46%) | Hold: 0 days 10:05:00
+  📈 LONG QQQ: 9 shares @ $574.95 (cost: $5,174.53)
+  📉 EXIT QQQ: 9 shares @ $573.13 | PnL: $-16.33 (-0.32%) | Hold: 0 days 01:05:00
+  📈 LONG QQQ: 9 shares @ $564.89 (cost: $5,084.03)
+  📉 EXIT QQQ: 9 shares @ $559.97 | PnL: $-44.30 (-0.87%) | Hold: 0 days 01:45:00
+  📈 LONG QQQ: 9 shares @ $564.26 (cost: $5,078.36)
+  📉 EXIT QQQ: 9 shares @ $566.71 | PnL: $+22.00 (+0.43%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 9 shares @ $569.05 (cost: $5,121.49)
+  📉 EXIT QQQ: 9 shares @ $569.35 | PnL: $+2.62 (+0.05%) | Hold: 0 days 14:45:00
+  📈 LONG QQQ: 9 shares @ $571.44 (cost: $5,142.92)
+  📉 EXIT QQQ: 9 shares @ $575.79 | PnL: $+39.21 (+0.76%) | Hold: 1 days 06:10:00
+  📈 LONG QQQ: 9 shares @ $576.14 (cost: $5,185.24)
+  📉 EXIT QQQ: 9 shares @ $574.58 | PnL: $-14.05 (-0.27%) | Hold: 0 days 02:35:00
+  📈 LONG QQQ: 9 shares @ $577.96 (cost: $5,201.63)
+  📉 EXIT QQQ: 9 shares @ $580.47 | PnL: $+22.60 (+0.43%) | Hold: 1 days 15:30:00
+  📈 LONG QQQ: 9 shares @ $582.08 (cost: $5,238.73)
+  📉 EXIT QQQ: 9 shares @ $581.10 | PnL: $-8.83 (-0.17%) | Hold: 1 days 04:30:00
+  📈 LONG QQQ: 9 shares @ $582.50 (cost: $5,242.51)
+  📉 EXIT QQQ: 9 shares @ $583.58 | PnL: $+9.69 (+0.18%) | Hold: 0 days 18:50:00
+  📈 LONG QQQ: 9 shares @ $584.88 (cost: $5,263.94)
+  📉 EXIT QQQ: 9 shares @ $586.37 | PnL: $+13.36 (+0.25%) | Hold: 0 days 11:10:00
+  📈 LONG QQQ: 9 shares @ $587.56 (cost: $5,288.07)
+  📉 EXIT QQQ: 9 shares @ $592.70 | PnL: $+46.26 (+0.87%) | Hold: 1 days 01:20:00
+  📈 LONG QQQ: 9 shares @ $592.08 (cost: $5,328.68)
+  📉 EXIT QQQ: 9 shares @ $590.98 | PnL: $-9.82 (-0.18%) | Hold: 0 days 13:25:00
+  📈 LONG QQQ: 9 shares @ $589.27 (cost: $5,303.47)
+  📉 EXIT QQQ: 9 shares @ $594.61 | PnL: $+48.04 (+0.91%) | Hold: 0 days 19:25:00
+  📈 LONG QQQ: 9 shares @ $596.92 (cost: $5,372.26)
+  📉 EXIT QQQ: 9 shares @ $596.96 | PnL: $+0.39 (+0.01%) | Hold: 2 days 20:00:00
+  📈 LONG QQQ: 9 shares @ $598.04 (cost: $5,382.35)
+  📉 EXIT QQQ: 9 shares @ $601.47 | PnL: $+30.87 (+0.57%) | Hold: 0 days 09:15:00
+  📈 LONG QQQ: 9 shares @ $603.01 (cost: $5,427.10)
+  📉 EXIT QQQ: 9 shares @ $601.70 | PnL: $-11.81 (-0.22%) | Hold: 0 days 03:10:00
+  📈 LONG QQQ: 9 shares @ $600.20 (cost: $5,401.80)
+  📉 EXIT QQQ: 9 shares @ $597.24 | PnL: $-26.63 (-0.49%) | Hold: 0 days 05:45:00
+  📈 LONG QQQ: 9 shares @ $596.94 (cost: $5,372.44)
+  📉 EXIT QQQ: 9 shares @ $595.58 | PnL: $-12.21 (-0.23%) | Hold: 0 days 00:45:00
+  📈 LONG QQQ: 9 shares @ $594.42 (cost: $5,349.75)
+  📉 EXIT QQQ: 9 shares @ $592.93 | PnL: $-13.35 (-0.25%) | Hold: 0 days 16:25:00
+  📈 LONG QQQ: 9 shares @ $595.69 (cost: $5,361.19)
+  📉 EXIT QQQ: 9 shares @ $599.01 | PnL: $+29.90 (+0.56%) | Hold: 2 days 22:20:00
+  📈 LONG QQQ: 9 shares @ $598.92 (cost: $5,390.27)
+  📉 EXIT QQQ: 9 shares @ $597.17 | PnL: $-15.73 (-0.29%) | Hold: 0 days 09:10:00
+  📈 LONG QQQ: 9 shares @ $599.18 (cost: $5,392.61)
+  📉 EXIT QQQ: 9 shares @ $596.50 | PnL: $-24.10 (-0.45%) | Hold: 0 days 00:55:00
+  📈 LONG QQQ: 9 shares @ $599.82 (cost: $5,398.38)
+  📉 EXIT QQQ: 9 shares @ $598.59 | PnL: $-11.06 (-0.20%) | Hold: 0 days 03:30:00
+  📈 LONG QQQ: 9 shares @ $598.05 (cost: $5,382.44)
+  📉 EXIT QQQ: 9 shares @ $603.93 | PnL: $+52.91 (+0.98%) | Hold: 1 days 02:10:00
+  📈 LONG QQQ: 9 shares @ $607.97 (cost: $5,471.76)
+  📉 EXIT QQQ: 9 shares @ $606.34 | PnL: $-14.73 (-0.27%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 9 shares @ $606.81 (cost: $5,461.32)
+  📉 EXIT QQQ: 9 shares @ $604.53 | PnL: $-20.57 (-0.38%) | Hold: 0 days 03:25:00
+  📈 LONG QQQ: 9 shares @ $606.26 (cost: $5,456.37)
+  📉 EXIT QQQ: 9 shares @ $607.23 | PnL: $+8.67 (+0.16%) | Hold: 0 days 12:05:00
+  📈 LONG QQQ: 9 shares @ $608.15 (cost: $5,473.39)
+  📉 EXIT QQQ: 9 shares @ $604.53 | PnL: $-32.64 (-0.60%) | Hold: 0 days 05:50:00
+  📈 LONG QQQ: 9 shares @ $605.48 (cost: $5,449.29)
+  📉 EXIT QQQ: 9 shares @ $604.02 | PnL: $-13.13 (-0.24%) | Hold: 0 days 00:50:00
+  📈 LONG QQQ: 9 shares @ $605.84 (cost: $5,452.58)
+  📉 EXIT QQQ: 9 shares @ $611.20 | PnL: $+48.25 (+0.88%) | Hold: 1 days 00:10:00
+  📈 LONG QQQ: 9 shares @ $610.32 (cost: $5,492.84)
+  📉 EXIT QQQ: 9 shares @ $610.82 | PnL: $+4.58 (+0.08%) | Hold: 0 days 14:10:00
+  📈 LONG QQQ: 9 shares @ $613.01 (cost: $5,517.06)
+  📉 EXIT QQQ: 9 shares @ $604.24 | PnL: $-78.92 (-1.43%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 9 shares @ $589.99 (cost: $5,309.95)
+  📉 EXIT QQQ: 9 shares @ $594.49 | PnL: $+40.48 (+0.76%) | Hold: 3 days 08:30:00
+  📈 LONG QQQ: 9 shares @ $602.52 (cost: $5,422.69)
+  📉 EXIT QQQ: 9 shares @ $597.25 | PnL: $-47.43 (-0.87%) | Hold: 0 days 03:00:00
+  📈 LONG QQQ: 9 shares @ $598.86 (cost: $5,389.73)
+  📉 EXIT QQQ: 9 shares @ $601.88 | PnL: $+27.18 (+0.50%) | Hold: 0 days 17:40:00
+  📈 LONG QQQ: 9 shares @ $603.59 (cost: $5,432.32)
+  📉 EXIT QQQ: 9 shares @ $603.44 | PnL: $-1.38 (-0.03%) | Hold: 0 days 17:45:00
+  📈 LONG QQQ: 9 shares @ $600.68 (cost: $5,406.12)
+  📉 EXIT QQQ: 9 shares @ $590.81 | PnL: $-88.79 (-1.64%) | Hold: 0 days 10:00:00
+  📈 LONG QQQ: 9 shares @ $597.77 (cost: $5,379.92)
+  📉 EXIT QQQ: 9 shares @ $603.85 | PnL: $+54.71 (+1.02%) | Hold: 0 days 11:30:00
+  📈 LONG QQQ: 9 shares @ $607.60 (cost: $5,468.43)
+  📉 EXIT QQQ: 9 shares @ $611.58 | PnL: $+35.82 (+0.66%) | Hold: 0 days 14:20:00
+  📈 LONG QQQ: 9 shares @ $612.48 (cost: $5,512.28)
+  📉 EXIT QQQ: 9 shares @ $609.99 | PnL: $-22.33 (-0.41%) | Hold: 0 days 20:55:00
+  📈 LONG QQQ: 9 shares @ $611.53 (cost: $5,503.73)
+  📉 EXIT QQQ: 9 shares @ $606.72 | PnL: $-43.28 (-0.79%) | Hold: 0 days 06:40:00
+  📈 LONG QQQ: 9 shares @ $605.39 (cost: $5,448.53)
+  📉 EXIT QQQ: 9 shares @ $603.25 | PnL: $-19.30 (-0.35%) | Hold: 0 days 16:20:00
+  📈 LONG QQQ: 9 shares @ $607.04 (cost: $5,463.39)
+  📉 EXIT QQQ: 9 shares @ $616.74 | PnL: $+87.28 (+1.60%) | Hold: 1 days 06:40:00
+  📈 LONG QQQ: 9 shares @ $624.26 (cost: $5,618.36)
+  📉 EXIT QQQ: 9 shares @ $627.53 | PnL: $+29.38 (+0.52%) | Hold: 1 days 00:00:00
+  📈 LONG QQQ: 8 shares @ $629.32 (cost: $5,034.60)
+  📉 EXIT QQQ: 8 shares @ $635.19 | PnL: $+46.94 (+0.93%) | Hold: 1 days 01:20:00
+  📈 LONG QQQ: 8 shares @ $636.40 (cost: $5,091.18)
+  📉 EXIT QQQ: 8 shares @ $631.25 | PnL: $-41.15 (-0.81%) | Hold: 0 days 22:50:00
+  📈 LONG QQQ: 8 shares @ $633.44 (cost: $5,067.49)
+  📉 EXIT QQQ: 8 shares @ $631.90 | PnL: $-12.26 (-0.24%) | Hold: 0 days 16:30:00
+  📈 LONG QQQ: 8 shares @ $631.77 (cost: $5,054.17)
+  📉 EXIT QQQ: 8 shares @ $630.21 | PnL: $-12.45 (-0.25%) | Hold: 2 days 20:00:00
+  📈 LONG QQQ: 9 shares @ $626.81 (cost: $5,641.32)
+  📉 EXIT QQQ: 9 shares @ $622.05 | PnL: $-42.88 (-0.76%) | Hold: 0 days 02:25:00
+  📈 LONG QQQ: 9 shares @ $618.56 (cost: $5,567.03)
+  📉 EXIT QQQ: 9 shares @ $623.94 | PnL: $+48.41 (+0.87%) | Hold: 0 days 08:10:00
+  📈 LONG QQQ: 9 shares @ $624.56 (cost: $5,621.06)
+  📉 EXIT QQQ: 9 shares @ $622.70 | PnL: $-16.77 (-0.30%) | Hold: 0 days 03:40:00
+  📈 LONG QQQ: 9 shares @ $604.35 (cost: $5,439.17)
+  📉 EXIT QQQ: 9 shares @ $617.85 | PnL: $+121.49 (+2.23%) | Hold: 2 days 21:20:00
+  📈 LONG QQQ: 9 shares @ $621.59 (cost: $5,594.32)
+  📉 EXIT QQQ: 9 shares @ $621.36 | PnL: $-2.08 (-0.04%) | Hold: 0 days 15:10:00
+  📈 LONG QQQ: 9 shares @ $621.33 (cost: $5,591.97)
+  📉 EXIT QQQ: 9 shares @ $624.04 | PnL: $+24.37 (+0.44%) | Hold: 0 days 17:25:00
+  📈 LONG QQQ: 9 shares @ $621.05 (cost: $5,589.45)
+  📉 EXIT QQQ: 9 shares @ $619.04 | PnL: $-18.09 (-0.32%) | Hold: 0 days 02:30:00
+  📈 LONG QQQ: 9 shares @ $621.17 (cost: $5,590.53)
+  📉 EXIT QQQ: 9 shares @ $616.85 | PnL: $-38.87 (-0.70%) | Hold: 0 days 05:05:00
+  📈 LONG QQQ: 9 shares @ $609.34 (cost: $5,484.10)
+  📉 EXIT QQQ: 9 shares @ $606.36 | PnL: $-26.89 (-0.49%) | Hold: 0 days 10:00:00
+  📈 LONG QQQ: 9 shares @ $604.94 (cost: $5,444.48)
+  📉 EXIT QQQ: 9 shares @ $609.74 | PnL: $+43.22 (+0.79%) | Hold: 2 days 22:05:00
+  📈 LONG QQQ: 9 shares @ $610.50 (cost: $5,494.46)
+  📉 EXIT QQQ: 9 shares @ $606.07 | PnL: $-39.85 (-0.73%) | Hold: 0 days 03:15:00
+  📈 LONG QQQ: 9 shares @ $604.32 (cost: $5,438.90)
+  📉 EXIT QQQ: 9 shares @ $602.85 | PnL: $-13.26 (-0.24%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 9 shares @ $596.52 (cost: $5,368.66)
+  📉 EXIT QQQ: 9 shares @ $615.38 | PnL: $+169.78 (+3.16%) | Hold: 12 days 10:00:00
+  📈 LONG QQQ: 9 shares @ $616.21 (cost: $5,545.88)
+  📉 EXIT QQQ: 9 shares @ $616.48 | PnL: $+2.45 (+0.04%) | Hold: 0 days 04:30:00
+  📈 LONG QQQ: 9 shares @ $623.75 (cost: $5,613.77)
+  📉 EXIT QQQ: 9 shares @ $617.92 | PnL: $-52.48 (-0.93%) | Hold: 0 days 00:50:00
+  📈 LONG QQQ: 9 shares @ $624.14 (cost: $5,617.28)
+  📉 EXIT QQQ: 9 shares @ $622.91 | PnL: $-11.10 (-0.20%) | Hold: 0 days 01:20:00
+  📈 LONG QQQ: 9 shares @ $625.71 (cost: $5,631.41)
+  📉 EXIT QQQ: 9 shares @ $622.49 | PnL: $-29.02 (-0.52%) | Hold: 0 days 04:35:00
+  📈 LONG QQQ: 9 shares @ $625.92 (cost: $5,633.31)
+  📉 EXIT QQQ: 9 shares @ $623.29 | PnL: $-23.71 (-0.42%) | Hold: 3 days 01:25:00
+  📈 LONG QQQ: 9 shares @ $624.52 (cost: $5,620.65)
+  📉 EXIT QQQ: 9 shares @ $626.53 | PnL: $+18.09 (+0.32%) | Hold: 2 days 04:30:00
+  📈 LONG QQQ: 9 shares @ $623.85 (cost: $5,614.67)
+  📉 EXIT QQQ: 9 shares @ $618.46 | PnL: $-48.52 (-0.86%) | Hold: 0 days 02:45:00
+  📈 LONG QQQ: 9 shares @ $625.49 (cost: $5,629.43)
+  📉 EXIT QQQ: 9 shares @ $623.97 | PnL: $-13.72 (-0.24%) | Hold: 0 days 02:50:00
+  📈 LONG QQQ: 9 shares @ $623.72 (cost: $5,613.50)
+  📉 EXIT QQQ: 9 shares @ $616.68 | PnL: $-63.36 (-1.13%) | Hold: 0 days 01:30:00
+  📈 LONG QQQ: 9 shares @ $615.80 (cost: $5,542.18)
+  📉 EXIT QQQ: 9 shares @ $612.79 | PnL: $-27.04 (-0.49%) | Hold: 0 days 06:00:00
+  📈 LONG QQQ: 9 shares @ $609.95 (cost: $5,489.59)
+  📉 EXIT QQQ: 9 shares @ $610.44 | PnL: $+4.41 (+0.08%) | Hold: 0 days 11:25:00
+  📈 LONG QQQ: 9 shares @ $604.65 (cost: $5,441.87)
+  📉 EXIT QQQ: 9 shares @ $607.56 | PnL: $+26.14 (+0.48%) | Hold: 0 days 08:15:00
+  📈 LONG QQQ: 9 shares @ $612.76 (cost: $5,514.81)
+  📉 EXIT QQQ: 9 shares @ $618.58 | PnL: $+52.42 (+0.95%) | Hold: 4 days 03:25:00
+  📈 LONG QQQ: 9 shares @ $620.18 (cost: $5,581.62)
+  📉 EXIT QQQ: 9 shares @ $622.87 | PnL: $+24.20 (+0.43%) | Hold: 1 days 03:50:00
+  📈 LONG QQQ: 9 shares @ $622.02 (cost: $5,598.19)
+  📉 EXIT QQQ: 9 shares @ $619.55 | PnL: $-22.28 (-0.40%) | Hold: 0 days 03:45:00
+  📈 LONG QQQ: 9 shares @ $621.28 (cost: $5,591.52)
+  📉 EXIT QQQ: 9 shares @ $615.10 | PnL: $-55.60 (-0.99%) | Hold: 0 days 06:20:00
+  📈 LONG QQQ: 9 shares @ $614.63 (cost: $5,531.64)
+  📉 EXIT QQQ: 9 shares @ $617.04 | PnL: $+21.73 (+0.39%) | Hold: 3 days 00:05:00
+  📈 LONG QQQ: 9 shares @ $618.39 (cost: $5,565.50)
+  📉 EXIT QQQ: 9 shares @ $620.13 | PnL: $+15.67 (+0.28%) | Hold: 2 days 04:40:00
+  📈 LONG QQQ: 9 shares @ $620.75 (cost: $5,586.75)
+  📉 EXIT QQQ: 9 shares @ $620.22 | PnL: $-4.77 (-0.09%) | Hold: 0 days 03:05:00
+  📈 LONG QQQ: 9 shares @ $621.85 (cost: $5,596.66)
+  📉 EXIT QQQ: 9 shares @ $626.25 | PnL: $+39.56 (+0.71%) | Hold: 0 days 12:10:00
+  📈 LONG QQQ: 9 shares @ $627.12 (cost: $5,644.11)
+
+================================================================================
+🔒 Closing all remaining positions at test end...
+================================================================================
+
+  📉 FORCE EXIT QQQ: 9 shares @ $626.56 | PnL: $-5.10 (-0.09%)
+
+================================================================================
+📊 BACKTEST RESULTS
+================================================================================
+
+💰 FINANCIAL PERFORMANCE
+  Initial Capital:    $   25,000.00
+  Final Equity:       $   22,670.59
+  Total P&L:          $   -2,329.41
+  Total Return:              -9.32%
+  Sharpe Ratio:              -0.47
+  Max Drawdown:             -11.86%
+
+📈 TRADE STATISTICS
+  Total Trades:              1,090
+  Winning Trades:              417
+  Losing Trades:               673
+  Win Rate:                  38.26%
+  Profit Factor:              0.91
+
+💵 TRADE AVERAGES
+  Avg Trade:          $       -2.14
+  Avg Win:            $       53.32
+  Avg Loss:           $      -36.50
+  Gross Profit:       $   22,236.00
+  Gross Loss:         $   24,565.42
+
+================================================================================
+🚦 PHASE 1.1 ASSESSMENT
+================================================================================
+
+Gate Checks:
+  ❌ Sharpe Ratio < 1.0 (actual: -0.47)
+  ❌ Win Rate < 45% (actual: 38.3%)
+  ❌ Profit Factor < 1.3 (actual: 0.91)
+  ✅ Max Drawdown < 20%
+  ✅ Trade Count > 100
+
+================================================================================
+Gates Passed: 2/5 (40%)
+================================================================================
+
+❌ RECOMMENDATION: FAIL - Consider early kill or strategy modification
+
+💾 Saved trades to: A:\1\Magellan\test\intraday_alpha\results\phase1_baseline_trades.csv
+💾 Saved equity curve to: A:\1\Magellan\test\intraday_alpha\results\phase1_baseline_equity.csv

@@ -1,0 +1,217 @@
+A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py:113: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  df = df.resample('5T').agg({
+📦 Using Magellan DataCache infrastructure
+📰 Loading sentiment data...
+📂 Loading cached sentiment for SPY
+   SPY: 1471 days (26 non-zero)
+
+================================================================================
+🚀 PHASE 1.1: BASELINE BACKTEST (2024-2025)
+================================================================================
+Period: 2022-01-01 → 2026-01-10
+Symbols: SPY
+Initial Capital: $25,000.00
+Slippage: 5 bps per trade
+================================================================================
+
+📥 Fetching data for SPY (5Min)...
+✅ Fetched 190583 bars for SPY
+
+📊 Processing 189260 bars across 1 symbols...
+================================================================================
+
+  📈 LONG SPY: 13 shares @ $476.86 (cost: $6,199.16)
+  📉 EXIT SPY: 13 shares @ $477.28 | PnL: $+5.50 (+0.09%) | Hold: 0 days 03:45:00
+  📈 LONG SPY: 13 shares @ $476.97 (cost: $6,200.59)
+  📉 EXIT SPY: 13 shares @ $477.17 | PnL: $+2.64 (+0.04%) | Hold: 0 days 05:05:00
+  📈 LONG SPY: 13 shares @ $478.77 (cost: $6,224.00)
+  📉 EXIT SPY: 13 shares @ $478.48 | PnL: $-3.75 (-0.06%) | Hold: 0 days 03:20:00
+  📈 LONG SPY: 13 shares @ $478.14 (cost: $6,215.81)
+  📉 EXIT SPY: 13 shares @ $476.86 | PnL: $-16.61 (-0.27%) | Hold: 0 days 03:10:00
+  📈 LONG SPY: 13 shares @ $477.86 (cost: $6,212.16)
+  📉 EXIT SPY: 13 shares @ $476.36 | PnL: $-19.46 (-0.31%) | Hold: 0 days 05:20:00
+  📈 LONG SPY: 13 shares @ $469.48 (cost: $6,103.30)
+  📉 EXIT SPY: 13 shares @ $467.49 | PnL: $-25.98 (-0.43%) | Hold: 1 days 08:50:00
+  📈 LONG SPY: 13 shares @ $467.89 (cost: $6,082.62)
+  📉 EXIT SPY: 13 shares @ $466.34 | PnL: $-20.24 (-0.33%) | Hold: 0 days 02:30:00
+  📈 LONG SPY: 13 shares @ $460.78 (cost: $5,990.10)
+  📉 EXIT SPY: 13 shares @ $466.32 | PnL: $+72.02 (+1.20%) | Hold: 0 days 18:35:00
+  📈 LONG SPY: 13 shares @ $466.52 (cost: $6,064.80)
+  📉 EXIT SPY: 13 shares @ $469.36 | PnL: $+36.82 (+0.61%) | Hold: 0 days 16:45:00
+  📈 LONG SPY: 13 shares @ $472.21 (cost: $6,138.68)
+  📉 EXIT SPY: 13 shares @ $470.27 | PnL: $-25.11 (-0.41%) | Hold: 0 days 02:10:00
+  📈 LONG SPY: 13 shares @ $471.95 (cost: $6,135.30)
+  📉 EXIT SPY: 13 shares @ $469.83 | PnL: $-27.44 (-0.45%) | Hold: 0 days 01:10:00
+  📈 LONG SPY: 13 shares @ $471.54 (cost: $6,129.96)
+  📉 EXIT SPY: 13 shares @ $470.55 | PnL: $-12.75 (-0.21%) | Hold: 0 days 04:40:00
+  📈 LONG SPY: 13 shares @ $463.09 (cost: $6,020.19)
+  📉 EXIT SPY: 13 shares @ $460.78 | PnL: $-30.06 (-0.50%) | Hold: 0 days 03:20:00
+  📈 LONG SPY: 13 shares @ $465.72 (cost: $6,054.40)
+  📉 EXIT SPY: 13 shares @ $459.68 | PnL: $-78.56 (-1.30%) | Hold: 3 days 11:40:00
+  📈 LONG SPY: 13 shares @ $457.18 (cost: $5,943.32)
+  📉 EXIT SPY: 13 shares @ $456.28 | PnL: $-11.66 (-0.20%) | Hold: 0 days 00:25:00
+  📈 LONG SPY: 13 shares @ $457.48 (cost: $5,947.22)
+  📉 EXIT SPY: 13 shares @ $455.69 | PnL: $-23.23 (-0.39%) | Hold: 0 days 05:35:00
+  📈 LONG SPY: 13 shares @ $457.71 (cost: $5,950.21)
+  📉 EXIT SPY: 13 shares @ $454.84 | PnL: $-37.26 (-0.63%) | Hold: 0 days 01:55:00
+  📈 LONG SPY: 13 shares @ $454.03 (cost: $5,902.35)
+  📉 EXIT SPY: 13 shares @ $455.49 | PnL: $+19.05 (+0.32%) | Hold: 0 days 04:30:00
+  📈 LONG SPY: 13 shares @ $445.32 (cost: $5,789.19)
+  📉 EXIT SPY: 13 shares @ $438.81 | PnL: $-84.66 (-1.46%) | Hold: 0 days 05:30:00
+  📈 LONG SPY: 14 shares @ $440.27 (cost: $6,163.78)
+  📉 EXIT SPY: 14 shares @ $436.35 | PnL: $-54.86 (-0.89%) | Hold: 0 days 01:20:00
+  📈 LONG SPY: 14 shares @ $427.14 (cost: $5,980.01)
+  📉 EXIT SPY: 14 shares @ $438.54 | PnL: $+159.56 (+2.67%) | Hold: 0 days 05:15:00
+  📈 LONG SPY: 14 shares @ $434.51 (cost: $6,083.10)
+  📉 EXIT SPY: 14 shares @ $430.79 | PnL: $-51.98 (-0.85%) | Hold: 0 days 02:50:00
+  📈 LONG SPY: 14 shares @ $433.97 (cost: $6,075.54)
+  📉 EXIT SPY: 14 shares @ $431.22 | PnL: $-38.40 (-0.63%) | Hold: 0 days 21:00:00
+  📈 LONG SPY: 14 shares @ $435.76 (cost: $6,100.61)
+  📉 EXIT SPY: 14 shares @ $432.05 | PnL: $-51.85 (-0.85%) | Hold: 0 days 09:45:00
+  📈 LONG SPY: 14 shares @ $437.59 (cost: $6,126.24)
+  📉 EXIT SPY: 14 shares @ $435.10 | PnL: $-34.82 (-0.57%) | Hold: 0 days 03:20:00
+  📈 LONG SPY: 14 shares @ $434.99 (cost: $6,089.82)
+  📉 EXIT SPY: 14 shares @ $429.46 | PnL: $-77.45 (-1.27%) | Hold: 0 days 13:15:00
+  📈 LONG SPY: 14 shares @ $431.35 (cost: $6,038.84)
+  📉 EXIT SPY: 14 shares @ $432.24 | PnL: $+12.57 (+0.21%) | Hold: 0 days 05:40:00
+  📈 LONG SPY: 13 shares @ $439.19 (cost: $5,709.46)
+  📉 EXIT SPY: 13 shares @ $439.48 | PnL: $+3.78 (+0.07%) | Hold: 2 days 15:45:00
+  📈 LONG SPY: 13 shares @ $442.36 (cost: $5,750.69)
+  📉 EXIT SPY: 13 shares @ $445.75 | PnL: $+44.02 (+0.77%) | Hold: 0 days 05:35:00
+  📈 LONG SPY: 13 shares @ $450.01 (cost: $5,850.13)
+  📉 EXIT SPY: 13 shares @ $449.26 | PnL: $-9.81 (-0.17%) | Hold: 0 days 17:50:00
+  📈 LONG SPY: 13 shares @ $452.06 (cost: $5,876.73)
+  📉 EXIT SPY: 13 shares @ $455.21 | PnL: $+41.03 (+0.70%) | Hold: 0 days 18:10:00
+  📈 LONG SPY: 13 shares @ $457.05 (cost: $5,941.63)
+  📉 EXIT SPY: 13 shares @ $453.95 | PnL: $-40.24 (-0.68%) | Hold: 0 days 03:15:00
+  📈 LONG SPY: 13 shares @ $452.06 (cost: $5,876.73)
+  📉 EXIT SPY: 13 shares @ $449.77 | PnL: $-29.78 (-0.51%) | Hold: 0 days 11:10:00
+  📈 LONG SPY: 13 shares @ $448.42 (cost: $5,829.51)
+  📉 EXIT SPY: 13 shares @ $447.90 | PnL: $-6.87 (-0.12%) | Hold: 0 days 03:15:00
+  📈 LONG SPY: 13 shares @ $449.57 (cost: $5,844.47)
+  📉 EXIT SPY: 13 shares @ $449.16 | PnL: $-5.45 (-0.09%) | Hold: 0 days 02:20:00
+  📈 LONG SPY: 13 shares @ $450.67 (cost: $5,858.71)
+  📉 EXIT SPY: 13 shares @ $447.40 | PnL: $-42.56 (-0.73%) | Hold: 0 days 00:25:00
+  📈 LONG SPY: 13 shares @ $448.63 (cost: $5,832.24)
+  📉 EXIT SPY: 13 shares @ $447.48 | PnL: $-15.05 (-0.26%) | Hold: 0 days 00:40:00
+  📈 LONG SPY: 13 shares @ $448.14 (cost: $5,825.87)
+  📉 EXIT SPY: 13 shares @ $449.10 | PnL: $+12.37 (+0.21%) | Hold: 0 days 03:35:00
+  📈 LONG SPY: 13 shares @ $451.12 (cost: $5,864.50)
+  📉 EXIT SPY: 13 shares @ $455.84 | PnL: $+61.42 (+1.05%) | Hold: 0 days 23:15:00
+  📈 LONG SPY: 13 shares @ $457.70 (cost: $5,950.08)
+  📉 EXIT SPY: 13 shares @ $454.16 | PnL: $-45.97 (-0.77%) | Hold: 0 days 00:25:00
+  📈 LONG SPY: 13 shares @ $457.06 (cost: $5,941.76)
+  📉 EXIT SPY: 13 shares @ $453.36 | PnL: $-48.10 (-0.81%) | Hold: 0 days 02:45:00
+  📈 LONG SPY: 13 shares @ $448.32 (cost: $5,828.21)
+  📉 EXIT SPY: 13 shares @ $442.60 | PnL: $-74.42 (-1.28%) | Hold: 0 days 06:20:00
+  📈 LONG SPY: 13 shares @ $440.22 (cost: $5,722.86)
+  📉 EXIT SPY: 13 shares @ $436.38 | PnL: $-49.90 (-0.87%) | Hold: 0 days 06:10:00
+  📈 LONG SPY: 13 shares @ $439.91 (cost: $5,718.83)
+  📉 EXIT SPY: 13 shares @ $438.52 | PnL: $-18.06 (-0.32%) | Hold: 0 days 01:25:00
+  📈 LONG SPY: 13 shares @ $444.55 (cost: $5,779.18)
+  📉 EXIT SPY: 13 shares @ $444.08 | PnL: $-6.17 (-0.11%) | Hold: 0 days 04:30:00
+  📈 LONG SPY: 13 shares @ $446.65 (cost: $5,806.49)
+  📉 EXIT SPY: 13 shares @ $444.70 | PnL: $-25.42 (-0.44%) | Hold: 0 days 03:35:00
+  📈 LONG SPY: 13 shares @ $444.05 (cost: $5,772.67)
+  📉 EXIT SPY: 13 shares @ $445.39 | PnL: $+17.36 (+0.30%) | Hold: 0 days 05:05:00
+  📈 LONG SPY: 13 shares @ $445.70 (cost: $5,794.14)
+  📉 EXIT SPY: 13 shares @ $442.69 | PnL: $-39.18 (-0.68%) | Hold: 0 days 01:00:00
+  📈 LONG SPY: 13 shares @ $439.31 (cost: $5,711.02)
+  📉 EXIT SPY: 13 shares @ $438.00 | PnL: $-17.01 (-0.30%) | Hold: 0 days 04:10:00
+  📈 LONG SPY: 13 shares @ $436.42 (cost: $5,673.44)
+  📉 EXIT SPY: 13 shares @ $433.16 | PnL: $-42.31 (-0.75%) | Hold: 0 days 03:20:00
+  📈 LONG SPY: 13 shares @ $434.31 (cost: $5,645.99)
+  📉 EXIT SPY: 13 shares @ $430.83 | PnL: $-45.14 (-0.80%) | Hold: 0 days 03:50:00
+  📈 LONG SPY: 13 shares @ $432.86 (cost: $5,627.13)
+  📉 EXIT SPY: 13 shares @ $430.95 | PnL: $-24.76 (-0.44%) | Hold: 0 days 18:55:00
+  📈 LONG SPY: 14 shares @ $429.63 (cost: $6,014.89)
+  📉 EXIT SPY: 14 shares @ $426.24 | PnL: $-47.57 (-0.79%) | Hold: 0 days 00:45:00
+  📈 LONG SPY: 14 shares @ $422.76 (cost: $5,918.66)
+  📉 EXIT SPY: 14 shares @ $425.48 | PnL: $+38.02 (+0.64%) | Hold: 0 days 03:55:00
+  📈 LONG SPY: 14 shares @ $425.51 (cost: $5,957.18)
+  📉 EXIT SPY: 14 shares @ $431.78 | PnL: $+87.80 (+1.47%) | Hold: 2 days 20:10:00
+  📈 LONG SPY: 13 shares @ $433.72 (cost: $5,638.32)
+  📉 EXIT SPY: 13 shares @ $433.22 | PnL: $-6.42 (-0.11%) | Hold: 0 days 05:20:00
+  📈 LONG SPY: 13 shares @ $436.83 (cost: $5,678.77)
+  📉 EXIT SPY: 13 shares @ $436.24 | PnL: $-7.62 (-0.13%) | Hold: 0 days 03:50:00
+  📈 LONG SPY: 13 shares @ $435.75 (cost: $5,664.72)
+  📉 EXIT SPY: 13 shares @ $432.74 | PnL: $-39.06 (-0.69%) | Hold: 0 days 01:50:00
+  📈 LONG SPY: 14 shares @ $431.42 (cost: $6,039.82)
+  📉 EXIT SPY: 14 shares @ $430.00 | PnL: $-19.75 (-0.33%) | Hold: 0 days 09:30:00
+  📈 LONG SPY: 13 shares @ $434.43 (cost: $5,647.55)
+  📉 EXIT SPY: 13 shares @ $436.84 | PnL: $+31.39 (+0.56%) | Hold: 0 days 07:05:00
+  📈 LONG SPY: 13 shares @ $439.05 (cost: $5,707.64)
+  📉 EXIT SPY: 13 shares @ $437.52 | PnL: $-19.87 (-0.35%) | Hold: 0 days 02:15:00
+  📈 LONG SPY: 13 shares @ $435.64 (cost: $5,663.29)
+  📉 EXIT SPY: 13 shares @ $434.94 | PnL: $-9.04 (-0.16%) | Hold: 0 days 00:05:00
+  📈 LONG SPY: 14 shares @ $431.44 (cost: $6,040.10)
+  📉 EXIT SPY: 14 shares @ $426.52 | PnL: $-68.87 (-1.14%) | Hold: 2 days 15:50:00
+  📈 LONG SPY: 14 shares @ $428.42 (cost: $5,997.94)
+  📉 EXIT SPY: 14 shares @ $428.92 | PnL: $+6.88 (+0.11%) | Hold: 0 days 02:45:00
+  📈 LONG SPY: 14 shares @ $421.21 (cost: $5,896.95)
+  📉 EXIT SPY: 14 shares @ $421.34 | PnL: $+1.80 (+0.03%) | Hold: 0 days 03:50:00
+  📈 LONG SPY: 14 shares @ $424.42 (cost: $5,941.91)
+  📉 EXIT SPY: 14 shares @ $419.31 | PnL: $-71.57 (-1.20%) | Hold: 0 days 01:40:00
+  📈 LONG SPY: 14 shares @ $416.49 (cost: $5,830.83)
+  📉 EXIT SPY: 14 shares @ $426.39 | PnL: $+138.58 (+2.38%) | Hold: 1 days 09:30:00
+  📈 LONG SPY: 14 shares @ $423.69 (cost: $5,931.68)
+  📉 EXIT SPY: 14 shares @ $425.46 | PnL: $+24.72 (+0.42%) | Hold: 0 days 14:05:00
+  📈 LONG SPY: 14 shares @ $427.80 (cost: $5,989.25)
+  📉 EXIT SPY: 14 shares @ $427.57 | PnL: $-3.33 (-0.06%) | Hold: 0 days 04:35:00
+  📈 LONG SPY: 14 shares @ $423.60 (cost: $5,930.42)
+  📉 EXIT SPY: 14 shares @ $420.94 | PnL: $-37.27 (-0.63%) | Hold: 0 days 03:40:00
+  📈 LONG SPY: 14 shares @ $424.21 (cost: $5,938.97)
+  📉 EXIT SPY: 14 shares @ $419.91 | PnL: $-60.23 (-1.01%) | Hold: 0 days 00:45:00
+  📈 LONG SPY: 14 shares @ $418.46 (cost: $5,858.43)
+  📉 EXIT SPY: 14 shares @ $415.97 | PnL: $-34.82 (-0.59%) | Hold: 0 days 09:25:00
+  📈 LONG SPY: 14 shares @ $416.62 (cost: $5,832.65)
+  📉 EXIT SPY: 14 shares @ $429.69 | PnL: $+182.94 (+3.14%) | Hold: 1 days 02:20:00
+  📈 LONG SPY: 14 shares @ $432.56 (cost: $6,055.79)
+  📉 EXIT SPY: 14 shares @ $431.23 | PnL: $-18.51 (-0.31%) | Hold: 0 days 03:05:00
+  📈 LONG SPY: 13 shares @ $435.82 (cost: $5,665.63)
+  📉 EXIT SPY: 13 shares @ $435.45 | PnL: $-4.75 (-0.08%) | Hold: 0 days 02:35:00
+  📈 LONG SPY: 13 shares @ $436.39 (cost: $5,673.05)
+  📉 EXIT SPY: 13 shares @ $438.47 | PnL: $+27.07 (+0.48%) | Hold: 0 days 08:25:00
+  📈 LONG SPY: 13 shares @ $437.79 (cost: $5,691.25)
+  📉 EXIT SPY: 13 shares @ $443.49 | PnL: $+74.09 (+1.30%) | Hold: 2 days 18:35:00
+  📈 LONG SPY: 13 shares @ $445.20 (cost: $5,787.63)
+  📉 EXIT SPY: 13 shares @ $443.35 | PnL: $-24.11 (-0.42%) | Hold: 0 days 03:20:00
+  📈 LONG SPY: 13 shares @ $445.32 (cost: $5,789.19)
+  📉 EXIT SPY: 13 shares @ $445.06 | PnL: $-3.45 (-0.06%) | Hold: 0 days 04:05:00
+  📈 LONG SPY: 13 shares @ $445.99 (cost: $5,797.91)
+Traceback (most recent call last):
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 595, in <module>
+    main()
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 581, in main
+    backtest.run_backtest()
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 322, in run_backtest
+    signal, alpha, rsi, vol_ratio = self.generate_signal(symbol, current_time, df)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 182, in generate_signal
+    alpha, rsi, vol_ratio = self.calculate_alpha_score(symbol, df_row_index, df)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 141, in calculate_alpha_score
+    rsi = calculate_rsi(hist_data['close'], period=params['rsi_lookback'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\src\features.py", line 268, in calculate_rsi
+    losses = (-delta).where(delta < 0, 0.0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py", line 11003, in where
+    return self._where(cond, other, inplace, axis, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py", line 10778, in _where
+    new_data = self._mgr.where(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\base.py", line 204, in where
+    return self.apply_with_block(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\blocks.py", line 1636, in where
+    casted = np_can_hold_element(values.dtype, other)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\dtypes\cast.py", line 1877, in np_can_hold_element
+    if lib.is_integer(element) or lib.is_float(element):
+       ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

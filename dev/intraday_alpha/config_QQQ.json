@@ -1,0 +1,68 @@
+{
+    "strategy_name": "Intraday Alpha (V1.0 Archive)",
+    "version": "1.0",
+    "deployment_date": "2026-01-10",
+    "status": "archived",
+    "symbols": [
+        "QQQ"
+    ],
+    "strategy_parameters": {
+        "SPY": {
+            "interval": "5Min",
+            "rsi_lookback": 14,
+            "sentry_gate": 0.0,
+            "rsi_wt": 1.0,
+            "vol_wt": 0.0,
+            "sent_wt": 0.0,
+            "position_cap_usd": 50000
+        },
+        "QQQ": {
+            "interval": "5Min",
+            "rsi_lookback": 14,
+            "sentry_gate": 0.0,
+            "rsi_wt": 0.9,
+            "vol_wt": 0.1,
+            "sent_wt": 0.0,
+            "position_cap_usd": 50000
+        },
+        "IWM": {
+            "interval": "5Min",
+            "rsi_lookback": 14,
+            "sentry_gate": -0.2,
+            "rsi_wt": 1.0,
+            "vol_wt": 0.0,
+            "sent_wt": 0.0,
+            "position_cap_usd": 50000
+        }
+    },
+    "account_info": {
+        "account_id": "PAPER_TRADING",
+        "initial_capital": 100000,
+        "paper_trading": true
+    },
+    "risk_management": {
+        "max_position_size_pct": 0.25,
+        "position_cap_enforcement": true,
+        "pdt_protection": true,
+        "min_equity_threshold": 25000
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "check_interval_seconds": 60
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "log_directory": "/home/ssm-user/magellan/logs"
+    },
+    "notes": {
+        "description": "Original V1.0 'Laminar DNA' deployment from January 10, 2026",
+        "original_deployment": "Alpaca Paper Trading",
+        "original_universe": "SPY, QQQ, IWM (index ETFs)",
+        "strategy_type": "Multi-factor intraday alpha (NOT HFT)",
+        "timeframes": "3-5 minute bars",
+        "replaced_by": "MAG7 deployment on January 11, 2026",
+        "git_commit": "2efcc54",
+        "git_tag": "v1.1-MAG7-READY (misleading name - this version traded indices)"
+    }
+}

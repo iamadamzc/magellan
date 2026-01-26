@@ -1,0 +1,116 @@
+{
+    "account_info": {
+        "account_id": "PA3DDLQCBJSE",
+        "account_name": "magellan-vol-expansion",
+        "initial_capital": 100000,
+        "margin_multiplier": 4,
+        "buying_power": 400000
+    },
+    "strategy": {
+        "name": "Volatility Expansion Entry",
+        "version": "2.0-sanitized",
+        "type": "intraday_momentum",
+        "frequency": "high",
+        "description": "Statistically-derived strategy from blind backwards analysis",
+        "discovered_via": "4-year cluster analysis on 2.46M 1-min bars",
+        "expected_trades_per_month": 70
+    },
+    "symbols": [
+        "SPY",
+        "QQQ",
+        "IWM"
+    ],
+    "data_requirements": {
+        "timeframe": "1Min",
+        "premarket": false,
+        "after_hours": false,
+        "warmup_bars": 100,
+        "feature_lookback": 50
+    },
+    "trading_hours": {
+        "market_open": "09:30:00",
+        "market_close": "16:00:00",
+        "timezone": "America/New_York",
+        "trading_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI"
+        ]
+    },
+    "entry_conditions": {
+        "effort_result_zscore_max": -0.5,
+        "range_ratio_mean_min": 1.4,
+        "volatility_ratio_min": 1.0,
+        "trade_intensity_min": 0.9,
+        "body_position_min": 0.25,
+        "min_tick_floor": 0.01
+    },
+    "exit_rules": {
+        "target_atr_multiple": 2.5,
+        "stop_atr_multiple": 1.25,
+        "risk_reward_ratio": 2.0,
+        "max_hold_bars": 30,
+        "time_exit_minutes": 30
+    },
+    "risk_management": {
+        "per_trade_risk_pct": 0.02,
+        "max_position_dollars": 50000,
+        "max_daily_loss_pct": 0.10,
+        "max_daily_loss_dollars": 10000,
+        "max_trades_per_day": 10,
+        "max_open_positions": 3,
+        "emergency_stop_conditions": {
+            "consecutive_losing_days": 3,
+            "win_rate_below": 0.45,
+            "rolling_window_days": 14,
+            "drawdown_threshold_pct": 0.20
+        }
+    },
+    "vix_regime_filters": {
+        "enable_regime_filter": false,
+        "min_vix_threshold": 12.0,
+        "regime_aware_sizing": true,
+        "complacency_multiplier": 1.5,
+        "normal_multiplier": 1.0,
+        "panic_multiplier": 0.5
+    },
+    "feature_engineering": {
+        "testing_mode": true,
+        "precompute_features": true,
+        "rolling_zscore_window": 50,
+        "atr_short_period": 5,
+        "atr_long_period": 20,
+        "volume_zscore_period": 20,
+        "body_position_calculation": "safe"
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "extended_hours": false,
+        "min_liquidity_shares": 100,
+        "max_spread_pct": 0.01,
+        "slippage_tolerance_pct": 0.005
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "cloudwatch_log_group": "/magellan/vol-expansion",
+        "health_check_interval_seconds": 60,
+        "report_interval_seconds": 300,
+        "alert_on_loss_dollars": 5000,
+        "track_regime_performance": true
+    },
+    "backtesting": {
+        "enable_walk_forward": true,
+        "oos_start_date": "2025-01-01",
+        "validate_against_research": true,
+        "expected_hit_rate_min": 0.55,
+        "expected_expectancy_min": 0.25
+    },
+    "ssm_parameters": {
+        "api_key_path": "/magellan/alpaca/PA3DDLQCBJSE/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3DDLQCBJSE/API_SECRET",
+        "base_url": "https://paper-api.alpaca.markets"
+    }
+}

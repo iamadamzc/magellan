@@ -1,0 +1,41 @@
+[Unit]
+Description=Magellan Bear Trap Strategy (Account PA3DDLQCBJSE)
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ssm-user
+Group=ssm-user
+WorkingDirectory=/home/ssm-user/magellan
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="STRATEGY=bear_trap"
+Environment="ALPACA_ACCOUNT_ID=PA3DDLQCBJSE"
+Environment="CONFIG_PATH=/home/ssm-user/magellan/deployed/bear_trap/config.json"
+
+# Execution
+ExecStart=/home/ssm-user/magellan/.venv/bin/python /home/ssm-user/magellan/deployable_strategies/bear_trap/runner.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=magellan-bear-trap
+
+# Resource limits
+MemoryLimit=2G
+CPUQuota=100%
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

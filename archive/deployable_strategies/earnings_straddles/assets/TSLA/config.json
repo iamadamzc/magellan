@@ -1,0 +1,9 @@
+{
+    "symbol": "TSLA",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "secondary",
+    "notes": "Sharpe 2.00 in Baseline"
+}

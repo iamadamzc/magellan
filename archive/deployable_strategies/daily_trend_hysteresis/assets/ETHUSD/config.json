@@ -1,0 +1,24 @@
+{
+    "symbol": "ETH/USD",
+    "asset_class": "crypto",
+    "strategy_name": "daily_trend_hysteresis_hourly",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 14,
+        "rsi_upper": 55,
+        "rsi_lower": 45,
+        "side": "long_only",
+        "order_type": "market"
+    },
+    "risk_management": {
+        "stop_loss_pct": null,
+        "take_profit_pct": null,
+        "max_position_size_usd": 10000,
+        "notes": "High drawdown (-45%), size conservatively"
+    },
+    "data_source_config": {
+        "provider": "alpaca",
+        "feed": "sip"
+    },
+    "deployment_status": "ready"
+}

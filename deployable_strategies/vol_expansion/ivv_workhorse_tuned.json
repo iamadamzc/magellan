@@ -1,0 +1,20 @@
+{
+  "symbol": "IVV",
+  "best_config": {
+    "cluster": 0,
+    "trend_filter": false,
+    "trades": 298,
+    "win_rate": 0.4463087248322148,
+    "expectancy": 0.12643950718065042,
+    "return_pct": 42.149104380007984
+  },
+  "original_config": {
+    "cluster": 7,
+    "trend_filter": true,
+    "trades": 134,
+    "win_rate": 0.40298507462686567,
+    "expectancy": 0.03938779744530799,
+    "return_pct": 4.3972972600018645
+  },
+  "improvement_pct": 37.75180712000612
+}

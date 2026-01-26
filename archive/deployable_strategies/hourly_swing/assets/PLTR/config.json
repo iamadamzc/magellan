@@ -1,0 +1,16 @@
+{
+    "symbol": "PLTR",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 21,
+        "rsi_upper": 60,
+        "rsi_lower": 40,
+        "stop_loss_pct": null
+    },
+    "risk_management": {
+        "max_position_size_usd": 10000,
+        "notes": "High volatility asset matching NVDA/TSLA profile"
+    },
+    "deployment_status": "ready"
+}

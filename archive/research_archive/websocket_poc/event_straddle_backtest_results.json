@@ -1,0 +1,12 @@
+{
+  "strategy": "5-minute hold",
+  "fomc_trades": 8,
+  "cpi_trades": 12,
+  "status": "PLACEHOLDER - needs real price data",
+  "next_steps": [
+    "Get historical SPY 1-minute bars for 2024 event dates",
+    "Get options chain data (or estimate with Black-Scholes)",
+    "Calculate actual P&L for each trade",
+    "Compute Sharpe ratio and compare to Phase 5A"
+  ]
+}

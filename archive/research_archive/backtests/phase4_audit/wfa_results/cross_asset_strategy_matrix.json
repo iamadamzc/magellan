@@ -1,0 +1,74 @@
+{
+  "Index_ETFs": {
+    "Momentum": {
+      "avg_sharpe": 0.4729038293547714,
+      "avg_win_rate": 41.45951136242398,
+      "total_trades": 194,
+      "symbols_tested": 2
+    },
+    "Hysteresis": {
+      "avg_sharpe": 0.5686146593347213,
+      "avg_win_rate": 46.85543964232488,
+      "total_trades": 116,
+      "symbols_tested": 2
+    },
+    "Premium_Selling": {
+      "avg_sharpe": 0.0,
+      "note": "Insufficient data"
+    },
+    "Earnings_Straddle": {
+      "avg_sharpe": 0.0,
+      "note": "Insufficient data"
+    }
+  },
+  "High_Beta": {
+    "Momentum": {
+      "avg_sharpe": 0.5612639884447052,
+      "avg_win_rate": 33.556604459965804,
+      "total_trades": 271,
+      "symbols_tested": 3
+    },
+    "Hysteresis": {
+      "avg_sharpe": 0.6335847172331719,
+      "avg_win_rate": 37.95698924731183,
+      "total_trades": 172,
+      "symbols_tested": 3
+    },
+    "Premium_Selling": {
+      "avg_sharpe": 0.0,
+      "note": "Insufficient data"
+    },
+    "Earnings_Straddle": {
+      "avg_sharpe": 2.517344406970493,
+      "avg_win_rate": 46.96969696969697,
+      "total_trades": 66,
+      "symbols_tested": 3
+    }
+  },
+  "Stable_Tech": {
+    "Momentum": {
+      "avg_sharpe": 0.2910596423500702,
+      "avg_win_rate": 37.884702755989885,
+      "total_trades": 278,
+      "symbols_tested": 3
+    },
+    "Hysteresis": {
+      "avg_sharpe": 0.31462170901402614,
+      "avg_win_rate": 44.30505774591796,
+      "total_trades": 178,
+      "symbols_tested": 3
+    },
+    "Premium_Selling": {
+      "avg_sharpe": 0.04060784490692003,
+      "avg_win_rate": 61.36363636363637,
+      "total_trades": 44,
+      "symbols_tested": 1
+    },
+    "Earnings_Straddle": {
+      "avg_sharpe": 3.248862888565347,
+      "avg_win_rate": 56.060606060606055,
+      "total_trades": 66,
+      "symbols_tested": 3
+    }
+  }
+}

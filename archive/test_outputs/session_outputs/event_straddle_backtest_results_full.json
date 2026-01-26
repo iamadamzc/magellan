@@ -1,0 +1,139 @@
+{
+  "backtest_date": "2026-01-16T07:14:43.265557",
+  "strategy": "5-minute hold event straddle",
+  "overall_metrics": {
+    "trades": 8,
+    "avg_profit": 12.835525061783205,
+    "std_dev": 10.941744264953188,
+    "sharpe": 1.1730785102422716,
+    "win_rate": 100.0,
+    "best_trade": 28.53832673144241,
+    "worst_trade": 2.460966034183918,
+    "total_return": 102.68420049426564
+  },
+  "category_metrics": {
+    "fomc": {
+      "trades": 8,
+      "avg_profit": 12.835525061783205,
+      "std_dev": 10.941744264953188,
+      "sharpe": 1.1730785102422716,
+      "win_rate": 100.0,
+      "best_trade": 28.53832673144241,
+      "worst_trade": 2.460966034183918
+    }
+  },
+  "trade_log": [
+    {
+      "date": "2024-01-31",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 487.47,
+      "announcement_price": 484.805,
+      "exit_price": 486.81,
+      "move_pct": 0.13539294725829795,
+      "profit_pct": 6.709647362914898,
+      "win": true
+    },
+    {
+      "date": "2024-03-20",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 515.52,
+      "announcement_price": 519.21,
+      "exit_price": 518.1,
+      "move_pct": 0.5004655493482388,
+      "profit_pct": 24.963277467411938,
+      "win": true
+    },
+    {
+      "date": "2024-05-01",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 500.99,
+      "announcement_price": 507.31,
+      "exit_price": 501.63,
+      "move_pct": 0.12774706081957451,
+      "profit_pct": 6.327353040978726,
+      "win": true
+    },
+    {
+      "date": "2024-06-12",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 542.68,
+      "announcement_price": 543.38,
+      "exit_price": 541.87,
+      "move_pct": 0.14925923195989266,
+      "profit_pct": 7.402961597994634,
+      "win": true
+    },
+    {
+      "date": "2024-07-31",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 550.53,
+      "announcement_price": 552.11,
+      "exit_price": 550.81,
+      "move_pct": 0.05086008028626464,
+      "profit_pct": 2.483004014313232,
+      "win": true
+    },
+    {
+      "date": "2024-09-18",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 562.97,
+      "announcement_price": 564.58,
+      "exit_price": 566.19,
+      "move_pct": 0.5719665346288483,
+      "profit_pct": 28.53832673144241,
+      "win": true
+    },
+    {
+      "date": "2024-11-07",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 595.01,
+      "announcement_price": 596.26,
+      "exit_price": 594.71,
+      "move_pct": 0.05041932068367835,
+      "profit_pct": 2.460966034183918,
+      "win": true
+    },
+    {
+      "date": "2024-12-18",
+      "time": "14:00",
+      "category": "fomc",
+      "event_name": "FOMC Rate Decision",
+      "entry_time": "13:55",
+      "exit_time": "14:05",
+      "entry_price": 605.65,
+      "announcement_price": 595.1,
+      "exit_price": 602.76,
+      "move_pct": 0.47717328490051786,
+      "profit_pct": 23.79866424502589,
+      "win": true
+    }
+  ]
+}

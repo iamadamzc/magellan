@@ -1,0 +1,506 @@
+{
+  "SPY": {
+    "best_timestop": {
+      "trades": 338,
+      "win_rate": 0.3875739644970414,
+      "expectancy": 0.10890310732490878,
+      "return_pct": 39.39669388001133,
+      "config": "8 bars (2 hr baseline)",
+      "bars": 8
+    },
+    "all_timestops": [
+      {
+        "trades": 412,
+        "win_rate": 0.42718446601941745,
+        "expectancy": 0.0511921934633518,
+        "return_pct": 20.00059862001016,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 369,
+        "win_rate": 0.4065040650406504,
+        "expectancy": 0.07693290036753679,
+        "return_pct": 28.417854580009873,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 338,
+        "win_rate": 0.3875739644970414,
+        "expectancy": 0.10890310732490878,
+        "return_pct": 39.39669388001133,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 296,
+        "win_rate": 0.3581081081081081,
+        "expectancy": 0.09779856204838903,
+        "return_pct": 28.7030768200075,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 286,
+        "win_rate": 0.32867132867132864,
+        "expectancy": 0.09517058908855797,
+        "return_pct": 26.249829100007926,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 3.0,
+    "stop": 1.0,
+    "cluster": 6,
+    "trend_filter": false
+  },
+  "QQQ": {
+    "best_timestop": {
+      "trades": 391,
+      "win_rate": 0.391304347826087,
+      "expectancy": 0.084421897696773,
+      "return_pct": 33.46110414000763,
+      "config": "8 bars (2 hr baseline)",
+      "bars": 8
+    },
+    "all_timestops": [
+      {
+        "trades": 487,
+        "win_rate": 0.44353182751540043,
+        "expectancy": 0.047927946863346324,
+        "return_pct": 22.392297500008418,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 428,
+        "win_rate": 0.397196261682243,
+        "expectancy": 0.06673654259624016,
+        "return_pct": 27.84690330000783,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 391,
+        "win_rate": 0.391304347826087,
+        "expectancy": 0.084421897696773,
+        "return_pct": 33.46110414000763,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 356,
+        "win_rate": 0.3342696629213483,
+        "expectancy": 0.03973644832589596,
+        "return_pct": 10.283815620005686,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 333,
+        "win_rate": 0.2912912912912913,
+        "expectancy": -0.008958477789122985,
+        "return_pct": -7.148569119994519,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 3.0,
+    "stop": 1.0,
+    "cluster": 4,
+    "trend_filter": false
+  },
+  "IWM": {
+    "best_timestop": {
+      "trades": 425,
+      "win_rate": 0.32941176470588235,
+      "expectancy": 0.1368934555337313,
+      "return_pct": 65.7718499400378,
+      "config": "8 bars (2 hr baseline)",
+      "bars": 8
+    },
+    "all_timestops": [
+      {
+        "trades": 490,
+        "win_rate": 0.37755102040816324,
+        "expectancy": 0.08403022057616195,
+        "return_pct": 41.31523889003983,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 446,
+        "win_rate": 0.34977578475336324,
+        "expectancy": 0.11402885721747864,
+        "return_pct": 54.836827570038224,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 425,
+        "win_rate": 0.32941176470588235,
+        "expectancy": 0.1368934555337313,
+        "return_pct": 65.7718499400378,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 384,
+        "win_rate": 0.2604166666666667,
+        "expectancy": 0.026862340455612265,
+        "return_pct": 3.2254707300273244,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 379,
+        "win_rate": 0.21899736147757257,
+        "expectancy": -0.008603467718953404,
+        "return_pct": -10.321103159974587,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 2.0,
+    "stop": 0.5,
+    "cluster": 1,
+    "trend_filter": false
+  },
+  "IVV": {
+    "best_timestop": {
+      "trades": 237,
+      "win_rate": 0.379746835443038,
+      "expectancy": 0.2530368330444214,
+      "return_pct": 75.62032952000841,
+      "config": "16 bars (4 hr)",
+      "bars": 16
+    },
+    "all_timestops": [
+      {
+        "trades": 347,
+        "win_rate": 0.4495677233429395,
+        "expectancy": 0.13220874747756897,
+        "return_pct": 53.64343386000861,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 308,
+        "win_rate": 0.41233766233766234,
+        "expectancy": 0.11932350123028067,
+        "return_pct": 40.031444620008514,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 282,
+        "win_rate": 0.4078014184397163,
+        "expectancy": 0.1455272953391006,
+        "return_pct": 45.99038064000738,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 254,
+        "win_rate": 0.3661417322834646,
+        "expectancy": 0.150380968740978,
+        "return_pct": 41.57867232000647,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 237,
+        "win_rate": 0.379746835443038,
+        "expectancy": 0.2530368330444214,
+        "return_pct": 75.62032952000841,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 3.0,
+    "stop": 1.0,
+    "cluster": 0,
+    "trend_filter": false
+  },
+  "VOO": {
+    "best_timestop": {
+      "trades": 18,
+      "win_rate": 0.6111111111111112,
+      "expectancy": 1.4145694934262858,
+      "return_pct": 28.19963727000021,
+      "config": "4 bars (1 hr)",
+      "bars": 4
+    },
+    "all_timestops": [
+      {
+        "trades": 18,
+        "win_rate": 0.6111111111111112,
+        "expectancy": 1.4145694934262858,
+        "return_pct": 28.19963727000021,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 16,
+        "win_rate": 0.5,
+        "expectancy": 1.2608400969066236,
+        "return_pct": 21.64856598999996,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 16,
+        "win_rate": 0.4375,
+        "expectancy": 0.9778552029956583,
+        "return_pct": 16.318845610000054,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 14,
+        "win_rate": 0.5,
+        "expectancy": 1.28985735241491,
+        "return_pct": 19.177314110000122,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 14,
+        "win_rate": 0.42857142857142855,
+        "expectancy": 1.0962622644151665,
+        "return_pct": 15.998213309999866,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 2.0,
+    "stop": 0.5,
+    "cluster": 4,
+    "trend_filter": false
+  },
+  "GLD": {
+    "best_timestop": {
+      "trades": 251,
+      "win_rate": 0.38247011952191234,
+      "expectancy": 0.32798055109356244,
+      "return_pct": 118.47281259581135,
+      "config": "12 bars (3 hr)",
+      "bars": 12
+    },
+    "all_timestops": [
+      {
+        "trades": 285,
+        "win_rate": 0.4456140350877193,
+        "expectancy": 0.14387167982532925,
+        "return_pct": 46.68895636001107,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 273,
+        "win_rate": 0.4175824175824176,
+        "expectancy": 0.2005871887235948,
+        "return_pct": 67.07312431080994,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 262,
+        "win_rate": 0.38549618320610685,
+        "expectancy": 0.2345093424709565,
+        "return_pct": 77.93459790781047,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 251,
+        "win_rate": 0.38247011952191234,
+        "expectancy": 0.32798055109356244,
+        "return_pct": 118.47281259581135,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 249,
+        "win_rate": 0.3453815261044177,
+        "expectancy": 0.2766135341600698,
+        "return_pct": 90.78600904841063,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 3.0,
+    "stop": 1.0,
+    "cluster": 4,
+    "trend_filter": false
+  },
+  "SLV": {
+    "best_timestop": {
+      "trades": 85,
+      "win_rate": 0.3764705882352941,
+      "expectancy": 0.062233644044699374,
+      "return_pct": 4.40844518000012,
+      "config": "16 bars (4 hr)",
+      "bars": 16
+    },
+    "all_timestops": [
+      {
+        "trades": 123,
+        "win_rate": 0.43902439024390244,
+        "expectancy": -0.031967373611861576,
+        "return_pct": -4.4922775499998675,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 107,
+        "win_rate": 0.40186915887850466,
+        "expectancy": -0.0398135059890848,
+        "return_pct": -4.8998882199997595,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 99,
+        "win_rate": 0.40404040404040403,
+        "expectancy": -0.0031630036595524263,
+        "return_pct": -1.1289688799997144,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 89,
+        "win_rate": 0.3707865168539326,
+        "expectancy": 0.03552235994296865,
+        "return_pct": 2.2645145500002295,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 85,
+        "win_rate": 0.3764705882352941,
+        "expectancy": 0.062233644044699374,
+        "return_pct": 4.40844518000012,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 2.5,
+    "stop": 1.0,
+    "cluster": 6,
+    "trend_filter": false
+  },
+  "TQQQ": {
+    "best_timestop": {
+      "trades": 200,
+      "win_rate": 0.375,
+      "expectancy": 0.036555077466388086,
+      "return_pct": 5.434824539996086,
+      "config": "16 bars (4 hr)",
+      "bars": 16
+    },
+    "all_timestops": [
+      {
+        "trades": 229,
+        "win_rate": 0.4192139737991266,
+        "expectancy": -0.03542415260720044,
+        "return_pct": -9.147279840004263,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 212,
+        "win_rate": 0.419811320754717,
+        "expectancy": 0.022943024706330063,
+        "return_pct": 3.1037446799957458,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 207,
+        "win_rate": 0.3864734299516908,
+        "expectancy": 0.025733834058984686,
+        "return_pct": 3.4474099199960806,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 200,
+        "win_rate": 0.375,
+        "expectancy": 0.02925823304676115,
+        "return_pct": 3.969358679996038,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 200,
+        "win_rate": 0.375,
+        "expectancy": 0.036555077466388086,
+        "return_pct": 5.434824539996086,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 2.0,
+    "stop": 1.0,
+    "cluster": 2,
+    "trend_filter": true
+  },
+  "SOXL": {
+    "best_timestop": {
+      "trades": 195,
+      "win_rate": 0.37435897435897436,
+      "expectancy": 0.01346404385413253,
+      "return_pct": 0.6301324799991237,
+      "config": "16 bars (4 hr)",
+      "bars": 16
+    },
+    "all_timestops": [
+      {
+        "trades": 219,
+        "win_rate": 0.4337899543378995,
+        "expectancy": 0.002813560281836135,
+        "return_pct": -1.044398340001007,
+        "config": "4 bars (1 hr)",
+        "bars": 4
+      },
+      {
+        "trades": 207,
+        "win_rate": 0.3961352657004831,
+        "expectancy": -0.020922966723834778,
+        "return_pct": -6.033414440001028,
+        "config": "6 bars (1.5 hr)",
+        "bars": 6
+      },
+      {
+        "trades": 200,
+        "win_rate": 0.38,
+        "expectancy": 0.002245610557185156,
+        "return_pct": -1.4798185000008846,
+        "config": "8 bars (2 hr baseline)",
+        "bars": 8
+      },
+      {
+        "trades": 196,
+        "win_rate": 0.3673469387755102,
+        "expectancy": 0.0020202246557214877,
+        "return_pct": -1.589393540000883,
+        "config": "12 bars (3 hr)",
+        "bars": 12
+      },
+      {
+        "trades": 195,
+        "win_rate": 0.37435897435897436,
+        "expectancy": 0.01346404385413253,
+        "return_pct": 0.6301324799991237,
+        "config": "16 bars (4 hr)",
+        "bars": 16
+      }
+    ],
+    "target": 2.0,
+    "stop": 1.0,
+    "cluster": 1,
+    "trend_filter": true
+  }
+}

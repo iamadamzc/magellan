@@ -1,0 +1,40 @@
+{
+    "symbol": "SPY",
+    "strategy": "Workhorse",
+    "status": "OPTIONAL",
+    "priority": 4,
+    "parameters": {
+        "cluster_id": 6,
+        "trend_filter": false,
+        "target_atr": 3.0,
+        "stop_atr": 1.0,
+        "time_stop_bars": 8,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 39.40,
+        "trades": 338,
+        "win_rate": 0.388,
+        "expectancy_r": 0.109,
+        "starting_capital": 25000,
+        "ending_capital": 34850,
+        "max_drawdown_estimated": "~12%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 6 signal fires",
+        "exit_target": "Close price + (3.0 × ATR20)",
+        "exit_stop": "Close price - (1.0 × ATR20)",
+        "exit_time": "Close position after 8 bars (2 hours) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "notes": [
+        "SPY tracks S&P 500 (most liquid ETF)",
+        "Cluster 6 is optimal for SPY",
+        "OPTIONAL - redundant with IVV (same index, IVV has better return)",
+        "Use if you prefer SPY's liquidity over IVV",
+        "NO trend filter"
+    ]
+}

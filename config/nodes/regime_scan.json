@@ -1,0 +1,15 @@
+{
+    "NODE_TYPE": "REGIME_SCAN_REVERSION",
+    "METABOLISM": "15Min",
+    "RSI_LOOKBACK": 14,
+    "SENTRY_GATE": 0.0,
+    "ALPHA_WEIGHTS": {
+        "rsi_14": -1.0,
+        "volume_zscore": 0.0,
+        "sentiment": 0.0,
+        "volatility_14": 0.0
+    },
+    "POSITION_CAP_USD": 50000.0,
+    "ALLOW_SHORTS": true,
+    "RETRAIN_INTERVAL": 9999
+}

@@ -1,0 +1,40 @@
+{
+    "symbol": "IWM",
+    "strategy": "Workhorse",
+    "status": "DEPLOYMENT_READY",
+    "priority": 3,
+    "parameters": {
+        "cluster_id": 1,
+        "trend_filter": false,
+        "target_atr": 2.0,
+        "stop_atr": 0.5,
+        "time_stop_bars": 8,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 65.77,
+        "trades": 425,
+        "win_rate": 0.329,
+        "expectancy_r": 0.137,
+        "starting_capital": 25000,
+        "ending_capital": 41443,
+        "max_drawdown_estimated": "~18%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 1 signal fires",
+        "exit_target": "Close price + (2.0 × ATR20)",
+        "exit_stop": "Close price - (0.5 × ATR20)",
+        "exit_time": "Close position after 8 bars (2 hours) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "notes": [
+        "IWM tracks Russell 2000 (small caps)",
+        "Cluster 1 is optimal",
+        "Uses TIGHT STOP (0.5 ATR) with 4:1 R:R ratio",
+        "Lower win rate (33%) but higher profit factor due to R:R",
+        "Best diversifier - lowest correlation to S&P 500"
+    ]
+}

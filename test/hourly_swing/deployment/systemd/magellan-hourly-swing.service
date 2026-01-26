@@ -1,0 +1,40 @@
+[Unit]
+Description=Magellan Hourly Swing Strategy
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ssm-user
+Group=ssm-user
+WorkingDirectory=/home/ssm-user/magellan
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="STRATEGY=hourly_swing"
+Environment="ALPACA_ACCOUNT_ID=PA3ASNTJV624"
+
+# Execution
+ExecStart=/home/ssm-user/magellan/.venv/bin/python /home/ssm-user/magellan/prod/hourly_swing/runner.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=magellan-hourly-swing
+
+# Resource limits
+MemoryLimit=2G
+CPUQuota=100%
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

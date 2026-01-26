@@ -1,0 +1,203 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Magellan baseline host (SSM-only, no inbound ports)"
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t3.small
+    AllowedValues:
+      - t3.micro
+      - t3.small
+      - t3.medium
+      - t3.large
+  LatestAmiId:
+    Type: "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>"
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64
+  VpcCidr:
+    Type: String
+    Default: 10.20.0.0/16
+  PublicSubnetCidr:
+    Type: String
+    Default: 10.20.1.0/24
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: magellan-vpc
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: magellan-igw
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PublicSubnetCidr
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: magellan-public-subnet
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: magellan-public-rt
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+  MagellanSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Magellan host SG (no inbound)"
+      VpcId: !Ref VPC
+      SecurityGroupIngress: []
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: magellan-sg
+
+  MagellanInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: MagellanInstanceProfile
+      Roles:
+        - MagellanInstanceRole
+
+  MagellanLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /magellan/host
+      RetentionInDays: 14
+
+  MagellanInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref LatestAmiId
+      IamInstanceProfile: !Ref MagellanInstanceProfile
+      NetworkInterfaces:
+        - DeviceIndex: "0"
+          SubnetId: !Ref PublicSubnet
+          GroupSet:
+            - !Ref MagellanSecurityGroup
+          AssociatePublicIpAddress: true
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -e
+          
+          # Log everything to CloudWatch
+          exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+          
+          echo "========================================="
+          echo "Magellan EC2 Setup - Starting"
+          echo "========================================="
+          
+          # Install git and Python
+          echo "Installing git and Python..."
+          dnf install -y git python3 python3-pip
+          
+          # Create ec2-user home directory structure
+          cd /home/ec2-user
+          
+          # Clone Magellan repository
+          echo "Cloning Magellan repository..."
+          if [ ! -d "magellan" ]; then
+            sudo -u ec2-user git clone https://github.com/iamadamzc/magellan.git
+          fi
+          
+          cd magellan
+          
+          # Checkout deployment branch
+          echo "Checking out deployment branch..."
+          sudo -u ec2-user git fetch origin
+          sudo -u ec2-user git checkout deployment/aws-paper-trading-setup
+          sudo -u ec2-user git pull origin deployment/aws-paper-trading-setup
+          
+          # Create Python virtual environment
+          echo "Creating Python virtual environment..."
+          sudo -u ec2-user python3 -m venv .venv
+          
+          # Install Python dependencies
+          echo "Installing Python dependencies..."
+          sudo -u ec2-user .venv/bin/pip install --upgrade pip
+          sudo -u ec2-user .venv/bin/pip install -r requirements.txt
+          sudo -u ec2-user .venv/bin/pip install rich boto3 pytz
+          
+          # Install systemd services
+          echo "Installing systemd services..."
+          cp deployable_strategies/bear_trap/aws_deployment/magellan-bear-trap.service /etc/systemd/system/
+          cp deployable_strategies/daily_trend_hysteresis/aws_deployment/magellan-daily-trend.service /etc/systemd/system/
+          cp deployable_strategies/hourly_swing/aws_deployment/magellan-hourly-swing.service /etc/systemd/system/
+          
+          chmod 644 /etc/systemd/system/magellan-*.service
+          
+          # Reload systemd
+          systemctl daemon-reload
+          
+          # Enable services for auto-start
+          echo "Enabling services..."
+          systemctl enable magellan-bear-trap
+          systemctl enable magellan-daily-trend
+          systemctl enable magellan-hourly-swing
+          
+          # Start services
+          echo "Starting services..."
+          systemctl start magellan-bear-trap
+          systemctl start magellan-daily-trend
+          systemctl start magellan-hourly-swing
+          
+          # Check status
+          echo "========================================="
+          echo "Service Status:"
+          systemctl status magellan-bear-trap --no-pager || true
+          systemctl status magellan-daily-trend --no-pager || true
+          systemctl status magellan-hourly-swing --no-pager || true
+          
+          echo "========================================="
+          echo "Magellan EC2 Setup - Complete!"
+          echo "========================================="
+      Tags:
+        - Key: Name
+          Value: magellan-host
+
+Outputs:
+  InstanceId:
+    Value: !Ref MagellanInstance
+  PublicIp:
+    Value: !GetAtt MagellanInstance.PublicIp
+  VpcId:
+    Value: !Ref VPC

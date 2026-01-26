@@ -1,0 +1,6 @@
+{
+    "symbol": "AMZN",
+    "strategy_name": "hourly_swing",
+    "deployment_status": "archived",
+    "rejection_reason": "Failed tuning (Sharpe < 0, sensitive to noise)"
+}

@@ -1,0 +1,41 @@
+[Unit]
+Description=Magellan Hourly Swing Strategy
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/magellan
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="STRATEGY=hourly_swing"
+Environment="ACCOUNT_ID=PA3ASNTJV624"
+Environment="CONFIG_PATH=/home/ec2-user/magellan/deployable_strategies/hourly_swing/aws_deployment/config.json"
+
+# Execution
+ExecStart=/home/ec2-user/magellan/.venv/bin/python /home/ec2-user/magellan/deployable_strategies/hourly_swing/aws_deployment/run_strategy.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=magellan-hourly-swing
+
+# Resource limits
+MemoryLimit=2G
+CPUQuota=100%
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

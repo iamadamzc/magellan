@@ -1,0 +1,11 @@
+{
+    "symbol": "GOOGL",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "deployment_status": "active"
+}

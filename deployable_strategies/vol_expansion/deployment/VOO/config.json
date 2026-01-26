@@ -1,0 +1,45 @@
+{
+    "symbol": "VOO",
+    "strategy": "Workhorse",
+    "status": "LOW_SAMPLE_SIZE",
+    "priority": 6,
+    "parameters": {
+        "cluster_id": 4,
+        "trend_filter": false,
+        "target_atr": 2.0,
+        "stop_atr": 0.5,
+        "time_stop_bars": 4,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 28.20,
+        "trades": 18,
+        "win_rate": 0.611,
+        "expectancy_r": 1.41,
+        "starting_capital": 25000,
+        "ending_capital": 32050,
+        "max_drawdown_estimated": "~8%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 4 signal fires",
+        "exit_target": "Close price + (2.0 × ATR20)",
+        "exit_stop": "Close price - (0.5 × ATR20)",
+        "exit_time": "Close position after 4 bars (1 hour) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "warnings": [
+        "⚠️ ONLY 18 TRADES - Statistically unreliable",
+        "⚠️ 61% win rate may be noise with such small sample",
+        "⚠️ Redundant with SPY/IVV (same index)",
+        "⚠️ Need 50+ trades for confidence"
+    ],
+    "notes": [
+        "VOO tracks S&P 500 (Vanguard version)",
+        "Attractive metrics but insufficient sample size",
+        "Consider combining with IVV signals instead",
+        "4-bar time stop is very fast"
+    ]
+}

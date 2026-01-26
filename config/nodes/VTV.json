@@ -1,0 +1,30 @@
+{
+    "ticker": "VTV",
+    "description": "Vanguard Value ETF - Thermal Heat Sink for Volatility Stabilization",
+    "alpha_weights": {
+        "rsi_14": 0.6,
+        "volume_zscore": 0.2,
+        "sentiment": 0.2
+    },
+    "sentry_gate": {
+        "enabled": true,
+        "type": "high_pass",
+        "threshold": 0.4,
+        "description": "Lowered gate for thicker Value flow (Isolation Mode)"
+    },
+    "ic_horizons": [
+        5,
+        15,
+        60
+    ],
+    "validation": {
+        "walk_forward_split": 0.70,
+        "horizon_bars": 15,
+        "min_hit_rate": 0.51
+    },
+    "stress_test": {
+        "days": 15,
+        "in_sample_days": 3,
+        "initial_capital": 100000.0
+    }
+}

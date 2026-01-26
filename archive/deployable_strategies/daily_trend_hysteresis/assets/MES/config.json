@@ -1,0 +1,40 @@
+{
+    "symbol": "MES",
+    "full_name": "Micro E-mini S&P 500",
+    "proxy_tested": "SPY (S&P 500 ETF)",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "proxy_symbol": "SPY",
+        "total_return_pct": 22.27,
+        "sharpe_ratio": 1.06,
+        "max_drawdown_pct": -8.53,
+        "trade_count": 11,
+        "win_rate_pct": 36.4,
+        "avg_hold_days": 53.0,
+        "buy_hold_return_pct": 43.29
+    },
+    "deployment_status": "approved",
+    "deployment_date": "2026-01-16",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 15,
+        "stop_loss_pct": null,
+        "notes": "Core index futures position. Highly liquid. Tested via SPY ETF proxy with strong correlation."
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 0.25,
+        "tick_value_usd": 1.25,
+        "margin_requirement_approx_usd": 1200,
+        "trading_hours": "Nearly 24 hours (6:00 PM ET Sun - 5:00 PM ET Fri)",
+        "multiplier": 5
+    },
+    "notes": "Tested using SPY ETF as proxy. Actual futures expected to perform similarly or better due to leverage and 24-hour trading. No rollover required for continuous contract."
+}

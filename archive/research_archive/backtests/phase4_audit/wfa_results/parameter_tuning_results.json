@@ -1,0 +1,58 @@
+{
+  "premium_selling_regime_filter": {
+    "no_filter": {
+      "num_trades": 48,
+      "sharpe": -0.2128783563349694,
+      "win_rate": 54.2,
+      "avg_pnl": -5.07,
+      "profit_factor": 0.86
+    },
+    "with_filter": {
+      "num_trades": 7,
+      "sharpe": -0.619292826354456,
+      "win_rate": 57.1,
+      "avg_pnl": -26.2,
+      "profit_factor": 0.61
+    }
+  },
+  "hysteresis_trend_filter": {
+    "no_filter": {
+      "avg_sharpe": 0.23726685422981092,
+      "avg_outperformance": 40.08334410461292,
+      "pct_positive": 71.42857142857143
+    },
+    "with_trend": {
+      "avg_sharpe": 0.25965183298528655,
+      "avg_outperformance": 14.74472700968457,
+      "pct_positive": 85.71428571428571
+    },
+    "with_trend_vol": {
+      "avg_sharpe": 0.2817704438330884,
+      "avg_outperformance": 16.435757997006082,
+      "pct_positive": 85.71428571428571
+    }
+  },
+  "earnings_entry_timing": {
+    "1_day": {
+      "num_trades": 24,
+      "sharpe": 4.37766651817816,
+      "win_rate": 62.5,
+      "avg_pnl": 43.93,
+      "avg_hold": 4.625
+    },
+    "2_day": {
+      "num_trades": 24,
+      "sharpe": 4.657618653472531,
+      "win_rate": 62.5,
+      "avg_pnl": 47.91,
+      "avg_hold": 4.791666666666667
+    },
+    "3_day": {
+      "num_trades": 24,
+      "sharpe": 3.59055860345105,
+      "win_rate": 62.5,
+      "avg_pnl": 36.25,
+      "avg_hold": 5.333333333333333
+    }
+  }
+}

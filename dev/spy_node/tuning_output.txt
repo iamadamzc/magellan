@@ -1,0 +1,126 @@
+==========================================================================================
+STRATEGY PARAMETER TUNING
+4-Year Backtest (2022-2026) | 1-Minute Bars
+==========================================================================================
+
+==========================================================================================
+SYMBOL: SPY
+==========================================================================================
+Loading data...
+Loaded 837,967 bars
+Testing 225 parameter combinations...
+  Progress: 25/225 (11%)
+  Progress: 50/225 (22%)
+  Progress: 75/225 (33%)
+  Progress: 100/225 (44%)
+  Progress: 125/225 (56%)
+  Progress: 150/225 (67%)
+  Progress: 175/225 (78%)
+  Progress: 200/225 (89%)
+  Progress: 225/225 (100%)
+
+[SPY] BEST PARAMETERS (by Sharpe):
+  RSI Period: 10
+  Vol Window: 10
+  RSI Weight: 0.6
+  Horizon: 20 min
+  Sharpe: 0.944
+  Return: 78.58%
+  Hit Rate: 47.4%
+
+==========================================================================================
+SYMBOL: QQQ
+==========================================================================================
+Loading data...
+Loaded 869,668 bars
+Testing 225 parameter combinations...
+  Progress: 25/225 (11%)
+  Progress: 50/225 (22%)
+  Progress: 75/225 (33%)
+  Progress: 100/225 (44%)
+  Progress: 125/225 (56%)
+  Progress: 150/225 (67%)
+  Progress: 175/225 (78%)
+  Progress: 200/225 (89%)
+  Progress: 225/225 (100%)
+
+[QQQ] BEST PARAMETERS (by Sharpe):
+  RSI Period: 10
+  Vol Window: 20
+  RSI Weight: 0.5
+  Horizon: 20 min
+  Sharpe: 1.029
+  Return: 119.14%
+  Hit Rate: 47.6%
+
+==========================================================================================
+SYMBOL: IWM
+==========================================================================================
+Loading data...
+Loaded 755,102 bars
+Testing 225 parameter combinations...
+  Progress: 25/225 (11%)
+  Progress: 50/225 (22%)
+  Progress: 75/225 (33%)
+  Progress: 100/225 (44%)
+  Progress: 125/225 (56%)
+  Progress: 150/225 (67%)
+  Progress: 175/225 (78%)
+  Progress: 200/225 (89%)
+  Progress: 225/225 (100%)
+
+[IWM] BEST PARAMETERS (by Sharpe):
+  RSI Period: 10
+  Vol Window: 10
+  RSI Weight: 0.7
+  Horizon: 20 min
+  Sharpe: 0.471
+  Return: 40.16%
+  Hit Rate: 46.8%
+
+Results saved to tuning_results.csv
+
+==========================================================================================
+OPTIMAL PARAMETERS BY SYMBOL
+==========================================================================================
+
+SPY:
+  RSI Period: 10
+  Vol Window: 10
+  RSI Weight: 0.6
+  Horizon: 20 min
+  Sharpe: 0.944
+  Return: 78.58%
+  Hit Rate: 47.4%
+
+QQQ:
+  RSI Period: 10
+  Vol Window: 20
+  RSI Weight: 0.5
+  Horizon: 20 min
+  Sharpe: 1.029
+  Return: 119.14%
+  Hit Rate: 47.6%
+
+IWM:
+  RSI Period: 10
+  Vol Window: 10
+  RSI Weight: 0.7
+  Horizon: 20 min
+  Sharpe: 0.471
+  Return: 40.16%
+  Hit Rate: 46.8%
+
+==========================================================================================
+UNIVERSAL OPTIMAL PARAMETERS
+==========================================================================================
+
+Best Average Parameters (across all symbols):
+  RSI Period: 10
+  Vol Window: 10
+  RSI Weight: 0.7
+  Horizon: 20 min
+  Avg Sharpe: 0.601
+  Avg Return: 48.02%
+  Avg Hit Rate: 47.3%
+==========================================================================================

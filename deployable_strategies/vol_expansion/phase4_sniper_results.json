@@ -1,0 +1,857 @@
+{
+  "SPY": {
+    "best_sniper": {
+      "trades": 0,
+      "win_rate": 0,
+      "expectancy": 0,
+      "return_pct": 0,
+      "percentile": 5,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -78.56275130302129,
+        "range_ratio_mean": 5.764657844061396,
+        "volatility_ratio_mean": 1.2041393835250613
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -78.56275130302129,
+          "range_ratio_mean": 5.764657844061396,
+          "volatility_ratio_mean": 1.2041393835250613
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -78.56275130302129,
+          "range_ratio_mean": 5.764657844061396,
+          "volatility_ratio_mean": 1.2041393835250613
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -69.66973808197883,
+          "range_ratio_mean": 5.327406209626286,
+          "volatility_ratio_mean": 1.1475483336423071
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -69.66973808197883,
+          "range_ratio_mean": 5.327406209626286,
+          "volatility_ratio_mean": 1.1475483336423071
+        }
+      },
+      {
+        "trades": 4,
+        "win_rate": 0.25,
+        "expectancy": -0.5602789921742386,
+        "return_pct": -4.451942259999875,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 5.062228001149972,
+          "volatility_ratio_mean": 1.1099559613435857
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 0.0,
+        "expectancy": -1.0136734840379045,
+        "return_pct": -2.0223823399999286,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 5.062228001149972,
+          "volatility_ratio_mean": 1.1099559613435857
+        }
+      }
+    ]
+  },
+  "QQQ": {
+    "best_sniper": {
+      "trades": 0,
+      "win_rate": 0,
+      "expectancy": 0,
+      "return_pct": 0,
+      "percentile": 5,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -74.25020447424856,
+        "range_ratio_mean": 5.90553242287606,
+        "volatility_ratio_mean": 1.2215419331647073
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -74.25020447424856,
+          "range_ratio_mean": 5.90553242287606,
+          "volatility_ratio_mean": 1.2215419331647073
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -74.25020447424856,
+          "range_ratio_mean": 5.90553242287606,
+          "volatility_ratio_mean": 1.2215419331647073
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -67.84000611959985,
+          "range_ratio_mean": 5.503034850030113,
+          "volatility_ratio_mean": 1.1622090015827204
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -67.84000611959985,
+          "range_ratio_mean": 5.503034850030113,
+          "volatility_ratio_mean": 1.1622090015827204
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -60.9446731769835,
+          "range_ratio_mean": 5.187650770177421,
+          "volatility_ratio_mean": 1.1217666466975658
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -60.9446731769835,
+          "range_ratio_mean": 5.187650770177421,
+          "volatility_ratio_mean": 1.1217666466975658
+        }
+      }
+    ]
+  },
+  "IWM": {
+    "best_sniper": {
+      "trades": 2,
+      "win_rate": 0.5,
+      "expectancy": 0.47081602151332247,
+      "return_pct": 1.7992404600000844,
+      "percentile": 15,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -65.55620081295613,
+        "range_ratio_mean": 4.924819966411496,
+        "volatility_ratio_mean": 1.1204695955833497
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -77.8311485921044,
+          "range_ratio_mean": 5.6116023571585565,
+          "volatility_ratio_mean": 1.214183162967773
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -77.8311485921044,
+          "range_ratio_mean": 5.6116023571585565,
+          "volatility_ratio_mean": 1.214183162967773
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -70.0,
+          "range_ratio_mean": 5.216793595592706,
+          "volatility_ratio_mean": 1.1612804497302371
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -70.0,
+          "range_ratio_mean": 5.216793595592706,
+          "volatility_ratio_mean": 1.1612804497302371
+        }
+      },
+      {
+        "trades": 2,
+        "win_rate": 0.5,
+        "expectancy": 0.47081602151332247,
+        "return_pct": 1.7992404600000844,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -65.55620081295613,
+          "range_ratio_mean": 4.924819966411496,
+          "volatility_ratio_mean": 1.1204695955833497
+        }
+      },
+      {
+        "trades": 2,
+        "win_rate": 0.5,
+        "expectancy": 0.47081602151332247,
+        "return_pct": 1.7992404600000844,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -65.55620081295613,
+          "range_ratio_mean": 4.924819966411496,
+          "volatility_ratio_mean": 1.1204695955833497
+        }
+      }
+    ]
+  },
+  "IVV": {
+    "best_sniper": {
+      "trades": 5,
+      "win_rate": 0.4,
+      "expectancy": 0.1840364109197523,
+      "return_pct": 1.6311514600002797,
+      "percentile": 15,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -47.74314296517463,
+        "range_ratio_mean": 4.021966915266139,
+        "volatility_ratio_mean": 1.1284043723911337
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 4.715941299086772,
+          "volatility_ratio_mean": 1.2115039262284772
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 4.715941299086772,
+          "volatility_ratio_mean": 1.2115039262284772
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 0.0,
+        "expectancy": -1.0221422640464797,
+        "return_pct": -2.042228999999862,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -50.832787442178216,
+          "range_ratio_mean": 4.2836704410293,
+          "volatility_ratio_mean": 1.164431012118277
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -50.832787442178216,
+          "range_ratio_mean": 4.2836704410293,
+          "volatility_ratio_mean": 1.164431012118277
+        }
+      },
+      {
+        "trades": 5,
+        "win_rate": 0.4,
+        "expectancy": 0.1840364109197523,
+        "return_pct": 1.6311514600002797,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -47.74314296517463,
+          "range_ratio_mean": 4.021966915266139,
+          "volatility_ratio_mean": 1.1284043723911337
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 0.0,
+        "expectancy": -1.0101404708727555,
+        "return_pct": -2.0162025400000116,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -47.74314296517463,
+          "range_ratio_mean": 4.021966915266139,
+          "volatility_ratio_mean": 1.1284043723911337
+        }
+      }
+    ]
+  },
+  "VOO": {
+    "best_sniper": {
+      "trades": 0,
+      "win_rate": 0,
+      "expectancy": 0,
+      "return_pct": 0,
+      "percentile": 5,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -64.099856503907,
+        "range_ratio_mean": 3.6102978894142526,
+        "volatility_ratio_mean": 1.1909333674018656
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -64.099856503907,
+          "range_ratio_mean": 3.6102978894142526,
+          "volatility_ratio_mean": 1.1909333674018656
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -64.099856503907,
+          "range_ratio_mean": 3.6102978894142526,
+          "volatility_ratio_mean": 1.1909333674018656
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 3.405707445060004,
+          "volatility_ratio_mean": 1.1467555546535095
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -60.0,
+          "range_ratio_mean": 3.405707445060004,
+          "volatility_ratio_mean": 1.1467555546535095
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 0.0,
+        "expectancy": -1.018916554349608,
+        "return_pct": -2.033895199999969,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -53.51540581682103,
+          "range_ratio_mean": 3.1239692854928593,
+          "volatility_ratio_mean": 1.0962778888467475
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 0.0,
+        "expectancy": -1.018916554349608,
+        "return_pct": -2.033895199999969,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -53.51540581682103,
+          "range_ratio_mean": 3.1239692854928593,
+          "volatility_ratio_mean": 1.0962778888467475
+        }
+      }
+    ]
+  },
+  "GLD": {
+    "best_sniper": {
+      "trades": 6,
+      "win_rate": 0.5,
+      "expectancy": 0.47888321593022304,
+      "return_pct": 5.605176840000126,
+      "percentile": 10,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -57.722290197647894,
+        "range_ratio_mean": 4.519263016748581,
+        "volatility_ratio_mean": 1.1509802089676828
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 2,
+        "win_rate": 0.5,
+        "expectancy": 0.4771521286689384,
+        "return_pct": 1.8255144000000056,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -66.29748570143737,
+          "range_ratio_mean": 5.061474242627181,
+          "volatility_ratio_mean": 1.204632082262514
+        }
+      },
+      {
+        "trades": 2,
+        "win_rate": 0.5,
+        "expectancy": 0.4771521286689384,
+        "return_pct": 1.8255144000000056,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -66.29748570143737,
+          "range_ratio_mean": 5.061474242627181,
+          "volatility_ratio_mean": 1.204632082262514
+        }
+      },
+      {
+        "trades": 6,
+        "win_rate": 0.5,
+        "expectancy": 0.47888321593022304,
+        "return_pct": 5.605176840000126,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -57.722290197647894,
+          "range_ratio_mean": 4.519263016748581,
+          "volatility_ratio_mean": 1.1509802089676828
+        }
+      },
+      {
+        "trades": 4,
+        "win_rate": 0.5,
+        "expectancy": 0.47568343065405116,
+        "return_pct": 3.6718633000000445,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -57.722290197647894,
+          "range_ratio_mean": 4.519263016748581,
+          "volatility_ratio_mean": 1.1509802089676828
+        }
+      },
+      {
+        "trades": 20,
+        "win_rate": 0.4,
+        "expectancy": 0.06379236263659464,
+        "return_pct": 1.8769420600006193,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -50.0,
+          "range_ratio_mean": 4.231024409881313,
+          "volatility_ratio_mean": 1.1189382582479839
+        }
+      },
+      {
+        "trades": 14,
+        "win_rate": 0.2857142857142857,
+        "expectancy": -0.14802599801489813,
+        "return_pct": -4.529610299999631,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -50.0,
+          "range_ratio_mean": 4.231024409881313,
+          "volatility_ratio_mean": 1.1189382582479839
+        }
+      }
+    ]
+  },
+  "SLV": {
+    "best_sniper": {
+      "trades": 7,
+      "win_rate": 0.7142857142857143,
+      "expectancy": 0.5909777317760155,
+      "return_pct": 8.344075380000016,
+      "percentile": 15,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -57.48072748782232,
+        "range_ratio_mean": 4.679171717869636,
+        "volatility_ratio_mean": 1.1223936121401914
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -69.51949725737447,
+          "range_ratio_mean": 5.4705821695446835,
+          "volatility_ratio_mean": 1.2050642062876273
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -69.51949725737447,
+          "range_ratio_mean": 5.4705821695446835,
+          "volatility_ratio_mean": 1.2050642062876273
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 1.0,
+        "expectancy": 1.773717259716017,
+        "return_pct": 3.5473915599999684,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -61.079873885117216,
+          "range_ratio_mean": 4.999187420102449,
+          "volatility_ratio_mean": 1.1552046143202577
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 1.0,
+        "expectancy": 1.773717259716017,
+        "return_pct": 3.5473915599999684,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -61.079873885117216,
+          "range_ratio_mean": 4.999187420102449,
+          "volatility_ratio_mean": 1.1552046143202577
+        }
+      },
+      {
+        "trades": 7,
+        "win_rate": 0.7142857142857143,
+        "expectancy": 0.5909777317760155,
+        "return_pct": 8.344075380000016,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -57.48072748782232,
+          "range_ratio_mean": 4.679171717869636,
+          "volatility_ratio_mean": 1.1223936121401914
+        }
+      },
+      {
+        "trades": 5,
+        "win_rate": 0.8,
+        "expectancy": 0.7018763113674347,
+        "return_pct": 7.089499479999928,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -57.48072748782232,
+          "range_ratio_mean": 4.679171717869636,
+          "volatility_ratio_mean": 1.1223936121401914
+        }
+      }
+    ]
+  },
+  "TQQQ": {
+    "best_sniper": {
+      "trades": 0,
+      "win_rate": 0,
+      "expectancy": 0,
+      "return_pct": 0,
+      "percentile": 5,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -71.63549109510345,
+        "range_ratio_mean": 5.994607654675426,
+        "volatility_ratio_mean": 1.2018050943359877
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -71.63549109510345,
+          "range_ratio_mean": 5.994607654675426,
+          "volatility_ratio_mean": 1.2018050943359877
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -71.63549109510345,
+          "range_ratio_mean": 5.994607654675426,
+          "volatility_ratio_mean": 1.2018050943359877
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -65.95110117413462,
+          "range_ratio_mean": 5.482641794921104,
+          "volatility_ratio_mean": 1.1495372229749292
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -65.95110117413462,
+          "range_ratio_mean": 5.482641794921104,
+          "volatility_ratio_mean": 1.1495372229749292
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -61.78991230112886,
+          "range_ratio_mean": 5.178301168794929,
+          "volatility_ratio_mean": 1.1066103475900888
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -61.78991230112886,
+          "range_ratio_mean": 5.178301168794929,
+          "volatility_ratio_mean": 1.1066103475900888
+        }
+      }
+    ]
+  },
+  "SOXL": {
+    "best_sniper": {
+      "trades": 1,
+      "win_rate": 1.0,
+      "expectancy": 1.9557527018506364,
+      "return_pct": 3.9108602399999803,
+      "percentile": 15,
+      "trend_filter": false,
+      "thresholds": {
+        "effort_result_mean": -61.362929832271334,
+        "range_ratio_mean": 5.242970483197435,
+        "volatility_ratio_mean": 1.1333985527038466
+      }
+    },
+    "all_configs": [
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -70.38365762077431,
+          "range_ratio_mean": 6.112805171015385,
+          "volatility_ratio_mean": 1.240521144056388
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 5,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -70.38365762077431,
+          "range_ratio_mean": 6.112805171015385,
+          "volatility_ratio_mean": 1.240521144056388
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -65.09298746890354,
+          "range_ratio_mean": 5.578649388854589,
+          "volatility_ratio_mean": 1.1790282815956217
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 10,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -65.09298746890354,
+          "range_ratio_mean": 5.578649388854589,
+          "volatility_ratio_mean": 1.1790282815956217
+        }
+      },
+      {
+        "trades": 1,
+        "win_rate": 1.0,
+        "expectancy": 1.9557527018506364,
+        "return_pct": 3.9108602399999803,
+        "percentile": 15,
+        "trend_filter": false,
+        "thresholds": {
+          "effort_result_mean": -61.362929832271334,
+          "range_ratio_mean": 5.242970483197435,
+          "volatility_ratio_mean": 1.1333985527038466
+        }
+      },
+      {
+        "trades": 0,
+        "win_rate": 0,
+        "expectancy": 0,
+        "return_pct": 0,
+        "percentile": 15,
+        "trend_filter": true,
+        "thresholds": {
+          "effort_result_mean": -61.362929832271334,
+          "range_ratio_mean": 5.242970483197435,
+          "volatility_ratio_mean": 1.1333985527038466
+        }
+      }
+    ]
+  }
+}

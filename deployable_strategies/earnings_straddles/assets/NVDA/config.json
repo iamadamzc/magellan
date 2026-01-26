@@ -1,0 +1,9 @@
+{
+    "symbol": "NVDA",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true
+    },
+    "deployment_status": "secondary",
+    "notes": "Sharpe 2.38 in Baseline (Core Asset)"
+}

@@ -1,0 +1,25 @@
+{
+  "start_date": "2022-01-03 09:30:00",
+  "end_date": "2026-01-23 15:45:00",
+  "sniper": {
+    "starting_capital": 25000,
+    "final_balance": 33609.293615001945,
+    "total_pnl": 8609.293615001945,
+    "return_pct": 34.43717446000778,
+    "total_trades": 103
+  },
+  "workhorse": {
+    "starting_capital": 25000,
+    "final_balance": 31743.698710003948,
+    "total_pnl": 6743.698710003948,
+    "return_pct": 26.974794840015793,
+    "total_trades": 415
+  },
+  "combined": {
+    "starting_capital": 50000,
+    "final_balance": 65352.99232500589,
+    "total_pnl": 15352.992325005893,
+    "return_pct": 30.705984650011775,
+    "total_trades": 518
+  }
+}

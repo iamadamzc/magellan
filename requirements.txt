@@ -1,0 +1,11 @@
+alpaca-py
+pandas
+numpy
+scipy
+scikit-learn
+python-dotenv
+requests
+rich
+textblob
+pytz
+boto3

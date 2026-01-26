@@ -1,0 +1,29 @@
+================================================================================
+SPREAD COST ANALYSIS (The 'Penny' Test)
+Assuming strictly $0.01 Bid-Ask spread cost per side ($0.02/share round trip)
+Capital: $100,000 per trade
+================================================================================
+Analyzing SPY...
+
+SPY RESULTS (7,773 trades):
+  Avg Entry Price:    $488.73
+  Avg Shares/Trade:   204
+----------------------------------------
+  Avg GROSS Profit:   $  3.76  (Win Rate: 51.7%)
+  Avg SPREAD Cost:    $  4.24  (Impact of 1 cent spread)
+  Avg NET Profit:     $ -0.48  (Win Rate: 51.1%)
+----------------------------------------
+  CRITICAL: Spread costs consume 112.8% of your edge.
+  CONCLUSION: FAILED. The strategy cannot pay for the bid-ask spread.
+Analyzing QQQ...
+
+QQQ RESULTS (13,655 trades):
+  Avg Entry Price:    $420.55
+  Avg Shares/Trade:   237
+----------------------------------------
+  Avg GROSS Profit:   $  2.01  (Win Rate: 52.0%)
+  Avg SPREAD Cost:    $  5.06  (Impact of 1 cent spread)
+  Avg NET Profit:     $ -3.06  (Win Rate: 50.8%)
+----------------------------------------
+  CRITICAL: Spread costs consume 252.6% of your edge.
+  CONCLUSION: FAILED. The strategy cannot pay for the bid-ask spread.

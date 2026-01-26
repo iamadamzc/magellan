@@ -1,0 +1,188 @@
+STRESS TEST REPORT: GLD
+============================================================
+
+[Window 1/30] IS: 11/28-12/02 | OOS: 12/03
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.3% | OOS HR: 48.4% | WFE: 1.00
+  P&L: $-746.38 (-1.99%) | [LOSS]
+
+[Window 2/30] IS: 12/01-12/03 | OOS: 12/04
+  IS HR: 48.3% | OOS HR: 49.1% | WFE: 1.02
+  P&L: $-545.31 (-1.48%) | [LOSS]
+
+[Window 3/30] IS: 12/02-12/04 | OOS: 12/05
+  IS HR: 48.3% | OOS HR: 45.0% | WFE: 0.93
+  P&L: $-195.07 (-0.54%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 1
+  Profit-WFE: -0.11
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 0.77
+
+[Window 4/30] IS: 12/03-12/05 | OOS: 12/08
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 50.1% | OOS HR: 53.6% | WFE: 1.07
+  P&L: $-900.79 (-2.50%) | [LOSS]
+
+[Window 5/30] IS: 12/04-12/08 | OOS: 12/09
+  IS HR: 50.1% | OOS HR: 46.9% | WFE: 0.94
+  P&L: $-128.57 (-0.37%) | [LOSS]
+
+[Window 6/30] IS: 12/05-12/09 | OOS: 12/10
+  IS HR: 50.1% | OOS HR: 47.8% | WFE: 0.96
+  P&L: $-666.23 (-1.90%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 2
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 0.92
+
+[Window 7/30] IS: 12/08-12/10 | OOS: 12/11
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.0% | OOS HR: 47.2% | WFE: 0.98
+  P&L: $-159.75 (-0.47%) | [LOSS]
+
+[Window 8/30] IS: 12/09-12/11 | OOS: 12/12
+  IS HR: 48.0% | OOS HR: 46.5% | WFE: 0.97
+  P&L: $-152.98 (-0.45%) | [LOSS]
+
+[Window 9/30] IS: 12/10-12/12 | OOS: 12/15
+  IS HR: 48.0% | OOS HR: 48.7% | WFE: 1.01
+  P&L: $+107.10 (+0.31%) | [WIN]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 3
+  Profit-WFE: -0.14
+  Drawdown-WFE: 0.28
+  Sharpe-WFE: 0.61
+
+[Window 10/30] IS: 12/11-12/15 | OOS: 12/16
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.6% | OOS HR: 48.9% | WFE: 0.99
+  P&L: $-705.95 (-2.07%) | [LOSS]
+
+[Window 11/30] IS: 12/12-12/16 | OOS: 12/17
+  IS HR: 49.6% | OOS HR: 49.7% | WFE: 1.00
+  P&L: $-625.84 (-1.87%) | [LOSS]
+
+[Window 12/30] IS: 12/15-12/17 | OOS: 12/18
+  IS HR: 49.6% | OOS HR: 49.3% | WFE: 0.99
+  P&L: $-724.19 (-2.21%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 4
+  Profit-WFE: -0.19
+  Drawdown-WFE: 0.19
+  Sharpe-WFE: 1.30
+
+[Window 13/30] IS: 12/16-12/18 | OOS: 12/19
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.9% | OOS HR: 47.9% | WFE: 0.98
+  P&L: $-684.27 (-2.13%) | [LOSS]
+
+[Window 14/30] IS: 12/17-12/19 | OOS: 12/22
+  IS HR: 48.9% | OOS HR: 48.3% | WFE: 0.99
+  P&L: $-582.14 (-1.86%) | [LOSS]
+
+[Window 15/30] IS: 12/18-12/22 | OOS: 12/23
+  IS HR: 48.9% | OOS HR: 50.1% | WFE: 1.02
+  P&L: $-294.85 (-0.96%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 5
+  Profit-WFE: -0.15
+  Drawdown-WFE: 0.18
+  Sharpe-WFE: 1.09
+
+[Window 16/30] IS: 12/19-12/23 | OOS: 12/24
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 43.3% | WFE: 0.91
+  P&L: $-486.97 (-1.60%) | [LOSS]
+
+[Window 17/30] IS: 12/22-12/24 | OOS: 12/25
+  [SKIP] Insufficient bars: IS=2092, OOS=0
+
+[Window 18/30] IS: 12/23-12/25 | OOS: 12/26
+  IS HR: 47.8% | OOS HR: 47.1% | WFE: 0.99
+  P&L: $-695.88 (-2.32%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 6
+  Profit-WFE: -0.26
+  Drawdown-WFE: 0.27
+  Sharpe-WFE: 1.57
+
+[Window 19/30] IS: 12/24-12/26 | OOS: 12/29
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 47.8% | OOS HR: 51.9% | WFE: 1.09
+  P&L: $-174.23 (-0.59%) | [LOSS]
+
+[Window 20/30] IS: 12/25-12/29 | OOS: 12/30
+  IS HR: 47.8% | OOS HR: 45.6% | WFE: 0.95
+  P&L: $-716.54 (-2.46%) | [LOSS]
+
+[Window 21/30] IS: 12/26-12/30 | OOS: 12/31
+  IS HR: 47.8% | OOS HR: 46.4% | WFE: 0.97
+  P&L: $-228.78 (-0.80%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 7
+  Profit-WFE: -0.16
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 0.76
+
+[Window 22/30] IS: 12/29-12/31 | OOS: 01/01
+  [SKIP] Insufficient bars: IS=2338, OOS=27
+
+[Window 23/30] IS: 12/30-01/01 | OOS: 01/02
+  IS HR: 47.8% | OOS HR: 48.3% | WFE: 1.01
+  P&L: $-287.47 (-1.02%) | [LOSS]
+
+[Window 24/30] IS: 12/31-01/02 | OOS: 01/05
+  IS HR: 47.8% | OOS HR: 48.7% | WFE: 1.02
+  P&L: $-367.81 (-1.32%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 8
+  Profit-WFE: -0.17
+  Drawdown-WFE: 0.21
+  Sharpe-WFE: 0.84
+
+[Window 25/30] IS: 01/01-01/05 | OOS: 01/06
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 49.0% | OOS HR: 46.0% | WFE: 0.94
+  P&L: $-470.80 (-1.71%) | [LOSS]
+
+[Window 26/30] IS: 01/02-01/06 | OOS: 01/07
+  IS HR: 49.0% | OOS HR: 46.8% | WFE: 0.96
+  P&L: $-479.87 (-1.77%) | [LOSS]
+
+[Window 27/30] IS: 01/05-01/07 | OOS: 01/08
+  IS HR: 49.0% | OOS HR: 49.6% | WFE: 1.01
+  P&L: $-119.69 (-0.45%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 9
+  Profit-WFE: -0.11
+  Drawdown-WFE: 0.15
+  Sharpe-WFE: 0.75
+
+[Window 28/30] IS: 01/06-01/08 | OOS: 01/09
+[METABOLISM] Ticker: GLD | Retraining Active (3-Day Window)
+  [RIGID-LOCK] New weights locked for 3 days
+  IS HR: 48.9% | OOS HR: 50.0% | WFE: 1.02
+  P&L: $+156.78 (+0.59%) | [WIN]
+
+[Window 29/30] IS: 01/07-01/09 | OOS: 01/12
+  IS HR: 48.9% | OOS HR: 49.7% | WFE: 1.02
+  P&L: $-26.42 (-0.10%) | [LOSS]
+
+[Window 30/30] IS: 01/08-01/12 | OOS: 01/13
+  IS HR: 48.9% | OOS HR: 44.9% | WFE: 0.92
+  P&L: $-160.82 (-0.60%) | [LOSS]
+
+[WFE-REPORT] Ticker: GLD | Blocks: 10
+  Profit-WFE: -0.01
+  Drawdown-WFE: 0.14
+  Sharpe-WFE: 0.02

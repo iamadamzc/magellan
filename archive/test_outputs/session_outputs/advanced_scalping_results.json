@@ -1,0 +1,72 @@
+[
+  {
+    "strategy": "Micro-Momentum",
+    "trades": 16,
+    "trades_per_day": 3.2,
+    "annual_trades": 806.4000000000001,
+    "win_rate": 12.5,
+    "avg_pnl": -0.049966460438891414,
+    "sharpe": -76.52883748329849,
+    "annual_friction": 33.0624
+  },
+  {
+    "strategy": "Mean Reversion",
+    "trades": 89,
+    "trades_per_day": 17.8,
+    "annual_trades": 4485.6,
+    "win_rate": 22.47191011235955,
+    "avg_pnl": -0.02894781678830124,
+    "sharpe": -63.630982402297306,
+    "annual_friction": 183.90959999999998
+  },
+  {
+    "strategy": "VWAP Scalping",
+    "trades": 100,
+    "trades_per_day": 20.0,
+    "annual_trades": 5040.0,
+    "win_rate": 25.0,
+    "avg_pnl": -0.022727165788927493,
+    "sharpe": -43.76262247783443,
+    "annual_friction": 206.64
+  },
+  {
+    "strategy": "Liquidity Grab",
+    "trades": 211,
+    "trades_per_day": 42.2,
+    "annual_trades": 10634.400000000001,
+    "win_rate": 14.691943127962084,
+    "avg_pnl": -0.05020986784846546,
+    "sharpe": -84.3464344591163,
+    "annual_friction": 436.0104
+  },
+  {
+    "strategy": "Breakout Scalping",
+    "trades": 131,
+    "trades_per_day": 26.2,
+    "annual_trades": 6602.4,
+    "win_rate": 27.480916030534353,
+    "avg_pnl": -0.051650009776058055,
+    "sharpe": -61.579786043922006,
+    "annual_friction": 270.69839999999994
+  },
+  {
+    "strategy": "Range Scalping",
+    "trades": 426,
+    "trades_per_day": 85.2,
+    "annual_trades": 21470.4,
+    "win_rate": 7.511737089201878,
+    "avg_pnl": -0.03816128499747877,
+    "sharpe": -75.96276926610082,
+    "annual_friction": 880.2864
+  },
+  {
+    "strategy": "Opening Drive",
+    "trades": 3,
+    "trades_per_day": 0.6,
+    "annual_trades": 151.2,
+    "win_rate": 33.33333333333333,
+    "avg_pnl": -0.051546969097239416,
+    "sharpe": -162.58400704954641,
+    "annual_friction": 6.1991999999999985
+  }
+]

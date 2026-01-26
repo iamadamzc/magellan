@@ -1,0 +1,76 @@
+{
+  "refactored_logic": {
+    "effort_result_threshold": "z-score < -0.5 (was: absolute < 45)",
+    "range_ratio_fix": "denominator = max(|O-C|, min_tick=0.01)",
+    "version": "2.0"
+  },
+  "regime_performance": {
+    "SPY": {
+      "COMPLACENCY": {
+        "count": 7031,
+        "hit_rate": 0.6086,
+        "expectancy": 0.4129,
+        "max_drawdown": 11.5
+      },
+      "NORMAL": {
+        "count": 824865,
+        "hit_rate": 0.569,
+        "expectancy": 0.3535,
+        "max_drawdown": 29.5
+      },
+      "PANIC": {
+        "count": 6071,
+        "hit_rate": 0.4597,
+        "expectancy": 0.1896,
+        "max_drawdown": 22.5
+      }
+    },
+    "QQQ": {
+      "COMPLACENCY": {
+        "count": 5925,
+        "hit_rate": 0.61,
+        "expectancy": 0.4149,
+        "max_drawdown": 9.5
+      },
+      "NORMAL": {
+        "count": 856139,
+        "hit_rate": 0.5707,
+        "expectancy": 0.356,
+        "max_drawdown": 26.5
+      },
+      "PANIC": {
+        "count": 7604,
+        "hit_rate": 0.4432,
+        "expectancy": 0.1648,
+        "max_drawdown": 19.0
+      }
+    },
+    "IWM": {
+      "COMPLACENCY": {
+        "count": 2048,
+        "hit_rate": 0.6689,
+        "expectancy": 0.5034,
+        "max_drawdown": 7.0
+      },
+      "NORMAL": {
+        "count": 744939,
+        "hit_rate": 0.5797,
+        "expectancy": 0.3696,
+        "max_drawdown": 27.5
+      },
+      "PANIC": {
+        "count": 8115,
+        "hit_rate": 0.4934,
+        "expectancy": 0.2401,
+        "max_drawdown": 13.5
+      }
+    }
+  },
+  "recommendation": {
+    "decision": "GO",
+    "rationale": "Strategy survives low-volatility regime with positive expectancy",
+    "low_vol_passes": "True",
+    "normal_passes": "True",
+    "all_positive": true
+  }
+}

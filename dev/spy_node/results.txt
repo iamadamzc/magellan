@@ -1,0 +1,110 @@
+================================================================================
+4-YEAR COMPARATIVE BACKTEST: ORIGINAL vs NO-SENTIMENT
+Period: 2022-01-01 to 2026-01-24 (Daily Bars)
+================================================================================
+
+================================================================================
+SYMBOL: SPY
+================================================================================
+
+[SPY] Loading cached daily bars...
+  Loaded: SPY_1day_20220101_20231231.parquet (510 bars)
+  Loaded: SPY_1day_20240101_20251231.parquet (542 bars)
+  Loaded: SPY_1day_20240101_20251231.parquet (542 bars)
+  Loaded: SPY_1day_20240601_20260118.parquet (441 bars)
+[SPY] Total bars loaded: 1066
+[SPY] Date range: 2022-01-03 00:00:00 to 2026-01-17 00:00:00
+[SPY] Calculating features...
+[SPY] Bars after warmup: 1046
+
+[SPY] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[SPY] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[SPY] RESULTS COMPARISON
+------------------------------------------------------------
+Metric                                ORIGINAL    NO-SENTIMENT
+------------------------------------------------------------
+Initial Capital                $    100,000.00 $    100,000.00
+Final Equity                   $     23,257.07 $     22,573.54
+Total Return                           -76.74%         -77.43%
+Avg Hit Rate                             46.7%           46.9%
+Winning Periods                              9              10
+Total Periods                               49              49
+------------------------------------------------------------
+[!!] ORIGINAL outperforms by 0.68%
+
+================================================================================
+SYMBOL: QQQ
+================================================================================
+
+[QQQ] Loading cached daily bars...
+  Loaded: QQQ_1day_20220101_20231231.parquet (510 bars)
+  Loaded: QQQ_1day_20240101_20251231.parquet (541 bars)
+  Loaded: QQQ_1day_20240101_20251231.parquet (541 bars)
+  Loaded: QQQ_1day_20240601_20260118.parquet (440 bars)
+[QQQ] Total bars loaded: 1065
+[QQQ] Date range: 2022-01-03 00:00:00 to 2026-01-17 00:00:00
+[QQQ] Calculating features...
+[QQQ] Bars after warmup: 1045
+
+[QQQ] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[QQQ] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[QQQ] RESULTS COMPARISON
+------------------------------------------------------------
+Metric                                ORIGINAL    NO-SENTIMENT
+------------------------------------------------------------
+Initial Capital                $    100,000.00 $    100,000.00
+Final Equity                   $     16,759.75 $     14,971.47
+Total Return                           -83.24%         -85.03%
+Avg Hit Rate                             46.2%           46.1%
+Winning Periods                             16              15
+Total Periods                               49              49
+------------------------------------------------------------
+[!!] ORIGINAL outperforms by 1.79%
+
+================================================================================
+SYMBOL: IWM
+================================================================================
+
+[IWM] Loading cached daily bars...
+  Loaded: IWM_1day_20220101_20231231.parquet (510 bars)
+  Loaded: IWM_1day_20240101_20251231.parquet (541 bars)
+  Loaded: IWM_1day_20240101_20251231.parquet (541 bars)
+  Loaded: IWM_1day_20240601_20260118.parquet (440 bars)
+[IWM] Total bars loaded: 1065
+[IWM] Date range: 2022-01-03 00:00:00 to 2026-01-17 00:00:00
+[IWM] Calculating features...
+[IWM] Bars after warmup: 1045
+
+[IWM] Running ORIGINAL (RSI 40% / Vol 30% / Sent 30%)...
+[IWM] Running NO-SENTIMENT (RSI 60% / Vol 40%)...
+
+[IWM] RESULTS COMPARISON
+------------------------------------------------------------
+Metric                                ORIGINAL    NO-SENTIMENT
+------------------------------------------------------------
+Initial Capital                $    100,000.00 $    100,000.00
+Final Equity                   $     16,194.47 $     14,018.08
+Total Return                           -83.81%         -85.98%
+Avg Hit Rate                             45.6%           44.6%
+Winning Periods                             14              11
+Total Periods                               49              49
+------------------------------------------------------------
+[!!] ORIGINAL outperforms by 2.18%
+
+================================================================================
+FINAL SUMMARY: 4-YEAR BACKTEST RESULTS
+================================================================================
+
+Symbol        ORIGINAL Return     NO-SENT Return          Winner
+----------------------------------------------------------------------
+SPY                   -76.74%            -77.43%        ORIGINAL
+QQQ                   -83.24%            -85.03%        ORIGINAL
+IWM                   -83.81%            -85.98%        ORIGINAL
+================================================================================
+
+OVERALL: ORIGINAL wins 3/3 | NO-SENTIMENT wins 0/3
+
+[!!] FINDING: Fake sentiment (article count proxy) appears to add value
+================================================================================

@@ -1,0 +1,15 @@
+{
+    "symbol": "META",
+    "strategy_name": "earnings_straddles",
+    "regime_filter": {
+        "required": true,
+        "indicator": "SPY_MA200",
+        "condition": "price > ma"
+    },
+    "entry_rules": {
+        "timing": "T-2 Market Close",
+        "structure": "Straddle (ATM Call + ATM Put)",
+        "expiry": "Front Week (5-10 DTE)"
+    },
+    "deployment_status": "active"
+}

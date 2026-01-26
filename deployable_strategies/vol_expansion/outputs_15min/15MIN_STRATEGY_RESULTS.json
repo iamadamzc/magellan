@@ -1,0 +1,110 @@
+{
+  "SPY": {
+    "timeframe": "15min",
+    "hit_rate": 0.6167644015177648,
+    "lift": 1.2335288030355296,
+    "target_atr": 2.0,
+    "stop_atr": 1.0,
+    "expectancy": 0.8502932045532944,
+    "signal_frequency": 0.5798,
+    "feature_profile": [
+      {
+        "feature": "effort_result_std",
+        "threshold": 77.93009227748874,
+        "direction": ">"
+      },
+      {
+        "feature": "effort_result_mean",
+        "threshold": -61.00635290591667,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_std",
+        "threshold": 4.4420513293164205,
+        "direction": ">"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 3.888348428753975,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 0.879025791732958,
+        "direction": ">"
+      }
+    ]
+  },
+  "QQQ": {
+    "timeframe": "15min",
+    "hit_rate": 0.6090632397700372,
+    "lift": 1.2181264795400744,
+    "target_atr": 2.0,
+    "stop_atr": 1.0,
+    "expectancy": 0.8271897193101115,
+    "signal_frequency": 0.5914,
+    "feature_profile": [
+      {
+        "feature": "effort_result_std",
+        "threshold": 77.70632938169436,
+        "direction": ">"
+      },
+      {
+        "feature": "effort_result_mean",
+        "threshold": -60.57352196708385,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_std",
+        "threshold": 4.657900684491819,
+        "direction": ">"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 4.069213155672593,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 0.8753460692186332,
+        "direction": ">"
+      }
+    ]
+  },
+  "IWM": {
+    "timeframe": "15min",
+    "hit_rate": 0.6083676268861454,
+    "lift": 1.2167352537722909,
+    "target_atr": 2.0,
+    "stop_atr": 1.0,
+    "expectancy": 0.8251028806584363,
+    "signal_frequency": 0.5832,
+    "feature_profile": [
+      {
+        "feature": "effort_result_std",
+        "threshold": 75.39334154497739,
+        "direction": ">"
+      },
+      {
+        "feature": "effort_result_mean",
+        "threshold": -62.63985625702876,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_std",
+        "threshold": 4.394605027760295,
+        "direction": ">"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 3.7140811922096573,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 0.8516577935687809,
+        "direction": ">"
+      }
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "SPY": {
+    "best_config": {
+      "cluster": 6,
+      "trend_filter": false,
+      "trades": 349,
+      "win_rate": 0.41260744985673353,
+      "expectancy": 0.02787207238439346,
+      "return_pct": 7.478023580009996
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "QQQ": {
+    "best_config": {
+      "cluster": 4,
+      "trend_filter": false,
+      "trades": 400,
+      "win_rate": 0.43,
+      "expectancy": 0.056738247241450025,
+      "return_pct": 21.547588520007377
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "IWM": {
+    "best_config": {
+      "cluster": 1,
+      "trend_filter": false,
+      "trades": 362,
+      "win_rate": 0.43370165745856354,
+      "expectancy": 0.02772472218457323,
+      "return_pct": 7.562250380013347
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "IVV": {
+    "best_config": {
+      "cluster": 0,
+      "trend_filter": false,
+      "trades": 298,
+      "win_rate": 0.4463087248322148,
+      "expectancy": 0.12643950718065042,
+      "return_pct": 42.149104380007984
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "VOO": {
+    "best_config": {
+      "cluster": 4,
+      "trend_filter": false,
+      "trades": 14,
+      "win_rate": 0.6428571428571429,
+      "expectancy": 0.6714337915892387,
+      "return_pct": 9.663739640000113
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "GLD": {
+    "best_config": {
+      "cluster": 4,
+      "trend_filter": false,
+      "trades": 277,
+      "win_rate": 0.4043321299638989,
+      "expectancy": 0.13538465401799651,
+      "return_pct": 41.44160892901046
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "SLV": {
+    "best_config": {
+      "cluster": 6,
+      "trend_filter": false,
+      "trades": 104,
+      "win_rate": 0.38461538461538464,
+      "expectancy": -0.07031291908449518,
+      "return_pct": -7.775064499999784
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "TQQQ": {
+    "best_config": {
+      "cluster": 2,
+      "trend_filter": true,
+      "trades": 207,
+      "win_rate": 0.3864734299516908,
+      "expectancy": 0.025733834058984686,
+      "return_pct": 3.4474099199960806
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  },
+  "SOXL": {
+    "best_config": {
+      "cluster": 1,
+      "trend_filter": true,
+      "trades": 200,
+      "win_rate": 0.38,
+      "expectancy": 0.002245610557185156,
+      "return_pct": -1.4798185000008846
+    },
+    "original_config": {
+      "cluster": 7,
+      "trend_filter": true,
+      "note": "SPY-trained defaults"
+    }
+  }
+}

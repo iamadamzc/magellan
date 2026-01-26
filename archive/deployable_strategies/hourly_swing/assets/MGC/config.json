@@ -1,0 +1,40 @@
+{
+    "symbol": "MGC",
+    "full_name": "Micro Gold",
+    "proxy_tested": "GCUSD (Gold spot hourly via FMP)",
+    "strategy_name": "hourly_swing",
+    "timeframe": "1Hour",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 60,
+        "rsi_lower": 40
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "proxy_symbol": "GCUSD",
+        "total_return_pct": 6.07,
+        "sharpe_ratio": 1.84,
+        "max_drawdown_pct": -7.89,
+        "trade_count": 14,
+        "win_rate_pct": 42.9,
+        "avg_hold_hours": 98.0,
+        "buy_hold_return_pct": 109.37
+    },
+    "deployment_status": "approved",
+    "deployment_date": "2026-01-17",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 10,
+        "stop_loss_pct": null,
+        "notes": "Gold hourly swing - Excellent Sharpe (1.84) with low drawdown. 24-hour trading advantage."
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 0.10,
+        "tick_value_usd": 1.00,
+        "margin_requirement_approx_usd": 800,
+        "trading_hours": "23 hours (Sunday 6PM - Friday 5PM ET)",
+        "multiplier": 10
+    },
+    "notes": "Tested on GCUSD hourly spot data. Outstanding risk-adjusted returns on hourly timeframe. 24-hour trading helps capture overnight moves."
+}

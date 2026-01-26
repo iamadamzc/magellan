@@ -1,0 +1,41 @@
+[Unit]
+Description=Magellan Daily Trend Strategy
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ssm-user
+Group=ssm-user
+WorkingDirectory=/home/ssm-user/magellan
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="STRATEGY=daily_trend"
+Environment="ALPACA_ACCOUNT_ID=PA3A2699UCJM"
+Environment="CONFIG_PATH=/home/ssm-user/magellan/deployed/daily_trend/config.json"
+
+# Execution
+ExecStart=/home/ssm-user/magellan/.venv/bin/python /home/ssm-user/magellan/deployable_strategies/daily_trend/runner.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=magellan-daily-trend
+
+# Resource limits
+MemoryLimit=2G
+CPUQuota=100%
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

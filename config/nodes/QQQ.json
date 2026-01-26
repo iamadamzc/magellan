@@ -1,0 +1,30 @@
+{
+    "ticker": "QQQ",
+    "description": "Nasdaq-100 ETF - Standard Configuration",
+    "alpha_weights": {
+        "rsi_14": 0.4,
+        "volume_zscore": 0.3,
+        "sentiment": 0.3
+    },
+    "sentry_gate": {
+        "enabled": false,
+        "type": null,
+        "threshold": null,
+        "description": "No gate applied - all factors contribute equally"
+    },
+    "ic_horizons": [
+        5,
+        15,
+        60
+    ],
+    "validation": {
+        "walk_forward_split": 0.70,
+        "horizon_bars": 15,
+        "min_hit_rate": 0.51
+    },
+    "stress_test": {
+        "days": 15,
+        "in_sample_days": 3,
+        "initial_capital": 100000.0
+    }
+}

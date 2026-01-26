@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 277, in <module>
+  File "<string>", line 36, in main
+  File "<string>", line 21, in load_env_file
+NameError: name '__file__' is not defined. Did you mean: '__name__'?

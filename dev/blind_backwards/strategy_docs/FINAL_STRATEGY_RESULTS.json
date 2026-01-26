@@ -1,0 +1,104 @@
+{
+  "SPY": {
+    "hit_rate": 0.5789622908987808,
+    "lift": 1.3681742043551088,
+    "edge_ratio": 2.0,
+    "expectancy": 0.3684434363481712,
+    "signal_frequency": 0.23513333333333333,
+    "feature_profile": [
+      {
+        "feature": "effort_result_mean",
+        "threshold": -43.98763788710929,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 1.453492124899036,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 1.013510352777632,
+        "direction": ">"
+      },
+      {
+        "feature": "trade_intensity_mean",
+        "threshold": 0.9276820003902172,
+        "direction": ">"
+      },
+      {
+        "feature": "body_position_mean",
+        "threshold": 0.27208480918285494,
+        "direction": ">"
+      }
+    ]
+  },
+  "QQQ": {
+    "hit_rate": 0.5703136838914987,
+    "lift": 1.3202946851429576,
+    "edge_ratio": 2.0,
+    "expectancy": 0.3554705258372481,
+    "signal_frequency": 0.21996666666666667,
+    "feature_profile": [
+      {
+        "feature": "effort_result_mean",
+        "threshold": -40.849028245329606,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 1.4778416444550095,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 1.0100682550009363,
+        "direction": ">"
+      },
+      {
+        "feature": "trade_intensity_mean",
+        "threshold": 0.9161472777793169,
+        "direction": ">"
+      },
+      {
+        "feature": "body_position_mean",
+        "threshold": 0.28978401552526095,
+        "direction": ">"
+      }
+    ]
+  },
+  "IWM": {
+    "hit_rate": 0.5504082249773208,
+    "lift": 1.2193193997856377,
+    "edge_ratio": 2.0,
+    "expectancy": 0.32561233746598117,
+    "signal_frequency": 0.27558333333333335,
+    "feature_profile": [
+      {
+        "feature": "effort_result_mean",
+        "threshold": -51.57300140957753,
+        "direction": "<"
+      },
+      {
+        "feature": "range_ratio_mean",
+        "threshold": 1.1389403153558182,
+        "direction": ">"
+      },
+      {
+        "feature": "volatility_ratio_mean",
+        "threshold": 0.9932378694757987,
+        "direction": ">"
+      },
+      {
+        "feature": "trade_intensity_mean",
+        "threshold": 0.7963316990700146,
+        "direction": ">"
+      },
+      {
+        "feature": "autocorr_10_mean",
+        "threshold": -0.22080065134999194,
+        "direction": "<"
+      }
+    ]
+  }
+}

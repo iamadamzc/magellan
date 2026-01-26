@@ -1,0 +1,102 @@
+[
+  {
+    "config": 1,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "stop_loss": 0.2,
+      "trail_distance": 0.06,
+      "hold_minutes": 45,
+      "momentum_exit_threshold": -0.08
+    },
+    "trades": 10,
+    "trades_per_day": 0.3448275862068966,
+    "win_rate": 30.0,
+    "avg_pnl": -0.03818360355970538,
+    "avg_win": 0.03883783197782662,
+    "avg_loss": -0.07119279021864768,
+    "avg_peak": 0.05027605637616395,
+    "sharpe": -5.819749470478591,
+    "total_return": -0.3818360355970538
+  },
+  {
+    "config": 2,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "stop_loss": 0.2,
+      "trail_distance": 0.08,
+      "hold_minutes": 60,
+      "momentum_exit_threshold": -0.1
+    },
+    "trades": 10,
+    "trades_per_day": 0.3448275862068966,
+    "win_rate": 30.0,
+    "avg_pnl": -0.0442077982330128,
+    "avg_win": 0.03592832164575583,
+    "avg_loss": -0.07855184960962792,
+    "avg_peak": 0.0597508246562871,
+    "sharpe": -6.453906358706028,
+    "total_return": -0.442077982330128
+  },
+  {
+    "config": 3,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "stop_loss": 0.25,
+      "trail_distance": 0.1,
+      "hold_minutes": 60,
+      "momentum_exit_threshold": -0.12
+    },
+    "trades": 10,
+    "trades_per_day": 0.3448275862068966,
+    "win_rate": 40.0,
+    "avg_pnl": -0.04377587614498158,
+    "avg_win": 0.038491492339331475,
+    "avg_loss": -0.09862078846785693,
+    "avg_peak": 0.07018044230084204,
+    "sharpe": -5.424317222971339,
+    "total_return": -0.43775876144981574
+  },
+  {
+    "config": 4,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "stop_loss": 0.25,
+      "trail_distance": 0.12,
+      "hold_minutes": 90,
+      "momentum_exit_threshold": -0.15
+    },
+    "trades": 10,
+    "trades_per_day": 0.3448275862068966,
+    "win_rate": 10.0,
+    "avg_pnl": -0.06010698799497179,
+    "avg_win": 0.06983479519713873,
+    "avg_loss": -0.0745449639052063,
+    "avg_peak": 0.07018044230084204,
+    "sharpe": -7.655450224780405,
+    "total_return": -0.601069879949718
+  },
+  {
+    "config": 5,
+    "params": {
+      "lookback": 10,
+      "rejection_bars": 3,
+      "stop_loss": 0.22,
+      "trail_distance": 0.08,
+      "hold_minutes": 50,
+      "momentum_exit_threshold": -0.1
+    },
+    "trades": 10,
+    "trades_per_day": 0.3448275862068966,
+    "win_rate": 30.0,
+    "avg_pnl": -0.0442077982330128,
+    "avg_win": 0.03592832164575583,
+    "avg_loss": -0.07855184960962792,
+    "avg_peak": 0.0597508246562871,
+    "sharpe": -6.453906358706028,
+    "total_return": -0.442077982330128
+  }
+]

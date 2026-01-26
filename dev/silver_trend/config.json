@@ -1,0 +1,38 @@
+{
+    "strategy_name": "Silver Trend-Following",
+    "version": "1.0",
+    "asset": "SIUSD (Silver Spot) / MSI (Micro Silver Futures)",
+    "parameters": {
+        "rsi_period": 21,
+        "entry_band": 48,
+        "exit_band": 30,
+        "leverage": 6
+    },
+    "account": {
+        "initial_capital": 20000,
+        "contract": "MSI",
+        "contract_size": "1000 oz",
+        "margin_per_contract": "~$2,000"
+    },
+    "backtest_results": {
+        "period": "2024-01-01 to 2025-01-24",
+        "total_trades": 2,
+        "win_rate": 100,
+        "total_pnl": 58000,
+        "total_return_pct": 290,
+        "sharpe_ratio": 1.71,
+        "max_drawdown_pct": -51
+    },
+    "risk_management": {
+        "max_leverage": 6,
+        "transaction_cost_bps": 5,
+        "position_type": "long_only"
+    },
+    "notes": [
+        "Position trading strategy - holds for weeks/months",
+        "2-3 trades per year, not daily trading",
+        "Optimized for bull markets",
+        "Higher volatility than gold (larger drawdowns)",
+        "PDT rules don't apply (futures exempt)"
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "strategy_name": "ES ORB (Opening Range Breakout)",
+    "version": "1.0-beta",
+    "description": "High-return leveraged ES futures strategy targeting $200-500/day",
+    "status": "testing",
+    "account": {
+        "capital": 20000,
+        "leverage": 5,
+        "effective_buying_power": 100000
+    },
+    "contract": {
+        "symbol": "ES",
+        "micro_symbol": "MES",
+        "tick_size": 0.25,
+        "tick_value_es": 12.50,
+        "tick_value_mes": 1.25,
+        "point_value_es": 50,
+        "point_value_mes": 5
+    },
+    "session": {
+        "rth_open": "09:30",
+        "rth_close": "16:00",
+        "timezone": "America/New_York",
+        "or_minutes": 15
+    },
+    "entry": {
+        "vol_mult": 1.5,
+        "pullback_atr": 0.15,
+        "above_vwap": true,
+        "min_or_range_pts": 0.5
+    },
+    "exit": {
+        "hard_stop_atr": 0.5,
+        "breakeven_trigger_r": 0.8,
+        "profit_target_r": 1.5,
+        "trail_atr": 0.8,
+        "eod_exit": true
+    },
+    "position_sizing": {
+        "method": "fixed_risk",
+        "risk_per_trade_pct": 2.0,
+        "max_contracts_mes": 10,
+        "target_contracts": 5
+    },
+    "friction": {
+        "commission_per_contract": 1.0,
+        "slippage_ticks": 1,
+        "total_friction_bps": 5
+    }
+}

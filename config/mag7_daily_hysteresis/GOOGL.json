@@ -1,0 +1,33 @@
+{
+    "symbol": "GOOGL",
+    "enabled": true,
+    "allocation": 10000,
+    "rsi_period": 28,
+    "hysteresis_upper": 55,
+    "hysteresis_lower": 45,
+    "max_position_size": 10000,
+    "timeframe": "1Day",
+    "transaction_cost_bps": 1.5,
+    "notes": "Best performer in backtests (+108% over 19mo). Standard bands work perfectly. Very selective (8 trades/year).",
+    "backtest_performance": {
+        "return_pct": 108.73,
+        "sharpe_ratio": 2.05,
+        "max_drawdown_pct": -12.81,
+        "trades_per_year": 8,
+        "win_rate_pct": 75
+    },
+    "regime_adjustments": {
+        "low_volatility": {
+            "upper": 52,
+            "lower": 48
+        },
+        "normal_volatility": {
+            "upper": 55,
+            "lower": 45
+        },
+        "high_volatility": {
+            "upper": 60,
+            "lower": 40
+        }
+    }
+}

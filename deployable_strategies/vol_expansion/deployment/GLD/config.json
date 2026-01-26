@@ -1,0 +1,45 @@
+{
+    "symbol": "GLD",
+    "strategy": "Workhorse",
+    "status": "PAPER_TRADE_FIRST",
+    "priority": 5,
+    "parameters": {
+        "cluster_id": 4,
+        "trend_filter": false,
+        "target_atr": 3.0,
+        "stop_atr": 1.0,
+        "time_stop_bars": 12,
+        "risk_per_trade": 0.01,
+        "timeframe": "15min",
+        "lookback_period": 20,
+        "sma_period": 50
+    },
+    "performance_2025_oos": {
+        "return_pct": 118.47,
+        "trades": 251,
+        "win_rate": 0.382,
+        "expectancy_r": 0.328,
+        "starting_capital": 25000,
+        "ending_capital": 54618,
+        "max_drawdown_estimated": "~20%"
+    },
+    "trading_rules": {
+        "entry": "Enter LONG at close of bar when Workhorse Cluster 4 signal fires",
+        "exit_target": "Close price + (3.0 × ATR20)",
+        "exit_stop": "Close price - (1.0 × ATR20)",
+        "exit_time": "Close position after 12 bars (3 hours) if neither target nor stop hit",
+        "position_size": "Risk 1% of account per trade"
+    },
+    "warnings": [
+        "⚠️ PAPER TRADE FIRST - Model was trained on equity concepts",
+        "⚠️ 2025 was a gold rally year - may be regime-specific",
+        "⚠️ Different market microstructure than equities",
+        "⚠️ Suspicious outperformance requires validation"
+    ],
+    "notes": [
+        "GLD tracks Gold spot price",
+        "Best return but HIGHEST RISK - may be overfitting",
+        "12-bar time stop (3 hours) is optimal",
+        "Validate with 3+ months paper trading before live"
+    ]
+}

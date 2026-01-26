@@ -1,0 +1,121 @@
+{
+    "account_info": {
+        "account_id": "PA3DDLQCBJSE",
+        "account_name": "magellan-bear-trap",
+        "initial_capital": 100000,
+        "margin_multiplier": 4,
+        "buying_power": 400000
+    },
+    "strategy": {
+        "name": "Midday Reversion",
+        "version": "1.0-research",
+        "type": "intraday_reversal",
+        "frequency": "high",
+        "expected_trades_per_month": 15,
+        "description": "ML-enhanced selloff reversal strategy targeting midday (11:30-14:00) opportunities with 60% win rate"
+    },
+    "symbols": [
+        "ONDS",
+        "ACB",
+        "AMC",
+        "WKHS",
+        "MULN",
+        "GOEV",
+        "BTCS",
+        "SENS",
+        "GME",
+        "PLUG",
+        "TLRY",
+        "NVAX",
+        "MARA",
+        "RIOT",
+        "OCGN",
+        "NKLA",
+        "FFIE",
+        "ANY",
+        "ATNF",
+        "BIOL",
+        "TNXP",
+        "GMBL",
+        "PHUN",
+        "CAN",
+        "LIDR",
+        "BNGO",
+        "TELL",
+        "SNDL",
+        "CLSK",
+        "BKKT",
+        "NAKD",
+        "IREN",
+        "JAGX",
+        "BTBT",
+        "SOS",
+        "BBIG",
+        "CIFR",
+        "VXRT",
+        "RGTI",
+        "MAXN",
+        "WULF",
+        "ARQQ",
+        "ARVL",
+        "GREE",
+        "EXPR",
+        "CVNA",
+        "VERU",
+        "HEXO",
+        "CGC",
+        "CTRM"
+    ],
+    "data_requirements": {
+        "timeframe": "1Min",
+        "premarket": false,
+        "after_hours": false,
+        "warmup_bars": 100
+    },
+    "trading_hours": {
+        "market_open": "09:30:00",
+        "market_close": "16:00:00",
+        "timezone": "America/New_York",
+        "trading_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI"
+        ]
+    },
+    "risk_management": {
+        "per_trade_risk_pct": 0.02,
+        "max_position_dollars": 50000,
+        "max_daily_loss_pct": 0.10,
+        "max_daily_loss_dollars": 10000,
+        "max_trades_per_day": 10,
+        "max_open_positions": 5,
+        "emergency_stop_conditions": {
+            "consecutive_losing_days": 3,
+            "win_rate_below": 0.30,
+            "rolling_window_days": 14,
+            "drawdown_threshold_pct": 0.20
+        }
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "extended_hours": false,
+        "min_liquidity_shares": 50,
+        "max_spread_pct": 0.02,
+        "slippage_tolerance_pct": 0.01
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "cloudwatch_log_group": "/magellan/bear-trap",
+        "health_check_interval_seconds": 60,
+        "report_interval_seconds": 300,
+        "alert_on_loss_dollars": 5000
+    },
+    "ssm_parameters": {
+        "api_key_path": "/magellan/alpaca/PA3DDLQCBJSE/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3DDLQCBJSE/API_SECRET",
+        "base_url": "https://paper-api.alpaca.markets"
+    }
+}

@@ -1,0 +1,215 @@
+A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py:113: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  df = df.resample('5T').agg({
+📦 Using Magellan DataCache infrastructure
+📰 Loading sentiment data...
+📂 Loading cached sentiment for IWM
+   IWM: 1471 days (182 non-zero)
+
+================================================================================
+🚀 PHASE 1.1: BASELINE BACKTEST (2024-2025)
+================================================================================
+Period: 2022-01-01 → 2026-01-10
+Symbols: IWM
+Initial Capital: $25,000.00
+Slippage: 5 bps per trade
+================================================================================
+
+📥 Fetching data for IWM (5Min)...
+✅ Fetched 186614 bars for IWM
+
+📊 Processing 185299 bars across 1 symbols...
+================================================================================
+
+  📈 LONG IWM: 27 shares @ $223.57 (cost: $6,036.44)
+  📉 EXIT IWM: 27 shares @ $224.06 | PnL: $+13.13 (+0.22%) | Hold: 0 days 03:30:00
+  📈 LONG IWM: 27 shares @ $224.80 (cost: $6,069.66)
+  📉 EXIT IWM: 27 shares @ $223.74 | PnL: $-28.73 (-0.47%) | Hold: 0 days 02:05:00
+  📈 LONG IWM: 27 shares @ $224.97 (cost: $6,074.26)
+  📉 EXIT IWM: 27 shares @ $225.91 | PnL: $+25.23 (+0.42%) | Hold: 0 days 16:20:00
+  📈 LONG IWM: 27 shares @ $226.48 (cost: $6,115.05)
+  📉 EXIT IWM: 27 shares @ $224.52 | PnL: $-53.07 (-0.87%) | Hold: 0 days 01:00:00
+  📈 LONG IWM: 27 shares @ $225.47 (cost: $6,087.76)
+  📉 EXIT IWM: 27 shares @ $224.78 | PnL: $-18.77 (-0.31%) | Hold: 0 days 17:00:00
+  📈 LONG IWM: 28 shares @ $217.97 (cost: $6,103.13)
+  📉 EXIT IWM: 28 shares @ $217.05 | PnL: $-25.69 (-0.42%) | Hold: 0 days 08:45:00
+  📈 LONG IWM: 28 shares @ $217.96 (cost: $6,102.85)
+  📉 EXIT IWM: 28 shares @ $215.72 | PnL: $-62.63 (-1.03%) | Hold: 0 days 04:50:00
+  📈 LONG IWM: 28 shares @ $219.99 (cost: $6,159.72)
+  📉 EXIT IWM: 28 shares @ $216.50 | PnL: $-97.67 (-1.59%) | Hold: 0 days 01:00:00
+  📈 LONG IWM: 28 shares @ $216.81 (cost: $6,070.63)
+  📉 EXIT IWM: 28 shares @ $215.38 | PnL: $-39.93 (-0.66%) | Hold: 0 days 02:55:00
+  📈 LONG IWM: 28 shares @ $213.22 (cost: $5,970.06)
+  📉 EXIT IWM: 28 shares @ $214.58 | PnL: $+38.25 (+0.64%) | Hold: 0 days 05:30:00
+  📈 LONG IWM: 28 shares @ $215.79 (cost: $6,042.06)
+  📉 EXIT IWM: 28 shares @ $215.64 | PnL: $-4.08 (-0.07%) | Hold: 0 days 03:55:00
+  📈 LONG IWM: 28 shares @ $216.25 (cost: $6,054.95)
+  📉 EXIT IWM: 28 shares @ $217.53 | PnL: $+35.93 (+0.59%) | Hold: 0 days 22:50:00
+  📈 LONG IWM: 28 shares @ $217.13 (cost: $6,079.60)
+  📉 EXIT IWM: 28 shares @ $216.06 | PnL: $-29.86 (-0.49%) | Hold: 0 days 01:10:00
+  📈 LONG IWM: 28 shares @ $216.15 (cost: $6,052.14)
+  📉 EXIT IWM: 28 shares @ $216.37 | PnL: $+6.26 (+0.10%) | Hold: 0 days 02:40:00
+  📈 LONG IWM: 28 shares @ $216.57 (cost: $6,063.91)
+  📉 EXIT IWM: 28 shares @ $215.53 | PnL: $-29.01 (-0.48%) | Hold: 0 days 02:00:00
+  📈 LONG IWM: 28 shares @ $217.75 (cost: $6,096.97)
+  📉 EXIT IWM: 28 shares @ $215.33 | PnL: $-67.66 (-1.11%) | Hold: 0 days 00:45:00
+  📈 LONG IWM: 28 shares @ $213.13 (cost: $5,967.54)
+  📉 EXIT IWM: 28 shares @ $211.10 | PnL: $-56.62 (-0.95%) | Hold: 0 days 02:50:00
+  📈 LONG IWM: 28 shares @ $213.76 (cost: $5,985.19)
+  📉 EXIT IWM: 28 shares @ $211.76 | PnL: $-55.80 (-0.93%) | Hold: 3 days 12:40:00
+  📈 LONG IWM: 29 shares @ $210.32 (cost: $6,099.14)
+  📉 EXIT IWM: 29 shares @ $208.46 | PnL: $-53.92 (-0.88%) | Hold: 0 days 00:50:00
+  📈 LONG IWM: 29 shares @ $208.95 (cost: $6,059.68)
+  📉 EXIT IWM: 29 shares @ $206.47 | PnL: $-72.14 (-1.19%) | Hold: 0 days 02:15:00
+  📈 LONG IWM: 29 shares @ $208.42 (cost: $6,044.30)
+  📉 EXIT IWM: 29 shares @ $205.68 | PnL: $-79.66 (-1.32%) | Hold: 0 days 02:20:00
+  📈 LONG IWM: 29 shares @ $205.31 (cost: $5,954.07)
+  📉 EXIT IWM: 29 shares @ $205.18 | PnL: $-3.92 (-0.07%) | Hold: 0 days 02:40:00
+  📈 LONG IWM: 29 shares @ $205.87 (cost: $5,970.31)
+  📉 EXIT IWM: 29 shares @ $206.72 | PnL: $+24.47 (+0.41%) | Hold: 0 days 04:00:00
+  📈 LONG IWM: 30 shares @ $201.99 (cost: $6,059.73)
+  📉 EXIT IWM: 30 shares @ $197.63 | PnL: $-130.79 (-2.16%) | Hold: 0 days 04:15:00
+  📈 LONG IWM: 30 shares @ $198.15 (cost: $5,944.47)
+  📉 EXIT IWM: 30 shares @ $196.11 | PnL: $-61.11 (-1.03%) | Hold: 0 days 01:20:00
+  📈 LONG IWM: 30 shares @ $196.15 (cost: $5,884.44)
+  📉 EXIT IWM: 30 shares @ $198.63 | PnL: $+74.48 (+1.27%) | Hold: 0 days 14:45:00
+  📈 LONG IWM: 30 shares @ $198.87 (cost: $5,966.23)
+  📉 EXIT IWM: 30 shares @ $198.16 | PnL: $-21.41 (-0.36%) | Hold: 0 days 03:00:00
+  📈 LONG IWM: 30 shares @ $199.40 (cost: $5,981.99)
+  📉 EXIT IWM: 30 shares @ $195.84 | PnL: $-106.73 (-1.78%) | Hold: 0 days 20:25:00
+  📈 LONG IWM: 30 shares @ $196.61 (cost: $5,898.25)
+  📉 EXIT IWM: 30 shares @ $194.75 | PnL: $-55.67 (-0.94%) | Hold: 0 days 09:45:00
+  📈 LONG IWM: 30 shares @ $196.76 (cost: $5,902.75)
+  📉 EXIT IWM: 30 shares @ $195.49 | PnL: $-37.98 (-0.64%) | Hold: 0 days 02:20:00
+  📈 LONG IWM: 31 shares @ $192.60 (cost: $5,970.48)
+  📉 EXIT IWM: 31 shares @ $190.06 | PnL: $-78.47 (-1.31%) | Hold: 0 days 11:55:00
+  📈 LONG IWM: 31 shares @ $191.02 (cost: $5,921.48)
+  📉 EXIT IWM: 31 shares @ $189.35 | PnL: $-51.78 (-0.87%) | Hold: 0 days 05:40:00
+  📈 LONG IWM: 31 shares @ $192.58 (cost: $5,969.86)
+  📉 EXIT IWM: 31 shares @ $192.81 | PnL: $+7.36 (+0.12%) | Hold: 2 days 15:35:00
+  📈 LONG IWM: 30 shares @ $195.35 (cost: $5,860.43)
+  📉 EXIT IWM: 30 shares @ $200.25 | PnL: $+147.07 (+2.51%) | Hold: 1 days 00:15:00
+  📈 LONG IWM: 29 shares @ $203.34 (cost: $5,896.91)
+  📉 EXIT IWM: 29 shares @ $201.04 | PnL: $-66.76 (-1.13%) | Hold: 0 days 17:50:00
+  📈 LONG IWM: 29 shares @ $200.13 (cost: $5,803.77)
+  📉 EXIT IWM: 29 shares @ $199.02 | PnL: $-32.18 (-0.55%) | Hold: 0 days 01:30:00
+  📈 LONG IWM: 30 shares @ $198.95 (cost: $5,968.48)
+  📉 EXIT IWM: 30 shares @ $197.97 | PnL: $-29.35 (-0.49%) | Hold: 0 days 11:00:00
+  📈 LONG IWM: 30 shares @ $197.16 (cost: $5,914.76)
+  📉 EXIT IWM: 30 shares @ $195.60 | PnL: $-46.69 (-0.79%) | Hold: 0 days 00:40:00
+  📈 LONG IWM: 30 shares @ $198.08 (cost: $5,942.37)
+  📉 EXIT IWM: 30 shares @ $197.75 | PnL: $-9.84 (-0.17%) | Hold: 0 days 03:10:00
+  📈 LONG IWM: 30 shares @ $198.47 (cost: $5,954.08)
+  📉 EXIT IWM: 30 shares @ $198.39 | PnL: $-2.35 (-0.04%) | Hold: 0 days 04:35:00
+  📈 LONG IWM: 29 shares @ $200.62 (cost: $5,817.99)
+  📉 EXIT IWM: 29 shares @ $199.03 | PnL: $-46.10 (-0.79%) | Hold: 0 days 01:15:00
+  📈 LONG IWM: 29 shares @ $200.40 (cost: $5,811.60)
+  📉 EXIT IWM: 29 shares @ $199.72 | PnL: $-19.72 (-0.34%) | Hold: 0 days 01:25:00
+  📈 LONG IWM: 29 shares @ $200.37 (cost: $5,810.73)
+  📉 EXIT IWM: 29 shares @ $205.92 | PnL: $+160.86 (+2.77%) | Hold: 1 days 18:30:00
+  📈 LONG IWM: 28 shares @ $206.75 (cost: $5,789.09)
+  📉 EXIT IWM: 28 shares @ $204.58 | PnL: $-60.92 (-1.05%) | Hold: 0 days 00:25:00
+  📈 LONG IWM: 28 shares @ $207.62 (cost: $5,813.47)
+  📉 EXIT IWM: 28 shares @ $206.37 | PnL: $-35.20 (-0.61%) | Hold: 0 days 03:15:00
+  📈 LONG IWM: 29 shares @ $203.64 (cost: $5,905.61)
+  📉 EXIT IWM: 29 shares @ $201.17 | PnL: $-71.70 (-1.21%) | Hold: 0 days 06:10:00
+  📈 LONG IWM: 29 shares @ $201.87 (cost: $5,854.26)
+  📉 EXIT IWM: 29 shares @ $199.73 | PnL: $-62.08 (-1.06%) | Hold: 0 days 06:10:00
+  📈 LONG IWM: 29 shares @ $203.42 (cost: $5,899.23)
+  📉 EXIT IWM: 29 shares @ $203.62 | PnL: $+5.70 (+0.10%) | Hold: 0 days 04:15:00
+  📈 LONG IWM: 29 shares @ $204.48 (cost: $5,929.84)
+  📉 EXIT IWM: 29 shares @ $205.54 | PnL: $+30.88 (+0.52%) | Hold: 0 days 06:00:00
+  📈 LONG IWM: 28 shares @ $206.24 (cost: $5,774.81)
+  📉 EXIT IWM: 28 shares @ $204.34 | PnL: $-53.35 (-0.92%) | Hold: 0 days 05:35:00
+  📈 LONG IWM: 28 shares @ $206.72 (cost: $5,788.25)
+  📉 EXIT IWM: 28 shares @ $205.49 | PnL: $-34.61 (-0.60%) | Hold: 0 days 04:35:00
+  📈 LONG IWM: 28 shares @ $205.79 (cost: $5,762.20)
+  📉 EXIT IWM: 28 shares @ $204.39 | PnL: $-39.34 (-0.68%) | Hold: 0 days 01:00:00
+  📈 LONG IWM: 29 shares @ $201.84 (cost: $5,853.39)
+  📉 EXIT IWM: 29 shares @ $201.03 | PnL: $-23.53 (-0.40%) | Hold: 0 days 14:00:00
+  📈 LONG IWM: 29 shares @ $201.21 (cost: $5,834.96)
+  📉 EXIT IWM: 29 shares @ $198.65 | PnL: $-74.09 (-1.27%) | Hold: 0 days 03:10:00
+  📈 LONG IWM: 29 shares @ $199.91 (cost: $5,797.39)
+  📉 EXIT IWM: 29 shares @ $197.94 | PnL: $-57.24 (-0.99%) | Hold: 0 days 03:50:00
+  📈 LONG IWM: 29 shares @ $198.64 (cost: $5,760.54)
+  📉 EXIT IWM: 29 shares @ $197.41 | PnL: $-35.61 (-0.62%) | Hold: 0 days 15:50:00
+  📈 LONG IWM: 29 shares @ $197.20 (cost: $5,718.76)
+  📉 EXIT IWM: 29 shares @ $195.23 | PnL: $-57.02 (-1.00%) | Hold: 0 days 00:55:00
+  📈 LONG IWM: 30 shares @ $193.95 (cost: $5,818.41)
+  📉 EXIT IWM: 30 shares @ $195.45 | PnL: $+45.16 (+0.78%) | Hold: 0 days 14:15:00
+  📈 LONG IWM: 29 shares @ $199.07 (cost: $5,773.02)
+  📉 EXIT IWM: 29 shares @ $199.07 | PnL: $+0.03 (+0.00%) | Hold: 2 days 20:10:00
+  📈 LONG IWM: 29 shares @ $200.90 (cost: $5,826.11)
+  📉 EXIT IWM: 29 shares @ $201.52 | PnL: $+17.94 (+0.31%) | Hold: 0 days 05:25:00
+  📈 LONG IWM: 28 shares @ $203.06 (cost: $5,685.72)
+  📉 EXIT IWM: 28 shares @ $200.74 | PnL: $-65.01 (-1.14%) | Hold: 0 days 02:10:00
+  📈 LONG IWM: 29 shares @ $200.76 (cost: $5,822.05)
+  📉 EXIT IWM: 29 shares @ $199.21 | PnL: $-44.95 (-0.77%) | Hold: 0 days 13:25:00
+  📈 LONG IWM: 29 shares @ $201.20 (cost: $5,834.82)
+  📉 EXIT IWM: 29 shares @ $199.86 | PnL: $-38.88 (-0.67%) | Hold: 0 days 04:00:00
+  📈 LONG IWM: 28 shares @ $202.52 (cost: $5,670.45)
+  📉 EXIT IWM: 28 shares @ $203.61 | PnL: $+30.57 (+0.54%) | Hold: 0 days 07:30:00
+  📈 LONG IWM: 28 shares @ $204.70 (cost: $5,731.66)
+  📉 EXIT IWM: 28 shares @ $203.32 | PnL: $-38.75 (-0.68%) | Hold: 0 days 01:25:00
+  📈 LONG IWM: 29 shares @ $200.18 (cost: $5,805.22)
+  📉 EXIT IWM: 29 shares @ $197.28 | PnL: $-84.06 (-1.45%) | Hold: 0 days 02:30:00
+  📈 LONG IWM: 29 shares @ $199.13 (cost: $5,774.76)
+  📉 EXIT IWM: 29 shares @ $195.35 | PnL: $-109.54 (-1.90%) | Hold: 2 days 14:55:00
+  📈 LONG IWM: 29 shares @ $196.58 (cost: $5,700.77)
+  📉 EXIT IWM: 29 shares @ $195.99 | PnL: $-17.00 (-0.30%) | Hold: 0 days 05:00:00
+  📈 LONG IWM: 29 shares @ $195.29 (cost: $5,663.34)
+  📉 EXIT IWM: 29 shares @ $195.29 | PnL: $+0.14 (+0.00%) | Hold: 0 days 03:50:00
+  📈 LONG IWM: 29 shares @ $198.61 (cost: $5,759.67)
+  📉 EXIT IWM: 29 shares @ $195.81 | PnL: $-81.12 (-1.41%) | Hold: 0 days 01:40:00
+  📈 LONG IWM: 29 shares @ $194.84 (cost: $5,650.28)
+  📉 EXIT IWM: 29 shares @ $199.90 | PnL: $+146.82 (+2.60%) | Hold: 1 days 00:45:00
+  📈 LONG IWM: 29 shares @ $198.42 (cost: $5,754.16)
+  📉 EXIT IWM: 29 shares @ $201.81 | PnL: $+98.31 (+1.71%) | Hold: 0 days 22:20:00
+  📈 LONG IWM: 29 shares @ $198.41 (cost: $5,753.87)
+  📉 EXIT IWM: 29 shares @ $197.39 | PnL: $-29.52 (-0.51%) | Hold: 0 days 03:25:00
+  📈 LONG IWM: 30 shares @ $192.39 (cost: $5,771.58)
+  📉 EXIT IWM: 30 shares @ $197.93 | PnL: $+166.35 (+2.88%) | Hold: 1 days 07:35:00
+  📈 LONG IWM: 28 shares @ $201.72 (cost: $5,648.18)
+  📉 EXIT IWM: 28 shares @ $201.74 | PnL: $+0.51 (+0.01%) | Hold: 0 days 13:05:00
+  📈 LONG IWM: 28 shares @ $201.76 (cost: $5,649.30)
+  📉 EXIT IWM: 28 shares @ $203.84 | PnL: $+58.16 (+1.03%) | Hold: 0 days 07:00:00
+  📈 LONG IWM: 28 shares @ $204.49 (cost: $5,725.78)
+  📉 EXIT IWM: 28 shares @ $206.59 | PnL: $+58.64 (+1.02%) | Hold: 3 days 10:10:00
+  📈 LONG IWM: 28 shares @ $206.99 (cost: $5,795.82)
+  📉 EXIT IWM: 28 shares @ $206.09 | PnL: $-25.38 (-0.44%) | Hold: 0 days 02:20:00
+  📈 LONG IWM: 28 shares @ $205.91 (cost: $5,765.56)
+Traceback (most recent call last):
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 595, in <module>
+    main()
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 581, in main
+    backtest.run_backtest()
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 322, in run_backtest
+    signal, alpha, rsi, vol_ratio = self.generate_signal(symbol, current_time, df)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 182, in generate_signal
+    alpha, rsi, vol_ratio = self.calculate_alpha_score(symbol, df_row_index, df)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\test\intraday_alpha\run_phase1_baseline_backtest.py", line 141, in calculate_alpha_score
+    rsi = calculate_rsi(hist_data['close'], period=params['rsi_lookback'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "A:\1\Magellan\src\features.py", line 274, in calculate_rsi
+    rsi = 100 - (100 / (1 + rs))
+                 ~~~~^~~~~~~~~~
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\arraylike.py", line 214, in __rtruediv__
+    return self._arith_method(other, roperator.rtruediv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\series.py", line 6146, in _arith_method
+    return base.IndexOpsMixin._arith_method(self, other, op)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\base.py", line 1393, in _arith_method
+    return self._construct_result(result, name=res_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\series.py", line 6242, in _construct_result
+    out = self._constructor(result, index=self.index, dtype=dtype, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\series.py", line 574, in __init__
+    elif is_list_like(data):
+         ^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

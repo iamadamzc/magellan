@@ -1,0 +1,731 @@
+📦 Using Magellan DataCache infrastructure
+📰 Loading sentiment data...
+📂 Loading cached sentiment for QQQ
+   QQQ: 1471 days (51 non-zero)
+
+================================================================================
+🚀 PHASE 1.1: BASELINE BACKTEST (2024-2025)
+================================================================================
+Period: 2022-01-01 → 2026-01-10
+Symbols: QQQ
+Initial Capital: $25,000.00
+Slippage: 5 bps per trade
+================================================================================
+
+📥 Fetching data for QQQ (1Hour)...
+✅ Fetched 16087 bars for QQQ
+
+📊 Processing 15976 bars across 1 symbols...
+================================================================================
+
+⏳ Progress: 0.0% (2022-01-03) | Equity: $25,000
+  📉 EXIT QQQ (Signal): 15 @ $397.31 | PnL: -0.76%
+  📉 EXIT QQQ (Signal): 15 @ $399.86 | PnL: +0.08%
+  📉 EXIT QQQ (SL): 15 @ $397.55 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 16 @ $384.53 | PnL: +0.09%
+  📉 EXIT QQQ (TP): 17 @ $369.78 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 16 @ $367.41 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 16 @ $367.11 | PnL: -0.33%
+  📉 EXIT QQQ (SL): 17 @ $356.12 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 17 @ $356.82 | PnL: -0.90%
+  📉 EXIT QQQ (SL): 17 @ $355.80 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 17 @ $365.54 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 17 @ $362.01 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 17 @ $343.60 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 17 @ $342.81 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 18 @ $333.37 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 18 @ $334.14 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 18 @ $341.84 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 18 @ $337.96 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 18 @ $340.83 | PnL: +0.47%
+  📉 EXIT QQQ (Signal): 18 @ $341.40 | PnL: +0.82%
+  📉 EXIT QQQ (TP): 17 @ $353.69 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 17 @ $346.68 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 17 @ $347.30 | PnL: -0.05%
+  📉 EXIT QQQ (Signal): 17 @ $354.74 | PnL: +1.11%
+  📉 EXIT QQQ (Signal): 17 @ $353.05 | PnL: -0.78%
+  📉 EXIT QQQ (Signal): 17 @ $353.64 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 17 @ $359.04 | PnL: +0.68%
+  📉 EXIT QQQ (Signal): 17 @ $358.82 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 17 @ $359.95 | PnL: +0.07%
+  📉 EXIT QQQ (TP): 17 @ $371.29 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 16 @ $369.67 | PnL: -0.38%
+  📉 EXIT QQQ (Signal): 16 @ $368.85 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 16 @ $367.11 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 17 @ $366.22 | PnL: +0.76%
+  📉 EXIT QQQ (Signal): 16 @ $366.83 | PnL: -0.02%
+  📉 EXIT QQQ (SL): 18 @ $325.67 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $303.44 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 20 @ $307.62 | PnL: +0.62%
+  📉 EXIT QQQ (SL): 20 @ $307.49 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $307.87 | PnL: -0.21%
+  📉 EXIT QQQ (SL): 20 @ $306.47 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $304.83 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $310.33 | PnL: -0.52%
+  📉 EXIT QQQ (SL): 20 @ $307.02 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $307.90 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $311.02 | PnL: +1.06%
+  📉 EXIT QQQ (SL): 19 @ $307.12 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $305.89 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 21 @ $297.72 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $293.97 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $292.24 | PnL: -0.76%
+  📉 EXIT QQQ (Signal): 20 @ $293.83 | PnL: +0.04%
+  📉 EXIT QQQ (SL): 21 @ $287.88 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $279.99 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $280.13 | PnL: -0.76%
+  📉 EXIT QQQ (TP): 21 @ $291.53 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 21 @ $293.55 | PnL: +0.19%
+  📉 EXIT QQQ (Signal): 21 @ $291.65 | PnL: -0.15%
+  📉 EXIT QQQ (SL): 20 @ $293.39 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $293.14 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $284.91 | PnL: -0.30%
+  📉 EXIT QQQ (TP): 21 @ $293.42 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $292.39 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 21 @ $297.82 | PnL: +2.00%
+  📉 EXIT QQQ (TP): 20 @ $303.88 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 20 @ $301.96 | PnL: -0.33%
+  📉 EXIT QQQ (SL): 20 @ $296.16 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $307.29 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $302.90 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $314.31 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 19 @ $311.06 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $315.74 | PnL: +0.87%
+  📉 EXIT QQQ (SL): 19 @ $315.34 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $314.99 | PnL: -0.29%
+  📉 EXIT QQQ (TP): 19 @ $321.85 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 19 @ $323.38 | PnL: +0.15%
+  📉 EXIT QQQ (Signal): 19 @ $323.72 | PnL: -0.11%
+  📉 EXIT QQQ (Signal): 19 @ $320.59 | PnL: +0.26%
+  📉 EXIT QQQ (Signal): 19 @ $320.90 | PnL: -0.71%
+⏳ Progress: 14.6% (2022-08-09) | Equity: $24,896
+  📉 EXIT QQQ (Signal): 19 @ $317.45 | PnL: -0.19%
+  📉 EXIT QQQ (SL): 19 @ $321.22 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $326.47 | PnL: +0.20%
+  📉 EXIT QQQ (Signal): 19 @ $324.96 | PnL: -0.17%
+  📉 EXIT QQQ (TP): 18 @ $333.39 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 18 @ $329.82 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 18 @ $332.13 | PnL: -0.09%
+  📉 EXIT QQQ (Signal): 18 @ $328.76 | PnL: -0.16%
+  📉 EXIT QQQ (SL): 18 @ $325.80 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $312.48 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 19 @ $309.63 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $280.03 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $279.24 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $279.69 | PnL: -0.96%
+  📉 EXIT QQQ (SL): 21 @ $279.46 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $281.45 | PnL: +0.18%
+  📉 EXIT QQQ (Signal): 21 @ $279.66 | PnL: -0.21%
+  📉 EXIT QQQ (SL): 22 @ $271.50 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 22 @ $271.59 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 22 @ $272.26 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 22 @ $271.99 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 22 @ $274.63 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 22 @ $272.84 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 22 @ $282.75 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 21 @ $279.48 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $280.38 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $275.59 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $276.49 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $278.26 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $276.87 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 21 @ $284.05 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 21 @ $286.58 | PnL: +0.93%
+  📉 EXIT QQQ (Signal): 21 @ $285.91 | PnL: -0.40%
+  📉 EXIT QQQ (SL): 21 @ $285.96 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $289.67 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 21 @ $282.92 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $283.78 | PnL: -0.70%
+  📉 EXIT QQQ (Signal): 21 @ $283.32 | PnL: +0.80%
+  📉 EXIT QQQ (TP): 21 @ $289.10 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 21 @ $287.37 | PnL: +0.13%
+  📉 EXIT QQQ (Signal): 21 @ $287.57 | PnL: -0.47%
+  📉 EXIT QQQ (Signal): 21 @ $281.77 | PnL: -0.89%
+  📉 EXIT QQQ (TP): 20 @ $295.62 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 20 @ $293.45 | PnL: +0.10%
+  📉 EXIT QQQ (SL): 20 @ $290.82 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $290.42 | PnL: -0.55%
+  📉 EXIT QQQ (Signal): 21 @ $283.05 | PnL: -0.10%
+  📉 EXIT QQQ (TP): 21 @ $292.96 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $292.99 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $286.94 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $287.66 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 22 @ $266.73 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 22 @ $274.34 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 22 @ $272.33 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 22 @ $276.61 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 22 @ $273.57 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 22 @ $276.48 | PnL: +0.53%
+  📉 EXIT QQQ (SL): 21 @ $276.53 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 21 @ $281.54 | PnL: +1.23%
+  📉 EXIT QQQ (SL): 21 @ $279.07 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 21 @ $282.02 | PnL: +2.00%
+  📉 EXIT QQQ (TP): 21 @ $288.63 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 21 @ $287.77 | PnL: -0.56%
+  📉 EXIT QQQ (Signal): 21 @ $286.46 | PnL: -0.82%
+  📉 EXIT QQQ (TP): 21 @ $293.21 | PnL: +2.00%
+  📉 EXIT QQQ (TP): 20 @ $298.15 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $293.33 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $293.76 | PnL: +0.37%
+  📉 EXIT QQQ (TP): 20 @ $305.33 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 20 @ $302.07 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $313.66 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 19 @ $308.80 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $308.50 | PnL: +0.99%
+  📉 EXIT QQQ (SL): 19 @ $306.95 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $304.22 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 20 @ $303.12 | PnL: -0.27%
+  📉 EXIT QQQ (SL): 19 @ $306.23 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $306.98 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $305.82 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $304.72 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 20 @ $307.06 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 20 @ $302.62 | PnL: -0.27%
+  📉 EXIT QQQ (Signal): 20 @ $305.33 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 20 @ $304.97 | PnL: -0.26%
+  📉 EXIT QQQ (Signal): 19 @ $305.00 | PnL: -0.63%
+  📉 EXIT QQQ (Signal): 20 @ $299.83 | PnL: +0.34%
+  📉 EXIT QQQ (SL): 20 @ $298.19 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 20 @ $295.90 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 20 @ $296.09 | PnL: -0.70%
+  📉 EXIT QQQ (SL): 20 @ $297.47 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $293.54 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 20 @ $294.57 | PnL: -1.00%
+⏳ Progress: 29.3% (2023-03-15) | Equity: $24,216
+  📉 EXIT QQQ (Signal): 20 @ $296.35 | PnL: +0.63%
+  📉 EXIT QQQ (TP): 20 @ $304.67 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 19 @ $304.32 | PnL: -0.53%
+  📉 EXIT QQQ (TP): 19 @ $312.38 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 19 @ $306.04 | PnL: -0.04%
+  📉 EXIT QQQ (SL): 19 @ $306.45 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 19 @ $310.37 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $308.11 | PnL: -0.96%
+  📉 EXIT QQQ (TP): 19 @ $316.08 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 19 @ $318.07 | PnL: +0.76%
+  📉 EXIT QQQ (Signal): 19 @ $319.17 | PnL: -0.36%
+  📉 EXIT QQQ (Signal): 19 @ $315.29 | PnL: -0.62%
+  📉 EXIT QQQ (Signal): 19 @ $317.12 | PnL: -0.25%
+  📉 EXIT QQQ (Signal): 19 @ $314.14 | PnL: -0.52%
+  📉 EXIT QQQ (Signal): 19 @ $317.33 | PnL: +0.12%
+  📉 EXIT QQQ (Signal): 19 @ $317.17 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 19 @ $317.43 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 19 @ $318.17 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 19 @ $317.68 | PnL: -0.44%
+  📉 EXIT QQQ (Signal): 19 @ $316.14 | PnL: -0.56%
+  📉 EXIT QQQ (Signal): 19 @ $321.64 | PnL: +1.08%
+  📉 EXIT QQQ (Signal): 18 @ $321.91 | PnL: -0.18%
+  📉 EXIT QQQ (Signal): 18 @ $320.40 | PnL: +0.14%
+  📉 EXIT QQQ (Signal): 18 @ $319.95 | PnL: +0.02%
+  📉 EXIT QQQ (SL): 18 @ $317.31 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 19 @ $321.99 | PnL: +1.16%
+  📉 EXIT QQQ (Signal): 18 @ $322.27 | PnL: -0.25%
+  📉 EXIT QQQ (Signal): 18 @ $325.34 | PnL: +0.25%
+  📉 EXIT QQQ (Signal): 18 @ $324.89 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 18 @ $324.59 | PnL: -0.44%
+  📉 EXIT QQQ (Signal): 18 @ $327.10 | PnL: +0.16%
+  📉 EXIT QQQ (Signal): 18 @ $327.49 | PnL: -0.22%
+  📉 EXIT QQQ (Signal): 18 @ $328.35 | PnL: +0.09%
+  📉 EXIT QQQ (TP): 18 @ $335.71 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 18 @ $336.15 | PnL: +0.34%
+  📉 EXIT QQQ (Signal): 18 @ $337.30 | PnL: -0.19%
+  📉 EXIT QQQ (TP): 18 @ $343.85 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 17 @ $350.44 | PnL: +0.87%
+  📉 EXIT QQQ (Signal): 17 @ $354.69 | PnL: +1.06%
+  📉 EXIT QQQ (Signal): 17 @ $353.42 | PnL: -0.45%
+  📉 EXIT QQQ (Signal): 17 @ $354.62 | PnL: -0.66%
+  📉 EXIT QQQ (Signal): 17 @ $353.91 | PnL: +0.03%
+  📉 EXIT QQQ (Signal): 17 @ $353.90 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 17 @ $354.27 | PnL: -0.05%
+  📉 EXIT QQQ (SL): 17 @ $351.88 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 17 @ $356.36 | PnL: +0.92%
+  📉 EXIT QQQ (TP): 17 @ $363.56 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 17 @ $363.64 | PnL: +0.54%
+  📉 EXIT QQQ (Signal): 16 @ $367.69 | PnL: +0.03%
+  📉 EXIT QQQ (Signal): 16 @ $363.81 | PnL: +0.16%
+  📉 EXIT QQQ (Signal): 17 @ $362.36 | PnL: -0.08%
+  📉 EXIT QQQ (SL): 16 @ $359.69 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 16 @ $362.12 | PnL: -0.55%
+  📉 EXIT QQQ (Signal): 16 @ $363.63 | PnL: +0.17%
+  📉 EXIT QQQ (Signal): 16 @ $369.12 | PnL: +0.91%
+  📉 EXIT QQQ (Signal): 16 @ $367.86 | PnL: -0.63%
+  📉 EXIT QQQ (Signal): 16 @ $368.85 | PnL: -0.79%
+  📉 EXIT QQQ (Signal): 16 @ $366.27 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 16 @ $366.50 | PnL: -0.04%
+  📉 EXIT QQQ (TP): 16 @ $374.65 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 16 @ $378.91 | PnL: +0.92%
+  📉 EXIT QQQ (Signal): 16 @ $381.14 | PnL: +0.13%
+  📉 EXIT QQQ (Signal): 16 @ $384.99 | PnL: +0.16%
+  📉 EXIT QQQ (Signal): 16 @ $376.41 | PnL: -0.35%
+  📉 EXIT QQQ (Signal): 16 @ $378.53 | PnL: +0.18%
+  📉 EXIT QQQ (Signal): 16 @ $375.98 | PnL: -0.46%
+  📉 EXIT QQQ (Signal): 16 @ $383.61 | PnL: +0.96%
+  📉 EXIT QQQ (Signal): 16 @ $383.13 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 16 @ $382.39 | PnL: -0.47%
+  📉 EXIT QQQ (Signal): 16 @ $382.46 | PnL: -0.14%
+  📉 EXIT QQQ (Signal): 16 @ $365.32 | PnL: -0.96%
+  📉 EXIT QQQ (Signal): 16 @ $365.68 | PnL: -0.36%
+  📉 EXIT QQQ (TP): 16 @ $374.37 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 16 @ $376.50 | PnL: +0.49%
+  📉 EXIT QQQ (Signal): 16 @ $377.94 | PnL: +0.28%
+  📉 EXIT QQQ (Signal): 16 @ $376.08 | PnL: -0.69%
+  📉 EXIT QQQ (Signal): 16 @ $377.32 | PnL: -0.15%
+  📉 EXIT QQQ (Signal): 16 @ $372.35 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 16 @ $375.46 | PnL: +0.60%
+  📉 EXIT QQQ (Signal): 16 @ $373.99 | PnL: -0.03%
+  📉 EXIT QQQ (Signal): 16 @ $375.95 | PnL: +0.38%
+  📉 EXIT QQQ (SL): 17 @ $355.87 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 17 @ $356.28 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 16 @ $362.02 | PnL: -0.36%
+  📉 EXIT QQQ (Signal): 17 @ $363.02 | PnL: +0.29%
+  📉 EXIT QQQ (Signal): 16 @ $368.71 | PnL: +0.52%
+  📉 EXIT QQQ (Signal): 16 @ $372.44 | PnL: +0.29%
+  📉 EXIT QQQ (SL): 16 @ $369.41 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 16 @ $365.03 | PnL: -0.63%
+⏳ Progress: 43.9% (2023-10-13) | Equity: $24,626
+  📉 EXIT QQQ (Signal): 16 @ $368.62 | PnL: +0.15%
+  📉 EXIT QQQ (Signal): 16 @ $366.93 | PnL: -0.63%
+  📉 EXIT QQQ (TP): 17 @ $364.81 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 16 @ $368.40 | PnL: +0.45%
+  📉 EXIT QQQ (Signal): 16 @ $368.40 | PnL: -0.27%
+  📉 EXIT QQQ (Signal): 16 @ $371.66 | PnL: +0.47%
+  📉 EXIT QQQ (Signal): 16 @ $372.72 | PnL: +0.04%
+  📉 EXIT QQQ (Signal): 16 @ $369.99 | PnL: -0.98%
+  📉 EXIT QQQ (Signal): 16 @ $376.76 | PnL: +0.95%
+  📉 EXIT QQQ (TP): 16 @ $385.24 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 16 @ $385.46 | PnL: +0.22%
+  📉 EXIT QQQ (Signal): 16 @ $384.42 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 16 @ $385.32 | PnL: +0.09%
+  📉 EXIT QQQ (Signal): 16 @ $385.02 | PnL: -0.31%
+  📉 EXIT QQQ (Signal): 16 @ $385.34 | PnL: -0.31%
+  📉 EXIT QQQ (Signal): 16 @ $386.30 | PnL: -0.11%
+  📉 EXIT QQQ (Signal): 15 @ $388.70 | PnL: +0.00%
+  📉 EXIT QQQ (Signal): 15 @ $389.79 | PnL: -0.01%
+  📉 EXIT QQQ (Signal): 15 @ $389.68 | PnL: -0.16%
+  📉 EXIT QQQ (Signal): 15 @ $388.83 | PnL: -0.25%
+  📉 EXIT QQQ (Signal): 15 @ $388.95 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 15 @ $389.37 | PnL: -0.31%
+  📉 EXIT QQQ (Signal): 15 @ $391.15 | PnL: +0.17%
+  📉 EXIT QQQ (Signal): 15 @ $388.56 | PnL: -0.55%
+  📉 EXIT QQQ (Signal): 15 @ $388.47 | PnL: -0.08%
+  📉 EXIT QQQ (Signal): 15 @ $388.53 | PnL: -0.49%
+  📉 EXIT QQQ (Signal): 15 @ $386.12 | PnL: -0.66%
+  📉 EXIT QQQ (Signal): 15 @ $388.72 | PnL: -0.45%
+  📉 EXIT QQQ (Signal): 15 @ $391.34 | PnL: +0.19%
+  📉 EXIT QQQ (TP): 15 @ $402.21 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 15 @ $402.76 | PnL: -0.30%
+  📉 EXIT QQQ (Signal): 15 @ $403.80 | PnL: -0.23%
+  📉 EXIT QQQ (Signal): 15 @ $404.36 | PnL: -0.34%
+  📉 EXIT QQQ (Signal): 15 @ $407.90 | PnL: +0.55%
+  📉 EXIT QQQ (SL): 15 @ $406.04 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 15 @ $405.82 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 15 @ $407.79 | PnL: -0.04%
+  📉 EXIT QQQ (Signal): 15 @ $410.67 | PnL: +0.27%
+  📉 EXIT QQQ (Signal): 15 @ $411.28 | PnL: +0.09%
+  📉 EXIT QQQ (Signal): 14 @ $412.00 | PnL: +0.00%
+  📉 EXIT QQQ (Signal): 14 @ $410.99 | PnL: -0.18%
+  📉 EXIT QQQ (Signal): 15 @ $405.82 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 15 @ $408.99 | PnL: +0.43%
+  📉 EXIT QQQ (Signal): 15 @ $408.41 | PnL: -0.28%
+  📉 EXIT QQQ (Signal): 15 @ $408.94 | PnL: -0.29%
+  📉 EXIT QQQ (Signal): 15 @ $408.78 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 15 @ $407.79 | PnL: -0.37%
+  📉 EXIT QQQ (Signal): 15 @ $407.09 | PnL: -0.71%
+  📉 EXIT QQQ (TP): 15 @ $417.60 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 14 @ $422.75 | PnL: +0.58%
+  📉 EXIT QQQ (Signal): 14 @ $421.51 | PnL: -0.23%
+  📉 EXIT QQQ (Signal): 14 @ $421.74 | PnL: -0.28%
+  📉 EXIT QQQ (Signal): 14 @ $425.71 | PnL: +0.75%
+  📉 EXIT QQQ (Signal): 14 @ $424.62 | PnL: -0.62%
+  📉 EXIT QQQ (Signal): 14 @ $425.89 | PnL: +0.34%
+  📉 EXIT QQQ (Signal): 14 @ $423.32 | PnL: -0.61%
+  📉 EXIT QQQ (Signal): 14 @ $424.33 | PnL: -0.15%
+  📉 EXIT QQQ (Signal): 14 @ $427.09 | PnL: +0.33%
+  📉 EXIT QQQ (Signal): 14 @ $425.59 | PnL: +1.17%
+  📉 EXIT QQQ (Signal): 14 @ $427.34 | PnL: +0.03%
+  📉 EXIT QQQ (Signal): 14 @ $428.17 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 14 @ $426.86 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 14 @ $431.56 | PnL: +0.86%
+  📉 EXIT QQQ (Signal): 14 @ $434.79 | PnL: +0.48%
+  📉 EXIT QQQ (Signal): 14 @ $429.58 | PnL: -0.42%
+  📉 EXIT QQQ (Signal): 14 @ $432.73 | PnL: +0.31%
+  📉 EXIT QQQ (Signal): 14 @ $430.96 | PnL: -0.83%
+  📉 EXIT QQQ (Signal): 14 @ $436.53 | PnL: +0.48%
+  📉 EXIT QQQ (Signal): 14 @ $437.39 | PnL: +0.08%
+  📉 EXIT QQQ (Signal): 14 @ $435.75 | PnL: -0.63%
+  📉 EXIT QQQ (Signal): 14 @ $437.32 | PnL: -0.11%
+  📉 EXIT QQQ (Signal): 14 @ $435.65 | PnL: -0.50%
+  📉 EXIT QQQ (Signal): 14 @ $443.34 | PnL: +0.99%
+  📉 EXIT QQQ (Signal): 14 @ $438.62 | PnL: -0.15%
+  📉 EXIT QQQ (SL): 14 @ $436.59 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 13 @ $439.37 | PnL: -0.79%
+  📉 EXIT QQQ (Signal): 14 @ $440.30 | PnL: +0.17%
+  📉 EXIT QQQ (SL): 13 @ $438.30 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 14 @ $437.14 | PnL: -0.48%
+  📉 EXIT QQQ (Signal): 13 @ $445.57 | PnL: +0.34%
+  📉 EXIT QQQ (Signal): 13 @ $446.13 | PnL: -0.16%
+  📉 EXIT QQQ (Signal): 13 @ $445.72 | PnL: -0.42%
+  📉 EXIT QQQ (Signal): 13 @ $445.05 | PnL: -0.10%
+  📉 EXIT QQQ (Signal): 13 @ $446.33 | PnL: -0.24%
+  📉 EXIT QQQ (Signal): 13 @ $442.68 | PnL: -0.65%
+  📉 EXIT QQQ (Signal): 13 @ $444.33 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 13 @ $443.90 | PnL: -0.31%
+  📉 EXIT QQQ (Signal): 13 @ $443.78 | PnL: -0.09%
+  📉 EXIT QQQ (Signal): 13 @ $443.05 | PnL: -0.86%
+  📉 EXIT QQQ (SL): 13 @ $438.67 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 13 @ $437.97 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 13 @ $442.96 | PnL: -0.58%
+  📉 EXIT QQQ (Signal): 13 @ $438.86 | PnL: -0.61%
+  📉 EXIT QQQ (Signal): 14 @ $431.84 | PnL: +0.36%
+  📉 EXIT QQQ (Signal): 14 @ $422.32 | PnL: +0.15%
+  📉 EXIT QQQ (TP): 14 @ $436.08 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 14 @ $440.28 | PnL: +1.14%
+  📉 EXIT QQQ (Signal): 13 @ $439.61 | PnL: -0.19%
+  📉 EXIT QQQ (Signal): 13 @ $439.50 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 13 @ $441.41 | PnL: +0.35%
+  📉 EXIT QQQ (Signal): 13 @ $442.79 | PnL: -0.08%
+  📉 EXIT QQQ (Signal): 13 @ $442.18 | PnL: -0.30%
+⏳ Progress: 58.6% (2024-05-15) | Equity: $18,715
+  📉 EXIT QQQ (TP): 13 @ $452.87 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 13 @ $451.74 | PnL: -0.29%
+  📉 EXIT QQQ (Signal): 13 @ $452.22 | PnL: +0.04%
+  📉 EXIT QQQ (Signal): 13 @ $454.29 | PnL: +0.30%
+  📉 EXIT QQQ (Signal): 13 @ $453.32 | PnL: -0.28%
+  📉 EXIT QQQ (Signal): 13 @ $453.93 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 13 @ $456.10 | PnL: -0.30%
+  📉 EXIT QQQ (Signal): 13 @ $453.87 | PnL: -0.78%
+  📉 EXIT QQQ (Signal): 13 @ $459.01 | PnL: +0.06%
+  📉 EXIT QQQ (Signal): 13 @ $459.44 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 13 @ $456.47 | PnL: -0.77%
+  📉 EXIT QQQ (TP): 13 @ $463.66 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 13 @ $463.49 | PnL: -0.08%
+  📉 EXIT QQQ (Signal): 13 @ $462.57 | PnL: -0.21%
+  📉 EXIT QQQ (Signal): 13 @ $462.73 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 13 @ $462.97 | PnL: -0.32%
+  📉 EXIT QQQ (TP): 13 @ $473.57 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 12 @ $476.30 | PnL: +0.34%
+  📉 EXIT QQQ (Signal): 12 @ $475.87 | PnL: +0.03%
+  📉 EXIT QQQ (Signal): 12 @ $475.33 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 12 @ $484.64 | PnL: +1.38%
+  📉 EXIT QQQ (Signal): 12 @ $485.50 | PnL: -0.01%
+  📉 EXIT QQQ (Signal): 12 @ $479.61 | PnL: -0.27%
+  📉 EXIT QQQ (Signal): 12 @ $479.35 | PnL: -0.00%
+  📉 EXIT QQQ (Signal): 12 @ $480.13 | PnL: +0.05%
+  📉 EXIT QQQ (Signal): 12 @ $478.87 | PnL: -0.11%
+  📉 EXIT QQQ (Signal): 12 @ $481.35 | PnL: +0.25%
+  📉 EXIT QQQ (Signal): 12 @ $479.56 | PnL: -0.30%
+  📉 EXIT QQQ (TP): 12 @ $493.39 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 12 @ $497.05 | PnL: +0.60%
+  📉 EXIT QQQ (SL): 12 @ $494.32 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $494.53 | PnL: -0.57%
+  📉 EXIT QQQ (Signal): 12 @ $496.50 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 12 @ $494.71 | PnL: -0.30%
+  📉 EXIT QQQ (SL): 13 @ $467.20 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 13 @ $450.60 | PnL: -0.64%
+  📉 EXIT QQQ (Signal): 13 @ $451.62 | PnL: -0.54%
+  📉 EXIT QQQ (Signal): 13 @ $461.61 | PnL: +1.24%
+  📉 EXIT QQQ (TP): 13 @ $471.38 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 13 @ $472.14 | PnL: +0.02%
+  📉 EXIT QQQ (Signal): 13 @ $474.07 | PnL: -0.51%
+  📉 EXIT QQQ (Signal): 13 @ $480.97 | PnL: +1.07%
+  📉 EXIT QQQ (Signal): 12 @ $479.83 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 12 @ $481.50 | PnL: +0.00%
+  📉 EXIT QQQ (SL): 12 @ $477.69 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $478.05 | PnL: -0.23%
+  📉 EXIT QQQ (Signal): 12 @ $479.44 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 13 @ $476.47 | PnL: +0.09%
+  📉 EXIT QQQ (Signal): 12 @ $476.36 | PnL: -0.28%
+  📉 EXIT QQQ (SL): 12 @ $472.26 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 13 @ $472.48 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 12 @ $472.75 | PnL: -0.72%
+  📉 EXIT QQQ (Signal): 13 @ $474.11 | PnL: +1.19%
+  📉 EXIT QQQ (Signal): 13 @ $472.78 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 13 @ $471.31 | PnL: -0.69%
+  📉 EXIT QQQ (Signal): 13 @ $472.26 | PnL: +0.15%
+  📉 EXIT QQQ (SL): 12 @ $475.27 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $481.23 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 12 @ $480.00 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 12 @ $481.96 | PnL: -0.06%
+  📉 EXIT QQQ (Signal): 12 @ $482.68 | PnL: -0.10%
+  📉 EXIT QQQ (Signal): 12 @ $482.40 | PnL: -0.18%
+  📉 EXIT QQQ (Signal): 12 @ $482.79 | PnL: -0.36%
+  📉 EXIT QQQ (Signal): 12 @ $483.73 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 12 @ $488.76 | PnL: +0.35%
+  📉 EXIT QQQ (Signal): 12 @ $488.76 | PnL: +0.23%
+  📉 EXIT QQQ (Signal): 12 @ $488.47 | PnL: -0.46%
+  📉 EXIT QQQ (SL): 12 @ $482.54 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $482.57 | PnL: +0.22%
+  📉 EXIT QQQ (Signal): 12 @ $479.73 | PnL: -0.59%
+  📉 EXIT QQQ (Signal): 12 @ $484.06 | PnL: +0.13%
+  📉 EXIT QQQ (SL): 12 @ $481.11 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $490.66 | PnL: +0.52%
+  📉 EXIT QQQ (Signal): 12 @ $491.20 | PnL: -0.38%
+  📉 EXIT QQQ (Signal): 12 @ $492.31 | PnL: -0.35%
+  📉 EXIT QQQ (Signal): 12 @ $496.54 | PnL: +0.40%
+  📉 EXIT QQQ (SL): 12 @ $492.62 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 12 @ $489.73 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $494.62 | PnL: +0.25%
+  📉 EXIT QQQ (Signal): 12 @ $491.12 | PnL: -0.61%
+  📉 EXIT QQQ (Signal): 12 @ $492.88 | PnL: -0.14%
+  📉 EXIT QQQ (Signal): 12 @ $493.62 | PnL: +0.02%
+  📉 EXIT QQQ (Signal): 12 @ $492.06 | PnL: -0.60%
+  📉 EXIT QQQ (Signal): 12 @ $494.53 | PnL: -0.02%
+  📉 EXIT QQQ (Signal): 12 @ $490.50 | PnL: -0.43%
+  📉 EXIT QQQ (Signal): 12 @ $494.61 | PnL: +0.10%
+  📉 EXIT QQQ (Signal): 12 @ $497.05 | PnL: -0.56%
+  📉 EXIT QQQ (Signal): 12 @ $498.47 | PnL: -0.03%
+  📉 EXIT QQQ (SL): 12 @ $496.82 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 12 @ $510.61 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 11 @ $513.67 | PnL: +0.26%
+  📉 EXIT QQQ (Signal): 11 @ $511.97 | PnL: -0.50%
+  📉 EXIT QQQ (Signal): 11 @ $512.14 | PnL: -0.55%
+  📉 EXIT QQQ (Signal): 11 @ $511.53 | PnL: -0.21%
+  📉 EXIT QQQ (SL): 12 @ $497.93 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $501.97 | PnL: +0.08%
+  📉 EXIT QQQ (Signal): 11 @ $507.05 | PnL: -0.44%
+  📉 EXIT QQQ (Signal): 11 @ $509.06 | PnL: +0.07%
+  📉 EXIT QQQ (Signal): 11 @ $507.83 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 11 @ $507.70 | PnL: +0.00%
+  📉 EXIT QQQ (TP): 11 @ $519.33 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 11 @ $522.01 | PnL: +0.35%
+  📉 EXIT QQQ (Signal): 11 @ $522.75 | PnL: -0.00%
+  📉 EXIT QQQ (Signal): 11 @ $523.70 | PnL: +0.11%
+  📉 EXIT QQQ (Signal): 11 @ $522.11 | PnL: -0.21%
+  📉 EXIT QQQ (SL): 11 @ $522.55 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $527.11 | PnL: -0.43%
+  📉 EXIT QQQ (Signal): 11 @ $528.56 | PnL: +0.21%
+  📉 EXIT QQQ (Signal): 11 @ $527.19 | PnL: -0.17%
+⏳ Progress: 73.2% (2024-12-13) | Equity: $18,289
+  📉 EXIT QQQ (Signal): 11 @ $527.82 | PnL: -0.25%
+  📉 EXIT QQQ (Signal): 11 @ $536.49 | PnL: +1.08%
+  📉 EXIT QQQ (Signal): 11 @ $535.10 | PnL: -0.44%
+  📉 EXIT QQQ (Signal): 11 @ $527.36 | PnL: -0.19%
+  📉 EXIT QQQ (Signal): 11 @ $524.23 | PnL: +0.28%
+  📉 EXIT QQQ (SL): 11 @ $520.16 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $517.05 | PnL: -0.04%
+  📉 EXIT QQQ (Signal): 11 @ $513.88 | PnL: -0.61%
+  📉 EXIT QQQ (TP): 11 @ $526.11 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 11 @ $528.85 | PnL: +0.24%
+  📉 EXIT QQQ (Signal): 11 @ $531.18 | PnL: +0.14%
+  📉 EXIT QQQ (Signal): 11 @ $519.97 | PnL: +0.07%
+  📉 EXIT QQQ (Signal): 11 @ $520.64 | PnL: -0.15%
+  📉 EXIT QQQ (SL): 11 @ $518.28 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $523.95 | PnL: +0.11%
+  📉 EXIT QQQ (SL): 11 @ $517.29 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $521.83 | PnL: -0.50%
+  📉 EXIT QQQ (Signal): 11 @ $529.32 | PnL: +0.67%
+  📉 EXIT QQQ (SL): 11 @ $523.92 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $527.74 | PnL: +0.21%
+  📉 EXIT QQQ (Signal): 11 @ $527.98 | PnL: -0.05%
+  📉 EXIT QQQ (Signal): 11 @ $527.74 | PnL: -0.09%
+  📉 EXIT QQQ (Signal): 11 @ $525.06 | PnL: +0.51%
+  📉 EXIT QQQ (Signal): 11 @ $529.94 | PnL: +0.30%
+  📉 EXIT QQQ (Signal): 11 @ $537.76 | PnL: +1.18%
+  📉 EXIT QQQ (Signal): 11 @ $538.44 | PnL: -0.15%
+  📉 EXIT QQQ (Signal): 11 @ $538.52 | PnL: -0.23%
+  📉 EXIT QQQ (Signal): 11 @ $533.76 | PnL: -0.74%
+  📉 EXIT QQQ (SL): 12 @ $476.32 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $478.28 | PnL: -0.77%
+  📉 EXIT QQQ (TP): 12 @ $491.14 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 12 @ $492.93 | PnL: +0.50%
+  📉 EXIT QQQ (SL): 12 @ $488.55 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $481.72 | PnL: -0.30%
+  📉 EXIT QQQ (SL): 12 @ $462.56 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 13 @ $463.33 | PnL: +2.00%
+  📉 EXIT QQQ (SL): 13 @ $455.70 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 13 @ $456.11 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 13 @ $457.14 | PnL: -0.30%
+  📉 EXIT QQQ (Signal): 13 @ $457.51 | PnL: -0.46%
+  📉 EXIT QQQ (SL): 13 @ $443.14 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 13 @ $453.46 | PnL: +2.00%
+  📉 EXIT QQQ (TP): 13 @ $463.06 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 13 @ $455.65 | PnL: -0.22%
+  📉 EXIT QQQ (TP): 13 @ $470.22 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 12 @ $465.37 | PnL: -0.84%
+  📉 EXIT QQQ (Signal): 12 @ $470.89 | PnL: +0.47%
+  📉 EXIT QQQ (Signal): 12 @ $471.73 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 12 @ $475.39 | PnL: +0.49%
+  📉 EXIT QQQ (Signal): 12 @ $473.28 | PnL: -0.50%
+  📉 EXIT QQQ (SL): 12 @ $469.20 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 12 @ $478.91 | PnL: -0.34%
+  📉 EXIT QQQ (Signal): 12 @ $484.40 | PnL: +0.29%
+  📉 EXIT QQQ (Signal): 12 @ $485.09 | PnL: -0.42%
+  📉 EXIT QQQ (Signal): 12 @ $480.53 | PnL: -0.24%
+  📉 EXIT QQQ (Signal): 12 @ $482.80 | PnL: -0.48%
+  📉 EXIT QQQ (Signal): 12 @ $490.87 | PnL: +1.47%
+  📉 EXIT QQQ (Signal): 12 @ $488.08 | PnL: -0.96%
+  📉 EXIT QQQ (Signal): 12 @ $488.67 | PnL: -0.38%
+  📉 EXIT QQQ (SL): 11 @ $501.92 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 11 @ $514.16 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 11 @ $515.11 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 11 @ $519.04 | PnL: -0.14%
+  📉 EXIT QQQ (Signal): 11 @ $517.21 | PnL: -0.75%
+  📉 EXIT QQQ (Signal): 11 @ $519.67 | PnL: +0.10%
+  📉 EXIT QQQ (Signal): 11 @ $517.60 | PnL: -0.49%
+  📉 EXIT QQQ (SL): 11 @ $517.00 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $516.37 | PnL: +0.19%
+  📉 EXIT QQQ (Signal): 11 @ $514.47 | PnL: -0.53%
+  📉 EXIT QQQ (SL): 11 @ $512.93 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $520.28 | PnL: +0.58%
+  📉 EXIT QQQ (Signal): 11 @ $522.44 | PnL: +0.16%
+  📉 EXIT QQQ (Signal): 11 @ $522.25 | PnL: -0.06%
+  📉 EXIT QQQ (Signal): 11 @ $515.40 | PnL: -0.76%
+  📉 EXIT QQQ (Signal): 11 @ $521.08 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 11 @ $531.02 | PnL: +1.62%
+  📉 EXIT QQQ (SL): 11 @ $527.72 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $529.33 | PnL: +0.47%
+  📉 EXIT QQQ (Signal): 11 @ $530.47 | PnL: +0.02%
+  📉 EXIT QQQ (Signal): 11 @ $530.97 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 11 @ $533.17 | PnL: +0.31%
+  📉 EXIT QQQ (SL): 11 @ $530.83 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $526.19 | PnL: -1.39%
+  📉 EXIT QQQ (SL): 11 @ $526.18 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 11 @ $530.84 | PnL: +0.25%
+  📉 EXIT QQQ (Signal): 11 @ $530.61 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 11 @ $528.71 | PnL: -0.51%
+  📉 EXIT QQQ (SL): 11 @ $525.81 | PnL: -1.00%
+  📉 EXIT QQQ (TP): 11 @ $541.65 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 10 @ $539.84 | PnL: -0.50%
+  📉 EXIT QQQ (Signal): 11 @ $547.93 | PnL: +1.17%
+  📉 EXIT QQQ (Signal): 10 @ $550.15 | PnL: -0.29%
+  📉 EXIT QQQ (Signal): 10 @ $553.71 | PnL: +0.59%
+  📉 EXIT QQQ (Signal): 10 @ $552.07 | PnL: -0.25%
+  📉 EXIT QQQ (Signal): 10 @ $552.04 | PnL: -0.13%
+  📉 EXIT QQQ (Signal): 10 @ $553.95 | PnL: +0.10%
+  📉 EXIT QQQ (Signal): 10 @ $555.10 | PnL: -0.21%
+  📉 EXIT QQQ (Signal): 10 @ $551.79 | PnL: -0.27%
+  📉 EXIT QQQ (Signal): 10 @ $553.42 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 10 @ $559.25 | PnL: +0.61%
+  📉 EXIT QQQ (Signal): 10 @ $556.40 | PnL: -0.28%
+  📉 EXIT QQQ (Signal): 10 @ $555.03 | PnL: -0.00%
+  📉 EXIT QQQ (Signal): 10 @ $557.34 | PnL: -0.05%
+  📉 EXIT QQQ (Signal): 10 @ $561.53 | PnL: +0.53%
+⏳ Progress: 87.9% (2025-07-18) | Equity: $23,906
+  📉 EXIT QQQ (Signal): 10 @ $564.65 | PnL: +0.26%
+  📉 EXIT QQQ (Signal): 10 @ $563.86 | PnL: -0.33%
+  📉 EXIT QQQ (Signal): 10 @ $559.75 | PnL: -0.59%
+  📉 EXIT QQQ (Signal): 10 @ $562.08 | PnL: +0.05%
+  📉 EXIT QQQ (Signal): 10 @ $565.34 | PnL: +0.31%
+  📉 EXIT QQQ (Signal): 10 @ $564.93 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 10 @ $567.18 | PnL: +0.15%
+  📉 EXIT QQQ (Signal): 10 @ $568.20 | PnL: -0.12%
+  📉 EXIT QQQ (Signal): 10 @ $567.78 | PnL: -0.20%
+  📉 EXIT QQQ (Signal): 10 @ $567.84 | PnL: -0.29%
+  📉 EXIT QQQ (Signal): 10 @ $569.29 | PnL: -0.80%
+  📉 EXIT QQQ (SL): 10 @ $560.12 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 10 @ $567.99 | PnL: +0.30%
+  📉 EXIT QQQ (Signal): 10 @ $573.69 | PnL: +0.69%
+  📉 EXIT QQQ (Signal): 10 @ $575.92 | PnL: +0.41%
+  📉 EXIT QQQ (Signal): 10 @ $578.96 | PnL: +0.05%
+  📉 EXIT QQQ (Signal): 10 @ $579.91 | PnL: +0.29%
+  📉 EXIT QQQ (Signal): 10 @ $579.57 | PnL: -0.14%
+  📉 EXIT QQQ (Signal): 10 @ $576.84 | PnL: -0.53%
+  📉 EXIT QQQ (Signal): 10 @ $576.17 | PnL: -0.21%
+  📉 EXIT QQQ (Signal): 10 @ $569.79 | PnL: -0.45%
+  📉 EXIT QQQ (Signal): 10 @ $571.36 | PnL: -0.35%
+  📉 EXIT QQQ (Signal): 10 @ $574.17 | PnL: +0.07%
+  📉 EXIT QQQ (Signal): 10 @ $567.02 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 10 @ $573.97 | PnL: +0.36%
+  📉 EXIT QQQ (Signal): 10 @ $578.19 | PnL: -0.07%
+  📉 EXIT QQQ (Signal): 10 @ $580.12 | PnL: -0.01%
+  📉 EXIT QQQ (TP): 10 @ $593.83 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 10 @ $591.09 | PnL: -0.45%
+  📉 EXIT QQQ (Signal): 10 @ $596.57 | PnL: +0.99%
+  📉 EXIT QQQ (Signal): 9 @ $600.67 | PnL: -0.02%
+  📉 EXIT QQQ (Signal): 9 @ $597.69 | PnL: -0.43%
+  📉 EXIT QQQ (Signal): 10 @ $592.29 | PnL: -0.60%
+  📉 EXIT QQQ (Signal): 10 @ $597.85 | PnL: +0.40%
+  📉 EXIT QQQ (Signal): 9 @ $598.64 | PnL: +0.10%
+  📉 EXIT QQQ (Signal): 9 @ $597.23 | PnL: -0.21%
+  📉 EXIT QQQ (Signal): 9 @ $596.56 | PnL: -0.68%
+  📉 EXIT QQQ (Signal): 9 @ $604.66 | PnL: +0.51%
+  📉 EXIT QQQ (Signal): 9 @ $605.81 | PnL: +0.09%
+  📉 EXIT QQQ (Signal): 9 @ $602.31 | PnL: -0.67%
+  📉 EXIT QQQ (Signal): 9 @ $606.90 | PnL: +0.01%
+  📉 EXIT QQQ (Signal): 9 @ $603.83 | PnL: -0.67%
+  📉 EXIT QQQ (Signal): 9 @ $609.34 | PnL: +0.15%
+  📉 EXIT QQQ (Signal): 9 @ $610.86 | PnL: +0.01%
+  📉 EXIT QQQ (SL): 9 @ $605.26 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 9 @ $596.36 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 9 @ $597.42 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 9 @ $599.32 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $611.30 | PnL: +1.17%
+  📉 EXIT QQQ (Signal): 9 @ $610.56 | PnL: -0.31%
+  📉 EXIT QQQ (TP): 9 @ $621.55 | PnL: +2.00%
+  📉 EXIT QQQ (Signal): 9 @ $635.55 | PnL: +1.62%
+  📉 EXIT QQQ (Signal): 9 @ $632.47 | PnL: -0.36%
+  📉 EXIT QQQ (Signal): 9 @ $634.42 | PnL: -0.01%
+  📉 EXIT QQQ (Signal): 9 @ $631.87 | PnL: +0.05%
+  📉 EXIT QQQ (SL): 9 @ $626.79 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $633.02 | PnL: +0.13%
+  📉 EXIT QQQ (Signal): 9 @ $632.01 | PnL: -0.18%
+  📉 EXIT QQQ (Signal): 9 @ $631.78 | PnL: -0.17%
+  📉 EXIT QQQ (Signal): 9 @ $622.84 | PnL: -0.05%
+  📉 EXIT QQQ (SL): 9 @ $617.68 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $620.70 | PnL: -0.32%
+  📉 EXIT QQQ (SL): 9 @ $619.38 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $614.69 | PnL: -0.41%
+  📉 EXIT QQQ (Signal): 9 @ $616.89 | PnL: -0.23%
+  📉 EXIT QQQ (Signal): 9 @ $620.95 | PnL: -0.47%
+  📉 EXIT QQQ (Signal): 9 @ $624.99 | PnL: +0.29%
+  📉 EXIT QQQ (Signal): 9 @ $626.77 | PnL: +0.18%
+  📉 EXIT QQQ (Signal): 9 @ $623.75 | PnL: -0.40%
+  📉 EXIT QQQ (Signal): 9 @ $623.99 | PnL: -0.02%
+  📉 EXIT QQQ (SL): 9 @ $621.58 | PnL: -1.00%
+  📉 EXIT QQQ (SL): 9 @ $619.66 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $618.90 | PnL: -0.18%
+  📉 EXIT QQQ (Signal): 9 @ $620.65 | PnL: -0.14%
+  📉 EXIT QQQ (Signal): 9 @ $620.39 | PnL: -0.15%
+  📉 EXIT QQQ (SL): 9 @ $615.24 | PnL: -1.00%
+  📉 EXIT QQQ (Signal): 9 @ $617.39 | PnL: -0.07%
+  📉 EXIT QQQ (Signal): 9 @ $622.52 | PnL: +0.64%
+
+================================================================================
+🔒 Closing all remaining positions at test end...
+================================================================================
+
+  📉 FORCE EXIT QQQ: 9 shares @ $626.56 | PnL: +0.70%
+
+================================================================================
+📊 BACKTEST RESULTS
+================================================================================
+
+💰 FINANCIAL PERFORMANCE
+  Initial Capital:    $   25,000.00
+  Final Equity:       $   23,418.05
+  Total P&L:          $   -1,581.95
+  Total Return:              -6.33%
+  Sharpe Ratio:              -0.51
+  Max Drawdown:               0.00%
+
+📈 TRADE STATISTICS
+  Total Trades:                654
+  Winning Trades:              246
+  Losing Trades:               408
+  Win Rate:                  37.61%
+  Profit Factor:              0.88
+
+💵 TRADE AVERAGES
+  Avg Trade:          $       -2.42
+  Avg Win:            $       47.59
+  Avg Loss:           $      -32.57
+  Gross Profit:       $   11,706.83
+  Gross Loss:         $   13,288.78
+
+================================================================================
+🚦 PHASE 1.1 ASSESSMENT
+================================================================================
+
+Gate Checks:
+  ❌ Sharpe Ratio < 1.0 (actual: -0.51)
+  ❌ Win Rate < 45% (actual: 37.6%)
+  ❌ Profit Factor < 1.3 (actual: 0.88)
+  ✅ Max Drawdown < 20%
+  ✅ Trade Count > 100
+
+================================================================================
+Gates Passed: 2/5 (40%)
+================================================================================
+
+❌ RECOMMENDATION: FAIL - Consider early kill or strategy modification
+
+💾 Saved trades to: A:\1\Magellan\test\intraday_alpha\results\phase1_baseline_trades.csv

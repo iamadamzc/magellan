@@ -1,0 +1,15 @@
+{
+  "strategy": "Premium Selling",
+  "symbols": [
+    "SPY",
+    "QQQ"
+  ],
+  "period": "2020-01-01 to 2025-12-31",
+  "total_windows": 14,
+  "valid_windows": 0,
+  "avg_oos_sharpe": 0.3648336612926035,
+  "sharpe_std": 2.3907194930246183,
+  "avg_trades_per_window": 5.928571428571429,
+  "methodology": "Phase 4 Corrected (sqrt(252) annualization)",
+  "min_trades_required": 10
+}

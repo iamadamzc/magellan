@@ -1,0 +1,79 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific: Large result CSVs
+results/stress_test_equity_*.csv
+results/equity_curve_*.csv
+*.csv
+*.parquet
+
+# Keep smaller result files
+!results/options/*.csv
+!research/websocket_poc/*.txt
+!research/websocket_poc/*.json
+
+# Logs
+*.log
+livetradelog.txt
+
+# Coverage analysis (temporary)
+.coverage
+.coverage.*
+htmlcov/
+
+# Temporary files
+*.tmp
+*.bak
+data/cache/
+
+dev/**/*.csv
+dev/**/*.parquet
+
+*.parquet
+
+research/blind_backwards_analysis/outputs/

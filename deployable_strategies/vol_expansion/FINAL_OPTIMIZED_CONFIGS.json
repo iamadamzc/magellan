@@ -1,0 +1,149 @@
+{
+  "GLD": {
+    "workhorse": {
+      "cluster": 4,
+      "trend_filter": false,
+      "target_atr": 3.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 12,
+      "expected_return": 118.47281259581135,
+      "expected_trades": 251,
+      "expected_win_rate": 0.38247011952191234,
+      "expected_expectancy": 0.32798055109356244
+    },
+    "sniper": {
+      "thresholds": {
+        "effort_result_mean": -57.722290197647894,
+        "range_ratio_mean": 4.519263016748581,
+        "volatility_ratio_mean": 1.1509802089676828
+      },
+      "trend_filter": false,
+      "expected_return": 5.605176840000126,
+      "expected_trades": 6
+    }
+  },
+  "IVV": {
+    "workhorse": {
+      "cluster": 0,
+      "trend_filter": false,
+      "target_atr": 3.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 16,
+      "expected_return": 75.62032952000841,
+      "expected_trades": 237,
+      "expected_win_rate": 0.379746835443038,
+      "expected_expectancy": 0.2530368330444214
+    },
+    "sniper": {
+      "thresholds": {
+        "effort_result_mean": -47.74314296517463,
+        "range_ratio_mean": 4.021966915266139,
+        "volatility_ratio_mean": 1.1284043723911337
+      },
+      "trend_filter": false,
+      "expected_return": 1.6311514600002797,
+      "expected_trades": 5
+    }
+  },
+  "IWM": {
+    "workhorse": {
+      "cluster": 1,
+      "trend_filter": false,
+      "target_atr": 2.0,
+      "stop_atr": 0.5,
+      "time_stop_bars": 8,
+      "expected_return": 65.7718499400378,
+      "expected_trades": 425,
+      "expected_win_rate": 0.32941176470588235,
+      "expected_expectancy": 0.1368934555337313
+    }
+  },
+  "SPY": {
+    "workhorse": {
+      "cluster": 6,
+      "trend_filter": false,
+      "target_atr": 3.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 8,
+      "expected_return": 39.39669388001133,
+      "expected_trades": 338,
+      "expected_win_rate": 0.3875739644970414,
+      "expected_expectancy": 0.10890310732490878
+    }
+  },
+  "QQQ": {
+    "workhorse": {
+      "cluster": 4,
+      "trend_filter": false,
+      "target_atr": 3.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 8,
+      "expected_return": 33.46110414000763,
+      "expected_trades": 391,
+      "expected_win_rate": 0.391304347826087,
+      "expected_expectancy": 0.084421897696773
+    }
+  },
+  "VOO": {
+    "workhorse": {
+      "cluster": 4,
+      "trend_filter": false,
+      "target_atr": 2.0,
+      "stop_atr": 0.5,
+      "time_stop_bars": 4,
+      "expected_return": 28.19963727000021,
+      "expected_trades": 18,
+      "expected_win_rate": 0.6111111111111112,
+      "expected_expectancy": 1.4145694934262858
+    }
+  },
+  "TQQQ": {
+    "workhorse": {
+      "cluster": 2,
+      "trend_filter": true,
+      "target_atr": 2.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 16,
+      "expected_return": 5.434824539996086,
+      "expected_trades": 200,
+      "expected_win_rate": 0.375,
+      "expected_expectancy": 0.036555077466388086
+    }
+  },
+  "SLV": {
+    "workhorse": {
+      "cluster": 6,
+      "trend_filter": false,
+      "target_atr": 2.5,
+      "stop_atr": 1.0,
+      "time_stop_bars": 16,
+      "expected_return": 4.40844518000012,
+      "expected_trades": 85,
+      "expected_win_rate": 0.3764705882352941,
+      "expected_expectancy": 0.062233644044699374
+    },
+    "sniper": {
+      "thresholds": {
+        "effort_result_mean": -57.48072748782232,
+        "range_ratio_mean": 4.679171717869636,
+        "volatility_ratio_mean": 1.1223936121401914
+      },
+      "trend_filter": false,
+      "expected_return": 8.344075380000016,
+      "expected_trades": 7
+    }
+  },
+  "SOXL": {
+    "workhorse": {
+      "cluster": 1,
+      "trend_filter": true,
+      "target_atr": 2.0,
+      "stop_atr": 1.0,
+      "time_stop_bars": 16,
+      "expected_return": 0.6301324799991237,
+      "expected_trades": 195,
+      "expected_win_rate": 0.37435897435897436,
+      "expected_expectancy": 0.01346404385413253
+    }
+  }
+}

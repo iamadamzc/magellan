@@ -1,0 +1,24 @@
+=== STARTED: 2026-01-25 09:29:53.601969 ===
+
+09:29:54 - SPY: Starting
+09:29:54 - QQQ: Starting
+09:29:54 - SPY: Loaded 837,967 bars
+09:29:54 - QQQ: Loaded 869,668 bars
+09:29:54 - SPY: Testing TP=0.1% SL=0.1%
+09:29:54 - QQQ: Testing TP=0.1% SL=0.1%
+09:31:23 - SPY TP=0.1% SL=0.1%: Return=-7.83%, HR=49.9%
+09:31:23 - SPY: Testing TP=0.15% SL=0.15%
+09:31:26 - QQQ TP=0.1% SL=0.1%: Return=-3.33%, HR=50.0%
+09:31:26 - QQQ: Testing TP=0.15% SL=0.15%
+09:32:56 - SPY TP=0.15% SL=0.15%: Return=0.94%, HR=50.3%
+09:32:56 - SPY: Testing TP=0.2% SL=0.2%
+09:33:02 - QQQ TP=0.15% SL=0.15%: Return=5.07%, HR=50.2%
+09:33:02 - QQQ: Testing TP=0.2% SL=0.2%
+09:34:23 - SPY TP=0.2% SL=0.2%: Return=8.06%, HR=50.6%
+09:34:23 - SPY: Testing TP=0.25% SL=0.25%
+09:34:32 - QQQ TP=0.2% SL=0.2%: Return=1.94%, HR=50.3%
+09:34:32 - QQQ: Testing TP=0.25% SL=0.25%
+09:35:51 - SPY TP=0.25% SL=0.25%: Return=17.38%, HR=51.1%
+09:35:51 - SPY: Complete
+09:36:01 - QQQ TP=0.25% SL=0.25%: Return=9.14%, HR=50.8%
+09:36:01 - QQQ: Complete

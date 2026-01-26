@@ -1,0 +1,49 @@
+{
+    "symbol": "MYM",
+    "full_name": "Micro E-mini Dow",
+    "proxy_tested": "DIA (Dow ETF via Alpaca)",
+    "strategy_name": "daily_trend_hysteresis",
+    "timeframe": "1Day",
+    "parameters": {
+        "rsi_period": 28,
+        "rsi_upper": 55,
+        "rsi_lower": 45
+    },
+    "backtest_results": {
+        "test_period": "2024-01-01 to 2025-12-31",
+        "proxy_symbol": "DIA",
+        "total_return_pct": 11.68,
+        "sharpe_ratio": 0.65,
+        "max_drawdown_pct": -6.16,
+        "trade_count": 10,
+        "win_rate_pct": 70.0,
+        "avg_hold_days": 48.0
+    },
+    "wfa_results": {
+        "train_period": "2024",
+        "test_period": "2025",
+        "train_sharpe": 0.44,
+        "test_sharpe": 0.85,
+        "test_return_pct": 7.8,
+        "degradation": 0.41,
+        "verdict": "PROMOTED - Passed OOS validation"
+    },
+    "deployment_status": "approved",
+    "deployment_date": "2026-01-17",
+    "promotion_reason": "WFA validation - OOS Sharpe 0.85 (above 0.7 threshold)",
+    "risk_management": {
+        "max_contracts_per_trade": 1,
+        "max_portfolio_allocation_pct": 5,
+        "stop_loss_pct": null,
+        "notes": "Dow index futures - High win rate (70%). WFA showed consistent improvement. Lower allocation as satellite position."
+    },
+    "contract_specs": {
+        "exchange": "CME",
+        "tick_size": 1.0,
+        "tick_value_usd": 0.50,
+        "margin_requirement_approx_usd": 950,
+        "trading_hours": "Nearly 24 hours (6:00 PM ET Sun - 5:00 PM ET Fri)",
+        "multiplier": 0.5
+    },
+    "notes": "Promoted after WFA validation. Was marginal in 2-year test (0.65) but passed OOS (0.85). Value-oriented index with high win rate."
+}

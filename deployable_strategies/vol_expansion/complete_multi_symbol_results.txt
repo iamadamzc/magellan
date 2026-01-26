@@ -1,0 +1,148 @@
+======================================================================
+MULTI-SYMBOL 2025 OUT-OF-SAMPLE VALIDATION
+======================================================================
+
+======================================================================
+PROCESSING: SPY
+======================================================================
+  Loaded: 837,967 1-min bars
+  Training: 19,572 bars
+  Testing (2025): 6,498 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     26 trades,   18.4% return
+    Workhorse:   3 trades,    0.9% return
+    Combined:   29 trades,    9.7% return
+
+======================================================================
+PROCESSING: QQQ
+======================================================================
+  Loaded: 869,668 1-min bars
+  Training: 19,577 bars
+  Testing (2025): 6,500 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     32 trades,  -13.8% return
+    Workhorse:   1 trades,   -1.0% return
+    Combined:   33 trades,   -7.4% return
+
+======================================================================
+PROCESSING: IWM
+======================================================================
+  Loaded: 755,102 1-min bars
+  Training: 19,536 bars
+  Testing (2025): 6,495 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     19 trades,   -5.9% return
+    Workhorse:   4 trades,    0.2% return
+    Combined:   23 trades,   -2.8% return
+
+======================================================================
+PROCESSING: IVV
+======================================================================
+  Loaded: 491,784 1-min bars
+  Training: 15,652 bars
+  Testing (2025): 5,713 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:      5 trades,   -9.7% return
+    Workhorse: 134 trades,    4.4% return
+    Combined:  139 trades,   -2.7% return
+
+======================================================================
+PROCESSING: VOO
+======================================================================
+  Loaded: 26,524 1-min bars
+  Training: 908 bars
+  Testing (2025): 239 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:      1 trades,   -0.6% return
+    Workhorse:   7 trades,    0.6% return
+    Combined:    8 trades,   -0.0% return
+
+======================================================================
+PROCESSING: GLD
+======================================================================
+  Loaded: 556,909 1-min bars
+  Training: 16,842 bars
+  Testing (2025): 6,395 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     42 trades,   -8.4% return
+    Workhorse: 138 trades,  -25.0% return
+    Combined:  180 trades,  -16.7% return
+
+======================================================================
+PROCESSING: SLV
+======================================================================
+  Loaded: 612,399 1-min bars
+  Training: 18,371 bars
+  Testing (2025): 6,474 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     52 trades,  -34.7% return
+    Workhorse: 103 trades,  -19.2% return
+    Combined:  155 trades,  -27.0% return
+
+======================================================================
+PROCESSING: TQQQ
+======================================================================
+  Loaded: 940,298 1-min bars
+  Training: 19,578 bars
+  Testing (2025): 6,500 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     42 trades,  -29.2% return
+    Workhorse:   0 trades,    0.0% return
+    Combined:   42 trades,  -14.6% return
+
+======================================================================
+PROCESSING: SOXL
+======================================================================
+  Loaded: 945,398 1-min bars
+  Training: 19,578 bars
+  Testing (2025): 6,500 bars
+  Training Workhorse model...
+  Running backtest...
+
+  RESULTS:
+    Sniper:     40 trades,  -28.7% return
+    Workhorse: 263 trades,  -58.5% return
+    Combined:  303 trades,  -43.6% return
+
+======================================================================
+FINAL SUMMARY - ALL SYMBOLS (2025 OOS)
+======================================================================
+
+Symbol   Sniper                    Workhorse                 Combined            
+         Trades   Return   Expect Trades   Return   Expect     Return    Total
+----------------------------------------------------------------------------------------------------
+SPY          26    18.4%   0.346R      3     0.9%   0.321R       9.7%      29
+QQQ          32   -13.8%  -0.217R      1    -1.0%  -1.003R      -7.4%      33
+IWM          19    -5.9%  -0.143R      4     0.2%   0.059R      -2.8%      23
+IVV           5    -9.7%  -1.015R    134     4.4%   0.039R      -2.7%     139
+VOO           1    -0.6%  -0.322R      7     0.6%   0.088R      -0.0%       8
+GLD          42    -8.4%  -0.089R    138   -25.0%  -0.203R     -16.7%     180
+SLV          52   -34.7%  -0.393R    103   -19.2%  -0.199R     -27.0%     155
+TQQQ         42   -29.2%  -0.396R      0     0.0%   0.000R     -14.6%      42
+SOXL         40   -28.7%  -0.408R    263   -58.5%  -0.327R     -43.6%     303
+
+*** Results saved to A:\1\Magellan\test\vol_expansion\multi_symbol_2025_results.json ***
