@@ -69,11 +69,13 @@ class BearTrapStrategy:
         # Scanner configuration
         scanner_config = config.get("scanner", {})
         self.scanner_enabled = scanner_config.get("enabled", False)
-        self.scan_interval = scanner_config.get("scan_interval_seconds", 900)  # 15 min default
+        self.scan_interval = scanner_config.get(
+            "scan_interval_seconds", 900
+        )  # 15 min default
         self.base_universe = scanner_config.get("base_universe", symbols)
         self.fmp_api_key = scanner_config.get("fmp_api_key", "")
         self.min_day_change = scanner_config.get("min_day_change_pct", -10.0)
-        
+
         # Scanner state
         self.watch_list = set(self.base_universe)
         self.last_scan_time = None
@@ -81,7 +83,9 @@ class BearTrapStrategy:
 
         self.logger.info(f"✓ BearTrapStrategy initialized for {len(symbols)} symbols")
         if self.scanner_enabled:
-            self.logger.info(f"✓ Dynamic scanner enabled (scan every {self.scan_interval}s, threshold: {self.min_day_change}%)")
+            self.logger.info(
+                f"✓ Dynamic scanner enabled (scan every {self.scan_interval}s, threshold: {self.min_day_change}%)"
+            )
         else:
             self.logger.info(f"✓ Static symbol list mode")
 
@@ -90,7 +94,7 @@ class BearTrapStrategy:
         # Update watch list if scanner enabled
         if self._should_scan():
             self._update_watch_list()
-        
+
         # Process symbols in watch list
         for symbol in self.watch_list:
             try:
@@ -172,7 +176,6 @@ class BearTrapStrategy:
         # Check risk gates first
         if not self._check_risk_gates(symbol):
             return
-
 
         # Entry criteria
         day_change = current["day_change_pct"]
@@ -451,134 +454,158 @@ class BearTrapStrategy:
         self.logger.info(
             f"EOD Summary: {summary['total_trades']} trades, P&L: ${summary['total_pnl']:.2f}"
         )
-    
+
     # ========== SCANNER METHODS ==========
-    
+
     def _should_scan(self):
         """Check if it's time to run the scanner"""
         if not self.scanner_enabled:
             return False
-        
+
         if self.last_scan_time is None:
             return True
-        
+
         elapsed = (datetime.now() - self.last_scan_time).total_seconds()
         return elapsed >= self.scan_interval
-    
+
     def _update_watch_list(self):
         """Hybrid scanner: FMP discovers, Alpaca validates"""
         self.scan_count += 1
-        self.logger.info(f"🔍 Scanner #{self.scan_count}: Scanning market for candidates...")
-        
+        self.logger.info(
+            f"🔍 Scanner #{self.scan_count}: Scanning market for candidates..."
+        )
+
         try:
             # Step 1: Get top losers from FMP
             fmp_candidates = self._get_fmp_losers()
-            
+
             if not fmp_candidates:
-                self.logger.warning("FMP returned no candidates, using base universe only")
+                self.logger.warning(
+                    "FMP returned no candidates, using base universe only"
+                )
                 self.watch_list = set(self.base_universe)
                 self.last_scan_time = datetime.now()
                 return
-            
+
             # Step 2: Validate with Alpaca snapshots
             symbols_to_validate = list(set(self.base_universe) | set(fmp_candidates))
             validated = self._validate_with_alpaca(symbols_to_validate)
-            
+
             # Update watch list
             self.watch_list = set(self.base_universe) | validated
             self.last_scan_time = datetime.now()
-            
+
             self.logger.info(
                 f"✓ Watch list updated: {len(self.watch_list)} symbols "
                 f"(base: {len(self.base_universe)}, discovered: {len(validated - set(self.base_universe))})"
             )
-            
+
         except Exception as e:
             self.logger.error(f"Scanner error: {e}", exc_info=True)
             # Fallback to base universe
             self.watch_list = set(self.base_universe)
             self.last_scan_time = datetime.now()
-    
+
     def _get_fmp_losers(self):
         """Get top losers from Financial Modeling Prep API"""
         if not self.fmp_api_key:
             self.logger.warning("FMP API key not configured, skipping FMP scan")
             return []
-        
+
         try:
             url = f"https://financialmodelingprep.com/api/v3/stock_market/losers?apikey={self.fmp_api_key}"
             response = requests.get(url, timeout=10)
             response.raise_for_status()
-            
+
             losers = response.json()
-            
+
             # Filter for our criteria
             candidates = []
             for stock in losers[:100]:  # Top 100 losers
-                change_pct = stock.get('changesPercentage', 0)
-                price = stock.get('price', 0)
-                volume = stock.get('volume', 0)
-                
-                if (change_pct <= self.min_day_change and
-                    price > 0.50 and
-                    price < 100 and
-                    volume > 100000):
-                    candidates.append(stock['symbol'])
-            
-            self.logger.info(f"FMP found {len(candidates)} candidates down {self.min_day_change}%+")
+                change_pct = stock.get("changesPercentage", 0)
+                price = stock.get("price", 0)
+                volume = stock.get("volume", 0)
+
+                if (
+                    change_pct <= self.min_day_change
+                    and price > 0.50
+                    and price < 100
+                    and volume > 100000
+                ):
+                    candidates.append(stock["symbol"])
+
+            self.logger.info(
+                f"FMP found {len(candidates)} candidates down {self.min_day_change}%+"
+            )
             return candidates
-            
+
         except Exception as e:
             self.logger.error(f"FMP API error: {e}")
             return []
-    
+
     def _validate_with_alpaca(self, symbols):
         """Validate symbols with Alpaca for liquidity"""
         if not symbols:
             return set()
-        
+
         try:
             # Batch fetch snapshots
             request = StockSnapshotRequest(symbol_or_symbols=symbols)
             snapshots = self.data_client.get_stock_snapshot(request)
-            
+
             validated = set()
             for symbol, snapshot in snapshots.items():
                 try:
                     # Check if we have required data
-                    if not snapshot.daily_bar or not snapshot.latest_trade or not snapshot.latest_quote:
+                    if (
+                        not snapshot.daily_bar
+                        or not snapshot.latest_trade
+                        or not snapshot.latest_quote
+                    ):
                         continue
-                    
+
                     # Calculate day change
                     day_change = (
-                        (snapshot.latest_trade.price - snapshot.daily_bar.open) / 
-                        snapshot.daily_bar.open * 100
+                        (snapshot.latest_trade.price - snapshot.daily_bar.open)
+                        / snapshot.daily_bar.open
+                        * 100
                     )
-                    
+
                     # Calculate spread
-                    spread = snapshot.latest_quote.ask_price - snapshot.latest_quote.bid_price
-                    spread_pct = spread / snapshot.latest_trade.price if snapshot.latest_trade.price > 0 else 999
-                    
+                    spread = (
+                        snapshot.latest_quote.ask_price
+                        - snapshot.latest_quote.bid_price
+                    )
+                    spread_pct = (
+                        spread / snapshot.latest_trade.price
+                        if snapshot.latest_trade.price > 0
+                        else 999
+                    )
+
                     # Validate criteria
-                    if (day_change <= self.min_day_change and
-                        snapshot.latest_trade.price > 0.50 and
-                        snapshot.latest_trade.price < 100 and
-                        snapshot.daily_bar.volume > 100000 and
-                        spread_pct < 0.05):  # Max 5% spread
-                        
+                    if (
+                        day_change <= self.min_day_change
+                        and snapshot.latest_trade.price > 0.50
+                        and snapshot.latest_trade.price < 100
+                        and snapshot.daily_bar.volume > 100000
+                        and spread_pct < 0.05
+                    ):  # Max 5% spread
+
                         validated.add(symbol)
                         self.logger.debug(
                             f"✓ {symbol}: {day_change:.1f}%, ${snapshot.latest_trade.price:.2f}, "
                             f"vol: {snapshot.daily_bar.volume:,}, spread: {spread_pct:.2%}"
                         )
-                
+
                 except Exception as e:
                     self.logger.debug(f"Skipping {symbol}: {e}")
                     continue
-            
-            self.logger.info(f"Alpaca validated {len(validated)}/{len(symbols)} symbols")
+
+            self.logger.info(
+                f"Alpaca validated {len(validated)}/{len(symbols)} symbols"
+            )
             return validated
-            
+
         except Exception as e:
             self.logger.error(f"Alpaca validation error: {e}")
             return set()
