@@ -12,7 +12,7 @@ print("=" * 50)
 print("GOLD LEVERAGED RETURN ANALYSIS")
 print("=" * 50)
 print(f"Jan 2024 price: ${gold_start:.2f}")
-print(f"Current price:  ${gold_end:.2f}")  
+print(f"Current price:  ${gold_end:.2f}")
 print(f"Unleveraged:    {gold_return:.1f}%")
 print("=" * 50)
 
@@ -32,7 +32,9 @@ for lev in [1, 2, 3, 5, 8, 10]:
     total_pnl = final - capital
     daily_pnl = total_pnl / trading_days
     marker = " ✅" if daily_pnl >= 200 else ""
-    print(f"{lev}x{'':<8} {lev_return:>6.1f}%      ${total_pnl:>10,.0f}      ${daily_pnl:>6.2f}{marker}")
+    print(
+        f"{lev}x{'':<8} {lev_return:>6.1f}%      ${total_pnl:>10,.0f}      ${daily_pnl:>6.2f}{marker}"
+    )
 
 print("-" * 50)
 print("\n✅ = Meets $200/day target")

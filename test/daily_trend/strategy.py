@@ -125,10 +125,11 @@ class DailyTrendExecutor:
         self.positions = {}
 
         # Initialize Alpaca data client - use cache if USE_ARCHIVED_DATA is true
-        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        use_cache = os.getenv("USE_ARCHIVED_DATA", "false").lower() == "true"
         if use_cache:
             sys.path.insert(0, str(Path(__file__).parent.parent.parent))
             from src.data_cache import DataCache
+
             self.data_client = DataCache(api_key, api_secret)
             logging.info("📦 Using DataCache for historical data")
         else:

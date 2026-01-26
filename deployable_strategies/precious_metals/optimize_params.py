@@ -2,8 +2,10 @@
 Parameter Grid Search for Precious Metals Strategy
 Goal: Find parameters that achieve $200/day at LOWEST leverage
 """
+
 import sys
-sys.path.insert(0, '.')
+
+sys.path.insert(0, ".")
 from gold_silver_trend import run_trend_backtest
 import pandas as pd
 
@@ -31,33 +33,43 @@ print("-" * 70)
 for entry, exit_band, desc in rsi_configs:
     for lev in [5, 6, 7, 8, 9, 10]:
         r = run_trend_backtest(
-            'GCUSD', '2024-01-01', '2025-01-24', CAPITAL,
-            leverage=lev, rsi_period=28, entry_band=entry, exit_band=exit_band,
-            verbose=False
+            "GCUSD",
+            "2024-01-01",
+            "2025-01-24",
+            CAPITAL,
+            leverage=lev,
+            rsi_period=28,
+            entry_band=entry,
+            exit_band=exit_band,
+            verbose=False,
         )
-        results.append({
-            'entry': entry,
-            'exit': exit_band,
-            'desc': desc,
-            'leverage': lev,
-            'daily_pnl': r['avg_daily_pnl'],
-            'total_return': r['total_return_pct'],
-            'max_dd': r['max_drawdown_pct'],
-            'trades': r['total_trades'],
-            'win_rate': r['win_rate']
-        })
+        results.append(
+            {
+                "entry": entry,
+                "exit": exit_band,
+                "desc": desc,
+                "leverage": lev,
+                "daily_pnl": r["avg_daily_pnl"],
+                "total_return": r["total_return_pct"],
+                "max_dd": r["max_drawdown_pct"],
+                "trades": r["total_trades"],
+                "win_rate": r["win_rate"],
+            }
+        )
 
 df = pd.DataFrame(results)
 
 # Find configurations that hit $200/day
-winners = df[df['daily_pnl'] >= TARGET_DAILY_PNL].copy()
+winners = df[df["daily_pnl"] >= TARGET_DAILY_PNL].copy()
 if len(winners) > 0:
     # Sort by lowest leverage first
-    winners = winners.sort_values('leverage')
+    winners = winners.sort_values("leverage")
     print("\n✅ CONFIGURATIONS THAT HIT $200/day (sorted by lowest leverage):")
     print("-" * 70)
     for _, row in winners.head(10).iterrows():
-        print(f"{row['leverage']}x | RSI {row['entry']}/{row['exit']} | ${row['daily_pnl']:.0f}/day | DD: {row['max_dd']:.0f}% | Trades: {row['trades']}")
+        print(
+            f"{row['leverage']}x | RSI {row['entry']}/{row['exit']} | ${row['daily_pnl']:.0f}/day | DD: {row['max_dd']:.0f}% | Trades: {row['trades']}"
+        )
 else:
     print("\n❌ No configuration hit $200/day target")
 
@@ -65,6 +77,8 @@ else:
 print("\n📊 BEST CONFIG PER LEVERAGE LEVEL:")
 print("-" * 70)
 for lev in [5, 6, 7, 8]:
-    lev_df = df[df['leverage'] == lev]
-    best = lev_df.loc[lev_df['daily_pnl'].idxmax()]
-    print(f"{lev}x: RSI {best['entry']:.0f}/{best['exit']:.0f} -> ${best['daily_pnl']:.0f}/day | DD: {best['max_dd']:.0f}%")
+    lev_df = df[df["leverage"] == lev]
+    best = lev_df.loc[lev_df["daily_pnl"].idxmax()]
+    print(
+        f"{lev}x: RSI {best['entry']:.0f}/{best['exit']:.0f} -> ${best['daily_pnl']:.0f}/day | DD: {best['max_dd']:.0f}%"
+    )

@@ -56,7 +56,7 @@ def load_config():
     else:
         # Fallback to local
         config_path = Path(__file__).parent / "config.json"
-    
+
     if not config_path.exists():
         raise FileNotFoundError(f"Config file not found at: {config_path}")
 
