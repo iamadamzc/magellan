@@ -136,9 +136,7 @@ jobs:
           cp requirements.txt deploy_package/
           cd deploy_package && tar -czf ../magellan-deploy.tar.gz .
       
-      - name: Upload to S3
-        run: |
-          aws s3 cp magellan-deploy.tar.gz s3://magellan-deployments/$(date +%Y%m%d-%H%M%S)/
+
       
       - name: Deploy to EC2 via SSM
         run: |
