@@ -175,10 +175,12 @@ def main():
 
             # Run strategy logic
             try:
+                # process_market_data() handles everything internally:
+                # - Fetches market data
+                # - Evaluates entry/exit signals via _evaluate_symbol()
+                # - Manages positions via _manage_position()
+                # - Checks risk gates via _check_risk_gates()
                 strategy.process_market_data()
-                strategy.evaluate_entries()
-                strategy.manage_positions()
-                strategy.check_risk_gates()
 
             except Exception as e:
                 logger.error(f"Error in strategy execution: {e}", exc_info=True)
