@@ -11,13 +11,7 @@ on:
       - 'src/**'
       - '.github/workflows/deploy-strategies.yml'
       - 'requirements.txt'
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
-      - 'system_docs/**'
-      - 'dev/**'
-      - 'test/**'
-      - 'research/**'
+
   workflow_dispatch:
     inputs:
       strategy:
