@@ -145,6 +145,7 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
               "set -e",
+              "export HOME=/home/ssm-user",
               "git config --global --add safe.directory /home/ssm-user/magellan",
               "cd /home/ssm-user/magellan",
               "git fetch --all",
