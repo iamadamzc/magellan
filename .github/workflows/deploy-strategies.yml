@@ -53,8 +53,8 @@ jobs:
       
       - name: Lint code
         run: |
-          black --check test/ prod/
-          pylint test/ prod/ --disable=C0111,R0913,R0914 || true
+          black --check test/ deployable_strategies/
+          pylint test/ deployable_strategies/ --disable=C0111,R0913,R0914 || true
       
       - name: Run unit tests
         env:
