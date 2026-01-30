@@ -132,12 +132,15 @@ def test_calculate_indicators(mock_strategy):
 def test_evaluate_entry_setup_a(mock_strategy):
     """Test Setup A (Crash Reversal) detection"""
     # Create test data that triggers Setup A
+    # Need 200+ rows for EMA calculation
+    np.random.seed(42)
+    n_rows = 250
     df = pd.DataFrame(
         {
-            "close": [15000, 14950, 14900, 14850, 14800, 14750],  # Crashing
-            "high": [15010, 14960, 14910, 14860, 14810, 14760],
-            "low": [14990, 14940, 14890, 14840, 14790, 14740],
-            "volume": [1000] * 6,
+            "close": 15000 + np.random.randn(n_rows) * 5,
+            "high": 15010 + np.random.randn(n_rows) * 5,
+            "low": 14990 + np.random.randn(n_rows) * 5,
+            "volume": [1000] * n_rows,
         }
     )
 
@@ -158,12 +161,15 @@ def test_evaluate_entry_setup_a(mock_strategy):
 def test_evaluate_entry_setup_b(mock_strategy):
     """Test Setup B (Quiet Drift) detection"""
     # Create test data that triggers Setup B
+    # Need 200+ rows for EMA calculation
+    np.random.seed(43)
+    n_rows = 250
     df = pd.DataFrame(
         {
-            "close": [15000, 15001, 15002, 15003, 15004, 15005],  # Quiet drift
-            "high": [15010, 15011, 15012, 15013, 15014, 15015],
-            "low": [14990, 14991, 14992, 14993, 14994, 14995],
-            "volume": [1000] * 6,
+            "close": 15000 + np.random.randn(n_rows) * 2,
+            "high": 15010 + np.random.randn(n_rows) * 2,
+            "low": 14990 + np.random.randn(n_rows) * 2,
+            "volume": [1000] * n_rows,
         }
     )
 
