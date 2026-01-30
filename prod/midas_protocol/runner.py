@@ -129,7 +129,9 @@ def main():
     logger.info(f"Capital: ${config['account_info']['initial_capital']:,}")
     logger.info(f"Symbol: {config['symbols'][0]}")
     logger.info(f"Session: 02:00-06:00 UTC (Asian)")
-    logger.info(f"Max Daily Loss: ${config['risk_management']['max_daily_loss_dollars']}")
+    logger.info(
+        f"Max Daily Loss: ${config['risk_management']['max_daily_loss_dollars']}"
+    )
     logger.info("=" * 80)
 
     # Get Alpaca credentials
@@ -160,8 +162,11 @@ def main():
         while not shutdown_flag:
             # Check if we need to reset daily state (new session)
             current_time = datetime.now()
-            if (current_time.hour == 2 and current_time.minute == 0 and
-                (current_time - last_session_check).total_seconds() > 60):
+            if (
+                current_time.hour == 2
+                and current_time.minute == 0
+                and (current_time - last_session_check).total_seconds() > 60
+            ):
                 strategy.reset_daily_state()
                 last_session_check = current_time
 
@@ -170,8 +175,10 @@ def main():
                 # Close any open positions if session ended
                 if len(strategy.positions) > 0:
                     logger.warning("Session ended - closing all positions")
-                    strategy.close_all_positions("Session end - flat outside 02:00-06:00 UTC")
-                
+                    strategy.close_all_positions(
+                        "Session end - flat outside 02:00-06:00 UTC"
+                    )
+
                 logger.debug("Outside Asian session (02:00-06:00 UTC), sleeping...")
                 time.sleep(60)
                 continue
@@ -180,14 +187,14 @@ def main():
             try:
                 # Fetch market data
                 strategy.process_market_data()
-                
+
                 # Check risk gates
                 if strategy.check_risk_gates():
                     # Evaluate entry
                     setup = strategy.evaluate_entry(strategy.symbol)
                     if setup and strategy.symbol not in strategy.positions:
                         strategy.enter_position(strategy.symbol, setup)
-                
+
                 # Manage existing positions
                 if strategy.symbol in strategy.positions:
                     strategy.manage_position(strategy.symbol)

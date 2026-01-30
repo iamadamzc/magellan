@@ -42,7 +42,7 @@ class MiddayReversionStrategy:
     - 30% trailing stop
     - Max hold time: 60 minutes (extended from 30)
     - Stop loss: Session low - (0.45 * ATR)
-    
+
     Research Stats:
     - 60-min reversal rate: 59.8% (vs 42.4% baseline)
     - Expected recovery: ~6%
@@ -62,13 +62,16 @@ class MiddayReversionStrategy:
 
         # Alpaca clients
         self.trading_client = TradingClient(api_key, api_secret, paper=True)
-        
+
         # Use DataCache if USE_ARCHIVED_DATA is true, otherwise live API
-        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        use_cache = os.getenv("USE_ARCHIVED_DATA", "false").lower() == "true"
         if use_cache:
             from src.data_cache import DataCache
+
             self.data_client = DataCache(api_key, api_secret)
-            self.logger.info("📦 Using DataCache for historical data (USE_ARCHIVED_DATA=true)")
+            self.logger.info(
+                "📦 Using DataCache for historical data (USE_ARCHIVED_DATA=true)"
+            )
         else:
             self.data_client = StockHistoricalDataClient(api_key, api_secret)
             self.logger.info("🔴 Using live Alpaca API for historical data")
@@ -84,7 +87,9 @@ class MiddayReversionStrategy:
         self.daily_loss_limit = self.params.get("max_daily_loss_dollars", 10000)
         self.max_trades_per_day = self.params.get("max_trades_per_day", 10)
 
-        self.logger.info(f"✓ MiddayReversionStrategy initialized for {len(symbols)} symbols")
+        self.logger.info(
+            f"✓ MiddayReversionStrategy initialized for {len(symbols)} symbols"
+        )
 
     def process_market_data(self):
         """Fetch and process 1-minute bars for all symbols"""
@@ -172,20 +177,23 @@ class MiddayReversionStrategy:
         # MIDDAY TIME FILTER (11:30 AM - 2:00 PM ET)
         from datetime import datetime
         import pytz
-        et_tz = pytz.timezone('America/New_York')
+
+        et_tz = pytz.timezone("America/New_York")
         current_time = datetime.now(et_tz)
         current_hour = current_time.hour
         current_minute = current_time.minute
-        
+
         # Midday window: 11:30 - 14:00 (2:00 PM)
-        is_midday = (current_hour == 11 and current_minute >= 30) or \
-                    (current_hour == 12) or \
-                    (current_hour == 13)
-        
+        is_midday = (
+            (current_hour == 11 and current_minute >= 30)
+            or (current_hour == 12)
+            or (current_hour == 13)
+        )
+
         if not is_midday:
             # Skip - not in optimal time window
             return
-        
+
         # Entry criteria - LOWERED THRESHOLD TO -10%
         day_change = current["day_change_pct"]
         is_down_enough = day_change <= -10.0  # Changed from -15%

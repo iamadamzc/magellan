@@ -30,7 +30,7 @@ import pandas as pd
 class IntradayAlphaStrategy:
     """
     Multi-factor intraday alpha strategy using RSI, Volume, and Sentiment.
-    
+
     Original V1.0 Configuration (Jan 10, 2026):
     - SPY: 5Min bars, 90% RSI / 0% Vol / 10% Sent, Gate 0.0
     - QQQ: 5Min bars, 80% RSI / 10% Vol / 10% Sent, Gate 0.0
@@ -46,9 +46,10 @@ class IntradayAlphaStrategy:
         self.logger = logging.getLogger("magellan.intraday_alpha")
 
         # Initialize data client (with cache support for testing)
-        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        use_cache = os.getenv("USE_ARCHIVED_DATA", "false").lower() == "true"
         if use_cache:
             from src.data_cache import DataCache
+
             self.data_client = DataCache(api_key, api_secret)
             self.logger.info("📦 Using DataCache for historical data")
         else:
@@ -64,84 +65,84 @@ class IntradayAlphaStrategy:
     def calculate_alpha_score(self, symbol, df):
         """
         Calculate multi-factor alpha score.
-        
+
         Alpha = (RSI_weight * RSI_signal) + (Vol_weight * Vol_signal) + (Sent_weight * Sent_signal)
-        
+
         Returns:
             float: Alpha score in range [-1, 1]
         """
         params = self.params[symbol]
-        
+
         # Calculate RSI
-        rsi = calculate_rsi(df['close'], period=params['rsi_lookback'])
+        rsi = calculate_rsi(df["close"], period=params["rsi_lookback"])
         current_rsi = rsi.iloc[-1]
-        
+
         # Normalize RSI to [-1, 1] range
         # RSI > 50 → positive signal, RSI < 50 → negative signal
         rsi_signal = (current_rsi - 50) / 50.0  # Maps 0-100 to [-1, 1]
-        
+
         # Volume signal (simplified - compare to moving average)
-        vol_ma = df['volume'].rolling(window=20).mean()
-        current_vol = df['volume'].iloc[-1]
+        vol_ma = df["volume"].rolling(window=20).mean()
+        current_vol = df["volume"].iloc[-1]
         vol_ratio = current_vol / vol_ma.iloc[-1] if vol_ma.iloc[-1] > 0 else 1.0
         vol_signal = min(max((vol_ratio - 1.0), -1.0), 1.0)  # Clamp to [-1, 1]
-        
+
         # Sentiment signal (placeholder - in V1.0 this came from external sentiment data)
         # For now, use a neutral signal
         sent_signal = 0.0
-        
+
         # Combine signals with weights
         alpha = (
-            params['rsi_wt'] * rsi_signal +
-            params['vol_wt'] * vol_signal +
-            params['sent_wt'] * sent_signal
+            params["rsi_wt"] * rsi_signal
+            + params["vol_wt"] * vol_signal
+            + params["sent_wt"] * sent_signal
         )
-        
+
         return alpha, current_rsi, vol_ratio
 
     def apply_sentry_gate(self, symbol, alpha, sentiment=0.0):
         """
         Apply sentiment gate - kills alpha if sentiment below threshold.
-        
+
         Args:
             symbol: Trading symbol
             alpha: Raw alpha score
             sentiment: Current market sentiment (default 0.0)
-            
+
         Returns:
             float: Gated alpha score
         """
         params = self.params[symbol]
-        gate_threshold = params['sentry_gate']
-        
+        gate_threshold = params["sentry_gate"]
+
         if sentiment < gate_threshold:
             self.logger.info(
                 f"{symbol}: Sentry gate activated (sentiment {sentiment:.2f} < {gate_threshold}) → Alpha killed"
             )
             return 0.0
-        
+
         return alpha
 
     def generate_signal(self, symbol):
         """
         Generate trading signal for a symbol.
-        
+
         Returns:
             int: 1 (buy), -1 (sell), 0 (hold/filter)
         """
         params = self.params[symbol]
-        
+
         # Determine timeframe
         interval_map = {
             "3Min": TimeFrame.Minute,
             "5Min": TimeFrame.Minute,
         }
-        timeframe = interval_map.get(params['interval'], TimeFrame.Minute)
-        
+        timeframe = interval_map.get(params["interval"], TimeFrame.Minute)
+
         # Fetch intraday data
         start_date = datetime.now() - timedelta(days=5)
         end_date = datetime.now()
-        
+
         request = StockBarsRequest(
             symbol_or_symbols=symbol,
             timeframe=timeframe,
@@ -149,52 +150,66 @@ class IntradayAlphaStrategy:
             end=end_date,
             feed="sip",
         )
-        
+
         bars = self.data_client.get_stock_bars(request)
-        
+
         if not bars or not bars.data or symbol not in bars.data:
             self.logger.warning(f"No data for {symbol}")
             return 0
-        
+
         # Convert to DataFrame
         bar_list = bars.data[symbol]
-        df = pd.DataFrame([
-            {
-                "timestamp": bar.timestamp,
-                "open": bar.open,
-                "high": bar.high,
-                "low": bar.low,
-                "close": bar.close,
-                "volume": bar.volume,
-            }
-            for bar in bar_list
-        ])
+        df = pd.DataFrame(
+            [
+                {
+                    "timestamp": bar.timestamp,
+                    "open": bar.open,
+                    "high": bar.high,
+                    "low": bar.low,
+                    "close": bar.close,
+                    "volume": bar.volume,
+                }
+                for bar in bar_list
+            ]
+        )
         df.set_index("timestamp", inplace=True)
-        
+
         # Resample to correct interval if needed
-        if params['interval'] == "3Min":
-            df = df.resample('3T').agg({
-                'open': 'first',
-                'high': 'max',
-                'low': 'min',
-                'close': 'last',
-                'volume': 'sum'
-            }).dropna()
-        elif params['interval'] == "5Min":
-            df = df.resample('5T').agg({
-                'open': 'first',
-                'high': 'max',
-                'low': 'min',
-                'close': 'last',
-                'volume': 'sum'
-            }).dropna()
-        
+        if params["interval"] == "3Min":
+            df = (
+                df.resample("3T")
+                .agg(
+                    {
+                        "open": "first",
+                        "high": "max",
+                        "low": "min",
+                        "close": "last",
+                        "volume": "sum",
+                    }
+                )
+                .dropna()
+            )
+        elif params["interval"] == "5Min":
+            df = (
+                df.resample("5T")
+                .agg(
+                    {
+                        "open": "first",
+                        "high": "max",
+                        "low": "min",
+                        "close": "last",
+                        "volume": "sum",
+                    }
+                )
+                .dropna()
+            )
+
         # Calculate alpha score
         alpha, rsi, vol_ratio = self.calculate_alpha_score(symbol, df)
-        
+
         # Apply sentry gate
         alpha = self.apply_sentry_gate(symbol, alpha, sentiment=0.0)
-        
+
         # Generate signal from alpha
         # Alpha > 0.5 → BUY, Alpha < -0.5 → SELL, else FILTER
         if alpha > 0.5:
@@ -203,11 +218,11 @@ class IntradayAlphaStrategy:
             signal = -1
         else:
             signal = 0
-        
+
         self.logger.info(
             f"{symbol}: RSI={rsi:.1f}, Vol={vol_ratio:.2f}x, Alpha={alpha:.3f} → Signal={signal}"
         )
-        
+
         return signal
 
     def execute_signal(self, symbol, signal):
@@ -232,12 +247,12 @@ class IntradayAlphaStrategy:
             # Get account equity
             account = self.trading_client.get_account()
             equity = float(account.equity)
-            
+
             # Position sizing with cap
             params = self.params[symbol]
-            position_cap = params['position_cap_usd']
+            position_cap = params["position_cap_usd"]
             allocated_capital = equity * 0.25  # 25% allocation
-            
+
             if allocated_capital > position_cap:
                 self.logger.info(
                     f"{symbol}: Position cap enforced ${allocated_capital:,.0f} → ${position_cap:,.0f}"

@@ -53,13 +53,16 @@ class BearTrapStrategy:
 
         # Alpaca clients
         self.trading_client = TradingClient(api_key, api_secret, paper=True)
-        
+
         # Use DataCache if USE_ARCHIVED_DATA is true, otherwise live API
-        use_cache = os.getenv('USE_ARCHIVED_DATA', 'false').lower() == 'true'
+        use_cache = os.getenv("USE_ARCHIVED_DATA", "false").lower() == "true"
         if use_cache:
             from src.data_cache import DataCache
+
             self.data_client = DataCache(api_key, api_secret)
-            self.logger.info("📦 Using DataCache for historical data (USE_ARCHIVED_DATA=true)")
+            self.logger.info(
+                "📦 Using DataCache for historical data (USE_ARCHIVED_DATA=true)"
+            )
         else:
             self.data_client = StockHistoricalDataClient(api_key, api_secret)
             self.logger.info("🔴 Using live Alpaca API for historical data")
