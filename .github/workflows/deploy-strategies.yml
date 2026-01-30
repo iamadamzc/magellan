@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
     inputs:
       strategy:
-        description: 'Strategy to deploy (bear_trap, daily_trend_hysteresis, hourly_swing, all)'
+        description: 'Strategy to deploy (midas_protocol, daily_trend_hysteresis, hourly_swing, all)'
         required: true
         default: 'all'
       environment:
@@ -73,7 +73,7 @@ jobs:
     
     strategy:
       matrix:
-        strategy: [bear_trap, daily_trend, hourly_swing]
+        strategy: [midas_protocol, daily_trend, hourly_swing]
     
     steps:
       - name: Checkout code
@@ -149,11 +149,11 @@ jobs:
               "git reset --hard origin/${{ github.ref_name }}",
               "source .venv/bin/activate",
               "pip install -r requirements.txt --quiet",
-              "sudo systemctl restart magellan-bear-trap",
+              "sudo systemctl restart magellan-midas-protocol",
               "sudo systemctl restart magellan-daily-trend",
               "sudo systemctl restart magellan-hourly-swing",
               "sleep 5",
-              "sudo systemctl is-active magellan-bear-trap",
+              "sudo systemctl is-active magellan-midas-protocol",
               "sudo systemctl is-active magellan-daily-trend",
               "sudo systemctl is-active magellan-hourly-swing"
             ]' \
@@ -181,7 +181,7 @@ jobs:
             --instance-ids ${{ env.EC2_INSTANCE_ID }} \
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
-              "sudo journalctl -u magellan-bear-trap -n 20 --no-pager",
+              "sudo journalctl -u magellan-midas-protocol -n 20 --no-pager",
               "sudo journalctl -u magellan-daily-trend -n 20 --no-pager",
               "sudo journalctl -u magellan-hourly-swing -n 20 --no-pager"
             ]' \
@@ -219,10 +219,10 @@ jobs:
             --instance-ids ${{ env.EC2_INSTANCE_ID }} \
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
-              "sudo systemctl status magellan-bear-trap --no-pager | grep Active",
+              "sudo systemctl status magellan-midas-protocol --no-pager | grep Active",
               "sudo systemctl status magellan-daily-trend --no-pager | grep Active",
               "sudo systemctl status magellan-hourly-swing --no-pager | grep Active",
-              "ls -lh /home/ssm-user/magellan/logs/bear_trap_decisions_*.csv | tail -1"
+              "ls -lh /home/ssm-user/magellan/logs/midas_protocol_decisions_*.csv | tail -1"
             ]' \
             --region ${{ env.AWS_REGION }} \
             --output text \

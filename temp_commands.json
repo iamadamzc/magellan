@@ -1,0 +1,64 @@
+{
+    "Commands": [
+        {
+            "CommandId": "88c4e2b3-6fbf-4264-b06e-004a792c4667",
+            "DocumentName": "AWS-RunShellScript",
+            "DocumentVersion": "$DEFAULT",
+            "Comment": "",
+            "ExpiresAfter": "2026-01-26T01:50:44.741000-06:00",
+            "Parameters": {
+                "commands": [
+                    "set -e",
+                    "git config --global --add safe.directory /home/ssm-user/magellan",
+                    "cd /home/ssm-user/magellan",
+                    "git fetch --all",
+                    "git reset --hard origin/deployment/aws-paper-trading-setup",
+                    "git clean -fd",
+                    "source .venv/bin/activate",
+                    "pip install -r requirements.txt --quiet",
+                    "sudo cp deployed/bear_trap/magellan-bear-trap.service /etc/systemd/system/",
+                    "sudo cp deployed/daily_trend/magellan-daily-trend.service /etc/systemd/system/",
+                    "sudo cp deployed/hourly_swing/magellan-hourly-swing.service /etc/systemd/system/",
+                    "sudo systemctl daemon-reload",
+                    "sudo systemctl restart magellan-bear-trap",
+                    "sudo systemctl restart magellan-daily-trend",
+                    "sudo systemctl restart magellan-hourly-swing",
+                    "sleep 5"
+                ]
+            },
+            "InstanceIds": [
+                "i-0cd785630b55dd9a2"
+            ],
+            "Targets": [],
+            "RequestedDateTime": "2026-01-25T23:50:44.741000-06:00",
+            "Status": "Failed",
+            "StatusDetails": "Failed",
+            "OutputS3Region": "us-east-2",
+            "OutputS3BucketName": "",
+            "OutputS3KeyPrefix": "",
+            "MaxConcurrency": "50",
+            "MaxErrors": "0",
+            "TargetCount": 1,
+            "CompletedCount": 1,
+            "ErrorCount": 1,
+            "DeliveryTimedOutCount": 0,
+            "ServiceRole": "",
+            "NotificationConfig": {
+                "NotificationArn": "",
+                "NotificationEvents": [],
+                "NotificationType": ""
+            },
+            "CloudWatchOutputConfig": {
+                "CloudWatchLogGroupName": "",
+                "CloudWatchOutputEnabled": false
+            },
+            "TimeoutSeconds": 3600,
+            "AlarmConfiguration": {
+                "IgnorePollAlarmFailure": false,
+                "Alarms": []
+            },
+            "TriggeredAlarms": []
+        }
+    ],
+    "NextToken": "AAEAAR/KSE1S+Bh6lM9sw+fdmw886IhzW/MWlJufGDuCDCuuAAAAAGl5At9JXiOuuaI1Zqx/ssBz1w01mO+hKEg3HUoWnasYjKaGR+sodDleLvMpfrdzvyKr3ZidKJ5uMGTug9G8nbBlUxNEv7vEao7DVl3E1B4ZWjivCTtmArHR0oMbYuqMfeF99N7F7NVHFOWy4IOmJbR05+1yTQP340TsiZhQb3qGN/1vzQ/IFzgFpzwc0loCCSmN4n6wTheXE7WxiU7q8yTaCOARIjz3mUqgx7WVX7oTwai97w9K2u+b7ziaYx0KqUCNrDD/PjH3BsCRLYGva6EvU9b1t6OMGRcROtaKlZlA9wYY+1FAc9cTxZc2JHyWwRK5IrwGjt0d30xJw9olnKLh0sobsw9GJNH6Ite+CWmzr4uzMqDx8kxWojYuFzv+1G4o/ujp3XUI0V7sTLxQPrrwugRRQIBh+nmIqmP2u7baNJYIMTjnCRKOLNSMk7JtW+pXVHdfw+8Z4/ajabvBlYB23+zNCN4rBqP8bUlWE07rBovRkTeHcSJSCxJGTnqnwdVgWou8WhjjLJ7+Km7WoxeOu6M6O51GHLVafx11JxH0if7hr5nE5dIYUcoch+pSKVjYnx/g4ZO7qTDKv3/DGITXzBfUXlDvFmNktmlI+A8ovXvX2mofXccYKLvtLcgoPTR8KYx62pXVqL0TpqG3vnCYQXR73r4bLq5aZDlIwMywFotzrCspJiEcH1KOIL4G4dTXQZzl9fSPyMS73wuWx8kOd75wNaVuCtVFLortDKQF5QXqN+s7uRAZA4ZqV6bHzS+cl4JHIVbJ2edvkgnGfkeSSurvsun+q0OnV9RzDpjRn9lX5+qvlg0xJ6yulldPhu0bTVRkjzMplxRMTjlqCwyzq98Vnnnflu4Gjg/XEEMywTMf4pALumsEwegXbbJcA+DEq2RMpuM1iWUJrVKeZ6jo7rdHQOEDsvI6/SA+sBASUW5zV+ZEn6cxkDafw+rjmkvNf0rpD0b5H2HJR6IMSm32440XrerkY9g+S70wXi2S1UriVGCvKlZ76UEXATslIqW6FBP86Jh261lW6bgAfI/LwfWuRRFhoJ261KSWFXIBsvD4QnOd3dfBkCN8MSj9KlxPCZRAm2ugsQXwet0GkB+zK8h1Es5DnRktweQIhuzsH0GAqgn+X21ynIIA7UsGZj0V41XEeOC2zir5X7TiAq2Lp6ZJ"
+}

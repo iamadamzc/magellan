@@ -43,9 +43,11 @@
 
 ## Directory Structure Standards
 
-### `/deployable_strategies/` - Production-Ready Strategy Code
+### `/deployable_strategies/` - Staging Area for Production-Ready Strategies
 
-**Purpose:** Contains only validated, deployment-ready strategy implementations and their core documentation.
+**Purpose:** Contains validated, tested strategies that are **approved for production** but **not yet deployed** to AWS.
+
+**Workflow:** Strategies in this directory are ready to be promoted to `/prod/` for actual deployment.
 
 **Structure:**
 ```
@@ -65,18 +67,47 @@
 **Rules:**
 - ✅ Only validated, tested strategy files
 - ✅ One strategy per folder
-- ✅ Asset configs in `assets/` subfolder
+- ✅ Ready for production deployment (not yet deployed)
 - ❌ No test scripts (those go in `research/testing/`)
 - ❌ No experimental code
 - ❌ No duplicate files
 
-**Current Strategies:**
-1. `bear_trap/` - Bear Trap momentum scalping
-2. `gsb/` - Gap Squeeze Breakout
-3. `daily_trend_hysteresis/` - Daily trend following with hysteresis
-4. `earnings_straddles/` - Earnings event straddles
-5. `fomc_straddles/` - FOMC event straddles
-6. `hourly_swing/` - Hourly swing trading
+**Promotion:** When ready to deploy, strategies are moved from `/deployable_strategies/` → `/prod/`
+
+---
+
+### `/prod/` - DEPLOYED Production Strategies
+
+**Purpose:** Contains ONLY strategies that are **currently deployed** and **running in production** on AWS EC2.
+
+**Structure:**
+```
+/prod/
+├── {strategy_name}/
+│   ├── strategy.py                          # Main implementation
+│   ├── runner.py                            # Production runner
+│   ├── config.json                          # Production configuration
+│   ├── README.md                            # Strategy overview
+│   ├── tests/                               # Unit tests
+│   │   └── test_strategy.py
+│   ├── deployment/
+│   │   └── systemd/
+│   │       └── magellan-{strategy}.service  # Systemd service file
+│   └── docs/                                # Strategy documentation
+│       ├── DEPLOYMENT_CHECKLIST.md
+│       └── STRATEGY_SPECIFICATION.md
+```
+
+**Rules:**
+- ✅ ONLY deployed, live-running strategies
+- ✅ Complete with runner, config, systemd service
+- ✅ Must have corresponding EC2 systemd service
+- ❌ No staging or pre-production code
+
+**Current Deployed Strategies:**
+1. `midas_protocol/` - MIDAS Protocol (Asian Session Mean Reversion) - PA3AU6PBBZVC
+2. `daily_trend/` - Daily Trend Hysteresis
+3. `hourly_swing/` - Hourly Swing Trading
 
 ---
 
