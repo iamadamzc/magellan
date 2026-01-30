@@ -113,9 +113,9 @@ def generate_buy_low_signals(df):
 
 
 def calculate_mfe_mae(df, forward_bars=15):
-    """Step 3: Vectorized Edge Analysis (MFE & MAE)"""
+    """Step 3: Vectorized Edge Analysis (MFE & MAE) - CORRECTED"""
     print("\n" + "=" * 70)
-    print("STEP 3: VECTORIZED MFE & MAE CALCULATION")
+    print("STEP 3: VECTORIZED MFE & MAE CALCULATION (CORRECTED)")
     print("=" * 70)
     
     print(f"\nForward lookup window: {forward_bars} bars")
@@ -129,36 +129,95 @@ def calculate_mfe_mae(df, forward_bars=15):
     signal_positions = df_reset[df_reset['signal']].index.tolist()
     
     print(f"Calculating forward statistics for {len(signal_positions):,} signals...")
+    print("NOTE: MFE = (Max High in NEXT 15 bars) - Entry Price")
+    print("      MAE = Entry Price - (Min Low in NEXT 15 bars)")
     
     batch_size = 1000
     for batch_start in range(0, len(signal_positions), batch_size):
         batch_end = min(batch_start + batch_size, len(signal_positions))
         
         for pos in signal_positions[batch_start:batch_end]:
-            end_pos = min(pos + forward_bars + 1, len(df_reset))
-            forward_slice = df_reset.iloc[pos:end_pos]
+            # CRITICAL: Only look at the NEXT forward_bars (exclude current bar)
+            start_pos = pos + 1  # Start from NEXT bar
+            end_pos = min(start_pos + forward_bars, len(df_reset))  # Exactly 15 bars
             
-            if len(forward_slice) > 1:
-                entry_close = df_reset.loc[pos, 'close']
-                max_high = forward_slice['high'].max()
-                min_low = forward_slice['low'].min()
+            # Skip if we don't have enough forward data
+            if end_pos <= start_pos:
+                continue
                 
+            forward_slice = df_reset.iloc[start_pos:end_pos]
+            
+            if len(forward_slice) > 0:
+                entry_close = df_reset.loc[pos, 'close']
+                
+                # MFE: Best profit opportunity = Max High - Entry
+                max_high = forward_slice['high'].max()
+                mfe = max_high - entry_close
+                
+                # MAE: Worst drawdown = Entry - Min Low
+                min_low = forward_slice['low'].min()
+                mae = entry_close - min_low
+                
+                # Sanity check: Filter obvious data errors
+                # MFE/MAE should be reasonable for 15-minute window
+                if mfe < -1000 or mfe > 2000:  # Unreasonable for 15min
+                    continue
+                if mae < -1000 or mae > 2000:  # Unreasonable for 15min
+                    continue
+                
+                # Store results
                 df_reset.loc[pos, 'entry_price'] = entry_close
-                df_reset.loc[pos, 'mfe'] = max_high - entry_close
-                df_reset.loc[pos, 'mae'] = entry_close - min_low
+                df_reset.loc[pos, 'mfe'] = mfe
+                df_reset.loc[pos, 'mae'] = mae
         
         if batch_end % 5000 == 0 or batch_end == len(signal_positions):
             print(f"  Progress: {batch_end:,} / {len(signal_positions):,} signals processed")
     
     df_reset = df_reset.set_index('ts_event')
     
+    # Extract signal data
     signals_df = df_reset[df_reset['signal']].copy()
     signals_df = signals_df.dropna(subset=['mfe', 'mae'])
-    signals_df = signals_df[signals_df['mae'] > 0]
+    
+    # Filter out invalid data: Remove MFE < 0 or MAE < 0
+    before_filter = len(signals_df)
+    signals_df = signals_df[(signals_df['mfe'] >= 0) & (signals_df['mae'] >= 0)]
+    after_filter = len(signals_df)
+    
+    if before_filter > after_filter:
+        print(f"\nFiltered out {before_filter - after_filter} signals with negative MFE/MAE")
     
     print(f"\nValid signals with MFE/MAE: {len(signals_df):,}")
-    print(f"\nMFE Statistics: Mean=${signals_df['mfe'].mean():.2f}, Median=${signals_df['mfe'].median():.2f}")
-    print(f"MAE Statistics: Mean=${signals_df['mae'].mean():.2f}, Median=${signals_df['mae'].median():.2f}")
+    
+    # Calculate statistics
+    mean_mfe = signals_df['mfe'].mean()
+    mean_mae = signals_df['mae'].mean()
+    
+    print(f"\n{'='*70}")
+    print(f"CORRECTED STATISTICS:")
+    print(f"{'='*70}")
+    print(f"MFE (Profit Potential):")
+    print(f"  Mean:   {mean_mfe:.2f} points")
+    print(f"  Median: {signals_df['mfe'].median():.2f} points")
+    print(f"  Min:    {signals_df['mfe'].min():.2f} points")
+    print(f"  Max:    {signals_df['mfe'].max():.2f} points")
+    
+    print(f"\nMAE (Drawdown Risk):")
+    print(f"  Mean:   {mean_mae:.2f} points")
+    print(f"  Median: {signals_df['mae'].median():.2f} points")
+    print(f"  Min:    {signals_df['mae'].min():.2f} points")
+    print(f"  Max:    {signals_df['mae'].max():.2f} points")
+    
+    # VALIDATION: Stop if mean MFE > 200 (indicates bug)
+    if mean_mfe > 200:
+        print(f"\n{'!'*70}")
+        print(f"ERROR: Mean MFE = {mean_mfe:.2f} is > 200!")
+        print(f"This indicates the calculation is still returning absolute prices.")
+        print(f"STOPPING ANALYSIS.")
+        print(f"{'!'*70}")
+        raise ValueError(f"Mean MFE ({mean_mfe:.2f}) exceeds threshold of 200 points")
+    
+    print(f"\n✅ VALIDATION PASSED: Mean MFE = {mean_mfe:.2f} points (< 200 threshold)")
     
     return signals_df
 
@@ -242,12 +301,19 @@ def print_summary_statistics(signals_df):
 def main():
     """Main execution function"""
     print("\n" + "█" * 70)
-    print("█  EDGE ANALYSIS: MFE vs MAE - 'Buy Low' Scalping Strategy  █".center(70))
+    print("█  EDGE ANALYSIS: MFE vs MAE - 'Buy Low' Scalping Strategy█".center(72))
     print("█" * 70 + "\n")
     
-    # File path - relative to where script is run
+    # File path - current directory should have the CSV
     filepath = 'glbx-mdp3-20210129-20260128.ohlcv-1m.csv'
-    output_dir = '../../../research/mnq_buy_low_edge_analysis'
+    
+    # Use absolute path for output
+    output_dir = r'a:\1\Magellan\research\mnq_buy_low_edge_analysis'
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    print(f"Output will be saved to: {output_dir}\n")
     
     df = load_and_prepare_data(filepath)
     df = generate_buy_low_signals(df)
