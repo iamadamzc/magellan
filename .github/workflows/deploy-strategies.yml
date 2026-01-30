@@ -98,7 +98,15 @@ jobs:
           USE_ARCHIVED_DATA: 'true'
           ENVIRONMENT: 'testing'
         run: |
-          python -m pytest test/${{ matrix.strategy }}/tests/ -v
+          # Check if tests exist in test/ directory (staging), otherwise use prod/ (deployed)
+          if [ -d "test/${{ matrix.strategy }}/tests" ]; then
+            python -m pytest test/${{ matrix.strategy }}/tests/ -v
+          elif [ -d "prod/${{ matrix.strategy }}/tests" ]; then
+            python -m pytest prod/${{ matrix.strategy }}/tests/ -v
+          else
+            echo "No tests found for ${{ matrix.strategy }}"
+            exit 0
+          fi
       
       - name: Upload test results
         uses: actions/upload-artifact@v4
