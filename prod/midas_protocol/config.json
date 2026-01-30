@@ -2,9 +2,9 @@
     "account_info": {
         "account_id": "PA3DDLQCBJSE",
         "account_name": "magellan-midas-protocol",
-        "initial_capital": 100000,
+        "initial_capital": 10000,
         "margin_multiplier": 4,
-        "buying_power": 400000
+        "buying_power": 40000
     },
     "strategy": {
         "name": "MIDAS Protocol",
