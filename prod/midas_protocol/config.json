@@ -1,6 +1,6 @@
 {
     "account_info": {
-        "account_id": "PA3DDLQCBJSE",
+        "account_id": "PA3AU6PBBZVC",
         "account_name": "magellan-midas-protocol",
         "initial_capital": 10000,
         "margin_multiplier": 4,
@@ -106,8 +106,8 @@
         "alert_on_loss_dollars": 200
     },
     "ssm_parameters": {
-        "api_key_path": "/magellan/alpaca/PA3DDLQCBJSE/API_KEY",
-        "api_secret_path": "/magellan/alpaca/PA3DDLQCBJSE/API_SECRET",
+        "api_key_path": "/magellan/alpaca/PA3AU6PBBZVC/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3AU6PBBZVC/API_SECRET",
         "base_url": "https://paper-api.alpaca.markets"
     }
 }

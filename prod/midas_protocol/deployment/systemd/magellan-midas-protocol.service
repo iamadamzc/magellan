@@ -1,5 +1,5 @@
 [Unit]
-Description=Magellan MIDAS Protocol Strategy (Account PA3DDLQCBJSE)
+Description=Magellan MIDAS Protocol Strategy (Account PA3AU6PBBZVC)
 After=network.target
 Wants=network-online.target
 
@@ -12,7 +12,7 @@ WorkingDirectory=/home/ssm-user/magellan
 # Environment
 Environment="PYTHONUNBUFFERED=1"
 Environment="STRATEGY=midas_protocol"
-Environment="ALPACA_ACCOUNT_ID=PA3DDLQCBJSE"
+Environment="ALPACA_ACCOUNT_ID=PA3AU6PBBZVC"
 Environment="ENVIRONMENT=production"
 
 # Execution
