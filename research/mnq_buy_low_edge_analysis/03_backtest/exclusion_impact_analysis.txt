@@ -1,0 +1,57 @@
+================================================================================
+IMPACT ANALYSIS: Excluding Calendar Spreads
+================================================================================
+
+Sample Months Analysis:
+----------------------------------------------------------------------
+Month        |   Total Rows |  Spread Rows | Outright Rows |   % Kept
+----------------------------------------------------------------------
+2025-06      |       54,695 |        3,096 |       51,599 |    94.3%
+2024-12      |       53,823 |        2,459 |       51,364 |    95.4%
+2023-09      |       50,028 |        1,629 |       48,399 |    96.7%
+2022-12      |       49,672 |        1,550 |       48,122 |    96.9%
+----------------------------------------------------------------------
+AVERAGE      |      208,218 |        8,734 |      199,484 |    95.8%
+
+================================================================================
+KEY INSIGHT: What Are We Excluding?
+================================================================================
+
+We are NOT losing MNQ data. We are REMOVING CONTAMINATION.
+
+Calendar Spreads (what we're removing):
+  - These are DIFFERENT instruments (e.g., MNQZ5-MNQH6)
+  - They trade at ~$250-500 (the DIFFERENCE between two contracts)
+  - They are NOT the MNQ futures price
+  - Including them corrupts: Lows, Velocity, ATR, Wick ratios
+
+Outright Contracts (what we're keeping):
+  - These are the ACTUAL MNQ futures (e.g., MNQZ5, MNQH6)
+  - They trade at ~$15,000-$26,000
+  - This is what TradingView shows, what you trade
+
+================================================================================
+IMPACT ON GOLDEN WINDOW (02:00-06:00 UTC)
+================================================================================
+
+June 2025 Golden Window (02:00-06:00 UTC):
+  Total rows:    8,480
+  Spread rows:   326 (contamination)
+  Outright rows: 8,154 (clean data)
+  % Clean:       96.2%
+
+================================================================================
+CONCLUSION
+================================================================================
+
+By excluding calendar spreads:
+  - We KEEP ~96% of the data
+  - We REMOVE ~4% contamination
+
+This will NOT adversely affect results. In fact, it will:
+  1. IMPROVE accuracy (no more ghost crashes)
+  2. INCREASE confidence (clean data = trustworthy signals)
+  3. VALIDATE the strategy properly (apples to apples)
+
+The Sanity Filter already proved the edge survives (75% win rate)
+after removing extreme velocity signals caused by these spreads.

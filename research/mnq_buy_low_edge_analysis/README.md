@@ -1,116 +1,141 @@
-# MNQ "Buy Low" Scalping - Edge Analysis (MFE vs MAE)
+# MNQ Edge Analysis Research
 
-## Overview
-
-This directory contains a complete edge analysis for a "Buy Low" scalping entry strategy on MNQ (Micro E-mini Nasdaq-100) futures.
-
-**Objective:** Determine if price "snaps back" after hitting extreme lows (measured using MFE vs MAE analysis)
-
+**Location:** `a:\1\Magellan\research\mnq_buy_low_edge_analysis`  
+**Asset:** MNQ (Micro E-mini Nasdaq-100 Futures)  
 **Date:** 2026-01-30  
-**Analyst Role:** Quantitative Data Scientist  
-**Data:** 5 years of 1-minute MNQ data (2021-2026) from Databento
+**Branch:** `ptgdb/midas_backtest`
 
 ---
 
-## Files
+## Project Overview
 
-### 1. `edge_analysis_buy_low.py`
-**Main analysis script** - Complete implementation of the edge analysis pipeline:
-- Loads and cleans Databento CSV data
-- Filters to US market hours (09:30-16:00 ET)
-- Generates "Buy Low" signals (Floor + Stretch conditions)
-- Calculates MFE and MAE for 15-bar forward window
-- Produces interactive Plotly visualization
-- Exports results to CSV
+This research project discovers and validates high-probability entry setups for MNQ futures using a systematic quantitative approach:
 
-**To run:**
-```bash
-cd a:\1\Magellan\data\cache\futures\MNQ
-python ../../../research/mnq_buy_low_edge_analysis/edge_analysis_buy_low.py
-```
-
-**Requirements:**
-- pandas
-- numpy
-- plotly
-- pytz
-
-**Outputs:**
-- `edge_analysis_mfe_vs_mae.html` - Interactive scatter plot
-- `buy_low_signals_mfe_mae.csv` - Raw signal data
-
-### 2. `EDGE_ANALYSIS_RESULTS.md`
-**Comprehensive results summary** with:
-- Strategy logic explanation
-- Key findings (87.33% win rate!)
-- Edge metrics (MFE/MAE statistics)
-- Interpretation and strategic insights
-- Next steps for deployment
-
-### 3. `show_results.py`
-**Quick results viewer** - Simple script to display summary statistics from the CSV output
+1. **Discovery** - Identify "Golden Trades" (high reward, low risk) via inverse analysis
+2. **Rule Extraction** - Use Decision Tree ML to find precise entry conditions
+3. **Backtest** - Validate with full equity curve simulation
 
 ---
 
-## Strategy Logic
-
-### Entry Signal: "Buy Low"
-Buy when **BOTH** conditions are met:
-
-1. **The Floor**: `Low == Rolling_Min(Low, 30)`
-   - Price touches 30-period rolling minimum
-
-2. **The Stretch**: `Close < (EMA_20 - 2.5 * ATR_14)`
-   - Price below Lower Keltner Channel
-
-### Edge Metrics
-
-- **MFE (Maximum Favorable Excursion):** Peak profit potential in next 15 bars
-- **MAE (Maximum Adverse Excursion):** Peak drawdown in next 15 bars
-
----
-
-## Key Results
+## Key Results: MIDAS Protocol
 
 | Metric | Value |
 |--------|-------|
-| **Total Signals** | 3,047 |
-| **Win Rate (MFE > 2x MAE)** | **87.33%** |
-| **Positive MFE Rate** | 100.00% |
-| **Avg MFE** | 14,131.81 pts ($28,263.62) |
-| **Avg MAE** | 216.57 pts ($433.14) |
-| **Avg Risk:Reward** | 83,522x (points) |
-
-**Conclusion:** The price **DOES** snap back after the signal with high consistency.
+| **Starting Capital** | $5,000 |
+| **Final Equity** | **$1,679,065** |
+| **Total P&L** | **$1,674,065** |
+| **Total Return** | **33,481%** |
+| **Win Rate** | **90.2%** |
+| **Sharpe Ratio** | **19.98** |
+| **Max Drawdown** | -$4,133 (-0.2%) |
+| **Total Trades** | 24,436 (over 5 years) |
 
 ---
 
-## Data Location
+## Folder Structure
 
-The analysis **requires** the file:
+```
+mnq_buy_low_edge_analysis/
+├── 01_discovery/               # Initial edge discovery
+│   ├── edge_analysis_buy_low.py
+│   ├── inverse_analysis_golden_trades.py
+│   ├── INVERSE_ANALYSIS_GOLDEN_TRADES.md
+│   ├── EDGE_ANALYSIS_RESULTS.md
+│   └── CORRECTED_RESULTS.md
+│
+├── 02_rule_extraction/         # ML rule extraction (Decision Tree)
+│   ├── midas_protocol.py
+│   ├── MIDAS_PROTOCOL_RESULTS.md
+│   └── 2hr_windows.txt
+│
+├── 03_backtest/                # Final backtest simulation
+│   ├── midas_backtest.py
+│   ├── MIDAS_BACKTEST_RESULTS.md
+│   ├── midas_equity_curve.png
+│   └── midas_trades.csv
+│
+├── data/                       # Generated data files
+│   ├── golden_trades_analysis.csv
+│   ├── buy_low_signals_mfe_mae.csv
+│   └── edge_analysis_mfe_vs_mae.html
+│
+└── README.md                   # This file
+```
+
+---
+
+## Strategy: MIDAS Protocol
+
+### Trading Window
+02:00 - 06:00 UTC (9pm - 1am US Eastern)
+
+### Entry Setups
+
+**Setup #1: Crash Reversal (60.4% win rate)**
+```python
+Velocity_5m <= -67 AND
+Dist_EMA200 <= 220 AND
+ATR_Ratio > 0.50
+```
+
+**Setup #2: Quiet Mean Reversion (57.7% win rate)**
+```python
+Velocity_5m <= 10 AND
+Dist_EMA200 <= 220 AND
+0.06 < ATR_Ratio <= 0.50
+```
+
+### Execution Rules
+- Take Profit: +40 points ($80 per contract)
+- Stop Loss: -12 points ($24 per contract)
+- Position Size: 1 contract
+
+---
+
+## Data Source
+
+All analyses use the full MNQ dataset:
 ```
 a:\1\Magellan\data\cache\futures\MNQ\glbx-mdp3-20210129-20260128.ohlcv-1m.csv
 ```
 
-This file is **NOT** included in version control (it's in `.gitignore`).
+| Metric | Value |
+|--------|-------|
+| **Total Rows** | 2,813,783 |
+| **Date Range** | 2021-01-29 to 2026-01-28 |
+| **Resolution** | 1-minute |
+| **Source** | Databento (glbx-mdp3) |
 
 ---
 
-## Usage Notes
+## Usage
 
-1. **This is ONLY entry analysis** - No exit logic is defined
-2. **Position sizing required** - Average MAE of $433 per contract
-3. **Execution friction** - Slippage and commissions not accounted for
-4. **Next steps:** Add exit rules, regime filters, and walk-forward validation
+### Run Discovery Analysis
+```bash
+cd a:\1\Magellan\data\cache\futures
+python a:\1\Magellan\research\mnq_buy_low_edge_analysis\01_discovery\inverse_analysis_golden_trades.py
+```
+
+### Run Rule Extraction
+```bash
+python a:\1\Magellan\research\mnq_buy_low_edge_analysis\02_rule_extraction\midas_protocol.py
+```
+
+### Run Backtest
+```bash
+python a:\1\Magellan\research\mnq_buy_low_edge_analysis\03_backtest\midas_backtest.py
+```
 
 ---
 
-## Branch
+## Requirements
 
-This analysis was completed on branch: `ptgdb/data_analysis`
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- plotly
 
 ---
 
-## Contact
-
-For questions or to extend this analysis, contact the Quantitative Research Team.
+*Magellan Quantitative Research*

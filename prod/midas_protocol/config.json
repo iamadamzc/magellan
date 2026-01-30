@@ -1,0 +1,113 @@
+{
+    "account_info": {
+        "account_id": "PA3DDLQCBJSE",
+        "account_name": "magellan-midas-protocol",
+        "initial_capital": 100000,
+        "margin_multiplier": 4,
+        "buying_power": 400000
+    },
+    "strategy": {
+        "name": "MIDAS Protocol",
+        "full_name": "Asian Session Mean Reversion",
+        "version": "1.0-baseline",
+        "type": "futures_mean_reversion",
+        "frequency": "high",
+        "expected_trades_per_month": 30
+    },
+    "symbols": [
+        "MNQ"
+    ],
+    "symbol_parameters": {
+        "MNQ": {
+            "instrument_type": "futures",
+            "description": "Micro Nasdaq-100 Futures",
+            "point_value": 2.0,
+            "tick_size": 0.25,
+            "contract_size": 1
+        }
+    },
+    "indicators": {
+        "ema_period": 200,
+        "velocity_lookback": 5,
+        "atr_period": 14,
+        "atr_avg_period": 50
+    },
+    "entry_logic": {
+        "glitch_guard": {
+            "velocity_threshold": -150,
+            "description": "Block trading if velocity < -150 (data spike/flash crash)"
+        },
+        "setup_a_crash_reversal": {
+            "velocity_min": -150,
+            "velocity_max": -67,
+            "ema_distance_max": 220,
+            "atr_ratio_min": 0.50,
+            "description": "Velocity between -150 and -67, <220 pts from EMA200, ATR Ratio > 0.50"
+        },
+        "setup_b_quiet_drift": {
+            "velocity_max": 10,
+            "ema_distance_max": 220,
+            "atr_ratio_min": 0.06,
+            "atr_ratio_max": 0.50,
+            "description": "Velocity <= 10, <220 pts from EMA200, ATR Ratio 0.06-0.50"
+        }
+    },
+    "exit_logic": {
+        "stop_loss_points": 20,
+        "take_profit_points": 120,
+        "time_based_exit_bars": 60,
+        "order_type": "oco_bracket",
+        "description": "OCO: SL=20pts ($40), TP=120pts ($240), Time=60min"
+    },
+    "data_requirements": {
+        "timeframe": "1Min",
+        "premarket": false,
+        "after_hours": false,
+        "warmup_bars": 250
+    },
+    "trading_hours": {
+        "session_start_utc": "02:00:00",
+        "session_end_utc": "06:00:00",
+        "timezone": "UTC",
+        "description": "Asian Session ONLY - Strictly flat outside 02:00-06:00 UTC",
+        "trading_days": [
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI"
+        ]
+    },
+    "risk_management": {
+        "max_daily_loss_dollars": 300,
+        "max_position_size": 1,
+        "direction": "long_only",
+        "per_contract_risk_dollars": 40,
+        "per_contract_reward_dollars": 240,
+        "risk_reward_ratio": 6.0,
+        "emergency_stop_conditions": {
+            "daily_loss_halt": true,
+            "consecutive_losing_trades": 5,
+            "drawdown_threshold_pct": 0.10
+        }
+    },
+    "execution": {
+        "order_type": "market",
+        "time_in_force": "day",
+        "extended_hours": false,
+        "min_liquidity_contracts": 10,
+        "slippage_tolerance_points": 2
+    },
+    "monitoring": {
+        "log_level": "INFO",
+        "cloudwatch_log_group": "/magellan/midas-protocol",
+        "health_check_interval_seconds": 60,
+        "report_interval_seconds": 300,
+        "alert_on_loss_dollars": 200
+    },
+    "ssm_parameters": {
+        "api_key_path": "/magellan/alpaca/PA3DDLQCBJSE/API_KEY",
+        "api_secret_path": "/magellan/alpaca/PA3DDLQCBJSE/API_SECRET",
+        "base_url": "https://paper-api.alpaca.markets"
+    }
+}
